@@ -6,10 +6,16 @@
             <!-- User profile image -->
             <div class="profile-img"> <img src="" onerror="this.src ='{{asset('Massets/images/default.png')}}';" alt="user" height="50" width="50%" /> </div>
             <!-- User profile text-->
-            <div class="profile-text"> <a href="#" class="dropdown-toggle u-dropdown" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true">Test</a>
-            <div class="dropdown-menu animated flipInY"> <a href="#" class="dropdown-item"><i class="ti-user"></i> My Profile</a> <a href="#" class="dropdown-item"><i class="ti-email"></i> Inbox</a>
+            <div class="profile-text"> <a href="#" class="dropdown-toggle u-dropdown" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true">User Name</a>
+              
+            <div class="dropdown-menu animated flipInY"> 
+            <!--
+            <a href="#" class="dropdown-item"><i class="ti-user"></i> My Profile</a> <a href="#" class="dropdown-item"><i class="ti-email"></i> Inbox</a>
             <div class="dropdown-divider"></div> <a href="#" class="dropdown-item"><i class="ti-settings"></i> Account Setting</a>
-            <div class="dropdown-divider"></div> <a href="#" onclick="event.preventDefault(); document.getElementById('logout-form').submit();" class="dropdown-item"><i class="fa fa-power-off"></i> Logout</a> </div>
+            <div class="dropdown-divider"></div>
+            -->
+
+            <a href="#" onclick="event.preventDefault(); document.getElementById('logout-form').submit();" class="dropdown-item"><i class="fa fa-power-off"></i> Logout</a> </div>
             <form id="logout-form" action="#" method="POST" style="display: none;">{{ csrf_field() }}</form>
             </div>
         </div>
@@ -18,35 +24,27 @@
         <nav class="sidebar-nav">
             <ul id="sidebarnav">
                 {{--/////Second Start--}}
+                <!--
                 <li ><a class="waves-effect waves-dark" href="#" aria-expanded="false"><i class="mdi mdi-gauge"></i><span class="hide-menu">Dashboard </span></a>
                 </li>
-                
-                <li class = "active" ><a class="has-arrow waves-effect waves-dark"  aria-expanded="false"><i class="mdi mdi-laptop-windows"></i><span class="hide-menu">Hiring</span></a>
+                    <li class = "active" ><a class="has-arrow waves-effect waves-dark"  aria-expanded="false"><i class="mdi mdi-laptop-windows"></i><span class="hide-menu">Hiring</span></a>
                     <ul aria-expanded="false" class="collapse">
                         
                         <li><a href="#">Application</a></li>
-                        
                         <li><a href="#" >Jobs</a></li>
                        
                     </ul>
                 </li>
-               
-                {{--<li> <a class="" href="#" aria-expanded="false"><i class="mdi mdi-account-circle"></i><span class="hide-menu">Users</span></a>--}}
+                {{--<li> <a class="" href="#" aria-expanded="false"><i class="mdi mdi-account-circle">  </i><span class="hide-menu">Users</span></a>--}}
                 {{--</li>--}}
-                
-                <li class = "active" > <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i class="mdi mdi-account"></i><span class="hide-menu">People Mgmt</span></a>
+                -->
+                <li class = "active" > <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i class="mdi mdi-account"></i><span class="hide-menu">HR Management</span></a>
                     <ul aria-expanded="false" class="collapse">
-                        
-                        <li><a href="#">Employees</a></li>
-                        
-                        
-                        <li><a href="#"  class="active" >Org Chart</a></li>
-                        
+                        <li><a href="#">New User</a></li>
+                        <li><a href="#">Org Chart</a></li>
                         <li><a href="#">Teams</a></li>
-                        
-                           
                         <li><a href="#"> Vendors</a></li>
-                       </ul>
+                    </ul>
 
                 </li>
                 
