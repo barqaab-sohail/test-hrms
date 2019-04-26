@@ -1,0 +1,16 @@
+.teams{
+    list-style: none;
+    padding: 3px;
+}
+
+.head{
+    color: dimgray;
+    text-decoration: underline;
+}
+
+#active1{
+    background-color: #e8e8e8;
+}
+.fc-sun{
+    background-color: yellow;
+}
