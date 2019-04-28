@@ -18,14 +18,14 @@
 
 Auth::routes();
 
-Route::get('/dashboard', 'HomeController@index')->name('home');
+Route::get('/test', 'HomeController@index')->name('home');
 Route::get('/newUser', 'HomeController@create')->name('newUser');
 Route::post('/store', 'HomeController@store')->name('store');
-Route::get('/listOfEmployees', 'HomeController@list')->name('list');
+Route::get('/employeeList', 'HomeController@list')->name('employeeList');
 
-Route::get('/test', function (){
+Route::get('/', function (){
 
-return view ('test');
+return view ('auth.login');
 
 });
 

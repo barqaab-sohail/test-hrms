@@ -69,33 +69,39 @@
                 <!-- Profile -->
                 <!-- ============================================================== -->
                 
-                <!-- Top Right Side User Picutre 
+                <!-- Top Right Side User Picutre  -->
 
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle text-muted waves-effect waves-dark" href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="" onerror="this.src ='{{asset('Massets/images/default.png')}}';" alt="user" class="profile-pic" height="30" width="50%"/></a>
+                    <a class="nav-link dropdown-toggle text-muted waves-effect waves-dark" href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    {{ Auth::user()->first_name ." ".Auth::user()->last_name }} 
+                    <img src="" onerror="this.src ='{{asset('Massets/images/default.png')}}';" alt="user" class="profile-pic" height="30" width="50%"/></a>
                     <div class="dropdown-menu dropdown-menu-right scale-up">
                         <ul class="dropdown-user">
-                            <li>
+                           <!-- <li>
                                 <div class="dw-user-box">
-                                    <div class="u-img"><img  src="" onerror="this.src ='{{asset('Massets/images/default.png')}}';" alt="user" width="30" height="80"></div>
+                                    <div class="u-img">
+                                    <img  src="" onerror="this.src ='{{asset('Massets/images/default.png')}}';" alt="user" width="30" height="80"></div>
                                     <div class="u-text">
-                                        <h4></h4>
-                                        <p class="text-muted" style="font-size:12px;"></p><a href="#" class="btn btn-rounded btn-danger btn-sm">View Profile</a>
+                                        <h4><br></h4>
+                                       
+                                        <p class="text-muted" style="font-size:12px;"></p><a href="#" class="btn btn-rounded btn-danger btn-sm">{{Auth::user()->first_name ." ".Auth::user()->last_name}}</a>
                                     </div>
                                 </div>
-                            </li>
+                            </li> -->
+                            <!--
                             <li role="separator" class="divider"></li>
                             {{--<li><a href="#"><i class="ti-user"></i> My Profile</a></li>--}}
                             {{--<li><a href="#"><i class="ti-email"></i> Inbox</a></li>--}}
                             <li><a href="#"><i class="ti-settings"></i> Account Setting</a></li>
                             <li role="separator" class="divider"></li>
-                            <li><a href="#"  class="link" data-toggle="tooltip" title="Logout"><i class="fa fa-power-off"></i> Logout</a></li>
+                            -->
+                            <li><a href="#"  onclick="event.preventDefault(); document.getElementById('logout-form').submit();"class="link" data-toggle="tooltip" title="Logout"><i class="fa fa-power-off"></i> Logout</a></li>
                         </ul>
-                        <form id="logout-form" action="#" method="POST" style="display: none;">{{ csrf_field() }}</form>
+                        <form id="logout-form" action="{{route('logout')}}" method="POST" style="display: none;">{{ csrf_field() }}</form>
 
                     </div>
                 </li>
-                -->
+                
                 <!-- ============================================================== -->
                 <!-- Language -->
                 <!-- ============================================================== 

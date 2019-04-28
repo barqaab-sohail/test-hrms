@@ -40,7 +40,7 @@ class HomeController extends Controller
         //$user = User::where('id', 'user_id')->with('roles')->first();
         //$users = User::with('roles')->get();
          $user = User::all();
-        return view('dashboard')->with(compact('user'));
+        return view('test')->with(compact('user'));
     }
 
 
@@ -49,12 +49,11 @@ class HomeController extends Controller
        // $users = User::with('contacts')->get();
 
         $users = DB::table('users')
-        //->join('contacts', 'users.id', '=', 'contacts.user_id')
-        //->join('experiences', 'users.id', '=', 'experiences.user_id')
-       ->select('users.*'
-        //, 'contacts.*','experiences.*'
-        )
-        ->paginate(15);
+        ->join('contacts', 'users.id', '=', 'contacts.user_id')
+        ->join('experiences', 'users.id', '=', 'experiences.user_id')
+        //->join('educations', 'users.id', '=', 'educations.user_id')
+       ->select('users.*', 'contacts.*','experiences.*')
+        ->get();
 
                         /* Placed in View
 
@@ -64,7 +63,7 @@ class HomeController extends Controller
                             $diff_in_months = $to->diffInMonths($from);
                         @endphp */
 
-        return view('listOfEmployees')->with(compact('users'));
+        return view('employeeList')->with('users',$users);
     }
 
     public function create(){
