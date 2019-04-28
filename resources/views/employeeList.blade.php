@@ -16,7 +16,8 @@
 			<h4 class="card-title">Salaries</h4>
 			<h6 class="card-subtitle">Employee Salaries</h6>
 			<div class="table-responsive m-t-40">
-				<table id="myTable" class="table table-bordered table-striped">
+				
+				<table id="myTable" class="table table-bordered table-striped" width="100%" cellspacing="0">
 					<thead>
 					
 					<tr>
