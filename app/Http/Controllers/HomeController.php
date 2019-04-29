@@ -25,34 +25,25 @@ class HomeController extends Controller
      * @return \Illuminate\Contracts\Support\Renderable
      */
 
-    public function test()
-    {
-       
-        //$user = User::where('id', 'user_id')->with('roles')->first();
-        //$users = User::with('roles')->get();
-         $user = User::all();
-        return view('test')->with(compact('user'));
-    }
-
     public function index()
     {
        
         //$user = User::where('id', 'user_id')->with('roles')->first();
         //$users = User::with('roles')->get();
          $user = User::all();
-        return view('test')->with(compact('user'));
+        return view('dashboard')->with(compact('user'));
     }
 
 
-    public function list (){
+    public function employeeList (){
 
        // $users = User::with('contacts')->get();
 
         $users = DB::table('users')
-        ->join('contacts', 'users.id', '=', 'contacts.user_id')
-        ->join('experiences', 'users.id', '=', 'experiences.user_id')
+       // ->join('contacts', 'users.id', '=', 'contacts.user_id')
+        //->join('experiences', 'users.id', '=', 'experiences.user_id')
         //->join('educations', 'users.id', '=', 'educations.user_id')
-       ->select('users.*', 'contacts.*','experiences.*')
+       //->select('users.*', 'contacts.*','experiences.*')
         ->get();
 
                         /* Placed in View
@@ -66,19 +57,27 @@ class HomeController extends Controller
         return view('employeeList')->with('users',$users);
     }
 
+
+
+
     public function create(){
 
         
-        return view ('newUser');
+        return view ('createEmployee');
 
     }
 
     public function store (Request $request){
 
+      
+
          $request->validate([
-         'cnic' => 'bail|required|unique:users|max:255',
-         'email' => 'bail|required|unique:users|email',
-         'picture' => 'bail|image|mimes:jpeg,png,jpg,gif,svg|max:512',
+         'first_name' => 'required|max:255',
+         'last_name' => 'required|max:255',
+         'email' => 'required|unique:users|email',
+         'cnic' => 'required|unique:users|max:255',
+         'cnic_expiry' => 'required|date|after:tomorrow',
+         'picture' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:512',
             
          ]);
 

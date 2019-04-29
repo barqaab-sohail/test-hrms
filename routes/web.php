@@ -18,10 +18,10 @@
 
 Auth::routes();
 
-Route::get('/test', 'HomeController@index')->name('home');
-Route::get('/newUser', 'HomeController@create')->name('newUser');
-Route::post('/store', 'HomeController@store')->name('store');
-Route::get('/employeeList', 'HomeController@list')->name('employeeList');
+Route::get('/dashboard', 'HomeController@index')->name('dashboard');
+Route::get('/createEmployee', 'HomeController@create')->name('createEmployee');
+Route::post('/storeEmployee', 'HomeController@store')->name('storeEmployee');
+Route::get('/employeeList', 'HomeController@employeeList')->name('employeeList');
 
 Route::get('/', function (){
 

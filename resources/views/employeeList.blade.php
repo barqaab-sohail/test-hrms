@@ -1,9 +1,9 @@
 @extends('layouts.master.master')
 @section('Heading')
-	<h3 class="text-themecolor">Salary</h3>
+	<h3 class="text-themecolor">List of Employees</h3>
 	<ol class="breadcrumb">
-		<li class="breadcrumb-item"><a href="javascript:void(0)">Dashboard</a></li>
-		<li class="breadcrumb-item active">Payments</li>
+		<li class="breadcrumb-item"><a href="javascript:void(0)">List of Employees</a></li>
+		
 		
 	</ol>
 @stop
@@ -13,8 +13,8 @@
 			<!--<div class="float-right">
 				<input id="month" class="form-control" value="" type="month">
 			</div>-->
-			<h4 class="card-title">Salaries</h4>
-			<h6 class="card-subtitle">Employee Salaries</h6>
+			<h4 class="card-title">List of Employees</h4>
+			
 			<div class="table-responsive m-t-40">
 				
 				<table id="myTable" class="table table-bordered table-striped" width="100%" cellspacing="0">
@@ -22,13 +22,9 @@
 					
 					<tr>
 						<th>Employee Name</th>
-						<th>Basic Salary</th>
-						<th>Bonus</th>
-						<th>Approved Leaves</th>
-						<th>UnApproved Leaves</th>
-						<th>Absent</th>
-						<th>Present</th>
-						<th>Net Payable</th>
+						<th>Email</th>
+						<th>CNIC</th>
+						<th>CNIC Expiry</th>
 						<th> Actions </th>
 					</tr>
 					</thead>
@@ -36,16 +32,11 @@
 						@foreach($users as $user)
 							<tr>
 								<td>{{$user->first_name}} {{$user->last_name}}</td>
+								<td>{{$user->email}}</td>
+								<td>{{$user->cnic}}</td>
+								<td>{{$user->cnic_expiry}}</td>
 								<td></td>
-								<td></td>
-								<td></td>
-								<td></td>
-								<td></td>
-								<td></td>
-								<td></td>
-								<td></td>
-								
-							
+															
 							</tr>
 						@endforeach
 					
@@ -72,29 +63,29 @@
         $(document).ready(function() {
             $('#myTable').DataTable({
                 stateSave: true,
-                dom: 'Bfrtip',
+                dom: 'Blfrtip',
                 buttons: [
                     {
                         extend: 'copyHtml5',
                         exportOptions: {
-                            columns: [ 0, 1, 2,3,4,5,6,7]
+                            columns: [ 0, 1, 2,3,4]
                         }
                     },
                     {
                         extend: 'excelHtml5',
                         exportOptions: {
-                            columns: [ 0, 1, 2,3,4,5,6,7]
+                            columns: [ 0, 1, 2,3,4]
                         }
                     },
                     {
                         extend: 'pdfHtml5',
                         exportOptions: {
-                            columns: [ 0, 1, 2,3,4,5,6,7]
+                            columns: [ 0, 1, 2,3,4]
                         }
                     }, {
                         extend: 'csvHtml5',
                         exportOptions: {
-                            columns: [ 0, 1, 2,3,4,5,6,7]
+                            columns: [ 0, 1, 2,3,4]
                         }
                     },
                 ]

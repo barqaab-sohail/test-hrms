@@ -1,0 +1,23 @@
+<div class="btn-group-vertical" role="group" aria-label="vertical button group">
+
+         <style>
+            
+        .btn-info:active { background-color: red; }
+            
+        </style>
+
+          <br>
+
+            <a type="submit" role="button"   href="#" class="btn btn-info">Exit Interview</a>
+            <a type="submit" role="button" href="#" class="btn btn-info @if(request()->is('createEmployee')) active @endif" >Personal Information</a>
+            <a type="submit" role="button" href="#" class="btn btn-info">Salary</a>
+            <a type="submit" role="button"  href="#" class="btn btn-info">Position & Reporting</a>
+            <a type="submit" role="button"  href="#" class="btn btn-info ">Contact Detail</a>
+            <a type="submit" role="button"  href="#" class="btn btn-info">Emergency Contact</a>
+            <a type="submit" role="button"  href="#" class="btn btn-info">Education</a>
+            <a type="submit" role="button"  href="#"  class="btn btn-info">Experience</a>
+            <a type="submit" role="button"  href="#" class="btn btn-info">Training</a>
+            <a type="submit" role="button"  href="#" class="btn btn-info">Dependent</a>
+            <a type="submit" role="button"  href="#" class="btn btn-info">Documents</a>
+            
+</div>

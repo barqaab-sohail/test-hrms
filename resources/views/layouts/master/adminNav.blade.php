@@ -16,7 +16,6 @@
             <div class="dropdown-divider"></div> <a href="#" class="dropdown-item"><i class="ti-settings"></i> Account Setting</a>
             <div class="dropdown-divider"></div>
             
-
             <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();" class="dropdown-item"><i class="fa fa-power-off"></i> Logout</a> </div>
             <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">{{ csrf_field() }}</form>
             </div>
@@ -41,16 +40,17 @@
                 {{--<li> <a class="" href="#" aria-expanded="false"><i class="mdi mdi-account-circle">  </i><span class="hide-menu">Users</span></a>--}}
                 {{--</li>--}}
                 -->
-                <li class = "" > <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i class="mdi mdi-account"></i><span class="hide-menu">New Employee</span></a>
+                 <li @if(request()->is('dashboard')) class="active" @endif><a class="waves-effect waves-dark" href="{{route('dashboard')}}" aria-expanded="false"><i class="mdi mdi-gauge"></i><span class="hide-menu">Dashboard </span></a>
+                </li>
+                <li @if(request()->is('employeeList')) class="active" @endif > <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i class="mdi mdi-account"></i><span class="hide-menu">Human Resource</span></a>
                     <ul aria-expanded="false" class="collapse">
-                        <li><a href="{{route('employeeList')}}">Personal Information</a></li>
-                        <li><a href="#">Qualification</a></li>
-                        <li><a href="#">Training</a></li>
-                        <li><a href="#"> Vendors</a></li>
+                        <li><a href="{{route('employeeList')}}">List of Employees</a></li>
+                        <li><a href="{{route('createEmployee')}}">Add Employee</a></li>
+                        
                     </ul>
 
                 </li>
-                
+                <!--
                 <li  ><a class="has-arrow waves-effect waves-dark" href="#"><i class="mdi mdi-alarm-check"></i><span class="hide-menu">Attendance</span></a>
                     <ul aria-expanded="false" class="collapse">
                         
@@ -107,7 +107,7 @@
                     </ul>
                 </li>
                 
-
+                -->
                 <li  class="" > <a class="waves-effect waves-dark" href="#" aria-expanded="false"><i class="mdi mdi-help-circle"></i><span class="hide-menu">Help</span></a>
                 </li>
                 {{--///////// Second End--}}
