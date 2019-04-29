@@ -77,15 +77,19 @@ class HomeController extends Controller
          'email' => 'required|unique:users|email',
          'cnic' => 'required|unique:users|max:255',
          'cnic_expiry' => 'required|date|after:tomorrow',
-         'picture' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:512',
+         'picture' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2000',
             
          ]);
 
         $input = $request->all();
-        $fileName = time()."-".$request->user()->cnic;
-        $fileExt = $request->file('picture')->getClientOriginalExtension();
-        Storage::disk('public')->put($fileName.".".$fileExt, $request->file('picture'));
-        $input['picture'] = $fileName.".".$fileExt;
+       // $fileName = time()."-".$request->cnic;
+        //$fileExt = $request->file('picture')->getClientOriginalExtension();
+        //Storage::disk('public')->put($fileName.".".$fileExt, $request->file('picture'));
+       
+
+        $imageName = time().'.'.request()->picture->getClientOriginalExtension();
+        request()->picture->move(public_path('images'), $imageName);
+        $input['picture'] = $imageName;
        
        User::create($input);
 

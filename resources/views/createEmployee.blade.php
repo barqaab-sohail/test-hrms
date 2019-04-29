@@ -14,6 +14,7 @@
             <strong>!</strong> {{Session::get('error')}}
         </div>
     @endif
+
     <div class="row">
         <div class="col-lg-12">
 
@@ -130,13 +131,10 @@
         </div>
     </div>
  @push('scripts')
-       
         <script>
-            
             $(document).ready(function(){
 // Prepare the preview for profile picture
-			
-                $("#wizard-picture").click(function(){
+                $("#wizard-picture").change(function(){
                     readURL(this);
                 });
             });
@@ -149,13 +147,20 @@
                     }
                     reader.readAsDataURL(input.files[0]);
                 }           }
-            
-            if( document.getElementById("wizard-picture").files.length == 0 ){
             $("input[type='image']").click(function() {
                 $("input[id='wizard-picture']").click();
             });
-       		 }
-           
+            $(".form-control").keypress(function(e) {
+                if (e.which == 13) {
+                    e.preventDefault();
+                    return false;
+                }
+            });
+
+            $('#asana_teams input[type="checkbox"]').each(function () {
+                var $checkbox = $(this);
+                $checkbox.checkbox();
+            });
         </script>
     @endpush
 
