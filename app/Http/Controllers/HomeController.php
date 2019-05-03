@@ -35,37 +35,10 @@ class HomeController extends Controller
     }
 
 
-    public function employeeList (){
-
-       // $users = User::with('contacts')->get();
-
-        $users = DB::table('users')
-       // ->join('contacts', 'users.id', '=', 'contacts.user_id')
-        //->join('experiences', 'users.id', '=', 'experiences.user_id')
-        //->join('educations', 'users.id', '=', 'educations.user_id')
-       //->select('users.*', 'contacts.*','experiences.*')
-        ->get();
-
-                        /* Placed in View
-
-                        @php
-                            $to = \Carbon\Carbon::createFromFormat('Y-m-d', $user->to);
-                            $from = \Carbon\Carbon::createFromFormat('Y-m-d', $user->from);
-                            $diff_in_months = $to->diffInMonths($from);
-                        @endphp */
-
-        return view('employeeList')->with('users',$users);
-    }
+   
 
 
 
-
-    public function create(){
-
-        
-        return view ('createEmployee');
-
-    }
 
     public function store (Request $request){
 

@@ -19,9 +19,11 @@
 Auth::routes();
 
 Route::get('/dashboard', 'HomeController@index')->name('dashboard');
-Route::get('/createEmployee', 'HomeController@create')->name('createEmployee');
-Route::post('/storeEmployee', 'HomeController@store')->name('storeEmployee');
-Route::get('/employeeList', 'HomeController@employeeList')->name('employeeList');
+
+Route::post('/storeEmployeeInformation', 'HrController@storeEmployeeInformation')->name('storeEmployeeInformation');
+Route::get('/createEmployeeInformation', 'HrController@createEmployeeInformation')->name('createEmployeeInformation');
+Route::get('/education', 'HrController@education')->name('education');
+Route::get('/employeeList', 'HrController@employeeList')->name('employeeList');
 
 Route::get('/', function (){
 

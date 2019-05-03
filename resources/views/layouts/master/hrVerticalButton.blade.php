@@ -9,12 +9,12 @@
           <br>
 
             <a type="submit" role="button"   href="#" class="btn btn-info">Exit Interview</a>
-            <a type="submit" role="button" href="#" class="btn btn-info @if(request()->is('createEmployee')) active @endif" >Personal Information</a>
+            <a type="submit" role="button" href="{{route('createEmployeeInformation')}}" class="btn btn-info @if(request()->is('createEmployeeInformation')) active @endif" >Personal Information</a>
+            <a type="submit" role="button"  href="{{route('education')}}" class="btn btn-info @if(request()->is('education')) active @endif">Education</a>
             <a type="submit" role="button" href="#" class="btn btn-info">Salary</a>
             <a type="submit" role="button"  href="#" class="btn btn-info">Position & Reporting</a>
             <a type="submit" role="button"  href="#" class="btn btn-info ">Contact Detail</a>
             <a type="submit" role="button"  href="#" class="btn btn-info">Emergency Contact</a>
-            <a type="submit" role="button"  href="#" class="btn btn-info">Education</a>
             <a type="submit" role="button"  href="#"  class="btn btn-info">Experience</a>
             <a type="submit" role="button"  href="#" class="btn btn-info">Training</a>
             <a type="submit" role="button"  href="#" class="btn btn-info">Dependent</a>
