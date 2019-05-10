@@ -59,7 +59,7 @@ class HrController extends Controller
          'first_name' => 'required|max:255',
          'last_name' => 'required|max:255',
          'email' => 'required|unique:users|email',
-         'cnic' => 'required|unique:users|max:255',
+         'cnic' => 'required|unique:users|numeric|digits:13',
          'cnic_expiry' => 'required|date|after:tomorrow',
          'picture' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2000',
             

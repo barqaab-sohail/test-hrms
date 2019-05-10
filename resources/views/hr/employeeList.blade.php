@@ -35,7 +35,7 @@
 								<td>{{$user->email}}</td>
 								<td>{{$user->cnic}}</td>
 								<td>{{$user->cnic_expiry}}</td>
-								<td></td>
+								<td><a class="btn btn-info btn-sm" data-toggle="modal" data-target="#edit{{ $user->id }}"   data-original-title="Add Bonus"> <i class="fas fa-pencil-alt text-white"></i></a></td>
 															
 							</tr>
 						@endforeach
@@ -62,7 +62,7 @@
 	<script>
         $(document).ready(function() {
             $('#myTable').DataTable({
-                stateSave: true,
+                stateSave: false,
                 dom: 'Blfrtip',
                 buttons: [
                     {
