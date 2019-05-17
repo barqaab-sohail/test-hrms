@@ -17,13 +17,29 @@
 */
 
 Auth::routes();
-
 Route::get('/dashboard', 'HomeController@index')->name('dashboard');
 
-Route::post('/storeEmployeeInformation', 'HrController@storeEmployeeInformation')->name('storeEmployeeInformation');
-Route::get('/createEmployeeInformation', 'HrController@createEmployeeInformation')->name('createEmployeeInformation');
-Route::get('/education', 'HrController@education')->name('education');
-Route::get('/employeeList', 'HrController@employeeList')->name('employeeList');
+//User Routes
+Route::get('/userList', 'UserController@index')->name('userList');
+Route::post('/storeUser', 'UserController@store')->name('storeUser');
+Route::get('/createUser', 'UserController@create')->name('createUser');
+Route::get('/user/edit/{id}', [
+            'uses' => 'UserController@edit',
+            'as' => 'user.edit'
+        ]);
+Route::post('/editUser/{id}', 'UserController@update')->name('editUser');
+
+
+
+//Education Routes
+Route::get('/education', 'EducationController@create')->name('education');
+Route::post('/storeEducation', 'EducationController@store')->name('storeEducation');
+
+
+
+
+
+
 
 Route::get('/', function (){
 

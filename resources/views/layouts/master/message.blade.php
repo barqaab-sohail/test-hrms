@@ -9,10 +9,17 @@
 
 		</ul>
 @endif
+ @if(Session::has('success'))
+                <div class="alert alert-success">
+                    <a href="#" class="close" data-dismiss="alert">&times;</a>
+                    <strong></strong> {{Session::get('success')}}
+                </div>
+@endif
+
 
  @if (Session::has('message'))
         <div class="alert alert-success" align="left">
             <a href="#" class="close" data-dismiss="alert">&times;</a>
-            <strong>!</strong> {{Session::get('message')}}
+            <strong></strong> {{Session::get('message')}}
         </div>
  @endif

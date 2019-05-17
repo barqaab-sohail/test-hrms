@@ -35,7 +35,8 @@
 								<td>{{$user->email}}</td>
 								<td>{{$user->cnic}}</td>
 								<td>{{$user->cnic_expiry}}</td>
-								<td><a class="btn btn-info btn-sm" data-toggle="modal" data-target="#edit{{ $user->id }}"   data-original-title="Add Bonus"> <i class="fas fa-pencil-alt text-white"></i></a></td>
+								<td>
+								 <a class="btn btn-info btn-sm" href="{{route('user.edit',['id'=>$user->id])}}" data-toggle="tooltip" data-original-title="Edit"> <i class="fas fa-pencil-alt text-white "></i></a>
 															
 							</tr>
 						@endforeach

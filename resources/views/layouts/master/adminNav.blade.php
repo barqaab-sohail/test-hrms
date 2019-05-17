@@ -42,10 +42,10 @@
                 -->
                  <li @if(request()->is('dashboard')) class="active" @endif><a class="waves-effect waves-dark" href="{{route('dashboard')}}" aria-expanded="false"><i class="mdi mdi-gauge"></i><span class="hide-menu">Dashboard </span></a>
                 </li>
-                <li @if(request()->is('employeeList')) class="active" @endif > <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i class="mdi mdi-account"></i><span class="hide-menu">Human Resource</span></a>
+                <li @if(request()->is('userList')) class="active" @endif > <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i class="mdi mdi-account"></i><span class="hide-menu">Human Resource</span></a>
                     <ul aria-expanded="false" class="collapse">
-                        <li><a href="{{route('employeeList')}}">List of Employees</a></li>
-                        <li><a href="{{route('createEmployeeInformation')}}">Add Employee</a></li>
+                        <li><a href="{{route('userList')}}">List of Employees</a></li>
+                        <li><a href="{{route('createUser')}}">Add Employee</a></li>
                         
                     </ul>
 

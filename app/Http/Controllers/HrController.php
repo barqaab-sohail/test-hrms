@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User;
+use App\Education;
 use DB;
 
 class HrController extends Controller
@@ -15,7 +16,7 @@ class HrController extends Controller
     }
 
 
-    public function employeeList (){
+    public function index (){
 
        // $users = User::with('contacts')->get();
 
@@ -35,6 +36,28 @@ class HrController extends Controller
                         @endphp */
 
         return view('hr.employeeList')->with('users',$users);
+    }
+
+    public function edit($id){
+          
+          $data = User::find($id);
+          return view ('hr.editInformation')->with ('data', $data);
+    }
+
+
+     public function update(Request $request, $id)
+    {
+       
+         
+        $this->validate($request, [
+         'email' => 'required|unique:users,email,'. $id,
+         'cnic' => 'required|numeric|digits:13|unique:users,cnic,'.$id,
+        ]);
+
+        User::findOrFail($id)->update($request->all());
+      
+       return redirect()->route('employee.edit',['id'=>$id])->with('success', 'Employee is updated succesfully');
+
     }
 
 
@@ -75,9 +98,27 @@ class HrController extends Controller
         request()->picture->move(public_path('images'), $imageName);
         $input['picture'] = $imageName;
        
-       User::create($input);
+       $data = User::create($input);
 
-       return redirect('education')->with('message', 'Data Sucessfully Save');
+       return view ('hr.education')->with('data', $data)->with('message', 'Data Sucessfully Save');
+
+
+    }
+
+public function storeEducation (Request $request){
+
+      
+
+         $request->validate([
+         'degree_name' => 'required|max:255',
+         'institute' => 'required|max:255',
+                    
+         ]);
+
+        $input = $request->all();
+        $data = Education::create($input);
+
+       return redirect('employeeList')->with('message', 'Data Sucessfully Save')->with('data', $data);
 
 
     }

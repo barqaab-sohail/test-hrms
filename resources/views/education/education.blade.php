@@ -23,86 +23,72 @@
 		        	<div class="col-lg-10">
 
 		                <div style="margin-top:10px; margin-right: 10px;">
-		                    <button type="button" onclick="window.location.href='{{route('employeeList')}}'" class="btn btn-info float-right">Back</button>
+		                    <button type="button" onclick="window.location.href='{{route('userList')}}'" class="btn btn-info float-right">Back</button>
+		                    
 		                </div>
 		                <div class="card-body">
 
-		                    <form action="{{route('storeEmployeeInformation')}}" method="post" class="form-horizontal" enctype="multipart/form-data">
+		                    <form action="{{route('storeEducation')}}" method="post" class="form-horizontal" enctype="multipart/form-data">
 		                        {{csrf_field()}}
 		                        <div class="form-body">
-		                            <center >
-		                                <input type="image"  src="{{asset('Massets/images/default.png')}}" class="img-circle picture-container picture-src"  id="wizardPicturePreview" title="" width="150" />
-		                                <input type="file"  name="picture" id="wizard-picture" class="" hidden>
-
-		                                <h6 class="card-title m-t-10">Click On Image to Add Picture</h6>
-
-		                                
-		                            </center>
+		                            
 		                            <h3 class="box-title">Education</h3>
 		                            <hr class="m-t-0 m-b-40">
 		                            <div class="row">
 		                                <div class="col-md-6">
 		                                    <div class="form-group row">
-		                                        <label class="control-label text-right col-md-3">First Name</label>
+		                                        <label class="control-label text-right col-md-3">Degree Name</label>
 		                                        <div class="col-md-9">
-		                                            <input type="text"  name="first_name" value="{{ old('first_name') }}" class="form-control" placeholder="Enter First Name" required>
+		                                            <input type="text"  name="degree_name" value="{{ old('degree_name') }}" class="form-control" placeholder="Enter Degree Name" required>
 		                                        </div>
 		                                    </div>
 		                                </div>
+		                                
 		                                <!--/span-->
 		                                <div class="col-md-6">
 		                                    <div class="form-group row">
-		                                        <label class="control-label text-right col-md-3">Middle Name</label>
+		                                        <label class="control-label text-right col-md-3">Institute Name</label>
 		                                        <div class="col-md-9">
-		                                            <input type="text" name="middle_name" value="{{ old('middle_name') }}" class="form-control " placeholder="Enter Middle Name" required>
+		                                            <input type="text" name="institute" value="{{ old('institute') }}" class="form-control " placeholder="Enter Institute Name" required>
 		                                        </div>
 		                                    </div>
 		                                </div>
-		                                <!--/span-->
-		                                <div class="col-md-6">
-		                                    <div class="form-group row">
-		                                        <label class="control-label text-right col-md-3">Last Name</label>
-		                                        <div class="col-md-9">
-		                                            <input type="text" name="last_name" value="{{ old('last_name') }}"   class="form-control " placeholder="Enter Last Name" required>
-		                                        </div>
-		                                    </div>
-		                                </div>
-		                                <!--/span-->
-		                                <div class="col-md-6">
-		                                    <div class="form-group row">
-		                                        <label class="control-label text-right col-md-3">Email</label>
-		                                        <div class="col-md-9">
-		                                            <input type="email" name="email" value="{{ old('email') }}" class="form-control " placeholder="Enter Email" required>
-		                                        </div>
-		                                    </div>
-		                                </div>
-		                                <!--/span-->
 		                            </div>
+		                                
 		                            <!--/row-->
 		                            <div class="row">
 		                                <!--/span-->
 		                                <div class="col-md-6">
 		                                    <div class="form-group row">
-		                                        <label class="control-label text-right col-md-3">CNIC</label>
-		                                        <div class="col-md-9">
-		                                            <input type="text" name="cnic" value="{{ old('cnic') }}" class="form-control " placeholder="Enter CNIC" required>
+		                                        <label class="control-label text-right col-md-3">Marks Obtain</label>
+		                                        <div class="col-md-3">
+		                                            <input type="number" name="marks_obtain" value="{{ old('marks_obtain') }}"   class="form-control " required>
 		                                        </div>
-		                                    </div>
-		                                </div>
-		                                <div class="col-md-6">
-		                                    <div class="form-group row">
-		                                        <label class="control-label text-right col-md-3">CNIC Expiry</label>
-		                                        <div class="col-md-9">
-		                                            <div class="col-md-9">
-		                                            <input type="date" name="cnic_expiry" value="{{ old('cnic_expiry') }}" class="form-control " required>
-		                                        </div>
+		                                         <label class="control-label text-right col-md-3">Total Marks</label>
+		                                        <div class="col-md-3">
+		                                            <input type="text" name="total_marks" value="{{ old('total_marks') }}"   class="form-control " required>
 		                                        </div>
 		                                    </div>
 		                                </div>
 		                                <!--/span-->
-		                                
-		                            </div>
+		                                <div class="col-md-6">
+		                                    <div class="form-group row">
+		                                         <label class="control-label text-right col-md-3">Level of Degree</label>
+		                                        <div class="col-md-3">
+		                                            <input type="number" name="equal_to" value="{{ old('equal_to') }}"   class="form-control "  required>
+		                                        </div>
+		                                         <label class="control-label text-right col-md-3">Passing Year</label>
+		                                        <div class="col-md-3">
+		                                            <input type="number" name="passing_year" value="{{ old('passing_year') }}"   class="form-control " required>
+
+		                                             <input type="number" name="user_id" value=""   class="form-control " hidden>
+		                                        </div>
+		                                    </div>
+		                                </div>
+		                                <!--/span-->
+		                             </div>
 		                            <!--/row-->
+		                          
 		                           
 		                        </div>
 		                         <hr>
@@ -111,8 +97,8 @@
 		                                <div class="col-md-6">
 		                                    <div class="row">
 		                                        <div class="col-md-offset-3 col-md-9">
-		                                            <button type="submit" class="btn btn-success">Add Employee</button>
-		                                            <button type="button" onclick="window.location.href='{{route('employeeList')}}'" class="btn btn-inverse">Cancel</button>
+		                                            <button type="submit" class="btn btn-success">Add Education</button>
+		                                            <button type="button" onclick="window.location.href='{{route('userList')}}'" class="btn btn-inverse">Cancel</button>
 		                                        </div>
 		                                    </div>
 		                                </div>

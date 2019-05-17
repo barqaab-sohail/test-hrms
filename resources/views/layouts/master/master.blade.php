@@ -33,14 +33,8 @@
                 </div>
             </div>
 
-                @include('layouts.master.errors') 
-                @if(Session::has('success'))
-                <div class="alert alert-success">
-                    <a href="#" class="close" data-dismiss="alert">&times;</a>
-                    <strong>Success!</strong> {{Session::get('success')}}
-                </div>
-                @endif
-                
+                @include('layouts.master.message') 
+               
 
                 @yield('content')
         </div>
