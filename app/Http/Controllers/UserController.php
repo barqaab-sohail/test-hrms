@@ -23,12 +23,13 @@ class UserController extends Controller
 
 
     public function edit($id){
-          $data = User::find($id);
-          return view ('user.editUser')->with ('data', $data);
+        $data = User::find($id);
+        $userId = session()->put('user_id', $data->id);
+        return view ('user.editUser')->with ('data', $data);
     }
 
 
-     public function update(Request $request, $id)
+    public function update(Request $request, $id)
     {
        
          $this->validate($request, [
@@ -69,7 +70,8 @@ class UserController extends Controller
 
         //return view ('education.education')->with('data', $data)->with('message', 'Data Sucessfully Save');
 
-        return redirect('/education')->with('message', 'Data Sucessfully Save');
+        //return redirect('/education')->with('message', 'Data Sucessfully Save');
+        return redirect('/education') ->with(['user_id'=>$data->id]);
     }
 
 

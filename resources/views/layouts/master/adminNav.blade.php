@@ -50,6 +50,15 @@
                     </ul>
 
                 </li>
+                <li @if(request()->is('addProject')) class="active" @endif > <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i class="mdi mdi-briefcase"></i><span class="hide-menu">Projects</span></a>
+                    <ul aria-expanded="false" class="collapse">
+                        <li><a href="{{route('userList')}}">Add Projects</a></li>
+                        <li><a href="{{route('createUser')}}">List of Projects</a></li>
+                        
+                    </ul>
+
+                </li>
+
                 <!--
                 <li  ><a class="has-arrow waves-effect waves-dark" href="#"><i class="mdi mdi-alarm-check"></i><span class="hide-menu">Attendance</span></a>
                     <ul aria-expanded="false" class="collapse">

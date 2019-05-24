@@ -8,10 +8,10 @@
 
           <br>
 
-           @if (request()->is('*/edit/*') || request()->is('education')|| request()->is('salary'))
-            <a type="submit" role="button" href="{{route('createUser')}}" class="btn btn-info @if(request()->is('createUser')|| request()->is('user/edit*')) active @endif" >Personal Information</a>
-            <a type="submit" role="button"  href="{{route('education')}}" class="btn btn-info @if(request()->is('education/*')) active @endif">Education</a>
-            <a type="submit" role="button" href="#" class="btn btn-info @if(request()->is('salary')) active @endif">Salary</a>
+           @if (request()->is('*/edit/*') )
+            <a type="submit" role="button" href="{{route('user.edit',session('user_id'))}}" class="btn btn-info @if(request()->is('user/edit*')) active @endif" >Personal Information</a>
+            <a type="submit" role="button"  href="{{route('education.edit', session('user_id'))}}" class="btn btn-info @if(request()->is('education/edit*')) active @endif">Education</a>
+            <a type="submit" role="button" href="{{route('salary.edit', session('user_id'))}}" class="btn btn-info @if(request()->is('salary/edit*')) active @endif">Salary</a>
             <a type="submit" role="button"  href="#" class="btn btn-info">Position & Reporting</a>
             <a type="submit" role="button"  href="#" class="btn btn-info ">Contact Detail</a>
             <a type="submit" role="button"  href="#" class="btn btn-info">Emergency Contact</a>

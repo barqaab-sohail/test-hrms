@@ -1,3 +1,4 @@
+
 @extends('layouts.master.master')
 @section('Heading')
 	<h3 class="text-themecolor">Human Resource</h3>
@@ -9,7 +10,6 @@
 @stop
 @section('content')
    
-
     <div class="row">
         <div class="col-lg-12">
 
@@ -19,7 +19,7 @@
 					<div class="col-lg-2">
 					@include('layouts.master.hrVerticalButton')
 					</div>
-        	
+        			
 		        	<div class="col-lg-10">
 
 		                <div style="margin-top:10px; margin-right: 10px;">
@@ -81,7 +81,7 @@
 		                                        <div class="col-md-3">
 		                                            <input type="number" name="passing_year" value="{{ old('passing_year') }}"   class="form-control " required>
 
-		                                             <input type="number" name="user_id" value=""   class="form-control " hidden>
+		                                             <input type="number" name="user_id" value="{{session('user_id')}}"   class="form-control " hidden>
 		                                        </div>
 		                                    </div>
 		                                </div>
@@ -114,34 +114,8 @@
  @push('scripts')
         <script>
             $(document).ready(function(){
-// Prepare the preview for profile picture
-                $("#wizard-picture").change(function(){
-                    readURL(this);
-                });
-            });
-            function readURL(input) {
-                if (input.files && input.files[0]) {
-                    var reader = new FileReader();
-
-                    reader.onload = function (e) {
-                        $('#wizardPicturePreview').attr('src', e.target.result).fadeIn('slow');
-                    }
-                    reader.readAsDataURL(input.files[0]);
-                }           }
-            $("input[type='image']").click(function() {
-                $("input[id='wizard-picture']").click();
-            });
-            $(".form-control").keypress(function(e) {
-                if (e.which == 13) {
-                    e.preventDefault();
-                    return false;
-                }
-            });
-
-            $('#asana_teams input[type="checkbox"]').each(function () {
-                var $checkbox = $(this);
-                $checkbox.checkbox();
-            });
+			
+			});
         </script>
     @endpush
 
