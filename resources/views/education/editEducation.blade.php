@@ -28,7 +28,7 @@
 		                </div>
 		                <div class="card-body">
 
-		                    <form action="{{route('editEducation', ['id'=>$data->id])}}" method="post" class="form-horizontal" enctype="multipart/form-data">
+		                    <form action="{!!route('editEducation', ['id'=>optional($data)->id])!!}" method="post" class="form-horizontal" enctype="multipart/form-data">
 		                        {{csrf_field()}}
 		                        <div class="form-body">
 		                            
