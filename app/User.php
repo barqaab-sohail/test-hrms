@@ -5,10 +5,12 @@ namespace App;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use OwenIt\Auditing\Contracts\Auditable;
 
-class User extends Authenticatable
+class User extends Authenticatable implements Auditable
 {
     use Notifiable;
+    use \OwenIt\Auditing\Auditable;
 
     /**
      * The attributes that are mass assignable.
@@ -32,31 +34,13 @@ class User extends Authenticatable
      * The attributes that should be cast to native types.
      *
      * @var array
-     */
+    */
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
 
-    public function role()
-    {
-        return $this->hasOne('App\Role');
+    public function employee(){
+        return $this->belongsTo('App\employee');
     }
 
-     public function salary()
-    {
-        return $this->hasOne('App\salary');
-    }
-
-    public function contacts()
-    {
-      return $this->hasMany('App\contact');
-    }
-     public function educations()
-    {
-      return $this->hasMany('App\education');
-    }
-     public function experiences()
-    {
-      return $this->hasMany('App\experience');
-    }
 }

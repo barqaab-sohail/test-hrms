@@ -29,15 +29,15 @@
 					</tr>
 					</thead>
 					<tbody>
-						@foreach($users as $user)
+						@foreach($employees as $employee)
 							<tr>
-								<td>{{$user->first_name}} {{$user->last_name}}</td>
-								<td>{{$user->email}}</td>
-								<td>{{$user->cnic}}</td>
-								<td>{{$user->cnic_expiry}}</td>
+								<td>{{$employee->first_name}} {{$employee->last_name}}</td>
+								<td>{{$employee->user->email}}</td>
+								<td>{{$employee->cnic}}</td>
+								<td>{{$employee->cnic_expiry}}</td>
 								<td>
 								
-								 <a class="btn btn-info btn-sm" href="{{route('user.edit',['id'=>$user->id])}}" data-toggle="tooltip" data-original-title="Edit"> <i class="fas fa-pencil-alt text-white "></i></a>
+								 <a class="btn btn-info btn-sm" href="{{route('employee.edit',['id'=>$employee->id])}}" data-toggle="tooltip" data-original-title="Edit"> <i class="fas fa-pencil-alt text-white "></i></a>
 															
 							</tr>
 						@endforeach

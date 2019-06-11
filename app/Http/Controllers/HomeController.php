@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Auth;
 use App\User;
+use App\employee;
 use DB;
 
 use Illuminate\Http\Request;
@@ -27,10 +29,10 @@ class HomeController extends Controller
 
     public function index()
     {
-       
         //$user = User::where('id', 'user_id')->with('roles')->first();
         //$users = User::with('roles')->get();
-         $user = User::all();
+        $user = Auth::user();
+        //dd($user->employee->first_name);
         return view('dashboard')->with(compact('user'));
     }
 

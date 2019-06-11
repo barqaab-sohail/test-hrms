@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateContactsTable extends Migration
+class CreateTrainingsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,18 +13,14 @@ class CreateContactsTable extends Migration
      */
     public function up()
     {
-        Schema::create('contacts', function (Blueprint $table) {
+        Schema::create('trainings', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->bigInteger('employee_id')->unsigned();
-            $table->tinyInteger('type')->comment('0 for Permanent and 1 for Current');
-            $table->string('house');
-            $table->string('street')->nullable();
-            $table->string('town')->nullable();
-            $table->string('city');
-            $table->string('province');
-            $table->string('country');
-            $table->string('landline')->nullable();
-            $table->string('mobile');
+            $table->string('institute')->nullable();
+            $table->string('description');
+            $table->date('from')->nullable();
+            $table->date('to')->nullable();
+            $table->string('countary')->nullable();
             $table->timestamps();
             $table->foreign('employee_id')->references('id')->on('employees');
         });
@@ -37,6 +33,6 @@ class CreateContactsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('contacts');
+        Schema::dropIfExists('trainings');
     }
 }

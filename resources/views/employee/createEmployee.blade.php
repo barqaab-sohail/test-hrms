@@ -17,22 +17,22 @@
 			
 				<div class="row">
 					<div class="col-lg-2">
-					@include('layouts.master.hrVerticalEditButton')
+					@include('layouts.master.hrVerticalButton')
 					</div>
         	
 		        	<div class="col-lg-10">
-						
+
 		                <div style="margin-top:10px; margin-right: 10px;">
-		                    <button type="button" onclick="window.location.href='{{route('userList')}}'" class="btn btn-info float-right">Back</button>
+		                    <button type="button" onclick="window.location.href='{{route('employeeList')}}'" class="btn btn-info float-right">Back</button>
 		                </div>
 		                <div class="card-body">
 
-		                    <form action="{{route('editUser', ['id'=>$data->id])}}" method="post" class="form-horizontal" enctype="multipart/form-data">
+		                    <form action="{{route('storeEmployee')}}" method="post" class="form-horizontal" enctype="multipart/form-data">
 		                        {{csrf_field()}}
 		                        <div class="form-body">
 		                            <center >
 		                                <input type="image"  src="{{asset('Massets/images/default.png')}}" class="img-circle picture-container picture-src"  id="wizardPicturePreview" title="" width="150" />
-		                                <input type="file"  name="picture" id="wizard-picture" class=""  hidden>
+		                                <input type="file"  name="picture" id="wizard-picture" class="" required hidden>
 
 		                                <h6 class="card-title m-t-10">Click On Image to Add Picture</h6>
 
@@ -45,7 +45,7 @@
 		                                    <div class="form-group row">
 		                                        <label class="control-label text-right col-md-3">First Name</label>
 		                                        <div class="col-md-9">
-		                                            <input type="text"  name="first_name" value="{{old('first_name', $data->first_name)}}"  class="form-control" placeholder="Enter First Name" required>
+		                                            <input type="text"  name="first_name" value="{{ old('first_name') }}"  class="form-control" placeholder="Enter First Name" required>
 		                                        </div>
 		                                    </div>
 		                                </div>
@@ -54,7 +54,7 @@
 		                                    <div class="form-group row">
 		                                        <label class="control-label text-right col-md-3">Middle Name</label>
 		                                        <div class="col-md-9">
-		                                            <input type="text" name="middle_name" value="{{old('middle_name', $data->middle_name) }}" class="form-control " placeholder="Enter Middle Name" required>
+		                                            <input type="text" name="middle_name" value="{{ old('middle_name') }}" class="form-control " placeholder="Enter Middle Name" required>
 		                                        </div>
 		                                    </div>
 		                                </div>
@@ -63,7 +63,7 @@
 		                                    <div class="form-group row">
 		                                        <label class="control-label text-right col-md-3">Last Name</label>
 		                                        <div class="col-md-9">
-		                                            <input type="text" name="last_name" value="{{old('last_name', $data->last_name) }}"   class="form-control " placeholder="Enter Last Name" required>
+		                                            <input type="text" name="last_name" value="{{ old('last_name') }}"   class="form-control " placeholder="Enter Last Name" required>
 		                                        </div>
 		                                    </div>
 		                                </div>
@@ -72,7 +72,7 @@
 		                                    <div class="form-group row">
 		                                        <label class="control-label text-right col-md-3">Email</label>
 		                                        <div class="col-md-9">
-		                                            <input type="email" name="email" value="{{ old('email', $data->email) }}" class="form-control " placeholder="Enter Email" required>
+		                                            <input type="email" name="email" value="{{ old('email') }}" class="form-control " placeholder="Enter Email" required>
 		                                        </div>
 		                                    </div>
 		                                </div>
@@ -85,7 +85,7 @@
 		                                    <div class="form-group row">
 		                                        <label class="control-label text-right col-md-3">CNIC</label>
 		                                        <div class="col-md-9">
-		                                            <input type="text" name="cnic" value="{{old('cnic', $data->cnic) }}" class="form-control " placeholder="Enter CNIC" required>
+		                                            <input type="text" name="cnic" value="{{ old('cnic') }}" class="form-control " placeholder="Enter CNIC" required>
 		                                        </div>
 		                                    </div>
 		                                </div>
@@ -94,8 +94,7 @@
 		                                        <label class="control-label text-right col-md-3">CNIC Expiry</label>
 		                                        <div class="col-md-9">
 		                                            <div class="col-md-9">
-		                                            <input type="date" name="cnic_expiry" value="{{old('cnic_expiry', $data->cnic_expiry) }}" class="form-control " required>
-		                                           
+		                                            <input type="date" name="cnic_expiry" value="{{ old('cnic_expiry') }}" class="form-control " required>
 		                                        </div>
 		                                        </div>
 		                                    </div>
@@ -112,8 +111,8 @@
 		                                <div class="col-md-6">
 		                                    <div class="row">
 		                                        <div class="col-md-offset-3 col-md-9">
-		                                            <button type="submit" class="btn btn-success">Update Employee</button>
-		                                            <button type="button" onclick="window.location.href='{{route('userList')}}'" class="btn btn-inverse">Cancel</button>
+		                                            <button type="submit" class="btn btn-success">Add Employee</button>
+		                                            <button type="button" onclick="window.location.href='{{route('employeeList')}}'" class="btn btn-inverse">Cancel</button>
 		                                        </div>
 		                                    </div>
 		                                </div>
@@ -131,9 +130,7 @@
 
             $(document).ready(function(){
 // Prepare the preview for profile picture
-			
-
-                $("#wizard-picture").change(function(){
+		        $("#wizard-picture").change(function(){
                     readURL(this);
                 });
             });

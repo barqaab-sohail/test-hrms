@@ -15,15 +15,19 @@ class CreateEducationsTable extends Migration
     {
         Schema::create('educations', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->bigInteger('user_id')->unsigned();
+            $table->bigInteger('employee_id')->unsigned();
             $table->string('degree_name');
-            $table->string('equal_to');
             $table->string('institute');
-            $table->date('passing_year')->format('Y)');
+            $table->string('level');
+            $table->year('completion');
+            $table->date('from');
+            $table->date('to');
             $table->float('total_marks');
             $table->float('marks_obtain');
+            $table->string('countary');
+            $table->string('grade');
             $table->timestamps();
-            $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('employee_id')->references('id')->on('employees');
         });
     }
 

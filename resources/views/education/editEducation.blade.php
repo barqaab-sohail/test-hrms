@@ -76,11 +76,11 @@
 		                                    <div class="form-group row">
 		                                         <label class="control-label text-right col-md-3">Level of Degree</label>
 		                                        <div class="col-md-3">
-		                                            <input type="number" name="equal_to" value="{!! old('equal_to', optional($data)->equal_to) !!}"   class="form-control "  required>
+		                                            <input type="number" name="level" value="{!! old('level', optional($data)->level) !!}"   class="form-control "  required>
 		                                        </div>
 		                                         <label class="control-label text-right col-md-3">Passing Year</label>
 		                                        <div class="col-md-3">
-		                                            <input type="number" name="passing_year" value="{!! old('passing_year', optional($data)->passing_year) !!}"   class="form-control " required>
+		                                            <input type="number" name="completion" value="{!! old('completion', optional($data)->completion) !!}"   class="form-control " required>
 
 		                                            
 		                                        </div>

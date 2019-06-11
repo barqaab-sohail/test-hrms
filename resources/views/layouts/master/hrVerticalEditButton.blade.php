@@ -9,7 +9,7 @@
           <br>
 
            @if (request()->is('*/edit/*') )
-            <a type="submit" role="button" href="{{route('user.edit',session('user_id'))}}" class="btn btn-info @if(request()->is('user/edit*')) active @endif" >Personal Information</a>
+            <a type="submit" role="button" href="{{route('employee.edit',session('employee_id'))}}" class="btn btn-info @if(request()->is('employee/edit*')) active @endif" >Personal Information</a>
             <a type="submit" role="button"  href="{{route('education.edit', session('user_id'))}}" class="btn btn-info @if(request()->is('education/edit*')) active @endif">Education</a>
             <a type="submit" role="button" href="{{route('salary.edit', session('user_id'))}}" class="btn btn-info @if(request()->is('salary/edit*')) active @endif">Salary</a>
             <a type="submit" role="button"  href="#" class="btn btn-info">Position & Reporting</a>

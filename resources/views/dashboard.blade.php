@@ -15,8 +15,9 @@
 			</div>
 			<h4 class="card-title">Salaries</h4>
 			-->
-			<h1 class="card-subtitle">{{Auth::user()->first_name." ".Auth::user()->last_name }} Welcome to HRMS</h1>
 			
+			<h1 class="card-subtitle">{{Auth::User()->employee->first_name." ".Auth::User()->employee->last_name}} Welcome to HRMS</h1>
+						
 			
 		</div>
 	</div>

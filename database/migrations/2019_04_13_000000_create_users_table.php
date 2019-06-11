@@ -16,22 +16,16 @@ class CreateUsersTable extends Migration
         Schema::dropIfExists('users');
         Schema::create('users', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->bigInteger('role_id')->unsigned()->default(3);
-            $table->string('first_name');
-             $table->string('middle_name')->nullable();
-            $table->string('last_name');
-            $table->string('cnic')->unique();
-            $table->date('cnic_expiry');
-            $table->string('picture')->nullable();
-            $table->integer('status')->default(0);
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password')->default(bcrypt('Great@786'));
+            $table->bigInteger('role_id')->unsigned()->default(3); 
+            $table->integer('status')->default(0);
+            $table->bigInteger('employee_id')->unsigned();
             $table->rememberToken();
             $table->timestamps();
-
             $table->foreign('role_id')->references('id')->on('roles');
-
+            $table->foreign('employee_id')->references('id')->on('employees');
         });
                
     }

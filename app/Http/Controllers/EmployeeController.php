@@ -5,9 +5,10 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\User;
 use App\Education;
+use App\employee;
 use DB;
 
-class UserController extends Controller
+class EmployeeController extends Controller
 {
     
 	public function __construct()
@@ -17,15 +18,16 @@ class UserController extends Controller
 
     public function index (){
 
-       $users = DB::table('users')->get();
-       return view('user.userList')->with('users',$users);
+       //$users = DB::table('users')->get();
+        $employees = employee::all();
+       return view('employee.employeeList')->with('employees',$employees);
     }
 
 
     public function edit($id){
-        $data = User::find($id);
-        $userId = session()->put('user_id', $data->id);
-        return view ('user.editUser')->with ('data', $data);
+        $employee = employee::find($id);
+        $employeeId = session()->put('employee_id', $employee->id);
+        return view ('employee.editEmployee')->with ('employee', $employee);
     }
 
 
@@ -40,7 +42,6 @@ class UserController extends Controller
         User::findOrFail($id)->update($request->all());
       
        return redirect()->route('user.edit',['id'=>$id])->with('success', 'Employee is updated succesfully');
-
     }
 
 

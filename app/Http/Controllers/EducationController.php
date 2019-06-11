@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User;
+use App\employee;
 use App\Education;
 use DB;
 
@@ -39,9 +40,9 @@ class EducationController extends Controller
     }
 
     public function edit($id){
-          
-          $data = User::find($id)->Educations()->first();
-          return view ('education.editEducation')->with ('data', $data);
+         
+         $data = employee::find($id)->education->first();
+         return view ('education.editEducation')->with ('data', $data);
     }
     
     public function update(Request $request, $id)

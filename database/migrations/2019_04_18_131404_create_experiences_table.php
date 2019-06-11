@@ -15,14 +15,16 @@ class CreateExperiencesTable extends Migration
     {
         Schema::create('experiences', function (Blueprint $table) {
             $table->bigIncrements('id');
-             $table->bigInteger('user_id')->unsigned();
-            $table->string('company_name');
+            $table->bigInteger('employee_id')->unsigned();
+            $table->string('employer');
             $table->string('position');
+            $table->text('activities');
             $table->date('from');
             $table->date('to');
-            $table->string('activities');
+            $table->string('location');
+            $table->string('countary');
             $table->timestamps();
-            $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('employee_id')->references('id')->on('employees');
         });
     }
 

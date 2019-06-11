@@ -21,15 +21,16 @@ Auth::routes();
 
 Route::get('/dashboard', 'HomeController@index')->name('dashboard');
 
+
 //User Routes
-Route::get('/userList', 'UserController@index')->name('userList');
-Route::post('/storeUser', 'UserController@store')->name('storeUser');
-Route::get('/createUser', 'UserController@create')->name('createUser');
-Route::get('/user/edit/{id?}', [
-            'uses' => 'UserController@edit',
-            'as' => 'user.edit'
+Route::get('/employeeList', 'EmployeeController@index')->name('employeeList');
+Route::post('/storeEmployee', 'EmployeeController@store')->name('storeEmployee');
+Route::get('/createEmployee', 'EmployeeController@create')->name('createEmployee');
+Route::get('/employee/edit/{id?}', [
+            'uses' => 'EmployeeController@edit',
+            'as' => 'employee.edit'
         ]);
-Route::post('/editUser/{id?}', 'UserController@update')->name('editUser');
+Route::post('/editEmployee/{id?}', 'EmployeeController@update')->name('editEmployee');
 
 
 
