@@ -27,7 +27,7 @@
 		                </div>
 		                <div class="card-body">
 
-		                    <form action="{!!route('editSalary', ['id'=>optional($data)->basic_pay])!!}" method="post" class="form-horizontal" enctype="multipart/form-data">
+		                    <form action="{!!route('editSalary', ['id'=>optional($data)->id])!!}" method="post" class="form-horizontal" enctype="multipart/form-data">
 		                        {{csrf_field()}}
 		                        <div class="form-body">
 		                            
@@ -45,7 +45,7 @@
 		                                        </div>
 		                                         <label class="control-label text-right col-md-3">House Rent</label>
 		                                        <div class="col-md-3">
-		                                            <input type="text" name="house_rent" value="{!! old('basic_pay', optional($data)->basic_pay) !!}"   class="form-control prc" required>
+		                                            <input type="text" name="house_rent" value="{!! old('house_rent', optional($data)->house_rent) !!}"   class="form-control prc" required>
 		                                        </div>
 		                                    </div>
 		                                </div>
@@ -54,11 +54,11 @@
 		                                    <div class="form-group row">
 		                                         <label class="control-label text-right col-md-3">Dearness Allowance</label>
 		                                        <div class="col-md-3">
-		                                            <input type="number" name="dearness_allowance" value="{!! old('basic_pay', optional($data)->basic_pay) !!}"   class="form-control prc"  required>
+		                                            <input type="number" name="dearness_allowance" value="{!! old('dearness_allowance', optional($data)->dearness_allowance) !!}"   class="form-control prc"  required>
 		                                        </div>
 		                                         <label class="control-label text-right col-md-3">Adhoc 2009</label>
 		                                        <div class="col-md-3">
-		                                            <input type="number" name="adhoc_2009" value="{!! old('basic_pay', optional($data)->basic_pay) !!}"   class="form-control prc" required>
+		                                            <input type="number" name="adhoc_2009" value="{!! old('adhoc_2009', optional($data)->adhoc_2009) !!}"   class="form-control prc" required>
                                             
 		                                        </div>
 		                                    </div>
@@ -72,11 +72,11 @@
 		                                    <div class="form-group row">
 		                                        <label class="control-label text-right col-md-3">Adhoc 2010</label>
 		                                        <div class="col-md-3">
-		                                            <input type="number" name="adhoc_2010" value="{!! old('basic_pay', optional($data)->basic_pay) !!}"   class="form-control prc" required>
+		                                            <input type="number" name="adhoc_2010" value="{!! old('adhoc_2010', optional($data)->adhoc_2010) !!}"   class="form-control prc" required>
 		                                        </div>
 		                                         <label class="control-label text-right col-md-3">Adhoc 2012</label>
 		                                        <div class="col-md-3">
-		                                            <input type="text" name="adhoc_2012" value="{!! old('basic_pay', optional($data)->basic_pay) !!}"   class="form-control prc" required>
+		                                            <input type="text" name="adhoc_2012" value="{!! old('adhoc_2012', optional($data)->adhoc_2012) !!}"   class="form-control prc" required>
 		                                        </div>
 		                                    </div>
 		                                </div>
@@ -85,11 +85,11 @@
 		                                    <div class="form-group row">
 		                                         <label class="control-label text-right col-md-3">Adhoc 2013</label>
 		                                        <div class="col-md-3">
-		                                            <input type="number" name="adhoc_2013" value="{!! old('basic_pay', optional($data)->basic_pay) !!}"   class="form-control prc"  required>
+		                                            <input type="number" name="adhoc_2013" value="{!! old('adhoc_2013', optional($data)->adhoc_2013) !!}"   class="form-control prc"  required>
 		                                        </div>
 		                                         <label class="control-label text-right col-md-3">Field Allowance</label>
 		                                        <div class="col-md-3">
-		                                            <input type="number" name="field_allowance" value="{!! old('basic_pay', optional($data)->basic_pay) !!}"   class="form-control prc" required>
+		                                            <input type="number" name="field_allowance" value="{!! old('field_allowance', optional($data)->field_allowance) !!}"   class="form-control prc" required>
 		                                            
 		                                        </div>
 		                                    </div>
@@ -103,11 +103,11 @@
 		                                    <div class="form-group row">
 		                                        <label class="control-label text-right col-md-3">Other Allowance</label>
 		                                        <div class="col-md-3">
-		                                            <input type="number" name="other_allowance" value="{!! old('basic_pay', optional($data)->basic_pay) !!}"   class="form-control prc" required>
+		                                            <input type="number" name="other_allowance" value="{!! old('other_allowance', optional($data)->other_allowance) !!}"   class="form-control prc" required>
 		                                        </div>
 		                                         <label class="control-label text-right col-md-3">Total</label>
 		                                        <div class="col-md-3">
-		                                            <input type="text" name="total" id="total" value="{!! old('basic_pay', optional($data)->basic_pay) !!}"   class="form-control " readonly>
+		                                            <input type="text" name="total" id="total" value="{!! old('total', optional($data)->total) !!}"   class="form-control " readonly>
 		                                        </div>
 		                                    </div>
 		                                </div>
@@ -146,7 +146,10 @@
     </div>
  @push('scripts')
         <script>
-
+        	var url = $(location).attr('href');
+        	var arguments = url.split('edit/')[1];
+//arguments.shift();
+//alert(arguments);
             $(document).ready(function(){
 				$(".form-group").on("input", ".prc", function() {
 		   		var sum = 0;

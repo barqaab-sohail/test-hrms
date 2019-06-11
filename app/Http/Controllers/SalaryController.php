@@ -36,10 +36,20 @@ class SalaryController extends Controller
           return view ('salary.editSalary')->with ('data', $data);
     }
 
-    public function update(Request $request, $id)
+    public function update(Request $request, $id=null)
     {
-     salary::findOrFail($id)->update($request->all());
-     return redirect()->route('salary.edit',['id'=>session('user_id')])->with('success', 'Employee is updated succesfully');
+      if ($id==null){
+        $input = $request->all();
+                      
+        $data = salary::create($input);
+
+         return redirect()->route('salary.edit',['id'=>session('user_id')])->with('success', 'Data Saved  succesfully');
+
+      }else
+      {
+       salary::findOrFail($id)->update($request->all());
+       return redirect()->route('salary.edit',['id'=>session('user_id')])->with('success', 'Employee is updated succesfully');
+      }
     }
 
 
