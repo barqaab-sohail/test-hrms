@@ -8,8 +8,12 @@
 
           <br>
 
-           @if (request()->is('*/edit/*') )
+           @if (request()->is('*/edit/*') or request()->is('createPicture') )
             <a type="submit" role="button" href="{{route('employee.edit',session('employee_id'))}}" class="btn btn-info @if(request()->is('employee/edit*')) active @endif" >Personal Information</a>
+
+            <a type="submit" role="button"  href="{{route('picture.edit', session('employee_id'))}}" class="btn btn-info @if(request()->is('*icture*')) active @endif">Picture</a>
+
+
             <a type="submit" role="button"  href="{{route('education.edit', session('user_id'))}}" class="btn btn-info @if(request()->is('education/edit*')) active @endif">Education</a>
             
             
@@ -26,7 +30,7 @@
             <a type="submit" role="button"   href="#" class="btn btn-info">Exit Interview</a>
              
              @else
-              <a type="submit" role="button" href="{{route('createUser')}}" class="btn btn-info @if(request()->is('createUser')) active @endif" >Personal Information</a>
+              <a type="submit" role="button" href="{{route('createEmployee')}}" class="btn btn-info @if(request()->is('createUser')) active @endif" >Personal Information</a>
              @endif
              
 </div>

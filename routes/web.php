@@ -32,6 +32,19 @@ Route::get('/employee/edit/{id?}', [
         ]);
 Route::post('/editEmployee/{id?}', 'EmployeeController@update')->name('editEmployee');
 
+//Picture Routes
+Route::get('/createPicture', 'PictureController@create')->name('createPicture');
+Route::post('/storePicture', 'PictureController@store')->name('storePicture');
+
+Route::get('/picture/edit/{id?}', [
+            'uses' => 'PictureController@edit',
+            'as' => 'picture.edit'
+        ]);
+Route::post('/editPicture/{id?}', 'PictureController@update')->name('editPicture');
+
+
+
+
 
 
 //Education Routes

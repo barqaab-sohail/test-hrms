@@ -12,15 +12,18 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         DB::table('roles')->insert(['name' => 'admin',]);
-         DB::table('roles')->insert(['name' => 'manager',]);
-          DB::table('roles')->insert(['name' => 'user',]);
+        DB::table('roles')->insert(['name' => 'manager',]);
+        DB::table('roles')->insert(['name' => 'user',]);
 
-        DB::table('departments')->insert(['name' => 'power',]);
-         DB::table('departments')->insert(['name' => 'water',]);
-          DB::table('departments')->insert(['name' => 'finance',]);
+        DB::table('departments')->insert(['name' => 'Power',]);
+        DB::table('departments')->insert(['name' => 'Water',]);
+        DB::table('departments')->insert(['name' => 'Finance',]);
 
-
-
+        DB::table('marital_status')->insert(['name' => 'Single',]);
+        DB::table('marital_status')->insert(['name' => 'Married',]);
+        DB::table('marital_status')->insert(['name' => 'Divorced',]);
+        DB::table('marital_status')->insert(['name' => 'Widowed',]);
+        
 
 
         DB::table('employees')->insert([

@@ -30,14 +30,7 @@
 		                    <form action="{{route('storeEmployee')}}" method="post" class="form-horizontal" enctype="multipart/form-data">
 		                        {{csrf_field()}}
 		                        <div class="form-body">
-		                            <center >
-		                                <input type="image"  src="{{asset('Massets/images/default.png')}}" class="img-circle picture-container picture-src"  id="wizardPicturePreview" title="" width="150" />
-		                                <input type="file"  name="picture" id="wizard-picture" class="" required hidden>
-
-		                                <h6 class="card-title m-t-10">Click On Image to Add Picture</h6>
-
-		                                
-		                            </center>
+		                            
 		                            <h3 class="box-title">Employee Information</h3>
 		                            <hr class="m-t-0 m-b-40">
 		                            <div class="row">
@@ -54,7 +47,7 @@
 		                                    <div class="form-group row">
 		                                        <label class="control-label text-right col-md-3">Middle Name</label>
 		                                        <div class="col-md-9">
-		                                            <input type="text" name="middle_name" value="{{ old('middle_name') }}" class="form-control " placeholder="Enter Middle Name" required>
+		                                            <input type="text" name="middle_name" value="{{ old('middle_name') }}" class="form-control " placeholder="Enter Middle Name" >
 		                                        </div>
 		                                    </div>
 		                                </div>
@@ -70,9 +63,37 @@
 		                                <!--/span-->
 		                                <div class="col-md-6">
 		                                    <div class="form-group row">
-		                                        <label class="control-label text-right col-md-3">Email</label>
+		                                        <label class="control-label text-right col-md-3">Father Name</label>
 		                                        <div class="col-md-9">
-		                                            <input type="email" name="email" value="{{ old('email') }}" class="form-control " placeholder="Enter Email" required>
+		                                            <input type="text" name="father_name" value="{{ old('father_name') }}" class="form-control " placeholder="Enter Father Name" required>
+		                                        </div>
+		                                    </div>
+		                                </div>
+		                                <!--/span-->
+		                            </div>
+		                            <!--/row-->
+		                            <div class="row">
+		                                <!--/span-->
+		                                <div class="col-md-6">
+		                                    <div class="form-group row">
+		                                        <label class="control-label text-right col-md-3">Date of Birth</label>
+		                                        <div class="col-md-9">
+		                                            <input type="date" name="date_of_birth" value="{{ old('date_of_birth') }}" class="form-control " placeholder="Enter Date of Birth" required>
+		                                        </div>
+		                                    </div>
+		                                </div>
+		                                <div class="col-md-6">
+		                                    <div class="form-group row">
+		                                        <label class="control-label text-right col-md-3">Gender</label>
+		                                        <div class="col-md-9">
+		                                            <div class="col-md-9">
+		                                           	 <select  name="gender"  class="form-control" required>
+                                                        <option value=""></option>
+                                                        <option value="Male">Male</option>
+                                                        <option value="Female">Female</option>
+                                                    </select>
+		                                            
+		                                        </div>
 		                                        </div>
 		                                    </div>
 		                                </div>
@@ -85,7 +106,7 @@
 		                                    <div class="form-group row">
 		                                        <label class="control-label text-right col-md-3">CNIC</label>
 		                                        <div class="col-md-9">
-		                                            <input type="text" name="cnic" value="{{ old('cnic') }}" class="form-control " placeholder="Enter CNIC" required>
+		                                            <input type="text" name="cnic" value="{{ old('cnic') }}" class="form-control " placeholder="Enter CNIC without dash" required>
 		                                        </div>
 		                                    </div>
 		                                </div>
@@ -103,7 +124,86 @@
 		                                
 		                            </div>
 		                            <!--/row-->
-		                           
+
+		                            
+		                            <div class="row">
+		                                <!--/span-->
+		                                <div class="col-md-6">
+		                                    <div class="form-group row">
+		                                        <label class="control-label text-right col-md-3">Employee No.</label>
+		                                        <div class="col-md-9">
+		                                            <input type="text" name="employee_no" value="{{ old('employee_no') }}" class="form-control " placeholder="Enter Employee No" required>
+		                                        </div>
+		                                    </div>
+		                                </div>
+		                                <div class="col-md-6">
+		                                    <div class="form-group row">
+		                                        <label class="control-label text-right col-md-3">Marital Status</label>
+		                                        <div class="col-md-9">
+		                                            <div class="col-md-9">
+		                                           	 <select  name="marital_status"  class="form-control" required>
+                                                        <option value=""></option>
+                                                        @foreach($maritalStatus as $maritalStatus)
+														<option value="{{$maritalStatus->id }}">{{$maritalStatus->name}}</option>
+                                                        @endforeach
+                                                        
+                                                    </select>
+		                                            
+		                                        </div>
+		                                        </div>
+		                                    </div>
+		                                </div>
+		                                <!--/span-->
+		                            </div>
+		                        <div class="row">
+		                                <!--/span-->
+		                                <div class="col-md-6">
+		                                    <div class="form-group row">
+		                                        <label class="control-label text-right col-md-3">Religon</label>
+		                                        <div class="col-md-9">
+		                                            <input type="text" name="religon" value="{{ old('religon') }}" class="form-control " placeholder="Enter Religon" required>
+		                                        </div>
+		                                    </div>
+		                                </div>
+		                                <div class="col-md-6">
+		                                    <div class="form-group row">
+		                                        <label class="control-label text-right col-md-3">Nationality</label>
+		                                        <div class="col-md-9">
+		                                            <div class="col-md-9">
+		                                           	 <input type="text" name="nationality" value="{{ old('nationality') }}" class="form-control " placeholder="Enter Nationality" required>
+		                                            
+		                                        </div>
+		                                        </div>
+		                                    </div>
+		                                </div>
+		                                <!--/span-->
+		                            </div>
+								     <div class="row">
+		                                <!--/span-->
+		                                <div class="col-md-6">
+		                                    
+		                                </div>
+		                                <div class="col-md-6">
+		                                    <div class="form-group row">
+		                                        <label class="control-label text-right col-md-3">Department</label>
+		                                        <div class="col-md-9">
+		                                            <div class="col-md-9">
+		                                           	 <select  name="department_id"  class="form-control" required>
+                                                        <option value=""></option>
+                                                        @foreach($departments as $department)
+														<option value="{{ $department->id }}">{{$department->name}}</option>
+                                                        @endforeach
+                                                                                                               
+                                                    </select>
+		                                            
+		                                        </div>
+		                                        </div>
+		                                    </div>
+		                                </div>
+		                                <!--/span-->
+		                            </div>
+
+
 		                        </div>
 		                         <hr>
 		                        <div class="form-actions">
@@ -128,38 +228,6 @@
  @push('scripts')
         <script>
 
-            $(document).ready(function(){
-// Prepare the preview for profile picture
-		        $("#wizard-picture").change(function(){
-                    readURL(this);
-                });
-            });
-            function readURL(input) {
-                if (input.files && input.files[0]) {
-                    var reader = new FileReader();
-
-                    reader.onload = function (e) {
-                        $('#wizardPicturePreview').attr('src', e.target.result).fadeIn('slow');
-                    }
-                    reader.readAsDataURL(input.files[0]);
-                }           }
-            $("input[type='image']").click (function() {
-                $("input[id='wizard-picture']").click();
-            });
-
-           
-           /*$(".form-control").keypress(function(e) {
-           	
-                if (e.which == 13) {
-                    e.preventDefault();
-                    return false;
-                }
-            });
-
-            $('#asana_teams input[type="checkbox"]').each(function () {
-                var $checkbox = $(this);
-                $checkbox.checkbox();
-            });*/
         </script>
 
         
