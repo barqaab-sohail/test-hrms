@@ -74,7 +74,9 @@
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle text-muted waves-effect waves-dark" href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     {{Auth::User()->employee->first_name." ".Auth::User()->employee->last_name }} 
-                    <img src="" onerror="this.src ='{{asset('Massets/images/default.png')}}';" alt="user" class="profile-pic" height="30" width="50%"/></a>
+                    
+                    <img src="{{asset(isset(Auth::User()->employee->picture->name)? 'upload/pictures/'.Auth::User()->employee->picture->name: 'Massets/images/default.png') }}" onerror="this.src ='{{asset('Massets/images/default.png')}}';" alt="user" class="profile-pic" height="30" width="50%"/></a>
+                    
                     <div class="dropdown-menu dropdown-menu-right scale-up">
                         <ul class="dropdown-user">
                            <!-- <li>

@@ -43,6 +43,24 @@ Route::get('/picture/edit/{id?}', [
 Route::post('/editPicture/{id?}', 'PictureController@update')->name('editPicture');
 
 
+//User
+Route::get('/user/edit/{id?}', [
+            'uses' => 'UserController@edit',
+            'as' => 'user.edit'
+        ]);
+Route::post('/editUser/{id?}', 'UserController@update')->name('editUser');
+
+
+
+//Other Information
+Route::get('/other/edit/{id?}', [
+            'uses' => 'OtherController@edit',
+            'as' => 'other.edit'
+        ]);
+Route::post('/editOther/{id?}', 'OtherController@update')->name('editOther');
+
+
+
 
 
 

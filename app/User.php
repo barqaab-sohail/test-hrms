@@ -12,13 +12,14 @@ class User extends Authenticatable implements Auditable
     use Notifiable;
     use \OwenIt\Auditing\Auditable;
 
+ 
     /**
      * The attributes that are mass assignable.
      *
      * @var array
      */
     protected $fillable = [
-        'cnic', 'email', 'password','first_name','middle_name','last_name','cnic_expiry','picture','id',
+        'email', 'role_id','employee_id',
     ];
 
     /**

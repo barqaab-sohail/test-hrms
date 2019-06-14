@@ -8,15 +8,17 @@
 
           <br>
 
-           @if (request()->is('*/edit/*') or request()->is('createPicture') )
+           @if (request()->is('*/edit/*') or request()->is('*icture*') )
             <a type="submit" role="button" href="{{route('employee.edit',session('employee_id'))}}" class="btn btn-info @if(request()->is('employee/edit*')) active @endif" >Personal Information</a>
-
             <a type="submit" role="button"  href="{{route('picture.edit', session('employee_id'))}}" class="btn btn-info @if(request()->is('*icture*')) active @endif">Picture</a>
+            <a type="submit" role="button"  href="{{route('user.edit', session('employee_id'))}}" class="btn btn-info @if(request()->is('user/edit*')) active @endif">User</a>
+            <a type="submit" role="button"  href="{{route('other.edit', session('employee_id'))}}" class="btn btn-info @if(request()->is('other/edit*')) active @endif">Other Information</a>
+
+
+
 
 
             <a type="submit" role="button"  href="{{route('education.edit', session('user_id'))}}" class="btn btn-info @if(request()->is('education/edit*')) active @endif">Education</a>
-            
-            
             <a type="submit" role="button" href="{{route('salary.edit', session('user_id'))}}" class="btn btn-info @if(request()->is('salary/edit*')) active @endif">Salary</a>
            
 

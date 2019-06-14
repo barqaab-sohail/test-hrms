@@ -8,6 +8,8 @@
 	</ol>
 @stop
 @section('content')
+   
+
     <div class="row">
         <div class="col-lg-12">
 
@@ -17,27 +19,57 @@
 					<div class="col-lg-2">
 					@include('layouts.master.hrVerticalEditButton')
 					</div>
-        	
+        			
 		        	<div class="col-lg-10">
-
+						
 		                <div style="margin-top:10px; margin-right: 10px;">
 		                    <button type="button" onclick="window.location.href='{{route('employeeList')}}'" class="btn btn-info float-right">Back</button>
+		                    
 		                </div>
 		                <div class="card-body">
 
-		                    <form action="{{route('editPicture', ['id'=>session('employee_id')])}}" method="post" class="form-horizontal" enctype="multipart/form-data">
+		                    <form action="{{route('editUser', ['id'=>$employee->id])}}" method="post" class="form-horizontal" enctype="multipart/form-data">
 		                        {{csrf_field()}}
-		                        
 		                        <div class="form-body">
-		                            <center >
 		                            
-		                                <input type="image"  src="{{asset(isset($picture->name)? 'upload/pictures/'.$picture->name: 'Massets/images/default.png') }}" class="img-circle picture-container picture-src"  id="wizardPicturePreview" title="" width="150" />
-		                                <input type="file"  name="picture" id="wizard-picture" class="" required hidden>
+		                            <h3 class="box-title">User Detail</h3>
+		                            <hr class="m-t-0 m-b-40">
+		                            <div class="row">
+		                                <div class="col-md-6">
+		                                    <div class="form-group row">
+		                                        <label class="control-label text-right col-md-3">Email</label>
+		                                        <div class="col-md-9">
+		                                            <input type="email"  name="email" value="{!! old('email',isset($employee->user->email)?$employee->user->email:'')!!}
 
-		                                <h6 class="card-title m-t-10">Click On Image to Add Picture</h6>
-
+		                                            " class="form-control" placeholder="Enter Email" required>
+		                                        </div>
+		                                    </div>
+		                                </div>
 		                                
-		                            </center>
+		                                <!--/span-->
+		                                <div class="col-md-6">
+		                                    <div class="form-group row">
+		                                        <label class="control-label text-right col-md-3">User Role</label>
+		                                        <div class="col-md-5">
+		                                            <select  name="role_id"  class="form-control" required>
+                                                        <option value=""></option>
+                                                        @foreach($roles as $role)
+															<option value="{{$role->id}}"
+															@if(!empty($employee->user->role_id))
+																@if($role->id == $employee->user->role_id) selected="selected" @endif
+															@endif
+															>{{$role->name}}</option>
+														@endforeach
+                                                                                                               
+                                                    </select>
+		                                        </div>
+		                                    </div>
+		                                    <input type="text"  name="employee_id" value="{{session('employee_id')}}
+		                                            " class="form-control" hidden >
+		                                    </div>
+		                                </div>
+		                            </div>
+
 		                        </div>
 		                         <hr>
 		                        <div class="form-actions">
@@ -45,7 +77,7 @@
 		                                <div class="col-md-6">
 		                                    <div class="row">
 		                                        <div class="col-md-offset-3 col-md-9">
-		                                            <button type="submit" class="btn btn-success">Update Picture</button>
+		                                            <button type="submit" class="btn btn-success">Save</button>
 		                                            <button type="button" onclick="window.location.href='{{route('employeeList')}}'" class="btn btn-inverse">Cancel</button>
 		                                        </div>
 		                                    </div>
@@ -61,10 +93,9 @@
     </div>
  @push('scripts')
         <script>
-
             $(document).ready(function(){
 // Prepare the preview for profile picture
-		        $("#wizard-picture").change(function(){
+                $("#wizard-picture").change(function(){
                     readURL(this);
                 });
             });
@@ -77,13 +108,10 @@
                     }
                     reader.readAsDataURL(input.files[0]);
                 }           }
-            $("input[type='image']").click (function() {
+            $("input[type='image']").click(function() {
                 $("input[id='wizard-picture']").click();
             });
-
-           
-           /*$(".form-control").keypress(function(e) {
-           	
+            $(".form-control").keypress(function(e) {
                 if (e.which == 13) {
                     e.preventDefault();
                     return false;
@@ -93,11 +121,8 @@
             $('#asana_teams input[type="checkbox"]').each(function () {
                 var $checkbox = $(this);
                 $checkbox.checkbox();
-            });*/
+            });
         </script>
-
-        
-
     @endpush
 
 @stop
