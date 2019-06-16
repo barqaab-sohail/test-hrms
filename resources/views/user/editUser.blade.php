@@ -39,9 +39,7 @@
 		                                    <div class="form-group row">
 		                                        <label class="control-label text-right col-md-3">Email</label>
 		                                        <div class="col-md-9">
-		                                            <input type="email"  name="email" value="{!! old('email',isset($employee->user->email)?$employee->user->email:'')!!}
-
-		                                            " class="form-control" placeholder="Enter Email" required>
+		                                            <input type="email"  name="email" value="{!! old('email',isset($employee->user->email)?$employee->user->email:'')!!}" class="form-control" placeholder="Enter Email" required>
 		                                        </div>
 		                                    </div>
 		                                </div>

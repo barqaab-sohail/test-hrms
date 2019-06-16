@@ -21,6 +21,7 @@ class CreateExperiencesTable extends Migration
             $table->text('activities');
             $table->date('from');
             $table->date('to');
+            $table->string('project');
             $table->string('location');
             $table->string('countary');
             $table->timestamps();

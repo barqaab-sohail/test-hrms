@@ -22,32 +22,27 @@ class UserController extends Controller
 
      public function update(Request $request, $id)
     {
-
-    	
-
-      	$employee = employee::find($id);
+       	$employee = employee::find($id);
       	$roles = role::all();
         $user = User::where ('employee_id',$id)->first();
         
         if ($user==null){
     	
-    	$this->validate($request, [
+    	   $this->validate($request, [
         'email' => 'required|unique:users,email,',
         ]);
     	
         User::create($request->all());
           
         }else{
-   		$id = $employee->user->id;
+   		$userId = $employee->user->id;
 
    		$this->validate($request, [
         'email' => 'required|unique:users,email,'.$id,
         ]);
-   		User::findOrFail($id)->update($request->all());
-      
+   		User::findOrFail($userId)->update($request->all());
         }
        	
-
       	return redirect()->route('user.edit',['id'=>session('employee_id')])->with('success', 'Data is saved succesfully');
       
     }

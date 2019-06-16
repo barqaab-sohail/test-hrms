@@ -50,6 +50,48 @@ Route::get('/user/edit/{id?}', [
         ]);
 Route::post('/editUser/{id?}', 'UserController@update')->name('editUser');
 
+//Salary
+Route::get('/salary/edit/{id?}', [
+            'uses' => 'SalaryController@edit',
+            'as' => 'salary.edit'
+        ]);
+Route::post('/editSalary/{id?}', 'SalaryController@update')->name('editSalary');
+
+//Education Routes
+Route::get('/education/{id?}', 'EducationController@create')->name('education');
+Route::post('/storeEducation', 'EducationController@store')->name('storeEducation');
+Route::get('/education/edit/{id?}', [
+            'uses' => 'EducationController@edit',
+            'as' => 'education.edit'
+        ]);
+Route::post('/editEducation/{id?}', 'EducationController@update')->name('editEducation');
+
+
+//Experience Routes
+Route::get('/experience/{id?}', 'ExperienceController@create')->name('experience');
+Route::post('/storeExperience', 'ExperienceController@store')->name('storeExperience');
+Route::get('/experience/edit/{id?}', [
+            'uses' => 'ExperienceController@edit',
+            'as' => 'experience.edit'
+        ]);
+Route::post('/editExperience/{id?}', 'ExperienceController@update')->name('editExperience');
+
+//Training Routes
+Route::get('/training/{id?}', 'TrainingController@create')->name('training');
+Route::post('/storeTraining', 'TrainingController@store')->name('storeTraining');
+Route::get('/training/edit/{id?}', [
+            'uses' => 'TrainingController@edit',
+            'as' => 'training.edit'
+        ]);
+Route::post('/editTraining/{id?}', 'TrainingController@update')->name('editTraining');
+
+
+
+
+
+
+
+
 
 
 //Other Information
@@ -64,27 +106,6 @@ Route::post('/editOther/{id?}', 'OtherController@update')->name('editOther');
 
 
 
-
-//Education Routes
-Route::get('/education', 'EducationController@create')->name('education');
-Route::post('/storeEducation', 'EducationController@store')->name('storeEducation');
-Route::get('/education/edit/{id?}', [
-            'uses' => 'EducationController@edit',
-            'as' => 'education.edit'
-        ]);
-Route::post('/editEducation/{id?}', 'EducationController@update')->name('editEducation');
-
-
-
-
-//Salary
-Route::get('/salary', 'SalaryController@create')->name('salary');
-Route::post('/storeSalary', 'SalaryController@store')->name('storeSalary');
-Route::get('/salary/edit/{id?}', [
-            'uses' => 'SalaryController@edit',
-            'as' => 'salary.edit'
-        ]);
-Route::post('/editSalary/{id?}', 'SalaryController@update')->name('editSalary');
 
 
 

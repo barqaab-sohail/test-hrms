@@ -1,15 +1,15 @@
-
 @extends('layouts.master.master')
 @section('Heading')
-	<h3 class="text-themecolor">Employee Name: {{$employee->first_name. " ".$employee->last_name}}</h3>
+	<h3 class="text-themecolor">Human Resource</h3>
 	<ol class="breadcrumb">
-		<li class="breadcrumb-item"><a href="javascript:void(0)"></a></li>
+		<li class="breadcrumb-item"><a href="javascript:void(0)">Education</a></li>
 		
 		
 	</ol>
 @stop
 @section('content')
    
+
     <div class="row">
         <div class="col-lg-12">
 
@@ -21,7 +21,7 @@
 					</div>
         			
 		        	<div class="col-lg-10">
-
+						
 		                <div style="margin-top:10px; margin-right: 10px;">
 		                    <button type="button" onclick="window.location.href='{{route('employeeList')}}'" class="btn btn-info float-right">Back</button>
 		                    
@@ -39,7 +39,8 @@
 		                                    <div class="form-group row">
 		                                        <label class="control-label text-right col-md-3">Degree Name</label>
 		                                        <div class="col-md-9">
-		                                            <input type="text"  name="degree_name" value="{!! old('degree_name', optional($data)->degree_name) !!}"class="form-control" placeholder="Enter Degree Name" required>
+		                                            <input type="text"  name="degree_name" value="{!! old('degree_name', optional($data)->degree_name) !!}
+		                                            " class="form-control" placeholder="Enter Degree Name" required>
 		                                        </div>
 		                                    </div>
 		                                </div>
@@ -62,7 +63,7 @@
 		                                    <div class="form-group row">
 		                                        <label class="control-label text-right col-md-3">Marks Obtain</label>
 		                                        <div class="col-md-3">
-		                                            <input type="text" name="marks_obtain" value="{!! old('marks_obtain', optional($data)->marks_obtain) !!}"   class="form-control " required>
+		                                            <input type="number" name="marks_obtain" value="{!! old('marks_obtain', optional($data)->marks_obtain) !!}"   class="form-control " required>
 		                                        </div>
 		                                         <label class="control-label text-right col-md-3">Total Marks</label>
 		                                        <div class="col-md-3">
@@ -71,15 +72,15 @@
 		                                    </div>
 		                                </div>
 		                                <!--/span-->
-		                                <div class="col-md-6">	
+		                                <div class="col-md-6">
 		                                    <div class="form-group row">
 		                                         <label class="control-label text-right col-md-3">Level of Degree</label>
 		                                        <div class="col-md-3">
-		                                            <input type="number" name="level" value= "{!! old('level', optional($data)->level) !!}"  class="form-control " required>
+		                                            <input type="number" name="level" value="{!! old('level', optional($data)->level) !!}"   class="form-control "  required>
 		                                        </div>
 		                                         <label class="control-label text-right col-md-3">Passing Year</label>
 		                                        <div class="col-md-3">
-		                                            <input type="text" name="completion" value="{!! old('completion', optional($data)->completion) !!}"   class="form-control " required>
+		                                            <input type="number" name="completion" value="{!! old('completion', optional($data)->completion) !!}"   class="form-control " required>
 
 		                                            
 		                                        </div>
@@ -88,46 +89,6 @@
 		                                <!--/span-->
 		                             </div>
 		                            <!--/row-->
-		                             <div class="row">
-		                                <div class="col-md-6">
-		                                    <div class="form-group row">
-		                                        <label class="control-label text-right col-md-3">From</label>
-		                                        <div class="col-md-6">
-		                                            <input type="date"  name="from" value="{!! old('from', optional($data)->from) !!}" class="form-control"  required>
-		                                        </div>
-		                                    </div>
-		                                </div>
-		                                
-		                                <!--/span-->
-		                                <div class="col-md-6">
-		                                    <div class="form-group row">
-		                                        <label class="control-label text-right col-md-3">To</label>
-		                                        <div class="col-md-6">
-		                                            <input type="date" name="to" value="{!! old('to', optional($data)->to) !!}" class="form-control "  required>
-		                                        </div>
-		                                    </div>
-		                                </div>
-		                            </div>
-		                             <div class="row">
-		                                <div class="col-md-6">
-		                                    <div class="form-group row">
-		                                        <label class="control-label text-right col-md-3">Grade</label>
-		                                        <div class="col-md-6">
-		                                            <input type="text"  name="grade" value="{!! old('grade', optional($data)->grade) !!}" class="form-control" placeholder="Enter Grade" required>
-		                                        </div>
-		                                    </div>
-		                                </div>
-		                                
-		                                <!--/span-->
-		                                <div class="col-md-6">
-		                                    <div class="form-group row">
-		                                        <label class="control-label text-right col-md-3">Countary</label>
-		                                        <div class="col-md-6">
-		                                            <input type="text" name="countary" value="{!! old('countary', optional($data)->countary) !!}" class="form-control " placeholder="Enter Countary Name" required>
-		                                        </div>
-		                                    </div>
-		                                </div>
-		                            </div>
 		                          
 		                           
 		                        </div>
@@ -137,7 +98,7 @@
 		                                <div class="col-md-6">
 		                                    <div class="row">
 		                                        <div class="col-md-offset-3 col-md-9">
-		                                            <button type="submit" class="btn btn-success">Edit Education</button>
+		                                            <button type="submit" class="btn btn-success">Update Education</button>
 		                                            <button type="button" onclick="window.location.href='{{route('employeeList')}}'" class="btn btn-inverse">Cancel</button>
 		                                        </div>
 		                                    </div>
@@ -145,56 +106,6 @@
 		                            </div>
 		                        </div>
 		                    </form>
-		
-		@if($educationIds->count()!=0){	                    
-			                    <br>
-			                    <hr>
-			                    <br>
-		<div class="card">
-		<div class="card-body">
-			<!--<div class="float-right">
-				<input id="month" class="form-control" value="" type="month">
-			</div>-->
-		
-			<h2 class="card-title">Stored Education</h2>
-			
-			<div class="table-responsive m-t-40">
-				
-				<table id="myTable" class="table table-bordered table-striped" width="100%" cellspacing="0">
-					<thead>
-					
-					<tr>
-						<th>Degree Name</th>
-						<th>Institute</th>
-						<th>Completion Year</th>
-						<th>Grade</th>
-						<th> Actions </th>
-					</tr>
-					</thead>
-					<tbody>
-						@foreach($educationIds as $educationId)
-							<tr>
-								<td>{{$educationId->degree_name}}</td>
-								<td>{{$educationId->institute}}</td>
-								<td>{{$educationId->completion}}</td>
-								<td>{{$educationId->grade}}</td>
-								<td>
-								
-								 <a class="btn btn-info btn-sm" href="{{route('education.edit',['id'=>$educationId->id])}}" data-toggle="tooltip" data-original-title="Edit"> <i class="fas fa-pencil-alt text-white "></i></a>
-															
-							</tr>
-						@endforeach
-					
-					 
-					
-					</tbody>
-				</table>
-			</div>
-		</div>
-	</div>
-	}
-	@endif
-			                    
 		        		</div>       
 		        	</div>
 		        </div>
@@ -204,8 +115,34 @@
  @push('scripts')
         <script>
             $(document).ready(function(){
-			
-			});
+// Prepare the preview for profile picture
+                $("#wizard-picture").change(function(){
+                    readURL(this);
+                });
+            });
+            function readURL(input) {
+                if (input.files && input.files[0]) {
+                    var reader = new FileReader();
+
+                    reader.onload = function (e) {
+                        $('#wizardPicturePreview').attr('src', e.target.result).fadeIn('slow');
+                    }
+                    reader.readAsDataURL(input.files[0]);
+                }           }
+            $("input[type='image']").click(function() {
+                $("input[id='wizard-picture']").click();
+            });
+            $(".form-control").keypress(function(e) {
+                if (e.which == 13) {
+                    e.preventDefault();
+                    return false;
+                }
+            });
+
+            $('#asana_teams input[type="checkbox"]').each(function () {
+                var $checkbox = $(this);
+                $checkbox.checkbox();
+            });
         </script>
     @endpush
 

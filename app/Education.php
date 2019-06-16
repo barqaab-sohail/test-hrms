@@ -10,7 +10,7 @@ class education extends Model
 	protected $table = 'educations';
 	
 	protected $fillable = [
-        'degree_name', 'institute', 'marks_obtain','total_marks','equal_to','passing_year','user_id',
+        'degree_name', 'institute', 'level','completion','from','to', 'marks_obtain','total_marks','countary','grade','employee_id',
     ];
 
      public function employee(){
