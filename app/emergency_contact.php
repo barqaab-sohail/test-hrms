@@ -4,16 +4,14 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class bank extends Model
+class emergency_contact extends Model
 {
     
-    protected $fillable = [
-        'name', 'account_no', 'branch_code','branch_name','employee_id',
+	protected $fillable = [
+        'name', 'relation', 'mobile','landline','employee_id',
     ];
-    
+
     public function employee(){
 		return $this->belongsTo('App\employee');
 	}
-
-
 }

@@ -16,9 +16,9 @@ class CreatePublicationsTable extends Migration
         Schema::create('publications', function (Blueprint $table) {
            $table->bigIncrements('id');
            $table->bigInteger('employee_id')->unsigned();
-           $table->string('description');
+           $table->text('description');
            $table->string('channel')->nullable();
-           $table->date('year')->format('Y)')->nullable();
+           $table->string('year')->nullable();
            $table->timestamps();
            $table->foreign('employee_id')->references('id')->on('employees');
         });

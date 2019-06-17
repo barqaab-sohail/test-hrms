@@ -101,7 +101,11 @@ class employee extends Model
     {
         return $this->hasMany('App\training');
     }
-
+     public function emergency_contact()
+    {
+        return $this->hasMany('App\emergency_contact');
+    }
+   
 
 
 

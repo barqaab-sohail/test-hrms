@@ -32,7 +32,7 @@
 		                        {{csrf_field()}}
 		                        <div class="form-body">
 		                            
-		                            <h3 class="box-title">Education</h3>
+		                            <h3 class="box-title">Edit Education</h3>
 		                            <hr class="m-t-0 m-b-40">
 		                            <div class="row">
 		                                <div class="col-md-6">
@@ -146,7 +146,7 @@
 		                        </div>
 		                    </form>
 		
-		@if($educationIds->count()!=0){	                    
+		@if($educationIds->count()!=0)                    
 			                    <br>
 			                    <hr>
 			                    <br>
@@ -192,7 +192,7 @@
 			</div>
 		</div>
 	</div>
-	}
+	
 	@endif
 			                    
 		        		</div>       

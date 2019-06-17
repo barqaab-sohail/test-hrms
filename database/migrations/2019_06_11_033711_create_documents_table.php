@@ -16,10 +16,11 @@ class CreateDocumentsTable extends Migration
         Schema::create('documents', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->bigInteger('employee_id')->unsigned();
-            $table->string('name');
-            $table->string('type');
-            $table->string('reference_no');
-            $table->date('date');
+            $table->string('document_name');
+            $table->string('file_name');
+            $table->string('type')->nullable();
+            $table->string('reference_no')->nullable();
+            $table->date('date')->nullable();
             $table->timestamps();
             $table->foreign('employee_id')->references('id')->on('employees');
         });

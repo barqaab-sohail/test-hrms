@@ -16,6 +16,7 @@ class CreateEmergencyContactsTable extends Migration
         Schema::create('emergency_contacts', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->bigInteger('employee_id')->unsigned();
+            $table->string('name');
             $table->string('relation');
             $table->string('mobile');
             $table->string('landline');

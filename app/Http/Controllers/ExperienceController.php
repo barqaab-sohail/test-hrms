@@ -10,7 +10,7 @@ use DB;
 
 class ExperienceController extends Controller
 {
-     public function __construct()
+    public function __construct()
     {
         $this->middleware('auth');
     }
@@ -38,6 +38,7 @@ class ExperienceController extends Controller
     }
 
     public function edit($id){
+        
         $employee = employee::find(session('employee_id'));
         $experienceIds = experience::all()->where('employee_id', session('employee_id'));
         $data = experience::find($id);

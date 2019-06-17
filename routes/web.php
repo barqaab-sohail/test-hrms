@@ -57,6 +57,17 @@ Route::get('/salary/edit/{id?}', [
         ]);
 Route::post('/editSalary/{id?}', 'SalaryController@update')->name('editSalary');
 
+//Contact Detail
+Route::get('/contact/edit/{id?}', [
+            'uses' => 'AddressController@editAddress',
+            'as' => 'contact.edit'
+        ]);
+Route::post('/editPermanentAddress/{id?}', 'AddressController@updatePermanent')->name('editPermanentAddress');
+Route::post('/editCurrentAddress/{id?}', 'AddressController@updateCurrent')->name('editCurrentAddress');
+
+
+
+
 //Education Routes
 Route::get('/education/{id?}', 'EducationController@create')->name('education');
 Route::post('/storeEducation', 'EducationController@store')->name('storeEducation');
@@ -85,8 +96,59 @@ Route::get('/training/edit/{id?}', [
         ]);
 Route::post('/editTraining/{id?}', 'TrainingController@update')->name('editTraining');
 
+//Publication Routes
+Route::get('/publication/{id?}', 'PublicationController@create')->name('publication');
+Route::post('/storePublication', 'PublicationController@store')->name('storePublication');
+Route::get('/publication/edit/{id?}', [
+            'uses' => 'PublicationController@edit',
+            'as' => 'publication.edit'
+        ]);
+Route::post('/editPublication/{id?}', 'PublicationController@update')->name('editPublication');
+//Publication Routes
+Route::get('/membership/{id?}', 'MembershipController@create')->name('membership');
+Route::post('/storeMembership', 'MembershipController@store')->name('storeMembership');
+Route::get('/membership/edit/{id?}', [
+            'uses' => 'MembershipController@edit',
+            'as' => 'membership.edit'
+        ]);
+Route::post('/editMembership/{id?}', 'MembershipController@update')->name('editMembership');
 
 
+//Document Routes
+Route::get('/document/{id?}', 'DocumentController@create')->name('document');
+Route::post('/storeDocument', 'DocumentController@store')->name('storeDocument');
+Route::get('/document/edit/{id?}', [
+            'uses' => 'DocumentController@edit',
+            'as' => 'document.edit'
+        ]);
+Route::post('/editDocument/{id?}', 'DocumentController@update')->name('editDocument');
+
+//Bank
+Route::get('/bank/{id?}', 'BankController@create')->name('bank');
+Route::post('/storeBank', 'BankController@store')->name('storeBank');
+Route::get('/bank/edit/{id?}', [
+            'uses' => 'BankController@edit',
+            'as' => 'bank.edit'
+        ]);
+Route::post('/editBank/{id?}', 'BankController@update')->name('editBank');
+
+//Language
+Route::get('/language/{id?}', 'LanguageController@create')->name('language');
+Route::post('/storeLanguage', 'LanguageController@store')->name('storeLanguage');
+Route::get('/language/edit/{id?}', [
+            'uses' => 'LanguageController@edit',
+            'as' => 'language.edit'
+        ]);
+Route::post('/editLanguage/{id?}', 'LanguageController@update')->name('editLanguage');
+
+//Emergency Contact
+Route::get('/emergency/{id?}', 'EmergencyController@create')->name('emergency');
+Route::post('/storeEmergency', 'EmergencyController@store')->name('storeEmergency');
+Route::get('/emergency/edit/{id?}', [
+            'uses' => 'EmergencyController@edit',
+            'as' => 'emergency.edit'
+        ]);
+Route::post('/editEmergency/{id?}', 'EmergencyController@update')->name('editEmergency');
 
 
 
