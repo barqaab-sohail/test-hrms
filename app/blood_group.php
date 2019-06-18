@@ -4,12 +4,11 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class dependent extends Model
+class blood_group extends Model
 {
-    protected $fillable = [
-        'name', 'date_of_birth', 'relation','gender','employee_id',
-    ];
-
+    
+	protected $table = 'blood_group';
+	
     public function employee(){
 		return $this->belongsTo('App\employee');
 	}

@@ -20,6 +20,10 @@ class employee extends Model
     {
         return $this->hasOne('App\marital_status');
     }
+     public function blood_group()
+    {
+        return $this->hasOne('App\blood_group');
+    }
 
     public function bank()
     {

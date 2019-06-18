@@ -37,8 +37,8 @@
 		                            <div class="row">
 		                                <div class="col-md-6">
 		                                    <div class="form-group row">
-		                                        <label class="control-label text-right col-md-2">Employer</label>
-		                                        <div class="col-md-10">
+		                                        <label class="control-label text-right col-md-3">Employer</label>
+		                                        <div class="col-md-9">
 		                                            <input type="text"  name="employer" value="{!! old('employer', optional($data)->employer) !!}" class="form-control" placeholder="Enter Employer Name" required>
 		                                        </div>
 		                                    </div>
@@ -47,8 +47,8 @@
 		                                <!--/span-->
 		                                <div class="col-md-6">
 		                                    <div class="form-group row">
-		                                        <label class="control-label text-right col-md-2">Position</label>
-		                                        <div class="col-md-10">
+		                                        <label class="control-label text-right col-md-3">Position</label>
+		                                        <div class="col-md-9">
 		                                            <input type="text" name="position" value="{!! old('position', optional($data)->position) !!}" class="form-control " placeholder="Enter Position Name" required>
 		                                        </div>
 		                                    </div>
@@ -59,11 +59,11 @@
 		                             <div class="row">
 		                                <div class="col-md-6">
 		                                    <div class="form-group row">
-		                                        <label class="control-label text-right col-md-2">From</label>
+		                                        <label class="control-label text-right col-md-3">From</label>
 		                                        <div class="col-md-4">
 		                                            <input type="date"  name="from" value="{!! old('from', optional($data)->from) !!}" class="form-control"  required>
 		                                        </div>
-		                                        <label class="control-label text-right col-md-2">To</label>
+		                                        <label class="control-label text-right col-md-1">To</label>
 		                                        <div class="col-md-4">
 		                                            <input type="date"  name="to" value="{!! old('to', optional($data)->to) !!}" class="form-control"  required>
 		                                        </div>
@@ -73,8 +73,8 @@
 		                                <!--/span-->
 		                                <div class="col-md-6">
 		                                    <div class="form-group row">
-		                                        <label class="control-label text-right col-md-2">Project Name</label>
-		                                        <div class="col-md-10">
+		                                        <label class="control-label text-right col-md-3">Project Name</label>
+		                                        <div class="col-md-9">
 		                                            <input type="text" name="project" value="{!! old('project', optional($data)->project) !!}" class="form-control">
 		                                        </div>
 		                                    </div>
@@ -83,8 +83,8 @@
 		                             <div class="row">
 		                                <div class="col-md-6">
 		                                    <div class="form-group row">
-		                                        <label class="control-label text-right col-md-2">Location</label>
-		                                        <div class="col-md-6">
+		                                        <label class="control-label text-right col-md-3">Location</label>
+		                                        <div class="col-md-9">
 		                                            <input type="text"  name="location" value="{!! old('location', optional($data)->location) !!}" class="form-control" placeholder="Enter Location" required>
 		                                        </div>
 		                                    </div>
@@ -93,8 +93,8 @@
 		                                <!--/span-->
 		                                <div class="col-md-6">
 		                                    <div class="form-group row">
-		                                        <label class="control-label text-right col-md-2">Countary</label>
-		                                        <div class="col-md-6">
+		                                        <label class="control-label text-right col-md-3">Countary</label>
+		                                        <div class="col-md-9">
 		                                            <input type="text" name="countary" value="{!! old('countary', optional($data)->countary) !!}" class="form-control " placeholder="Enter Countary Name" required>
 		                                        </div>
 		                                    </div>
@@ -104,8 +104,8 @@
 		                                <!--/span-->
 		                                <div class="col-md-12">
 		                                    <div class="form-group row">
-		                                        <label class="control-label text-right col-md-1">Activities</label>
-		                                        <div class="col-md-11">
+		                                        <label class="control-label text-right col-md-3">Activities</label>
+		                                        <div class="col-md-7">
 		                                         <textarea  rows=10 cols=5 name="activities" class="form-control " required>{!! old('activities', optional($data)->activities) !!}</textarea>
 		                                        </div>  
 		                                    </div>

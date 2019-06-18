@@ -88,9 +88,10 @@
 		                                        <div class="col-md-9">
 		                                            <div class="col-md-9">
 		                                           	 <select  name="gender"  class="form-control" required>
-                                                        <option value="{{ old('gender', $employee->gender) }}">{{$employee->gender}}</option>
-                                                        <option value="Male">Male</option>
-                                                        <option value="Female">Female</option>
+                                                         
+		                                             	<option value="Male" @if($employee->gender == 'Male') selected="selected" @endif>Male</option>
+                                                        <option value="Female" @if($employee->gender == 'Female') selected="selected" @endif>Female</option>
+                                                                                                          
                                                     </select>
 		                                            
 		                                        </div>

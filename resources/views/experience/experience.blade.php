@@ -104,8 +104,8 @@
 		                                <!--/span-->
 		                                <div class="col-md-12">
 		                                    <div class="form-group row">
-		                                        <label class="control-label text-right col-md-1">Activities</label>
-		                                        <div class="col-md-11">
+		                                        <label class="control-label text-right col-md-3">Activities</label>
+		                                        <div class="col-md-7">
 		                                         <textarea  rows=10 cols=5 name="activities" class="form-control " required>{{ old('activities') }}</textarea>
 		                                        
 												 <input type="number" name="employee_id" value="{{session('employee_id')}}"   class="form-control " hidden>

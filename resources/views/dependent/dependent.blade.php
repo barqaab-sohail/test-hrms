@@ -28,28 +28,28 @@
 		                </div>
 		                <div class="card-body">
 
-		                    <form action="{{route('storeTraining')}}" method="post" class="form-horizontal" enctype="multipart/form-data">
+		                    <form action="{{route('storeDependent')}}" method="post" class="form-horizontal" enctype="multipart/form-data">
 		                        {{csrf_field()}}
 		                        <div class="form-body">
 		                            
-		                            <h3 class="box-title">Training</h3>
+		                            <h3 class="box-title">Dependent Detail</h3>
 		                            <hr class="m-t-0 m-b-40">
 		                            <div class="row">
-		                                <div class="col-md-6">
+		                                <div class="col-md-7">
 		                                    <div class="form-group row">
-		                                        <label class="control-label text-right col-md-3">Institute</label>
-		                                        <div class="col-md-9">
-		                                            <input type="text"  name="institute" value="{{ old('institute') }}" class="form-control" placeholder="Enter Institute Name" required>
+		                                        <label class="control-label text-right col-md-2">Name</label>
+		                                        <div class="col-md-10">
+		                                            <input type="text"  name="name" value="{{ old('name') }}" class="form-control" placeholder="Enter Name" required>
 		                                        </div>
 		                                    </div>
 		                                </div>
 		                                
 		                                <!--/span-->
-		                                <div class="col-md-6">
+		                                <div class="col-md-5">
 		                                    <div class="form-group row">
-		                                        <label class="control-label text-right col-md-3">Country</label>
-		                                        <div class="col-md-9">
-		                                            <input type="text" name="countary" value="{{ old('countary') }}" class="form-control " placeholder="Enter Countary Name" required>
+		                                        <label class="control-label text-right col-md-4">Date of Birth</label>
+		                                        <div class="col-md-8">
+		                                            <input type="date" name="date_of_birth" value="{{ old('date_of_birth') }}" class="form-control " placeholder="Enter Date of Birth" required>
 		                                        </div>
 		                                    </div>
 		                                </div>
@@ -57,30 +57,30 @@
 		                                
 		                            <!--/row-->
 		                             <div class="row">
-		                                <div class="col-md-6">
+		                                <div class="col-md-7">
 		                                    <div class="form-group row">
-		                                        <label class="control-label text-right col-md-3">From</label>
-		                                        <div class="col-md-4">
-		                                            <input type="date"  name="from" value="{{ old('from') }}" class="form-control"  required>
+		                                        <label class="control-label text-right col-md-2">Relation</label>
+		                                        <div class="col-md-10">
+		                                            <input type="text"  name="relation" value="{{ old('relation') }}" class="form-control"  placeholder="Enter Relation with Employee" required>
 		                                        </div>
-		                                        <label class="control-label text-right col-md-1">To</label>
-		                                        <div class="col-md-4">
-		                                            <input type="date"  name="to" value="{{ old('to') }}" class="form-control"  required>
-		                                        </div>
+		                                       		                                       
 		                                    </div>
 		                                </div>
-		                                
-		                                <!--/span-->
-		                                <div class="col-md-6">
+		                                <div class="col-md-5">
 		                                    <div class="form-group row">
-		                                        <label class="control-label text-right col-md-3">Description</label>
-		                                        <div class="col-md-9">
-		                                             <textarea  rows=6 cols=5 name="description" value="{{ old('description') }}" class="form-control " required></textarea>
+		                                        <label class="control-label text-right col-md-4">Gender</label>
+		                                        <div class="col-md-8">
+		                                            <select  name="gender"  class="form-control" required>
+                                                        <option value=""></option>
+                                                        <option value="Male">Male</option>
+                                                        <option value="Female">Female</option>
+                                                    </select>
 		                                        </div>
-
-		                                        <input type="number" name="employee_id" value="{{session('employee_id')}}"   class="form-control " hidden>
+		                                       
+		                                       <input type="number" name="employee_id" value="{{session('employee_id')}}"   class="form-control " hidden>
 		                                    </div>
 		                                </div>
+		                                		                                
 		                            </div>
 		                            		                           
 		                        </div>
@@ -90,7 +90,7 @@
 		                                <div class="col-md-6">
 		                                    <div class="row">
 		                                        <div class="col-md-offset-3 col-md-9">
-		                                            <button type="submit" class="btn btn-success">Add Training</button>
+		                                            <button type="submit" class="btn btn-success">Save</button>
 		                                            <button type="button" onclick="window.location.href='{{route('employeeList')}}'" class="btn btn-inverse">Cancel</button>
 		                                        </div>
 		                                    </div>
@@ -98,7 +98,7 @@
 		                            </div>
 		                        </div>
 		                    </form>
-		@if($trainingIds->count()!=0)		                    
+		@if($dependentIds->count()!=0)		                    
 			                    <br>
 			                    <hr>
 			                    <br>
@@ -107,7 +107,7 @@
 			<!--<div class="float-right">
 				<input id="month" class="form-control" value="" type="month">
 			</div>-->
-			<h2 class="card-title">Stored Training</h2>
+			<h2 class="card-title">Stored Dependent Detail</h2>
 			
 			<div class="table-responsive m-t-40">
 				
@@ -115,28 +115,27 @@
 					<thead>
 					
 					<tr>
-						<th>Institute</th>
-						<th>Countary</th>
-						<th>From</th>
-						<th>To</th>
+						<th>Name</th>
+						<th>Date of Birth</th>
+						<th>Relation</th>
+						<th>Gender</th>
 						@if(Auth::user()->role_id==1)<th> Actions </th> @endif
 					</tr>
 					</thead>
 					<tbody>
-						@foreach($trainingIds as $trainingId)
+						@foreach($dependentIds as $dependentId)
 							<tr>
-								<td>{{$trainingId->institute}}</td>
-								<td>{{$trainingId->countary}}</td>
-								<td>{{$trainingId->from}}</td>
-								<td>{{$trainingId->to}}</td>
+								<td>{{$dependentId->name}}</td>
+								<td>{{$dependentId->date_of_birth}}</td>
+								<td>{{$dependentId->relation}}</td>
+								<td>{{$dependentId->gender}}</td>
 								<td>
 								@if(Auth::user()->role_id==1)
-								 <a class="btn btn-info btn-sm" href="{{route('training.edit',['id'=>$trainingId->id])}}" data-toggle="tooltip" data-original-title="Edit"> <i class="fas fa-pencil-alt text-white "></i></a>
+								 <a class="btn btn-info btn-sm" href="{{route('dependent.edit',['id'=>$dependentId->id])}}" data-toggle="tooltip" data-original-title="Edit"> <i class="fas fa-pencil-alt text-white "></i></a>
 								 @endif
 															
 							</tr>
 						@endforeach
-					
 					 
 					
 					</tbody>
@@ -146,7 +145,6 @@
 	</div>
 	
 	@endif
-			                    
 		        		</div>       
 		        	</div>
 		        </div>

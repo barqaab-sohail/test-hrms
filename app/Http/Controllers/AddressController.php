@@ -17,9 +17,15 @@ class AddressController extends Controller
 	public function editAddress($id){
 
        $employee = employee::find($id);
-       isset($ContactId = $employee->contact->id)?;
-       $currentAddress = contact::find($ContactId)->where('type','1')->first();
-       $permanentAddress = contact::find($ContactId)->where('type','0')->first();
+       if (isset($employee->contact->id))
+       	{
+       	$currentAddress = contact::find($employee->contact->id)->where('type','1')->first();
+       	$permanentAddress = contact::find($employee->contact->id)->where('type','0')->first();
+   		}else
+   		{
+   				$currentAddress = null;
+   				$permanentAddress = null;
+   		}
        return view ('contact.editContact', compact('employee','permanentAddress','currentAddress'));
     }
 

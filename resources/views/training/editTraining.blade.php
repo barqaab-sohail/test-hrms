@@ -37,8 +37,8 @@
 		                            <div class="row">
 		                                <div class="col-md-6">
 		                                    <div class="form-group row">
-		                                        <label class="control-label text-right col-md-2">Institute</label>
-		                                        <div class="col-md-10">
+		                                        <label class="control-label text-right col-md-3">Institute</label>
+		                                        <div class="col-md-9">
 		                                            <input type="text"  name="institute" value="{!! old('institute', optional($data)->institute) !!}" class="form-control" placeholder="Enter Institute Name" required>
 		                                        </div>
 		                                    </div>
@@ -59,11 +59,11 @@
 		                             <div class="row">
 		                                <div class="col-md-6">
 		                                    <div class="form-group row">
-		                                        <label class="control-label text-right col-md-2">From</label>
+		                                        <label class="control-label text-right col-md-3">From</label>
 		                                        <div class="col-md-4">
 		                                            <input type="date"  name="from" value="{!! old('from', optional($data)->from) !!}" class="form-control"  required>
 		                                        </div>
-		                                        <label class="control-label text-right col-md-2">To</label>
+		                                        <label class="control-label text-right col-md-1">To</label>
 		                                        <div class="col-md-4">
 		                                            <input type="date"  name="to" value="{!! old('to', optional($data)->to) !!}" class="form-control"  required>
 		                                        </div>

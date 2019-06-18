@@ -1,8 +1,8 @@
 @extends('layouts.master.master')
 @section('Heading')
-	<h3 class="text-themecolor">List of Employees</h3>
+	<h3 class="text-themecolor">List of Projects</h3>
 	<ol class="breadcrumb">
-		<li class="breadcrumb-item"><a href="javascript:void(0)">List of Employees</a></li>
+		<li class="breadcrumb-item"><a href="javascript:void(0)"></a></li>
 		
 	
 	</ol>
@@ -13,7 +13,8 @@
 			<!--<div class="float-right">
 				<input id="month" class="form-control" value="" type="month">
 			</div>-->
-			<h4 class="card-title">List of Employees</h4>
+@if($projects->count()!=0)
+			<h4 class="card-title">List of Projects</h4>
 			
 			<div class="table-responsive m-t-40">
 				
@@ -21,25 +22,25 @@
 					<thead>
 					
 					<tr>
-						<th>Employee Name</th>
-						<th>Email</th>
-						<th>CNIC</th>
-						<th>CNIC Expiry</th>
+						<th>Project Name</th>
+						<th>Name of Client</th>
+						<th>Commencement Date</th>
+						<th>Contractual Completion</th>
+						<th>Status</th>
 						<th> Actions </th>
 					</tr>
 					</thead>
 					<tbody>
-						@foreach($employees as $employee)
+						@foreach($projects as $project)
 							<tr>
-								<td>{{$employee->first_name}} {{$employee->last_name}}</td>
-								<td>{{isset($employee->user->email)? $employee->user->email:'No Email'}}</td>
-								<td>{{$employee->cnic}}</td>
-								<td>{{$employee->cnic_expiry}}</td>
+								<td>{{$project->name}}</td>
+								<td>{{$project->client}}</td>
+								<td>{{$project->commencement}}</td>
+								<td>{{$project->contractual_completion}}</td>
+								<td>{{$project->status}}</td>
 								<td>
 								
-								 <a class="btn btn-info btn-sm" href="{{route('employee.edit',['id'=>$employee->id])}}" data-toggle="tooltip" data-original-title="Edit"> <i class="fas fa-pencil-alt text-white "></i></a>
-
-								 <a class="btn btn-danger btn-sm" href="" data-toggle="tooltip" data-original-title="Delete"> <i class="fas fa-trash-alt"></i></a>
+								 <a class="btn btn-info btn-sm" href="{{route('project.edit',['id'=>$project->id])}}" data-toggle="tooltip" data-original-title="Edit"> <i class="fas fa-pencil-alt text-white "></i></a>
 															
 							</tr>
 						@endforeach
@@ -49,6 +50,10 @@
 					</tbody>
 				</table>
 			</div>
+	@else
+	<h4 class="card-title">No Project Entered</h4>
+
+	@endif
 		</div>
 	</div>
 @push('scripts')

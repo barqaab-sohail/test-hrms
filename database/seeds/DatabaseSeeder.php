@@ -23,6 +23,15 @@ class DatabaseSeeder extends Seeder
         DB::table('marital_status')->insert(['name' => 'Married',]);
         DB::table('marital_status')->insert(['name' => 'Divorced',]);
         DB::table('marital_status')->insert(['name' => 'Widowed',]);
+
+        DB::table('blood_group')->insert(['name' => 'A+',]);
+        DB::table('blood_group')->insert(['name' => 'O+',]);
+        DB::table('blood_group')->insert(['name' => 'B+',]);
+        DB::table('blood_group')->insert(['name' => 'AB+',]);
+        DB::table('blood_group')->insert(['name' => 'A-',]);
+        DB::table('blood_group')->insert(['name' => 'O-',]);
+        DB::table('blood_group')->insert(['name' => 'B-',]);
+        DB::table('blood_group')->insert(['name' => 'AB-',]);
         
 
 
