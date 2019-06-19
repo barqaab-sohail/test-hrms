@@ -33,6 +33,7 @@
 <!-- ============================================================== -->
 <script src="{{asset('Massets/plugins/styleswitcher/jQuery.style.switcher.js') }}"></script>
 <script src="{{asset('Massets/plugins/datatables/datatables.min.js')}}"></script>
+<script src="{{asset('Massets/select2/select2.full.min.js')}}"></script>
 @yield('scripts')
 @stack('scripts')
 <script src="{{asset('Massets/plugins/html5-editor/wysihtml5-0.3.0.js')}}"></script>

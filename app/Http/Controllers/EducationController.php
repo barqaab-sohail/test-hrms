@@ -5,6 +5,8 @@ use Illuminate\Http\Request;
 use App\User;
 use App\employee;
 use App\education;
+use App\country;
+
 use DB;
 
 class EducationController extends Controller
@@ -17,9 +19,10 @@ class EducationController extends Controller
     public function create($id){
 
         $employee = employee::find($id);
+        $countries = country::all();
         $educationIds = education::all()->where('employee_id', $id);
         $employees = employee::all();
-        return view ('education.education',compact('employee','employees','educationIds'));
+        return view ('education.education',compact('employee','employees','educationIds','countries'));
     }
 
 	public function store(Request $request){

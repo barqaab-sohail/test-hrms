@@ -136,7 +136,16 @@
 		                                    <div class="form-group row">
 		                                        <label class="control-label text-right col-md-3">Countary</label>
 		                                        <div class="col-md-6">
-		                                            <input type="text" name="countary" value="{{ old('countary') }}" class="form-control " placeholder="Enter Countary Name" required>
+		                                          <select  name="countary"  class="form-control" required>
+                                                        
+                                                        @foreach($countries as $country)
+														<option value="{{$country->id }}">{{$country->name}}</option>
+                                                        @endforeach
+                                                        
+                                                    </select>
+
+
+		                                      
 		                                        </div>
 		                                    </div>
 		                                </div>
@@ -214,6 +223,7 @@
         </div>
     </div>
  @push('scripts')
+        
         <script>
             $( function() {
 			    $( "#from, #to" ).datepicker({
@@ -223,6 +233,11 @@
 			      changeYear: true
 			    });
 		    });
+
+		    $('select').select2({
+  			maximumSelectionLength: 2,
+
+			});
 		
         </script>
     @endpush
