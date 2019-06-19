@@ -23,6 +23,8 @@ class DependentController extends Controller
     }
 
 	public function store(Request $request){
+
+        dd($request->date_of_birth);
          $request->validate([
          'name' => 'required|max:255',
          ]);

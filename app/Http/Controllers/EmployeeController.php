@@ -19,7 +19,7 @@ class EmployeeController extends Controller
     }
 
     public function index (){
-       $employees = employee::all();
+       $employees = employee::all()->where('status',0);
        return view('employee.employeeList', compact('employees'));
     }
     public function create(){
@@ -69,6 +69,15 @@ class EmployeeController extends Controller
         employee::findOrFail($id)->update($request->all());
       
        return redirect()->route('employee.edit',['id'=>$id])->with('success', 'Employee is updated succesfully');
+    }
+
+    public function inactive(Request $request, $id)
+    {
+       
+       
+       employee::findOrFail($id)->update(['status'=>1]);
+       $employees = employee::all()->where('status','0');
+       return view('employee.employeeList', compact('employees'));
     }
 
 

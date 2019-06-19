@@ -49,7 +49,7 @@
 		                                    <div class="form-group row">
 		                                        <label class="control-label text-right col-md-4">Date of Birth</label>
 		                                        <div class="col-md-8">
-		                                            <input type="date" name="date_of_birth" value="{{ old('date_of_birth') }}" class="form-control " placeholder="Enter Date of Birth" required>
+		                                            <input type="text" id="date_of_birth" name="date_of_birth" value="{{ old('date_of_birth') }}" class="form-control " placeholder="Enter Date of Birth" required>
 		                                        </div>
 		                                    </div>
 		                                </div>
@@ -154,6 +154,16 @@
  @push('scripts')
         <script>
             $(document).ready(function(){
+
+
+            	$( function() {
+			    $( "#date_of_birth" ).datepicker({
+			      dateFormat: 'dd-MM-yy',
+			      yearRange: '1960:'+ (new Date().getFullYear()),
+			      changeMonth: true,
+			      changeYear: true
+			    });
+		    });
 			
 			});
         </script>

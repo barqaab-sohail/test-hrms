@@ -10,6 +10,7 @@
     <title>BARQAAB HRMS</title>
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <!-- Bootstrap Core CSS -->
+    <link href="{{asset('Massets/js/js-ui/jquery-ui.min.css') }}" rel="stylesheet">
     <link href="{{asset('Massets/plugins/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
 
     <!-- chartist CSS -->

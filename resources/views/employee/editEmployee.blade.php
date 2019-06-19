@@ -78,7 +78,7 @@
 		                                    <div class="form-group row">
 		                                        <label class="control-label text-right col-md-3">Date of Birth</label>
 		                                        <div class="col-md-9">
-		                                            <input type="date" name="date_of_birth" value="{{ old('date_of_birth', $employee->date_of_birth) }}" class="form-control " placeholder="Enter Date of Birth" required>
+		                                            <input type="text" id="date_of_birth" name="date_of_birth" value="{{ old('date_of_birth', $employee->date_of_birth) }}" class="form-control " placeholder="Enter Date of Birth" readonly required>
 		                                        </div>
 		                                    </div>
 		                                </div>
@@ -107,7 +107,7 @@
 		                                    <div class="form-group row">
 		                                        <label class="control-label text-right col-md-3">CNIC</label>
 		                                        <div class="col-md-9">
-		                                            <input type="text" name="cnic" value="{{ old('cnic', $employee->cnic) }}" class="form-control " placeholder="Enter CNIC without dash" required>
+		                                            <input type="text" name="cnic" value="{{ old('cnic', $employee->cnic) }}" pattern="[0-9]{13}" title= "13 digit Number without dash" class="form-control " placeholder="Enter CNIC without dash" required>
 		                                        </div>
 		                                    </div>
 		                                </div>
@@ -116,7 +116,7 @@
 		                                        <label class="control-label text-right col-md-3">CNIC Expiry</label>
 		                                        <div class="col-md-9">
 		                                            <div class="col-md-9">
-		                                            <input type="date" name="cnic_expiry" value="{{ old('cnic_expiry',$employee->cnic_expiry) }}" class="form-control " required>
+		                                            <input type="text" id="cnic_expiry" name="cnic_expiry" value="{{ old('cnic_expiry',$employee->cnic_expiry) }}" class="form-control " readonly required>
 		                                        </div>
 		                                        </div>
 		                                    </div>
@@ -227,9 +227,22 @@
         </div>
     </div>
  @push('scripts')
-        <script>
-
-        </script>
+    <script>
+        $( function() {
+		    $( "#date_of_birth" ).datepicker({
+		      dateFormat: 'dd-MM-yy',
+		      yearRange: '1940:'+ (new Date().getFullYear()-15),
+		      changeMonth: true,
+		      changeYear: true
+		    });
+		    $( "#cnic_expiry" ).datepicker({
+		      dateFormat: 'dd-MM-yy',
+		      yearRange:  new Date().getFullYear()+':'+(new Date().getFullYear()+15),
+		      changeMonth: true,
+		      changeYear: true
+		    });
+  		});
+    </script>
 
         
 

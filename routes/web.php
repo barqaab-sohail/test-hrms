@@ -31,6 +31,8 @@ Route::get('/hrms/employee/edit/{id?}', [
             'as' => 'employee.edit'
         ]);
 Route::post('/editEmployee/{id?}', 'EmployeeController@update')->name('editEmployee');
+Route::get('/inactiveEmployee/{id?}', 'EmployeeController@inactive')->name('inactiveEmployee');
+
 
 //Picture Routes
 Route::get('/hrms/createPicture', 'PictureController@create')->name('createPicture');

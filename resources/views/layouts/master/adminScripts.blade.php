@@ -1,5 +1,6 @@
 <!-- All Jquery -->
 <!-- ============================================================== -->
+
 <script src="{{asset('Massets/plugins/jquery/jquery.min.js') }}"></script>
 <!-- Bootstrap tether Core JavaScript -->
 <script src="{{asset('Massets/plugins/popper/popper.min.js') }}"></script>
@@ -36,6 +37,7 @@
 @stack('scripts')
 <script src="{{asset('Massets/plugins/html5-editor/wysihtml5-0.3.0.js')}}"></script>
 <script src="{{asset('Massets/plugins/html5-editor/bootstrap-wysihtml5.js')}}"></script>
+<script src="{{asset('Massets/js/js-ui/jquery-ui.min.js') }}"></script>
 <script>
     $(document).ready(function() {
 

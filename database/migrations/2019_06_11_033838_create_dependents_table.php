@@ -17,7 +17,7 @@ class CreateDependentsTable extends Migration
             $table->bigIncrements('id');
             $table->bigInteger('employee_id')->unsigned();
             $table->string('name');
-            $table->date('date_of_birth');
+            $table->date('date_of_birth')->format('d.m.y');
             $table->string('relation');
             $table->string('gender');
             $table->timestamps();

@@ -45,7 +45,7 @@
 		                                        </div>
 		                                         <label class="control-label text-right col-md-3">House Rent</label>
 		                                        <div class="col-md-3">
-		                                            <input type="text" name="house_rent" value="{!! old('house_rent',isset($employee->salary->house_rent)?$employee->salary->house_rent:'')!!}"   class="form-control prc" required>
+		                                            <input type="text" name="house_rent" value="{!! old('house_rent',isset($employee->salary->house_rent)?$employee->salary->house_rent:'')!!}"   class="form-control prc" >
 		                                        </div>
 		                                    </div>
 		                                </div>
@@ -54,11 +54,11 @@
 		                                    <div class="form-group row">
 		                                         <label class="control-label text-right col-md-3">Dearness Allowance</label>
 		                                        <div class="col-md-3">
-		                                            <input type="number" name="dearness_allowance" value="{!! old('dearness_allowance',isset($employee->salary->dearness_allowance)?$employee->salary->dearness_allowance:'')!!}"   class="form-control prc"  required>
+		                                            <input type="number" name="dearness_allowance" value="{!! old('dearness_allowance',isset($employee->salary->dearness_allowance)?$employee->salary->dearness_allowance:'')!!}"   class="form-control prc"  >
 		                                        </div>
 		                                         <label class="control-label text-right col-md-3">Adhoc 2009</label>
 		                                        <div class="col-md-3">
-		                                            <input type="number" name="adhoc_2009" value="{!! old('adhoc_2009',isset($employee->salary->adhoc_2009)?$employee->salary->adhoc_2009:'')!!}"  class="form-control prc" required>
+		                                            <input type="number" name="adhoc_2009" value="{!! old('adhoc_2009',isset($employee->salary->adhoc_2009)?$employee->salary->adhoc_2009:'')!!}"  class="form-control prc" >
                                             
 		                                        </div>
 		                                    </div>
@@ -72,11 +72,11 @@
 		                                    <div class="form-group row">
 		                                        <label class="control-label text-right col-md-3">Adhoc 2010</label>
 		                                        <div class="col-md-3">
-		                                            <input type="number" name="adhoc_2010" value="{!! old('adhoc_2010',isset($employee->salary->adhoc_2010)?$employee->salary->adhoc_2010:'')!!}"   class="form-control prc" required>
+		                                            <input type="number" name="adhoc_2010" value="{!! old('adhoc_2010',isset($employee->salary->adhoc_2010)?$employee->salary->adhoc_2010:'')!!}"   class="form-control prc" >
 		                                        </div>
 		                                         <label class="control-label text-right col-md-3">Adhoc 2012</label>
 		                                        <div class="col-md-3">
-		                                            <input type="text" name="adhoc_2012" value="{!! old('adhoc_2012',isset($employee->salary->adhoc_2012)?$employee->salary->adhoc_2012:'')!!}"  class="form-control prc" required>
+		                                            <input type="text" name="adhoc_2012" value="{!! old('adhoc_2012',isset($employee->salary->adhoc_2012)?$employee->salary->adhoc_2012:'')!!}"  class="form-control prc" >
 		                                        </div>
 		                                    </div>
 		                                </div>
@@ -85,11 +85,11 @@
 		                                    <div class="form-group row">
 		                                         <label class="control-label text-right col-md-3">Adhoc 2013</label>
 		                                        <div class="col-md-3">
-		                                            <input type="number" name="adhoc_2013" value="{!! old('adhoc_2013',isset($employee->salary->adhoc_2013)?$employee->salary->adhoc_2013:'')!!}"   class="form-control prc"  required>
+		                                            <input type="number" name="adhoc_2013" value="{!! old('adhoc_2013',isset($employee->salary->adhoc_2013)?$employee->salary->adhoc_2013:'')!!}"   class="form-control prc"  >
 		                                        </div>
 		                                         <label class="control-label text-right col-md-3">Field Allowance</label>
 		                                        <div class="col-md-3">
-		                                            <input type="number" name="field_allowance" value="{!! old('field_allowance',isset($employee->salary->field_allowance)?$employee->salary->field_allowance:'')!!}"   class="form-control prc" required>
+		                                            <input type="number" name="field_allowance" value="{!! old('field_allowance',isset($employee->salary->field_allowance)?$employee->salary->field_allowance:'')!!}"   class="form-control prc" >
 		                                            
 		                                        </div>
 		                                    </div>
@@ -103,7 +103,7 @@
 		                                    <div class="form-group row">
 		                                        <label class="control-label text-right col-md-3">Other Allowance</label>
 		                                        <div class="col-md-3">
-		                                            <input type="number" name="other_allowance" value="{!! old('other_allowance',isset($employee->salary->other_allowance)?$employee->salary->other_allowance:'')!!}" class="form-control prc" required>
+		                                            <input type="number" name="other_allowance" value="{!! old('other_allowance',isset($employee->salary->other_allowance)?$employee->salary->other_allowance:'')!!}" class="form-control prc" >
 		                                        </div>
 		                                         <label class="control-label text-right col-md-3">Total</label>
 		                                        <div class="col-md-3">

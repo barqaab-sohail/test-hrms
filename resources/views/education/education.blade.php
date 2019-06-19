@@ -28,7 +28,7 @@
 		                </div>
 		                <div class="card-body">
 
-		                    <form action="{{route('storeEducation')}}" method="post" class="form-horizontal" enctype="multipart/form-data">
+		                    <form id="education" action="{{route('storeEducation')}}" method="post" class="form-horizontal" enctype="multipart/form-data">
 		                        {{csrf_field()}}
 		                        <div class="form-body">
 		                            
@@ -62,11 +62,11 @@
 		                                    <div class="form-group row">
 		                                        <label class="control-label text-right col-md-3">Marks Obtain</label>
 		                                        <div class="col-md-3">
-		                                            <input type="text" name="marks_obtain" value="{{ old('marks_obtain') }}"   class="form-control " required>
+		                                            <input type="text" id="marks_obtain" name="marks_obtain" value="{{ old('marks_obtain') }}"   class="form-control " required>
 		                                        </div>
 		                                         <label class="control-label text-right col-md-3">Total Marks</label>
 		                                        <div class="col-md-3">
-		                                            <input type="text" name="total_marks" value="{{ old('total_marks') }}"   class="form-control " required>
+		                                            <input type="text" id="total_marks" name="total_marks" value="{{ old('total_marks') }}"   class="form-control " required>
 		                                        </div>
 		                                    </div>
 		                                </div>
@@ -75,11 +75,24 @@
 		                                    <div class="form-group row">
 		                                         <label class="control-label text-right col-md-3">Level of Degree</label>
 		                                        <div class="col-md-3">
-		                                            <input type="number" name="level" value="{{ old('equal_to') }}"   class="form-control "  required>
+		                                            
+													<select  name="level"  class="form-control" required>
+
+													<option value=""></option>
+													@for ($i = 5; $i < 21; $i++)
+    												<option value="{{$i}}">{{ $i }}</option>
+													@endfor
+
+													</select>
+
+
 		                                        </div>
 		                                         <label class="control-label text-right col-md-3">Passing Year</label>
 		                                        <div class="col-md-3">
-		                                            <input type="number" name="completion" value="{{ old('completion') }}"   class="form-control " required>
+		                                            <input type="number" name="completion" value="{{ old('completion') }}"   class="form-control " required> 
+													
+
+
 
 		                                             <input type="number" name="employee_id" value="{{session('employee_id')}}"   class="form-control " hidden>
 		                                        </div>
@@ -93,7 +106,7 @@
 		                                    <div class="form-group row">
 		                                        <label class="control-label text-right col-md-3">From</label>
 		                                        <div class="col-md-6">
-		                                            <input type="date"  name="from" value="{{ old('from') }}" class="form-control"  required>
+		                                            <input type="text" id="from" name="from" value="{{ old('from') }}" class="form-control" readonly required>
 		                                        </div>
 		                                    </div>
 		                                </div>
@@ -103,7 +116,7 @@
 		                                    <div class="form-group row">
 		                                        <label class="control-label text-right col-md-3">To</label>
 		                                        <div class="col-md-6">
-		                                            <input type="date" name="to" value="{{ old('to') }}" class="form-control "  required>
+		                                            <input type="text" id="to" name="to" value="{{ old('to') }}" class="form-control " readonly required>
 		                                        </div>
 		                                    </div>
 		                                </div>
@@ -202,9 +215,15 @@
     </div>
  @push('scripts')
         <script>
-            $(document).ready(function(){
-			
-			});
+            $( function() {
+			    $( "#from, #to" ).datepicker({
+			      dateFormat: 'yy-mm-dd',
+			      yearRange: '1960:'+ (new Date().getFullYear()),
+			      changeMonth: true,
+			      changeYear: true
+			    });
+		    });
+		
         </script>
     @endpush
 
