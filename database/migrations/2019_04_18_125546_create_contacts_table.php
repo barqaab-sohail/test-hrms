@@ -22,9 +22,9 @@ class CreateContactsTable extends Migration
             $table->string('town')->nullable();
             $table->string('city');
             $table->string('province');
-            $table->string('country');
             $table->string('landline')->nullable();
             $table->string('mobile');
+            $table->string('country');
             $table->timestamps();
             $table->foreign('employee_id')->references('id')->on('employees');
         });

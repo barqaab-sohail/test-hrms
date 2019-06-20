@@ -23,3 +23,9 @@
             <strong></strong> {{Session::get('message')}}
         </div>
  @endif
+ @if (Session::has('error'))
+        <div class="alert alert-danger" align="left">
+            <a href="#" class="close" data-dismiss="alert">&times;</a>
+            <strong></strong> {{Session::get('error')}}
+        </div>
+ @endif

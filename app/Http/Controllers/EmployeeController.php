@@ -27,7 +27,7 @@ class EmployeeController extends Controller
         $maritalStatus = marital_status::all();
         return view ('employee.createEmployee', compact('departments','maritalStatus'));
     }
-    public function store (Request $request){
+    public function store (request $request){
         /* $request->validate([
          'first_name' => 'required|max:255',
          'last_name' => 'required|max:255',
@@ -41,12 +41,15 @@ class EmployeeController extends Controller
         $input['picture'] = $imageName;
 
         */
-
-        $input = $request->all();
-        $data = employee::create($input);
-        session()->put('employee_id', $data->id);
+        
+       
+        $data = $request->all();
+        $data ['date_of_birth']= \Carbon\Carbon::parse($request->date_of_birth)->format('Y-m-d');
+        $data ['cnic_expiry']= \Carbon\Carbon::parse($request->cnic_expiry)->format('Y-m-d');
+        $input = employee::create($data);
+        session()->put('employee_id', $input->id);
         $employees = employee::all();
-        return redirect('/createPicture');
+        return redirect('/hrms/createPicture');
     }
 
 
@@ -66,7 +69,11 @@ class EmployeeController extends Controller
         'cnic' => 'required|numeric|digits:13|unique:employees,cnic,'.$id,
         ]);
 
-        employee::findOrFail($id)->update($request->all());
+        $data = $request->all();
+        $data ['date_of_birth']= \Carbon\Carbon::parse($request->date_of_birth)->format('Y-m-d');
+        $data ['cnic_expiry']= \Carbon\Carbon::parse($request->cnic_expiry)->format('Y-m-d');
+
+        employee::findOrFail($id)->update($data);
       
        return redirect()->route('employee.edit',['id'=>$id])->with('success', 'Employee is updated succesfully');
     }

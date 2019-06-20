@@ -212,7 +212,7 @@
 		                                <div class="col-md-6">
 		                                    <div class="row">
 		                                        <div class="col-md-offset-3 col-md-9">
-		                                            <button type="submit" class="btn btn-success">Add Employee</button>
+		                                            <button type="submit" class="btn btn-success">Edit Employee</button>
 		                                            <button type="button" onclick="window.location.href='{{route('employeeList')}}'" class="btn btn-inverse">Cancel</button>
 		                                        </div>
 		                                    </div>

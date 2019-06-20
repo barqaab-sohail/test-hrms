@@ -24,12 +24,15 @@ class DependentController extends Controller
 
 	public function store(Request $request){
 
-        dd($request->date_of_birth);
+       $data = $request->all();
+       $data ['date_of_birth']= \Carbon\Carbon::parse($request->date_of_birth)->format('Y-m-d');
+
+             
          $request->validate([
          'name' => 'required|max:255',
          ]);
 
-        $data = dependent::create($request->all());
+        dependent::create($data);
 
         return redirect()->route('dependent',['id'=>session('employee_id')])->with('success', 'Data is saved succesfully');
     // return redirect()->route('dependent',['id'=>$data->id])->with('success', 'User is created succesfully');

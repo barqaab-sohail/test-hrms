@@ -20,7 +20,7 @@ class CreateTrainingsTable extends Migration
             $table->string('description');
             $table->date('from')->nullable();
             $table->date('to')->nullable();
-            $table->string('countary')->nullable();
+            $table->string('country');
             $table->timestamps();
             $table->foreign('employee_id')->references('id')->on('employees');
         });

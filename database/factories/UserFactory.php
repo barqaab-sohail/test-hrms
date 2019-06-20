@@ -33,6 +33,7 @@ $factory->define(Employee::class, function (Faker $faker) {
         'first_name' => $faker->name,
         'middle_name' => $faker->name,
         'last_name' => $faker->name,
+        'father_name' => $faker->name,
         'department_id' => 1,
         'date_of_birth' => $faker->date($format = 'Y-m-d'),
         'cnic' => $faker->unique()->ean13,

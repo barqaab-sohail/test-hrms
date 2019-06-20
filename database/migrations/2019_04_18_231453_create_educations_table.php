@@ -24,8 +24,8 @@ class CreateEducationsTable extends Migration
             $table->date('to');
             $table->float('total_marks');
             $table->float('marks_obtain');
-            $table->string('countary');
             $table->string('grade');
+            $table->string('country');
             $table->timestamps();
             $table->foreign('employee_id')->references('id')->on('employees');
         });

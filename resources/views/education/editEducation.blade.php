@@ -93,7 +93,7 @@
 		                                    <div class="form-group row">
 		                                        <label class="control-label text-right col-md-3">From</label>
 		                                        <div class="col-md-6">
-		                                            <input type="date"  name="from" value="{!! old('from', optional($data)->from) !!}" class="form-control"  required>
+		                                            <input type="text" id="from" name="from" value="{!! old('from', optional($data)->from) !!}" class="form-control"  readonly required>
 		                                        </div>
 		                                    </div>
 		                                </div>
@@ -103,7 +103,7 @@
 		                                    <div class="form-group row">
 		                                        <label class="control-label text-right col-md-3">To</label>
 		                                        <div class="col-md-6">
-		                                            <input type="date" name="to" value="{!! old('to', optional($data)->to) !!}" class="form-control "  required>
+		                                            <input type="text" id="to" name="to" value="{!! old('to', optional($data)->to) !!}" class="form-control "  readonly required>
 		                                        </div>
 		                                    </div>
 		                                </div>
@@ -121,9 +121,9 @@
 		                                <!--/span-->
 		                                <div class="col-md-6">
 		                                    <div class="form-group row">
-		                                        <label class="control-label text-right col-md-3">Countary</label>
+		                                        <label class="control-label text-right col-md-3">Country</label>
 		                                        <div class="col-md-6">
-		                                            <input type="text" name="countary" value="{!! old('countary', optional($data)->countary) !!}" class="form-control " placeholder="Enter Countary Name" required>
+		                                            <input type="text" name="country" value="{!! old('country', optional($data)->country) !!}" class="form-control " placeholder="Enter Country Name" required>
 		                                        </div>
 		                                    </div>
 		                                </div>
@@ -181,6 +181,7 @@
 								<td>
 								
 								 <a class="btn btn-info btn-sm" href="{{route('education.edit',['id'=>$educationId->id])}}" data-toggle="tooltip" data-original-title="Edit"> <i class="fas fa-pencil-alt text-white "></i></a>
+								 <a class="btn btn-danger btn-sm" onclick="return confirm('Are you Sure to Delete')" href="{{route('deleteEducation',['id'=>$educationId->id])}}" data-toggle="tooltip" data-original-title="Delete"> <i class="fas fa-trash-alt"></i></a>
 															
 							</tr>
 						@endforeach
@@ -204,7 +205,19 @@
  @push('scripts')
         <script>
             $(document).ready(function(){
-			
+			$( function() {
+			    $( "#from, #to" ).datepicker({
+			      dateFormat: 'yy-MM-dd',
+			      yearRange: '1960:'+ (new Date().getFullYear()),
+			      changeMonth: true,
+			      changeYear: true
+			    });
+		    });
+
+			$('select').select2({
+  			maximumSelectionLength: 2,
+
+			});
 			});
         </script>
     @endpush

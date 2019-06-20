@@ -31,12 +31,12 @@ class EducationController extends Controller
          'institute' => 'required|max:255',
          ]);
 
-        $data = Education::create($request->all());
+        $data = $request->all();
+        $data ['from']= \Carbon\Carbon::parse($request->from)->format('Y-m-d');
+        $data ['to']= \Carbon\Carbon::parse($request->to)->format('Y-m-d');
 
+        Education::create($data);
         return redirect()->route('education',['id'=>session('employee_id')])->with('success', 'Data is saved succesfully');
-      // return redirect()->route('education',['id'=>$data->id])->with('success', 'User is created succesfully');
-
-
     }
 
     public function edit($id){
@@ -49,8 +49,21 @@ class EducationController extends Controller
     public function update(Request $request, $id)
     {
      
-     Education::findOrFail($id)->update($request->all());
+        $data = $request->all();
+        $data ['from']= \Carbon\Carbon::parse($request->from)->format('Y-m-d');
+        $data ['to']= \Carbon\Carbon::parse($request->to)->format('Y-m-d');
+
+     Education::findOrFail($id)->update($data);
      return redirect()->route('education.edit',['id'=>$id])->with('success', 'Education is updated succesfully');
+    }
+
+    public function delete(Request $request, $id)
+    {
+          
+    Education::findOrFail($id)->delete();
+           
+    return redirect()->route('education',['id'=>session('employee_id')])->with('success', 'Education is deleted succesfully');
+    
     }
 
 }

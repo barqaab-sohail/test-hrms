@@ -49,7 +49,7 @@
 		                                    <div class="form-group row">
 		                                        <label class="control-label text-right col-md-3">Country</label>
 		                                        <div class="col-md-9">
-		                                            <input type="text" name="countary" value="{!! old('countary', optional($data)->countary) !!}" class="form-control " placeholder="Enter Countary Name" required>
+		                                            <input type="text" name="country" value="{!! old('country', optional($data)->country) !!}" class="form-control " placeholder="Enter Country Name" required>
 		                                        </div>
 		                                    </div>
 		                                </div>
@@ -114,7 +114,7 @@
 					
 					<tr>
 						<th>Institute</th>
-						<th>Countary</th>
+						<th>Country</th>
 						<th>From</th>
 						<th>To</th>
 						@if(Auth::user()->role_id==1)<th> Actions </th> @endif
@@ -124,7 +124,7 @@
 						@foreach($trainingIds as $trainingId)
 							<tr>
 								<td>{{$trainingId->institute}}</td>
-								<td>{{$trainingId->countary}}</td>
+								<td>{{$trainingId->country}}</td>
 								<td>{{$trainingId->from}}</td>
 								<td>{{$trainingId->to}}</td>
 								<td>

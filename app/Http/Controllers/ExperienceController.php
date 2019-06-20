@@ -29,12 +29,12 @@ class ExperienceController extends Controller
          'position' => 'required|max:255',
          ]);
 
-        $data = Experience::create($request->all());
-
+        $data = $request->all();
+        $data ['from']= \Carbon\Carbon::parse($request->from)->format('Y-m-d');
+        $data ['to']= \Carbon\Carbon::parse($request->to)->format('Y-m-d');
+        Experience::create($data);
         return redirect()->route('experience',['id'=>session('employee_id')])->with('success', 'Data is saved succesfully');
-      // return redirect()->route('Experience',['id'=>$data->id])->with('success', 'User is created succesfully');
-
-
+      
     }
 
     public function edit($id){
@@ -50,5 +50,14 @@ class ExperienceController extends Controller
      
      experience::findOrFail($id)->update($request->all());
      return redirect()->route('experience.edit',['id'=>$id])->with('success', 'Experience is updated succesfully');
+    }
+
+    public function delete(Request $request, $id)
+    {
+          
+    experience::findOrFail($id)->delete();
+
+    return redirect()->route('experience',['id'=>session('employee_id')])->with('success', 'Experience is deleted succesfully');
+    
     }
 }

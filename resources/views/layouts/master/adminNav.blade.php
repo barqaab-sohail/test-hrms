@@ -42,6 +42,12 @@
                 -->
                  <li @if(request()->is('dashboard')) class="active" @endif><a class="waves-effect waves-dark" href="{{route('dashboard')}}" aria-expanded="false"><i class="mdi mdi-gauge"></i><span class="hide-menu">Dashboard </span></a>
                 </li>
+                @if(Auth::user()->role_id==1)
+                <li @if(request()->is('notification')) class="active" @endif><a class="waves-effect waves-dark" href="{{route('notification')}}" aria-expanded="false"><i class="fas fa-bell"></i><span class="hide-menu">Notification </span></a>
+                </li>
+                @endif
+
+
                 <li @if(request()->is('hrms*')) class="active" @endif > <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i class="mdi mdi-account"></i><span class="hide-menu">Human Resource</span></a>
                     <ul aria-expanded="false" class="collapse">
                         <li><a href="{{route('employeeList')}}">List of Employees</a></li>

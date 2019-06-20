@@ -39,7 +39,16 @@
 		                                    <div class="form-group row">
 		                                        <label class="control-label text-right col-md-3">Name of Language</label>
 		                                        <div class="col-md-9">
-		                                            <input type="text"  name="name" value="{!! old('name', optional($data)->name) !!}" class="form-control" placeholder="Enter Language Name" required>
+		                                            <select  name="name"  class="form-control" required>
+                                                       @foreach($allLanguages as $language)
+		                                             	
+		                                             	<option value="{{$language->name_1}}" @if($data->name == $language->name_1) selected="selected" @endif>{{$language->name_1}}</option>
+                                                                                                              
+                                                     @endforeach    
+                                                    </select>
+						
+
+
 		                                        </div>
 		                                    </div>
 		                                </div>
@@ -50,12 +59,14 @@
 		                                        <label class="control-label text-right col-md-4">Proficiency</label>
 		                                        <div class="col-md-8">
 		                                             <select  name="proficiency"  class="form-control" required>
-		                                             @foreach($languageIds as $languageId)
-
-		                                             	<option value="Average" @if($languageId->proficiency == 'Average') selected="selected" @endif>Average</option>
-                                                        <option value="Good" @if($languageId->proficiency == 'Good') selected="selected" @endif>Good</option>
-                                                        <option value="Excellent" @if($languageId->proficiency == 'Excellent') selected="selected" @endif>Excellent</option>
-                                                     @endforeach                       
+		                                             
+		                                             	<option value="Average"  @if($data->proficiency == 'Average')selected="selected" @endif>Average</option>
+		                                             	
+                                                        <option value="Good" @if($data->proficiency == 'Good') selected="selected" @endif>Good</option>
+                                                        
+                                                        <option value="Excellent" @if($data->proficiency == 'Excellent')selected="selected" @endif>Excellent</option>
+                                                        
+                                                                      
                                                     </select>
 		                                        </div>
 		                                    </div>
@@ -111,6 +122,8 @@
 								<td>
 								@if(Auth::user()->role_id==1)
 								 <a class="btn btn-info btn-sm" href="{{route('language.edit',['id'=>$languageId->id])}}" data-toggle="tooltip" data-original-title="Edit"> <i class="fas fa-pencil-alt text-white "></i></a>
+
+								 <a class="btn btn-danger btn-sm" onclick="return confirm('Are you Sure to Delete')" href="{{route('deleteLanguage',['id'=>$languageId->id])}}" data-toggle="tooltip" data-original-title="Delete"> <i class="fas fa-trash-alt"></i></a>
 								 @endif
 															
 							</tr>
@@ -132,8 +145,11 @@
     </div>
  @push('scripts')
         <script>
-            $(document).ready(function(){
-			
+             $(document).ready(function(){
+			$('select').select2({
+  				maximumSelectionLength: 2,
+
+			});
 			});
         </script>
     @endpush

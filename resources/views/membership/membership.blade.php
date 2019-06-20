@@ -49,7 +49,7 @@
 		                                    <div class="form-group row">
 		                                        <label class="control-label text-right col-md-4">Membership No.</label>
 		                                        <div class="col-md-8">
-		                                            <input type="text" name="membership_no" value="{{ old('membership_no') }}" class="form-control " placeholder="Enter Countary Name" required>
+		                                            <input type="text" name="membership_no" value="{{ old('membership_no') }}" class="form-control " placeholder="Enter Membership No " required>
 		                                        </div>
 		                                    </div>
 		                                </div>

@@ -8,7 +8,7 @@ class experience extends Model
 {
  
 	protected $fillable = [
-        'employer', 'position', 'from','to','project','location', 'countary','activities','employee_id',
+        'employer', 'position', 'from','to','project','location', 'country','activities','employee_id',
     ];
 
      public function employee(){

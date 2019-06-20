@@ -18,8 +18,11 @@
 
 Auth::routes();
 
-
+//Dashboard
 Route::get('/dashboard', 'HomeController@index')->name('dashboard');
+
+//notification
+Route::get('/notification', 'NotificationController@index')->name('notification');
 
 
 //Employee & User Routes
@@ -83,6 +86,7 @@ Route::get('/hrms/education/edit/{id?}', [
             'as' => 'education.edit'
         ]);
 Route::post('/editEducation/{id?}', 'EducationController@update')->name('editEducation');
+Route::get('/deleteEducation/{id?}', 'EducationController@delete')->name('deleteEducation');
 
 
 //Experience Routes
@@ -93,6 +97,7 @@ Route::get('/hrms/experience/edit/{id?}', [
             'as' => 'experience.edit'
         ]);
 Route::post('/editExperience/{id?}', 'ExperienceController@update')->name('editExperience');
+Route::get('/deleteExperience/{id?}', 'ExperienceController@delete')->name('deleteExperience');
 
 //Training Routes
 Route::get('/hrms/training/{id?}', 'TrainingController@create')->name('training');
@@ -156,6 +161,7 @@ Route::get('/hrms/language/edit/{id?}', [
             'as' => 'language.edit'
         ]);
 Route::post('/editLanguage/{id?}', 'LanguageController@update')->name('editLanguage');
+Route::get('/deleteLanguage/{id?}', 'LanguageController@delete')->name('deleteLanguage');
 
 //Emergency Contact
 Route::get('/hrms/emergency/{id?}', 'EmergencyController@create')->name('emergency');

@@ -91,7 +91,7 @@
 		                                    <div class="form-group row">
 		                                        <label class="control-label text-right col-md-3">Country</label>
 		                                        <div class="col-md-9">
-		                                            <input type="text"  name="country" value="{!! old('countary',isset($permanentAddress->street)?$permanentAddress->country:'')!!}" class="form-control" placeholder="Enter Country Name " required>
+		                                            <input type="text"  name="country" value="{!! old('country',isset($permanentAddress->street)?$permanentAddress->country:'')!!}" class="form-control" placeholder="Enter Country Name " required>
 		                                        </div>
 		                                    </div>
 		                                    
@@ -211,7 +211,7 @@
 		                                    <div class="form-group row">
 		                                        <label class="control-label text-right col-md-3">Country</label>
 		                                        <div class="col-md-9">
-		                                            <input type="text"  name="country" value="{!! old('countary',isset($currentAddress->street)?$currentAddress->country:'')!!}" class="form-control" placeholder="Enter Country Name " required>
+		                                            <input type="text"  name="country" value="{!! old('country',isset($currentAddress->street)?$currentAddress->country:'')!!}" class="form-control" placeholder="Enter Country Name " required>
 		                                        </div>
 		                                    </div>
 		                                    

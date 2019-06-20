@@ -134,9 +134,9 @@
 		                                <!--/span-->
 		                                <div class="col-md-6">
 		                                    <div class="form-group row">
-		                                        <label class="control-label text-right col-md-3">Countary</label>
-		                                        <div class="col-md-6">
-		                                          <select  name="countary"  class="form-control" required>
+		                                        <label class="control-label text-right col-md-3">Country</label>
+		                                        <div class="col-md-7">
+		                                          <select  name="country"  class="form-control" required>
                                                         
                                                         @foreach($countries as $country)
 														<option value="{{$country->id }}">{{$country->name}}</option>
@@ -201,6 +201,7 @@
 								<td>
 								@if(Auth::user()->role_id==1)
 								 <a class="btn btn-info btn-sm" href="{{route('education.edit',['id'=>$educationId->id])}}" data-toggle="tooltip" data-original-title="Edit"> <i class="fas fa-pencil-alt text-white "></i></a>
+								  <a class="btn btn-danger btn-sm" onclick="return confirm('Are you Sure to Delete')" href="{{route('deleteEducation',['id'=>$educationId->id])}}" data-toggle="tooltip" data-original-title="Delete"> <i class="fas fa-trash-alt"></i></a>
 								 @endif
 															
 							</tr>
@@ -227,7 +228,7 @@
         <script>
             $( function() {
 			    $( "#from, #to" ).datepicker({
-			      dateFormat: 'yy-mm-dd',
+			      dateFormat: 'yy-M-dd',
 			      yearRange: '1960:'+ (new Date().getFullYear()),
 			      changeMonth: true,
 			      changeYear: true

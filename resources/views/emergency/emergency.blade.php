@@ -49,7 +49,7 @@
 		                                    <div class="form-group row">
 		                                        <label class="control-label text-right col-md-3">Relation</label>
 		                                        <div class="col-md-9">
-		                                            <input type="text" name="relation" value="{{ old('relation') }}" class="form-control " placeholder="Enter Countary Name" required>
+		                                            <input type="text" name="relation" value="{{ old('relation') }}" class="form-control " placeholder="Enter Relation Name" required>
 		                                        </div>
 		                                    </div>
 		                                </div>

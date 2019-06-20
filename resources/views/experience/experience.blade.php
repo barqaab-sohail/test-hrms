@@ -35,7 +35,7 @@
 		                            <h3 class="box-title">Experience</h3>
 		                            <hr class="m-t-0 m-b-40">
 		                            <div class="row">
-		                                <div class="col-md-6">
+		                                <div class="col-md-7">
 		                                    <div class="form-group row">
 		                                        <label class="control-label text-right col-md-3">Employer</label>
 		                                        <div class="col-md-9">
@@ -45,7 +45,7 @@
 		                                </div>
 		                                
 		                                <!--/span-->
-		                                <div class="col-md-6">
+		                                <div class="col-md-5">
 		                                    <div class="form-group row">
 		                                        <label class="control-label text-right col-md-3">Position</label>
 		                                        <div class="col-md-9">
@@ -57,21 +57,21 @@
 		                                
 		                            <!--/row-->
 		                             <div class="row">
-		                                <div class="col-md-6">
+		                                <div class="col-md-7">
 		                                    <div class="form-group row">
 		                                        <label class="control-label text-right col-md-3">From</label>
 		                                        <div class="col-md-4">
-		                                            <input type="date"  name="from" value="{{ old('from') }}" class="form-control"  required>
+		                                            <input type="text" id="from" name="from" value="{{ old('from') }}" class="form-control"  required>
 		                                        </div>
 		                                        <label class="control-label text-right col-md-1">To</label>
 		                                        <div class="col-md-4">
-		                                            <input type="date"  name="to" value="{{ old('to') }}" class="form-control"  required>
+		                                            <input type="text" id="to" name="to" value="{{ old('to') }}" class="form-control"  required>
 		                                        </div>
 		                                    </div>
 		                                </div>
 		                                
 		                                <!--/span-->
-		                                <div class="col-md-6">
+		                                <div class="col-md-5">
 		                                    <div class="form-group row">
 		                                        <label class="control-label text-right col-md-3">Project Name</label>
 		                                        <div class="col-md-9">
@@ -81,7 +81,7 @@
 		                                </div>
 		                            </div>
 		                             <div class="row">
-		                                <div class="col-md-6">
+		                                <div class="col-md-7">
 		                                    <div class="form-group row">
 		                                        <label class="control-label text-right col-md-3">Location</label>
 		                                        <div class="col-md-9">
@@ -91,11 +91,11 @@
 		                                </div>
 		                                
 		                                <!--/span-->
-		                                <div class="col-md-6">
+		                                <div class="col-md-5">
 		                                    <div class="form-group row">
-		                                        <label class="control-label text-right col-md-3">Countary</label>
+		                                        <label class="control-label text-right col-md-3">Country</label>
 		                                        <div class="col-md-9">
-		                                            <input type="text" name="countary" value="{{ old('countary') }}" class="form-control " placeholder="Enter Countary Name" required>
+		                                            <input type="text" name="country" value="{{ old('country') }}" class="form-control " placeholder="Enter Country Name" required>
 		                                        </div>
 		                                    </div>
 		                                </div>
@@ -191,7 +191,19 @@
  @push('scripts')
         <script>
             $(document).ready(function(){
-			
+				$( function() {
+			    $( "#from, #to" ).datepicker({
+			      dateFormat: 'yy-M-dd',
+			      yearRange: '1960:'+ (new Date().getFullYear()),
+			      changeMonth: true,
+			      changeYear: true
+			    });
+		    	});
+
+		    $('select').select2({
+  			maximumSelectionLength: 2,
+
+			});
 			});
         </script>
     @endpush

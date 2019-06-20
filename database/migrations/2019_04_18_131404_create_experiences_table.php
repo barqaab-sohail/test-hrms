@@ -23,7 +23,7 @@ class CreateExperiencesTable extends Migration
             $table->date('to');
             $table->string('project');
             $table->string('location');
-            $table->string('countary');
+            $table->string('country');           
             $table->timestamps();
             $table->foreign('employee_id')->references('id')->on('employees');
         });
