@@ -89,8 +89,9 @@
 		                                            <div class="col-md-9">
 		                                           	 <select  name="gender"  class="form-control" required>
                                                         <option value=""></option>
-                                                        <option value="Male">Male</option>
-                                                        <option value="Female">Female</option>
+                                                        <option value="Male"  {{ old('gender') == "Male" ? 'selected' : '' }}>Male </option>
+                                                        <option value="Female"  {{ old('gender') == "Female" ? 'selected' : '' }}>Female </option>
+                                                        
                                                     </select>
 		                                            
 		                                        </div>

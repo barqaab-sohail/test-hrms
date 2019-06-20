@@ -13,7 +13,7 @@ class StoreEmployee extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -26,7 +26,6 @@ class StoreEmployee extends FormRequest
         return [
          'first_name' => 'required|max:255',
          'last_name' => 'required|max:255',
-         'email' => 'required|unique:users|email',
          'cnic' => 'required|unique:employees|numeric|digits:13',
          'cnic_expiry' => 'required|date|after:tomorrow',
         ];

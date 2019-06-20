@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User;
+use App\Http\Requests\StoreEmployee;
 use App\department;
 use App\marital_status;
 use App\Education;
@@ -27,21 +28,8 @@ class EmployeeController extends Controller
         $maritalStatus = marital_status::all();
         return view ('employee.createEmployee', compact('departments','maritalStatus'));
     }
-    public function store (request $request){
-        /* $request->validate([
-         'first_name' => 'required|max:255',
-         'last_name' => 'required|max:255',
-         'email' => 'required|unique:users|email',
-         'cnic' => 'required|unique:users|numeric|digits:13',
-         'cnic_expiry' => 'required|date|after:tomorrow',
-         'picture' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2000',
-          ]);
-         $imageName = time().'.'.request()->picture->getClientOriginalExtension();
-        request()->picture->move(public_path('images'), $imageName);
-        $input['picture'] = $imageName;
-
-        */
-        
+    public function store (StoreEmployee $request){
+             
        
         $data = $request->all();
         $data ['date_of_birth']= \Carbon\Carbon::parse($request->date_of_birth)->format('Y-m-d');
