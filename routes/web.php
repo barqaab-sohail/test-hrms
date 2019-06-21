@@ -38,8 +38,6 @@ Route::get('/inactiveEmployee/{id?}', 'EmployeeController@inactive')->name('inac
 
 
 //Picture Routes
-Route::get('/hrms/createPicture', 'PictureController@create')->name('createPicture');
-Route::post('/storePicture', 'PictureController@store')->name('storePicture');
 
 Route::get('/hrms/picture/edit/{id?}', [
             'uses' => 'PictureController@edit',

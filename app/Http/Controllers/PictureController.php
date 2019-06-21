@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\StorePicture;
 use App\picture;
+
 use App\employee;
 
 class PictureController extends Controller
@@ -14,11 +16,11 @@ class PictureController extends Controller
         $this->middleware('auth');
     }
 	
-	public function create(){
+	/*public function create(){
         return view ('employee.createPicture');
     }
 
-     public function store (Request $request){
+     public function store (StorePicture $request){
         
         $imageName = time().'-'.session('employee_id').'.'.request()->picture->getClientOriginalExtension();
         $imageType = request()->picture->getMimeType();
@@ -31,7 +33,7 @@ class PictureController extends Controller
         
         picture::create($input);
         return view ('dashboard');
-    }
+    }*/
 
 
 
@@ -41,7 +43,7 @@ class PictureController extends Controller
        return view ('employee.editPicture', compact('picture','employee'));
     }
 
-    public function update(Request $request, $id)
+    public function update(StorePicture $request, $id)
     {
        $employee = employee::find($id);
        $picture = picture::where ('employee_id',$id)->first();

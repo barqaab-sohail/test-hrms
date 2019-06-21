@@ -24,10 +24,19 @@ class StoreEmployee extends FormRequest
     public function rules()
     {
         return [
-         'first_name' => 'required|max:255',
-         'last_name' => 'required|max:255',
-         'cnic' => 'required|unique:employees|numeric|digits:13',
+         'first_name' => 'required|max:191',
+         'last_name' => 'required|max:191',
+         'father_name' => 'required|max:191',
+         'date_of_birth' =>'required',
+         'gender' =>'required',
+         'cnic' => 'required|numeric|digits:13|unique:employees,cnic,'.session('employee_id'),
          'cnic_expiry' => 'required|date|after:tomorrow',
+         'employee_no' => 'unique:employees,employee_no,'.session('employee_id'),
+         'marital_status' =>'required',
+         'religon' =>'required',
+         'nationality' =>'required',
+         'department_id' =>'required',
+
         ];
     }
 }

@@ -172,7 +172,12 @@
 		                                        <label class="control-label text-right col-md-3">Nationality</label>
 		                                        <div class="col-md-9">
 		                                            <div class="col-md-9">
-		                                           	 <input type="text" name="nationality" value="{{ old('nationality',$employee->religon) }}" class="form-control " placeholder="Enter Nationality" required>
+		                                           	<select  name="nationality"  class="form-control" required>
+		                                           	<option value=""></option>
+		                                           	@foreach($countries as $country)
+													<option value="{{$country->name}}" @if($country->name == $employee->nationality) selected="selected" @endif>{{$country->name}}</option>
+                                                    @endforeach 	
+                                                    </select>
 		                                            
 		                                        </div>
 		                                        </div>
@@ -241,6 +246,11 @@
 		      changeMonth: true,
 		      changeYear: true
 		    });
+		    
+		    $('select').select2({
+  			maximumSelectionLength: 2,
+
+			});
   		});
     </script>
 

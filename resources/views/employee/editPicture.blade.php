@@ -65,7 +65,24 @@
             $(document).ready(function(){
 // Prepare the preview for profile picture
 		        $("#wizard-picture").change(function(){
-                    readURL(this);
+		        	
+		        	var fileSize = this.files[0].size;
+		        	if (fileSize>50000)
+		        	{
+		        		alert('File Size is very large '+fileSize);
+		        		$(this).val('');
+		        	}else{
+	    				switch(val.substring(val.lastIndexOf('.') + 1).toLowerCase()){
+	        			case 'jpg': case 'png':
+	        			break;
+	        			default:
+	            		$(this).val('');
+	            		// error message here
+	            		alert("only allow JPG and PNG Files");
+	            		break;
+	    				}
+	    			readURL(this);
+	    			}
                 });
             });
             function readURL(input) {

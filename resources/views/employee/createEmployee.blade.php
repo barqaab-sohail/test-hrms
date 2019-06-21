@@ -78,7 +78,7 @@
 		                                    <div class="form-group row">
 		                                        <label class="control-label text-right col-md-3">Date of Birth</label>
 		                                        <div class="col-md-9">
-		                                            <input type="text" id="date_of_birth" name="date_of_birth" value="{{ old('date_of_birth') }}" class="form-control " readonly placeholder="Enter Date of Birth" required>
+		                                            <input type="text" id="date_of_birth" name="date_of_birth" value="{{ old('date_of_birth') }}" class="form-control " placeholder="Enter Date of Birth" required readonly>
 		                                        </div>
 		                                    </div>
 		                                </div>
@@ -145,9 +145,9 @@
 		                                           	 <select  name="marital_status"  class="form-control" required>
                                                         <option value=""></option>
                                                         @foreach($maritalStatus as $maritalStatus)
-														<option value="{{$maritalStatus->id }}">{{$maritalStatus->name}}</option>
+														<option value="{{$maritalStatus->name}}" {{(old("marital_status")==$maritalStatus->name? "selected" : "")}}>{{$maritalStatus->name}}</option>
                                                         @endforeach
-                                                        
+                                                      
                                                     </select>
 		                                            
 		                                        </div>
@@ -171,8 +171,13 @@
 		                                        <label class="control-label text-right col-md-3">Nationality</label>
 		                                        <div class="col-md-9">
 		                                            <div class="col-md-9">
-		                                           	 <input type="text" name="nationality" value="{{ old('nationality') }}" class="form-control " placeholder="Enter Nationality" required>
-		                                            
+		                                            <select  name="nationality"  class="form-control" required>
+		                                           	<option value=""></option>
+		                                           	@foreach($countries as $country)
+													<option value="{{$country->name}}" {{(old("nationality")==$country->name? "selected" : "")}}>{{$country->name}}</option>
+                                                    @endforeach 	
+                                                    </select>
+
 		                                        </div>
 		                                        </div>
 		                                    </div>
@@ -192,7 +197,7 @@
 		                                           	 <select  name="department_id"  class="form-control" required>
                                                         <option value=""></option>
                                                         @foreach($departments as $department)
-														<option value="{{ $department->id }}">{{$department->name}}</option>
+														<option value="{{$department->id}}" {{(old("department_id")==$department->id? "selected" : "")}}>{{$department->name}}</option>										
                                                         @endforeach
                                                                                                                
                                                     </select>
@@ -243,6 +248,11 @@
 	      changeMonth: true,
 	      changeYear: true
 	    });
+
+	    $('select').select2({
+  			maximumSelectionLength: 2,
+
+		});
   	});
 </script>
 

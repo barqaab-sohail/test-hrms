@@ -24,7 +24,7 @@ class CreateEmployeesTable extends Migration
             $table->string('gender')->nullable();
             $table->string('cnic')->unique();
             $table->date('cnic_expiry');
-            $table->string('employee_no')->nullable();
+            $table->string('employee_no')->nullable()->unique();
             $table->string('marital_status')->nullable();
             $table->string('religon')->nullable();
             $table->string('nationality')->nullable();
