@@ -53,6 +53,10 @@ class employee extends Model
     {
         return $this->hasMany('App\dependent');
     }
+     public function notification()
+    {
+        return $this->hasMany('App\notification');
+    }
 
     public function document()
     {

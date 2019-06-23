@@ -34,6 +34,11 @@ class DatabaseSeeder extends Seeder
         DB::table('blood_group')->insert(['name' => 'B-',]);
         DB::table('blood_group')->insert(['name' => 'AB-',]);
         
+        DB::table('notifications')->insert([
+            'message' => 'It is testing message',
+            'status' => 0,
+                      
+        ]);
 
 
         DB::table('employees')->insert([

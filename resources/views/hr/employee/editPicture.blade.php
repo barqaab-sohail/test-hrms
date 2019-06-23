@@ -67,7 +67,7 @@
 		        $("#wizard-picture").change(function(){
 		        	
 		        	var fileSize = this.files[0].size;
-		        	if (fileSize>50000)
+		        	if (fileSize>5000000)
 		        	{
 		        		alert('File Size is very large '+fileSize);
 		        		$(this).val('');

@@ -20,7 +20,7 @@ class PublicationController extends Controller
         $employee = employee::find($id);
         $publicationIds = publication::all()->where('employee_id', $id);
         $employees = employee::all();
-        return view ('publication.publication',compact('employee','employees','publicationIds'));
+        return view ('hr.publication.publication',compact('employee','employees','publicationIds'));
     }
 
 	public function store(Request $request){
@@ -40,7 +40,7 @@ class PublicationController extends Controller
         $employee = employee::find(session('employee_id'));
         $publicationIds = publication::all()->where('employee_id', session('employee_id'));
         $data = publication::find($id);
-        return view ('publication.editPublication',compact('data','employee','publicationIds'));
+        return view ('hr.publication.editPublication',compact('data','employee','publicationIds'));
     }
     
     public function update(Request $request, $id)

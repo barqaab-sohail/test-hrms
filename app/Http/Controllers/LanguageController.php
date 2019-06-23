@@ -22,7 +22,7 @@ class LanguageController extends Controller
         $employee = employee::find($id);
         $languageIds = language::all()->where('employee_id', $id);
         $employees = employee::all();
-        return view ('language.language',compact('employee','employees','languageIds','allLanguages'));
+        return view ('hr.language.language',compact('employee','employees','languageIds','allLanguages'));
     }
 
 	public function store(Request $request){
@@ -54,7 +54,7 @@ class LanguageController extends Controller
         $employee = employee::find(session('employee_id'));
         $languageIds = language::all()->where('employee_id', session('employee_id'));
         $data = language::find($id);
-        return view ('language.editLanguage',compact('data','employee','languageIds','allLanguages'));
+        return view ('hr.language.editLanguage',compact('data','employee','languageIds','allLanguages'));
     }
     
     public function update(Request $request, $id)

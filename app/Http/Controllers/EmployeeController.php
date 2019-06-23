@@ -22,7 +22,7 @@ class EmployeeController extends Controller
 
     public function index (){
        $employees = employee::all()->where('status',0);
-       return view('employee.employeeList', compact('employees'));
+       return view('hr.employee.employeeList', compact('employees'));
     }
 
     public function create(){
@@ -30,7 +30,7 @@ class EmployeeController extends Controller
         $countries = country::all();
         $departments = department::all();
         $maritalStatus = marital_status::all();
-        return view ('employee.createEmployee', compact('departments','maritalStatus','countries'));
+        return view ('hr.employee.createEmployee', compact('departments','maritalStatus','countries'));
     }
     public function store (StoreEmployee $request){
          
@@ -52,7 +52,7 @@ class EmployeeController extends Controller
         $departments = department::all();
         $maritalStatuses = marital_status::all();
         $employeeId = session()->put('employee_id', $employee->id);
-        return view ('employee.editEmployee', compact('employee','departments','maritalStatuses','countries'));
+        return view ('hr.employee.editEmployee', compact('employee','departments','maritalStatuses','countries'));
     }
 
 
@@ -73,7 +73,7 @@ class EmployeeController extends Controller
         
        employee::findOrFail($id)->update(['status'=>1]);
        $employees = employee::all()->where('status','0');
-       return view('employee.employeeList', compact('employees'));
+       return view('hr.employee.employeeList', compact('employees'));
     }
 
 

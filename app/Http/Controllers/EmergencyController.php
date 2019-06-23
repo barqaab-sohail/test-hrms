@@ -20,7 +20,7 @@ class EmergencyController extends Controller
         $employee = employee::find($id);
         $emergencyIds = emergency_contact::all()->where('employee_id', $id);
         $employees = employee::all();
-        return view ('emergency.emergency',compact('employee','employees','emergencyIds'));
+        return view ('hr.emergency.emergency',compact('employee','employees','emergencyIds'));
     }
 
 	public function store(Request $request){
@@ -40,7 +40,7 @@ class EmergencyController extends Controller
         $employee = employee::find(session('employee_id'));
         $emergencyIds = emergency_contact::all()->where('employee_id', session('employee_id'));
         $data = emergency_contact::find($id);
-        return view ('emergency.editEmergency',compact('data','employee','emergencyIds'));
+        return view ('hr.emergency.editEmergency',compact('data','employee','emergencyIds'));
     }
     
     public function update(Request $request, $id)

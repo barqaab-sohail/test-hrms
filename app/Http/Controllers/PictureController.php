@@ -40,7 +40,7 @@ class PictureController extends Controller
     public function edit($id){
        $employee = employee::find($id);
        $picture = picture::where ('employee_id',$id)->first();
-       return view ('employee.editPicture', compact('picture','employee'));
+       return view ('hr.employee.editPicture', compact('picture','employee'));
     }
 
     public function update(StorePicture $request, $id)

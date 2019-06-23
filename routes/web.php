@@ -19,6 +19,7 @@
 Auth::routes();
 
 //Dashboard
+Route::get('/chart', 'ChartController@index')->name('chart');
 Route::get('/dashboard', 'HomeController@index')->name('dashboard');
 
 //notification

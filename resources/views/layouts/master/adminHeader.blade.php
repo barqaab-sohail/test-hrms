@@ -31,6 +31,8 @@
                 <!-- This is  -->
                 <li class="nav-item"> <a class="nav-link nav-toggler hidden-md-up text-muted waves-effect waves-dark" href="javascript:void(0)"><i class="mdi mdi-menu"></i></a> </li>
                 <li class="nav-item"> <a class="nav-link sidebartoggler hidden-sm-down text-muted waves-effect waves-dark" href="javascript:void(0)"><i class="ti-menu"></i></a> </li>
+
+
                 <!-- ============================================================== -->
                 <!-- Search -->
                 <!-- ============================================================== 
@@ -70,6 +72,13 @@
                 <!-- ============================================================== -->
                 
                 <!-- Top Right Side User Picutre  -->
+                <li class="nav-item dropdown"> 
+                    <a class="nav-link hidden-sm-down text-muted waves-effect waves-dark" href="javascript:void(0)"><span class="badge badge-danger">{{$notification}}</span><i class="fas fa-bell"></i>
+                    </a>
+                    
+                </li>
+
+
 
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle text-muted waves-effect waves-dark" href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -97,7 +106,7 @@
                             <li><a href="#"><i class="ti-settings"></i> Account Setting</a></li>
                             <li role="separator" class="divider"></li>
                             -->
-                            <li><a href="#"  onclick="event.preventDefault(); document.getElementById('logout-form').submit();"class="link" data-toggle="tooltip" title="Logout"><i class="fa fa-power-off"></i> Logout</a></li>
+                            <li><a href="#"  onclick="event.preventDefault(); document.getElementById('logout-form').submit();"class="link" data-toggle="tooltip" title=""><i class="fa fa-power-off"></i> Logout</a></li>
                         </ul>
                         <form id="logout-form" action="{{route('logout')}}" method="POST" style="display: none;">{{ csrf_field() }}</form>
 

@@ -94,8 +94,14 @@
 		                                <div class="col-md-5">
 		                                    <div class="form-group row">
 		                                        <label class="control-label text-right col-md-3">Country</label>
-		                                        <div class="col-md-9">
-		                                            <input type="text" name="country" value="{{ old('country') }}" class="form-control " placeholder="Enter Country Name" required>
+		                                        <div class="col-md-8">
+		                                             <select  name="country"  class="form-control" required>
+                                                        <option value=""></option>
+                                                        @foreach($countries as $country)
+														<option value="{{$country->id }}">{{$country->name}}</option>
+                                                        @endforeach
+                                                        
+                                                    </select>
 		                                        </div>
 		                                    </div>
 		                                </div>

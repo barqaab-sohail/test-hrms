@@ -20,7 +20,7 @@ class TrainingController extends Controller
         $employee = employee::find($id);
         $trainingIds = training::all()->where('employee_id', $id);
         $employees = employee::all();
-        return view ('training.training',compact('employee','employees','trainingIds'));
+        return view ('hr.training.training',compact('employee','employees','trainingIds'));
     }
 
 	public function store(Request $request){
@@ -41,7 +41,7 @@ class TrainingController extends Controller
         $employee = employee::find(session('employee_id'));
         $trainingIds = training::all()->where('employee_id', session('employee_id'));
         $data = training::find($id);
-        return view ('training.editTraining',compact('data','employee','trainingIds'));
+        return view ('hr.training.editTraining',compact('data','employee','trainingIds'));
     }
     
     public function update(Request $request, $id)

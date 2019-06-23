@@ -19,7 +19,7 @@ class MembershipController extends Controller
         $employee = employee::find($id);
         $membershipIds = membership::all()->where('employee_id', $id);
         $employees = employee::all();
-        return view ('membership.membership',compact('employee','employees','membershipIds'));
+        return view ('hr.membership.membership',compact('employee','employees','membershipIds'));
     }
 
 	public function store(Request $request){
@@ -39,7 +39,7 @@ class MembershipController extends Controller
         $employee = employee::find(session('employee_id'));
         $membershipIds = membership::all()->where('employee_id', session('employee_id'));
         $data = membership::find($id);
-        return view ('membership.editMembership',compact('data','employee','membershipIds'));
+        return view ('hr.membership.editMembership',compact('data','employee','membershipIds'));
     }
     
     public function update(Request $request, $id)

@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Auth;
 use App\User;
 use App\employee;
+use App\notification;
 use DB;
 
 use Illuminate\Http\Request;
@@ -32,8 +33,9 @@ class HomeController extends Controller
         //$user = User::where('id', 'user_id')->with('roles')->first();
         //$users = User::with('roles')->get();
         $user = Auth::user();
+        $notification = notification::all()->where('status',0)->count();
         //dd($user->employee->first_name);
-        return view('dashboard')->with(compact('user'));
+        return view('dashboard')->with(compact('user','notification'));
     }
 
 

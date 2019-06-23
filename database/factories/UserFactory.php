@@ -2,6 +2,7 @@
 
 use App\User;
 use App\employee;
+use App\notification;
 use Illuminate\Support\Str;
 use Faker\Generator as Faker;
 
@@ -34,7 +35,8 @@ $factory->define(Employee::class, function (Faker $faker) {
         'middle_name' => $faker->name,
         'last_name' => $faker->name,
         'father_name' => $faker->name,
-        'department_id' => 1,
+        'department_id' => App\department::all(['id'])->random(),
+        'marital_status' => App\marital_status::all(['name'])->random(),
         'date_of_birth' => $faker->date($format = 'Y-m-d'),
         'cnic' => $faker->unique()->ean13,
         'cnic_expiry' => $faker->date($format = 'Y-m-d', $max = 'now'),
@@ -42,4 +44,10 @@ $factory->define(Employee::class, function (Faker $faker) {
     ];
 });
 
+$factory->define(notification::class, function (Faker $faker) {
+    return [
+        'message' => $faker->name,
+        'status' => 0,
+        ];
+});
 

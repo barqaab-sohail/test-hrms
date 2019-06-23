@@ -62,11 +62,11 @@
 		                                    <div class="form-group row">
 		                                        <label class="control-label text-right col-md-3">Marks Obtain</label>
 		                                        <div class="col-md-3">
-		                                            <input type="text" name="marks_obtain" value="{!! old('marks_obtain', optional($data)->marks_obtain) !!}"   class="form-control " required>
+		                                            <input type="text" name="marks_obtain" value="{!! old('marks_obtain', optional($data)->marks_obtain) !!}"   class="form-control " >
 		                                        </div>
 		                                         <label class="control-label text-right col-md-3">Total Marks</label>
 		                                        <div class="col-md-3">
-		                                            <input type="text" name="total_marks" value="{!! old('total_marks', optional($data)->total_marks) !!}"   class="form-control " required>
+		                                            <input type="text" name="total_marks" value="{!! old('total_marks', optional($data)->total_marks) !!}"   class="form-control " >
 		                                        </div>
 		                                    </div>
 		                                </div>
@@ -74,14 +74,29 @@
 		                                <div class="col-md-6">	
 		                                    <div class="form-group row">
 		                                         <label class="control-label text-right col-md-3">Level of Degree</label>
-		                                        <div class="col-md-3">
-		                                            <input type="number" name="level" value= "{!! old('level', optional($data)->level) !!}"  class="form-control " required>
+		                                        <div class="col-md-2">
+		                                            <select  name="level"  class="form-control" required>
+
+													<option value=""></option>
+													@for ($i = 5; $i < 21; $i++)
+    												<option value="{{$i}}"
+													@if($i == $data->level) selected="selected" @endif
+    												>{{ $i }}</option>
+													@endfor
+
+													</select>
 		                                        </div>
 		                                         <label class="control-label text-right col-md-3">Passing Year</label>
 		                                        <div class="col-md-3">
-		                                            <input type="text" name="completion" value="{!! old('completion', optional($data)->completion) !!}"   class="form-control " required>
-
-		                                            
+													<select  name="completion"  class="form-control" required>
+													<option value=""></option>
+													@for ($i = (date('Y')-60); $i < (date('Y')+1); $i++)
+													<option value="{{$i}}"
+													@if($i == $data->completion) selected="selected" @endif
+													>{{ $i }}</option>
+													@endfor
+													</select>
+	                                            
 		                                        </div>
 		                                    </div>
 		                                </div>
@@ -93,7 +108,7 @@
 		                                    <div class="form-group row">
 		                                        <label class="control-label text-right col-md-3">From</label>
 		                                        <div class="col-md-6">
-		                                            <input type="text" id="from" name="from" value="{!! old('from', optional($data)->from) !!}" class="form-control"  readonly required>
+		                                            <input type="text" id="from" name="from" value="{!! old('from', optional($data)->from) !!}" class="form-control"  readonly >
 		                                        </div>
 		                                    </div>
 		                                </div>
@@ -103,7 +118,7 @@
 		                                    <div class="form-group row">
 		                                        <label class="control-label text-right col-md-3">To</label>
 		                                        <div class="col-md-6">
-		                                            <input type="text" id="to" name="to" value="{!! old('to', optional($data)->to) !!}" class="form-control "  readonly required>
+		                                            <input type="text" id="to" name="to" value="{!! old('to', optional($data)->to) !!}" class="form-control "  readonly >
 		                                        </div>
 		                                    </div>
 		                                </div>
@@ -113,7 +128,7 @@
 		                                    <div class="form-group row">
 		                                        <label class="control-label text-right col-md-3">Grade</label>
 		                                        <div class="col-md-6">
-		                                            <input type="text"  name="grade" value="{!! old('grade', optional($data)->grade) !!}" class="form-control" placeholder="Enter Grade" required>
+		                                            <input type="text"  name="grade" value="{!! old('grade', optional($data)->grade) !!}" class="form-control" placeholder="Enter Grade" >
 		                                        </div>
 		                                    </div>
 		                                </div>
@@ -123,7 +138,15 @@
 		                                    <div class="form-group row">
 		                                        <label class="control-label text-right col-md-3">Country</label>
 		                                        <div class="col-md-6">
-		                                            <input type="text" name="country" value="{!! old('country', optional($data)->country) !!}" class="form-control " placeholder="Enter Country Name" required>
+
+
+											<select  name="country"  class="form-control" required>
+		                                           	<option value=""></option>
+		                                           	@foreach($countries as $country)
+													<option value="{{$country->name}}" @if($country->name == $data->country) selected="selected" @endif>{{$country->name}}</option>
+                                                    @endforeach 	
+                                                    </select>
+
 		                                        </div>
 		                                    </div>
 		                                </div>

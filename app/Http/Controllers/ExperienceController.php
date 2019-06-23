@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\User;
 use App\employee;
 use App\Experience;
+use App\country;
 use DB;
 
 class ExperienceController extends Controller
@@ -16,11 +17,11 @@ class ExperienceController extends Controller
     }
 
     public function create($id){
-
+        $countries = country::all();
         $employee = employee::find($id);
         $experienceIds = experience::all()->where('employee_id', $id);
         $employees = employee::all();
-        return view ('experience.experience',compact('employee','employees','experienceIds'));
+        return view ('hr.experience.experience',compact('employee','employees','experienceIds','countries'));
     }
 
 	public function store(Request $request){
@@ -42,7 +43,7 @@ class ExperienceController extends Controller
         $employee = employee::find(session('employee_id'));
         $experienceIds = experience::all()->where('employee_id', session('employee_id'));
         $data = experience::find($id);
-        return view ('experience.editExperience',compact('data','employee','experienceIds'));
+        return view ('hr.experience.editExperience',compact('data','employee','experienceIds'));
     }
     
     public function update(Request $request, $id)

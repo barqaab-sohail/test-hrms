@@ -20,7 +20,7 @@ class OtherController extends Controller
        $employee = employee::find($id);
        $blood_groups= blood_group::all();
             
-       return view ('other_information.editOther', compact('employee','blood_groups'));
+       return view ('hr.other_information.editOther', compact('employee','blood_groups'));
     }
 
      public function update(Request $request, $id)

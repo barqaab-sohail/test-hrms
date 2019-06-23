@@ -19,7 +19,7 @@ class AgreementController extends Controller
 
        $employee = employee::find($id);
                   
-       return view ('agreement.editAgreement', compact('employee'));
+       return view ('hr.agreement.editAgreement', compact('employee'));
     }
 
      public function update(Request $request, $id)

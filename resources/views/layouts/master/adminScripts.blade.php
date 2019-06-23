@@ -27,6 +27,8 @@
 <!-- Chart JS -->
 <script src="{{asset('Massets/js/dashboard1.js') }}"></script>
 <script src="{{asset('Massets/js/dashboard1.js') }}"></script>
+<!--CDN ChartJS -->
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.min.js" charset="utf-8"></script>
 
 <!-- ============================================================== -->
 <!-- Style switcher -->

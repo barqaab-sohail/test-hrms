@@ -40,22 +40,25 @@
                 {{--<li> <a class="" href="#" aria-expanded="false"><i class="mdi mdi-account-circle">  </i><span class="hide-menu">Users</span></a>--}}
                 {{--</li>--}}
                 -->
-                 <li @if(request()->is('dashboard')) class="active" @endif><a class="waves-effect waves-dark" href="{{route('dashboard')}}" aria-expanded="false"><i class="mdi mdi-gauge"></i><span class="hide-menu">Dashboard </span></a>
+                 <li @if(request()->is('dashboard')) class="active" @endif><a class="waves-effect waves-dark" href="{{route('dashboard')}}" aria-expanded="false"><i class="fas fa-tachometer-alt"></i><span class="hide-menu">Dashboard </span></a>
                 </li>
-                @if(Auth::user()->role_id==1)
-                <li @if(request()->is('notification')) class="active" @endif><a class="waves-effect waves-dark" href="{{route('notification')}}" aria-expanded="false"><i class="fas fa-bell"></i><span class="hide-menu">Notification </span></a>
-                </li>
-                @endif
+               
 
-
-                <li @if(request()->is('hrms*')) class="active" @endif > <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i class="mdi mdi-account"></i><span class="hide-menu">Human Resource</span></a>
+                <li @if(request()->is('hrms*')) class="active" @endif > <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i class="fas fa-user"></i><span class="hide-menu">Human Resource</span></a>
                     <ul aria-expanded="false" class="collapse">
                         <li><a href="{{route('employeeList')}}">List of Employees</a></li>
                         <li><a href="{{route('createEmployee')}}">Add Employee</a></li>
-                        
                     </ul>
-
                 </li>
+
+                 <li @if(request()->is('chart*')) class="active" @endif > <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i class="fas fa-chart-pie"></i><span class="hide-menu">Reports</span></a>
+                    <ul aria-expanded="false" class="collapse">
+                        <li><a href="">List of Reports</a></li>
+                        <li><a href="{{route('chart')}}">Charts</a></li>
+                    </ul>
+                </li>
+
+
                 <li @if(request()->is('project*')) class="active" @endif > <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i class="mdi mdi-briefcase"></i><span class="hide-menu">Projects</span></a>
                     <ul aria-expanded="false" class="collapse">
                         <li><a href="{{route('projectList')}}">List of Projects</a></li>

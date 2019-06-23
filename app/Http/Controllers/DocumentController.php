@@ -19,7 +19,7 @@ class DocumentController extends Controller
         $employee = employee::find($id);
         $documentIds = document::all()->where('employee_id', $id);
         $employees = employee::all();
-        return view ('document.document',compact('employee','employees','documentIds'));
+        return view ('hr.document.document',compact('employee','employees','documentIds'));
 
     }
 
@@ -49,7 +49,7 @@ class DocumentController extends Controller
         $employee = employee::find(session('employee_id'));
         $documentIds = document::all()->where('employee_id', session('employee_id'));
         $data = document::find($id);
-        return view ('document.editDocument',compact('data','employee','documentIds'));
+        return view ('hr.document.editDocument',compact('data','employee','documentIds'));
     }
     
     public function update(Request $request, $id)

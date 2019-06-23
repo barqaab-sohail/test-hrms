@@ -26,7 +26,7 @@ class AddressController extends Controller
    				$currentAddress = null;
    				$permanentAddress = null;
    		}
-       return view ('contact.editContact', compact('employee','permanentAddress','currentAddress'));
+       return view ('hr.contact.editContact', compact('employee','permanentAddress','currentAddress'));
     }
 
     public function updatePermanent(Request $request, $id)

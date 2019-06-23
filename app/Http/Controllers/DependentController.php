@@ -19,7 +19,7 @@ class DependentController extends Controller
         $employee = employee::find($id);
         $dependentIds = dependent::all()->where('employee_id', $id);
         $employees = employee::all();
-        return view ('dependent.dependent',compact('employee','employees','dependentIds'));
+        return view ('hr.dependent.dependent',compact('employee','employees','dependentIds'));
     }
 
 	public function store(Request $request){
@@ -43,7 +43,7 @@ class DependentController extends Controller
         $employee = employee::find(session('employee_id'));
         $dependentIds = dependent::all()->where('employee_id', session('employee_id'));
         $data = dependent::find($id);
-        return view ('dependent.editDependent',compact('data','employee','dependentIds'));
+        return view ('hr.dependent.editDependent',compact('data','employee','dependentIds'));
     }
     
     public function update(Request $request, $id)

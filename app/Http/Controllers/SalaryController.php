@@ -16,7 +16,7 @@ class SalaryController extends Controller
 
     public function edit($id){
        $employee = employee::find($id);
-       return view ('salary.editSalary', compact('employee'));      
+       return view ('hr.salary.editSalary', compact('employee'));      
     }
 
     public function update(Request $request, $id)

@@ -62,11 +62,11 @@
 		                                    <div class="form-group row">
 		                                        <label class="control-label text-right col-md-3">Marks Obtain</label>
 		                                        <div class="col-md-3">
-		                                            <input type="text" id="marks_obtain" name="marks_obtain" value="{{ old('marks_obtain') }}"   class="form-control " required>
+		                                            <input type="text" id="marks_obtain" name="marks_obtain" value="{{ old('marks_obtain') }}"   class="form-control " >
 		                                        </div>
 		                                         <label class="control-label text-right col-md-3">Total Marks</label>
 		                                        <div class="col-md-3">
-		                                            <input type="text" id="total_marks" name="total_marks" value="{{ old('total_marks') }}"   class="form-control " required>
+		                                            <input type="text" id="total_marks" name="total_marks" value="{{ old('total_marks') }}"   class="form-control " >
 		                                        </div>
 		                                    </div>
 		                                </div>
@@ -89,10 +89,14 @@
 		                                        </div>
 		                                         <label class="control-label text-right col-md-3">Passing Year</label>
 		                                        <div class="col-md-3">
-		                                            <input type="number" name="completion" value="{{ old('completion') }}"   class="form-control " required> 
-													
+		                                        	<select  name="completion"  class="form-control" required>
 
-
+													<option value=""></option>
+													@for ($i = (date('Y')-60); $i < (date('Y')+1); $i++)
+    												<option value="{{$i}}">{{ $i }}</option>
+													@endfor
+													</select>
+		                                            												
 
 		                                             <input type="number" name="employee_id" value="{{session('employee_id')}}"   class="form-control " hidden>
 		                                        </div>
@@ -106,7 +110,7 @@
 		                                    <div class="form-group row">
 		                                        <label class="control-label text-right col-md-3">From</label>
 		                                        <div class="col-md-6">
-		                                            <input type="text" id="from" name="from" value="{{ old('from') }}" class="form-control" readonly required>
+		                                            <input type="text" id="from" name="from" value="{{ old('from') }}" class="form-control" readonly >
 		                                        </div>
 		                                    </div>
 		                                </div>
@@ -116,7 +120,7 @@
 		                                    <div class="form-group row">
 		                                        <label class="control-label text-right col-md-3">To</label>
 		                                        <div class="col-md-6">
-		                                            <input type="text" id="to" name="to" value="{{ old('to') }}" class="form-control " readonly required>
+		                                            <input type="text" id="to" name="to" value="{{ old('to') }}" class="form-control " readonly >
 		                                        </div>
 		                                    </div>
 		                                </div>
@@ -126,7 +130,7 @@
 		                                    <div class="form-group row">
 		                                        <label class="control-label text-right col-md-3">Grade</label>
 		                                        <div class="col-md-6">
-		                                            <input type="text"  name="grade" value="{{ old('grade') }}" class="form-control" placeholder="Enter Grade" required>
+		                                            <input type="text"  name="grade" value="{{ old('grade') }}" class="form-control" placeholder="Enter Grade" >
 		                                        </div>
 		                                    </div>
 		                                </div>
@@ -137,7 +141,7 @@
 		                                        <label class="control-label text-right col-md-3">Country</label>
 		                                        <div class="col-md-7">
 		                                          <select  name="country"  class="form-control" required>
-                                                        
+                                                        <option value=""></option>
                                                         @foreach($countries as $country)
 														<option value="{{$country->id }}">{{$country->name}}</option>
                                                         @endforeach

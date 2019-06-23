@@ -20,7 +20,7 @@ class BankController extends Controller
         $employee = employee::find($id);
         $bankIds = bank::all()->where('employee_id', $id);
         $employees = employee::all();
-        return view ('bank.bank',compact('employee','employees','bankIds'));
+        return view ('hr.bank.bank',compact('employee','employees','bankIds'));
     }
 
 	public function store(Request $request){
@@ -40,7 +40,7 @@ class BankController extends Controller
         $employee = employee::find(session('employee_id'));
         $bankIds = bank::all()->where('employee_id', session('employee_id'));
         $data = bank::find($id);
-        return view ('bank.editBank',compact('data','employee','bankIds'));
+        return view ('hr.bank.editBank',compact('data','employee','bankIds'));
     }
     
     public function update(Request $request, $id)
