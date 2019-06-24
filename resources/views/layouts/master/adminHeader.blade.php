@@ -73,7 +73,7 @@
                 
                 <!-- Top Right Side User Picutre  -->
                 <li class="nav-item dropdown"> 
-                    <a class="nav-link hidden-sm-down text-muted waves-effect waves-dark" href="javascript:void(0)"><span class="badge badge-danger">{{$notification}}</span><i class="fas fa-bell"></i>
+                    <a class="nav-link hidden-sm-down text-muted waves-effect waves-dark" href="javascript:void(0)"><span class="badge badge-danger"></span><i class="fas fa-bell"></i>
                     </a>
                     
                 </li>

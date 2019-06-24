@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 use Illuminate\Support\Facades\DB;
 use App\User;
+use App\Notifications\MailNotification;
 use Illuminate\Http\Request;
 use Illuminate\Auth\Events\Registered;
 use App\Http\Controllers\Controller;
@@ -56,7 +57,6 @@ class RegisterController extends Controller
             'password' => ['required', 'string', 'min:8', 'confirmed'],
         ]);
     }
-
     /**
      * Create a new user instance after a valid registration.
      *
@@ -65,22 +65,23 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        return User::create([
+     $user =  User::create([
             'cnic' => $data['cnic'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
         ]);
+        
+        return $user;
     }
 
     public function register(Request $request)
     {
        $this->validator($request->all())->validate();
-
-             
+           
         //$user = New user;
         //$user = user::findOrFail(1);
 
-        $test= User::where('email', $request->email)->where('cnic', $request->cnic)->first();
+        $test= User::where('email', $request->email)->first();
 
         
         if ($test===null)
@@ -98,10 +99,16 @@ class RegisterController extends Controller
 
             }else{
 
+            $user = User::where('email', $request->email)->first();
+            $user->notify(New MailNotification);
+
             DB::table('users')
-                ->where('email', $request->email)->where('cnic', $request->cnic)
+                ->where('email', $request->email)
                 ->update(['status' => 1, 'password' => Hash::make($request->password) ]);
-                return view('auth.login');
+            
+            $user = User::where('email', $request->email)->first();
+                
+                return redirect()->route('login')->with('success', 'You are Registered Sucessfully');
             }
         }
                

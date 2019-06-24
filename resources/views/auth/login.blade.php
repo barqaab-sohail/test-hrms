@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
+
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
@@ -8,7 +9,13 @@
                 <div class="card-header">{{ __('Login') }}</div>
 
                 <div class="card-body">
-
+                    
+                     @if(Session::has('success'))
+                        <div class="alert alert-success">
+                        <a href="#" class="close" data-dismiss="alert"></a>
+                        <strong></strong> {{Session::get('success')}}
+                        </div>
+                    @endif
                     @if ($errors->any())
                         <div class="alert alert-danger">
                          <ul>

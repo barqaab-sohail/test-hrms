@@ -186,10 +186,6 @@ Route::get('/hrms/agreement/edit/{id?}', [
 Route::post('/hrms/editAgreement/{id?}', 'AgreementController@update')->name('editAgreement');
 
 
-
-
-
-
 //Project
 Route::get('/project/projectList', 'ProjectController@index')->name('projectList');
 Route::get('/project/createProject', 'ProjectController@create')->name('createProject');
