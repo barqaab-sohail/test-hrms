@@ -30,10 +30,8 @@
             <a type="submit" role="button"  href="{{route('other.edit', session('employee_id'))}}" class="btn btn-info @if(request()->is('*other/edit*')) active @endif">Other Information</a>
             <a type="submit" role="button"  href="{{route('dependent', session('employee_id'))}}" class="btn btn-info @if(request()->is('*dependent*')) active @endif">Dependent</a>
             <a type="submit" role="button"  href="{{route('agreement.edit', session('employee_id'))}}" class="btn btn-info @if(request()->is('*agreement/edit*')) active @endif">Agreement Detail</a>
-          
-
-           <a type="submit" role="button"  href="#" class="btn btn-info">Posting</a>
-                     
+            <a type="submit" role="button"  href="{{route('posting', session('employee_id'))}}" class="btn btn-info @if(request()->is('*posting*')) active @endif">Posting</a>
+                              
            <a type="submit" role="button"   href="#" class="btn btn-info">Exit Interview</a>
 
 

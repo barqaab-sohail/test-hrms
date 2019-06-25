@@ -33,16 +33,13 @@ class HomeController extends Controller
         //$user = User::where('id', 'user_id')->with('roles')->first();
         //$users = User::with('roles')->get();
         $user = Auth::user();
-        $notification = notification::all()->where('status',0)->count();
+        
         //dd($user->employee->first_name);
-        return view('dashboard')->with(compact('user','notification'));
+        return view('dashboard')->with(compact('user'));
     }
 
 
    
-
-
-
 
     public function store (Request $request){
 

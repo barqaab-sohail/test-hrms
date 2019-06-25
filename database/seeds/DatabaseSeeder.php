@@ -34,11 +34,7 @@ class DatabaseSeeder extends Seeder
         DB::table('blood_group')->insert(['name' => 'B-',]);
         DB::table('blood_group')->insert(['name' => 'AB-',]);
         
-        DB::table('notifications')->insert([
-            'message' => 'It is testing message',
-            'status' => 0,
-                      
-        ]);
+       
 
 
         DB::table('employees')->insert([
@@ -71,6 +67,30 @@ class DatabaseSeeder extends Seeder
             'country'=>'Pakistan',
             'grade'=>'A',
         ]);
+
+                 
+         $projects = array(
+            array('name' => '500kV Gatti Grid Station Project',
+            'type'=>'Time Based',
+            'client'=>'NTDC',
+            'commencement'=>'2019-01-14',
+            'contractual_completion'=>'2015-01-01',
+            'status'=>'In Progres',
+            'role'=>'Independent',
+            'share'=>'100'),
+
+            array('name' => '500kV Neelum-Jhelum Transmission Line Project',
+            'type'=>'Time Based',
+            'client'=>'NTDC',
+            'commencement'=>'2017-01-01',
+            'contractual_completion'=>'2019-11-30',
+            'status'=>'In Progres',
+            'role'=>'JV Partner',
+            'share'=>'35'),
+            );
+            
+        DB::table('projects')->insert($projects);
+
 
 
         $countries = array(

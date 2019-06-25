@@ -1,5 +1,8 @@
 <?php
 
+use App\user;
+
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -18,12 +21,17 @@
 
 Auth::routes();
 
+//notification
+Route::get('/notificationList', 'NotificationController@index')->name('notificationList');
+Route::get('/createNotification','NotificationController@create')->name('createNotification');
+Route::post('/storeNotification','NotificationController@store')->name('storeNotification');
+Route::get ('/showNotification/{id?}','NotificationController@show')->name('showNotification');
+Route::get('/deleteAllNotifications/{subject?}', 'NotificationController@deleteAllNotifications')->name('deleteAllNotifications');
+
+
 //Dashboard
 Route::get('/chart', 'ChartController@index')->name('chart');
 Route::get('/dashboard', 'HomeController@index')->name('dashboard');
-
-//notification
-Route::get('/notification', 'NotificationController@index')->name('notification');
 
 
 //Employee & User Routes
@@ -115,7 +123,7 @@ Route::get('/hrms/publication/edit/{id?}', [
             'as' => 'publication.edit'
         ]);
 Route::post('/editPublication/{id?}', 'PublicationController@update')->name('editPublication');
-//Publication Routes
+//Memebership Routes
 Route::get('/hrms/membership/{id?}', 'MembershipController@create')->name('membership');
 Route::post('/storeMembership', 'MembershipController@store')->name('storeMembership');
 Route::get('/hrms/membership/edit/{id?}', [
@@ -123,6 +131,16 @@ Route::get('/hrms/membership/edit/{id?}', [
             'as' => 'membership.edit'
         ]);
 Route::post('/editMembership/{id?}', 'MembershipController@update')->name('editMembership');
+
+
+//Posting Routes
+Route::get('/hrms/posting/{id?}', 'PostingController@create')->name('posting');
+Route::post('/storePosting', 'PostingController@store')->name('storePosting');
+Route::get('/hrms/posting/edit/{id?}', [
+            'uses' => 'PostingController@edit',
+            'as' => 'posting.edit'
+        ]);
+Route::post('/editPosting/{id?}', 'PostingController@update')->name('editPosting');
 
 
 //Document Routes
@@ -184,7 +202,6 @@ Route::get('/hrms/agreement/edit/{id?}', [
             'as' => 'agreement.edit'
         ]);
 Route::post('/hrms/editAgreement/{id?}', 'AgreementController@update')->name('editAgreement');
-
 
 //Project
 Route::get('/project/projectList', 'ProjectController@index')->name('projectList');
