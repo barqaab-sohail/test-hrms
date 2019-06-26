@@ -16,6 +16,7 @@
             <a type="submit" role="button" href="{{route('employee.edit',session('employee_id'))}}" class="btn btn-info @if(request()->is('*employee/edit*')) active @endif" >Personal Information</a>
             <a type="submit" role="button"  href="{{route('picture.edit', session('employee_id'))}}" class="btn btn-info @if(request()->is('*icture*')) active @endif">Picture</a>
             <a type="submit" role="button"  href="{{route('user.edit', session('employee_id'))}}" class="btn btn-info @if(request()->is('*user/edit*')) active @endif">User</a>
+            <a type="submit" role="button"  href="{{route('posting', session('employee_id'))}}" class="btn btn-info @if(request()->is('*posting*')) active @endif">Posting</a>
             <a type="submit" role="button" href="{{route('salary.edit', session('employee_id'))}}" class="btn btn-info @if(request()->is('*salary/edit*')) active @endif">Salary</a>
             <a type="submit" role="button"  href="{{route('education', session('employee_id'))}}" class="btn btn-info @if(request()->is('*education*')) active @endif">Education</a>
             <a type="submit" role="button"  href="{{route('experience', session('employee_id'))}}" class="btn btn-info @if(request()->is('*experience*')) active @endif">Experience</a>
@@ -30,7 +31,7 @@
             <a type="submit" role="button"  href="{{route('other.edit', session('employee_id'))}}" class="btn btn-info @if(request()->is('*other/edit*')) active @endif">Other Information</a>
             <a type="submit" role="button"  href="{{route('dependent', session('employee_id'))}}" class="btn btn-info @if(request()->is('*dependent*')) active @endif">Dependent</a>
             <a type="submit" role="button"  href="{{route('agreement.edit', session('employee_id'))}}" class="btn btn-info @if(request()->is('*agreement/edit*')) active @endif">Agreement Detail</a>
-            <a type="submit" role="button"  href="{{route('posting', session('employee_id'))}}" class="btn btn-info @if(request()->is('*posting*')) active @endif">Posting</a>
+            
                               
            <a type="submit" role="button"   href="#" class="btn btn-info">Exit Interview</a>
 

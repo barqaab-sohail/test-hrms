@@ -29,6 +29,18 @@ Route::get ('/showNotification/{id?}','NotificationController@show')->name('show
 Route::get('/deleteAllNotifications/{subject?}', 'NotificationController@deleteAllNotifications')->name('deleteAllNotifications');
 
 
+//import data from excel
+Route::post('/import_excel/import', 'ImportExcelController@import')->name('importExcel');
+
+//Phone Contact Number
+Route::post('/import_excel/phone', 'ContactNumberController@import')->name('importPhone');
+Route::get('/phone/phoneList', 'ContactNumberController@index')->name('phoneList');
+Route::get('/phone/edit/{id?}', [
+            'uses' => 'ContactNumberController@edit',
+            'as' => 'phone.edit'
+        ]);
+
+
 //Dashboard
 Route::get('/chart', 'ChartController@index')->name('chart');
 Route::get('/dashboard', 'HomeController@index')->name('dashboard');

@@ -16,7 +16,7 @@
 		<div class="container">
    					<h3 align="center">Import Excel File</h3>
 
-				   	<form method="post" enctype="multipart/form-data" action="{{route('importExcel')}}">
+				   	<form method="post" enctype="multipart/form-data" action="{{route('importPhone')}}">
 				    {{ csrf_field() }}
 				    <div class="form-group">
 				     <table class="table">
@@ -41,8 +41,8 @@
 
 		<hr>
 
-@if($projects->count()!=0)
-			<h4 class="card-title">List of Projects</h4>
+@if($phones->count()!=0)
+			<h4 class="card-title">List of Phone Numbers </h4>
 				
 			
 			<div class="table-responsive m-t-40">
@@ -51,25 +51,25 @@
 					<thead>
 					
 					<tr>
-						<th>Project Name</th>
-						<th>Name of Client</th>
-						<th>Commencement Date</th>
-						<th>Contractual Completion</th>
-						<th>Status</th>
+						<th>Name</th>
+						<th>Designation</th>
+						<th>Mobile-1</th>
+						<th>Mobile-2</th>
+						<th>Office</th>
 						<th> Actions </th>
 					</tr>
 					</thead>
 					<tbody>
-						@foreach($projects as $project)
+						@foreach($phones as $phone)
 							<tr>
-								<td>{{$project->name}}</td>
-								<td>{{$project->client}}</td>
-								<td>{{$project->commencement}}</td>
-								<td>{{$project->contractual_completion}}</td>
-								<td>{{$project->status}}</td>
+								<td>{{$phone->name}}</td>
+								<td>{{$phone->designation}}</td>
+								<td>{{$phone->mobile_1}}</td>
+								<td>{{$phone->mobile_2}}</td>
+								<td>{{$phone->office}}</td>
 								<td>
 								
-								 <a class="btn btn-info btn-sm" href="{{route('project.edit',['id'=>$project->id])}}" data-toggle="tooltip" data-original-title="Edit"> <i class="fas fa-pencil-alt text-white "></i></a>
+								 <a class="btn btn-info btn-sm" href="{{route('phone.edit',['id'=>$phone->id])}}" data-toggle="tooltip" data-original-title="Edit"> <i class="fas fa-pencil-alt text-white "></i></a>
 															
 							</tr>
 						@endforeach
@@ -80,7 +80,7 @@
 				</table>
 			</div>
 	@else
-	<h4 class="card-title">No Project Entered</h4>
+	<h4 class="card-title">No Phone Record Entered</h4>
 
 	@endif
 		</div>

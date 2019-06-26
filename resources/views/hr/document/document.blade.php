@@ -72,8 +72,11 @@
 		                                <div class="col-md-3">
 		                                    <div class="form-group row">
 		                                        <center >
-		                                		<input type="image"  src="{{asset('Massets/images/document.png')}}" class="img-round picture-container picture-src"  id="wizardPicturePreview" title="" width="150" />
+		                                		<input type="image"  src="{{asset('Massets/images/document.png')}}" class="img-round picture-container picture-src"  id="wizardPicturePreview"  title="" width="150" />
 		                                		<input type="file"  name="picture" id="wizard-picture" class="" required hidden>
+
+		                                		
+		                                		<embed src="{{asset('Massets/images/02.pdf')}}#toolbar=0&navpanes=0&scrollbar=0"  type="application/pdf" width="100%" />
 
 				                                <h6 class="card-title m-t-10">Click On Image to Add Document</h6>
 		                                
@@ -128,7 +131,7 @@
 						@foreach($documentIds as $documentId)
 							<tr>
 								<td>{{$documentId->document_name}}</td>
-								<td><input type="image"  src="{{asset(isset($documentId->file_name)? 'upload/documents/'.$documentId->file_name: 'Massets/images/document.png') }}" title="" width="70" /></td>
+								<td><img  src="{{asset(isset($documentId->file_name)? 'upload/documents/'.$documentId->file_name: 'Massets/images/document.png') }}" href="{{asset(isset($documentId->file_name)? 'upload/documents/'.$documentId->file_name: 'Massets/images/document.png') }}" width=30/></td>
 								
 								
 								<td>
@@ -156,11 +159,22 @@
         </div>
     </div>
  @push('scripts')
+        
         <script>
             $(document).ready(function(){
 // Prepare the preview for profile picture
 		        $("#wizard-picture").change(function(){
+		        
+		        	var fileName = this.files[0].name;
+		        	var fileType = fileName.split('.').pop();
+		        	alert(fileType);
+		        	
+		        	if (fileType !='pdf'){
                     readURL(this);
+                	}else
+                	{
+                		alert('file is pdf');
+                	}
                 });
             });
             function readURL(input) {
@@ -175,6 +189,11 @@
             $("#wizardPicturePreview").click (function() {
                 $("input[id='wizard-picture']").click();
             });
+
+            $(function(){
+ 			 $('img').EZView();
+			});
+
         </script>
     @endpush
 

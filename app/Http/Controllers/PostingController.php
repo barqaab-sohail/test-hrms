@@ -25,7 +25,7 @@ class PostingController extends Controller
 
 	public function store(Request $request){
          $request->validate([
-         'institute' => 'required|max:255',
+         'position' => 'required|max:255',
          ]);
 
         $data = posting::create($request->all());

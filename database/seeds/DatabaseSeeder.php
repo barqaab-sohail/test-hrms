@@ -70,6 +70,16 @@ class DatabaseSeeder extends Seeder
 
                  
          $projects = array(
+           
+             array('name' => 'Overhead of the Company',
+            'type'=>'Time Based',
+            'client'=>'BARQAAB Consulting Services (Pvt.)',
+            'commencement'=>'2000-05-09',
+            'contractual_completion'=>'2030-01-01',
+            'status'=>'In Progres',
+            'role'=>'Independent',
+            'share'=>'100'),
+
             array('name' => '500kV Gatti Grid Station Project',
             'type'=>'Time Based',
             'client'=>'NTDC',
@@ -87,6 +97,8 @@ class DatabaseSeeder extends Seeder
             'status'=>'In Progres',
             'role'=>'JV Partner',
             'share'=>'35'),
+           
+            
             );
             
         DB::table('projects')->insert($projects);

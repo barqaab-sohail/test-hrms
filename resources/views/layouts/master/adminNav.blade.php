@@ -78,6 +78,11 @@
 
                 </li>
 
+                <li @if(request()->is('*phone*')) class="active" @endif > <a class="has-arrow waves-effect waves-dark" href="{{route('phoneList')}}" aria-expanded="false"><i class="fas fa-phone"></i><span class="hide-menu">Notifications</span></a>
+                    
+
+                </li>
+
                 <!--
                 <li  ><a class="has-arrow waves-effect waves-dark" href="#"><i class="mdi mdi-alarm-check"></i><span class="hide-menu">Attendance</span></a>
                     <ul aria-expanded="false" class="collapse">

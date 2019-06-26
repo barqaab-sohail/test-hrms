@@ -19,11 +19,11 @@ class CreateProjectsTable extends Migration
             $table->string('type');
             $table->string('client');
             $table->date('commencement');
-            $table->date('contractual_completion');
-            $table->date('actual_completion')->nullable();;
-            $table->string('status');
-            $table->string('role');
-            $table->string('share');
+            $table->date('contractual_completion')->nullable();
+            $table->date('actual_completion')->nullable();
+            $table->string('status')->nullable();
+            $table->string('role')->nullable();
+            $table->string('share')->nullable();
             $table->timestamps();
            
         });
