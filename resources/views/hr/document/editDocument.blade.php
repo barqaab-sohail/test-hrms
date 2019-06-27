@@ -181,6 +181,7 @@
 		        	var fileName = this.files[0].name;
 		        	var fileType = fileName.split('.').pop();
 
+		        	
 		        	if (fileType !='pdf'){
                     	$( "#pdf" ).hide();
                     	readURL(this);

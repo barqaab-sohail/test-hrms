@@ -175,19 +175,32 @@
 			// Prepare the preview for profile picture
 		    $("#view").change(function(){
 		        	var fileName = this.files[0].name;
-		        	var fileType = fileName.split('.').pop();
-
-		        	if (fileType !='pdf'){
+		        	var fileType = this.files[0].type;
+		        	var fileSize = this.files[0].size;
+		        	//var fileType = fileName.split('.').pop();
+		        	
+		        //Restrict File Size Less Than 500kb
+		        if (fileSize> 512000){
+		        	alert('File Size is bigger than 500kb');
+		        	$(this).val('');
+		        }else{
+		        	//Restrict File Type
+		        	if ((fileType =='image/jpeg') || (fileType=='image/png')){
                     	$( "#pdf" ).hide();
                     	readURL(this);
                     	document.getElementById("h6").innerHTML = "Image is Attached";
-                	}else
+                	}else if(fileType=='application/pdf')
                 	{
                 	readURL(this);// for Default Image
                 	
                 	document.getElementById("pdf").src="{{asset('Massets/images/document.png')}}";	
                 	$( "#pdf" ).show();
+                	}else{
+                		alert('Only PDF, JPG and PNG Files Allowed');
+		        	$(this).val('');
+
                 	}
+                }
                 
             });
         });
