@@ -49,6 +49,7 @@ class DocumentController extends Controller
         $employee = employee::find(session('employee_id'));
         $documentIds = document::all()->where('employee_id', session('employee_id'));
         $data = document::find($id);
+        
         return view ('hr.document.editDocument',compact('data','employee','documentIds'));
     }
     
