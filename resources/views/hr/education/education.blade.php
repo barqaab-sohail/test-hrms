@@ -108,9 +108,27 @@
 		                             <div class="row">
 		                                <div class="col-md-6">
 		                                    <div class="form-group row">
-		                                        <label class="control-label text-right col-md-3">From</label>
+		                                        <label class="control-label text-right col-md-3">Degree From</label>
 		                                        <div class="col-md-6">
-		                                            <input type="text" id="from" name="from" value="{{ old('from') }}" class="form-control" readonly >
+		                                           <label>Month</label>
+		                                           <select  name="from_month"  id="from_month" class="form-control" >
+                                                        <option value=""></option>
+                                                        @for($m=1; $m<=12; ++$m){
+                                                        <option value="{{date('F', mktime(0, 0, 0, $m, 1))}}"> {{date('F', mktime(0, 0, 0, $m, 1))}}</option>
+														@endfor
+                                                   
+                                                    </select>
+
+		                                        </div>
+		                                        <div class="col-md-3">
+		                                        <label>Year</label>
+		                                            <select  name="from_year"  id="from_year" class="form-control" required>
+
+													<option value=""></option>
+													@for ($i = (date('Y')-60); $i < (date('Y')+1); $i++)
+    												<option value="{{$i}}">{{ $i }}</option>
+													@endfor
+													</select>
 		                                        </div>
 		                                    </div>
 		                                </div>
@@ -118,9 +136,27 @@
 		                                <!--/span-->
 		                                <div class="col-md-6">
 		                                    <div class="form-group row">
-		                                        <label class="control-label text-right col-md-3">To</label>
+		                                        <label class="control-label text-right col-md-3">Degree <br>To</label>
 		                                        <div class="col-md-6">
-		                                            <input type="text" id="to" name="to" value="{{ old('to') }}" class="form-control " readonly >
+		                                         <label>Month</label>
+		                                           <select  name="to_month"  id="to_month"class="form-control">
+                                                        <option value=""></option>
+                                                        @for($m=1; $m<=12; ++$m){
+    													<option value="{{date('F', mktime(0, 0, 0, $m, 1))}}"> {{date('F', mktime(0, 0, 0, $m, 1))}}</option>
+														@endfor
+                                                        
+                                                    </select>
+
+		                                        </div>
+		                                        <div class="col-md-3">
+		                                         <label>Year</label>
+		                                            <select  name="to_year" id="to_year"  class="form-control" required>
+
+													<option value=""></option>
+													@for ($i = (date('Y')-60); $i < (date('Y')+1); $i++)
+    												<option value="{{$i}}">{{ $i }}</option>
+													@endfor
+													</select>
 		                                        </div>
 		                                    </div>
 		                                </div>
@@ -230,13 +266,46 @@
  @push('scripts')
         
         <script>
-            $( function() {
-			    $( "#from, #to" ).datepicker({
-			      dateFormat: 'yy-M-dd',
-			      yearRange: '1960:'+ (new Date().getFullYear()),
-			      changeMonth: true,
-			      changeYear: true
-			    });
+            $(document).ready(function() {
+
+            	$('#education').submit(function(e) {
+	    		e.preventDefault();
+
+	    		var months = [
+    			'','January', 'February', 'March', 'April', 'May',
+    			'June', 'July', 'August', 'September',
+    			'October', 'November', 'December' ];
+
+    			function monthNameToNum(monthname) {
+ 				var month = months.indexOf(monthname);
+    			return month ? month + 1 : 0;
+				}
+
+
+
+				var fromYear = $('#from_year').val();
+				var toYear = $('#to_year').val();
+				var fromMonth = $('#from_month').val();
+				var toMonth = $('#to_month').val();
+
+				if (fromYear>toYear)
+				{
+					alert('From Year is Greater Than To');
+				} else if (fromYear==toYear){
+					
+
+					var monthValue = monthNameToNum(fromMonth)-monthNameToNum(toMonth);
+
+					if(monthValue<0){
+					alert('From Month is Greater Than To');
+					}else{
+						return true;
+					}
+				}
+			
+			});
+
+
 		    });
 
 		    $('select').select2({

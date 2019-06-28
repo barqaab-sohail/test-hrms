@@ -20,8 +20,10 @@ class CreateEducationsTable extends Migration
             $table->string('institute');
             $table->string('level');
             $table->year('completion');
-            $table->date('from');
-            $table->date('to');
+            $table->string('from_month')->nullable();
+            $table->string('from_year');
+            $table->string('to_month')->nullable();
+            $table->string('to_year');
             $table->float('total_marks');
             $table->float('marks_obtain');
             $table->string('grade');

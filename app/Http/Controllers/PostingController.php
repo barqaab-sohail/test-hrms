@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\StorePosting;
 use App\employee;
 use App\posting;
 use App\project;
@@ -23,10 +24,8 @@ class PostingController extends Controller
         return view ('hr.posting.posting',compact('employee','projects','postingIds'));
     }
 
-	public function store(Request $request){
-         $request->validate([
-         'position' => 'required|max:255',
-         ]);
+	public function store(StorePosting $request){
+         
 
         $data = posting::create($request->all());
 
@@ -39,14 +38,22 @@ class PostingController extends Controller
     public function edit($id){
         $employee = employee::find(session('employee_id'));
         $postingIds = posting::all()->where('employee_id', session('employee_id'));
+        $projects = project::all();
         $data = posting::find($id);
-        return view ('hr.posting.editPosting',compact('data','employee','postingIds'));
+        return view ('hr.posting.editPosting',compact('data','employee','postingIds','projects'));
     }
     
-    public function update(Request $request, $id)
+    public function update(StorePosting $request, $id)
     {
      
      posting::findOrFail($id)->update($request->all());
      return redirect()->route('posting.edit',['id'=>$id])->with('success', 'Posting is updated succesfully');
+    }
+
+    public function delete(Request $request, $id)
+    {
+        
+    posting::findOrFail($id)->delete();
+    return redirect()->route('posting',['id'=>session('employee_id')])->with('success', 'Document is deleted succesfully');
     }
 }

@@ -18,7 +18,6 @@ class EducationController extends Controller
     }
 
     public function create($id){
-
         $employee = employee::find($id);
         $countries = country::all();
         $educationIds = education::all()->where('employee_id', $id);
@@ -29,9 +28,6 @@ class EducationController extends Controller
 	public function store(StoreEducation $request){
         
         $data = $request->all();
-        $data ['from']= \Carbon\Carbon::parse($request->from)->format('Y-m-d');
-        $data ['to']= \Carbon\Carbon::parse($request->to)->format('Y-m-d');
-
         Education::create($data);
         return redirect()->route('education',['id'=>session('employee_id')])->with('success', 'Data is saved succesfully');
     }
@@ -47,9 +43,8 @@ class EducationController extends Controller
     public function update(StoreEducation $request, $id)
     {     
         $data = $request->all();
-        $data ['from']= \Carbon\Carbon::parse($request->from)->format('Y-m-d');
-        $data ['to']= \Carbon\Carbon::parse($request->to)->format('Y-m-d');
-
+        //$data ['from']= \Carbon\Carbon::parse($request->from)->format('Y-m-d');
+       
      Education::findOrFail($id)->update($data);
      return redirect()->route('education.edit',['id'=>$id])->with('success', 'Education is updated succesfully');
     }

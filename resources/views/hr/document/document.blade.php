@@ -136,7 +136,7 @@
 						@foreach($documentIds as $documentId)
 							<tr>
 								<td>{{$documentId->document_name}}</td>
-								@if($documentId->type=='image/jpeg')
+								@if($documentId->type!='application/pdf')
 								<td><img  id="viewFile" src="{{asset(isset($documentId->file_name)? 'upload/documents/'.$documentId->file_name: 'Massets/images/document.png') }}" href="{{asset(isset($documentId->file_name)? 'upload/documents/'.$documentId->file_name: 'Massets/images/document.png') }}" width=30/></td>
 								@else
 								<td><img  id="viewFile" src="{{asset('Massets/images/document.png')}}" href="{{asset(isset($documentId->file_name)? 'upload/documents/'.$documentId->file_name: 'Massets/images/document.png') }}" width=30/></td>
@@ -146,6 +146,8 @@
 								<td>
 								@if(Auth::user()->role_id==1)
 								 <a class="btn btn-info btn-sm" href="{{route('document.edit',['id'=>$documentId->id])}}" data-toggle="tooltip" data-original-title="Edit"> <i class="fas fa-pencil-alt text-white "></i></a>
+
+								  <a class="btn btn-danger btn-sm" onclick="return confirm('Are you Sure to Delete')" href="{{route('deleteDocument',['id'=>$documentId->id])}}" data-toggle="tooltip" data-original-title="Delete"> <i class="fas fa-trash-alt"></i></a>
 								 @endif
 															
 							</tr>
@@ -179,6 +181,7 @@
 		        	var fileSize = this.files[0].size;
 		        	//var fileType = fileName.split('.').pop();
 		        	
+
 		        //Restrict File Size Less Than 500kb
 		        if (fileSize> 512000){
 		        	alert('File Size is bigger than 500kb');
@@ -206,9 +209,10 @@
         });
             function readURL(input) {
             	var fileName = input.files[0].name;
-		        var fileType = fileName.split('.').pop();
+		        var fileType = input.files[0].type;
+		        //var fileType = fileName.split('.').pop();
 		        		        	
-		        if (fileType !='pdf'){
+		        if (fileType !='application/pdf'){
             	//Read URL if image
 	                if (input.files && input.files[0]) {
 	                    var reader = new FileReader();

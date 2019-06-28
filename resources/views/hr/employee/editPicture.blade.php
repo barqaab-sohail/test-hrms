@@ -31,7 +31,7 @@
 		                        <div class="form-body">
 		                            <center >
 		                            
-		                                <input type="image"  src="{{asset(isset($picture->name)? 'upload/pictures/'.$picture->name: 'Massets/images/default.png') }}" class="img-circle picture-container picture-src"  id="wizardPicturePreview" title="" width="150" />
+		                                <img  src="{{asset(isset($picture->name)? 'upload/pictures/'.$picture->name: 'Massets/images/default.png') }}" class="img-circle picture-container picture-src"  id="wizardPicturePreview" title="" width="150" />
 		                                <input type="file"  name="picture" id="wizard-picture" class="" required hidden>
 
 		                                <h6 class="card-title m-t-10">Click On Image to Add Picture</h6>
@@ -65,23 +65,19 @@
             $(document).ready(function(){
 // Prepare the preview for profile picture
 		        $("#wizard-picture").change(function(){
-		        	
 		        	var fileSize = this.files[0].size;
-		        	if (fileSize>5000000)
+		        	var fileType = this.files[0].type;
+		        	if (fileSize>512000)
 		        	{
-		        		alert('File Size is very large '+fileSize);
+		        		alert('File Size is More Than 500kb');
 		        		$(this).val('');
 		        	}else{
-	    				switch(val.substring(val.lastIndexOf('.') + 1).toLowerCase()){
-	        			case 'jpg': case 'png':
-	        			break;
-	        			default:
-	            		$(this).val('');
-	            		// error message here
-	            		alert("only allow JPG and PNG Files");
-	            		break;
-	    				}
-	    			readURL(this);
+		        		if ((fileType =='image/jpeg') || (fileType=='image/png')){
+                    		readURL(this);
+                    	}else{
+                		alert('Only JPG and PNG Files Allowed');
+		        		$(this).val('');
+                		}
 	    			}
                 });
             });
@@ -94,7 +90,7 @@
                     }
                     reader.readAsDataURL(input.files[0]);
                 }           }
-            $("input[type='image']").click (function() {
+            $("#wizardPicturePreview").click (function() {
                 $("input[id='wizard-picture']").click();
             });
 

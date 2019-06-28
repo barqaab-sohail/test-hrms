@@ -153,6 +153,7 @@ Route::get('/hrms/posting/edit/{id?}', [
             'as' => 'posting.edit'
         ]);
 Route::post('/editPosting/{id?}', 'PostingController@update')->name('editPosting');
+Route::get('/deletePosting/{id?}', 'PostingController@delete')->name('deletePosting');
 
 
 //Document Routes
@@ -163,6 +164,9 @@ Route::get('/hrms/document/edit/{id?}', [
             'as' => 'document.edit'
         ]);
 Route::post('/editDocument/{id?}', 'DocumentController@update')->name('editDocument');
+Route::get('/deleteDocument/{id?}', 'DocumentController@delete')->name('deleteDocument');
+
+
 
 //Bank
 Route::get('/hrms/bank/{id?}', 'BankController@create')->name('bank');
@@ -236,7 +240,9 @@ Route::post('/editProject/{id?}', 'ProjectController@update')->name('editProject
 
 Route::get('/', function (){
 
-return view ('auth.login');
+return  redirect()->route('login');
+
+//view ('auth.login');
 
 });
 

@@ -70,4 +70,16 @@ class DocumentController extends Controller
     	
      return redirect()->route('document.edit',['id'=>$id])->with('success', 'Document is updated succesfully');
     }
+
+    public function delete(Request $request, $id)
+    {
+    
+    $document = document::findOrFail($id);
+    
+    unlink(public_path('upload\documents/'.$document->file_name));
+    $document->forceDelete(); 
+        
+    return redirect()->route('document',['id'=>session('employee_id')])->with('success', 'Document is deleted succesfully');
+    
+    }
 }

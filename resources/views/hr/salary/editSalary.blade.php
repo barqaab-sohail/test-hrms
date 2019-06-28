@@ -45,7 +45,7 @@
 		                                        </div>
 		                                         <label class="control-label text-right col-md-3">House Rent</label>
 		                                        <div class="col-md-3">
-		                                            <input type="text" name="house_rent" value="{!! old('house_rent',isset($employee->salary->house_rent)?$employee->salary->house_rent:'')!!}"   class="form-control prc" >
+		                                            <input type="number" name="house_rent" value="{!! old('house_rent',isset($employee->salary->house_rent)?$employee->salary->house_rent:'')!!}"   class="form-control prc" >
 		                                        </div>
 		                                    </div>
 		                                </div>

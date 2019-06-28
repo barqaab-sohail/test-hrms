@@ -70,7 +70,7 @@
 		                                <div class="col-md-3">
 		                                    <div class="form-group row">
 		                                        <center >
-		                                        @if($data->type=='image/jpeg')
+		                                        @if($data->type!='application/pdf')
 		                                		<img  src="{{asset(isset($data->file_name)? 'upload/documents/'.$data->file_name: 'Massets/images/document.png') }}" class="img-round picture-container picture-src"  id="wizardPicturePreview" title="" width="150" />
 		                                		@else
 		                                		<img  src="{{asset('Massets/images/document.png')}}" class="img-round picture-container picture-src"  id="wizardPicturePreview"  title="" width="150" >
@@ -79,7 +79,7 @@
 		                                		<input type="file"  name="picture" id="wizard-picture" class="" required hidden>
 		                                				                                		
 
-				                                <h6 id="h6" class="card-title m-t-10">Click On Image to Add Document</h6>
+				                                <h6 id="h6" class="card-title m-t-10">Click On Image to Change New Document</h6>
 		                                
 					                            </center>
 		                                       
@@ -90,8 +90,9 @@
 		                            </div>
 									 <div class="row">
 		                                <div class="col-md-7" id="pdf">
-		                                	
+		                                	@if($data->type=='application/pdf')
 		                            		<embed id="pdf" src="{{asset('upload/documents/'.$data->file_name)}}#toolbar=0&navpanes=0&scrollbar=0"  type="application/pdf" height="300" width="100%" />
+		                            		@endif
 		                            		
 		                            	</div>
 		                            </div>
@@ -140,7 +141,7 @@
 						@foreach($documentIds as $documentId)
 							<tr>
 								<td>{{$documentId->document_name}}</td>
-								@if($documentId->type=='image/jpeg')
+								@if($documentId->type!='application/pdf')
 								<td><img  id="viewFile" src="{{asset(isset($documentId->file_name)? 'upload/documents/'.$documentId->file_name: 'Massets/images/document.png') }}" href="{{asset(isset($documentId->file_name)? 'upload/documents/'.$documentId->file_name: 'Massets/images/document.png') }}" width=30/></td>
 								@else
 								<td><img  id="viewFile" src="{{asset('Massets/images/document.png')}}" href="{{asset(isset($documentId->file_name)? 'upload/documents/'.$documentId->file_name: 'Massets/images/document.png') }}" width=30/></td>
@@ -150,6 +151,7 @@
 								<td>
 								@if(Auth::user()->role_id==1)
 								 <a class="btn btn-info btn-sm" href="{{route('document.edit',['id'=>$documentId->id])}}" data-toggle="tooltip" data-original-title="Edit"> <i class="fas fa-pencil-alt text-white "></i></a>
+								 <a class="btn btn-danger btn-sm" onclick="return confirm('Are you Sure to Delete')" href="{{route('deleteDocument',['id'=>$documentId->id])}}" data-toggle="tooltip" data-original-title="Delete"> <i class="fas fa-trash-alt"></i></a>
 								 @endif
 															
 							</tr>
@@ -179,28 +181,41 @@
 			// Prepare the preview for profile picture
 		    $("#wizard-picture").change(function(){
 		        	var fileName = this.files[0].name;
-		        	var fileType = fileName.split('.').pop();
+		        	var fileType = this.files[0].type;
+		        	var fileSize = this.files[0].size;
 
 		        	
-		        	if (fileType !='pdf'){
+		        	 //Restrict File Size Less Than 500kb
+		        if (fileSize> 512000){
+		        	alert('File Size is bigger than 500kb');
+		        	$(this).val('');
+		        }else{
+		        	//Restrict File Type
+		        	if ((fileType =='image/jpeg') || (fileType=='image/png')){
                     	$( "#pdf" ).hide();
                     	readURL(this);
                     	document.getElementById("h6").innerHTML = "Image is Attached";
-                	}else
+                	}else if(fileType=='application/pdf')
                 	{
                 	readURL(this);// for Default Image
                 	
                 	document.getElementById("pdf").src="{{asset('Massets/images/document.png')}}";	
                 	$( "#pdf" ).show();
+                	}else{
+                		alert('Only PDF, JPG and PNG Files Allowed');
+		        	$(this).val('');
+
                 	}
+                }
                 
             });
         });
             function readURL(input) {
             	var fileName = input.files[0].name;
-		        var fileType = fileName.split('.').pop();
+		         var fileType = input.files[0].type;
+		        //var fileType = fileName.split('.').pop();
 		        		        	
-		        if (fileType !='pdf'){
+		        if (fileType !='application/pdf'){
             	//Read URL if image
 	                if (input.files && input.files[0]) {
 	                    var reader = new FileReader();

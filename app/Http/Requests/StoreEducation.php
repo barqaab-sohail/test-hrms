@@ -28,6 +28,8 @@ class StoreEducation extends FormRequest
          'institute' => 'required|max:255',
          'level' => 'required',
          'completion' => 'required',
+         'from_year' => 'required',
+         'to_year' => 'required|gte:from_year',
          'country' => 'required',
         ];
     }

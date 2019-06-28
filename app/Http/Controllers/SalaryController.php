@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\StoreSalary;
 use App\employee;
 use App\salary;
 use DB;
@@ -19,7 +20,7 @@ class SalaryController extends Controller
        return view ('hr.salary.editSalary', compact('employee'));      
     }
 
-    public function update(Request $request, $id)
+    public function update(StoreSalary $request, $id)
     {
       $employee = employee::find($id);
       $salary = salary::where ('employee_id',$id)->first();

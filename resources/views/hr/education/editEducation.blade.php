@@ -106,19 +106,60 @@
 		                             <div class="row">
 		                                <div class="col-md-6">
 		                                    <div class="form-group row">
-		                                        <label class="control-label text-right col-md-3">From</label>
-		                                        <div class="col-md-6">
-		                                            <input type="text" id="from" name="from" value="{!! old('from', optional($data)->from) !!}" class="form-control"  readonly >
+												<label class="control-label text-right col-md-3">Degree From</label>
+		                                        <div class="col-md-5">
+		                                           <label>Month</label>
+		                                           <select  name="from_month"  class="form-control" >
+                                                        <option value=""></option>
+                                                        @for($m=1; $m<=12; ++$m){
+    													<option value="{{date('F', mktime(0, 0, 0, $m, 1))}}" @if(date('F', mktime(0, 0, 0, $m, 1))==$data->from_month) selected="selected" @endif> {{date('F', mktime(0, 0, 0, $m, 1))}}</option>
+														@endfor
+                                                        
+                                                    </select>
+
 		                                        </div>
+		                                        <div class="col-md-3">
+		                                        <label>Year</label>
+		                                            <select  name="from_year"  class="form-control" required>
+
+													<option value=""></option>
+													@for ($i = (date('Y')-60); $i < (date('Y')+1); $i++)
+													<option value="{{$i}}"
+													@if($i == $data->from_year) selected="selected" @endif
+													>{{ $i }}</option>
+													@endfor
+													</select>
+		                                        </div>
+
 		                                    </div>
 		                                </div>
 		                                
 		                                <!--/span-->
 		                                <div class="col-md-6">
 		                                    <div class="form-group row">
-		                                        <label class="control-label text-right col-md-3">To</label>
-		                                        <div class="col-md-6">
-		                                            <input type="text" id="to" name="to" value="{!! old('to', optional($data)->to) !!}" class="form-control "  readonly >
+		                                        <label class="control-label text-right col-md-3">Degree <br>To</label>
+		                                        <div class="col-md-5">
+		                                           <label>Month</label>
+		                                           <select  name="to_month"  class="form-control" >
+                                                        <option value=""></option>
+                                                        @for($m=1; $m<=12; ++$m){
+    													<option value="{{date('F', mktime(0, 0, 0, $m, 1))}}" @if(date('F', mktime(0, 0, 0, $m, 1))==$data->to_month) selected="selected" @endif> {{date('F', mktime(0, 0, 0, $m, 1))}}</option>
+														@endfor
+                                                        
+                                                    </select>
+
+		                                        </div>
+		                                        <div class="col-md-3">
+		                                        <label>Year</label>
+		                                            <select  name="to_year"  class="form-control" required>
+
+													<option value=""></option>
+													@for ($i = (date('Y')-60); $i < (date('Y')+1); $i++)
+													<option value="{{$i}}"
+													@if($i == $data->to_year) selected="selected" @endif
+													>{{ $i }}</option>
+													@endfor
+													</select>
 		                                        </div>
 		                                    </div>
 		                                </div>
