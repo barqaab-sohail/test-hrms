@@ -179,7 +179,7 @@
 		                                          <select  name="country"  class="form-control" required>
                                                         <option value=""></option>
                                                         @foreach($countries as $country)
-														<option value="{{$country->id }}">{{$country->name}}</option>
+														<option value="{{$country->name }}">{{$country->name}}</option>
                                                         @endforeach
                                                         
                                                     </select>
@@ -269,8 +269,7 @@
             $(document).ready(function() {
 
             	$('#education').submit(function(e) {
-	    		e.preventDefault();
-
+	    		
 	    		var months = [
     			'','January', 'February', 'March', 'April', 'May',
     			'June', 'July', 'August', 'September',
@@ -280,9 +279,7 @@
  				var month = months.indexOf(monthname);
     			return month ? month + 1 : 0;
 				}
-
-
-
+				
 				var fromYear = $('#from_year').val();
 				var toYear = $('#to_year').val();
 				var fromMonth = $('#from_month').val();
@@ -291,16 +288,24 @@
 				if (fromYear>toYear)
 				{
 					alert('From Year is Greater Than To');
+					e.preventDefault();
 				} else if (fromYear==toYear){
 					
 
-					var monthValue = monthNameToNum(fromMonth)-monthNameToNum(toMonth);
-
+					var monthValue = monthNameToNum(toMonth)-monthNameToNum(fromMonth);
+					
 					if(monthValue<0){
-					alert('From Month is Greater Than To');
-					}else{
-						return true;
+						alert('From Month is Greater Than To');
+						e.preventDefault();
 					}
+					
+				}
+
+				var marksObtain = $('#marks_obtain').val();
+				var totalMarks = $('#total_marks').val();
+				if(marksObtain>totalMarks){
+					alert('Marks Obtain is Greater Than Total Marks');
+					e.preventDefault();
 				}
 			
 			});

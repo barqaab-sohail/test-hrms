@@ -70,7 +70,7 @@
                 </li>
                 
 
-                <li @if(request()->is('*phone*')) class="active" @endif > <a class="has-arrow waves-effect waves-dark" href="{{route('phoneList')}}" aria-expanded="false"><i class="fas fa-phone"></i><span class="hide-menu">Notifications</span></a>
+                <li @if(request()->is('*phone*')) class="active" @endif > <a class="has-arrow waves-effect waves-dark" href="{{route('phoneList')}}" aria-expanded="false"><i class="fas fa-phone"></i><span class="hide-menu">Contact Numbers</span></a>
                     
 
                 </li>

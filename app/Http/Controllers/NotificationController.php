@@ -40,14 +40,17 @@ class NotificationController extends Controller
                             ->Notifications
                             ->where('id', $id)
                             ->first();
+         $notification->markAsRead();
          
         //auth()->user()->notifications()->delete()->where('type', 'App\Notifications\LikedComment')->where('data->model', $comment->id)->delete();
     	return view ('hr.notification.showNotification',compact('notification'));
 
     }
 
-     public function deleteAllNotifications($subject){
+     public function deleteNotification($id){
     	
+        $notification=auth()->user()->Notifications->where('id', $id)->first();
+        $notification->delete();
     	return redirect()->route('notificationList')->with('success', 'Notification Delete succesfully');
     }
 

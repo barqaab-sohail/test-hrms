@@ -26,7 +26,7 @@ class TrainingController extends Controller
 	public function store(Request $request){
          $request->validate([
          'institute' => 'required|max:255',
-         'countary' => 'required|max:255',
+         'country' => 'required|max:255',
          ]);
 
         $data = training::create($request->all());

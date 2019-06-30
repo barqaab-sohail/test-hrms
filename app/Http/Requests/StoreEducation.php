@@ -26,10 +26,14 @@ class StoreEducation extends FormRequest
         return [
          'degree_name' => 'required|max:255',
          'institute' => 'required|max:255',
+        'obtain_marks' => 'nullable',
+         'total_marks' => 'nullable|gte:obtain_marks',
          'level' => 'required',
          'completion' => 'required',
          'from_year' => 'required',
          'to_year' => 'required|gte:from_year',
+         'completion' => 'required|gte:to_year',
+         'grade' => 'required',
          'country' => 'required',
         ];
     }

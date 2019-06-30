@@ -4,6 +4,7 @@ use App\User;
 use App\employee;
 use App\notification;
 use Illuminate\Support\Str;
+
 use Faker\Generator as Faker;
 
 /*
@@ -16,6 +17,7 @@ use Faker\Generator as Faker;
 | model instances for testing / seeding your application's database.
 |
 */
+
 
 $factory->define(User::class, function (Faker $faker) {
     return [

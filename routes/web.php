@@ -26,7 +26,7 @@ Route::get('/notificationList', 'NotificationController@index')->name('notificat
 Route::get('/createNotification','NotificationController@create')->name('createNotification');
 Route::post('/storeNotification','NotificationController@store')->name('storeNotification');
 Route::get ('/showNotification/{id?}','NotificationController@show')->name('showNotification');
-Route::get('/deleteAllNotifications/{subject?}', 'NotificationController@deleteAllNotifications')->name('deleteAllNotifications');
+Route::get('/deleteAllNotification/{id?}', 'NotificationController@deleteNotification')->name('deleteNotification');
 
 
 //import data from excel

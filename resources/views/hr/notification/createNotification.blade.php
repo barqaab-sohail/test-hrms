@@ -35,7 +35,7 @@
 		                                <div class="form-group row">
 		                                    <label class="control-label text-right col-md-1">Message</label>
 		                                    <div class="col-md-11">
-		                                        <textarea name="message" rows=8 class="form-control" placeholder="Enter Message of Notification" required >{{ old('message') }}</textarea>
+		                                        <textarea name="message" rows=8 class="form-control" placeholder="Enter Message of Notification"  >{!! old('message') !!}</textarea>
 		                                        
 
 		                                    </div>

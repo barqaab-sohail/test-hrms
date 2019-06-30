@@ -13,6 +13,7 @@
 			<!--<div class="float-right">
 				<input id="month" class="form-control" value="" type="month">
 			</div>-->
+			@if(auth()->user()->Notifications->count())
 			<h4 class="card-title">List of Notifications</h4>
 			
 			<div class="table-responsive m-t-40">
@@ -42,7 +43,7 @@
 								 @endif
 															
 								<td>
-									<a class="btn btn-danger btn-sm" onclick="return confirm('Are you Sure to Delete')" href="{{route('deleteAllNotifications', ['subject'=>$notification->data['letter']['subject']])}}" data-toggle="tooltip" data-original-title="Delete"> <i class="fas fa-trash-alt"></i></a>
+									<a class="btn btn-danger btn-sm" onclick="return confirm('Are you Sure to Delete')" href="{{route('deleteNotification', ['id'=>$notification->id])}}" data-toggle="tooltip" data-original-title="Delete"> <i class="fas fa-trash-alt"></i></a>
 								</td>
 
 							</tr>
@@ -52,6 +53,9 @@
 					</tbody>
 				</table>
 			</div>
+			@else
+			<h4 class="card-title">No Notification</h4>
+			@endif
 		</div>
 	</div>
 @push('scripts')
@@ -64,7 +68,7 @@
 	<script src="https://cdn.rawgit.com/bpampuch/pdfmake/0.1.18/build/pdfmake.min.js"></script>
 	<script src="https://cdn.rawgit.com/bpampuch/pdfmake/0.1.18/build/vfs_fonts.js"></script>
 	<script src="https://cdn.datatables.net/buttons/1.2.2/js/buttons.html5.min.js"></script>
-	<script src="https://cdn.datatables.net/buttons/1.2.2/js/buttons.print.min.js"></script>
+	<script src="https://cdn.datatables.net/buttons/1.2.2/js/buttons.print.min.js"></script> -->
 	<!-- end - This is for export functionality only -->
 	<script>
         $(document).ready(function() {

@@ -36,17 +36,33 @@
 <script src="{{asset('Massets/plugins/styleswitcher/jQuery.style.switcher.js') }}"></script>
 <script src="{{asset('Massets/plugins/datatables/datatables.min.js')}}"></script>
 <script src="{{asset('Massets/select2/select2.full.min.js')}}"></script>
+<!-- This is data table -->
+    <script src="{{asset('Massets/plugins/datatables/datatables.min.js')}}"></script>
+    <!-- start - This is for export functionality only -->
+    <script src="https://cdn.datatables.net/buttons/1.2.2/js/dataTables.buttons.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/1.2.2/js/buttons.flash.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/2.5.0/jszip.min.js"></script>
+    <script src="https://cdn.rawgit.com/bpampuch/pdfmake/0.1.18/build/pdfmake.min.js"></script>
+    <script src="https://cdn.rawgit.com/bpampuch/pdfmake/0.1.18/build/vfs_fonts.js"></script>
+    <script src="https://cdn.datatables.net/buttons/1.2.2/js/buttons.html5.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/1.2.2/js/buttons.print.min.js"></script>
+    <!-- end - This is for export functionality only -->
 @yield('scripts')
 @stack('scripts')
 <script src="{{asset('Massets/plugins/html5-editor/wysihtml5-0.3.0.js')}}"></script>
 <script src="{{asset('Massets/plugins/html5-editor/bootstrap-wysihtml5.js')}}"></script>
 <script src="{{asset('Massets/js/js-ui/jquery-ui.min.js') }}"></script>
 <script src="{{asset('Massets/js/full-image/EZView.js') }}"></script>
+ <script src="https://cdn.tiny.cloud/1/6k6kj2mbbmwv1jqeh7sqe7jf29uemxfwvq4kzdpz5a4j9gm1/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+ <script> tinymce.init({
+    selector: 'textarea',
+    forced_root_block:"",
+   
+  });</script>
 <script>
     $(document).ready(function() {
 
-        $('.textarea_editor').wysihtml5();
-
+       
 
     });
 </script>

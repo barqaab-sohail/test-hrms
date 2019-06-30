@@ -60,27 +60,35 @@
 		                                <div class="col-md-6">
 		                                    <div class="form-group row">
 		                                        <label class="control-label text-right col-md-3">From</label>
-		                                        <div class="col-md-4">
+		                                        <div class="col-md-6">
 		                                            <input type="date"  name="from" value="{{ old('from') }}" class="form-control"  required>
 		                                        </div>
-		                                        <label class="control-label text-right col-md-1">To</label>
-		                                        <div class="col-md-4">
-		                                            <input type="date"  name="to" value="{{ old('to') }}" class="form-control"  required>
-		                                        </div>
+		                                        
 		                                    </div>
 		                                </div>
 		                                
 		                                <!--/span-->
 		                                <div class="col-md-6">
-		                                    <div class="form-group row">
-		                                        <label class="control-label text-right col-md-3">Description</label>
-		                                        <div class="col-md-9">
-		                                             <textarea  rows=6 cols=5 name="description" value="{{ old('description') }}" class="form-control " required></textarea>
+		                               		<div class="form-group row">
+		                               			<label class="control-label text-right col-md-3">To</label>
+		                                        <div class="col-md-6">
+		                                            <input type="date"  name="to" value="{{ old('to') }}" class="form-control"  required>
 		                                        </div>
-
-		                                        <input type="number" name="employee_id" value="{{session('employee_id')}}"   class="form-control " hidden>
 		                                    </div>
+		                                    
 		                                </div>
+		                            </div>
+		                            <div class="row">
+		                            	<div class="col-md-12">
+			                            	<div class="form-group row">
+			                                        <label class="control-label text-right col-md-2">Description</label>
+			                                        <div class="col-md-9">
+			                                             <textarea  rows=6 cols=5 name="description" value="{{ old('description') }}" class="form-control " ></textarea>
+			                                        </div>
+
+			                                        <input type="number" name="employee_id" value="{{session('employee_id')}}"   class="form-control " hidden>
+			                                </div>
+			                            </div>
 		                            </div>
 		                            		                           
 		                        </div>

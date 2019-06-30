@@ -72,14 +72,21 @@
 		                                
 		                                <!--/span-->
 		                                <div class="col-md-6">
+		                                    
+		                                </div>
+		                            </div>
+		                            <div class="row">
+		                               	<div class="col-md-12">
 		                                    <div class="form-group row">
-		                                        <label class="control-label text-right col-md-3">Description</label>
+		                                        <label class="control-label text-right col-md-2">Description</label>
 		                                        <div class="col-md-9">
 		                                             <textarea  rows=6 cols=5 name="description" class="form-control " required>{!! old('description', optional($data)->description) !!}</textarea>
 		                                        </div>
 		                                    </div>
 		                                </div>
 		                            </div>
+
+
 		                            		                           
 		                        </div>
 		                         <hr>
