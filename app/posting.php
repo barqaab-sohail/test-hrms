@@ -8,7 +8,7 @@ class posting extends Model
 {
      
 	protected $fillable = [
-        'position', 'posting_date', 'project','employee_id',
+        'position', 'posting_date', 'manager_id', 'project','employee_id',
     ];	
 
 

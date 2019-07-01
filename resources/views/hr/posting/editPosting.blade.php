@@ -8,7 +8,7 @@
 		
 	</ol>
 @stop
-@section('content')
+@section('content') 
    
     <div class="row">
         <div class="col-lg-12">
@@ -55,6 +55,28 @@
 		                                        </div>
 		                                    </div>
 		                                </div>
+		                            </div>
+		                            <div class="row">
+		                                <div class="col-md-7">
+
+		                                	
+		                                    <div class="form-group row">
+		                                        <label class="control-label text-right col-md-2">Manager Name</label>
+		                                        <div class="col-md-10">
+			                                        <select  name="manager_id"  class="form-control" required>
+                                                    <option value=""></option>
+													@foreach($employees as $employee)
+													<option value="{{$employee->manager_id}}" @if($employee->manager_id == $data->manager_id) selected="selected" @endif>{{$employee->first_name." ".$employee->last_name.", ".$employee->designation}}</option>
+                                                    @endforeach 	
+                                                    </select>
+                                                                                                        
+		                                        </div>
+		                                       
+		                                       <input type="number" name="employee_id" value="{{session('employee_id')}}"   class="form-control " hidden>
+		                                   
+		                                    </div>
+		                                </div>
+		                                		                                
 		                            </div>
 		                                
 		                            <!--/row-->
@@ -130,7 +152,7 @@
 								<td>
 								@if(Auth::user()->role_id==1)
 								 <a class="btn btn-info btn-sm" href="{{route('posting.edit',['id'=>$postingId->id])}}" data-toggle="tooltip" data-original-title="Edit"> <i class="fas fa-pencil-alt text-white "></i></a>
-
+								 <a class="btn btn-danger btn-sm" onclick="return confirm('Are you Sure to Delete')" href="{{route('deletePosting',['id'=>$postingId->id])}}" data-toggle="tooltip" data-original-title="Delete"> <i class="fas fa-trash-alt"></i></a>
 
 								 
 								 @endif

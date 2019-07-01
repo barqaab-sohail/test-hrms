@@ -19,14 +19,18 @@ class PostingController extends Controller
     public function create($id){
 
         $employee = employee::find($id);
+        $employees = DB::table('employees')
+                    ->join('contracts','employees.id','=','contracts.employee_id')
+                    ->select('employees.*','contracts.*')->get();
+
+
         $postingIds = posting::all()->where('employee_id', $id);
         $projects = project::all();
-        return view ('hr.posting.posting',compact('employee','projects','postingIds'));
+        return view ('hr.posting.posting',compact('employee','employees','projects','postingIds'));
     }
 
 	public function store(StorePosting $request){
          
-
         $data = posting::create($request->all());
 
         return redirect()->route('posting',['id'=>session('employee_id')])->with('success', 'Data is saved succesfully');
@@ -36,11 +40,16 @@ class PostingController extends Controller
     }
 
     public function edit($id){
+        $employees = DB::table('employees')
+                    ->join('contracts','employees.id','=','contracts.employee_id')
+                    ->join('postings','employees.id','=','postings.employee_id')
+                    ->select('employees.*','contracts.*','postings.*')->get();
+        
         $employee = employee::find(session('employee_id'));
         $postingIds = posting::all()->where('employee_id', session('employee_id'));
         $projects = project::all();
         $data = posting::find($id);
-        return view ('hr.posting.editPosting',compact('data','employee','postingIds','projects'));
+        return view ('hr.posting.editPosting',compact('data','employee','employees','postingIds','projects'));
     }
     
     public function update(StorePosting $request, $id)

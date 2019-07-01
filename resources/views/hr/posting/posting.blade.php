@@ -54,12 +54,34 @@
 		                                    </div>
 		                                </div>
 		                            </div>
+		                            <div class="row">
+		                                <div class="col-md-7">
+		                                    <div class="form-group row">
+		                                        <label class="control-label text-right col-md-2">Manager Name</label>
+		                                        <div class="col-md-10">
+		                                           <select  name="manager_id"  class="form-control" required>
+                                                        <option value=""></option>
+                                                        @foreach($employees as $employee)
+														<option value="{{$employee->id}}" {{(old("manager_id")==$employee->id? "selected" : "")}}>{{$employee->first_name." ".$employee->last_name.", ".$employee->designation}}</option>
+                                                       @endforeach
+                                                      
+                                                    </select>
+		                                        </div>
+		                                    </div>
+		                                </div>
+		                                
+		                                <!--/span-->
+		                                <div class="col-md-5">
+		                                    <div class="form-group row">
+		                                       
+		                                    </div>
+		                                </div>
+		                            </div>
 		                                
 		                            <!--/row-->
 		                             <div class="row">
 		                                <div class="col-md-7">
-
-		                                	
+                                	
 		                                    <div class="form-group row">
 		                                        <label class="control-label text-right col-md-2">Project</label>
 		                                        <div class="col-md-10">
@@ -78,6 +100,7 @@
 		                                   
 		                                    </div>
 		                                </div>
+
 		                                		                                
 		                            </div>
 		                            		                           

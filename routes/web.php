@@ -156,6 +156,12 @@ Route::post('/editPosting/{id?}', 'PostingController@update')->name('editPosting
 Route::get('/deletePosting/{id?}', 'PostingController@delete')->name('deletePosting');
 
 
+//Promotion Routes
+Route::get('/hrms/promotion/{id?}', 'PromotionController@create')->name('promotion');
+
+
+
+
 //Document Routes
 Route::get('/hrms/document/{id?}', 'DocumentController@create')->name('document');
 Route::post('/storeDocument', 'DocumentController@store')->name('storeDocument');
