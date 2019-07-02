@@ -62,9 +62,7 @@ class PictureController extends Controller
             picture::findOrFail($picture->id)->update($input);
 
            $updatePicture = picture::where ('employee_id',$id)->first();
-           
-           
-
+   
         }else{
             $imageName = time().'-'.session('employee_id').'.'.request()->picture->getClientOriginalExtension();
             $imageType = request()->picture->getMimeType();

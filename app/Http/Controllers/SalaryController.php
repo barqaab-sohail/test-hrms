@@ -23,15 +23,16 @@ class SalaryController extends Controller
     public function update(StoreSalary $request, $id)
     {
       $employee = employee::find($id);
-      $salary = salary::where ('employee_id',$id)->first();
-      
+
+      $salary = DB::table('salaries')->where('employee_id',$id)->where('promotion_id',NULL)->first();
+
       if ($salary==null){
       salary::create($request->all());   
       }else{
-      $salaryId = $employee->salary->id;
-      salary::findOrFail($salaryId)->update($request->all());
+      //$salaryId = $employee->salary->id;
+      salary::findOrFail($salary->id)->update($request->all());
       }
-      return redirect()->route('salary.edit',['id'=>session('employee_id')])->with('success', 'Data is saved succesfully');
+     return redirect()->route('agreement.edit',['id'=>session('employee_id')])->with('success', 'Salary is saved succesfully');
     }
 
 

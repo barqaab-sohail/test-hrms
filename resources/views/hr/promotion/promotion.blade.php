@@ -27,7 +27,7 @@
 		                </div>
 		                <div class="card-body">
 
-		                    <form action="{!!route('editSalary', ['id'=>$employee->id])!!}" method="post" class="form-horizontal" enctype="multipart/form-data">
+		                    <form action="{!!route('storePromotion', ['id'=>$employee->id])!!}" method="post" class="form-horizontal" enctype="multipart/form-data">
 		                        {{csrf_field()}}
 		                        <div class="form-body">
 		                            
@@ -40,21 +40,34 @@
 		                                    <div class="form-group row">
 		                                        <label class="control-label text-right col-md-3">Promoted Designation</label>
 		                                        <div class="col-md-9">
-		                                            <input type="text" name="promoted_designation" value="{{ old('promoted_designation')}}" class="form-control" >
+		                                            <input type="text" name="promoted_designation" value="{{ old('promoted_designation')}}" class="form-control" required>
 		                                        </div>
 		                                    </div>
 		                                </div>
 		                                <!--/span-->
 		                                <div class="col-md-6">
 		                                    <div class="form-group row">
-		                                        <label class="control-label text-right col-md-3">Date of Promotion</label>
-		                                        <div class="col-md-9">
-		                                            <input type="text" name="date_of_promotion" value="{{ old('date_of_promotion')}}" class="form-control" >
+		                                        <label class="control-label text-right col-md-4">Effective Date</label>
+		                                        <div class="col-md-8">
+		                                            <input type="date" name="effective_date" value="{{ old('effective_date')}}" class="form-control" required >
 		                                        </div>
 		                                    </div>
 		                                </div>
 		                                <!--/span-->
-		                             </div>
+		                            </div>
+		                            
+		                            <div class="row">
+		                             	<div class="col-md-6">
+		                            		<div class="form-group row">
+												<label class="control-label text-right col-md-3">Remarks</label>
+		                            			<div class="col-md-9">
+		                            			<input type="text" name="promotion_remarks" value="{{ old('promotion_remarks')}}" class="form-control"  >
+		                            			</div>
+
+		                            		</div>
+		                            	</div>
+
+		                            </div>		                               
 
 
 		                            <!--/row-->
@@ -64,7 +77,7 @@
 		                                    <div class="form-group row">
 		                                        <label class="control-label text-right col-md-3">Basic Pay</label>
 		                                        <div class="col-md-3">
-		                                            <input type="number" name="basic_pay" value="{{old('basic_pay')}}"class="form-control prc" required>
+		                                            <input type="number" name="basic_pay" value="{{old('basic_pay')}}"class="form-control prc">
 		                                        </div>
 		                                         <label class="control-label text-right col-md-3">House Rent</label>
 		                                        <div class="col-md-3">
@@ -130,7 +143,7 @@
 		                                        </div>
 		                                         <label class="control-label text-right col-md-3">Total</label>
 		                                        <div class="col-md-3">
-		                                            <input type="text" name="total" id="total" value="{{old('total')}}"   class="form-control " readonly>
+		                                            <input type="text" name="total" id="total" value="{{old('total')}}"   class="form-control" required>
 		                                        </div>
 		                                    </div>
 		                                </div>
@@ -161,6 +174,55 @@
 		                            </div>
 		                        </div>
 		                    </form>
+@if($promotionIds->count()!=0)		                    
+<br>
+<hr>
+<br>
+		<div class="card">
+		<div class="card-body">
+			<!--<div class="float-right">
+				<input id="month" class="form-control" value="" type="month">
+			</div>-->
+			<h2 class="card-title">Stored Pormotion</h2>
+			
+			<div class="table-responsive m-t-40">
+				
+				<table id="myTable" class="table table-bordered table-striped" width="100%" cellspacing="0">
+					<thead>
+					
+					<tr>
+						<th>Promoted Designation</th>
+						<th>Effective Date</th>
+						<th>Revised Salary</th>
+						<th>Remarks</th>
+						@if(Auth::user()->role_id==1)<th> Actions </th> @endif
+					</tr>
+					</thead>
+					<tbody>
+						@foreach($promotionIds as $promotionId)
+							<tr>
+								<td>{{$promotionId->promoted_designation}}</td>
+								<td>{{$promotionId->effective_date}}</td>
+								<td>{{$promotionId->total}}</td>
+								<td>{{$promotionId->promotion_remarks}}</td>
+								<td>
+								@if(Auth::user()->role_id==1)
+								 <a class="btn btn-info btn-sm" href="{{route('promotion.edit',['id'=>$promotionId->id])}}" data-toggle="tooltip" data-original-title="Edit"> <i class="fas fa-pencil-alt text-white "></i></a>
+								  <a class="btn btn-danger btn-sm" onclick="return confirm('Are you Sure to Delete')" href="{{route('deletePromotion',['id'=>$promotionId->id])}}" data-toggle="tooltip" data-original-title="Delete"> <i class="fas fa-trash-alt"></i></a>
+								 @endif
+															
+							</tr>
+						@endforeach
+					
+					 
+					
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+	
+	@endif
 		        		</div>       
 		        	</div>
 		        </div>

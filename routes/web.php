@@ -81,6 +81,7 @@ Route::get('/hrms/salary/edit/{id?}', [
         ]);
 Route::post('/editSalary/{id?}', 'SalaryController@update')->name('editSalary');
 
+
 //Contact Detail
 Route::get('/hrms/contact/edit/{id?}', [
             'uses' => 'AddressController@editAddress',
@@ -158,6 +159,13 @@ Route::get('/deletePosting/{id?}', 'PostingController@delete')->name('deletePost
 
 //Promotion Routes
 Route::get('/hrms/promotion/{id?}', 'PromotionController@create')->name('promotion');
+Route::post('/storePromotion', 'PromotionController@store')->name('storePromotion');
+Route::get('/hrms/promotion/edit/{id?}', [
+            'uses' => 'PromotionController@edit',
+            'as' => 'promotion.edit'
+        ]);
+Route::post('/editPromotion/{id?}', 'PromotionController@update')->name('editPromotion');
+Route::get('/deletePromotion/{id?}', 'PromotionController@delete')->name('deletePromotion');
 
 
 

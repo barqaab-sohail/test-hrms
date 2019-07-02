@@ -24,7 +24,7 @@ class StoreSalary extends FormRequest
     public function rules()
     {
         return [
-           'basic_pay' => 'required|numeric',
+           'basic_pay' => 'nullable|numeric',
            'house_rent' => 'nullable|numeric',
            'dearness_allowance' => 'nullable|numeric',
            'adhoc_2009' => 'nullable|numeric',
@@ -33,6 +33,8 @@ class StoreSalary extends FormRequest
            'adhoc_2013' => 'nullable|numeric',
            'field_allowance' => 'nullable|numeric',
            'other_allowance' => 'nullable|numeric',
+           'total' => 'required|numeric',
+          
            
         ];
     }

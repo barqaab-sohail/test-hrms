@@ -57,6 +57,10 @@ class employee extends Model
     {
         return $this->hasMany('App\notification');
     }
+     public function promotion()
+    {
+        return $this->hasMany('App\promotion');
+    }
 
     public function document()
     {
@@ -103,7 +107,7 @@ class employee extends Model
     }
      public function salary()
     {
-        return $this->hasOne('App\salary');
+        return $this->hasMany('App\salary');
     }
      public function training()
     {

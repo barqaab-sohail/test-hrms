@@ -16,7 +16,7 @@ class CreateSalariesTable extends Migration
         Schema::create('salaries', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->bigInteger('employee_id')->unsigned();
-            $table->float('basic_pay');
+            $table->float('basic_pay')->nullable();
             $table->float('house_rent')->nullable();
             $table->float('dearness_allowance')->nullable();
             $table->float('adhoc_2009')->nullable();
@@ -26,6 +26,8 @@ class CreateSalariesTable extends Migration
             $table->float('field_allowance')->nullable();
             $table->float('other_allowance')->nullable();
             $table->float('total');
+            $table->bigInteger('promotion_id')->nullable();
+            $table->text('salary_remarks')->nullable();
             $table->timestamps();
             $table->foreign('employee_id')->references('id')->on('employees');
         });
