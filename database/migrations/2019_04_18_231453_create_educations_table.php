@@ -19,14 +19,13 @@ class CreateEducationsTable extends Migration
             $table->string('degree_name');
             $table->string('institute');
             $table->string('level');
-            $table->year('completion');
             $table->string('from_month')->nullable();
-            $table->string('from_year');
+            $table->string('from_year')->nullable();
             $table->string('to_month')->nullable();
             $table->string('to_year');
-            $table->float('total_marks');
-            $table->float('marks_obtain');
-            $table->string('grade');
+            $table->float('total_marks')->nullable();
+            $table->float('marks_obtain')->nullable();
+            $table->string('grade')->nullable();
             $table->string('country');
             $table->timestamps();
             $table->foreign('employee_id')->references('id')->on('employees');

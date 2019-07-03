@@ -93,6 +93,24 @@
 		                                <!--/span-->
 		                                <div class="col-md-5">
 		                                    <div class="form-group row">
+		                                        <label class="control-label text-right col-md-3">Client</label>
+		                                        <div class="col-md-8">
+		                                             <input type="text"  name="client" value="{{ old('client') }}" class="form-control" placeholder="Enter Client Name" required>
+		                                        </div>
+		                                    </div>
+		                                </div>
+		                            </div>
+		                            <div class="row">
+		                                <div class="col-md-7">
+		                                    <div class="form-group row">
+		                                        
+		                                        
+		                                    </div>
+		                                </div>
+		                                
+		                                <!--/span-->
+		                                <div class="col-md-5">
+		                                    <div class="form-group row">
 		                                        <label class="control-label text-right col-md-3">Country</label>
 		                                        <div class="col-md-8">
 		                                             <select  name="country"  class="form-control" required>
@@ -106,6 +124,21 @@
 		                                    </div>
 		                                </div>
 		                            </div>
+									 <div class="row">
+		                                <!--/span-->
+		                                <div class="col-md-12">
+		                                    <div class="form-group row">
+		                                        <label class="control-label text-right col-md-3">Main Features</label>
+		                                        <div class="col-md-7">
+		                                         <textarea  rows=10 cols=5 id="main_features" name="main_features" class="form-control " required>{{ old('main_features') }}</textarea>
+		                                        												
+		                                        </div>  
+		                                    </div>
+		                                
+		                                </div>
+		                                <!--/span-->
+		                            </div>
+
 		                            <div class="row">
 		                                <!--/span-->
 		                                <div class="col-md-12">

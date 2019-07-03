@@ -87,16 +87,11 @@
 
 
 		                                        </div>
-		                                         <label class="control-label text-right col-md-3">Passing Year</label>
+		                                        
 		                                        <div class="col-md-3">
-		                                        	<select  name="completion"  class="form-control" required>
+		                                        
 
-													<option value=""></option>
-													@for ($i = (date('Y')-60); $i < (date('Y')+1); $i++)
-    												<option value="{{$i}}">{{ $i }}</option>
-													@endfor
-													</select>
-		                                            												
+														                                            												
 
 		                                             <input type="number" name="employee_id" value="{{session('employee_id')}}"   class="form-control " hidden>
 		                                        </div>
@@ -108,7 +103,7 @@
 		                             <div class="row">
 		                                <div class="col-md-6">
 		                                    <div class="form-group row">
-		                                        <label class="control-label text-right col-md-3">Degree From</label>
+		                                        <label class="control-label text-right col-md-3">Degree Start</label>
 		                                        <div class="col-md-6">
 		                                           <label>Month</label>
 		                                           <select  name="from_month"  id="from_month" class="form-control" >
@@ -136,7 +131,7 @@
 		                                <!--/span-->
 		                                <div class="col-md-6">
 		                                    <div class="form-group row">
-		                                        <label class="control-label text-right col-md-3">Degree <br>To</label>
+		                                        <label class="control-label text-right col-md-3">Degree <br>Complete</label>
 		                                        <div class="col-md-6">
 		                                         <label>Month</label>
 		                                           <select  name="to_month"  id="to_month"class="form-control">

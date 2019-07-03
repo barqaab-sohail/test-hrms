@@ -17,11 +17,11 @@ class CreateContractsTable extends Migration
             $table->bigIncrements('id');
             $table->bigInteger('employee_id')->unsigned();
             $table->string('designation');
-            $table->date('joining_date')->nullable();
+            $table->date('joining_date');
+            $table->date('expiry_date')->nullable();
             $table->string('category');
             $table->string('grade')->nullable();
-            $table->string('project')->nullable();
-            $table->string('contract_type');
+            $table->string('project');
             $table->string('appointment_letter_type');
             $table->date('expiry_date')->nullable();
             $table->timestamps();

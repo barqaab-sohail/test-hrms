@@ -28,7 +28,7 @@
 		                </div>
 		                <div class="card-body">
 
-		                    <form action="{!!route('editEducation', ['id'=>optional($data)->id])!!}" method="post" class="form-horizontal" enctype="multipart/form-data">
+		                    <form id="education" action="{!!route('editEducation', ['id'=>optional($data)->id])!!}" method="post" class="form-horizontal" enctype="multipart/form-data">
 		                        {{csrf_field()}}
 		                        <div class="form-body">
 		                            
@@ -86,7 +86,7 @@
 
 													</select>
 		                                        </div>
-		                                         <label class="control-label text-right col-md-3">Passing Year</label>
+		                                         <label class="control-label text-right col-md-3">Completion Year</label>
 		                                        <div class="col-md-3">
 													<select  name="completion"  class="form-control" required>
 													<option value=""></option>
@@ -267,22 +267,62 @@
         </div>
     </div>
  @push('scripts')
+ 
         <script>
-            $(document).ready(function(){
-			$( function() {
-			    $( "#from, #to" ).datepicker({
-			      dateFormat: 'yy-MM-dd',
-			      yearRange: '1960:'+ (new Date().getFullYear()),
-			      changeMonth: true,
-			      changeYear: true
-			    });
+            $(document).ready(function() {
+
+            	$('#education').submit(function(e) {
+
+            	var marksObtain = $('#marks_obtain').val();
+				var totalMarks = $('#total_marks').val();
+				if(marksObtain>totalMarks){
+					alert('Marks Obtain is Greater Than Total Marks');
+					e.preventDefault();
+				}
+	    		
+	    		var months = [
+    			'','January', 'February', 'March', 'April', 'May',
+    			'June', 'July', 'August', 'September',
+    			'October', 'November', 'December' ];
+
+    			function monthNameToNum(monthname) {
+ 				var month = months.indexOf(monthname);
+    			return month ? month + 1 : 0;
+				}
+				
+				var fromYear = $('#from_year').val();
+				var toYear = $('#to_year').val();
+				var fromMonth = $('#from_month').val();
+				var toMonth = $('#to_month').val();
+
+				if (fromYear>toYear)
+				{
+					alert('From Year is Greater Than To');
+					e.preventDefault();
+				} else if (fromYear==toYear){
+					
+
+					var monthValue = monthNameToNum(toMonth)-monthNameToNum(fromMonth);
+					
+					if(monthValue<0){
+						alert('From Month is Greater Than To');
+						e.preventDefault();
+					}
+					
+				}
+
+				
+			
+			});
+
+
 		    });
 
-			$('select').select2({
+		    $('select').select2({
   			maximumSelectionLength: 2,
 
 			});
-			});
+		
         </script>
     @endpush
 

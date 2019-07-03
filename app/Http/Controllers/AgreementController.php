@@ -6,7 +6,9 @@ use Illuminate\Http\Request;
 use App\employee;
 use App\contract;
 use App\salary;
+use App\project;
 use App\blood_group;
+use App\Http\Requests\StoreAgreement;
 use DB;
 
 class AgreementController extends Controller
@@ -19,13 +21,13 @@ class AgreementController extends Controller
     public function edit($id){
 
        $employee = employee::find($id);
+       $projects = project::all();
        $salary = DB::table('salaries')->where('employee_id',$id)->where('promotion_id',NULL)->first();
-       
-                  
-       return view ('hr.agreement.editAgreement', compact('employee','salary'));
+                        
+      return view ('hr.agreement.editAgreement', compact('employee','salary','projects'));
     }
 
-     public function update(Request $request, $id)  {
+     public function update(StoreAgreement $request, $id)  {
 
         $employee = employee::find($id);
         

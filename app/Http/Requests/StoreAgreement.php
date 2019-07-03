@@ -13,7 +13,7 @@ class StoreAgreement extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,12 @@ class StoreAgreement extends FormRequest
     public function rules()
     {
         return [
-            //
+            
+        'designation' => 'required|max:255',
+        'joining_date' => 'required|max:255',
+        'project' => 'required|max:255',
+        'appointment_letter_type' => 'required|max:255',
+
         ];
     }
 }

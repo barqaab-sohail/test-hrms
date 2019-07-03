@@ -303,6 +303,6 @@ class LanguagesTableSeeder extends Seeder
                 "code" => "XH"),
 
         );
-		DB::table('languges')->insert($countries);
+		DB::table('all_languages')->insert($languages);
     }
 }

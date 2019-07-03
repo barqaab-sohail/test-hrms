@@ -31,7 +31,7 @@
 		                        <div class="form-body">
 		                            <center >
 		                            
-		                                <img  src="{{asset(isset($picture->name)? 'upload/pictures/'.$picture->name: 'Massets/images/default.png') }}" class="img-circle picture-container picture-src"  id="wizardPicturePreview" title="" width="150" />
+		                                <img  src="{{asset(isset($picture->name)? 'upload/pictures/'.$picture->name: 'Massets/images/default.png') }}" class="img-rounded picture-container picture-src"  id="wizardPicturePreview" title="" width="150" />
 		                                <input type="file"  name="picture" id="wizard-picture" class="" required hidden>
 
 		                                <h6 class="card-title m-t-10">Click On Image to Add Picture</h6>

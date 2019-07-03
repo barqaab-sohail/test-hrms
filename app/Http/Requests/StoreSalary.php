@@ -34,6 +34,7 @@ class StoreSalary extends FormRequest
            'field_allowance' => 'nullable|numeric',
            'other_allowance' => 'nullable|numeric',
            'total' => 'required|numeric',
+         
           
            
         ];

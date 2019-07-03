@@ -95,6 +95,17 @@
                                                     </select>
 
 		                                        </div>
+		                                      
+		                                   
+		                                    </div>
+		                                </div>
+		                                <div class="col-md-5">
+                                	
+		                                    <div class="form-group row">
+		                                        <label class="control-label text-right col-md-4">Location</label>
+		                                        <div class="col-md-8">
+		                                        	<input type="text" name="location" value="{{ old('location') }}" class="form-control " placeholder="Enter Location" >
+		                                        </div>
 		                                       
 		                                       <input type="number" name="employee_id" value="{{session('employee_id')}}"   class="form-control " hidden>
 		                                   

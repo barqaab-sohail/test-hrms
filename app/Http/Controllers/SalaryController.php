@@ -29,8 +29,7 @@ class SalaryController extends Controller
       if ($salary==null){
       salary::create($request->all());   
       }else{
-      //$salaryId = $employee->salary->id;
-      salary::findOrFail($salary->id)->update($request->all());
+        salary::findOrFail($salary->id)->update($request->all());
       }
      return redirect()->route('agreement.edit',['id'=>session('employee_id')])->with('success', 'Salary is saved succesfully');
     }

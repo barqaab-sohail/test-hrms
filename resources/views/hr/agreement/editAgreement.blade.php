@@ -60,9 +60,15 @@
 		                            <div class="row">
 		                                <div class="col-md-6">
 		                                    <div class="form-group row">
-		                                        <label class="control-label text-right col-md-3">Name of Project</label>
+		                                        <label class="control-label text-right col-md-3">Charge To</label>
 		                                        <div class="col-md-9">
-		                                            <input type="text"  name="project" value="{!! old('project',isset($employee->contract->project)?$employee->contract->project:'')!!}" class="form-control" placeholder="Enter Name of Project">
+		                                             <select  name="project"  class="form-control" required>
+                                                    <option value=""></option>
+													@foreach($projects as $project)
+													<option value="{{$project->name}}" @if($project->name == $employee->contract->project) selected="selected" @endif>{{$project->name}}</option>
+                                                    @endforeach 	
+
+                                                    </select>
 		                                        </div>
 		                                    </div>
 		                                </div>
@@ -134,9 +140,9 @@
                                                         @endif
                                                     </select>
 		                                        </div>
-		                                         <label class="control-label text-right col-md-3">Contract Type</label>
+		                                         
 		                                        <div class="col-md-3">
-		                                            <input type="text" name="contract_type" value="{!! old('contract_type',isset($employee->contract->contract_type)?$employee->contract->contract_type:'')!!}"  class="form-control">
+		                                            
 		                                            <div class="form-group row">
 		                                        	<input type="number" name="employee_id" value="{{session('employee_id')}}"   class="form-control " hidden>
 		                                        	</div>
@@ -239,7 +245,7 @@
 		                                        <div class="col-md-3">
 		                                            <input type="number" name="other_allowance" value="{!! old('other_allowance',isset($salary->other_allowance)?$salary->other_allowance:'')!!}" class="form-control prc" >
 		                                        </div>
-		                                         <label class="control-label text-right col-md-3">Total</label>
+		                                         <label class="control-label text-right col-md-3">Gross Salary</label>
 		                                        <div class="col-md-3">
 		                                            <input type="text" name="total" id="total" value="{!! old('total',isset($salary->total)?$salary->total:'')!!}"   class="form-control " >
 		                                        </div>
@@ -263,7 +269,7 @@
 													<label class="control-label text-right col-md-12">Remakrs</label>
 												</div>
 												<div class="col-md-7">
-			                                        <input type="text"  name="salary_remarks" value="{!! old('remarks',isset($salary->salary_remarks)?$salary->salary_remarks:'')!!}" class="form-control" placeholder="Enter Remarks." required>
+			                                        <input type="text"  name="salary_remarks" value="{!! old('remarks',isset($salary->salary_remarks)?$salary->salary_remarks:'')!!}" class="form-control" placeholder="Enter Remarks." >
 			                                    </div>
 		                                    </div>
 		                                </div>
