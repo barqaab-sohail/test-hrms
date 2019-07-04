@@ -67,6 +67,7 @@
 		        $("#wizard-picture").change(function(){
 		        	var fileSize = this.files[0].size;
 		        	var fileType = this.files[0].type;
+
 		        	if (fileSize>512000)
 		        	{
 		        		alert('File Size is More Than 500kb');
@@ -87,6 +88,7 @@
 
                     reader.onload = function (e) {
                         $('#wizardPicturePreview').attr('src', e.target.result).fadeIn('slow');
+                        
                     }
                     reader.readAsDataURL(input.files[0]);
                 }           }

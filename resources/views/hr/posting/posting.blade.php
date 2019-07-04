@@ -39,7 +39,7 @@
 		                                    <div class="form-group row">
 		                                        <label class="control-label text-right col-md-2">Position</label>
 		                                        <div class="col-md-10">
-		                                            <input type="text"  name="position" value="{{ old('position') }}" class="form-control" placeholder="Enter Position Name" required>
+		                                            <input type="text"  name="position" value="{{ old('position') }}" class="form-control" placeholder="Enter Position Name" required >
 		                                        </div>
 		                                    </div>
 		                                </div>
@@ -49,7 +49,7 @@
 		                                    <div class="form-group row">
 		                                        <label class="control-label text-right col-md-4">Posting Date</label>
 		                                        <div class="col-md-8">
-		                                            <input type="date" name="posting_date" value="{{ old('posting_date') }}" class="form-control " placeholder="Enter Posting Date" required>
+		                                            <input type="text" id="posting_date" name="posting_date" value="{{ old('posting_date') }}" class="form-control " placeholder="Enter Posting Date" required readonly>
 		                                        </div>
 		                                    </div>
 		                                </div>
@@ -189,6 +189,13 @@
  @push('scripts')
         <script>
             $(document).ready(function(){
+            	$( "#posting_date" ).datepicker({
+	     		dateFormat: 'dd-MM-yy',
+	      		yearRange: (new Date().getFullYear()-20)+':'+(new Date().getFullYear()+15),
+	      		changeMonth: true,
+	      		changeYear: true
+	    		});
+	    		
 			
 			});
         </script>

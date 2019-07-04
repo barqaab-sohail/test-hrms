@@ -117,7 +117,7 @@
 		                                        </div>
 		                                        <div class="col-md-3">
 		                                        <label>Year</label>
-		                                            <select  name="from_year"  id="from_year" class="form-control" required>
+		                                            <select  name="from_year"  id="from_year" class="form-control" >
 
 													<option value=""></option>
 													@for ($i = (date('Y')-60); $i < (date('Y')+1); $i++)
@@ -160,7 +160,7 @@
 		                                <div class="col-md-6">
 		                                    <div class="form-group row">
 		                                        <label class="control-label text-right col-md-3">Grade</label>
-		                                        <div class="col-md-6">
+		                                        <div class="col-md-5">
 		                                            <input type="text"  name="grade" value="{{ old('grade') }}" class="form-control" placeholder="Enter Grade" >
 		                                        </div>
 		                                    </div>
@@ -170,7 +170,7 @@
 		                                <div class="col-md-6">
 		                                    <div class="form-group row">
 		                                        <label class="control-label text-right col-md-3">Country</label>
-		                                        <div class="col-md-7">
+		                                        <div class="col-md-6">
 		                                          <select  name="country"  class="form-control" required>
                                                         <option value=""></option>
                                                         @foreach($countries as $country)

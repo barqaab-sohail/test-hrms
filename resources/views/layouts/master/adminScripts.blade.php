@@ -53,6 +53,9 @@
 <script src="{{asset('Massets/plugins/html5-editor/bootstrap-wysihtml5.js')}}"></script>
 <script src="{{asset('Massets/js/js-ui/jquery-ui.min.js') }}"></script>
 <script src="{{asset('Massets/js/full-image/EZView.js') }}"></script>
+
+
+
  <script src="https://cdn.tiny.cloud/1/6k6kj2mbbmwv1jqeh7sqe7jf29uemxfwvq4kzdpz5a4j9gm1/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
  <script> tinymce.init({
     selector: 'textarea',

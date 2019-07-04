@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\User;
 use App\Http\Requests\StoreEmployee;
-use App\department;
+use App\division;
 use App\marital_status;
 use App\Education;
 use App\country;
@@ -28,9 +28,9 @@ class EmployeeController extends Controller
     public function create(){
         session()->put('employee_id', '');
         $countries = country::all();
-        $departments = department::all();
+        $divisions = division::all();
         $maritalStatus = marital_status::all();
-        return view ('hr.employee.createEmployee', compact('departments','maritalStatus','countries'));
+        return view ('hr.employee.createEmployee', compact('divisions','maritalStatus','countries'));
     }
     public function store (StoreEmployee $request){
          
@@ -49,10 +49,10 @@ class EmployeeController extends Controller
     public function edit($id){
         $countries = country::all();
         $employee = employee::find($id);
-        $departments = department::all();
+        $divisions = division::all();
         $maritalStatuses = marital_status::all();
         $employeeId = session()->put('employee_id', $employee->id);
-        return view ('hr.employee.editEmployee', compact('employee','departments','maritalStatuses','countries'));
+        return view ('hr.employee.editEmployee', compact('employee','divisions','maritalStatuses','countries'));
     }
 
 

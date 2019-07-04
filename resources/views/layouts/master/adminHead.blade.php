@@ -37,4 +37,6 @@
     <link href="{{asset('Massets/plugins/wizard/steps.css')}}" rel="stylesheet" type="text/css">
     <link href="{{asset('Massets/plugins/datatables/media/css/dataTables.bootstrap4.css')}}" rel="stylesheet">
     <link rel="stylesheet" href="{{asset('Massets/plugins/html5-editor/bootstrap-wysihtml5.css')}}" />
+
+   
 </head>

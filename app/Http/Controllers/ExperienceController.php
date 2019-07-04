@@ -39,11 +39,11 @@ class ExperienceController extends Controller
     }
 
     public function edit($id){
-        
+        $countries = country::all();
         $employee = employee::find(session('employee_id'));
         $experienceIds = experience::all()->where('employee_id', session('employee_id'));
         $data = experience::find($id);
-        return view ('hr.experience.editExperience',compact('data','employee','experienceIds'));
+        return view ('hr.experience.editExperience',compact('data','employee','experienceIds','countries'));
     }
     
     public function update(Request $request, $id)

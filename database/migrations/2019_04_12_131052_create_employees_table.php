@@ -15,7 +15,7 @@ class CreateEmployeesTable extends Migration
     {
         Schema::create('employees', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->bigInteger('department_id')->unsigned();
+            $table->bigInteger('division_id')->unsigned();
             $table->string('first_name');
             $table->string('middle_name')->nullable();
             $table->string('last_name');
@@ -30,7 +30,7 @@ class CreateEmployeesTable extends Migration
             $table->string('nationality')->nullable();
             $table->tinyInteger('status')->default(0)->comment('0 onboard, 1 resigned, 2 terminated, 3 onleave, 4 manmonth ended' );
             $table->timestamps();
-            $table->foreign('department_id')->references('id')->on('departments');
+            $table->foreign('division_id')->references('id')->on('divisions');
         });
     }
 

@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateContractsTable extends Migration
+class CreateAppointmentsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,17 +13,18 @@ class CreateContractsTable extends Migration
      */
     public function up()
     {
-        Schema::create('contracts', function (Blueprint $table) {
+        Schema::create('appointments', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->bigInteger('employee_id')->unsigned();
             $table->string('designation');
             $table->date('joining_date');
+            $table->string('project');
             $table->date('expiry_date')->nullable();
+            $table->string('reference_no');
+            $table->date('appointment_date')->nullable();
             $table->string('category');
             $table->string('grade')->nullable();
-            $table->string('project');
             $table->string('appointment_letter_type');
-            $table->date('expiry_date')->nullable();
             $table->timestamps();
             $table->foreign('employee_id')->references('id')->on('employees');
         });
@@ -36,6 +37,6 @@ class CreateContractsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('contracts');
+        Schema::dropIfExists('appointments');
     }
 }

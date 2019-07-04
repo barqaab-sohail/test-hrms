@@ -23,9 +23,9 @@ class DatabaseSeeder extends Seeder
         DB::table('roles')->insert(['name' => 'manager',]);
         DB::table('roles')->insert(['name' => 'user',]);
 
-        DB::table('departments')->insert(['name' => 'Power',]);
-        DB::table('departments')->insert(['name' => 'Water',]);
-        DB::table('departments')->insert(['name' => 'Finance',]);
+        DB::table('divisions')->insert(['name' => 'Power',]);
+        DB::table('divisions')->insert(['name' => 'Water',]);
+        DB::table('divisions')->insert(['name' => 'Finance',]);
 
         DB::table('marital_status')->insert(['name' => 'Single',]);
         DB::table('marital_status')->insert(['name' => 'Married',]);
@@ -48,7 +48,7 @@ class DatabaseSeeder extends Seeder
             'first_name' => 'Sohail',
             'last_name' => 'Afzal',
             'father_name' => 'Muhammad Afzal',
-            'department_id' => 1,
+            'division_id' => 1,
             'cnic' => '3520246897303',
             'cnic_expiry' => '2020-04-02',
            
@@ -66,7 +66,6 @@ class DatabaseSeeder extends Seeder
             'degree_name' => 'BS-IT',
             'institute'=>'Virtual University of Pakistan',
             'level'=>'14',
-            'completion'=>'2019',
             'from_month'=>'January',
             'from_year'=>'2017',
             'to_month'=>'December',

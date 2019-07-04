@@ -39,14 +39,14 @@ class employee extends Model
     {
         return $this->hasOne('App\contact');
     }
-     public function contract()
+     public function appointment()
     {
-        return $this->hasOne('App\contract');
+        return $this->hasOne('App\appointment');
     }
 
-    public function department()
+    public function division()
     {
-        return $this->hasOne('App\department');
+        return $this->hasOne('App\division');
     }
 
      public function dependent()

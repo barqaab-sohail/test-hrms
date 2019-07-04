@@ -35,7 +35,7 @@ class StoreEmployee extends FormRequest
          'marital_status' =>'required',
          'religon' =>'required',
          'nationality' =>'required',
-         'department_id' =>'required',
+         'division_id' =>'required',
 
         ];
     }

@@ -73,17 +73,17 @@
 		                                <!--/span-->
 		                                <div class="col-md-5">
 		                                    <div class="form-group row">
-		                                        <label class="control-label text-right col-md-3">Project Name</label>
+		                                        <label class="control-label text-right col-md-3">Assignment Name</label>
 		                                        <div class="col-md-9">
 		                                            <input type="text" name="project" value="{{ old('project') }}" class="form-control">
 		                                        </div>
 		                                    </div>
 		                                </div>
 		                            </div>
-		                             <div class="row">
+		                            <div class="row">
 		                                <div class="col-md-7">
 		                                    <div class="form-group row">
-		                                        <label class="control-label text-right col-md-3">Location</label>
+		                                        <label class="control-label text-right col-md-3">Assignment Location</label>
 		                                        <div class="col-md-9">
 		                                            <input type="text"  name="location" value="{{ old('location') }}" class="form-control" placeholder="Enter Location" required>
 		                                        </div>
@@ -116,7 +116,7 @@
 		                                             <select  name="country"  class="form-control" required>
                                                         <option value=""></option>
                                                         @foreach($countries as $country)
-														<option value="{{$country->id }}">{{$country->name}}</option>
+														<option value="{{$country->name }}">{{$country->name}}</option>
                                                         @endforeach
                                                         
                                                     </select>
@@ -128,9 +128,9 @@
 		                                <!--/span-->
 		                                <div class="col-md-12">
 		                                    <div class="form-group row">
-		                                        <label class="control-label text-right col-md-3">Main Features</label>
-		                                        <div class="col-md-7">
-		                                         <textarea  rows=10 cols=5 id="main_features" name="main_features" class="form-control " required>{{ old('main_features') }}</textarea>
+		                                        <label class="control-label text-right col-md-2">Main Features</label>
+		                                        <div class="col-md-9">
+		                                         <textarea  rows=1 cols=5 id="main_features" name="main_features" class="form-control " >{{ old('main_features') }}</textarea>
 		                                        												
 		                                        </div>  
 		                                    </div>
@@ -143,9 +143,9 @@
 		                                <!--/span-->
 		                                <div class="col-md-12">
 		                                    <div class="form-group row">
-		                                        <label class="control-label text-right col-md-3">Activities</label>
-		                                        <div class="col-md-7">
-		                                         <textarea  rows=10 cols=5 id="activities" name="activities" class="form-control " required>{{ old('activities') }}</textarea>
+		                                        <label class="control-label text-right col-md-2">Activities</label>
+		                                        <div class="col-md-9">
+		                                         <textarea  rows=1 cols=5 id="activities" name="activities" class="form-control " >{{ old('activities') }}</textarea>
 		                                        
 												 <input type="number" name="employee_id" value="{{session('employee_id')}}"   class="form-control " hidden>
 		                                        </div>  
@@ -206,6 +206,7 @@
 								<td>
 								@if(Auth::user()->role_id==1)
 								 <a class="btn btn-info btn-sm" href="{{route('experience.edit',['id'=>$experienceId->id])}}" data-toggle="tooltip" data-original-title="Edit"> <i class="fas fa-pencil-alt text-white "></i></a>
+								  <a class="btn btn-danger btn-sm" onclick="return confirm('Are you Sure to Delete')" href="{{route('deleteExperience',['id'=>$experienceId->id])}}" data-toggle="tooltip" data-original-title="Delete"> <i class="fas fa-trash-alt"></i></a>
 								 @endif
 															
 							</tr>

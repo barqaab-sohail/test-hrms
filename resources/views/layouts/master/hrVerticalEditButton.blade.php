@@ -16,7 +16,7 @@
             <a type="submit" role="button" href="{{route('employee.edit',session('employee_id'))}}" class="btn btn-info @if(request()->is('*employee/edit*')) active @endif" >Personal Information</a>
             <a type="submit" role="button"  href="{{route('picture.edit', session('employee_id'))}}" class="btn btn-info @if(request()->is('*icture*')) active @endif">Picture</a>
             <a type="submit" role="button"  href="{{route('user.edit', session('employee_id'))}}" class="btn btn-info @if(request()->is('*user/edit*')) active @endif">User</a>
-            <a type="submit" role="button"  href="{{route('agreement.edit', session('employee_id'))}}" class="btn btn-info @if(request()->is('*agreement/edit*')) active @endif">Appointment  Detail</a>
+            <a type="submit" role="button"  href="{{route('appointment.edit', session('employee_id'))}}" class="btn btn-info @if(request()->is('*appointment/edit*')) active @endif">Appointment  Detail</a>
             <a type="submit" role="button"  href="{{route('posting', session('employee_id'))}}" class="btn btn-info @if(request()->is('*posting*')) active @endif">Posting</a>
             <!-- <a type="submit" role="button" href="{{route('salary.edit', session('employee_id'))}}" class="btn btn-info @if(request()->is('*salary/edit*')) active @endif">Salary</a>-->
             <a type="submit" role="button"  href="{{route('education', session('employee_id'))}}" class="btn btn-info @if(request()->is('*education*')) active @endif">Education</a>

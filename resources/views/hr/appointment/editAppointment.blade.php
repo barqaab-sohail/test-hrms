@@ -28,7 +28,7 @@
 		                </div>
 		                <div class="card-body">
 
-		                    <form action="{{route('editAgreement', ['id'=>$employee->id])}}" method="post" class="form-horizontal" enctype="multipart/form-data">
+		                    <form action="{{route('editAppointment', ['id'=>$employee->id])}}" method="post" class="form-horizontal" enctype="multipart/form-data">
 		                        {{csrf_field()}}
 		                        <div class="form-body">
 		                            
@@ -39,7 +39,7 @@
 		                                    <div class="form-group row">
 		                                        <label class="control-label text-right col-md-3">Designation</label>
 		                                        <div class="col-md-9">
-		                                            <input type="text"  name="designation" value="{!! old('designation',isset($employee->contract->designation)?$employee->contract->designation:'')!!}" class="form-control" placeholder="Enter Designation." required>
+		                                            <input type="text"  name="designation" value="{!! old('designation',isset($employee->appointment->designation)?$employee->appointment->designation:'')!!}" class="form-control" placeholder="Enter Designation." required>
 		                                        </div>
 		                                    </div>
 		                                </div>
@@ -49,7 +49,30 @@
 		                                    <div class="form-group row">
 		                                        <label class="control-label text-right col-md-2">Date of Joining</label>
 		                                        <div class="col-md-7">
-		                                            <input type="date"  name="joining_date" value="{!! old('joining_date',isset($employee->contract->joining_date)?$employee->contract->joining_date:'')!!}" class="form-control" placeholder="Enter Joining Date " required>
+		                                            <input type="text"  id="joining_date" name="joining_date" value="{!! old('joining_date',isset($employee->appointment->joining_date)?$employee->appointment->joining_date:'')!!}" class="form-control" placeholder="Enter Joining Date " readonly required>
+		                                        </div>
+		                                    </div>
+		                                    
+		                                    </div>
+		                                </div>
+		                            </div>
+
+		                                   <div class="row">
+		                                <div class="col-md-6">
+		                                    <div class="form-group row">
+		                                        <label class="control-label text-right col-md-3">Reference No.</label>
+		                                        <div class="col-md-9">
+		                                            <input type="text"  name="reference_no" value="{!! old('reference_no',isset($employee->appointment->reference_no)?$employee->appointment->reference_no:'')!!}" class="form-control" placeholder="Enter Appointment Letter Reference No." required>
+		                                        </div>
+		                                    </div>
+		                                </div>
+		                                
+		                                <!--/span-->
+		                                <div class="col-md-6">
+		                                    <div class="form-group row">
+		                                        <label class="control-label text-right col-md-2">Letter Date</label>
+		                                        <div class="col-md-7">
+		                                            <input type="text"  id="appointment_date" name="appointment_date" value="{!! old('appointment_date',isset($employee->appointment->appointment_date)?$employee->appointment->appointment_date:'')!!}" class="form-control" placeholder="Enter Appointment Letter Date " readonly required>
 		                                        </div>
 		                                    </div>
 		                                    
@@ -65,7 +88,7 @@
 		                                             <select  name="project"  class="form-control" required>
                                                     <option value=""></option>
 													@foreach($projects as $project)
-													<option value="{{$project->name}}" @if($project->name == $employee->contract->project) selected="selected" @endif>{{$project->name}}</option>
+													<option value="{{$project->name}}" @if($project->name == isset($employee->appointment->project)) selected="selected" @endif>{{$project->name}}</option>
                                                     @endforeach 	
 
                                                     </select>
@@ -78,7 +101,7 @@
 		                                    <div class="form-group row">
 		                                        <label class="control-label text-right col-md-2">Expiry Date</label>
 		                                        <div class="col-md-7">
-		                                            <input type="date"  name="expiry_date" value="{!! old('expiry_date',isset($employee->contract->expiry_date)?$employee->contract->expiry_date:'')!!}" class="form-control" placeholder="Enter Joining Date " >
+		                                            <input type="text"  id="expiry_date" name="expiry_date" value="{!! old('expiry_date',isset($employee->appointment->expiry_date)?$employee->appointment->expiry_date:'')!!}" class="form-control" placeholder="Enter Expiry Date of Appointment" readonly >
 
 		                                        </div>
 		                                    </div>
@@ -94,10 +117,10 @@
 		                                        <div class="col-md-3">
 		                                            <select  name="category"  class="form-control" required>
                                                         <option value=""></option>
-                                                        @if(isset($employee->contract->category)){
-                                                        <option value="A" @if($employee->contract->category == 'A') selected="selected" @endif>A</option>
-                                                        <option value="B" @if($employee->contract->category == 'B') selected="selected" @endif>B</option> 
-                                                        <option value="C" @if($employee->contract->category == 'C') selected="selected" @endif>C</option> }
+                                                        @if(isset($employee->appointment->category)){
+                                                        <option value="A" @if($employee->appointment->category == 'A') selected="selected" @endif>A</option>
+                                                        <option value="B" @if($employee->appointment->category == 'B') selected="selected" @endif>B</option> 
+                                                        <option value="C" @if($employee->appointment->category == 'C') selected="selected" @endif>C</option> }
                                                         @else
                                                         <option value="A">A</option>
                                                         <option value="B">B</option>
@@ -108,8 +131,8 @@
 		                                         <label class="control-label text-right col-md-3">Grade</label>
 		                                        <div class="col-md-3">
 		                                            <select  name="grade"  class="form-control" >
-		                                            @if(isset($employee->contract->grade))
-		                                            <option value="{{$employee->contract->grade}}">{{$employee->contract->grade}}</option>
+		                                            @if(isset($employee->appointment->grade))
+		                                            <option value="{{$employee->appointment->grade}}">{{$employee->appointment->grade}}</option>
 		                                            @else
 		                                            <option value=""></option>
 		                                            @endif
@@ -130,9 +153,9 @@
 		                                        <div class="col-md-3">
 		                                            <select  name="appointment_letter_type"  class="form-control" required>
                                                         <option value=""></option>
-                                                        @if(isset($employee->contract->appointment_letter_type)){
-                                                        <option value="1 Page" @if($employee->contract->appointment_letter_type == '1 Page') selected="selected" @endif>1 Page</option>
-                                                        <option value="2 Pages" @if($employee->contract->appointment_letter_type == '2 Pages') selected="selected" @endif>2 Pages</option>
+                                                        @if(isset($employee->appointment->appointment_letter_type)){
+                                                        <option value="1 Page" @if($employee->appointment->appointment_letter_type == '1 Page') selected="selected" @endif>1 Page</option>
+                                                        <option value="2 Pages" @if($employee->appointment->appointment_letter_type == '2 Pages') selected="selected" @endif>2 Pages</option>
                                                         
                                                         @else
                                                         <option value="1 Page">One Page</option>
@@ -305,6 +328,17 @@
 //arguments.shift();
 //alert(arguments);
             $(document).ready(function(){
+				
+            	$( "#joining_date, #expiry_date, #appointment_date" ).datepicker({
+	     		dateFormat: 'dd-MM-yy',
+	      		yearRange: (new Date().getFullYear()-20)+':'+(new Date().getFullYear()+15),
+	      		changeMonth: true,
+	      		changeYear: true
+	    		});
+	    		
+
+
+            	//Total 
 				$(".form-group").on("input", ".prc", function() {
 		   		var sum = 0;
 		    		

@@ -86,16 +86,9 @@
 
 													</select>
 		                                        </div>
-		                                         <label class="control-label text-right col-md-3">Completion Year</label>
+		                                         
 		                                        <div class="col-md-3">
-													<select  name="completion"  class="form-control" required>
-													<option value=""></option>
-													@for ($i = (date('Y')-60); $i < (date('Y')+1); $i++)
-													<option value="{{$i}}"
-													@if($i == $data->completion) selected="selected" @endif
-													>{{ $i }}</option>
-													@endfor
-													</select>
+													
 	                                            
 		                                        </div>
 		                                    </div>
@@ -120,7 +113,7 @@
 		                                        </div>
 		                                        <div class="col-md-3">
 		                                        <label>Year</label>
-		                                            <select  name="from_year"  class="form-control" required>
+		                                            <select  name="from_year"  class="form-control" >
 
 													<option value=""></option>
 													@for ($i = (date('Y')-60); $i < (date('Y')+1); $i++)
@@ -168,7 +161,7 @@
 		                                <div class="col-md-6">
 		                                    <div class="form-group row">
 		                                        <label class="control-label text-right col-md-3">Grade</label>
-		                                        <div class="col-md-6">
+		                                        <div class="col-md-5">
 		                                            <input type="text"  name="grade" value="{!! old('grade', optional($data)->grade) !!}" class="form-control" placeholder="Enter Grade" >
 		                                        </div>
 		                                    </div>

@@ -73,17 +73,17 @@
 		                                <!--/span-->
 		                                <div class="col-md-5">
 		                                    <div class="form-group row">
-		                                        <label class="control-label text-right col-md-3">Project Name</label>
+		                                        <label class="control-label text-right col-md-3">Assignment Name</label>
 		                                        <div class="col-md-9">
 		                                            <input type="text" name="project" value="{!! old('project', optional($data)->project) !!}" class="form-control">
 		                                        </div>
 		                                    </div>
 		                                </div>
 		                            </div>
-		                             <div class="row">
+		                            <div class="row">
 		                                <div class="col-md-7">
 		                                    <div class="form-group row">
-		                                        <label class="control-label text-right col-md-3">Location</label>
+		                                        <label class="control-label text-right col-md-3">Assignment Location</label>
 		                                        <div class="col-md-9">
 		                                            <input type="text"  name="location" value="{!! old('location', optional($data)->location) !!}" class="form-control" placeholder="Enter Location" required>
 		                                        </div>
@@ -93,20 +93,58 @@
 		                                <!--/span-->
 		                                <div class="col-md-5">
 		                                    <div class="form-group row">
-		                                        <label class="control-label text-right col-md-3">Country</label>
-		                                        <div class="col-md-9">
-		                                            <input type="text" name="country" value="{!! old('country', optional($data)->country) !!}" class="form-control " placeholder="Enter Country Name" required>
+		                                        <label class="control-label text-right col-md-3">Client</label>
+		                                        <div class="col-md-8">
+		                                             <input type="text"  name="client" value="{!! old('client', optional($data)->client) !!}" class="form-control" placeholder="Enter Client Name" required>
 		                                        </div>
 		                                    </div>
 		                                </div>
 		                            </div>
 		                            <div class="row">
+		                                <div class="col-md-7">
+		                                    <div class="form-group row">
+		                                        
+		                                        
+		                                    </div>
+		                                </div>
+		                                
+		                                <!--/span-->
+		                                <div class="col-md-5">
+		                                    <div class="form-group row">
+		                                        <label class="control-label text-right col-md-3">Country</label>
+		                                        <div class="col-md-8">
+		                                             <select  name="country"  class="form-control" required>
+                                                        <option value=""></option>
+                                                        @foreach($countries as $country)
+														<option value="{{$country->name}}" @if($country->name == $data->country) selected="selected" @endif>{{$country->name}}</option>
+                                                    	@endforeach 	
+                                                        
+                                                    </select>
+		                                        </div>
+		                                    </div>
+		                                </div>
+		                            </div>
+									 <div class="row">
 		                                <!--/span-->
 		                                <div class="col-md-12">
 		                                    <div class="form-group row">
-		                                        <label class="control-label text-right col-md-3">Activities</label>
-		                                        <div class="col-md-7">
-		                                         <textarea  rows=10 cols=5 name="activities" class="form-control " required>{!! old('activities', optional($data)->activities) !!}</textarea>
+		                                        <label class="control-label text-right col-md-2">Main Features</label>
+		                                        <div class="col-md-9">
+		                                         <textarea  rows=1 cols=5 id="main_features" name="main_features" class="form-control " >{!! old('main_features', optional($data)->main_features) !!}</textarea>
+		                                        												
+		                                        </div>  
+		                                    </div>
+		                                
+		                                </div>
+		                                <!--/span-->
+		                            </div>
+		                            <div class="row">
+		                                <!--/span-->
+		                                <div class="col-md-12">
+		                                    <div class="form-group row">
+		                                        <label class="control-label text-right col-md-2">Activities</label>
+		                                        <div class="col-md-9">
+		                                         <textarea  rows=1 cols=5 name="activities" class="form-control " required>{!! old('activities', optional($data)->activities) !!}</textarea>
 		                                        </div>  
 		                                    </div>
 		                                

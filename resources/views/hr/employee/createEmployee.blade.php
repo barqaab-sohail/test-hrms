@@ -191,13 +191,13 @@
 		                                </div>
 		                                <div class="col-md-6">
 		                                    <div class="form-group row">
-		                                        <label class="control-label text-right col-md-3">Department</label>
+		                                        <label class="control-label text-right col-md-3">Division</label>
 		                                        <div class="col-md-9">
 		                                            <div class="col-md-9">
-		                                           	 <select  name="department_id"  class="form-control" required>
+		                                           	 <select  name="division_id"  class="form-control" required>
                                                         <option value=""></option>
-                                                        @foreach($departments as $department)
-														<option value="{{$department->id}}" {{(old("department_id")==$department->id? "selected" : "")}}>{{$department->name}}</option>										
+                                                        @foreach($divisions as $division)
+														<option value="{{$division->id}}" {{(old("division_id")==$division->id? "selected" : "")}}>{{$division->name}}</option>										
                                                         @endforeach
                                                                                                                
                                                     </select>

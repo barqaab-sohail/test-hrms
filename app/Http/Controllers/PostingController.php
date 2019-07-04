@@ -20,8 +20,8 @@ class PostingController extends Controller
 
         $employee = employee::find($id);
         $employees = DB::table('employees')
-                    ->join('contracts','employees.id','=','contracts.employee_id')
-                    ->select('employees.*','contracts.*')->get();
+                    ->join('appointments','employees.id','=','appointments.employee_id')
+                    ->select('employees.*','appointments.*')->get();
 
 
         $postingIds = posting::all()->where('employee_id', $id);
@@ -41,9 +41,9 @@ class PostingController extends Controller
 
     public function edit($id){
         $employees = DB::table('employees')
-                    ->join('contracts','employees.id','=','contracts.employee_id')
+                    ->join('appointments','employees.id','=','appointments.employee_id')
                     ->join('postings','employees.id','=','postings.employee_id')
-                    ->select('employees.*','contracts.*','postings.*')->get();
+                    ->select('employees.*','appointments.*','postings.*')->get();
         
         $employee = employee::find(session('employee_id'));
         $postingIds = posting::all()->where('employee_id', session('employee_id'));

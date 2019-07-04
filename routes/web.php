@@ -227,11 +227,11 @@ Route::get('/hrms/other/edit/{id?}', [
 Route::post('/hrms/editOther/{id?}', 'OtherController@update')->name('editOther');
 
 //Agreement Detail
-Route::get('/hrms/agreement/edit/{id?}', [
-            'uses' => 'AgreementController@edit',
-            'as' => 'agreement.edit'
+Route::get('/hrms/appointment/edit/{id?}', [
+            'uses' => 'AppointmentController@edit',
+            'as' => 'appointment.edit'
         ]);
-Route::post('/hrms/editAgreement/{id?}', 'AgreementController@update')->name('editAgreement');
+Route::post('/hrms/editAppointment/{id?}', 'AppointmentController@update')->name('editAppointment');
 
 //Project
 Route::get('/project/projectList', 'ProjectController@index')->name('projectList');
