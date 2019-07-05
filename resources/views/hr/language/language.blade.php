@@ -35,10 +35,10 @@
 		                            <h3 class="box-title">Language Detail</h3>
 		                            <hr class="m-t-0 m-b-40">
 		                            <div class="row">
-		                                <div class="col-md-8">
+		                                <div class="col-md-5">
 		                                    <div class="form-group row">
-		                                        <label class="control-label text-right col-md-3">Name of Language</label>
-		                                        <div class="col-md-9">
+		                                        <label class="control-label text-right col-md-3">Language</label>
+		                                        <div class="col-md-6">
 		                                            										
 
 													<select  name="name"  class="form-control" required>
@@ -56,7 +56,43 @@
 		                                <!--/span-->
 		                                <div class="col-md-4">
 		                                    <div class="form-group row">
-		                                        <label class="control-label text-right col-md-4">Proficiency</label>
+		                                       
+		                                    </div>
+		                                </div>
+		                            </div>
+		                          <div class="row">
+										 <div class="col-md-4">
+		                                    <div class="form-group row">
+		                                         <label class="control-label text-right col-md-4">Proficiency Writing </label>
+		                                        <div class="col-md-8">
+		                                             <select  name="proficiency"  class="form-control" required>
+                                                        <option value=""></option>
+                                                        <option value="Average">Average</option>
+                                                        <option value="Good">Good</option>
+                                                        <option value="Excellent">Excellent</option>
+                                                    </select>
+		                                        </div>
+		                                    </div>
+		                                </div>
+
+		                                <div class="col-md-4">
+		                                    <div class="form-group row">
+		                                         <label class="control-label text-right col-md-4">Proficiency Reading</label>
+		                                        <div class="col-md-8">
+		                                             <select  name="proficiency"  class="form-control" required>
+                                                        <option value=""></option>
+                                                        <option value="Average">Average</option>
+                                                        <option value="Good">Good</option>
+                                                        <option value="Excellent">Excellent</option>
+                                                    </select>
+		                                        </div>
+		                                    </div>
+		                                </div>
+		                                
+		                                <!--/span-->
+		                                <div class="col-md-4">
+		                                    <div class="form-group row">
+		                                        <label class="control-label text-right col-md-4">Proficiency Speaking</label>
 		                                        <div class="col-md-8">
 		                                             <select  name="proficiency"  class="form-control" required>
                                                         <option value=""></option>
@@ -69,8 +105,7 @@
 
 		                                    </div>
 		                                </div>
-		                            </div>
-		                               
+		                            </div> 
 		                          
 		                            		                           
 		                        </div>

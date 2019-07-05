@@ -17,6 +17,8 @@ class CreateTrainingsTable extends Migration
             $table->bigIncrements('id');
             $table->bigInteger('employee_id')->unsigned();
             $table->string('institute')->nullable();
+            $table->string('title');
+            $table->string('venue')->nullable();
             $table->string('description');
             $table->date('from')->nullable();
             $table->date('to')->nullable();

@@ -39,7 +39,7 @@
 		                                    <div class="form-group row">
 		                                        <label class="control-label text-right col-md-3">Name</label>
 		                                        <div class="col-md-9">
-		                                            <input type="text"  name="name" value="{{ old('name') }}" class="form-control" placeholder="Enter Bank Name" required>
+		                                            <input type="text"  name="name" value="{{ old('name') }}" class="form-control" placeholder="Enter Name" required>
 		                                        </div>
 		                                    </div>
 		                                </div>

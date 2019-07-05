@@ -54,10 +54,14 @@
 <script src="{{asset('Massets/js/js-ui/jquery-ui.min.js') }}"></script>
 <script src="{{asset('Massets/js/full-image/EZView.js') }}"></script>
 
+<script src="{{asset('Massets/js/crop/jquery.imgareaselect.min.js') }}"></script>
+<script src="{{asset('Massets/js/crop/croppie.min.js') }}"></script>
 
 
- <script src="https://cdn.tiny.cloud/1/6k6kj2mbbmwv1jqeh7sqe7jf29uemxfwvq4kzdpz5a4j9gm1/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
- <script> tinymce.init({
+
+
+<script src="https://cdn.tiny.cloud/1/6k6kj2mbbmwv1jqeh7sqe7jf29uemxfwvq4kzdpz5a4j9gm1/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+<script> tinymce.init({
     selector: 'textarea',
     forced_root_block:"",
    

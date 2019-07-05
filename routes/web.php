@@ -65,6 +65,7 @@ Route::get('/hrms/picture/edit/{id?}', [
             'as' => 'picture.edit'
         ]);
 Route::post('/editPicture/{id?}', 'PictureController@update')->name('editPicture');
+Route::post('/savePicture', 'PictureController@save')->name('savePicture');
 
 
 //User

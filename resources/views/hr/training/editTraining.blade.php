@@ -32,12 +32,12 @@
 		                        {{csrf_field()}}
 		                        <div class="form-body">
 		                            
-		                            <h3 class="box-title">Edit Training</h3>
+		                            <h3 class="box-title">Edit Training/Workshop/Course</h3>
 		                            <hr class="m-t-0 m-b-40">
 		                            <div class="row">
 		                                <div class="col-md-6">
 		                                    <div class="form-group row">
-		                                        <label class="control-label text-right col-md-3">Institute</label>
+		                                        <label class="control-label text-right col-md-3">Institution</label>
 		                                        <div class="col-md-9">
 		                                            <input type="text"  name="institute" value="{!! old('institute', optional($data)->institute) !!}" class="form-control" placeholder="Enter Institute Name" required>
 		                                        </div>

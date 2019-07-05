@@ -35,7 +35,7 @@
 		                            <div class="row">
 		                                <div class="col-md-7">
 		                                    <div class="form-group row">
-		                                        <label class="control-label text-right col-md-3">Document Name</label>
+		                                        <label class="control-label text-right col-md-3">Document Title</label>
 		                                        <div class="col-md-7">
 		                                            <input type="text"  name="document_name" value="{{ old('document_name') }}" class="form-control" placeholder="Enter Document Name" required>
 		                                        </div>

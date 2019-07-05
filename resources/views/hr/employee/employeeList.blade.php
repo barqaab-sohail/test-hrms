@@ -25,6 +25,7 @@
 						<th>Email</th>
 						<th>CNIC</th>
 						<th>CNIC Expiry</th>
+						<th>Gender</th>
 						<th> Actions </th>
 					</tr>
 					</thead>
@@ -35,6 +36,7 @@
 								<td>{{isset($employee->user->email)? $employee->user->email:'No Email'}}</td>
 								<td>{{$employee->cnic}}</td>
 								<td>{{$employee->cnic_expiry}}</td>
+								<td>{{$employee->gender}}</td>
 								<td>
 								
 								 <a class="btn btn-info btn-sm" href="{{route('employee.edit',['id'=>$employee->id])}}" data-toggle="tooltip" data-original-title="Edit"> <i class="fas fa-pencil-alt text-white "></i></a>

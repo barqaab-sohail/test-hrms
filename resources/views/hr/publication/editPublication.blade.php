@@ -51,9 +51,9 @@
 		                             <div class="row">
 		                                <div class="col-md-6">
 		                                    <div class="form-group row">
-		                                        <label class="control-label text-right col-md-4">Channel</label>
+		                                        <label class="control-label text-right col-md-4">Channel/Media</label>
 		                                        <div class="col-md-8">
-		                                            <input type="text"  name="channel" value="{!! old('channel', optional($data)->channel) !!}" placeholder="Enter Publication Channel " class="form-control"  required>
+		                                            <input type="text"  name="channel" value="{!! old('channel', optional($data)->channel) !!}" placeholder="Enter Publication Channel/Media " class="form-control"  required>
 		                                        </div>
 		                                        
 		                                    </div>

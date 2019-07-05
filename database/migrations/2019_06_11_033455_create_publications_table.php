@@ -16,6 +16,7 @@ class CreatePublicationsTable extends Migration
         Schema::create('publications', function (Blueprint $table) {
            $table->bigIncrements('id');
            $table->bigInteger('employee_id')->unsigned();
+           $table->text('title');          
            $table->text('description');
            $table->string('channel')->nullable();
            $table->string('year')->nullable();
