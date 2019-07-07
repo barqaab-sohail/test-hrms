@@ -37,8 +37,8 @@
 		                            <div class="row">
 		                                <div class="col-md-7">
 		                                    <div class="form-group row">
-		                                        <label class="control-label text-right col-md-2">Position</label>
-		                                        <div class="col-md-10">
+		                                        <label class="control-label text-right col-md-3">Position</label>
+		                                        <div class="col-md-9">
 		                                            <input type="text"  name="position" value="{{ old('position') }}" class="form-control" placeholder="Enter Position Name" required >
 		                                        </div>
 		                                    </div>
@@ -57,8 +57,8 @@
 		                            <div class="row">
 		                                <div class="col-md-7">
 		                                    <div class="form-group row">
-		                                        <label class="control-label text-right col-md-2">Manager Name</label>
-		                                        <div class="col-md-10">
+		                                        <label class="control-label text-right col-md-3">Manager Name</label>
+		                                        <div class="col-md-9">
 		                                           <select  name="manager_id"  class="form-control" required>
                                                         <option value=""></option>
                                                         @foreach($employees as $employee)
@@ -83,8 +83,8 @@
 		                                <div class="col-md-7">
                                 	
 		                                    <div class="form-group row">
-		                                        <label class="control-label text-right col-md-2">Project</label>
-		                                        <div class="col-md-10">
+		                                        <label class="control-label text-right col-md-3">Project</label>
+		                                        <div class="col-md-9">
 			
 		                                            <select  name="project"  class="form-control" required>
                                                         <option value=""></option>

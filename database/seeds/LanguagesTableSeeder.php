@@ -14,6 +14,14 @@ class LanguagesTableSeeder extends Seeder
         DB::table('languages')->delete();
 		 $languages = array(
             array(
+                "name" => "Inglés",
+                "name_1" => "English",
+                "code" => "EN"),
+           array(
+                "name" => "Urdu",
+                "name_1" => "Urdu",
+                "code" => "UR"),
+            array(
                 "name" => "Afrikans",
                 "name_1" => "Afrikanns",
                 "code" => "AF"),
@@ -69,10 +77,6 @@ class LanguagesTableSeeder extends Seeder
                 "name" => "Holandés",
                 "name_1" => "Dutch",
                 "code" => "NL"),
-            array(
-                "name" => "Inglés",
-                "name_1" => "English",
-                "code" => "EN"),
             array(
                 "name" => "Estonio",
                 "name_1" => "Estonian",
@@ -281,10 +285,6 @@ class LanguagesTableSeeder extends Seeder
                 "name" => "Ucraniano",
                 "name_1" => "Ukranian",
                 "code" => "UK"),
-            array(
-                "name" => "Urdu",
-                "name_1" => "Urdu",
-                "code" => "UR"),
             array(
                 "name" => "Uzbek",
                 "name_1" => "Uzbek",

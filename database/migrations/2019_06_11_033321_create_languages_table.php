@@ -17,7 +17,9 @@ class CreateLanguagesTable extends Migration
             $table->bigIncrements('id');
             $table->bigInteger('employee_id')->unsigned();
             $table->string('name');
-            $table->string('proficiency');
+            $table->string('writing');
+            $table->string('speaking');
+            $table->string('reading');
             $table->timestamps();
             $table->foreign('employee_id')->references('id')->on('employees');
         });

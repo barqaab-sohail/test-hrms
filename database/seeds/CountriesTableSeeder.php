@@ -13,6 +13,7 @@ class CountriesTableSeeder extends Seeder
     {
         DB::table('countries')->delete();
 		$countries = array(
+			array('code' => 'PK', 'name' => 'Pakistan'),
 			array('code' => 'US', 'name' => 'United States'),
 			array('code' => 'CA', 'name' => 'Canada'),
 			array('code' => 'AF', 'name' => 'Afghanistan'),
@@ -176,7 +177,6 @@ class CountriesTableSeeder extends Seeder
 			array('code' => 'MP', 'name' => 'Northern Mariana Islands'),
 			array('code' => 'NO', 'name' => 'Norway'),
 			array('code' => 'OM', 'name' => 'Oman'),
-			array('code' => 'PK', 'name' => 'Pakistan'),
 			array('code' => 'PW', 'name' => 'Palau'),
 			array('code' => 'PA', 'name' => 'Panama'),
 			array('code' => 'PG', 'name' => 'Papua New Guinea'),

@@ -47,17 +47,16 @@
 		                                <!--/span-->
 		                                <div class="col-md-6">
 		                                    <div class="form-group row">
-		                                        <label class="control-label text-right col-md-2">Date of Joining</label>
+		                                        <label class="control-label text-right col-md-3">Date of Joining</label>
 		                                        <div class="col-md-7">
 		                                            <input type="text"  id="joining_date" name="joining_date" value="{!! old('joining_date',isset($employee->appointment->joining_date)?$employee->appointment->joining_date:'')!!}" class="form-control" placeholder="Enter Joining Date " readonly required>
 		                                        </div>
 		                                    </div>
-		                                    
-		                                    </div>
 		                                </div>
 		                            </div>
+		                           
 
-		                                   <div class="row">
+		                            <div class="row">
 		                                <div class="col-md-6">
 		                                    <div class="form-group row">
 		                                        <label class="control-label text-right col-md-3">Reference No.</label>
@@ -70,7 +69,7 @@
 		                                <!--/span-->
 		                                <div class="col-md-6">
 		                                    <div class="form-group row">
-		                                        <label class="control-label text-right col-md-2">Letter Date</label>
+		                                        <label class="control-label text-right col-md-3">Letter Date</label>
 		                                        <div class="col-md-7">
 		                                            <input type="text"  id="appointment_date" name="appointment_date" value="{!! old('appointment_date',isset($employee->appointment->appointment_date)?$employee->appointment->appointment_date:'')!!}" class="form-control" placeholder="Enter Appointment Letter Date " readonly required>
 		                                        </div>
@@ -79,6 +78,8 @@
 		                                    </div>
 		                                </div>
 		                            </div>
+
+
 
 		                            <div class="row">
 		                                <div class="col-md-6">
@@ -99,7 +100,7 @@
 		                                <!--/span-->
 		                                <div class="col-md-6">
 		                                    <div class="form-group row">
-		                                        <label class="control-label text-right col-md-2">Expiry Date</label>
+		                                        <label class="control-label text-right col-md-3">Expiry Date</label>
 		                                        <div class="col-md-7">
 		                                            <input type="text"  id="expiry_date" name="expiry_date" value="{!! old('expiry_date',isset($employee->appointment->expiry_date)?$employee->appointment->expiry_date:'')!!}" class="form-control" placeholder="Enter Expiry Date of Appointment" readonly >
 
@@ -149,7 +150,7 @@
 		                                <!--/span-->
 		                                <div class="col-md-6">
 		                                    <div class="form-group row">
-		                                         <label class="control-label text-right col-md-2">Letter Type</label>
+		                                         <label class="control-label text-right col-md-3">Letter Type</label>
 		                                        <div class="col-md-3">
 		                                            <select  name="appointment_letter_type"  class="form-control" required>
                                                         <option value=""></option>

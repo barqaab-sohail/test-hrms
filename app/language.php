@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class language extends Model
 {
      protected $fillable = [
-        'name', 'proficiency','employee_id',
+        'name', 'speaking','writing','reading','employee_id',
     ];	
 
     public function employee(){

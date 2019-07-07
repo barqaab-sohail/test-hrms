@@ -35,46 +35,72 @@
 		                            <h3 class="box-title">Language Detail</h3>
 		                            <hr class="m-t-0 m-b-40">
 		                            <div class="row">
-		                                <div class="col-md-8">
+		                                <div class="col-md-12">
 		                                    <div class="form-group row">
-		                                        <label class="control-label text-right col-md-3">Name of Language</label>
-		                                        <div class="col-md-9">
-		                                            <select  name="name"  class="form-control" required>
-                                                       @foreach($allLanguages as $language)
-		                                             	
+		                                        <label class="control-label text-right col-md-2">Language</label>
+		                                        <div class="col-md-3">
+		                                            										
+													<select  name="name"  class="form-control" required>
+                                                        @foreach($allLanguages as $language)
 		                                             	<option value="{{$language->name_1}}" @if($data->name == $language->name_1) selected="selected" @endif>{{$language->name_1}}</option>
                                                                                                               
                                                      @endforeach    
+                                                        
                                                     </select>
-						
-
-
 		                                        </div>
 		                                    </div>
 		                                </div>
 		                                
 		                                <!--/span-->
-		                                <div class="col-md-4">
+		                                <div class="col-md-6">
 		                                    <div class="form-group row">
-		                                        <label class="control-label text-right col-md-4">Proficiency</label>
-		                                        <div class="col-md-8">
-		                                             <select  name="proficiency"  class="form-control" required>
-		                                             
-		                                             	<option value="Average"  @if($data->proficiency == 'Average')selected="selected" @endif>Average</option>
+		                                       
+		                                    </div>
+		                                </div>
+		                            </div>
+		                          	<div class="row">
+		                          		<div class="col-md-2">
+		                                    <div class="form-group row">
+		                                        <label class="control-label text-right col-md-12">Proficiency</label>
+		                                    </div>
+		                                </div>
+										<div class="col-md-10">
+		                                    <div class="form-group row">
+		                                        
+		                                        <div class="col-md-3">
+		                                        <label class="control-label text-right">Reading </label>
+		                                             <select  name="reading"  class="form-control" required>
+                                                        <option value="Average"  @if($data->reading == 'Average')selected="selected" @endif>Average</option>
 		                                             	
-                                                        <option value="Good" @if($data->proficiency == 'Good') selected="selected" @endif>Good</option>
+                                                        <option value="Good" @if($data->reading == 'Good') selected="selected" @endif>Good</option>
                                                         
-                                                        <option value="Excellent" @if($data->proficiency == 'Excellent')selected="selected" @endif>Excellent</option>
+                                                        <option value="Excellent" @if($data->reading == 'Excellent')selected="selected" @endif>Excellent</option>
+                                                    </select>
+		                                        </div>
+		                                        <div class="col-md-3">
+		                                        <label class="control-label text-right">Speaking </label>
+		                                             <select  name="speaking"  class="form-control" required>
+                                                       <option value="Average"  @if($data->speaking == 'Average')selected="selected" @endif>Average</option>
+		                                             	
+                                                        <option value="Good" @if($data->speaking == 'Good') selected="selected" @endif>Good</option>
                                                         
-                                                                      
+                                                        <option value="Excellent" @if($data->speaking == 'Excellent')selected="selected" @endif>Excellent</option>
+                                                    </select>
+		                                        </div>
+		                                        <div class="col-md-3">
+		                                        <label class="control-label text-right">Writing </label>
+		                                             <select  name="writing"  class="form-control" required>
+                                                        <option value="Average"  @if($data->writing == 'Average')selected="selected" @endif>Average</option>
+		                                             	
+                                                        <option value="Good" @if($data->writing == 'Good') selected="selected" @endif>Good</option>
+                                                        
+                                                        <option value="Excellent" @if($data->writing == 'Excellent')selected="selected" @endif>Excellent</option>
                                                     </select>
 		                                        </div>
 		                                    </div>
 		                                </div>
-		                            </div>
-		                               
-		                          
-		                            		                           
+		                                <input type="number" name="employee_id" value="{{session('employee_id')}}"   class="form-control " hidden>                              
+		                                          
 		                        </div>
 		                         <hr>
 		                        <div class="form-actions">
@@ -82,7 +108,7 @@
 		                                <div class="col-md-6">
 		                                    <div class="row">
 		                                        <div class="col-md-offset-3 col-md-9">
-		                                            <button type="submit" class="btn btn-success">Edit Language</button>
+		                                            <button type="submit" class="btn btn-success">Save Language</button>
 		                                            <button type="button" onclick="window.location.href='{{route('employeeList')}}'" class="btn btn-inverse">Cancel</button>
 		                                        </div>
 		                                    </div>
@@ -99,7 +125,7 @@
 			<!--<div class="float-right">
 				<input id="month" class="form-control" value="" type="month">
 			</div>-->
-			<h2 class="card-title">Stored Banks Detail</h2>
+			<h2 class="card-title">Stored Language Detail</h2>
 			
 			<div class="table-responsive m-t-40">
 				
@@ -108,7 +134,9 @@
 					
 					<tr>
 						<th>Name of Language</th>
-						<th>Proficiency</th>
+						<th>Reading</th>
+						<th>Speaking</th>
+						<th>Writing</th>
 						
 						@if(Auth::user()->role_id==1)<th> Actions </th> @endif
 					</tr>
@@ -117,13 +145,16 @@
 						@foreach($languageIds as $languageId)
 							<tr>
 								<td>{{$languageId->name}}</td>
-								<td>{{$languageId->proficiency}}</td>
+								<td>{{$languageId->reading}}</td>
+								<td>{{$languageId->speaking}}</td>
+								<td>{{$languageId->writing}}</td>
 								
 								<td>
 								@if(Auth::user()->role_id==1)
 								 <a class="btn btn-info btn-sm" href="{{route('language.edit',['id'=>$languageId->id])}}" data-toggle="tooltip" data-original-title="Edit"> <i class="fas fa-pencil-alt text-white "></i></a>
+								<a class="btn btn-danger btn-sm" onclick="return confirm('Are you Sure to Delete')" href="{{route('deleteLanguage',['id'=>$languageId->id])}}" data-toggle="tooltip" data-original-title="Delete"> <i class="fas fa-trash-alt"></i></a>
 
-								 <a class="btn btn-danger btn-sm" onclick="return confirm('Are you Sure to Delete')" href="{{route('deleteLanguage',['id'=>$languageId->id])}}" data-toggle="tooltip" data-original-title="Delete"> <i class="fas fa-trash-alt"></i></a>
+
 								 @endif
 															
 							</tr>
@@ -145,9 +176,9 @@
     </div>
  @push('scripts')
         <script>
-             $(document).ready(function(){
+            $(document).ready(function(){
 			$('select').select2({
-  				maximumSelectionLength: 2,
+  			maximumSelectionLength: 2,
 
 			});
 			});

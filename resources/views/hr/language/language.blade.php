@@ -35,12 +35,11 @@
 		                            <h3 class="box-title">Language Detail</h3>
 		                            <hr class="m-t-0 m-b-40">
 		                            <div class="row">
-		                                <div class="col-md-5">
+		                                <div class="col-md-12">
 		                                    <div class="form-group row">
-		                                        <label class="control-label text-right col-md-3">Language</label>
-		                                        <div class="col-md-6">
+		                                        <label class="control-label text-right col-md-2">Language</label>
+		                                        <div class="col-md-3">
 		                                            										
-
 													<select  name="name"  class="form-control" required>
                                                         <option value=""></option>
                                                         @foreach($allLanguages as $language)
@@ -48,24 +47,47 @@
                                                         @endforeach
                                                         
                                                     </select>
-		                                            
 		                                        </div>
 		                                    </div>
 		                                </div>
 		                                
 		                                <!--/span-->
-		                                <div class="col-md-4">
+		                                <div class="col-md-6">
 		                                    <div class="form-group row">
 		                                       
 		                                    </div>
 		                                </div>
 		                            </div>
-		                          <div class="row">
-										 <div class="col-md-4">
+		                          	<div class="row">
+		                          		<div class="col-md-2">
 		                                    <div class="form-group row">
-		                                         <label class="control-label text-right col-md-4">Proficiency Writing </label>
-		                                        <div class="col-md-8">
-		                                             <select  name="proficiency"  class="form-control" required>
+		                                        <label class="control-label text-right col-md-12">Proficiency</label>
+		                                    </div>
+		                                </div>
+										<div class="col-md-10">
+		                                    <div class="form-group row">
+		                                        
+		                                        <div class="col-md-3">
+		                                        <label class="control-label text-right">Reading </label>
+		                                             <select  name="reading"  class="form-control" required>
+                                                        <option value=""></option>
+                                                        <option value="Average">Average</option>
+                                                        <option value="Good">Good</option>
+                                                        <option value="Excellent">Excellent</option>
+                                                    </select>
+		                                        </div>
+		                                        <div class="col-md-3">
+		                                        <label class="control-label text-right">Speaking </label>
+		                                             <select  name="speaking"  class="form-control" required>
+                                                        <option value=""></option>
+                                                        <option value="Average">Average</option>
+                                                        <option value="Good">Good</option>
+                                                        <option value="Excellent">Excellent</option>
+                                                    </select>
+		                                        </div>
+		                                        <div class="col-md-3">
+		                                        <label class="control-label text-right">Writing </label>
+		                                             <select  name="writing"  class="form-control" required>
                                                         <option value=""></option>
                                                         <option value="Average">Average</option>
                                                         <option value="Good">Good</option>
@@ -74,40 +96,8 @@
 		                                        </div>
 		                                    </div>
 		                                </div>
-
-		                                <div class="col-md-4">
-		                                    <div class="form-group row">
-		                                         <label class="control-label text-right col-md-4">Proficiency Reading</label>
-		                                        <div class="col-md-8">
-		                                             <select  name="proficiency"  class="form-control" required>
-                                                        <option value=""></option>
-                                                        <option value="Average">Average</option>
-                                                        <option value="Good">Good</option>
-                                                        <option value="Excellent">Excellent</option>
-                                                    </select>
-		                                        </div>
-		                                    </div>
-		                                </div>
-		                                
-		                                <!--/span-->
-		                                <div class="col-md-4">
-		                                    <div class="form-group row">
-		                                        <label class="control-label text-right col-md-4">Proficiency Speaking</label>
-		                                        <div class="col-md-8">
-		                                             <select  name="proficiency"  class="form-control" required>
-                                                        <option value=""></option>
-                                                        <option value="Average">Average</option>
-                                                        <option value="Good">Good</option>
-                                                        <option value="Excellent">Excellent</option>
-                                                    </select>
-		                                        </div>
-												<input type="number" name="employee_id" value="{{session('employee_id')}}"   class="form-control " hidden>
-
-		                                    </div>
-		                                </div>
-		                            </div> 
-		                          
-		                            		                           
+		                                <input type="number" name="employee_id" value="{{session('employee_id')}}"   class="form-control " hidden>                              
+		                                          
 		                        </div>
 		                         <hr>
 		                        <div class="form-actions">
@@ -132,7 +122,7 @@
 			<!--<div class="float-right">
 				<input id="month" class="form-control" value="" type="month">
 			</div>-->
-			<h2 class="card-title">Stored Banks Detail</h2>
+			<h2 class="card-title">Stored Language Detail</h2>
 			
 			<div class="table-responsive m-t-40">
 				
@@ -141,7 +131,9 @@
 					
 					<tr>
 						<th>Name of Language</th>
-						<th>Proficiency</th>
+						<th>Reading</th>
+						<th>Speaking</th>
+						<th>Writing</th>
 						
 						@if(Auth::user()->role_id==1)<th> Actions </th> @endif
 					</tr>
@@ -150,7 +142,9 @@
 						@foreach($languageIds as $languageId)
 							<tr>
 								<td>{{$languageId->name}}</td>
-								<td>{{$languageId->proficiency}}</td>
+								<td>{{$languageId->reading}}</td>
+								<td>{{$languageId->speaking}}</td>
+								<td>{{$languageId->writing}}</td>
 								
 								<td>
 								@if(Auth::user()->role_id==1)

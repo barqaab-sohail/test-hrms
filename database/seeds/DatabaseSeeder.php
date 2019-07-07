@@ -48,8 +48,13 @@ class DatabaseSeeder extends Seeder
             'first_name' => 'Sohail',
             'last_name' => 'Afzal',
             'father_name' => 'Muhammad Afzal',
+            'date_of_birth' => '1976-06-08',
+            'gender' => 'Male',
             'division_id' => 1,
+            'employee_no' => 1011,
             'cnic' => '3520246897303',
+            'nationality' => 'Pakistan',
+            'religon' => 'Islam',
             'cnic_expiry' => '2020-04-02',
            
         ]);
