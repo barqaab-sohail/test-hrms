@@ -34,12 +34,28 @@
 		                            
 		                            <h3 class="box-title">Publication</h3>
 		                            <hr class="m-t-0 m-b-40">
+									<div class="row">
+		                                <div class="col-md-12">
+		                                    <div class="form-group row">
+		                                        <label class="control-label text-right col-md-2">Title</label>
+		                                        <div class="col-md-10">
+		                                        	<input type="text"  name="title" value="{!! old('title', optional($data)->title) !!}" placeholder="Enter Publication Title " class="form-control"  required>
+		                                            
+		                                        </div>
+		                                    </div>
+		                                </div>
+		                               
+		                               
+		                            </div>
+		                                
+		                            <!--/row-->
+
 		                            <div class="row">
 		                                <div class="col-md-12">
 		                                    <div class="form-group row">
 		                                        <label class="control-label text-right col-md-2">Description</label>
 		                                        <div class="col-md-10">
-		                                            <textarea type="text" rows=3 cols=20 name="description" class="form-control" placeholder="Enter Description" required>{!! old('description', optional($data)->description) !!}</textarea>
+		                                            <textarea type="text" rows=3 cols=20 name="description" class="form-control" placeholder="Enter Description">{!! old('description', optional($data)->description) !!}</textarea>
 		                                        </div>
 		                                    </div>
 		                                </div>
@@ -121,6 +137,7 @@
 								<td>
 								@if(Auth::user()->role_id==1)
 								 <a class="btn btn-info btn-sm" href="{{route('publication.edit',['id'=>$publicationId->id])}}" data-toggle="tooltip" data-original-title="Edit"> <i class="fas fa-pencil-alt text-white "></i></a>
+								 <a class="btn btn-danger btn-sm" onclick="return confirm('Are you Sure to Delete')" href="{{route('deletePublication',['id'=>$publicationId->id])}}" data-toggle="tooltip" data-original-title="Delete"> <i class="fas fa-trash-alt"></i></a>
 								 @endif
 															
 							</tr>

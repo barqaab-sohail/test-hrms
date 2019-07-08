@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Http\Request;
 
 class StoreMembership extends FormRequest
 {
@@ -13,7 +14,7 @@ class StoreMembership extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -23,8 +24,18 @@ class StoreMembership extends FormRequest
      */
     public function rules()
     {
-        return [
-            //
-        ];
+        $rules = [];
+
+       if(Request::input('name') == 'PEC')
+       {  
+            $rules['name'] = 'required';
+            $rules['expiry_date'] = 'required';
+            $rules['membership_no'] = 'required';
+       }else{
+        $rules['name'] = 'required';
+       }
+
+       return $rules;
+
     }
 }

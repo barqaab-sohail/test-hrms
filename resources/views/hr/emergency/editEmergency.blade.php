@@ -129,6 +129,7 @@
 								<td>
 								@if(Auth::user()->role_id==1)
 								 <a class="btn btn-info btn-sm" href="{{route('emergency.edit',['id'=>$emergencyId->id])}}" data-toggle="tooltip" data-original-title="Edit"> <i class="fas fa-pencil-alt text-white "></i></a>
+								 <a class="btn btn-danger btn-sm" onclick="return confirm('Are you Sure to Delete')" href="{{route('deleteEmergency',['id'=>$emergencyId->id])}}" data-toggle="tooltip" data-original-title="Delete"> <i class="fas fa-trash-alt"></i></a>
 								 @endif
 															
 							</tr>

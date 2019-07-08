@@ -37,9 +37,18 @@
 		                            <div class="row">
 		                                <div class="col-md-7">
 		                                    <div class="form-group row">
-		                                        <label class="control-label text-right col-md-2">Institute</label>
+		                                        <label class="control-label text-right col-md-2">Name</label>
 		                                        <div class="col-md-10">
-		                                            <input type="text"  name="institute" value="{!! old('institute', optional($data)->institute) !!}" class="form-control" placeholder="Enter Institute Name" required>
+		                                           <select  id="name" name="name"  class="form-control" required>
+                                                        
+                                                        <option value="{{$data->name}}">{{$data->name}}</option> 
+		                                             	<option value="PEC" @if($data->name == 'PEC') selected="selected" @endif>PEC</option>
+		                                             	<option value"Other">Other</option>
+                                                                                                                                                     
+                                                    </select>
+
+
+
 		                                        </div>
 		                                    </div>
 		                                </div>
@@ -49,7 +58,7 @@
 		                                    <div class="form-group row">
 		                                        <label class="control-label text-right col-md-4">Membership No.</label>
 		                                        <div class="col-md-8">
-		                                            <input type="text" name="membership_no" value="{!! old('membership_no', optional($data)->membership_no) !!}" class="form-control " placeholder="Enter Membership No" required>
+		                                            <input type="text" name="membership_no" value="{!! old('membership_no', optional($data)->membership_no) !!}" class="form-control " placeholder="Enter Membership No" >
 		                                        </div>
 		                                    </div>
 		                                </div>
@@ -61,7 +70,7 @@
 		                                    <div class="form-group row">
 		                                        <label class="control-label text-right col-md-2">Expiry Date</label>
 		                                        <div class="col-md-5">
-		                                            <input type="date"  name="expiry_date" value="{!! old('expiry_date', optional($data)->expiry_date) !!}" class="form-control"  required>
+		                                            <input type="date"  name="expiry_date" value="{!! old('expiry_date', optional($data)->expiry_date) !!}" class="form-control"  >
 		                                        </div>
 		                                       
 		                                      
@@ -112,13 +121,14 @@
 					<tbody>
 						@foreach($membershipIds as $membershipId)
 							<tr>
-								<td>{{$membershipId->institute}}</td>
+								<td>{{$membershipId->name}}</td>
 								<td>{{$membershipId->membership_no}}</td>
 								<td>{{$membershipId->expiry_date}}</td>
 								
 								<td>
 								@if(Auth::user()->role_id==1)
 								 <a class="btn btn-info btn-sm" href="{{route('membership.edit',['id'=>$membershipId->id])}}" data-toggle="tooltip" data-original-title="Edit"> <i class="fas fa-pencil-alt text-white "></i></a>
+								 <a class="btn btn-danger btn-sm" onclick="return confirm('Are you Sure to Delete')" href="{{route('deleteMembership',['id'=>$membershipId->id])}}" data-toggle="tooltip" data-original-title="Delete"> <i class="fas fa-trash-alt"></i></a>
 								 @endif
 															
 							</tr>
@@ -143,6 +153,16 @@
  @push('scripts')
         <script>
             $(document).ready(function(){
+
+            	$("#name").change(function (){
+				var other = $('#name').val();
+					if (other != 'PEC'){
+					var name=prompt("Enter Membership Name");
+					var select = $('#name');
+					select.empty().append(new Option(name, name, true, true),new Option('PEC', 'PEC'));
+						
+					}
+				});
 			
 			});
         </script>

@@ -85,16 +85,15 @@
 		                                <div class="col-md-6">
 		                                    <div class="form-group row">
 		                                        <label class="control-label text-right col-md-3">Gender</label>
-		                                        <div class="col-md-9">
-		                                            <div class="col-md-9">
+		                                        <div class="col-md-7">
+		                                            
 		                                           	 <select  name="gender"  class="form-control" required>
                                                          
 		                                             	<option value="Male" @if($employee->gender == 'Male') selected="selected" @endif>Male</option>
                                                         <option value="Female" @if($employee->gender == 'Female') selected="selected" @endif>Female</option>
                                                                                                           
                                                     </select>
-		                                            
-		                                        </div>
+		                                        		                                        
 		                                        </div>
 		                                    </div>
 		                                </div>
@@ -114,10 +113,10 @@
 		                                <div class="col-md-6">
 		                                    <div class="form-group row">
 		                                        <label class="control-label text-right col-md-3">CNIC Expiry</label>
-		                                        <div class="col-md-9">
-		                                            <div class="col-md-9">
+		                                        <div class="col-md-7">
+		                                            
 		                                            <input type="text" id="cnic_expiry" name="cnic_expiry" value="{{ old('cnic_expiry',$employee->cnic_expiry) }}" class="form-control " readonly required>
-		                                        </div>
+		                                       
 		                                        </div>
 		                                    </div>
 		                                </div>
@@ -140,8 +139,8 @@
 		                                <div class="col-md-6">
 		                                    <div class="form-group row">
 		                                        <label class="control-label text-right col-md-3">Marital Status</label>
-		                                        <div class="col-md-9">
-		                                            <div class="col-md-9">
+		                                        <div class="col-md-7">
+		                                           
 		                                           	 <select  name="marital_status"  class="form-control" required>
                                                         
                                                         @foreach($maritalStatuses as $maritalStatus)
@@ -150,8 +149,7 @@
                                                         @endforeach
                                                         
                                                     </select>
-		                                            
-		                                        </div>
+		                                        		                                        
 		                                        </div>
 		                                    </div>
 		                                </div>
@@ -170,8 +168,8 @@
 		                                <div class="col-md-6">
 		                                    <div class="form-group row">
 		                                        <label class="control-label text-right col-md-3">Nationality</label>
-		                                        <div class="col-md-9">
-		                                            <div class="col-md-9">
+		                                        <div class="col-md-7">
+		                                            
 		                                           	<select  name="nationality"  class="form-control" required>
 		                                           	<option value=""></option>
 		                                           	@foreach($countries as $country)
@@ -180,6 +178,8 @@
                                                     </select>
 		                                            
 		                                        </div>
+		                                        <div class="col-md-2">
+		                                       		<button type="button" name="add" id="add" class="btn btn-success">+</button>
 		                                        </div>
 		                                    </div>
 		                                </div>
@@ -188,24 +188,38 @@
 								     <div class="row">
 		                                <!--/span-->
 		                                <div class="col-md-6">
-		                                    
-		                                </div>
-		                                <div class="col-md-6">
-		                                    <div class="form-group row">
+		                                	<div class="form-group row">
 		                                        <label class="control-label text-right col-md-3">Division</label>
-		                                        <div class="col-md-9">
-		                                            <div class="col-md-9">
+		                                        <div class="col-md-7">
+		                                            
 		                                           	 <select  name="division_id"  class="form-control" required>
                                                         <option value=""></option>
                                                         @foreach($divisions as $division)
-														<option value="{{$division->id}}" @if($division->id == $employee->division_id) selected="selected" @endif>{{$division->name}}</option>                                     @endforeach
+														<option value="{{$division->id}}" @if($division->id == $employee->division_id) selected="selected" @endif>{{$division->name}}</option>                        @endforeach
                                                                                                                
                                                     </select>
 		                                            
+		                                       
 		                                        </div>
+		                                    </div>
+		                                    
+		                                </div>
+		                               
+		                               <div id="nationality2" class="col-md-6">
+		                                   
+											<div class="form-group row">
+		                                        <label class="control-label text-right col-md-3">Nationality-2</label>
+		                                        <div class="col-md-7">
+		                                          	<select  name="nationality2"  class="form-control" required>
+		                                           	<option value=""></option>
+		                                           	@foreach($countries as $country)
+													<option value="{{$country->name}}" @if($country->name == $employee->nationality2) selected="selected" @endif>{{$country->name}}</option>
+                                                    @endforeach 	
+                                                    </select>
 		                                        </div>
 		                                    </div>
 		                                </div>
+		                               
 		                                <!--/span-->
 		                            </div>
 
@@ -233,6 +247,7 @@
     </div>
  @push('scripts')
     <script>
+    $(document).ready(function(){
         $( function() {
 		    $( "#date_of_birth" ).datepicker({
 		      dateFormat: 'dd-MM-yy',
@@ -246,12 +261,19 @@
 		      changeMonth: true,
 		      changeYear: true
 		    });
-		    
-		    $('select').select2({
+		    		    
+  		});
+
+        $('select').select2({
   			maximumSelectionLength: 2,
 
-			});
-  		});
+		});
+
+        $("#nationality2").hide();
+		$("#add").click (function(){
+		  		$("#nationality2").toggle();
+	  	});
+	});
     </script>
 
         

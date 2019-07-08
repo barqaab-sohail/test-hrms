@@ -61,7 +61,7 @@
 		                            		<div class="form-group row">
 												<label class="control-label text-right col-md-3">Remarks</label>
 		                            			<div class="col-md-9">
-		                            			<input type="text" name="promotion_remarks" value="{{ old('promotion_remarks')}}" class="form-control"  >
+		                            			<input type="text" name="promotion_remarks" value="{{ old('promotion_remarks')}}" class="form-control"  requried>
 		                            			</div>
 
 		                            		</div>

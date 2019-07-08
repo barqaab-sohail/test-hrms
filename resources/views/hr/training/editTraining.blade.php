@@ -34,6 +34,29 @@
 		                            
 		                            <h3 class="box-title">Edit Training/Workshop/Course</h3>
 		                            <hr class="m-t-0 m-b-40">
+									<div class="row">
+		                                <div class="col-md-6">
+		                                    <div class="form-group row">
+		                                        <label class="control-label text-right col-md-3">Title</label>
+		                                        <div class="col-md-9">
+		                                            <input type="text"  name="title" value="{!! old('title', optional($data)->title) !!}" class="form-control" placeholder="Enter Title Name" required>
+		                                        </div>
+		                                    </div>
+		                                </div>
+		                                
+		                                <!--/span-->
+		                                <div class="col-md-6">
+		                                    <div class="form-group row">
+		                                        <label class="control-label text-right col-md-3">Venue</label>
+		                                        <div class="col-md-9">
+		                                            <input type="text" name="venue" value="{!! old('venue', optional($data)->venue) !!}" class="form-control " placeholder="Enter Venue Name" required>
+		                                        </div>
+		                                    </div>
+		                                </div>
+		                            </div>
+		                                
+		                            <!--/row-->
+
 		                            <div class="row">
 		                                <div class="col-md-6">
 		                                    <div class="form-group row">
@@ -136,7 +159,8 @@
 								<td>{{$trainingId->to}}</td>
 								<td>
 								@if(Auth::user()->role_id==1)
-								 <a class="btn btn-info btn-sm" href="{{route('training.edit',['id'=>$trainingId->id])}}" data-toggle="tooltip" data-original-title="Edit"> <i class="fas fa-pencil-alt text-white "></i></a>
+								<a class="btn btn-info btn-sm" href="{{route('training.edit',['id'=>$trainingId->id])}}" data-toggle="tooltip" data-original-title="Edit"> <i class="fas fa-pencil-alt text-white "></i></a>
+								<a class="btn btn-danger btn-sm" onclick="return confirm('Are you Sure to Delete')" href="{{route('deleteTraining',['id'=>$trainingId->id])}}" data-toggle="tooltip" data-original-title="Delete"> <i class="fas fa-trash-alt"></i></a>
 								 @endif
 					
 							</tr>

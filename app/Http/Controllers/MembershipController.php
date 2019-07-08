@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\StoreMembership;
 use App\employee;
 use App\membership;
 use DB;
@@ -22,11 +23,8 @@ class MembershipController extends Controller
         return view ('hr.membership.membership',compact('employee','employees','membershipIds'));
     }
 
-	public function store(Request $request){
-         $request->validate([
-         'institute' => 'required|max:255',
-         ]);
-
+	public function store(StoreMembership $request){
+        
         $data = membership::create($request->all());
 
         return redirect()->route('membership',['id'=>session('employee_id')])->with('success', 'Data is saved succesfully');
@@ -42,10 +40,17 @@ class MembershipController extends Controller
         return view ('hr.membership.editMembership',compact('data','employee','membershipIds'));
     }
     
-    public function update(Request $request, $id)
+    public function update(StoreMembership $request, $id)
     {
      
      membership::findOrFail($id)->update($request->all());
      return redirect()->route('membership.edit',['id'=>$id])->with('success', 'Membership is updated succesfully');
     }
+
+     public function delete(Request $request, $id)
+    {
+    membership::findOrFail($id)->delete(); 
+    return redirect()->route('membership',['id'=>session('employee_id')])->with('success', 'Membership is deleted succesfully');
+    }
+
 }

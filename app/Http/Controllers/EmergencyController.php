@@ -49,4 +49,12 @@ class EmergencyController extends Controller
      emergency_contact::findOrFail($id)->update($request->all());
      return redirect()->route('emergency.edit',['id'=>$id])->with('success', 'Emergency Contact Detail is updated succesfully');
     }
+
+    public function delete(Request $request, $id)
+    {
+    emergency_contact::findOrFail($id)->delete(); 
+    return redirect()->route('emergency',['id'=>session('employee_id')])->with('success', 'Emergency Contact is deleted succesfully');
+    }
+
+
 }

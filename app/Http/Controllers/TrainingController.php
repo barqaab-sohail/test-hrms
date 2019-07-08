@@ -50,4 +50,10 @@ class TrainingController extends Controller
      training::findOrFail($id)->update($request->all());
      return redirect()->route('training.edit',['id'=>$id])->with('success', 'training is updated succesfully');
     }
+
+    public function delete(Request $request, $id)
+    {
+    training::findOrFail($id)->delete(); 
+    return redirect()->route('training',['id'=>session('employee_id')])->with('success', 'Training is deleted succesfully');
+    }
 }

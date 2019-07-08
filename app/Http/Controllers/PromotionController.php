@@ -27,7 +27,7 @@ class PromotionController extends Controller
     public function store(Request $request){
     
         $salary = DB::table('salaries')->where('employee_id',session('employee_id'))->where('promotion_id',NULL)->first();
-        $appointment = DB::table('contracts')->where('employee_id',session('employee_id'))->first();
+        $appointment = DB::table('appointments')->where('employee_id',session('employee_id'))->first();
         
         if($salary==null){
             return redirect()->route('promotion',['id'=>session('employee_id')])->with('error', 'Appointment Letter Salary is not Entered. Please Enter Appointment Letter Salary');

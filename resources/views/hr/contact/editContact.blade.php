@@ -58,9 +58,9 @@
 		                            <div class="row">
 		                                <div class="col-md-6">
 		                                    <div class="form-group row">
-		                                        <label class="control-label text-right col-md-3">Town</label>
+		                                        <label class="control-label text-right col-md-3">Town / Village</label>
 		                                        <div class="col-md-9">
-		                                            <input type="text"  name="town" value="{!! old('house',isset($permanentAddress->town)?$permanentAddress->town:'')!!}" class="form-control" placeholder="Enter Town" required>
+		                                            <input type="text"  name="town" value="{!! old('house',isset($permanentAddress->town)?$permanentAddress->town:'')!!}" class="form-control" placeholder="Enter Town / Village" required>
 		                                        </div>
 		                                    </div>
 		                                </div>
@@ -68,9 +68,9 @@
 		                                <!--/span-->
 		                                <div class="col-md-6">
 		                                    <div class="form-group row">
-		                                        <label class="control-label text-right col-md-3">City</label>
+		                                        <label class="control-label text-right col-md-3">City / District</label>
 		                                        <div class="col-md-9">
-		                                            <input type="text"  name="city" value="{!! old('city',isset($permanentAddress->street)?$permanentAddress->city:'')!!}" class="form-control" placeholder="Enter City Name " required>
+		                                            <input type="text"  name="city" value="{!! old('city',isset($permanentAddress->street)?$permanentAddress->city:'')!!}" class="form-control" placeholder="Enter City / District Name " required>
 		                                        </div>
 		                                    </div>
 		                                    
@@ -178,9 +178,9 @@
 		                            <div class="row">
 		                                <div class="col-md-6">
 		                                    <div class="form-group row">
-		                                        <label class="control-label text-right col-md-3">Town</label>
+		                                        <label class="control-label text-right col-md-3">Town / Village</label>
 		                                        <div class="col-md-9">
-		                                            <input type="text"  name="town" value="{!! old('house',isset($currentAddress->town)?$currentAddress->town:'')!!}" class="form-control" placeholder="Enter Town" required>
+		                                            <input type="text"  name="town" value="{!! old('house',isset($currentAddress->town)?$currentAddress->town:'')!!}" class="form-control" placeholder="Enter Town / Village" required>
 		                                        </div>
 		                                    </div>
 		                                </div>
@@ -188,9 +188,9 @@
 		                                <!--/span-->
 		                                <div class="col-md-6">
 		                                    <div class="form-group row">
-		                                        <label class="control-label text-right col-md-3">City</label>
+		                                        <label class="control-label text-right col-md-3">City / District</label>
 		                                        <div class="col-md-9">
-		                                            <input type="text"  name="city" value="{!! old('city',isset($currentAddress->street)?$currentAddress->city:'')!!}" class="form-control" placeholder="Enter City Name " required>
+		                                            <input type="text"  name="city" value="{!! old('city',isset($currentAddress->street)?$currentAddress->city:'')!!}" class="form-control" placeholder="Enter City / District Name " required>
 		                                        </div>
 		                                    </div>
 		                                    

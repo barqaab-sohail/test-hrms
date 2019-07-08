@@ -49,4 +49,13 @@ class PublicationController extends Controller
      publication::findOrFail($id)->update($request->all());
      return redirect()->route('publication.edit',['id'=>$id])->with('success', 'Publication is updated succesfully');
     }
+
+    public function delete(Request $request, $id)
+    {
+    publication::findOrFail($id)->delete(); 
+    return redirect()->route('publication',['id'=>session('employee_id')])->with('success', 'Publication is deleted succesfully');
+    }
+
+
+
 }

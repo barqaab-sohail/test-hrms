@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class training extends Model
 {
     protected $fillable = [
-        'institute', 'country', 'from','to','description','employee_id',
+        'title', 'venue','institute', 'country', 'from','to','description','employee_id',
     ];	
 
 

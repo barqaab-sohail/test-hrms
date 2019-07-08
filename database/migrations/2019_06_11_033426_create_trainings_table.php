@@ -16,13 +16,13 @@ class CreateTrainingsTable extends Migration
         Schema::create('trainings', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->bigInteger('employee_id')->unsigned();
-            $table->string('institute')->nullable();
             $table->string('title');
             $table->string('venue')->nullable();
+            $table->string('institute')->nullable();
+            $table->string('country');
             $table->string('description');
             $table->date('from')->nullable();
             $table->date('to')->nullable();
-            $table->string('country');
             $table->timestamps();
             $table->foreign('employee_id')->references('id')->on('employees');
         });

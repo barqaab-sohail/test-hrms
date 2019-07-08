@@ -17,9 +17,10 @@ class CreateContactsTable extends Migration
             $table->bigIncrements('id');
             $table->bigInteger('employee_id')->unsigned();
             $table->tinyInteger('type')->comment('0 for Permanent and 1 for Current');
-            $table->string('house');
+            $table->string('house')->nullable();
             $table->string('street')->nullable();
-            $table->string('town')->nullable();
+            $table->string('town');
+            $table->string('tehsil')->nullable();
             $table->string('city');
             $table->string('province');
             $table->string('landline')->nullable();

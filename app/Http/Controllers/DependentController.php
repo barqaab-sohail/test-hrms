@@ -52,4 +52,9 @@ class DependentController extends Controller
      dependent::findOrFail($id)->update($request->all());
      return redirect()->route('dependent.edit',['id'=>$id])->with('success', 'Dependent Detail is updated succesfully');
     }
+    public function delete(Request $request, $id)
+    {
+    dependent::findOrFail($id)->delete(); 
+    return redirect()->route('dependent',['id'=>session('employee_id')])->with('success', 'Dependent is deleted succesfully');
+    }
 }

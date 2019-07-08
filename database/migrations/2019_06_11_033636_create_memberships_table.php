@@ -16,7 +16,7 @@ class CreateMembershipsTable extends Migration
         Schema::create('memberships', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->bigInteger('employee_id')->unsigned();
-            $table->string('institute');
+            $table->string('name');
             $table->string('membership_no')->nullable();
             $table->date('expiry_date')->nullable();
             $table->timestamps();

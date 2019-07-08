@@ -50,4 +50,10 @@ class BankController extends Controller
      return redirect()->route('bank.edit',['id'=>$id])->with('success', 'Bank Detail is updated succesfully');
     }
 
+    public function delete(Request $request, $id)
+    {
+    bank::findOrFail($id)->delete(); 
+    return redirect()->route('bank',['id'=>session('employee_id')])->with('success', 'Bank is deleted succesfully');
+    }
+
 }

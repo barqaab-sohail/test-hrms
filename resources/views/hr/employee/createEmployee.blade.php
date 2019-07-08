@@ -85,16 +85,15 @@
 		                                <div class="col-md-6">
 		                                    <div class="form-group row">
 		                                        <label class="control-label text-right col-md-3">Gender</label>
-		                                        <div class="col-md-9">
-		                                            <div class="col-md-9">
+		                                        <div class="col-md-7">
+		                                            
 		                                           	 <select  name="gender"  class="form-control" required>
                                                         <option value=""></option>
                                                         <option value="Male"  {{ old('gender') == "Male" ? 'selected' : '' }}>Male </option>
                                                         <option value="Female"  {{ old('gender') == "Female" ? 'selected' : '' }}>Female </option>
                                                         
                                                     </select>
-		                                            
-		                                        </div>
+		                                        	                                        
 		                                        </div>
 		                                    </div>
 		                                </div>
@@ -114,10 +113,10 @@
 		                                <div class="col-md-6">
 		                                    <div class="form-group row">
 		                                        <label class="control-label text-right col-md-3">CNIC Expiry</label>
-		                                        <div class="col-md-9">
-		                                            <div class="col-md-9">
+		                                        <div class="col-md-8">
+		                                            
 		                                            <input type="text" id="cnic_expiry" name="cnic_expiry" value="{{ old('cnic_expiry') }}" class="form-control "  placeholder="Enter CNIC Expiry Date" readonly required>
-		                                        </div>
+		                                        
 		                                        </div>
 		                                    </div>
 		                                </div>
@@ -140,8 +139,8 @@
 		                                <div class="col-md-6">
 		                                    <div class="form-group row">
 		                                        <label class="control-label text-right col-md-3">Marital Status</label>
-		                                        <div class="col-md-9">
-		                                            <div class="col-md-9">
+		                                        <div class="col-md-7">
+		                                           
 		                                           	 <select  name="marital_status"  class="form-control" required>
                                                         <option value=""></option>
                                                         @foreach($maritalStatus as $maritalStatus)
@@ -150,7 +149,7 @@
                                                       
                                                     </select>
 		                                            
-		                                        </div>
+		                                     
 		                                        </div>
 		                                    </div>
 		                                </div>
@@ -169,16 +168,17 @@
 		                                <div class="col-md-6">
 		                                    <div class="form-group row">
 		                                        <label class="control-label text-right col-md-3">Nationality</label>
-		                                        <div class="col-md-9">
-		                                            <div class="col-md-9">
-		                                            <select  name="nationality"  class="form-control" required>
+
+		                                        <div class="col-md-7">
+		                                           <select  name="nationality"  class="form-control" required>
 		                                           	<option value=""></option>
 		                                           	@foreach($countries as $country)
 													<option value="{{$country->name}}" {{(old("nationality")==$country->name? "selected" : "")}}>{{$country->name}}</option>
                                                     @endforeach 	
-                                                    </select>
-
+                                                    </select> 
 		                                        </div>
+		                                        <div class="col-md-2">
+		                                       		<button type="button" name="add" id="add" class="btn btn-success">+</button>
 		                                        </div>
 		                                    </div>
 		                                </div>
@@ -187,22 +187,32 @@
 								     <div class="row">
 		                                <!--/span-->
 		                                <div class="col-md-6">
-		                                    
-		                                </div>
-		                                <div class="col-md-6">
 		                                    <div class="form-group row">
 		                                        <label class="control-label text-right col-md-3">Division</label>
-		                                        <div class="col-md-9">
-		                                            <div class="col-md-9">
+		                                        <div class="col-md-8">
+		                                            
 		                                           	 <select  name="division_id"  class="form-control" required>
                                                         <option value=""></option>
                                                         @foreach($divisions as $division)
-														<option value="{{$division->id}}" {{(old("division_id")==$division->id? "selected" : "")}}>{{$division->name}}</option>										
+														<option value="{{$division->id}}" {{(old("division_id")==$division->id? "selected" : "")}}>{{$division->name}}</option>								
                                                         @endforeach
                                                                                                                
                                                     </select>
-		                                            
 		                                        </div>
+		                                    </div> 
+		                                </div>
+
+		                                <div id="nationality2" class="col-md-6">
+		                                   
+											<div class="form-group row">
+		                                        <label class="control-label text-right col-md-3">Nationality-2</label>
+		                                        <div class="col-md-7">
+		                                           <select  name="nationality2"  class="form-control" >
+		                                           	<option value=""></option>
+		                                           	@foreach($countries as $country)
+													<option value="{{$country->name}}" {{(old("nationality")==$country->name? "selected" : "")}}>{{$country->name}}</option>
+                                                    @endforeach 	
+                                                    </select>
 		                                        </div>
 		                                    </div>
 		                                </div>
@@ -235,25 +245,37 @@
 
 
 <script>
-    $( function() {
-	    $( "#date_of_birth" ).datepicker({
-	      dateFormat: 'dd-MM-yy',
-	      yearRange: '1940:'+ (new Date().getFullYear()-15),
-	      changeMonth: true,
-	      changeYear: true
-	    });
-	    $( "#cnic_expiry" ).datepicker({
-	      dateFormat: 'dd-MM-yy',
-	      yearRange:  new Date().getFullYear()+':'+(new Date().getFullYear()+15),
-	      changeMonth: true,
-	      changeYear: true
-	    });
 
-	    $('select').select2({
-  			maximumSelectionLength: 2,
+	$(document).ready(function(){
+		
+
+	    $( function() {
+		    $( "#date_of_birth" ).datepicker({
+		      dateFormat: 'dd-MM-yy',
+		      yearRange: '1940:'+ (new Date().getFullYear()-15),
+		      changeMonth: true,
+		      changeYear: true
+		    });
+		    $( "#cnic_expiry" ).datepicker({
+		      dateFormat: 'dd-MM-yy',
+		      yearRange:  new Date().getFullYear()+':'+(new Date().getFullYear()+15),
+		      changeMonth: true,
+		      changeYear: true
+		    });
+
+		    
+	  	});
+
+	  	$('select').select2({
+	  			maximumSelectionLength: 2,
 
 		});
-  	});
+
+	    $("#nationality2").hide();
+	    	$("#add").click (function(){
+		  		$("#nationality2").toggle();
+	  		});
+	});
 </script>
 
         

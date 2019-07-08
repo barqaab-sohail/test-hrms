@@ -128,6 +128,8 @@ Route::get('/hrms/training/edit/{id?}', [
             'as' => 'training.edit'
         ]);
 Route::post('/editTraining/{id?}', 'TrainingController@update')->name('editTraining');
+Route::get('/deleteTraining/{id?}', 'TrainingController@delete')->name('deleteTraining');
+
 
 //Publication Routes
 Route::get('/hrms/publication/{id?}', 'PublicationController@create')->name('publication');
@@ -137,6 +139,8 @@ Route::get('/hrms/publication/edit/{id?}', [
             'as' => 'publication.edit'
         ]);
 Route::post('/editPublication/{id?}', 'PublicationController@update')->name('editPublication');
+Route::get('/deletePublication/{id?}', 'PublicationController@delete')->name('deletePublication');
+
 //Memebership Routes
 Route::get('/hrms/membership/{id?}', 'MembershipController@create')->name('membership');
 Route::post('/storeMembership', 'MembershipController@store')->name('storeMembership');
@@ -145,6 +149,7 @@ Route::get('/hrms/membership/edit/{id?}', [
             'as' => 'membership.edit'
         ]);
 Route::post('/editMembership/{id?}', 'MembershipController@update')->name('editMembership');
+Route::get('/deleteMembership/{id?}', 'MembershipController@delete')->name('deleteMembership');
 
 
 //Posting Routes
@@ -191,6 +196,7 @@ Route::get('/hrms/bank/edit/{id?}', [
             'as' => 'bank.edit'
         ]);
 Route::post('/editBank/{id?}', 'BankController@update')->name('editBank');
+Route::get('/deleteBank/{id?}', 'BankController@delete')->name('deleteBank');
 
 //Dependent
 Route::get('/hrms/dependent/{id?}', 'DependentController@create')->name('dependent');
@@ -200,6 +206,7 @@ Route::get('/hrms/dependent/edit/{id?}', [
             'as' => 'dependent.edit'
         ]);
 Route::post('/editDependent/{id?}', 'DependentController@update')->name('editDependent');
+Route::get('/deleteDependent/{id?}', 'DependentController@delete')->name('deleteDependent');
 
 //Language
 Route::get('/hrms/language/{id?}', 'LanguageController@create')->name('language');
@@ -219,6 +226,8 @@ Route::get('/hrms/emergency/edit/{id?}', [
             'as' => 'emergency.edit'
         ]);
 Route::post('/editEmergency/{id?}', 'EmergencyController@update')->name('editEmergency');
+Route::get('/deleteEmergency/{id?}', 'EmergencyController@delete')->name('deleteEmergency');
+
 
 //Other Information
 Route::get('/hrms/other/edit/{id?}', [
