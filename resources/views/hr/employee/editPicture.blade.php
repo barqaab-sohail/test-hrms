@@ -132,22 +132,28 @@ $(function() {
     }
 
     $("#file-upload").on("change", function(event) {
-        $("#myModal").modal();
-       
-        // Initailize croppie instance and assign it to global variable
-        croppie = new Croppie(el, {
-                viewport: {
-                    width: 200,
-                    height: 200,
-                    type: 'canvas'
-                },
-                boundary: {
-                    width: 250,
-                    height: 250
-                },
-                enableOrientation: true
-            });
-        $.getImage(event.target, croppie); 
+        var filetype = this.files[0].type;
+        if ((filetype=='image/jpeg')||(filetype=='image/png')){
+        
+              $("#myModal").modal();
+           
+            // Initailize croppie instance and assign it to global variable
+            croppie = new Croppie(el, {
+                    viewport: {
+                        width: 200,
+                        height: 200,
+                        type: 'canvas'
+                    },
+                    boundary: {
+                        width: 250,
+                        height: 250
+                    },
+                    enableOrientation: true
+                });
+            $.getImage(event.target, croppie); 
+        }else{
+            alert('Only JPG and PNG allowed');
+        }
     });
 
     $("#upload").on("click", function() {
