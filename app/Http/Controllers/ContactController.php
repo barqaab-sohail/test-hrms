@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\employee;
 use App\contact;
 
-class AddressController extends Controller
+class ContactController extends Controller
 {
    
    public function __construct()
@@ -36,18 +36,14 @@ class AddressController extends Controller
         
         if ($contact==null){
     	
-    	   $this->validate($request, [
-        'house' => 'required',
-        ]);
+    	  
     	
         contact::create($request->all());
           
         }else{
    		$contactId = $contact->id;
 
-   		$this->validate($request, [
-        'house' => 'required'
-        ]);
+   		
    		contact::findOrFail($contactId)->update($request->all());
         }
        	
@@ -63,9 +59,7 @@ class AddressController extends Controller
         
         if ($contact==null){
     	
-    	   $this->validate($request, [
-        'house' => 'required',
-        ]);
+    	 
     	
         contact::create($request->all());
           
@@ -73,9 +67,7 @@ class AddressController extends Controller
    		$contactId = $contact->id;
 
 
-   		$this->validate($request, [
-        'house' => 'required'
-        ]);
+   		
    		contact::findOrFail($contactId)->update($request->all());
         }
        	

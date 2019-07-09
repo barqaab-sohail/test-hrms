@@ -60,12 +60,12 @@ Route::get('/inactiveEmployee/{id?}', 'EmployeeController@inactive')->name('inac
 
 //Picture Routes
 
-Route::get('/hrms/picture/edit/{id?}', [
-            'uses' => 'PictureController@edit',
-            'as' => 'picture.edit'
-        ]);
-Route::post('/editPicture/{id?}', 'PictureController@update')->name('editPicture');
-Route::post('/savePicture', 'PictureController@save')->name('savePicture');
+Route::get('/hrms/picture/edit/{id?}',[
+    'uses'=>'PictureController@showJqueryImageUpload',
+    'as'=>'picture.edit']);
+
+Route::post('/editPicture/{id?}','PictureController@saveJqueryImageUpload')->name('editPicture');
+
 
 
 //User
@@ -85,11 +85,11 @@ Route::post('/editSalary/{id?}', 'SalaryController@update')->name('editSalary');
 
 //Contact Detail
 Route::get('/hrms/contact/edit/{id?}', [
-            'uses' => 'AddressController@editAddress',
+            'uses' => 'ContactController@editAddress',
             'as' => 'contact.edit'
         ]);
-Route::post('/editPermanentAddress/{id?}', 'AddressController@updatePermanent')->name('editPermanentAddress');
-Route::post('/editCurrentAddress/{id?}', 'AddressController@updateCurrent')->name('editCurrentAddress');
+Route::post('/editPermanentAddress/{id?}', 'ContactController@updatePermanent')->name('editPermanentAddress');
+Route::post('/editCurrentAddress/{id?}', 'ContactController@updateCurrent')->name('editCurrentAddress');
 
 //Other Information
 Route::get('/hrms/other/edit/{id?}', [
@@ -269,5 +269,6 @@ return  redirect()->route('login');
 //view ('auth.login');
 
 });
+
 
 

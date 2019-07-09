@@ -1,12 +1,6 @@
 <div class="btn-group-vertical" role="group" aria-label="vertical button group">
 
-         <style>
-            
-        
-
-            
-        </style>
-
+         
           <br>
           
            @if (request()->is('createEmployee'))
