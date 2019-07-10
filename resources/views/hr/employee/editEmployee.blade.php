@@ -170,10 +170,10 @@
 		                                        <label class="control-label text-right col-md-3">Nationality</label>
 		                                        <div class="col-md-7">
 		                                            
-		                                           	<select  name="nationality"  class="form-control" required>
+		                                           	<select  name="nationality_name"  class="form-control" required>
 		                                           	<option value=""></option>
 		                                           	@foreach($countries as $country)
-													<option value="{{$country->name}}" @if($country->name == $employee->nationality) selected="selected" @endif>{{$country->name}}</option>
+													<option value="{{$country->name}}" @if($country->name == isset($nationality1->nationality_name)) selected="selected" @endif>{{$country->name}}</option>
                                                     @endforeach 	
                                                     </select>
 		                                            
@@ -210,10 +210,10 @@
 											<div class="form-group row">
 		                                        <label class="control-label text-right col-md-3">Nationality-2</label>
 		                                        <div class="col-md-7">
-		                                          	<select  name="nationality2"  class="form-control" required>
+		                                          	<select  name="nationality_name2"  class="form-control" required>
 		                                           	<option value=""></option>
 		                                           	@foreach($countries as $country)
-													<option value="{{$country->name}}" @if($country->name == $employee->nationality2) selected="selected" @endif>{{$country->name}}</option>
+													<option value="{{$country->name}}" @if($country->name == isset($nationality2->nationality_name)) selected="selected" @endif>{{$country->name}}</option>
                                                     @endforeach 	
                                                     </select>
 		                                        </div>

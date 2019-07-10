@@ -24,18 +24,12 @@ class StoreMembership extends FormRequest
      */
     public function rules()
     {
-        $rules = [];
+       return [
+         'name' => 'required|not_in:null',
+         'membership_no' => 'required_if:name,PEC',
+         'expiry_date'=>'required_if:name,PEC',
+        ];
 
-       if(Request::input('name') == 'PEC')
-       {  
-            $rules['name'] = 'required';
-            $rules['expiry_date'] = 'required';
-            $rules['membership_no'] = 'required';
-       }else{
-        $rules['name'] = 'required';
-       }
-
-       return $rules;
 
     }
 }

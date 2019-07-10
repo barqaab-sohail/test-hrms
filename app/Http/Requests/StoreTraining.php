@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Requests;
-
+use Illuminate\Http\Request;
 use Illuminate\Foundation\Http\FormRequest;
 
 class StoreTraining extends FormRequest
@@ -13,7 +13,7 @@ class StoreTraining extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -21,10 +21,15 @@ class StoreTraining extends FormRequest
      *
      * @return array
      */
-    public function rules()
+    public function rules() 
     {
+                   
         return [
-            //
+         'institute' => 'required|max:255',
+         'country' => 'required|max:255',
+         'from' => 'nullable|date',
+         'to' => 'nullable|date|after:from',
+
         ];
     }
 }

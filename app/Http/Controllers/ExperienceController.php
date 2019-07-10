@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\StoreExperience;
 use App\User;
 use App\employee;
 use App\Experience;
@@ -24,11 +25,8 @@ class ExperienceController extends Controller
         return view ('hr.experience.experience',compact('employee','employees','experienceIds','countries'));
     }
 
-	public function store(Request $request){
-         $request->validate([
-         'employer' => 'required|max:255',
-         'position' => 'required|max:255',
-         ]);
+	public function store(StoreExperience $request){
+        
 
         $data = $request->all();
         $data ['from']= \Carbon\Carbon::parse($request->from)->format('Y-m-d');
@@ -46,7 +44,7 @@ class ExperienceController extends Controller
         return view ('hr.experience.editExperience',compact('data','employee','experienceIds','countries'));
     }
     
-    public function update(Request $request, $id)
+    public function update(StoreExperience $request, $id)
     {
      
      experience::findOrFail($id)->update($request->all());

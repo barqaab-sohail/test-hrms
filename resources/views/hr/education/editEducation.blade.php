@@ -174,7 +174,7 @@
 		                                        <div class="col-md-6">
 
 
-											<select  name="country"  class="form-control" required>
+													<select  name="country"  class="form-control" required>
 		                                           	<option value=""></option>
 		                                           	@foreach($countries as $country)
 													<option value="{{$country->name}}" @if($country->name == $data->country) selected="selected" @endif>{{$country->name}}</option>

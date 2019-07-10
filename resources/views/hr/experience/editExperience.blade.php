@@ -65,7 +65,7 @@
 		                                        </div>
 		                                        <label class="control-label text-right col-md-1">To</label>
 		                                        <div class="col-md-4">
-		                                            <input type="date"  id="to" name="to" value="{!! old('to', optional($data)->to) !!}" class="form-control"  required>
+		                                            <input type="text"  id="to" name="to" value="{!! old('to', optional($data)->to) !!}" class="form-control"  required>
 		                                        </div>
 		                                    </div>
 		                                </div>

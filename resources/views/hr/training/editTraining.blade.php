@@ -49,7 +49,7 @@
 		                                    <div class="form-group row">
 		                                        <label class="control-label text-right col-md-3">Venue</label>
 		                                        <div class="col-md-9">
-		                                            <input type="text" name="venue" value="{!! old('venue', optional($data)->venue) !!}" class="form-control " placeholder="Enter Venue Name" required>
+		                                            <input type="text" name="venue" value="{!! old('venue', optional($data)->venue) !!}" class="form-control " placeholder="Enter Venue Name" >
 		                                        </div>
 		                                    </div>
 		                                </div>
@@ -72,7 +72,13 @@
 		                                    <div class="form-group row">
 		                                        <label class="control-label text-right col-md-3">Country</label>
 		                                        <div class="col-md-9">
-		                                            <input type="text" name="country" value="{!! old('country', optional($data)->country) !!}" class="form-control " placeholder="Enter Country Name" required>
+		                                            <select  name="country"  class="form-control" required>
+		                                           	<option value=""></option>
+		                                           	@foreach($countries as $country)
+													<option value="{{$country->name}}" @if($country->name == $data->country) selected="selected" @endif>{{$country->name}}</option>
+                                                    @endforeach 	
+                                                    </select>
+
 		                                        </div>
 		                                    </div>
 		                                </div>
@@ -83,19 +89,21 @@
 		                                <div class="col-md-6">
 		                                    <div class="form-group row">
 		                                        <label class="control-label text-right col-md-3">From</label>
-		                                        <div class="col-md-4">
-		                                            <input type="date"  name="from" value="{!! old('from', optional($data)->from) !!}" class="form-control"  required>
+		                                        <div class="col-md-6">
+		                                            <input type="text"  id="from" name="from" value="{!! old('from', optional($data)->from) !!}" class="form-control"  readonly required>
 		                                        </div>
-		                                        <label class="control-label text-right col-md-1">To</label>
-		                                        <div class="col-md-4">
-		                                            <input type="date"  name="to" value="{!! old('to', optional($data)->to) !!}" class="form-control"  required>
-		                                        </div>
+		                                        
 		                                    </div>
 		                                </div>
 		                                
 		                                <!--/span-->
 		                                <div class="col-md-6">
-		                                    
+		                                	<div class="form-group row">
+		                                    	<label class="control-label text-right col-md-3">To</label>
+		                                        <div class="col-md-6">
+		                                            <input type="text"  id="to" name="to" value="{!! old('to', optional($data)->to) !!}" class="form-control" readonly required>
+		                                        </div>
+		                                    </div>
 		                                </div>
 		                            </div>
 		                            <div class="row">
@@ -185,8 +193,21 @@
  @push('scripts')
         <script>
             $(document).ready(function(){
+			 $( "#from, #to" ).datepicker({
+		      dateFormat: 'dd-MM-yy',
+		      yearRange: '1940:'+ (new Date().getFullYear()+15),
+		      changeMonth: true,
+		      changeYear: true
+		    });
+
+
+            $('select').select2({
+  			maximumSelectionLength: 2,
+
+			});
 			
 			});
+			
         </script>
     @endpush
 

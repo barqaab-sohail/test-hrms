@@ -163,6 +163,16 @@
 						
 					}
 				});
+
+				$("#membership").submit(function(e) {
+				var name = $('#name').val();
+
+				if (name=='null'){
+					alert('null Value is not accepted');
+					e.preventDefault();
+				}
+
+				});
 			
 			});
         </script>

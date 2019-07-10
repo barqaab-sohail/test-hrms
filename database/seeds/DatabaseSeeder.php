@@ -53,7 +53,6 @@ class DatabaseSeeder extends Seeder
             'division_id' => 1,
             'employee_no' => 1011,
             'cnic' => '3520246897303',
-            'nationality' => 'Pakistan',
             'religon' => 'Islam',
             'cnic_expiry' => '2020-04-02',
            

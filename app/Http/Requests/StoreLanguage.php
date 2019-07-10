@@ -1,8 +1,9 @@
 <?php
 
 namespace App\Http\Requests;
-
+use Illuminate\Validation\Rule;
 use Illuminate\Foundation\Http\FormRequest;
+use App\language;
 
 class StoreLanguage extends FormRequest
 {
@@ -13,7 +14,7 @@ class StoreLanguage extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -23,8 +24,17 @@ class StoreLanguage extends FormRequest
      */
     public function rules()
     {
+       
+      
         return [
-            //
+          
+        'name' => 'required',
+        'speaking' => 'required',
+        'writing' => 'required',
+        'reading' => 'required',
+             
+        //'name'=>['required',Rule::unique('languages')->ignore(session('employee_id')),],
+
         ];
     }
 }

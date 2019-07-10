@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class employee extends Model
 {
    protected $fillable = [
-        'first_name','middle_name','last_name','father_name','date_of_birth','gender','cnic','cnic_expiry','employee_no','marital_status','religon','nationality','nationality2','status','manager_id','department_id',
+        'first_name','middle_name','last_name','father_name','date_of_birth','gender','cnic','cnic_expiry','employee_no','marital_status','religon','status','manager_id','division_id',
     ];
 
     
@@ -57,9 +57,13 @@ class employee extends Model
     {
         return $this->hasMany('App\notification');
     }
-     public function promotion()
+    public function promotion()
     {
         return $this->hasMany('App\promotion');
+    }
+    public function nationality()
+    {
+        return $this->hasMany('App\nationality');
     }
 
     public function document()

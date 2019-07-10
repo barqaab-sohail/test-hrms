@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use App\Http\Requests\StoreLanguage;
 use App\employee;
 use App\language;
 use App\all_languages;
@@ -25,7 +25,7 @@ class LanguageController extends Controller
         return view ('hr.language.language',compact('employee','employees','languageIds','allLanguages'));
     }
 
-	public function store(Request $request){
+	public function store(StoreLanguage $request){
          $request->validate([
          'name' => 'required|max:255',
          ]);
@@ -57,7 +57,7 @@ class LanguageController extends Controller
         return view ('hr.language.editLanguage',compact('data','employee','languageIds','allLanguages'));
     }
     
-    public function update(Request $request, $id)
+    public function update(StoreLanguage $request, $id)
     {
 
            //Duplicate Language for One Employee
