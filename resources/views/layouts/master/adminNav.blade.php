@@ -46,8 +46,12 @@
 
                 <li @if(request()->is('hrms*')) class="active" @endif > <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i class="fas fa-user"></i><span class="hide-menu">Human Resource</span></a>
                     <ul aria-expanded="false" class="collapse">
+                        @if(Auth::user()->role_id==4)
+                        <li><a href="{{route('userDetail', ['id'=>Auth::user()->employee_id])}}">User Detail</a></li>
+                        @else
                         <li><a href="{{route('employeeList')}}">List of Employees</a></li>
                         <li><a href="{{route('createEmployee')}}">Add Employee</a></li>
+                        @endif
                     </ul>
                 </li>
 

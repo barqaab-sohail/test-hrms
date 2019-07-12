@@ -56,6 +56,8 @@ class DocumentController extends Controller
     public function update(Request $request, $id)
     {		$data = document::find($id);
 
+        if ($request->hasFile('picture')){
+        
             $imageName = time().'-'.session('employee_id').'.'.request()->picture->getClientOriginalExtension();
             $imageType = request()->picture->getMimeType();
             $imageSize = request()->picture->getClientSize();
@@ -64,9 +66,12 @@ class DocumentController extends Controller
             $input['employee_id'] = session('employee_id');
             $input['type'] = $imageType;
             $input['size'] = $imageSize;
-            
             document::findOrFail($data->id)->update($input);
             unlink(public_path('upload\documents/'.$data->file_name));
+        }
+        else{
+             document::findOrFail($data->id)->update($request->all());
+        }
     	
      return redirect()->route('document.edit',['id'=>$id])->with('success', 'Document is updated succesfully');
     }

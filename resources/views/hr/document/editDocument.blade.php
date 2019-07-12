@@ -26,7 +26,7 @@
 		                </div>
 		                <div class="card-body">
 
-		                    <form action="{!!route('editDocument', ['id'=>optional($data)->id])!!}"  method="post" class="form-horizontal" enctype="multipart/form-data">
+		                    <form action="{!!route('editDocument', ['id'=>optional($data)->id])!!}"  id="document" method="post" class="form-horizontal" enctype="multipart/form-data">
 		                        {{csrf_field()}}
 		                        <div class="form-body">
 		                            
@@ -37,7 +37,18 @@
 		                                    <div class="form-group row">
 		                                        <label class="control-label text-right col-md-3">Document Title</label>
 		                                        <div class="col-md-7">
-		                                            <input type="text"  name="document_name" value="{!! old('document_name', optional($data)->document_name) !!}" class="form-control" placeholder="Enter Document Name" required>
+		                                             <select  name="document_name" id="document_name"    class="form-control" required>
+
+                                                       
+                                                        <option value="{{$data->document_name}}">{{$data->document_name}}</option>
+                                                        <option value="CNIC Front" @if($data->document_name =="CNIC Front") selected="selected"@endif>CNIC Front </option>
+                                                        <option value="CNIC Back"  @if($data->document_name =="CNIC Back") selected="selected"@endif>CNIC Back </option>
+                                                        <option value="Appointment Letter"  @if($data->document_name =="Appointment Letter") selected="selected"@endif>Appointment Letter </option>
+                                                        <option value="Other"  {{ old('name') == "Other" ? 'selected' : '' }}>Other</option>
+                                                        
+                                                    </select>
+
+
 		                                        </div>
 		                                    </div>
 		                                </div>
@@ -76,7 +87,7 @@
 		                                		<img  src="{{asset('Massets/images/document.png')}}" class="img-round picture-container picture-src"  id="wizardPicturePreview"  title="" width="150" >
 		                                		@endif
 
-		                                		<input type="file"  name="picture" id="wizard-picture" class="" required hidden>
+		                                		<input type="file"  name="picture" id="wizard-picture" class=""  hidden>
 		                                				                                		
 
 				                                <h6 id="h6" class="card-title m-t-10">Click On Image to Change New Document</h6>
@@ -177,7 +188,35 @@
         
     <script>
         $(document).ready(function(){
-            	
+            
+        	$("#document_name").change(function (){
+				var other = $('#document_name').val();
+					if (other == 'Other'){
+					var name=prompt("Enter Document Name");
+					if (name === null) {
+
+     				   return; 
+    				}
+
+					var select = $('#document_name');
+					select.empty().append(new Option(name, name, true, true),new Option('CNIC Front', 'CNIC Front'),new Option('CNIC Back', 'CNIC Back'),new Option('Appointment Letter', 'Appointment Letter'));
+					}
+			});
+
+        	$("#document").submit(function(e) {
+				var name = $('#document_name').val();
+
+				if (name=='Other'){
+					alert('Please Enter Valid Document Name');
+					e.preventDefault();
+				}
+
+			});
+
+
+
+
+
 			// Prepare the preview for profile picture
 		    $("#wizard-picture").change(function(){
 		        	var fileName = this.files[0].name;

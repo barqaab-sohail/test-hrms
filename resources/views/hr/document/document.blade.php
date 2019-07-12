@@ -26,7 +26,7 @@
 		                </div>
 		                <div class="card-body">
 
-		                    <form action="{{route('storeDocument')}}" method="post" class="form-horizontal" enctype="multipart/form-data">
+		                    <form action="{{route('storeDocument')}}" method="post" class="form-horizontal" id="document" enctype="multipart/form-data">
 		                        {{csrf_field()}}
 		                        <div class="form-body">
 		                            
@@ -37,7 +37,15 @@
 		                                    <div class="form-group row">
 		                                        <label class="control-label text-right col-md-3">Document Title</label>
 		                                        <div class="col-md-7">
-		                                            <input type="text"  name="document_name" value="{{ old('document_name') }}" class="form-control" placeholder="Enter Document Name" required>
+		                                             <select  name="document_name" id="document_name"    class="form-control" required>
+                                                        <option value=""></option>
+                                                        <option value="CNIC Front"  {{ old('CNIC Front') == "CNIC Front" ? 'selected' : '' }}>CNIC Front </option>
+                                                        <option value="CNIC Back"  {{ old('CNIC Back') == "CNIC Back" ? 'selected' : '' }}>CNIC Back </option>
+                                                        <option value="Appointment Letter"  {{ old('Appointment Letter') == "Appointment Letter" ? 'selected' : '' }}>Appointment Letter </option>
+                                                        <option value="Other"  {{ old('name') == "Other" ? 'selected' : '' }}>Other</option>
+                                                        
+                                                    </select>
+		                                            
 		                                        </div>
 		                                    </div>
 		                                </div>
@@ -137,9 +145,9 @@
 							<tr>
 								<td>{{$documentId->document_name}}</td>
 								@if($documentId->type!='application/pdf')
-								<td><img  id="viewFile" src="{{asset(isset($documentId->file_name)? 'upload/documents/'.$documentId->file_name: 'Massets/images/document.png') }}" href="{{asset(isset($documentId->file_name)? 'upload/documents/'.$documentId->file_name: 'Massets/images/document.png') }}" width=30/></td>
+								<td><img  id="ViewPDF" src="{{asset(isset($documentId->file_name)? 'upload/documents/'.$documentId->file_name: 'Massets/images/document.png') }}" href="{{asset(isset($documentId->file_name)? 'upload/documents/'.$documentId->file_name: 'Massets/images/document.png') }}" width=30/></td>
 								@else
-								<td><img  id="viewFile" src="{{asset('Massets/images/document.png')}}" href="{{asset(isset($documentId->file_name)? 'upload/documents/'.$documentId->file_name: 'Massets/images/document.png') }}" width=30/></td>
+								<td><img  id="ViewIMG" src="{{asset('Massets/images/document.png')}}" href="{{asset(isset($documentId->file_name)? 'upload/documents/'.$documentId->file_name: 'Massets/images/document.png') }}" width=30/></td>
 								@endif
 								
 								
@@ -173,7 +181,33 @@
         
     <script>
         $(document).ready(function(){
-            	$( "#pdf" ).hide();
+        	$("#document_name").change(function (){
+				var other = $('#document_name').val();
+					if (other == 'Other'){
+					var name=prompt("Enter Document Name");
+					if (name === null) {
+
+     				   return; 
+    				}
+
+					var select = $('#document_name');
+					select.empty().append(new Option(name, name, true, true),new Option('CNIC Front', 'CNIC Front'),new Option('CNIC Back', 'CNIC Back'),new Option('Appointment Letter', 'Appointment Letter'));
+					}
+			});
+
+        	$("#document").submit(function(e) {
+				var name = $('#document_name').val();
+
+				if (name=='Other'){
+					alert('Please Enter Valid Document Name');
+					e.preventDefault();
+				}
+
+			});
+
+
+
+            $( "#pdf" ).hide();
 			// Prepare the preview for profile picture
 		    $("#view").change(function(){
 		        	var fileName = this.files[0].name;
@@ -246,7 +280,7 @@
             });
 
             $(function(){
- 			 $('#viewFile').EZView();
+ 			 $('#ViewPDF, #ViewIMG').EZView();
 			});
 			
 			

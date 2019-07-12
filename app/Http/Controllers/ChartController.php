@@ -10,9 +10,9 @@ class ChartController extends Controller
 {
    public function index(){
 
-   	$power = employee::all()->where('department_id',1)->count();
-   	$water = employee::all()->where('department_id',2)->count();
-   	$finance = employee::all()->where('department_id',3)->count();
+   	$power = employee::all()->where('division_id',1)->count();
+   	$water = employee::all()->where('division_id',2)->count();
+   	$finance = employee::all()->where('division_id',3)->count();
 
     $chart = new TestChart;
     $chart->labels(['Power', 'Water', 'Finance']);

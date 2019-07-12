@@ -45,7 +45,7 @@
 @else
 @lang('Regards'),<br>{{ config('app.name') }}
 @endif
-<img class="img-rounded" alt="" src="Massets/img/mono.png" width="40px"> 
+<img class="img-rounded" alt="" src="{{asset('Massets/img/EmailMono.jpg')}}" width="5px"> 
 {{-- Subcopy --}}
 @isset($actionText)
 @slot('subcopy')

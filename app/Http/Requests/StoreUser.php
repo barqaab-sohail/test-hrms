@@ -25,7 +25,7 @@ class StoreUser extends FormRequest
     {
         return [
             'email' => 'required|unique:users,email,'.session('employee_id'),
-            'role_id' => 'required',
+            'role_id' => 'nullable',
 
             ];
     }

@@ -49,8 +49,8 @@
 		                                    <div class="form-group row">
 		                                        <label class="control-label text-right col-md-3">User Role</label>
 		                                        <div class="col-md-5">
-		                                            <select  name="role_id"  class="form-control" required>
-                                                        <option value=""></option>
+		                                            <select  name="role_id"  class="form-control" >
+                                                        <option value="{{4}}"></option>
                                                         @foreach($roles as $role)
 															<option value="{{$role->id}}"
 															@if(!empty($employee->user->role_id))

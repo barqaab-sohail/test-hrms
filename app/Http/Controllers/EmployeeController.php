@@ -21,6 +21,9 @@ class EmployeeController extends Controller
         $this->middleware('auth');
     }
 
+
+
+
     public function index (){
        $employees = employee::all()->where('status',0);
        return view('hr.employee.employeeList', compact('employees'));
@@ -60,7 +63,7 @@ class EmployeeController extends Controller
     }
 
 
-    public function edit($id){
+    public function show($id){
         $countries = country::all();
         $employee = employee::find($id);
         $divisions = division::all();
@@ -68,6 +71,27 @@ class EmployeeController extends Controller
         $employeeId = session()->put('employee_id', $employee->id);
         $nationality1 = nationality::where('employee_id',$employee->id)->get()->first();
         $nationality2 = nationality::where('employee_id',$employee->id)->get()->last();
+        
+        return view ('hr.employee.editEmployee', compact('employee','divisions','maritalStatuses','countries','nationality1','nationality2'));
+    }
+
+
+    public function edit($id){
+        $countries = country::all();
+        $employee = employee::find($id);
+        $divisions = division::all();
+        $maritalStatuses = marital_status::all();
+        $employeeId = session()->put('employee_id', $employee->id);
+        $nationality1 = nationality::where('employee_id',$employee->id)->get()->first();
+         $nationality2 = nationality::where('employee_id',$employee->id)->get();
+        
+        if($nationality2->count()>1){
+             $nationality2 = nationality::where('employee_id',$employee->id)->get()->last();
+        }else{
+             $nationality2 = 'null';
+        }
+
+       
         
         return view ('hr.employee.editEmployee', compact('employee','divisions','maritalStatuses','countries','nationality1','nationality2'));
     }
@@ -84,24 +108,41 @@ class EmployeeController extends Controller
             $data ['cnic_expiry']= \Carbon\Carbon::parse($request->cnic_expiry)->format('Y-m-d');
 
         employee::findOrFail($id)->update($data);
+
+        $nationalityId = nationality::where('employee_id',session('employee_id'))->get()->first();
         $nationality1 = array('nationality_name'=>$request->input('nationality_name'),'employee_id'=>session('employee_id'));
-        nationality::where('employee_id',session('employee_id'))->get()->first()->update($nationality1);
-        if($request->has('nationality_name2'))
-            {
-            $nationality2 = array('nationality_name'=>$request->input('nationality_name2'),'employee_id'=>session('employee_id'));
-            nationality::where('employee_id',session('employee_id'))->get()->last()->update($nationality2);
+
+            //Check first Nationality Exist Or Not
+            if ($nationalityId== null){
+                     nationality::create($nationality1);
+            }else{
+            nationality::findOrFail($nationalityId->id)->update($nationality1);
             }
-      
+        //Check Second Nationality Exist or Not
+            $nationalityCount = nationality::where('employee_id',session('employee_id'))->get();
+        
+            if($request->has('nationality_name2')){
+
+                $nationality2 = array('nationality_name'=>$request->input('nationality_name2'),'employee_id'=>session('employee_id'));
+
+                if($nationalityCount->count()>1){
+                     
+                     $nationalityId = nationality::where('employee_id',session('employee_id'))->get()->last();
+                     
+                     nationality::findOrFail($nationalityId->id)->update($nationality2);
+
+                }else{
+                     nationality::create($nationality2);
+                }
+            }
+        
          });
-
-
 
        return redirect()->route('employee.edit',['id'=>$id])->with('success', 'Employee is updated succesfully');
     }
 
     public function inactive(Request $request, $id)
     {
-        
        employee::findOrFail($id)->update(['status'=>1]);
        $employees = employee::all()->where('status','0');
        return view('hr.employee.employeeList', compact('employees'));

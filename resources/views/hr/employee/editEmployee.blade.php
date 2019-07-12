@@ -27,7 +27,7 @@
 		                </div>
 		                <div class="card-body">
 
-		                    <form action="{{route('editEmployee', ['id'=>$employee->id])}}" method="post" class="form-horizontal" enctype="multipart/form-data">
+		                    <form id="employee" action="{{route('editEmployee', ['id'=>$employee->id])}}" method="post" class="form-horizontal" enctype="multipart/form-data">
 		                        {{csrf_field()}}
 		                        <div class="form-body">
 		                            
@@ -169,12 +169,16 @@
 		                                    <div class="form-group row">
 		                                        <label class="control-label text-right col-md-3">Nationality</label>
 		                                        <div class="col-md-7">
-		                                            
+		                                          
+
 		                                           	<select  name="nationality_name"  class="form-control" required>
-		                                           	<option value=""></option>
+		                                           	<option value=""></option>	
 		                                           	@foreach($countries as $country)
-													<option value="{{$country->name}}" @if($country->name == isset($nationality1->nationality_name)) selected="selected" @endif>{{$country->name}}</option>
-                                                    @endforeach 	
+		                                           	<option value="{{$country->name}}" 
+													@if($country->name ==  optional($nationality1)->nationality_name)
+		                                           	selected="selected" @endif>{{$country->name}}</option>
+                                                    @endforeach
+                                                    
                                                     </select>
 		                                            
 		                                        </div>
@@ -210,10 +214,10 @@
 											<div class="form-group row">
 		                                        <label class="control-label text-right col-md-3">Nationality-2</label>
 		                                        <div class="col-md-7">
-		                                          	<select  name="nationality_name2"  class="form-control" required>
+		                                          	<select  name="nationality_name2"  class="form-control" >
 		                                           	<option value=""></option>
 		                                           	@foreach($countries as $country)
-													<option value="{{$country->name}}" @if($country->name == isset($nationality2->nationality_name)) selected="selected" @endif>{{$country->name}}</option>
+													<option value="{{$country->name}}" @if($country->name == optional($nationality2)->nationality_name) selected="selected" @endif>{{$country->name}}</option>
                                                     @endforeach 	
                                                     </select>
 		                                        </div>
@@ -225,7 +229,8 @@
 
 
 		                        </div>
-		                         <hr>
+		                        @if(Auth::user()->role_id==1)
+		                        <hr>
 		                        <div class="form-actions">
 		                            <div class="row">
 		                                <div class="col-md-6">
@@ -238,6 +243,7 @@
 		                                </div>
 		                            </div>
 		                        </div>
+		                        @endif
 		                    </form>
 		        		</div>       
 		        	</div>
@@ -248,6 +254,7 @@
  @push('scripts')
     <script>
     $(document).ready(function(){
+    	
         $( function() {
 		    $( "#date_of_birth" ).datepicker({
 		      dateFormat: 'dd-MM-yy',

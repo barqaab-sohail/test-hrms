@@ -188,11 +188,13 @@
 		                          
 		                           
 		                        </div>
+		                        @if(Auth::user()->role_id==1)
 		                         <hr>
 		                        <div class="form-actions">
 		                            <div class="row">
 		                                <div class="col-md-6">
 		                                    <div class="row">
+
 		                                        <div class="col-md-offset-3 col-md-9">
 		                                            <button type="submit" class="btn btn-success">Edit Education</button>
 		                                            <button type="button" onclick="window.location.href='{{route('employeeList')}}'" class="btn btn-inverse">Cancel</button>
@@ -201,6 +203,7 @@
 		                                </div>
 		                            </div>
 		                        </div>
+		                        @endif
 		                    </form>
 		
 		@if($educationIds->count()!=0)                    
@@ -263,6 +266,7 @@
  
         <script>
             $(document).ready(function() {
+            	
 
             	$('#education').submit(function(e) {
 

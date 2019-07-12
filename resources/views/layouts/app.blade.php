@@ -6,6 +6,7 @@
 
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{asset('Massets/images/favicon.ico') }}">
 
     <title>{{ config('app.name', 'Laravel') }}</title>
 
@@ -24,7 +25,7 @@
         <nav class="navbar navbar-expand-md bg-primary navbar-dark navbar-laravel">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
-                    <img class="img-rounded" alt="" src="Massets/img/mono.png" width="40px"> {{ config('app.name', 'Laravel') }}
+                    <img class="img-rounded" alt="" src="{{asset('Massets/img/mono.png')}}" width="40px"> {{ config('app.name', 'Laravel') }}
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>

@@ -43,7 +43,6 @@
                                                         <option value=""></option>
                                                         <option value="PEC"  {{ old('name') == "PEC" ? 'selected' : '' }}>PEC </option>
                                                         <option value="Other"  {{ old('name') == "Other" ? 'selected' : '' }}>Other </option>
-                                                        
                                                     </select>
                                                      
 		                                        </div>

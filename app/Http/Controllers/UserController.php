@@ -38,7 +38,8 @@ class UserController extends Controller
         User::create($request->all());
           
         }else{
-   		$userId = $employee->user->id;
+   	
+    	$userId = $employee->user->id;
 
    				User::findOrFail($userId)->update($request->all());
         }
