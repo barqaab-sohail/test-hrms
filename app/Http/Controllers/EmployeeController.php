@@ -118,22 +118,26 @@ class EmployeeController extends Controller
             }else{
             nationality::findOrFail($nationalityId->id)->update($nationality1);
             }
-        //Check Second Nationality Exist or Not
+        //Second Nationality 
             $nationalityCount = nationality::where('employee_id',session('employee_id'))->get();
-        
-            if($request->has('nationality_name2')){
-
+            if($request->input('nationality_name2')!=null){
+                 
+                 //Convert nationalirty_name2 to nationality_name
                 $nationality2 = array('nationality_name'=>$request->input('nationality_name2'),'employee_id'=>session('employee_id'));
-
+                //Check Nationality2 already exist or Not
                 if($nationalityCount->count()>1){
-                     
-                     $nationalityId = nationality::where('employee_id',session('employee_id'))->get()->last();
-                     
-                     nationality::findOrFail($nationalityId->id)->update($nationality2);
-
+                       $nationalityId = nationality::where('employee_id',session('employee_id'))->get()->last();
                 }else{
                      nationality::create($nationality2);
                 }
+            }else{
+                //Already Saved Nationality2 Delete
+                if($nationalityCount->count()>1){
+                    $nationalityId = nationality::where('employee_id',session('employee_id'))->get()->last();
+                    nationality::findOrFail($nationalityId->id)->delete();
+                }
+
+                 
             }
         
          });
