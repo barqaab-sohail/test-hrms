@@ -47,17 +47,19 @@ class PictureController extends Controller
 	        $status = "";
 
 		        if ($request->hasFile('profile_picture')) {
-		        	unlink(public_path('upload\pictures/'.$picture->name));
+		        	unlink(public_path('storage/pictures/'.$picture->name));
 		            $image = $request->file('profile_picture');
 		            // Rename image
-		            $filename = time().'.'.$image->guessExtension();
-		            $input['name'] = $filename;
+		             $imageName = time().'-'.session('employee_id').'.'.$image->guessExtension();
+		            $input['name'] = $imageName;
 		            $input['employee_id'] = session('employee_id');
 		            $input['type'] = $request->file('profile_picture')->getMimeType();
 		            $input['size'] = $request->file('profile_picture')->getClientSize();
 		            $input['width'] = '100';
 		            $input['height'] = '100';
-		            $path = $request->file('profile_picture')->move(public_path('upload/pictures'), $filename);
+		            $request->file('profile_picture')->storeAs('public/pictures', $imageName);
+		           
+		            //$path = $request->file('profile_picture')->move(public_path('upload/pictures'), $filename);
 		            picture::findOrFail($picture->id)->update($input);
 		            $status = "Uploaded Sucessfully";            
 		        }
@@ -80,14 +82,17 @@ class PictureController extends Controller
 		        if ($request->hasFile('profile_picture')) {
 		            $image = $request->file('profile_picture');
 		            // Rename image
-		            $filename = time().'.'.$image->guessExtension();
-		            $input['name'] = $filename;
+		            $imageName = time().'-'.session('employee_id').'.'.$image->guessExtension();
+
+
+		            $input['name'] = $imageName;
 		            $input['employee_id'] = session('employee_id');
 		            $input['type'] = $image->getMimeType();
 		            $input['size'] = $image->getClientSize();
 		            $input['width'] = '100';
 		            $input['height'] = '100';
-		            $path = $request->file('profile_picture')->move(public_path('upload/pictures'), $filename);
+		            $request->file('profile_picture')->storeAs('public/pictures', $imageName);
+		            //$path = $request->file('profile_picture')->move(public_path('upload/pictures'), $filename);
 		            picture::create($input);
 		            $status = "Uploaded Sucessfully";            
 		        }

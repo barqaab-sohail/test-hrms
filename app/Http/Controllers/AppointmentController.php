@@ -31,23 +31,19 @@ class AppointmentController extends Controller
      public function update(StoreAppointment $request, $id)  {
 
          $data = $request->all();
-         $data ['joining_date']= \Carbon\Carbon::parse($request->joining_date)->format('Y-m-d');
-         $data ['expiry_date']= \Carbon\Carbon::parse($request->expiry_date)->format('Y-m-d');
-         $data ['appointment_date']= \Carbon\Carbon::parse($request->appointment_date)->format('Y-m-d');
 
-         
+         $data ['joining_date']= \Carbon\Carbon::parse($request->joining_date)->format('Y-m-d');
+         if($request->filled('expirty_date')){
+         $data ['expiry_date']=  \Carbon\Carbon::parse($request->expiry_date)->format('Y-m-d');}
+         if($request->filled('appointment_date')){
+         $data ['appointment_date']= \Carbon\Carbon::parse($request->appointment_date)->format('Y-m-d');}
 
         $employee = employee::find($id);
-        
-        $appointment = appointment::where ('employee_id',$id)->first();
-        if ($appointment!=null){
-          $appointmentId = $employee->appointment->id;
-        	 appointment::findOrFail($appointmentId)->update($data);
-        }else
-        {
-        appointment::create($data);
-        }
-       
-       return redirect()->route('appointment.edit',['id'=>session('employee_id')])->with('success', 'Appointment Detail is saved succesfully');
+        $agreement = appointment::updateOrCreate(
+         ['employee_id' => $id],
+         $data);
+
+      
+      return redirect()->route('appointment.edit',['id'=>session('employee_id')])->with('success', 'Appointment Detail is saved succesfully');
     }
 }

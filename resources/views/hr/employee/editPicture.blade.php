@@ -36,7 +36,7 @@
                  <span id="wanings" class="text-danger"></span>
 
                 <div class="profile-img p-3">
-                    <img src="{{asset(isset($picture->name)? 'upload/pictures/'.$picture->name: 'Massets/images/default.png') }}" width=300 id="profile-pic">
+                    <img src="{{asset(isset($picture->name)? 'storage/pictures/'.$picture->name: 'Massets/images/default.png') }}" width=300 id="profile-pic">
                 </div>
                 <div id="preview-img" class="btn btn-dark">
                     <input type="file" class="file-upload" id="file-upload" 
@@ -188,7 +188,7 @@ $(function() {
                              $('#success').fadeOut('slow');
                             }, 3000);
                     } else {
-                        $("#profile-pic").attr("src","{{asset(isset($picture->name)? 'upload/pictures/'.$picture->name: 'Massets/images/default.png') }}" );
+                        $("#profile-pic").attr("src","{{asset(isset($picture->name)? 'storage/pictures/'.$picture->name: 'Massets/images/default.png') }}" );
                        
                        jQuery.each(data.errors, function(key, value){
                             jQuery('.alert-danger').show();
@@ -200,7 +200,7 @@ $(function() {
                 },
                 error: function(error) {
                     console.log(error);
-                    $("#profile-pic").attr("src","{{asset(isset($picture->name)? 'upload/pictures/'.$picture->name: 'Massets/images/default.png') }}" ); 
+                    $("#profile-pic").attr("src","{{asset(isset($picture->name)? 'storage/pictures/'.$picture->name: 'Massets/images/default.png') }}" ); 
                 }
             });
         });

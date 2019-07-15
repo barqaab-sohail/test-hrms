@@ -109,15 +109,14 @@ class EmployeeController extends Controller
 
         employee::findOrFail($id)->update($data);
 
-        $nationalityId = nationality::where('employee_id',session('employee_id'))->get()->first();
+        //first Nationality 
         $nationality1 = array('nationality_name'=>$request->input('nationality_name'),'employee_id'=>session('employee_id'));
 
-            //Check first Nationality Exist Or Not
-            if ($nationalityId== null){
-                     nationality::create($nationality1);
-            }else{
-            nationality::findOrFail($nationalityId->id)->update($nationality1);
-            }
+        nationality::updateOrCreate(
+         ['employee_id' => session('employee_id')],
+         $nationality1);
+
+       
         //Second Nationality 
             $nationalityCount = nationality::where('employee_id',session('employee_id'))->get();
             if($request->input('nationality_name2')!=null){
@@ -127,6 +126,8 @@ class EmployeeController extends Controller
                 //Check Nationality2 already exist or Not
                 if($nationalityCount->count()>1){
                        $nationalityId = nationality::where('employee_id',session('employee_id'))->get()->last();
+                    nationality::findOrFail($nationalityId->id)->update($nationality2);
+
                 }else{
                      nationality::create($nationality2);
                 }

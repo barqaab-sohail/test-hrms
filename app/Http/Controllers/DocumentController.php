@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use App\employee;
 use App\document;
 use DB;
@@ -28,16 +29,16 @@ class DocumentController extends Controller
          'document_name' => 'required|max:255',
          ]);
 
-         $imageName = time().'-'.session('employee_id').'.'.request()->picture->getClientOriginalExtension();
-        $imageType = request()->picture->getMimeType();
-        $imageSize = request()->picture->getClientSize();
-        request()->picture->move(public_path('upload/documents'), $imageName);
-       	$input['document_name'] = request()->document_name;
+         $imageName = time().'-'.session('employee_id').'-'.request()->document_name.'.'.request()->document->getClientOriginalExtension();
+        $imageType = request()->document->getMimeType();
+        $imageSize = request()->document->getClientSize();
+        $request->file('document')->storeAs('public/documents',$imageName);
+        $input['document_name'] = request()->document_name;
+        $input ['date']= \Carbon\Carbon::parse($request->date)->format('Y-m-d');
         $input['file_name'] = $imageName;
         $input['employee_id'] = session('employee_id');
         $input['type'] = $imageType;
         $input['size'] = $imageSize;
-        //dd($input);
         document::create($input);
         return redirect()->route('document',['id'=>session('employee_id')])->with('success', 'Data is saved succesfully');
       // return redirect()->route('document',['id'=>$data->id])->with('success', 'User is created succesfully');
@@ -56,18 +57,20 @@ class DocumentController extends Controller
     public function update(Request $request, $id)
     {		$data = document::find($id);
 
-        if ($request->hasFile('picture')){
+        if ($request->hasFile('document')){
         
-            $imageName = time().'-'.session('employee_id').'.'.request()->picture->getClientOriginalExtension();
-            $imageType = request()->picture->getMimeType();
-            $imageSize = request()->picture->getClientSize();
-            request()->picture->move(public_path('upload/documents'), $imageName);
+            $imageName = time().'-'.session('employee_id').'-'.request()->document_name.'.'.request()->document->getClientOriginalExtension();
+            $imageType = request()->document->getMimeType();
+            $imageSize = request()->document->getClientSize();
+            $request->file('document')->storeAs('public/documents',$imageName);
+            $input ['date']= \Carbon\Carbon::parse($request->date)->format('Y-m-d');
             $input['file_name'] = $imageName;
             $input['employee_id'] = session('employee_id');
             $input['type'] = $imageType;
             $input['size'] = $imageSize;
             document::findOrFail($data->id)->update($input);
-            unlink(public_path('upload\documents/'.$data->file_name));
+            //Storage::delete('storage/documents/'.$data->file_name);
+            unlink(public_path('storage/documents/'.$data->file_name));
         }
         else{
              document::findOrFail($data->id)->update($request->all());
@@ -81,7 +84,7 @@ class DocumentController extends Controller
     
     $document = document::findOrFail($id);
     
-    unlink(public_path('upload\documents/'.$document->file_name));
+    unlink(public_path('storage/documents/'.$document->file_name));
     $document->forceDelete(); 
         
     return redirect()->route('document',['id'=>session('employee_id')])->with('success', 'Document is deleted succesfully');

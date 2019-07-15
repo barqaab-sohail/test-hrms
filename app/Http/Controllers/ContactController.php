@@ -31,23 +31,13 @@ class ContactController extends Controller
 
     public function updatePermanent(Request $request, $id)
     {
-             	
-        $contact = contact::where ('employee_id',$id)->where('type','0')->first();
         
-        if ($contact==null){
-    	
-    	  
-    	
-        contact::create($request->all());
-          
-        }else{
-   		$contactId = $contact->id;
+    contact::updateOrCreate(
+    ['employee_id' => $id, 'type' => '0'],
+    $request->all());
 
-   		
-   		contact::findOrFail($contactId)->update($request->all());
-        }
-       	
-      	return redirect()->route('contact.edit',['id'=>session('employee_id')])->with('success', 'Permanent Address is saved succesfully');
+         	
+    return redirect()->route('contact.edit',['id'=>session('employee_id')])->with('success', 'Permanent Address is saved succesfully');
       
     }
 
@@ -55,23 +45,12 @@ class ContactController extends Controller
     {
        	
 
-        $contact = contact::where ('employee_id',$id)->where('type','1')->first();
-        
-        if ($contact==null){
-    	
-    	 
-    	
-        contact::create($request->all());
-          
-        }else{
-   		$contactId = $contact->id;
+    contact::updateOrCreate(
+    ['employee_id' => $id, 'type' => '1'],
+    $request->all());
 
-
-   		
-   		contact::findOrFail($contactId)->update($request->all());
-        }
-       	
-      	return redirect()->route('contact.edit',['id'=>session('employee_id')])->with('success', 'Current Address is saved succesfully');
+    
+    return redirect()->route('contact.edit',['id'=>session('employee_id')])->with('success', 'Current Address is saved succesfully');
       
     }
 

@@ -67,7 +67,7 @@
 		                                    <div class="form-group row">
 		                                        <label class="control-label text-right col-md-3">Date</label>
 		                                        <div class="col-md-6">
-		                                            <input type="date"  name="date" value="{{ old('date') }}" class="form-control"  >
+		                                            <input type="text"  id="date" name="date" value="{{ old('date') }}" class="form-control" readonly  >
 		                                        </div>
 		                                       
 		                                       
@@ -81,7 +81,7 @@
 		                                		<img src="{{asset('Massets/images/document.png')}}" class="img-round picture-container picture-src"  id="wizardPicturePreview"  title="" width="150" >
 	                                			
 		                                		</input>
-		                                		<input type="file"  name="picture" id="view" class="" required hidden>
+		                                		<input type="file"  name="document" id="view" class="" required hidden>
 		                                				                                		
 
 				                                <h6 id="h6" class="card-title m-t-10">Click On Image to Add Document</h6>
@@ -145,9 +145,9 @@
 							<tr>
 								<td>{{$documentId->document_name}}</td>
 								@if($documentId->type!='application/pdf')
-								<td><img  id="ViewPDF" src="{{asset(isset($documentId->file_name)? 'upload/documents/'.$documentId->file_name: 'Massets/images/document.png') }}" href="{{asset(isset($documentId->file_name)? 'upload/documents/'.$documentId->file_name: 'Massets/images/document.png') }}" width=30/></td>
+								<td><img  id="ViewIMG" src="{{asset(isset($documentId->file_name)? 'storage/documents/'.$documentId->file_name: 'Massets/images/document.png') }}" href="{{asset(isset($documentId->file_name)? 'storage/documents/'.$documentId->file_name: 'Massets/images/document.png') }}" width=30/></td>
 								@else
-								<td><img  id="ViewIMG" src="{{asset('Massets/images/document.png')}}" href="{{asset(isset($documentId->file_name)? 'upload/documents/'.$documentId->file_name: 'Massets/images/document.png') }}" width=30/></td>
+								<td><img  id="ViewPDF" src="{{asset('Massets/images/document.png')}}" href="{{asset(isset($documentId->file_name)? 'storage/documents/'.$documentId->file_name: 'Massets/images/document.png') }}" width=30/></td>
 								@endif
 								
 								
@@ -181,6 +181,14 @@
         
     <script>
         $(document).ready(function(){
+        	$( "#date" ).datepicker({
+		      dateFormat: 'dd-MM-yy',
+		      yearRange: '1970:'+ (new Date().getFullYear()+1),
+		      changeMonth: true,
+		      changeYear: true
+		    });
+
+
         	$("#document_name").change(function (){
 				var other = $('#document_name').val();
 					if (other == 'Other'){

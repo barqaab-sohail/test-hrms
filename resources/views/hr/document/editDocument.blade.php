@@ -70,7 +70,7 @@
 		                                    <div class="form-group row">
 		                                        <label class="control-label text-right col-md-3">Date</label>
 		                                        <div class="col-md-6">
-		                                            <input type="date"  name="date" value="{!! old('date', optional($data)->date) !!}" class="form-control"  >
+		                                            <input ype="text"  id="date" name="date" value="{!! old('date', optional($data)->date) !!}" class="form-control" readonly >
 		                                        </div>
 		                                       
 		                                       
@@ -82,12 +82,12 @@
 		                                    <div class="form-group row">
 		                                        <center >
 		                                        @if($data->type!='application/pdf')
-		                                		<img  src="{{asset(isset($data->file_name)? 'upload/documents/'.$data->file_name: 'Massets/images/document.png') }}" class="img-round picture-container picture-src"  id="wizardPicturePreview" title="" width="150" />
+		                                		<img  src="{{asset(isset($data->file_name)? 'storage/documents/'.$data->file_name: 'Massets/images/document.png') }}" class="img-round picture-container picture-src"  id="wizardPicturePreview" title="" width="150" />
 		                                		@else
 		                                		<img  src="{{asset('Massets/images/document.png')}}" class="img-round picture-container picture-src"  id="wizardPicturePreview"  title="" width="150" >
 		                                		@endif
 
-		                                		<input type="file"  name="picture" id="wizard-picture" class=""  hidden>
+		                                		<input type="file"  name="document" id="wizard-picture" class=""  hidden>
 		                                				                                		
 
 				                                <h6 id="h6" class="card-title m-t-10">Click On Image to Change New Document</h6>
@@ -102,7 +102,7 @@
 									 <div class="row">
 		                                <div class="col-md-7" id="pdf">
 		                                	@if($data->type=='application/pdf')
-		                            		<embed id="pdf" src="{{asset('upload/documents/'.$data->file_name)}}#toolbar=0&navpanes=0&scrollbar=0"  type="application/pdf" height="300" width="100%" />
+		                            		<embed id="pdf" src="{{asset('storage/documents/'.$data->file_name)}}#toolbar=0&navpanes=0&scrollbar=0"  type="application/pdf" height="300" width="100%" />
 		                            		@endif
 		                            		
 		                            	</div>
@@ -153,9 +153,9 @@
 							<tr>
 								<td>{{$documentId->document_name}}</td>
 								@if($documentId->type!='application/pdf')
-								<td><img  id="viewFile" src="{{asset(isset($documentId->file_name)? 'upload/documents/'.$documentId->file_name: 'Massets/images/document.png') }}" href="{{asset(isset($documentId->file_name)? 'upload/documents/'.$documentId->file_name: 'Massets/images/document.png') }}" width=30/></td>
+								<td><img  id="viewIMG" src="{{asset(isset($documentId->file_name)? 'storage/documents/'.$documentId->file_name: 'Massets/images/document.png') }}" href="{{asset(isset($documentId->file_name)? 'storage/documents/'.$documentId->file_name: 'Massets/images/document.png') }}" width=30/></td>
 								@else
-								<td><img  id="viewFile" src="{{asset('Massets/images/document.png')}}" href="{{asset(isset($documentId->file_name)? 'upload/documents/'.$documentId->file_name: 'Massets/images/document.png') }}" width=30/></td>
+								<td><img  id="viewPDF" src="{{asset('Massets/images/document.png')}}" href="{{asset(isset($documentId->file_name)? 'storage/documents/'.$documentId->file_name: 'Massets/images/document.png') }}" width=30/></td>
 								@endif
 								
 								
@@ -188,6 +188,12 @@
         
     <script>
         $(document).ready(function(){
+        	$( "#date" ).datepicker({
+		      dateFormat: 'dd-MM-yy',
+		      yearRange: '1970:'+ (new Date().getFullYear()+1),
+		      changeMonth: true,
+		      changeYear: true
+		    });
             
         	$("#document_name").change(function (){
 				var other = $('#document_name').val();
@@ -288,7 +294,7 @@
             });
 
             $(function(){
- 			 $('#viewFile').EZView();
+ 			 $('#viewPDF, #viewIMG').EZView();
 			});
 			
 			

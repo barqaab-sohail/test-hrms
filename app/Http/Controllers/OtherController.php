@@ -23,18 +23,16 @@ class OtherController extends Controller
        return view ('hr.other_information.editOther', compact('employee','blood_groups'));
     }
 
-     public function update(Request $request, $id)
+    
+    public function update(Request $request, $id)
     {
      
-        $other = other_information::where ('employee_id',$id)->first();
-        if ($other!=null){
-        	 other_information::findOrFail($id)->update($request->all());
-        }else
-      
-        {
-        other_information::create($request->all());
-       }
-       return redirect()->route('other.edit',['id'=>session('employee_id')])->with('success', 'Other Information  is saved succesfully');
+
+      other_information::updateOrCreate(
+      ['employee_id' => $id],
+      $request->all());
+
+      return redirect()->route('other.edit',['id'=>session('employee_id')])->with('success', 'Other Information  is saved succesfully');
 
     }
 }

@@ -3,9 +3,12 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use OwenIt\Auditing\Contracts\Auditable;
 
-class promotion extends Model
+class promotion extends Model implements Auditable
 {
+	use \OwenIt\Auditing\Auditable;
+
     protected $fillable = [
         'promoted_designation', 'effective_date', 'promotion_remarks', 'employee_id',
     ];	

@@ -3,11 +3,14 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use OwenIt\Auditing\Contracts\Auditable;
 
 class document extends Model
 {
+    use \OwenIt\Auditing\Auditable;
+
     protected $fillable = [
-        'document_name', 'file_name', 'type','date','reference_no','employee_id',
+        'document_name', 'file_name','path', 'type','date','reference_no','employee_id',
     ];
 
     public function employee(){
