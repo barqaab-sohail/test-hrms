@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use App\User;
+use App\Http\Middleware\UserStatus;
+use Illuminate\Http\Request;
 
 class LoginController extends Controller
 {
@@ -27,6 +29,23 @@ class LoginController extends Controller
      *
      * @var string
      */
+    //protected $redirectTo = '/dashboard';
+
+    public function redirectTo(){
+        
+        $user = User::findOrFail(Auth::id());
+        if($user->status==0){
+            Auth::logout();
+              
+        return '/login';
+
+        }else{
+
+            return '/dashboard';
+        }
+
+    }   
+
     protected $redirectTo = '/dashboard';
 
     /**
@@ -37,14 +56,17 @@ class LoginController extends Controller
     public function __construct()
     {
               
-        $this->middleware('guest')->except('logout');
-       
+        //$this->middleware('guest')->except('logout');
+            
     }
+   
+
 
     public function logout(){
 
         Auth::logout();
 
-        return view ('auth.login');
+        return redirect()->route('login');
+        //return view ('auth.login');
     }
 }

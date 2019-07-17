@@ -3,25 +3,27 @@
 namespace App\Http\Middleware;
 
 use Closure;
+use App\user;
 use Illuminate\Support\Facades\Auth;
 
-class RedirectIfAuthenticated
+class UserStatus
 {
     /**
      * Handle an incoming request.
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  \Closure  $next
-     * @param  string|null  $guard
      * @return mixed
      */
-    
-    public function handle($request, Closure $next, $guard = null)
+    public function handle($request, Closure $next)
     {
-       
+        
+        $user = User::findOrFail(Auth::id());
+        if($user->status==0){
+            Auth::logout();
+            
+            return redirect()->route('login')->with('message', 'Registration First');
 
-        if (Auth::guard($guard)->check()) {
-            return redirect('/dashboard');
         }
 
         return $next($request);

@@ -44,4 +44,14 @@ class StoreEmployee extends FormRequest
 
         ];
     }
+
+    public function messages()
+    {
+        return [
+            'cnic_expiry.after' => 'CNIC Expiry Date must be five days after today',
+            
+        ];
+    }
+
+
 }

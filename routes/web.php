@@ -19,7 +19,7 @@ use App\user;
 });
 */
 
-Auth::routes();
+Auth::routes(['verify' => true]);
 
 //notification
 Route::get('/notificationList', 'NotificationController@index')->name('notificationList');
@@ -43,7 +43,7 @@ Route::get('/phone/edit/{id?}', [
 
 //Dashboard
 Route::get('/chart', 'ChartController@index')->name('chart');
-Route::get('/dashboard', 'HomeController@index')->name('dashboard');
+Route::get('/dashboard', 'HomeController@index')->name('dashboard')->middleware('verified');
 
 
 //Employee & User Routes
