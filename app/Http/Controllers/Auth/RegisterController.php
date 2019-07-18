@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 use Illuminate\Support\Facades\DB;
 use App\User;
+use App\employee;
 use App\Notifications\MailNotification;
 use Illuminate\Http\Request;
 use Illuminate\Auth\Events\Registered;
@@ -40,7 +41,7 @@ class RegisterController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('guest');
+        //$this->middleware('guest');
     }
 
     /**
@@ -65,26 +66,29 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-     $user =  User::create([
+     /*$user =  User::create([
             'cnic' => $data['cnic'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
         ]);
         
         return $user;
+        */
     }
 
     public function register(Request $request)
     {
        $this->validator($request->all())->validate();
            
-        //$user = New user;
-        //$user = user::findOrFail(1);
+         $test = DB::table('users')
+                    ->join('employees','employees.id','=','users.employee_id')
+                    ->where('email', $request->email)->where('cnic',$request->cnic)->first();
 
-        $test= User::where('email', $request->email)->first();
 
         
-        if ($test===null)
+        
+        
+        if ($test == null)
         {
             return view('auth.register')->withErrors("Please Contact to HR");
 
@@ -92,10 +96,11 @@ class RegisterController extends Controller
         else
         {
 
-            if($test->status===1)
+
+            if($test->user_status==1)
             {
 
-                 return view('auth.register')->withErrors("You are already Registered");
+                 return view('auth.login')->withErrors("You are already Registered.  Please Enter Email and Password");
 
             }else{
 
@@ -104,10 +109,9 @@ class RegisterController extends Controller
 
             DB::table('users')
                 ->where('email', $request->email)
-                ->update(['status' => 1, 'password' => Hash::make($request->password) ]);
-            
-            $user = User::where('email', $request->email)->first();
-                
+                ->update(['user_status' => 1, 'password' => Hash::make($request->password) ]);
+           
+                         
                 return redirect()->route('login')->with('success', 'You are Registered Sucessfully');
             }
         }

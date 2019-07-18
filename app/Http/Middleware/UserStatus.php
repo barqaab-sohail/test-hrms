@@ -18,14 +18,16 @@ class UserStatus
     public function handle($request, Closure $next)
     {
         
-        $user = User::findOrFail(Auth::id());
-        if($user->status==0){
-            Auth::logout();
             
-            return redirect()->route('login')->with('message', 'Registration First');
-
+        $response = $next($request);
+        if(Auth::check() && Auth::user()->user_status == 0){
+            Auth::logout();
+            return redirect('/register')->with('erro_login', 'Your are not registered user.  Please register first');
+            //->with('errors', 'Your error text');
         }
 
-        return $next($request);
+        return $response;
+
+
     }
 }

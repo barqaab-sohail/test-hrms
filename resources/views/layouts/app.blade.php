@@ -49,7 +49,7 @@
                                     <a class="nav-link" style="color: white;" href="{{ route('register') }}">{{ __('Register') }}</a>
                                 </li>
                             @endif
-                        
+                        @elseif (request()->is('email/verify'))
 
                         @else
                             

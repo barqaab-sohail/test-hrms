@@ -19,7 +19,11 @@ use App\user;
 });
 */
 
-Auth::routes(['verify' => true]);
+Auth::routes();
+Route::post('/login', [
+    'uses'          => 'Auth\LoginController@login',
+    'middleware'    => 'UserStatus',
+]);
 
 //notification
 Route::get('/notificationList', 'NotificationController@index')->name('notificationList');

@@ -8,6 +8,13 @@
                 <div class="card-header">{{ __('Register') }}</div>
 
                 <div class="card-body">
+                    @if(Session::has('erro_login'))
+                        <div class="alert alert-danger">
+                        <a href="#" class="close" data-dismiss="alert"></a>
+                        <strong></strong> {{Session::get('erro_login')}}
+                        </div>
+                    @endif
+
 
                      @if ($errors->any())
                         <div class="alert alert-danger">

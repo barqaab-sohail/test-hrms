@@ -47,7 +47,7 @@ class EmployeeController extends Controller
             $input = employee::create($data);
             $nationality1 = array('nationality_name'=>$request->input('nationality_name'),'employee_id'=>$input->id);
             nationality::create($nationality1);
-            if($request->has('nationality_name2'))
+            if($request->filled('nationality_name2'))
             {
             $nationality2 = array('nationality_name'=>$request->input('nationality_name2'),'employee_id'=>$input->id);
             nationality::create($nationality2);

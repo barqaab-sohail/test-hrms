@@ -29,24 +29,8 @@ class LoginController extends Controller
      *
      * @var string
      */
-    //protected $redirectTo = '/dashboard';
-
-    public function redirectTo(){
-        
-        $user = User::findOrFail(Auth::id());
-        if($user->status==0){
-            Auth::logout();
-              
-        return '/login';
-
-        }else{
-
-            return '/dashboard';
-        }
-
-    }   
-
     protected $redirectTo = '/dashboard';
+
 
     /**
      * Create a new controller instance.
@@ -65,7 +49,6 @@ class LoginController extends Controller
     public function logout(){
 
         Auth::logout();
-
         return redirect()->route('login');
         //return view ('auth.login');
     }

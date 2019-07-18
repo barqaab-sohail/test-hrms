@@ -10,7 +10,8 @@
 
                 <div class="card-body">
                     
-                     @if(Session::has('success'))
+                   
+                    @if(Session::has('success'))
                         <div class="alert alert-success">
                         <a href="#" class="close" data-dismiss="alert"></a>
                         <strong></strong> {{Session::get('success')}}

@@ -20,7 +20,7 @@ class CreateUsersTable extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password')->default(bcrypt('Great@786'));
             $table->bigInteger('role_id')->unsigned()->default(3); 
-            $table->integer('status')->default(0);
+            $table->integer('user_status')->default(0);
             $table->bigInteger('employee_id')->unsigned();
             $table->rememberToken();
             $table->timestamps();
