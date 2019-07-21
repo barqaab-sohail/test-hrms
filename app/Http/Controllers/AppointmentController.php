@@ -10,6 +10,7 @@ use App\project;
 use App\blood_group;
 use App\Http\Requests\StoreAppointment;
 use DB;
+use App\position;
 
 class AppointmentController extends Controller
 {
@@ -22,10 +23,11 @@ class AppointmentController extends Controller
 
        $employee = employee::find($id);
        $projects = project::all();
+       $positions = position::all();
        
        $salary = DB::table('salaries')->where('employee_id',$id)->where('promotion_id',NULL)->first();
                         
-      return view ('hr.appointment.editAppointment', compact('employee','salary','projects'));
+      return view ('hr.appointment.editAppointment', compact('employee','salary','projects','positions'));
     }
 
      public function update(StoreAppointment $request, $id)  {

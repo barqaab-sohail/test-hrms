@@ -51,6 +51,7 @@
                         @else
                         <li><a href="{{route('employeeList')}}">List of Employees</a></li>
                         <li><a href="{{route('createEmployee')}}">Add Employee</a></li>
+                         <li><a href="{{route('addPosition')}}">Add Position</a></li>
                         @endif
                     </ul>
                 </li>

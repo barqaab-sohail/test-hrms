@@ -39,7 +39,16 @@
 		                                    <div class="form-group row">
 		                                        <label class="control-label text-right col-md-3">Designation</label>
 		                                        <div class="col-md-9">
-		                                            <input type="text"  name="designation" value="{!! old('designation',isset($employee->appointment->designation)?$employee->appointment->designation:'')!!}" class="form-control" placeholder="Enter Designation." required>
+													<select  name="designation"  class="form-control" required>
+                                                      <option></option>
+                                                     @foreach($positions as $position)
+														
+														<option value="{{$position->name}}" @if($position->name == optional($employee->appointment)->designation)) selected="selected" @endif>{{$position->name}}</option>
+                                                        @endforeach
+                                                        
+                                                    </select>
+
+		                                            
 		                                        </div>
 		                                    </div>
 		                                </div>

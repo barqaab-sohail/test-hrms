@@ -62,6 +62,15 @@ Route::post('/editEmployee/{id?}', 'EmployeeController@update')->name('editEmplo
 Route::get('/inactiveEmployee/{id?}', 'EmployeeController@inactive')->name('inactiveEmployee');
 Route::get('/hrms/userDetail/{id?}', 'EmployeeController@show')->name('userDetail');
 
+//Add Position
+Route::get('/hrms/addPosition', 'PositionController@index')->name('addPosition');
+Route::post('/storePosition', 'PositionController@store')->name('storePosition');
+Route::get('/hrms/position/edit/{id?}', [
+            'uses' => 'PositionController@edit',
+            'as' => 'position.edit'
+        ]);
+Route::post('/editPosition/{id?}', 'PositionController@update')->name('editPosition');
+Route::get('/deletePosition/{id?}', 'PositionController@delete')->name('deletePosition');
 
 
 
