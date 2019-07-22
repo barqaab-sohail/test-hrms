@@ -361,6 +361,13 @@
    			 	
    			 	$("#total").val(sum);
 				});
+
+			$('select').select2({
+	  		maximumSelectionLength: 2,
+	  		 theme: "classic",
+			});
+
+
 			});
         </script>
     @endpush
