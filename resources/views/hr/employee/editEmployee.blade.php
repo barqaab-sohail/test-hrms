@@ -21,7 +21,7 @@
 					</div>
         	
 		        	<div class="col-lg-10">
-						@can('show', Auth::user())
+						@can('entry', Auth::user())
 		                <div style="margin-top:10px; margin-right: 10px;">
 		                    <button type="button" onclick="window.location.href='{{route('employeeList')}}'" class="btn btn-info float-right">Back</button>
 		                </div>
@@ -230,7 +230,7 @@
 
 
 		                        </div>
-		                        @if(Auth::user()->role_id==1)
+		                        @can('entry', Auth::user())
 		                        <hr>
 		                        <div class="form-actions">
 		                            <div class="row">
@@ -244,7 +244,7 @@
 		                                </div>
 		                            </div>
 		                        </div>
-		                        @endif
+		                        @endcan
 		                    </form>
 		        		</div>       
 		        	</div>

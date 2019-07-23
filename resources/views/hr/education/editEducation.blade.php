@@ -21,11 +21,12 @@
 					</div>
         			
 		        	<div class="col-lg-10">
-
+						@can('entry', Auth::user())
 		                <div style="margin-top:10px; margin-right: 10px;">
 		                    <button type="button" onclick="window.location.href='{{route('employeeList')}}'" class="btn btn-info float-right">Back</button>
 		                    
 		                </div>
+		                @endcan
 		                <div class="card-body">
 
 		                    <form id="education" action="{!!route('editEducation', ['id'=>optional($data)->id])!!}" method="post" class="form-horizontal" enctype="multipart/form-data">
@@ -188,7 +189,7 @@
 		                          
 		                           
 		                        </div>
-		                        @if(Auth::user()->role_id==1)
+		                        @can('entry', Auth::user())
 		                         <hr>
 		                        <div class="form-actions">
 		                            <div class="row">
@@ -203,7 +204,7 @@
 		                                </div>
 		                            </div>
 		                        </div>
-		                        @endif
+		                        @endcan
 		                    </form>
 		
 		@if($educationIds->count()!=0)                    
@@ -228,7 +229,7 @@
 						<th>Institute</th>
 						<th>Completion Year</th>
 						<th>Grade</th>
-						<th> Actions </th>
+						 @can('entry', Auth::user())<th> Actions </th>@endcan
 					</tr>
 					</thead>
 					<tbody>
@@ -239,9 +240,10 @@
 								<td>{{$educationId->completion}}</td>
 								<td>{{$educationId->grade}}</td>
 								<td>
-								
+								 @can('entry', Auth::user())
 								 <a class="btn btn-info btn-sm" href="{{route('education.edit',['id'=>$educationId->id])}}" data-toggle="tooltip" data-original-title="Edit"> <i class="fas fa-pencil-alt text-white "></i></a>
 								 <a class="btn btn-danger btn-sm" onclick="return confirm('Are you Sure to Delete')" href="{{route('deleteEducation',['id'=>$educationId->id])}}" data-toggle="tooltip" data-original-title="Delete"> <i class="fas fa-trash-alt"></i></a>
+								 @endcan
 															
 							</tr>
 						@endforeach
@@ -290,7 +292,7 @@
 				var fromYear = $('#from_year').val();
 				var toYear = $('#to_year').val();
 				var fromMonth = $('#from_month').val();
-				var toMonth = $('#to_month').val();
+				var toMonth = $('<div id="to_mon">	</div>th').val();
 
 				if (fromYear>toYear)
 				{

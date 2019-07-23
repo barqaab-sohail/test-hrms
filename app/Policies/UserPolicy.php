@@ -19,12 +19,16 @@ class UserPolicy
         //
     }
 
-    public function show(User $user){
+    public function entry(User $user){
 
-        if ($user->role_id == 1){
+        if ($user->role_id == 2){
             return true;
         }else{
             return false;
         }
+    }
+
+    public function admin(User $user){
+        return $user->role_id ==1;
     }
 }

@@ -19,10 +19,11 @@
 					</div>
         	
 		        	<div class="col-lg-10">
-
+                        @can('entry', Auth::user())
 		                <div style="margin-top:10px; margin-right: 10px;">
 		                    <button type="button" onclick="window.location.href='{{route('employeeList')}}'" class="btn btn-info float-right">Back</button>
 		                </div>
+                        @endcan
 		       				<p>&nbsp;</p>
 <div  class="container"> 
         
@@ -38,11 +39,14 @@
                 <div class="profile-img p-3">
                     <img src="{{asset(isset($picture->name)? 'storage/pictures/'.$picture->name: 'Massets/images/default.png') }}" width=300 id="profile-pic">
                 </div>
+                 @can('entry', Auth::user())
                 <div id="preview-img" class="btn btn-dark">
+
                     <input type="file" class="file-upload" id="file-upload" 
                     name="profile_picture" accept="image/*">
                     
                 </div>
+                @endcan
                 <div id="back">
                  <a type="submit" role="button"  href="{{route('picture.edit', session('employee_id'))}}" class="btn btn-info">Edit</a>
                 </div>

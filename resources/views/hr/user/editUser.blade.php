@@ -21,11 +21,11 @@
 					</div>
         			
 		        	<div class="col-lg-10">
-						
+						@can('entry', Auth::user())
 		                <div style="margin-top:10px; margin-right: 10px;">
 		                    <button type="button" onclick="window.location.href='{{route('employeeList')}}'" class="btn btn-info float-right">Back</button>
-		                    
 		                </div>
+		                @endcan
 		                <div class="card-body">
 
 		                    <form action="{{route('editUser', ['id'=>$employee->id])}}" method="post" class="form-horizontal" enctype="multipart/form-data">
@@ -47,7 +47,7 @@
 		                                <!--/span-->
 		                                <div class="col-md-6">
 		                                    <div class="form-group row">
-		                                   @if(Auth::user()->role_id==1)
+		                                  @can('admin', Auth::user())
 		                                        <label class="control-label text-right col-md-3">User Role</label>
 		                                        <div class="col-md-5">
 		                                            <select  name="role_id"  class="form-control" >
@@ -62,7 +62,7 @@
                                                                                                    
                                                     </select>
 		                                        </div>
-		                                   	@endif
+		                                   	@endcan
 		                                    </div>
 		                                    <input type="text"  name="employee_id" value="{{session('employee_id')}}
 		                                            " class="form-control" hidden >
