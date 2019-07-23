@@ -24,8 +24,9 @@ class StoreEmployee extends FormRequest
      */
     public function rules()
     {
-     $dt = \Carbon\Carbon::today();
-     $dt->addDays(5); 
+     //$dt = \Carbon\Carbon::today();
+     //$dt->addDays(5); 
+     //'cnic_expiry' => 'required|date|after:'.$dt,
 
         return [
          'first_name' => 'required|max:191',
@@ -34,7 +35,7 @@ class StoreEmployee extends FormRequest
          'date_of_birth' =>'required',
          'gender' =>'required',
          'cnic' => 'required|numeric|digits:13|unique:employees,cnic,'.session('employee_id'),
-         'cnic_expiry' => 'required|date|after:'.$dt,
+         'cnic_expiry' => 'required|date',
          'employee_no' => 'unique:employees,employee_no,'.session('employee_id'),
          'marital_status' =>'required',
          'religon' =>'required',

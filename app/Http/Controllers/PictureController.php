@@ -30,27 +30,21 @@ class PictureController extends Controller
      */
     public function saveJqueryImageUpload(Request $request, $id)
     {
-       
-    	$employee = employee::find($id);
+       	$employee = employee::find($id);
        	$picture = picture::where ('employee_id',$id)->first();
-
        	if ($picture!=null){
        			$validator = Validator::make($request->all(), [
 	            'profile_picture' => 'required|mimes:jpeg,jpg,png,|max:500',
 	        ]);
-
 	        if ($validator->fails()) {
-	            //return $validator->errors();            
 	            return response()->json(['errors'=>$validator->errors()->all()]);
 	        }
-
 	        $status = "";
-
 		        if ($request->hasFile('profile_picture')) {
 		        	unlink(public_path('storage/pictures/'.$picture->name));
 		            $image = $request->file('profile_picture');
 		            // Rename image
-		             $imageName = time().'-'.session('employee_id').'.'.$image->guessExtension();
+		             $imageName = session('employee_id').'.'.$image->guessExtension();
 		            $input['name'] = $imageName;
 		            $input['employee_id'] = session('employee_id');
 		            $input['type'] = $request->file('profile_picture')->getMimeType();
@@ -58,7 +52,6 @@ class PictureController extends Controller
 		            $input['width'] = '100';
 		            $input['height'] = '100';
 		            $request->file('profile_picture')->storeAs('public/pictures', $imageName);
-		           
 		            //$path = $request->file('profile_picture')->move(public_path('upload/pictures'), $filename);
 		            picture::findOrFail($picture->id)->update($input);
 		            $status = "Uploaded Sucessfully";            
@@ -73,18 +66,14 @@ class PictureController extends Controller
 	        ]);
 
 	        if ($validator->fails()) {
-	            //return $validator->errors();            
 	            return response()->json(['errors'=>$validator->errors()->all()]);
 	        }
 
 	        $status = "";
-
 		        if ($request->hasFile('profile_picture')) {
 		            $image = $request->file('profile_picture');
 		            // Rename image
-		            $imageName = time().'-'.session('employee_id').'.'.$image->guessExtension();
-
-
+		            $imageName = session('employee_id').'.'.$image->guessExtension();
 		            $input['name'] = $imageName;
 		            $input['employee_id'] = session('employee_id');
 		            $input['type'] = $image->getMimeType();
@@ -92,7 +81,6 @@ class PictureController extends Controller
 		            $input['width'] = '100';
 		            $input['height'] = '100';
 		            $request->file('profile_picture')->storeAs('public/pictures', $imageName);
-		            //$path = $request->file('profile_picture')->move(public_path('upload/pictures'), $filename);
 		            picture::create($input);
 		            $status = "Uploaded Sucessfully";            
 		        }

@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\charts\TestChart;
+use App\Charts\TestChart;
 use App\employee;
 
 class ChartController extends Controller

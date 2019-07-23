@@ -10,7 +10,7 @@ use App\project;
 use App\blood_group;
 use App\Http\Requests\StoreAppointment;
 use DB;
-use App\position;
+use App\designation;
 
 class AppointmentController extends Controller
 {
@@ -23,11 +23,11 @@ class AppointmentController extends Controller
 
        $employee = employee::find($id);
        $projects = project::all();
-       $positions = position::all();
+       $designations = designation::all();
        
        $salary = DB::table('salaries')->where('employee_id',$id)->where('promotion_id',NULL)->first();
                         
-      return view ('hr.appointment.editAppointment', compact('employee','salary','projects','positions'));
+      return view ('hr.appointment.editAppointment', compact('employee','salary','projects','designations'));
     }
 
      public function update(StoreAppointment $request, $id)  {
@@ -35,11 +35,11 @@ class AppointmentController extends Controller
          $data = $request->all();
 
          $data ['joining_date']= \Carbon\Carbon::parse($request->joining_date)->format('Y-m-d');
-         if($request->filled('expirty_date')){
+         if($request->filled('expiry_date')){
          $data ['expiry_date']=  \Carbon\Carbon::parse($request->expiry_date)->format('Y-m-d');}
          if($request->filled('appointment_date')){
          $data ['appointment_date']= \Carbon\Carbon::parse($request->appointment_date)->format('Y-m-d');}
-
+         
         $employee = employee::find($id);
         $agreement = appointment::updateOrCreate(
          ['employee_id' => $id],

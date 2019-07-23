@@ -15,7 +15,7 @@ class DatabaseSeeder extends Seeder
         CountriesTableSeeder::class,
         LanguagesTableSeeder::class,
         document_namesTableSeeder::class,
-        PositionTableSeeder::class,
+        DesignationsTableSeeder::class,
         ]);
 
 

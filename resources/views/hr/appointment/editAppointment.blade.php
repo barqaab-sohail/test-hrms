@@ -41,9 +41,9 @@
 		                                        <div class="col-md-9">
 													<select  name="designation"  class="form-control" required>
                                                       <option></option>
-                                                     @foreach($positions as $position)
+                                                     @foreach($designations as $designation)
 														
-														<option value="{{$position->name}}" @if($position->name == optional($employee->appointment)->designation)) selected="selected" @endif>{{$position->name}}</option>
+														<option value="{{$designation->name}}" @if($designation->name == optional($employee->appointment)->designation)) selected="selected" @endif>{{$designation->name}}</option>
                                                         @endforeach
                                                         
                                                     </select>

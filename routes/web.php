@@ -17,6 +17,9 @@ use App\user;
 /*Route::get('/', function () {
     return view('welcome');
 });
+Route::get('/foo', function () {
+Artisan::call('migrate:refresh');
+});
 */
 
 Auth::routes();
@@ -51,7 +54,9 @@ Route::get('/dashboard', 'HomeController@index')->name('dashboard')->middleware(
 
 
 //Employee & User Routes
+
 Route::get('/hrms/employeeList', 'EmployeeController@index')->name('employeeList');
+
 Route::post('/storeEmployee', 'EmployeeController@store')->name('storeEmployee');
 Route::get('/hrms/createEmployee', 'EmployeeController@create')->name('createEmployee');
 Route::get('/hrms/employee/edit/{id?}', [
@@ -63,24 +68,22 @@ Route::get('/inactiveEmployee/{id?}', 'EmployeeController@inactive')->name('inac
 Route::get('/hrms/userDetail/{id?}', 'EmployeeController@show')->name('userDetail');
 
 //Add Position
-Route::get('/hrms/addPosition', 'PositionController@index')->name('addPosition');
-Route::post('/storePosition', 'PositionController@store')->name('storePosition');
-Route::get('/hrms/position/edit/{id?}', [
-            'uses' => 'PositionController@edit',
-            'as' => 'position.edit'
+Route::get('/hrms/addDesignation', 'DesignationController@index')->name('addDesignation');
+Route::post('/storeDesignation', 'DesignationController@store')->name('storeDesignation');
+Route::get('/hrms/designation/edit/{id?}', [
+            'uses' => 'DesignationController@edit',
+            'as' => 'designation.edit'
         ]);
-Route::post('/editPosition/{id?}', 'PositionController@update')->name('editPosition');
-Route::get('/deletePosition/{id?}', 'PositionController@delete')->name('deletePosition');
+Route::post('/editDesignation/{id?}', 'DesignationController@update')->name('editDesignation');
+Route::get('/deleteDesignation/{id?}', 'DesignationController@delete')->name('deleteDesignation');
 
 
 
 
 //Picture Routes
-
 Route::get('/hrms/picture/edit/{id?}',[
     'uses'=>'PictureController@showJqueryImageUpload',
     'as'=>'picture.edit']);
-
 Route::post('/editPicture/{id?}','PictureController@saveJqueryImageUpload')->name('editPicture');
 
 

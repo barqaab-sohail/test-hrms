@@ -26,10 +26,9 @@
             <a type="submit" role="button"  href="{{route('dependent', session('employee_id'))}}" class="btn btn-info @if(request()->is('*dependent*')) active @endif">Dependent</a>
             <a type="submit" role="button"  href="{{route('document', session('employee_id'))}}" class="btn btn-info @if(request()->is('*document*')) active @endif">Document</a>
             <a type="submit" role="button"  href="{{route('other.edit', session('employee_id'))}}" class="btn btn-info @if(request()->is('*other/edit*')) active @endif">Other Information</a>
-
-           <a type="submit" role="button"   href="#" class="btn btn-info">Exit Interview</a>
-
-
+            
+            <br>
+            
              @endif
              
 </div>

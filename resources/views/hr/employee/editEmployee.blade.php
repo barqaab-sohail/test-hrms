@@ -21,10 +21,11 @@
 					</div>
         	
 		        	<div class="col-lg-10">
-
+						@can('show', Auth::user())
 		                <div style="margin-top:10px; margin-right: 10px;">
 		                    <button type="button" onclick="window.location.href='{{route('employeeList')}}'" class="btn btn-info float-right">Back</button>
 		                </div>
+		                @endcan
 		                <div class="card-body">
 
 		                    <form id="employee" action="{{route('editEmployee', ['id'=>$employee->id])}}" method="post" class="form-horizontal" enctype="multipart/form-data">

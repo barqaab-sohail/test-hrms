@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests\StoreExperience;
 use App\User;
 use App\employee;
-use App\Experience;
+use App\experience;
 use App\country;
 use DB;
 
