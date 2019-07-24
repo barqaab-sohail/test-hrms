@@ -21,7 +21,7 @@ class UserPolicy
 
     public function entry(User $user){
 
-        if ($user->role_id == 2){
+        if ($user->role_id == 1 || $user->role_id == 2 || $user->role_id == 4){
             return true;
         }else{
             return false;

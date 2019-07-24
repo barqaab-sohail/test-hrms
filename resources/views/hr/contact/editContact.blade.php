@@ -22,11 +22,12 @@
 					</div>
         			
 		        	<div class="col-lg-10">
-						
+						@can('entry', Auth::user())
 		                <div style="margin-top:10px; margin-right: 10px;">
 		                    <button type="button" onclick="window.location.href='{{route('employeeList')}}'" class="btn btn-info float-right">Back</button>
 		                    
 		                </div>
+		                @endcan
 		                <div class="card-body">
 
 		                    <form action="{{route('editPermanentAddress', ['id'=>$employee->id])}}" method="post" class="form-horizontal" enctype="multipart/form-data">
@@ -39,7 +40,7 @@
 		                                <div class="col-md-6">
 		                                    <div class="form-group row">
 		                                        <label class="control-label text-right col-md-3">House No.</label>
-		                                        <div class="col-md-9 text-required">
+		                                        <div class="col-md-9 text">
 		                                            <input type="text"  name="house" value="{!! old('house',isset($permanentAddress->house)?$permanentAddress->house:'')!!}" class="form-control" placeholder="Enter House Name / No." required>
 		                                        </div>
 		                                    </div>
@@ -150,10 +151,12 @@
 		                            <div class="row">
 		                                <div class="col-md-6">
 		                                    <div class="row">
+		                                    @can('entry', Auth::user())
 		                                        <div class="col-md-offset-3 col-md-9">
 		                                            <button type="submit" class="btn btn-success">Save Permanent Address</button>
 		                                            <button type="button" onclick="window.location.href='{{route('employeeList')}}'" class="btn btn-inverse">Cancel</button>
 		                                        </div>
+		                                    @endcan
 		                                    </div>
 		                                </div>
 		                            </div>
@@ -286,10 +289,12 @@
 		                            <div class="row">
 		                                <div class="col-md-6">
 		                                    <div class="row">
+		                                    @can('entry', Auth::user())
 		                                        <div class="col-md-offset-3 col-md-9">
 		                                            <button type="submit" class="btn btn-success">Save Current Address</button>
 		                                            <button type="button" onclick="window.location.href='{{route('employeeList')}}'" class="btn btn-inverse">Cancel</button>
 		                                        </div>
+		                                    @endcan
 		                                    </div>
 		                                </div>
 		                            </div>

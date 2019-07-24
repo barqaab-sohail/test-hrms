@@ -368,8 +368,8 @@
 				});
 
 			$('select').select2({
-	  		maximumSelectionLength: 2,
-	  		 theme: "classic",
+	  		width: "100%",
+	  		theme: "classic",
 			});
 
 

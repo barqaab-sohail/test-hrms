@@ -51,7 +51,7 @@
 		                                        <label class="control-label text-right col-md-3">User Role</label>
 		                                        <div class="col-md-5">
 		                                            <select  name="role_id"  class="form-control" >
-                                                        <option value="{{4}}"></option>
+                                                        <option value="{{5}}"></option>
                                                         @foreach($roles as $role)
 															<option value="{{$role->id}}"
 															@if(!empty($employee->user->role_id))
@@ -76,10 +76,12 @@
 		                            <div class="row">
 		                                <div class="col-md-6">
 		                                    <div class="row">
+		                                    	@can('entry', Auth::user())
 		                                        <div class="col-md-offset-3 col-md-9">
 		                                            <button type="submit" class="btn btn-success">Save</button>
 		                                            <button type="button" onclick="window.location.href='{{route('employeeList')}}'" class="btn btn-inverse">Cancel</button>
 		                                        </div>
+		                                        @endcan
 		                                    </div>
 		                                </div>
 		                            </div>

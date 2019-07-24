@@ -237,7 +237,7 @@
 							<tr>
 								<td>{{$educationId->degree_name}}</td>
 								<td>{{$educationId->institute}}</td>
-								<td>{{$educationId->completion}}</td>
+								<td>{{$educationId->to_year}}</td>
 								<td>{{$educationId->grade}}</td>
 								<td>
 								 @can('entry', Auth::user())
@@ -272,8 +272,8 @@
 
             	$('#education').submit(function(e) {
 
-            	var marksObtain = $('#marks_obtain').val();
-				var totalMarks = $('#total_marks').val();
+            	var marksObtain = parseInt($('#marks_obtain').val());
+				var totalMarks = parseInt($('#total_marks').val());
 				if(marksObtain>totalMarks){
 					alert('Marks Obtain is Greater Than Total Marks');
 					e.preventDefault();
@@ -318,7 +318,8 @@
 		    });
 
 		    $('select').select2({
-  			maximumSelectionLength: 2,
+  			width: "100%",
+	  		theme: "classic",
 
 			});
 		

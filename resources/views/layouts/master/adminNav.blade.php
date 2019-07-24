@@ -46,16 +46,17 @@
 
                 <li @if(request()->is('hrms*')) class="active" @endif > <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i class="fas fa-user"></i><span class="hide-menu">Human Resource</span></a>
                     <ul aria-expanded="false" class="collapse">
-                        @if(Auth::user()->role_id==4)
+                       
                         <li><a href="{{route('userDetail', ['id'=>Auth::user()->employee_id])}}">User Detail</a></li>
-                        @else
+                        @can('entry', Auth::user())
                         <li><a href="{{route('employeeList')}}">List of Employees</a></li>
                         <li><a href="{{route('createEmployee')}}">Add Employee</a></li>
-                         <li><a href="{{route('addDesignation')}}">Add Designation</a></li>
-                        @endif
+                        <li><a href="{{route('addDesignation')}}">Add Designation</a></li>
+                        @endcan
+                       
                     </ul>
                 </li>
-
+                @can('entry', Auth::user())
                  <li @if(request()->is('chart*')) class="active" @endif > <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i class="fas fa-chart-pie"></i><span class="hide-menu">Reports</span></a>
                     <ul aria-expanded="false" class="collapse">
                         <li><a href="">List of Reports</a></li>
@@ -79,6 +80,7 @@
                     
 
                 </li>
+                @endcan
 
                 <!--
                 <li  ><a class="has-arrow waves-effect waves-dark" href="#"><i class="mdi mdi-alarm-check"></i><span class="hide-menu">Attendance</span></a>

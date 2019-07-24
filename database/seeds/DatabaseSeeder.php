@@ -19,28 +19,29 @@ class DatabaseSeeder extends Seeder
         ]);
 
 
-        DB::table('roles')->insert(['name' => 'super admin',]);
-        DB::table('roles')->insert(['name' => 'admin',]);
-        DB::table('roles')->insert(['name' => 'manager',]);
-        DB::table('roles')->insert(['name' => 'user',]);
+        DB::table('roles')->insert(['name' => 'Developer']);
+        DB::table('roles')->insert(['name' => 'HR Manager']);
+        DB::table('roles')->insert(['name' => 'Manager']);
+        DB::table('roles')->insert(['name' => 'HR Assistant']);
+        DB::table('roles')->insert(['name' => 'User']);
 
-        DB::table('divisions')->insert(['name' => 'Power',]);
-        DB::table('divisions')->insert(['name' => 'Water',]);
-        DB::table('divisions')->insert(['name' => 'Finance',]);
+        DB::table('divisions')->insert(['name' => 'Power']);
+        DB::table('divisions')->insert(['name' => 'Water']);
+        DB::table('divisions')->insert(['name' => 'Finance']);
 
-        DB::table('marital_status')->insert(['name' => 'Single',]);
-        DB::table('marital_status')->insert(['name' => 'Married',]);
-        DB::table('marital_status')->insert(['name' => 'Separated',]);
-        DB::table('marital_status')->insert(['name' => 'Widowed',]);
+        DB::table('marital_status')->insert(['name' => 'Single']);
+        DB::table('marital_status')->insert(['name' => 'Married']);
+        DB::table('marital_status')->insert(['name' => 'Separated']);
+        DB::table('marital_status')->insert(['name' => 'Widowed']);
 
-        DB::table('blood_group')->insert(['name' => 'A+',]);
-        DB::table('blood_group')->insert(['name' => 'O+',]);
-        DB::table('blood_group')->insert(['name' => 'B+',]);
-        DB::table('blood_group')->insert(['name' => 'AB+',]);
-        DB::table('blood_group')->insert(['name' => 'A-',]);
-        DB::table('blood_group')->insert(['name' => 'O-',]);
-        DB::table('blood_group')->insert(['name' => 'B-',]);
-        DB::table('blood_group')->insert(['name' => 'AB-',]);
+        DB::table('blood_group')->insert(['name' => 'A+']);
+        DB::table('blood_group')->insert(['name' => 'O+']);
+        DB::table('blood_group')->insert(['name' => 'B+']);
+        DB::table('blood_group')->insert(['name' => 'AB+']);
+        DB::table('blood_group')->insert(['name' => 'A-']);
+        DB::table('blood_group')->insert(['name' => 'O-']);
+        DB::table('blood_group')->insert(['name' => 'B-']);
+        DB::table('blood_group')->insert(['name' => 'AB-']);
         
        
 

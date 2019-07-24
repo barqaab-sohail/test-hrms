@@ -24,6 +24,7 @@ class ImportExcelController extends Controller
      ]);
 
      	$path = $request->file('select_file')->getRealPath();
+        
 
      	Excel::import(new ProjectsImport, $path);
          

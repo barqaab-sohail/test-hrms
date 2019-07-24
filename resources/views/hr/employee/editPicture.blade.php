@@ -37,7 +37,7 @@
                  <span id="wanings" class="text-danger"></span>
 
                 <div class="profile-img p-3">
-                    <img src="{{asset(isset($picture->name)? 'storage/pictures/'.$picture->name: 'Massets/images/default.png') }}" width=300 id="profile-pic">
+                    <img src="{{asset(isset($picture->name)? 'storage/pictures/'.$picture->name: 'Massets/images/default.png') }}" width=200 id="profile-pic">
                 </div>
                  @can('entry', Auth::user())
                 <div id="preview-img" class="btn btn-dark">

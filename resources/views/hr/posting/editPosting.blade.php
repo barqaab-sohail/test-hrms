@@ -182,8 +182,12 @@
  @push('scripts')
         <script>
             $(document).ready(function(){
-			
-			});
+            	$( "#posting_date" ).datepicker({
+	     		dateFormat: 'dd-MM-yy',
+	      		yearRange: (new Date().getFullYear()-20)+':'+(new Date().getFullYear()+15),
+	      		changeMonth: true,
+	      		changeYear: true
+	    		});
         </script>
     @endpush
 

@@ -17,8 +17,10 @@ use App\user;
 /*Route::get('/', function () {
     return view('welcome');
 });
+
+
 Route::get('/foo', function () {
-Artisan::call('migrate:refresh');
+Artisan::call('migrate:refresh --seed');
 });
 */
 

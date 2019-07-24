@@ -273,7 +273,8 @@
   		});
 
         $('select').select2({
-  			maximumSelectionLength: 2,
+  			width: "100%",
+	  		 theme: "classic",
 
 		});
 

@@ -21,11 +21,12 @@
 					</div>
         			
 		        	<div class="col-lg-10">
-
+						@can('entry', Auth::user())
 		                <div style="margin-top:10px; margin-right: 10px;">
 		                    <button type="button" onclick="window.location.href='{{route('employeeList')}}'" class="btn btn-info float-right">Back</button>
 		                    
 		                </div>
+		                @endcan
 		                <div class="card-body">
 
 		                    <form action="{!!route('editDependent', ['id'=>optional($data)->id])!!}" method="post" class="form-horizontal" enctype="multipart/form-data">
@@ -90,10 +91,12 @@
 		                            <div class="row">
 		                                <div class="col-md-6">
 		                                    <div class="row">
+		                                    	@can('entry', Auth::user())
 		                                        <div class="col-md-offset-3 col-md-9">
 		                                            <button type="submit" class="btn btn-success">Save</button>
 		                                            <button type="button" onclick="window.location.href='{{route('employeeList')}}'" class="btn btn-inverse">Cancel</button>
 		                                        </div>
+		                                        @endcan
 		                                    </div>
 		                                </div>
 		                            </div>
@@ -120,7 +123,7 @@
 						<th>Date of Birth</th>
 						<th>Relation</th>
 						<th>Gender</th>
-						@if(Auth::user()->role_id==1)<th> Actions </th> @endif
+						@can('entry', Auth::user())<th> Actions </th> @endcan
 					</tr>
 					</thead>
 					<tbody>
@@ -131,10 +134,10 @@
 								<td>{{$dependentId->relation}}</td>
 								<td>{{$dependentId->gender}}</td>
 								<td>
-								@if(Auth::user()->role_id==1)
+								@can('entry', Auth::user())
 								 <a class="btn btn-info btn-sm" href="{{route('dependent.edit',['id'=>$dependentId->id])}}" data-toggle="tooltip" data-original-title="Edit"> <i class="fas fa-pencil-alt text-white "></i></a>
 								  <a class="btn btn-danger btn-sm" onclick="return confirm('Are you Sure to Delete')" href="{{route('deleteDependent',['id'=>$dependentId->id])}}" data-toggle="tooltip" data-original-title="Delete"> <i class="fas fa-trash-alt"></i></a>
-								 @endif
+								 @endcan
 															
 							</tr>
 						@endforeach

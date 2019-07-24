@@ -9,13 +9,13 @@
 <script src="{{asset('Massets/js/jquery.slimscroll.js') }}"></script>
 <!--Wave Effects -->
 <script src="{{asset('Massets/js/waves.js') }}"></script>
-<!--Menu sidebar -->
+<!--Menu sidebar Dropdown Effect-->
 <script src="{{asset('Massets/js/sidebarmenu.js') }}"></script>
 <!--stickey kit -->
 <script src="{{asset('Massets/plugins/sticky-kit-master/dist/sticky-kit.min.js') }}"></script>
 <script src="{{asset('Massets/plugins/sparkline/jquery.sparkline.min.js') }}"></script>
-<!--Custom JavaScript -->
-<script src="{{asset('Massets/js/custom.min.js') }}"></script>
+<!--Custom JavaScript in HRMS -->
+<script src="{{asset('Massets/js/custom.js') }}"></script>
 
 <!-- ============================================================== -->
 <!-- This page plugins -->

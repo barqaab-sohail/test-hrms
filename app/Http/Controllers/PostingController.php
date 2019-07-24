@@ -30,12 +30,12 @@ class PostingController extends Controller
     }
 
 	public function store(StorePosting $request){
-         
-        $data = posting::create($request->all());
 
+        $data = $request->all();
+        $data ['posting_date']= \Carbon\Carbon::parse($request->posting_date)->format('Y-m-d');         
+        posting::create($data);
         return redirect()->route('posting',['id'=>session('employee_id')])->with('success', 'Data is saved succesfully');
-      // return redirect()->route('membership',['id'=>$data->id])->with('success', 'User is created succesfully');
-
+      
 
     }
 
@@ -54,8 +54,11 @@ class PostingController extends Controller
     
     public function update(StorePosting $request, $id)
     {
-     
-     posting::findOrFail($id)->update($request->all());
+    
+    $data = $request->all();
+    $data ['posting_date']= \Carbon\Carbon::parse($request->posting_date)->format('Y-m-d');  
+
+     posting::findOrFail($id)->update($data);
      return redirect()->route('posting.edit',['id'=>$id])->with('success', 'Posting is updated succesfully');
     }
 
