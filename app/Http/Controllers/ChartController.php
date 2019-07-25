@@ -8,6 +8,13 @@ use App\employee;
 
 class ChartController extends Controller
 {
+  public function __construct()
+  {
+      $this->middleware('updation')->only('delete','update', 'store');
+  }
+
+
+
    public function index(){
 
    	$power = employee::all()->where('division_id',1)->count();

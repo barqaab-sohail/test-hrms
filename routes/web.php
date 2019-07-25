@@ -20,7 +20,8 @@ use App\user;
 
 
 Route::get('/foo', function () {
-Artisan::call('migrate:refresh --seed');
+dd(Artisan::call('migrate');
+
 });
 */
 

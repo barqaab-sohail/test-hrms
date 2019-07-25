@@ -12,6 +12,7 @@ class DependentController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
+        $this->middleware('updation')->only('delete','update', 'store');
     }
 
     public function create($id){
