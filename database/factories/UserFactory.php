@@ -2,6 +2,8 @@
 
 use App\User;
 use App\employee;
+use App\posting;
+use App\appointment;
 use App\notification;
 use Illuminate\Support\Str;
 
@@ -24,27 +26,51 @@ $factory->define(User::class, function (Faker $faker) {
         
         'email' => $faker->unique()->safeEmail,
         'email_verified_at' => now(),
-        'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
-        'employee_id' => App\Employee::all(['id'])->random(),
+        'password' => bcrypt('great@786'), // password
+        'user_status'=>1,
+        'employee_id' => App\Employee::all(['id'])->unique(),
         'remember_token' => Str::random(10),
     ];
     
 });
 
-$factory->define(Employee::class, function (Faker $faker) {
+$factory->define(employee::class, function (Faker $faker) {
     return [
         'first_name' => $faker->name,
         'middle_name' => $faker->name,
         'last_name' => $faker->name,
         'father_name' => $faker->name,
-        'department_id' => App\department::all(['id'])->random(),
-        'marital_status' => App\marital_status::all(['name'])->random(),
+        'gender' => $faker->randomElement(['Male', 'Female']),
+        'division_id' => App\division::all(['id'])->random(),
+        'marital_status' => App\marital_status::all(['id'])->random(),
         'date_of_birth' => $faker->date($format = 'Y-m-d'),
         'cnic' => $faker->unique()->ean13,
         'cnic_expiry' => $faker->date($format = 'Y-m-d', $max = 'now'),
-        
+     
     ];
 });
 
+$factory->define(appointment::class, function (Faker $faker) {
+    return [
+        'designation' => $faker->jobTitle,
+        'joining_date' => $faker->date($format = 'Y-m-d', $max = 'now'),
+        'project' => App\project::orderByRaw("RAND()")->first()->name,
+        'reference_no' => $faker->name,
+        'category' => $faker->city,
+        'appointment_letter_type'=> $faker->name,
+        'employee_id' => App\Employee::all(['id'])->random(),
+    ];
+});
+
+$factory->define(posting::class, function (Faker $faker) {
+    return [
+        'employee_id' => App\Employee::all(['id'])->random(),
+        'position' => $faker->jobTitle,
+        'posting_date' => $faker->date($format = 'Y-m-d', $max = 'now'),
+        'project' => $faker->name,
+        'location' => $faker->city,
+        'manager_id'=> App\employee::all(['id'])->random(),
+    ];
+});
 
 

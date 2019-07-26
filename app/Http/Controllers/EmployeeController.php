@@ -12,6 +12,7 @@ use App\country;
 use App\employee;
 use App\nationality;
 use DB;
+use App\sessions;
 
 class EmployeeController extends Controller
 {
@@ -154,7 +155,30 @@ class EmployeeController extends Controller
        return view('hr.employee.employeeList', compact('employees'));
     }
 
+  
 
+    public function liveSessions(){
+
+     // Get time session life time from config.
+     $time =  time() - (config('session.lifetime')*60); 
+
+     // Total login users (user can be log on 2 devices will show once.)
+     $totalActiveUsers = sessions::where('last_activity','>=', $time)->
+     count(DB::raw('DISTINCT user_id'));
+     
+     // Total active sessions
+     $activeUsers = sessions::where('last_activity','>=', $time)->
+     get();
+
+     foreach ($activeUsers as $activeUser){
+        $employeeId = User::where('id',$activeUser->user_id)->first()->employee_id;
+        $employee = employee::where('id',$employeeId)->first();
+        echo $employee->first_name.'<br>';
+     }
+
+
+
+    }
     
   
 

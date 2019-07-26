@@ -26,6 +26,9 @@ dd(Artisan::call('migrate');
 */
 
 Auth::routes();
+
+Route::get('/activeUser', 'EmployeeController@liveSessions')->name('activeUser');
+
 Route::post('/login', [
     'uses'          => 'Auth\LoginController@login',
     'middleware'    => 'UserStatus',
