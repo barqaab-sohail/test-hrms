@@ -23,12 +23,10 @@ use Faker\Generator as Faker;
 
 $factory->define(User::class, function (Faker $faker) {
     return [
-        
         'email' => $faker->unique()->safeEmail,
-        'email_verified_at' => now(),
-        'password' => bcrypt('great@786'), // password
+        'password' => bcrypt('great786'), // password
         'user_status'=>1,
-        'employee_id' => App\Employee::all(['id'])->unique(),
+        'employee_id' => App\Employee::all(['id'])->unique()->random(),
         'remember_token' => Str::random(10),
     ];
     
@@ -67,7 +65,7 @@ $factory->define(posting::class, function (Faker $faker) {
         'employee_id' => App\Employee::all(['id'])->random(),
         'position' => $faker->jobTitle,
         'posting_date' => $faker->date($format = 'Y-m-d', $max = 'now'),
-        'project' => $faker->name,
+        'project' => App\project::orderByRaw("RAND()")->first()->name,
         'location' => $faker->city,
         'manager_id'=> App\employee::all(['id'])->random(),
     ];

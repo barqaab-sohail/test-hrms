@@ -157,7 +157,7 @@ class EmployeeController extends Controller
 
   
 
-    public function liveSessions(){
+    public function activeUsers(){
 
      // Get time session life time from config.
      $time =  time() - (config('session.lifetime')*60); 
@@ -166,17 +166,16 @@ class EmployeeController extends Controller
      $totalActiveUsers = sessions::where('last_activity','>=', $time)->
      count(DB::raw('DISTINCT user_id'));
      
-     // Total active sessions
-     $activeUsers = sessions::where('last_activity','>=', $time)->
-     get();
 
-     foreach ($activeUsers as $activeUser){
-        $employeeId = User::where('id',$activeUser->user_id)->first()->employee_id;
-        $employee = employee::where('id',$employeeId)->first();
-        echo $employee->first_name.'<br>';
-     }
+    // Total active sessions
+    // $activeUsers = sessions::where('last_activity','>=', $time)->     get();
 
+     $activeUsers = DB::table('employees')
+                    ->join('users','employees.id','=','users.employee_id')
+                    ->join('sessions','users.id','=','sessions.user_id')
+                    ->select('employees.*','sessions.*','users.*')->where('last_activity','>=', $time)->get();
 
+       return view('hr.employee.activeUserList', compact('activeUsers','totalActiveUsers'));
 
     }
     

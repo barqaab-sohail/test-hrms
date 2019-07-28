@@ -367,11 +367,7 @@
    			 	$("#total").val(sum);
 				});
 
-			$('select').select2({
-	  		width: "100%",
-	  		theme: "classic",
-			});
-
+			
 
 			});
         </script>

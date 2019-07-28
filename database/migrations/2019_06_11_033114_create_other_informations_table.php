@@ -15,7 +15,7 @@ class CreateOtherInformationsTable extends Migration
     {
         Schema::create('other_informations', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->bigInteger('employee_id')->unsigned();
+            $table->bigInteger('employee_id')->unique()->unsigned();
             $table->string('blood_group')->nullable();
             $table->string('driving_licence')->nullable();
             $table->date('licence_expiry')->nullable();

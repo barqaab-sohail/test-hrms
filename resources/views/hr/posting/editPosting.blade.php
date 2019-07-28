@@ -188,6 +188,9 @@
 	      		changeMonth: true,
 	      		changeYear: true
 	    		});
+
+	    		
+	    	});
         </script>
     @endpush
 

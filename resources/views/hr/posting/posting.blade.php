@@ -200,7 +200,6 @@
 	      		changeYear: true
 	    		});
 	    		
-			
 			});
         </script>
     @endpush

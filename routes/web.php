@@ -27,7 +27,6 @@ dd(Artisan::call('migrate');
 
 Auth::routes();
 
-Route::get('/activeUser', 'EmployeeController@liveSessions')->name('activeUser');
 
 Route::post('/login', [
     'uses'          => 'Auth\LoginController@login',
@@ -59,9 +58,16 @@ Route::get('/chart', 'ChartController@index')->name('chart');
 Route::get('/dashboard', 'HomeController@index')->name('dashboard')->middleware('verified');
 
 
+//Reports
+Route::get('/hrms/reports', 'ReportsController@index')->name('employeeReports');
+Route::get('/hrms/acitveEmployee', 'ReportsController@activeEmployee')->name('activeEmployee');
+
+
+
 //Employee & User Routes
 
 Route::get('/hrms/employeeList', 'EmployeeController@index')->name('employeeList');
+Route::get('/hrms/activeUsers', 'EmployeeController@activeUsers')->name('activeUsers');
 
 Route::post('/storeEmployee', 'EmployeeController@store')->name('storeEmployee');
 Route::get('/hrms/createEmployee', 'EmployeeController@create')->name('createEmployee');

@@ -229,7 +229,7 @@
 						<th>Institute</th>
 						<th>Completion Year</th>
 						<th>Grade</th>
-						 @can('entry', Auth::user())<th> Actions </th>@endcan
+						 @can('entry', Auth::user())<th colspan="2"> Actions </th>@endcan
 					</tr>
 					</thead>
 					<tbody>
@@ -239,10 +239,14 @@
 								<td>{{$educationId->institute}}</td>
 								<td>{{$educationId->to_year}}</td>
 								<td>{{$educationId->grade}}</td>
-								<td>
-								 @can('entry', Auth::user())
+								
+								@can('entry', Auth::user())
+								 <td>
 								 <a class="btn btn-info btn-sm" href="{{route('education.edit',['id'=>$educationId->id])}}" data-toggle="tooltip" data-original-title="Edit"> <i class="fas fa-pencil-alt text-white "></i></a>
+								 </td>
+								 <td>
 								 <a class="btn btn-danger btn-sm" onclick="return confirm('Are you Sure to Delete')" href="{{route('deleteEducation',['id'=>$educationId->id])}}" data-toggle="tooltip" data-original-title="Delete"> <i class="fas fa-trash-alt"></i></a>
+								 </td>
 								 @endcan
 															
 							</tr>
@@ -317,12 +321,7 @@
 
 		    });
 
-		    $('select').select2({
-  			width: "100%",
-	  		theme: "classic",
-
-			});
-		
+		    		
         </script>
     @endpush
 

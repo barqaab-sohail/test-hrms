@@ -269,12 +269,7 @@
 		    
 	  	});
 
-	  	$('select').select2({
-	  		width: "100%",
-	  		 theme: "classic",
-
-		});
-
+	  	
 	    $("#nationality2").hide();
 	    	$("#add").click (function(){
 		  		$("#nationality2").toggle();

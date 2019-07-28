@@ -177,11 +177,7 @@
  @push('scripts')
         <script>
             $(document).ready(function(){
-			$('select').select2({
-  			width: "100%",
-	  		 theme: "classic",
-
-			});
+			
 			});
         </script>
     @endpush
