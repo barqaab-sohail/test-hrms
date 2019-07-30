@@ -27,11 +27,14 @@
 					<tbody>
 						
 						<tr>
-							<td><a href="{{route('activeEmployee')}}">Active Employee List </a></td>
+							<td><a href="{{route('activeEmployee')}}">Active Employee List</a></td>
+							
+						</tr>
+						<tr>
+							<td><a href="{{route('allManagers')}}">All Manager List</a></td>
 						</tr>
 						
-					
-					 
+								 
 					
 					</tbody>
 				</table>

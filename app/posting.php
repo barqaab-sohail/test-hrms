@@ -10,11 +10,13 @@ class posting extends Model implements Auditable
     use \OwenIt\Auditing\Auditable;
 
 	protected $fillable = [
-        'position', 'posting_date', 'manager_id', 'project','employee_id',
+        'position', 'posting_date','joining_date', 'location','manager_id', 'project','employee_id',
     ];	
 
 
-     public function employee(){
+    public function employee(){
 		return $this->belongsTo('App\employee');
 	}
+
+	
 }

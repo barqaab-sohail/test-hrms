@@ -12,14 +12,11 @@
    
     <div class="row">
         <div class="col-lg-12">
-
             <div class="card card-outline-info">
-			
 				<div class="row">
 					<div class="col-lg-2">
 					@include('layouts.master.hrVerticalEditButton')
 					</div>
-        			
 		        	<div class="col-lg-10">
 						@can('entry', Auth::user())
 		                <div style="margin-top:10px; margin-right: 10px;">
@@ -51,17 +48,14 @@
 		                                    <div class="form-group row">
 		                                        <label class="control-label text-right col-md-4">Posting Date</label>
 		                                        <div class="col-md-8">
-		                                            <input type="date" name="posting_date" value="{!! old('posting_date', optional($data)->posting_date) !!}" class="form-control " placeholder="Enter Posting Date" required>
-
+		                                            <input type="text" name="posting_date" id="posting_date" value="{!! old('posting_date', optional($data)->posting_date) !!}" class="form-control " placeholder="Enter Posting Date" required readonly>
 		                                        </div>
 		                                    </div>
 		                                </div>
 		                            </div>
-		                            <div class="row">
+		                             <div class="row">
 		                                <div class="col-md-7">
-
-		                                	
-		                                    <div class="form-group row">
+		                                     <div class="form-group row">
 		                                        <label class="control-label text-right col-md-3">Manager Name</label>
 		                                        <div class="col-md-9">
 			                                        <select  name="manager_id"  class="form-control" required>
@@ -72,19 +66,25 @@
                                                     </select>
                                                                                                         
 		                                        </div>
-		                                       
-		                                       <input type="number" name="employee_id" value="{{session('employee_id')}}"   class="form-control " hidden>
-		                                   
+		                                       		                                   
 		                                    </div>
 		                                </div>
-		                                		                                
-		                            </div>
 		                                
+		                                <!--/span-->
+		                                <div class="col-md-5">
+		                                    <div class="form-group row">
+		                                        <label class="control-label text-right col-md-4">Joining Date</label>
+		                                        <div class="col-md-8">
+		                                            <input type="text" name="joining_date" id="joining_date" value="{!! old('joining_date', optional($data)->joining_date) !!}" class="form-control " placeholder="Enter Posting Date" required readonly>
+
+		                                        </div>
+		                                    </div>
+		                                </div>
+		                            </div>
+		                           		                                
 		                            <!--/row-->
 		                             <div class="row">
 		                                <div class="col-md-7">
-
-		                                	
 		                                    <div class="form-group row">
 		                                        <label class="control-label text-right col-md-3">Project</label>
 		                                        <div class="col-md-9">
@@ -94,13 +94,21 @@
 													<option value="{{$project->name}}" @if($project->name == $data->project) selected="selected" @endif>{{$project->name}}</option>
                                                     @endforeach 	
                                                     </select>
-                                                                                                        
+		                                        </div>
+		                                    </div>
+		                                </div>
+		                                <div class="col-md-5">
+                                	        <div class="form-group row">
+		                                        <label class="control-label text-right col-md-4">Location</label>
+		                                        <div class="col-md-8">
+		                                        	<input type="text" name="location" value="{!! old('location', optional($data)->location) !!}"  class="form-control " placeholder="Enter Location" >
 		                                        </div>
 		                                       
 		                                       <input type="number" name="employee_id" value="{{session('employee_id')}}"   class="form-control " hidden>
 		                                   
 		                                    </div>
 		                                </div>
+
 		                                		                                
 		                            </div>
 		                            		                           
@@ -142,7 +150,7 @@
 						<th>Position</th>
 						<th>Date of Posting</th>
 						
-						@if(Auth::user()->role_id==1)<th> Actions </th> @endif
+						@if(Auth::user()->role_id==1)<th colspan="2"> Actions </th> @endif
 					</tr>
 					</thead>
 					<tbody>
@@ -152,11 +160,14 @@
 								<td>{{$postingId->position}}</td>
 								<td>{{$postingId->posting_date}}</td>
 								
-								<td>
+								
 								 @can('entry', Auth::user())
+								 <td>
 								 <a class="btn btn-info btn-sm" href="{{route('posting.edit',['id'=>$postingId->id])}}" data-toggle="tooltip" data-original-title="Edit"> <i class="fas fa-pencil-alt text-white "></i></a>
+								 </td>
+								 <td>
 								 <a class="btn btn-danger btn-sm" onclick="return confirm('Are you Sure to Delete')" href="{{route('deletePosting',['id'=>$postingId->id])}}" data-toggle="tooltip" data-original-title="Delete"> <i class="fas fa-trash-alt"></i></a>
-
+								</td>
 								 
 								 @endcan
 															
@@ -182,7 +193,7 @@
  @push('scripts')
         <script>
             $(document).ready(function(){
-            	$( "#posting_date" ).datepicker({
+            	$( "#posting_date, #joining_date" ).datepicker({
 	     		dateFormat: 'dd-MM-yy',
 	      		yearRange: (new Date().getFullYear()-20)+':'+(new Date().getFullYear()+15),
 	      		changeMonth: true,

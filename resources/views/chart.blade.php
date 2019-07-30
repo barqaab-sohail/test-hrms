@@ -26,6 +26,7 @@
                 el: '#app',
             });
         </script>
+        
          {!! $chart->script() !!}
 			<!--<div class="float-right">
 				<input id="month" class="form-control" value="" type="month">

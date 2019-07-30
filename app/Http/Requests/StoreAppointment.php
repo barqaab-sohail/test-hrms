@@ -26,9 +26,7 @@ class StoreAppointment extends FormRequest
         return [
             
         'designation' => 'required|max:255',
-        'joining_date' => 'required|max:255',
-        'project' => 'required|max:255',
-        'appointment_letter_type' => 'required|max:255',
+        'appointment_letter_type' => 'required',
 
         ];
     }

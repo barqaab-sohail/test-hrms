@@ -16,12 +16,10 @@ class CreateAppointmentsTable extends Migration
         Schema::create('appointments', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->bigInteger('employee_id')->unsigned();
-            $table->string('designation');
-            $table->date('joining_date');
-            $table->string('project');
-            $table->date('expiry_date')->nullable();
             $table->string('reference_no');
             $table->date('appointment_date')->nullable();
+            $table->string('designation');
+            $table->date('expiry_date')->nullable();
             $table->string('category');
             $table->string('grade')->nullable();
             $table->string('appointment_letter_type');

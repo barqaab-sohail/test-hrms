@@ -35,35 +35,7 @@
 		                            
 		                            <h3 class="box-title">Appointment Letter Detail</h3>
 		                            <hr class="m-t-0 m-b-40">
-		                            <div class="row">
-		                                <div class="col-md-6">
-		                                    <div class="form-group row">
-		                                        <label class="control-label text-right col-md-3">Designation</label>
-		                                        <div class="col-md-9">
-													<select  name="designation"  class="form-control" required>
-                                                      <option></option>
-                                                     @foreach($designations as $designation)
-														
-														<option value="{{$designation->name}}" @if($designation->name == optional($employee->appointment)->designation)) selected="selected" @endif>{{$designation->name}}</option>
-                                                        @endforeach
-                                                        
-                                                    </select>
-
-		                                            
-		                                        </div>
-		                                    </div>
-		                                </div>
-		                                
-		                                <!--/span-->
-		                                <div class="col-md-6">
-		                                    <div class="form-group row">
-		                                        <label class="control-label text-right col-md-3">Date of Joining</label>
-		                                        <div class="col-md-7">
-		                                            <input type="text"  id="joining_date" name="joining_date" value="{!! old('joining_date',isset($employee->appointment->joining_date)?$employee->appointment->joining_date:'')!!}" class="form-control" placeholder="Enter Joining Date " readonly required>
-		                                        </div>
-		                                    </div>
-		                                </div>
-		                            </div>
+		               
 		                           
 
 		                            <div class="row">
@@ -88,37 +60,37 @@
 		                                    </div>
 		                                </div>
 		                            </div>
-
-
-
-		                            <div class="row">
+									             <div class="row">
 		                                <div class="col-md-6">
 		                                    <div class="form-group row">
-		                                        <label class="control-label text-right col-md-3">Charge To</label>
+		                                        <label class="control-label text-right col-md-3">Designation</label>
 		                                        <div class="col-md-9">
-		                                             <select  name="project"  class="form-control" required>
-                                                    <option value=""></option>
-													@foreach($projects as $project)
-													<option value="{{$project->name}}" @if($project->name == isset($employee->appointment->project)) selected="selected" @endif>{{$project->name}}</option>
-                                                    @endforeach 	
-
+													<select  name="designation"  class="form-control" required>
+                                                      <option></option>
+                                                     @foreach($designations as $designation)
+														
+														<option value="{{$designation->name}}" @if($designation->name == optional($employee->appointment)->designation)) selected="selected" @endif>{{$designation->name}}</option>
+                                                        @endforeach
+                                                        
                                                     </select>
+
+		                                            
 		                                        </div>
 		                                    </div>
 		                                </div>
 		                                
 		                                <!--/span-->
 		                                <div class="col-md-6">
-		                                    <div class="form-group row">
+		                                   <div class="form-group row">
 		                                        <label class="control-label text-right col-md-3">Expiry Date</label>
 		                                        <div class="col-md-7">
 		                                            <input type="text"  id="expiry_date" name="expiry_date" value="{!! old('expiry_date',isset($employee->appointment->expiry_date)?$employee->appointment->expiry_date:'')!!}" class="form-control" placeholder="Enter Expiry Date of Appointment" readonly >
 
 		                                        </div>
-		                                    </div>
-		                                    
+		                                    </div>  
 		                                </div>
 		                            </div>
+
 
 		                            <div class="row">
 		                                <!--/span-->

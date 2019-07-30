@@ -35,7 +35,7 @@ class AppointmentController extends Controller
 
          $data = $request->all();
 
-         $data ['joining_date']= \Carbon\Carbon::parse($request->joining_date)->format('Y-m-d');
+        
          if($request->filled('expiry_date')){
          $data ['expiry_date']=  \Carbon\Carbon::parse($request->expiry_date)->format('Y-m-d');}
          if($request->filled('appointment_date')){

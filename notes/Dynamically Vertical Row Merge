@@ -1,0 +1,81 @@
+<table style="width:100%; table-layout: fixed;">
+    <tr>
+        <td style="background-color:green">Old Value</td>
+        <td>Team A</td>
+        <td>Player1,Player2,Player3</td>
+    </tr>
+    <tr>
+        <td style="background-color:green">Old Value</td>
+        <td>Team B</td>
+        <td>Player4,Player 5,Player6</td>
+    </tr>
+    <tr>
+        <td style="background-color:green">Old Value</td>
+        <td>Team B</td>
+        <td>Player4,Player 5,Player6</td>
+    </tr>
+    <tr>
+        <td style="background-color:green">Old Value</td>
+        <td>Team B</td>
+        <td>Player4,Player 5,Player6</td>
+    </tr>
+    <tr>
+        <td style="background-color:green">Old Value</td>
+        <td>Team C</td>
+        <td>Player7,Player8,Player9</td>
+    </tr>
+    <tr>
+        <td style="background-color:green">Old Value</td>
+        <td>Team D</td>
+        <td>Player10,Player11,Player12</td>
+    </tr>
+    <tr>
+        <td style="background-color:Gray">New Value</td>
+        <td>Team B</td>
+        <td>Player1,Player2,Player3</td>
+    </tr>
+    <tr>
+        <td style="background-color:Gray">New Value</td>
+        <td>Team C</td>
+        <td>Player10,Player11,Player12</td>
+    </tr>
+    <tr>
+        <td style="background-color:Gray">New Value</td>
+        <td>Team C</td>
+        <td>Player10,Player11,Player12</td>
+    </tr>
+    <tr>
+        <td style="background-color:Gray">New Value</td>
+        <td>Team C</td>
+        <td>Player10,Player11,Player12</td>
+    </tr>
+    <tr>
+        <td style="background-color:Gray">Third Value</td>
+        <td>Team C</td>
+        <td>Player10,Player11,Player12</td>
+    </tr>
+    <tr>
+        <td style="background-color:Gray">Third Value</td>
+        <td>Team C</td>
+        <td>Player10,Player11,Player12</td>
+    </tr>
+</table>
+
+
+
+function fixit(selector) {
+    selector.each(function () {
+        var values = $(this).find("tr>td:first-of-type")
+        var run = 1
+        for (var i=values.length-1;i>-1;i--){
+            if ( values.eq(i).text()=== values.eq(i-1).text()){
+                values.eq(i).remove()
+                run++
+            }else{
+                values.eq(i).attr("rowspan",run)
+                run = 1
+            }
+        }
+    })
+}
+fixit($("table"))

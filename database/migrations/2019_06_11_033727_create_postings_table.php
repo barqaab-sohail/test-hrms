@@ -19,6 +19,7 @@ class CreatePostingsTable extends Migration
             $table->string('position');
             $table->date('posting_date');
             $table->string('project');
+            $table->date('joining_date');
             $table->string('location')->nullable();
             $table->bigInteger('manager_id')->unsigned();
             $table->timestamps();

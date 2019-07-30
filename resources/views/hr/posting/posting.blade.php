@@ -74,7 +74,10 @@
 		                                <!--/span-->
 		                                <div class="col-md-5">
 		                                    <div class="form-group row">
-		                                       
+		                                        <label class="control-label text-right col-md-4">Joining Date</label>
+		                                        <div class="col-md-8">
+		                                            <input type="text" id="joining_date" name="joinign_date" value="{{ old('joining_date') }}" class="form-control " placeholder="Enter joining Date" required readonly>
+		                                        </div>
 		                                    </div>
 		                                </div>
 		                            </div>
@@ -155,7 +158,7 @@
 						<th>Position</th>
 						<th>Date of Posting</th>
 						
-						@if(Auth::user()->role_id==1)<th> Actions </th> @endif
+						@if(Auth::user()->role_id==1)<th colspan="2"> Actions </th> @endif
 					</tr>
 					</thead>
 					<tbody>
@@ -165,10 +168,13 @@
 								<td>{{$postingId->position}}</td>
 								<td>{{$postingId->posting_date}}</td>
 								
-								<td>
 								 @can('entry', Auth::user())
+								 <td>
 								 <a class="btn btn-info btn-sm" href="{{route('posting.edit',['id'=>$postingId->id])}}" data-toggle="tooltip" data-original-title="Edit"> <i class="fas fa-pencil-alt text-white "></i></a>
+								 </td>
+								 <td>
 								  <a class="btn btn-danger btn-sm" onclick="return confirm('Are you Sure to Delete')" href="{{route('deletePosting',['id'=>$postingId->id])}}" data-toggle="tooltip" data-original-title="Delete"> <i class="fas fa-trash-alt"></i></a>
+								  </td>
 								 @endcan
 															
 							</tr>
@@ -193,13 +199,12 @@
  @push('scripts')
         <script>
             $(document).ready(function(){
-            	$( "#posting_date" ).datepicker({
+            	$( "#posting_date, #joining_date" ).datepicker({
 	     		dateFormat: 'dd-MM-yy',
 	      		yearRange: (new Date().getFullYear()-20)+':'+(new Date().getFullYear()+15),
 	      		changeMonth: true,
 	      		changeYear: true
 	    		});
-	    		
 			});
         </script>
     @endpush

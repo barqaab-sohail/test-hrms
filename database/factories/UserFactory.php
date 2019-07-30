@@ -50,20 +50,19 @@ $factory->define(employee::class, function (Faker $faker) {
 
 $factory->define(appointment::class, function (Faker $faker) {
     return [
-        'designation' => $faker->jobTitle,
-        'joining_date' => $faker->date($format = 'Y-m-d', $max = 'now'),
-        'project' => App\project::orderByRaw("RAND()")->first()->name,
+        'designation' => App\designation::orderByRaw("RAND()")->first()->name,
         'reference_no' => $faker->name,
-        'category' => $faker->city,
-        'appointment_letter_type'=> $faker->name,
-        'employee_id' => App\Employee::all(['id'])->random(),
+        'category' => $faker->randomElement(['A', 'B','C']),
+        'appointment_letter_type'=> $faker->randomElement(['1 Page', '2 Pages']),
+        'employee_id' => App\Employee::all(['id'])->unique()->random(),
     ];
 });
 
 $factory->define(posting::class, function (Faker $faker) {
     return [
         'employee_id' => App\Employee::all(['id'])->random(),
-        'position' => $faker->jobTitle,
+        'joining_date' => $faker->date($format = 'Y-m-d', $max = 'now'),
+        'position' => App\designation::orderByRaw("RAND()")->first()->name,
         'posting_date' => $faker->date($format = 'Y-m-d', $max = 'now'),
         'project' => App\project::orderByRaw("RAND()")->first()->name,
         'location' => $faker->city,

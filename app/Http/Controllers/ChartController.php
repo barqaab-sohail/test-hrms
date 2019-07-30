@@ -28,4 +28,19 @@ class ChartController extends Controller
     //->title("Department");
      return view('chart', compact('chart'));
 	}
+
+
+  public function gender(){
+
+    $gender = array('Male','Female');
+    $male = employee::all()->where('gender','Male')->count();
+    $female = employee::all()->where('gender','Female')->count();
+    $data = array($male, $female);
+
+
+
+    return view ('hr.charts.genderChart', ['gender' => $gender, 'data' => $data]);
+
+    }
+
 }

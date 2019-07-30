@@ -55,12 +55,14 @@ Route::get('/phone/edit/{id?}', [
 
 //Dashboard
 Route::get('/chart', 'ChartController@index')->name('chart');
+Route::get('/genderChart', 'ChartController@gender')->name('genderChart');
 Route::get('/dashboard', 'HomeController@index')->name('dashboard')->middleware('verified');
 
 
 //Reports
 Route::get('/hrms/reports', 'ReportsController@index')->name('employeeReports');
 Route::get('/hrms/acitveEmployee', 'ReportsController@activeEmployee')->name('activeEmployee');
+Route::get('/hrms/allManagers', 'ReportsController@allManagers')->name('allManagers');
 
 
 

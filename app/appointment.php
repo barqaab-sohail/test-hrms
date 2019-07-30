@@ -10,7 +10,7 @@ class appointment extends Model implements Auditable
 	use \OwenIt\Auditing\Auditable;
 
     protected $fillable = [
-        'designation','joining_date','project','expiry_date','reference_no','appointment_date','category','grade','appointment_letter_type','employee_id',]; 
+        'designation','expiry_date','reference_no','appointment_date','category','grade','appointment_letter_type','employee_id',]; 
     public function employee(){
 		return $this->belongsTo('App\employee');
 	}
