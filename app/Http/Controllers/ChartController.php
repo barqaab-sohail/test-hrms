@@ -24,7 +24,7 @@ class ChartController extends Controller
     $chart = new TestChart;
     $chart->labels(['Power', 'Water', 'Finance']);
     $chart->dataset('My dataset', 'pie', [$power, $water, $finance])
-    ->backgroundColor(['red','#008000','#00FFFF']);
+    ->backgroundColor(['rgba(255, 99, 132, 0.4)','rgba(255, 205, 86, 0.4)','rgba(75, 192, 192, 0.4)']);
     //->title("Department");
      return view('chart', compact('chart'));
 	}
