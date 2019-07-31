@@ -6,7 +6,9 @@ use Illuminate\Support\Collection;
 use Illuminate\Http\Request;
 use App\Notifications\DatabaseNotification;
 use App\user;
+use DB;
 use App\employee;
+use App\posting;
 use Notification;
 use Illuminate\Support\Facades\Auth;
 
@@ -35,8 +37,15 @@ class NotificationController extends Controller
     
     if ($request->to=='all'){
         $users = user::all();
+
     }elseif($request->to=='allManagers'){
-         $users = user::all();
+        
+       
+        $userIds = DB::table('postings')
+                ->join('users','users.employee_id','=','postings.manager_id')
+                ->select('users.id')->get()->unique('id');
+        //UserIds convert into collection like [1,2,3] so that we pass it to $user = user::all()->only ([1,2,3]);   
+         
     }else{
         $users = user::all()->where('employee_id',$request->to);
     }

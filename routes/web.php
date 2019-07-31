@@ -19,8 +19,14 @@ use App\user;
 });
 
 
-Route::get('/foo', function () {
-dd(Artisan::call('migrate');
+Route::get('/HRMS_Maintenance', function () {
+Artisan::call('down --message="Upgrading Database" --retry=60');
+    dd('OK Down');
+
+});
+Route::get('/HRMS_Up', function () {
+Artisan::call('up');
+    dd('OK Up');
 
 });
 */

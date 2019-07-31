@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use App\User;
 
 class StoreUser extends FormRequest
 {
@@ -23,8 +24,18 @@ class StoreUser extends FormRequest
      */
     public function rules()
     {
+        $user = User::where('employee_id',session('employee_id'))->first();
+        if ($user==null)
+        {
+            $userId = null;
+        }else{
+
+            $userId = $user->id;
+        }
+
+        
         return [
-            'email' => 'required|unique:users,email,'.session('employee_id'),
+            'email' => 'required|unique:users,email,'.$userId,
             'role_id' => 'nullable',
 
             ];

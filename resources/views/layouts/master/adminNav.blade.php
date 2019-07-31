@@ -57,7 +57,7 @@
                        
                     </ul>
                 </li>
-                @can('entry', Auth::user())
+                @can('admin', Auth::user())
                  <li @if(request()->is('chart*')) class="active" @endif > <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i class="fas fa-chart-pie"></i><span class="hide-menu">Reports</span></a>
                     <ul aria-expanded="false" class="collapse">
                         <li><a href="{{route('employeeReports')}}">List of Reports</a></li>

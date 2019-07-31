@@ -28,14 +28,7 @@
         </script>
         
          {!! $chart->script() !!}
-			<!--<div class="float-right">
-				<input id="month" class="form-control" value="" type="month">
-			</div>
-			<h4 class="card-title">Salaries</h4>
 		
-			
-			<h1 class="card-subtitle">{{Auth::User()->employee->first_name." ".Auth::User()->employee->last_name}} Welcome to HRMS</h1>
-						-->
 			
 		</div>
 	</div>
