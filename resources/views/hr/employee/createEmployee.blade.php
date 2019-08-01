@@ -133,7 +133,7 @@
 		                                    <div class="form-group row">
 		                                        <label class="control-label text-right col-md-3">Employee No.</label>
 		                                        <div class="col-md-9">
-		                                            <input type="text" name="employee_no" value="{{ old('employee_no') }}" class="form-control " placeholder="Enter Employee No" required>
+		                                            <input type="text" name="employee_no" value="{{ old('employee_no') }}" class="form-control " placeholder="Enter Employee No" >
 		                                        </div>
 		                                    </div>
 		                                </div>

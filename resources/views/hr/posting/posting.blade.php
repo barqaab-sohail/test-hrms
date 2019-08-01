@@ -40,7 +40,16 @@
 		                                    <div class="form-group row">
 		                                        <label class="control-label text-right col-md-3">Position</label>
 		                                        <div class="col-md-9">
-		                                            <input type="text"  name="position" value="{{ old('position') }}" class="form-control" placeholder="Enter Position Name" required >
+
+													<select  name="position"  class="form-control" required>
+                                                      <option></option>
+                                                     @foreach($positions as $position)
+														
+														<option value="{{$position->name}}" {{(old("position")==$position->name? "selected" : "")}}>{{$position->name}}</option>
+                                                        @endforeach
+                                                        
+                                                    </select>
+
 		                                        </div>
 		                                    </div>
 		                                </div>
@@ -76,7 +85,7 @@
 		                                    <div class="form-group row">
 		                                        <label class="control-label text-right col-md-4">Joining Date</label>
 		                                        <div class="col-md-8">
-		                                            <input type="text" id="joining_date" name="joinign_date" value="{{ old('joining_date') }}" class="form-control " placeholder="Enter joining Date" required readonly>
+		                                            <input type="text" id="joining_date" name="joining_date" value="{{ old('joining_date') }}" class="form-control " placeholder="Enter joining Date" required readonly>
 		                                        </div>
 		                                    </div>
 		                                </div>

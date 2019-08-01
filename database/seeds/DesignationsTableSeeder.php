@@ -20,6 +20,7 @@ class DesignationsTableSeeder extends Seeder
 			array('name' => 'General Manager (Power)', 'level' => 1),
 			array('name' => 'Chief Engineer', 'level' => 2),
 			array('name' => 'Chief Contract Engineer', 'level' => 2),
+			array('name' => 'Chief Project Manager', 'level' => 2),
 			array('name' => 'Project Manager', 'level' => 2),
 			array('name' => 'Manager Finance', 'level' => 3),
 			array('name' => 'Principal Engineer', 'level' => 3),

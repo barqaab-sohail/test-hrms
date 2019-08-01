@@ -37,7 +37,16 @@
 		                                    <div class="form-group row">
 		                                        <label class="control-label text-right col-md-3">Position</label>
 		                                        <div class="col-md-9">
-		                                            <input type="text"  name="position" value="{!! old('position', optional($data)->position) !!}" class="form-control" placeholder="Enter Position Name" required>
+		                                           
+												<select  name="position"  class="form-control" required>
+                                                      <option></option>
+                                                     @foreach($positions as $position)
+														
+														<option value="{{$position->name}}" @if($position->name == optional($data)->position)) selected="selected" @endif>{{$position->name}}</option>
+                                                        @endforeach
+                                                        
+                                                    </select>
+	                                           
 												
 		                                        </div>
 		                                    </div>
@@ -61,7 +70,7 @@
 			                                        <select  name="manager_id"  class="form-control" required>
                                                     <option value=""></option>
 													@foreach($employees as $employee)
-													<option value="{{$employee->manager_id}}" @if($employee->manager_id == $data->manager_id) selected="selected" @endif>{{$employee->first_name." ".$employee->last_name.", ".$employee->designation}}</option>
+													<option value="{{$employee->id}}" @if($employee->id == $data->manager_id) selected="selected" @endif>{{$employee->first_name." ".$employee->last_name.", ".$employee->designation}}</option>
                                                     @endforeach 	
                                                     </select>
                                                                                                         

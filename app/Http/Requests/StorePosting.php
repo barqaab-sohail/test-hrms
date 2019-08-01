@@ -27,7 +27,8 @@ class StorePosting extends FormRequest
          'position' => 'required|max:255',
          'project' => 'required|max:255',
          'manager_id' => 'required',
-         'posting_date' => 'required', 
+         'posting_date' => 'required|date', 
+         'joining_date' => 'required|date', 
         ];
     }
 }

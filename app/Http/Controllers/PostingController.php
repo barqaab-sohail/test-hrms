@@ -1,11 +1,11 @@
 <?php
 
 namespace App\Http\Controllers;
-
 use Illuminate\Http\Request;
 use App\Http\Requests\StorePosting;
 use App\employee;
 use App\posting;
+use App\designation;
 use App\project;
 use DB;
 
@@ -17,17 +17,33 @@ class PostingController extends Controller
         $this->middleware('updation')->only('delete','update', 'store');
     }
 
+    public function index(){
+        /*$firstlevel = DB::table('postings')
+        ->where('employee_id', '=', DB::raw('manager_id'))
+        ->get();        
+        */    
+        $firstLevelId = posting::whereColumn('manager_id','employee_id')->pluck('employee_id')->toArray();
+
+        $secondLevelIds = posting::whereIn('manager_id',$firstLevelId)->whereNotIn('employee_id',$firstLevelId)->pluck('employee_id')->toArray();
+        $employee2 = employee::whereIn('employee_id',$secondLeveIds);
+        $thirdLevelIds = posting::whereIn('manager_id',$secondLevelIds)->whereNotIn('employee_id',$secondLevelIds)->pluck('employee_id')->toArray();
+       
+        dd();
+
+    }
+
+
     public function create($id){
 
         $employee = employee::find($id);
         $employees = DB::table('employees')
                     ->join('appointments','employees.id','=','appointments.employee_id')
-                    ->select('employees.*','appointments.*')->get();
-
+                       ->select('employees.id','employees.first_name','employees.last_name','employees.middle_name','appointments.designation')->get();
 
         $postingIds = posting::all()->where('employee_id', $id);
         $projects = project::all();
-        return view ('hr.posting.posting',compact('employee','employees','projects','postingIds'));
+        $positions = designation::all();
+        return view ('hr.posting.posting',compact('employee','employees','projects','postingIds','positions'));
     }
 
 	public function store(StorePosting $request){
@@ -44,14 +60,16 @@ class PostingController extends Controller
     public function edit($id){
         $employees = DB::table('employees')
                     ->join('appointments','employees.id','=','appointments.employee_id')
-                    ->join('postings','employees.id','=','postings.employee_id')
-                    ->select('employees.*','appointments.*','postings.*')->get();
+                       ->select('employees.id','employees.first_name','employees.last_name','employees.middle_name','appointments.designation')->get();
+        
         
         $employee = employee::find(session('employee_id'));
+        //Requried for Stored Posting
         $postingIds = posting::all()->where('employee_id', session('employee_id'));
         $projects = project::all();
         $data = posting::find($id);
-        return view ('hr.posting.editPosting',compact('data','employee','employees','postingIds','projects'));
+        $positions = designation::all();
+        return view ('hr.posting.editPosting',compact('data','employee','employees','postingIds','projects','positions'));
     }
     
     public function update(StorePosting $request, $id)

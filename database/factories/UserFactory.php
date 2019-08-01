@@ -44,6 +44,8 @@ $factory->define(employee::class, function (Faker $faker) {
         'date_of_birth' => $faker->date($format = 'Y-m-d'),
         'cnic' => $faker->unique()->ean13,
         'cnic_expiry' => $faker->date($format = 'Y-m-d', $max = 'now'),
+        'religon' => 'Islam',
+
      
     ];
 });
