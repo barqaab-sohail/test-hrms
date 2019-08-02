@@ -28,8 +28,11 @@
 <script src="{{asset('Massets/js/dashboard1.js') }}"></script>
 <script src="{{asset('Massets/js/dashboard1.js') }}"></script>
 -->
-<!--CDN ChartJS -->
+<!--CDN ChartJS 
  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.min.js" charset="utf-8"></script>
+ -->
+ <script src="http://www.chartjs.org/dist/2.7.3/Chart.bundle.js"></script>
+  <script src="http://www.chartjs.org/samples/latest/utils.js"></script>
 
 <!-- ============================================================== -->
 <!-- Style switcher -->

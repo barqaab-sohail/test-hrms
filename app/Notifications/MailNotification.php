@@ -42,7 +42,7 @@ class MailNotification extends Notification
     {
         return (new MailMessage)
                     ->subject('New Registered User')
-                    ->from('noreply@barqaab.com', 'Admin')
+                    ->from('noreply@barqaab.com', 'HRMS Admin')
                     ->line('Your are sucessfuly registered.')
                     ->action('Notification Action', url('/'))
                     ->line('Thank you for using HRMS');

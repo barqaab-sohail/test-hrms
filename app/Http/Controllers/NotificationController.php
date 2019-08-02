@@ -36,15 +36,13 @@ class NotificationController extends Controller
    	$letter = collect(['subject'=>$request->subject, 'message'=>$request->message]);
     
     if ($request->to=='all'){
+
         $users = user::all();
 
     }elseif($request->to=='allManagers'){
-        
-       
-        $userIds = DB::table('postings')
-                ->join('users','users.employee_id','=','postings.manager_id')
-                ->select('users.id')->get()->unique('id');
-        //UserIds convert into collection like [1,2,3] so that we pass it to $user = user::all()->only ([1,2,3]);   
+    
+        $managerIds = posting::all()->pluck('manager_id')->toArray();
+        $users = user::all()->whereIn('employee_id',$managerIds);
          
     }else{
         $users = user::all()->where('employee_id',$request->to);

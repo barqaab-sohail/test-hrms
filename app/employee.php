@@ -103,9 +103,8 @@ class employee extends Model implements Auditable
     {
         return $this->hasMany('App\posting','employee_id');
     }
-    
-    
 
+       
     public function project()
     {
         return $this->hasMany('App\project');

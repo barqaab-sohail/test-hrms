@@ -1,10 +1,4 @@
 @extends('layouts.master.master')
- @push('scripts')
- <script src="http://www.chartjs.org/dist/2.7.3/Chart.bundle.js"></script>
-  <script src="http://www.chartjs.org/samples/latest/utils.js"></script>
-      
-    @endpush
-
 
 @section('Heading')
 	<h3 class="text-themecolor">Dashboard</h3>
@@ -47,7 +41,11 @@ var chartdata = {
 			    },
 			    
 	    options: {
-		    scales: {
+		    
+	        
+
+
+	        scales: {
 				    yAxes: [{
 					    ticks: {
 					    beginAtZero:true

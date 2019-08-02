@@ -33,7 +33,7 @@ Artisan::call('up');
 
 Auth::routes();
 
-Route::get('/testing', 'PostingController@index');
+//Route::get('/testing', 'PostingController@index');
 
 Route::post('/login', [
     'uses'          => 'Auth\LoginController@login',

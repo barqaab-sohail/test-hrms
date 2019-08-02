@@ -18,18 +18,15 @@ class PostingController extends Controller
     }
 
     public function index(){
-        /*$firstlevel = DB::table('postings')
-        ->where('employee_id', '=', DB::raw('manager_id'))
-        ->get();        
-        */    
-        $firstLevelId = posting::whereColumn('manager_id','employee_id')->pluck('employee_id')->toArray();
-
-        $secondLevelIds = posting::whereIn('manager_id',$firstLevelId)->whereNotIn('employee_id',$firstLevelId)->pluck('employee_id')->toArray();
-        $employee2 = employee::whereIn('employee_id',$secondLeveIds);
-        $thirdLevelIds = posting::whereIn('manager_id',$secondLevelIds)->whereNotIn('employee_id',$secondLevelIds)->pluck('employee_id')->toArray();
+        
        
+        $postings = posting::all();
+           foreach($postings as $posting){
+            echo $posting->employee->first_name." ".$posting->employee->middle_name." ".$posting->employee->last_name;
+            echo '--------';
+            echo $posting->manager->first_name." ".$posting->manager->middle_name." ".$posting->manager->last_name.'<br>';
+           }
         dd();
-
     }
 
 

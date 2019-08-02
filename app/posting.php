@@ -18,5 +18,9 @@ class posting extends Model implements Auditable
 		return $this->belongsTo('App\employee');
 	}
 
+	public function manager(){
+		return $this->belongsTo('App\employee','manager_id');
+	}
+
 	
 }

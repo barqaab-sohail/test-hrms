@@ -32,7 +32,7 @@
 		                                           	<option value="all">All Active User</option>
 		                                           	<option value="allManagers">All Managers</option>
 		                                           	@foreach($employees as $employee)
-													<option value="{{$employee->id}}" {{(old("to")==$employee->first_name." ".$employee->last_name? "selected" : "")}}>{{$employee->first_name." ".$employee->last_name}}</option>
+													<option value="{{$employee->id}}" {{(old("to")==$employee->first_name." ".$employee->middle_name." ".$employee->last_name? "selected" : "")}}>{{$employee->first_name." ".$employee->middle_name." ".$employee->last_name}}</option>
                                                     @endforeach 	
                                                 </select> 
                                             </div>
