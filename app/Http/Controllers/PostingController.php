@@ -81,7 +81,8 @@ class PostingController extends Controller
         $data ['joining_date']= \Carbon\Carbon::parse($request->joining_date)->format('Y-m-d');
         }
         if($request->filled('posting_date')){
-        $data ['posting_date']= \Carbon\Carbon::parse($request->posting_date)->format('Y-m-d');  
+        $data ['posting_date']= \Carbon\Carbon::parse($request->posting_date)->format('Y-m-d'); 
+        } 
 
      posting::findOrFail($id)->update($data);
      return redirect()->route('posting.edit',['id'=>$id])->with('success', 'Posting is updated succesfully');

@@ -75,7 +75,7 @@
 		                                <div class="col-md-5">
 		                                    <div class="form-group row">
 		                                        <div class="col-md-12">
-		                                        <label class="control-label text-right ">Blood Group</label>
+		                                        <label class="control-label text-right ">Blood Group<span class="text_requried">*</span></label>
 		                                        
 		                                            <select  name="blood_group"  class="form-control" required>
                                                         <option value=""></option>
