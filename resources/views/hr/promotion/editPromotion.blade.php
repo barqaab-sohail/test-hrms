@@ -37,20 +37,22 @@
 		                            		                                
 		                             <div class="row">
 		                                <!--/span-->
-		                                <div class="col-md-6">
+		                                <div class="col-md-8">
 		                                    <div class="form-group row">
-		                                        <label class="control-label text-right col-md-3">Promoted Designation</label>
-		                                        <div class="col-md-9">
+		                                        <div class="col-md-12">
+		                                        	<label class="control-label text-right">Promoted Designation<span class="text_requried">*</span></label>
+		                                        
 		                                            <input type="text" name="promoted_designation" value="{!! old('promoted_designation', optional($data)->promoted_designation) !!}" class="form-control" required>
 		                                        </div>
 		                                    </div>
 		                                </div>
 		                                <!--/span-->
-		                                <div class="col-md-6">
+		                                <div class="col-md-4">
 		                                    <div class="form-group row">
-		                                        <label class="control-label text-right col-md-4">Effective Date</label>
-		                                        <div class="col-md-8">
-		                                            <input type="date" name="effective_date" value="{!! old('effective_date', optional($data)->effective_date) !!}" class="form-control" required >
+		                                        <div class="col-md-12">
+		                                        	<label class="control-label text-right">Effective Date<span class="text_requried">*</span></label>
+		                                        
+		                                            <input type="text" id="effective_date" name="effective_date" value="{!! old('effective_date', optional($data)->effective_date) !!}" class="form-control" readonly required >
 		                                        </div>
 		                                    </div>
 		                                </div>
@@ -58,11 +60,12 @@
 		                            </div>
 		                            
 		                            <div class="row">
-		                             	<div class="col-md-6">
+		                             	<div class="col-md-12">
 		                            		<div class="form-group row">
-												<label class="control-label text-right col-md-3">Remarks</label>
-		                            			<div class="col-md-9">
-		                            			<input type="text" name="promotion_remarks" value="{!! old('promotion_remarks', optional($data)->promotion_remarks) !!}" class="form-control"  >
+												<div class="col-md-12">
+													<label class="control-label text-right">Remarks</label>
+		                            			
+		                            				<input type="text" name="promotion_remarks" value="{!! old('promotion_remarks', optional($data)->promotion_remarks) !!}" class="form-control"  >
 		                            			</div>
 
 		                            		</div>
@@ -76,12 +79,14 @@
 		                                <!--/span-->
 		                                <div class="col-md-6">
 		                                    <div class="form-group row">
-		                                        <label class="control-label text-right col-md-3">Basic Pay</label>
-		                                        <div class="col-md-3">
+		                                        <div class="col-md-6">
+		                                        	<label class="control-label text-right">Basic Pay</label>
+		                                        
 		                                            <input type="number" name="basic_pay" value="{!! old('basic_pay', optional($data)->basic_pay) !!}"class="form-control prc">
 		                                        </div>
-		                                         <label class="control-label text-right col-md-3">House Rent</label>
-		                                        <div class="col-md-3">
+		                                        <div class="col-md-6">
+		                                        	<label class="control-label text-right">House Rent</label>
+		                                        
 		                                            <input type="number" name="house_rent" value="{!! old('hourse_rent', optional($data)->hourse_rent) !!}"   class="form-control prc" >
 		                                        </div>
 		                                    </div>
@@ -89,12 +94,14 @@
 		                                <!--/span-->
 		                                <div class="col-md-6">
 		                                    <div class="form-group row">
-		                                         <label class="control-label text-right col-md-3">Dearness Allowance</label>
-		                                        <div class="col-md-3">
+		                                        <div class="col-md-6">
+		                                        	<label class="control-label text-right">Dearness Allowance</label>
+		                                        
 		                                            <input type="number" name="dearness_allowance" value="{!! old('dearness_allowance', optional($data)->dearness_allowance) !!}"   class="form-control prc"  >
 		                                        </div>
-		                                         <label class="control-label text-right col-md-3">Adhoc 2009</label>
-		                                        <div class="col-md-3">
+		                                        <div class="col-md-6">
+		                                        <label class="control-label text-right ">Adhoc 2009</label>
+		                                        
 		                                            <input type="number" name="adhoc_2009" value="{!! old('adhoc_2009', optional($data)->adhoc_2009) !!}"  class="form-control prc" >
                                             
 		                                        </div>
@@ -107,12 +114,14 @@
 		                                <!--/span-->
 		                                <div class="col-md-6">
 		                                    <div class="form-group row">
-		                                        <label class="control-label text-right col-md-3">Adhoc 2010</label>
-		                                        <div class="col-md-3">
+		                                        <div class="col-md-6">
+		                                        	<label class="control-label text-right">Adhoc 2010</label>
+		                                        
 		                                            <input type="number" name="adhoc_2010" value="{!! old('adhoc_2010', optional($data)->adhoc_2010) !!}"   class="form-control prc" >
 		                                        </div>
-		                                         <label class="control-label text-right col-md-3">Adhoc 2012</label>
-		                                        <div class="col-md-3">
+		                                        <div class="col-md-6">
+		                                        	<label class="control-label text-right">Adhoc 2012</label>
+		                                        
 		                                            <input type="text" name="adhoc_2012" value="{!! old('adhoc_2012', optional($data)->adhoc_2012) !!}"  class="form-control prc" >
 		                                        </div>
 		                                    </div>
@@ -120,12 +129,14 @@
 		                                <!--/span-->
 		                                <div class="col-md-6">
 		                                    <div class="form-group row">
-		                                         <label class="control-label text-right col-md-3">Adhoc 2013</label>
-		                                        <div class="col-md-3">
+		                                        <div class="col-md-6">
+		                                        	<label class="control-label text-right ">Adhoc 2013</label>
+		                                        
 		                                            <input type="number" name="adhoc_2013" value="{!! old('adhoc_2013', optional($data)->adhoc_2013) !!}"   class="form-control prc"  >
 		                                        </div>
-		                                         <label class="control-label text-right col-md-3">Field Allowance</label>
-		                                        <div class="col-md-3">
+		                                        <div class="col-md-6">
+		                                        	<label class="control-label text-right ">Field Allowance</label>
+		                                        
 		                                            <input type="number" name="field_allowance" value="{!! old('field_allownace', optional($data)->field_allownace) !!}"   class="form-control prc" >
 		                                            
 		                                        </div>
@@ -138,12 +149,15 @@
 		                                <!--/span-->
 		                                <div class="col-md-6">
 		                                    <div class="form-group row">
-		                                        <label class="control-label text-right col-md-3">Other Allowance</label>
-		                                        <div class="col-md-3">
+		                                        <div class="col-md-6">
+		                                        	<label class="control-label text-right">Other Allowance</label>
+		                                        
 		                                            <input type="number" name="other_allowance" value="{!! old('other_allowance', optional($data)->other_allowance) !!}" class="form-control prc" >
 		                                        </div>
-		                                         <label class="control-label text-right col-md-3">Total</label>
-		                                        <div class="col-md-3">
+		                                        <div class="col-md-6">
+		                                        
+		                                        	<label class="control-label text-right ">Total<span class="text_requried">*</span></label>
+		                                        
 		                                            <input type="text" name="total" id="total" value="{!! old('total', optional($data)->total) !!}"   class="form-control" required>
 		                                        </div>
 		                                    </div>
@@ -151,7 +165,7 @@
 		                                <!--/span-->
 		                                <div class="col-md-6">
 		                                    <div class="form-group row">
-		                                         
+		                                        
 		                                             <input type="number" name="employee_id" value="{{session('employee_id')}}"   class="form-control " hidden>
 		                                        
 		                                    </div>
@@ -251,6 +265,13 @@
    			 	
    			 	$("#total").val(sum);
 				});
+
+				$( "#effective_date" ).datepicker({
+	     		dateFormat: 'dd-MM-yy',
+	      		yearRange: (new Date().getFullYear()-20)+':'+(new Date().getFullYear()+15),
+	      		changeMonth: true,
+	      		changeYear: true
+	    		});
 			});
         </script>
     @endpush

@@ -26,7 +26,11 @@ class MembershipController extends Controller
 
 	public function store(StoreMembership $request){
         
-        $data = membership::create($request->all());
+        $data = $request->all();
+        if($request->filled('expiry_date')){
+        $data ['expiry_date']= \Carbon\Carbon::parse($request->expiry_date)->format('Y-m-d');
+            }
+        membership::create($data);
 
         return redirect()->route('membership',['id'=>session('employee_id')])->with('success', 'Data is saved succesfully');
       // return redirect()->route('membership',['id'=>$data->id])->with('success', 'User is created succesfully');
@@ -43,8 +47,11 @@ class MembershipController extends Controller
     
     public function update(StoreMembership $request, $id)
     {
-     
-     membership::findOrFail($id)->update($request->all());
+     $data = $request->all();
+        if($request->filled('expiry_date')){
+        $data ['expiry_date']= \Carbon\Carbon::parse($request->expiry_date)->format('Y-m-d');
+            }
+     membership::findOrFail($id)->update($data);
      return redirect()->route('membership.edit',['id'=>$id])->with('success', 'Membership is updated succesfully');
     }
 

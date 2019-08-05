@@ -38,9 +38,9 @@
 		                             <div class="row">
 		                                <div class="col-md-12">
 		                                    <div class="form-group row">
-		                                        <label class="control-label text-right col-md-2">Title</label>
-		                                        <div class="col-md-10">
-		                                             <input type="text"  name="title" value="{{ old('title') }}" placeholder="Enter Publication Title " class="form-control"  required>
+		                                        <div class="col-md-12">
+		                                        	<label class="control-label text-right">Title<span class="text_requried">*</span></label>
+		                                            <input type="text"  name="title" value="{{ old('title') }}" placeholder="Enter Publication Title " class="form-control"  required>
 		                                        </div>
 		                                    </div>
 		                                </div>
@@ -53,8 +53,9 @@
 		                            <div class="row">
 		                                <div class="col-md-12">
 		                                    <div class="form-group row">
-		                                        <label class="control-label text-right col-md-2">Description</label>
-		                                        <div class="col-md-10">
+		                                       	<div class="col-md-12">
+		                                        	<label class="control-label text-right">Description</label>
+		                                       
 		                                            <textarea type="text" rows=3 cols=20 name="description" class="form-control" placeholder="Enter Description" >{{ old('description') }}</textarea>
 		                                        </div>
 		                                    </div>
@@ -67,8 +68,9 @@
 		                             <div class="row">
 		                                <div class="col-md-6">
 		                                    <div class="form-group row">
-		                                        <label class="control-label text-right col-md-4">Channel/Media</label>
-		                                        <div class="col-md-8">
+		                                        <div class="col-md-12">
+		                                        	<label class="control-label text-right">Channel/Media<span class="text_requried">*</span></label>
+		                                        
 		                                            <input type="text"  name="channel" value="{{ old('channel') }}" placeholder="Enter Publication Channel/Media " class="form-control"  required>
 		                                        </div>
 		                                        
@@ -78,8 +80,9 @@
 		                                <!--/span-->
 		                                <div class="col-md-6">
 		                                    <div class="form-group row">
-		                                        <label class="control-label text-right col-md-4">Year</label>
-		                                        <div class="col-md-8">
+		                                        <div class="col-md-6">
+		                                        	<label class="control-label text-right">Year</label>
+		                                        
 		                                            <input type="text"  name="year" value="{{ old('year') }}" class="form-control"  placeholder="Enter Year of Publication" >
 		                                        </div>
 
@@ -122,7 +125,7 @@
 					<thead>
 					
 					<tr>
-						<th>Description</th>
+						<th>Title</th>
 						<th>Channel</th>
 						<th>Year</th>
 						
@@ -132,7 +135,7 @@
 					<tbody>
 						@foreach($publicationIds as $publicationId)
 							<tr>
-								<td>{{$publicationId->description}}</td>
+								<td>{{$publicationId->title}}</td>
 								<td>{{$publicationId->channel}}</td>
 								<td>{{$publicationId->year}}</td>
 								

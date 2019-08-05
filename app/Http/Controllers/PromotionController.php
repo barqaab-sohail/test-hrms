@@ -38,8 +38,13 @@ class PromotionController extends Controller
         else{
             
             DB::transaction(function () use ($request) {
-                    $data = promotion::create($request->all());
-                    salary::create($request->all() + ['promotion_id' => $data->id]);
+                    
+                    $data = $request->all();
+                    if($request->filled('effective_date')){
+                    $data ['effective_date']= \Carbon\Carbon::parse($request->effective_date)->format('Y-m-d');
+                    }
+                    $input = promotion::create($data);
+                    salary::create($request->all() + ['promotion_id' => $input->id]);
                 });
        
         return redirect()->route('promotion',['id'=>session('employee_id')])->with('success', 'Data is saved succesfully');
@@ -65,8 +70,12 @@ class PromotionController extends Controller
     {
         
         DB::transaction(function () use ($request, $id) {
-                    promotion::findOrFail($id)->update($request->all());
-                    salary::where('promotion_id','=',$id)->firstOrFail()->update($request->all());
+            $data = $request->all();
+            if($request->filled('effective_date')){
+            $data ['effective_date']= \Carbon\Carbon::parse($request->effective_date)->format('Y-m-d');
+            }
+            promotion::findOrFail($id)->update($data);
+            salary::where('promotion_id','=',$id)->firstOrFail()->update($data);
          });
             
     return redirect()->route('promotion.edit',['id'=>$id])->with('success', 'Promotion is updated succesfully');

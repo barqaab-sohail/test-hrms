@@ -35,8 +35,9 @@
 		                            <div class="row">
 		                                <div class="col-md-7">
 		                                    <div class="form-group row">
-		                                        <label class="control-label text-right col-md-3">Position</label>
-		                                        <div class="col-md-9">
+		                                        <div class="col-md-12">
+		                                        <label class="control-label text-right">Position<span class="text_requried">*</span></label>
+		                                        
 		                                           
 												<select  name="position"  class="form-control" required>
                                                       <option></option>
@@ -55,8 +56,8 @@
 		                                <!--/span-->
 		                                <div class="col-md-5">
 		                                    <div class="form-group row">
-		                                        <label class="control-label text-right col-md-4">Posting Date</label>
-		                                        <div class="col-md-8">
+		                                        <div class="col-md-12">
+		                                        	<label class="control-label text-right">Posting Date<span class="text_requried">*</span></label>
 		                                            <input type="text" name="posting_date" id="posting_date" value="{!! old('posting_date', optional($data)->posting_date) !!}" class="form-control " placeholder="Enter Posting Date" required readonly>
 		                                        </div>
 		                                    </div>
@@ -65,8 +66,9 @@
 		                             <div class="row">
 		                                <div class="col-md-7">
 		                                     <div class="form-group row">
-		                                        <label class="control-label text-right col-md-3">Manager Name</label>
 		                                        <div class="col-md-9">
+		                                        	<label class="control-label text-right">Manager Name<span class="text_requried">*</span></label>
+		                                        
 			                                        <select  name="manager_id"  class="form-control" required>
                                                     <option value=""></option>
 													@foreach($employees as $employee)
@@ -82,8 +84,9 @@
 		                                <!--/span-->
 		                                <div class="col-md-5">
 		                                    <div class="form-group row">
-		                                        <label class="control-label text-right col-md-4">Joining Date</label>
-		                                        <div class="col-md-8">
+		                                        <div class="col-md-12">
+		                                        <label class="control-label text-right">Joining Date<span class="text_requried">*</span></label>
+		                                        
 		                                            <input type="text" name="joining_date" id="joining_date" value="{!! old('joining_date', optional($data)->joining_date) !!}" class="form-control " placeholder="Enter Posting Date" required readonly>
 
 		                                        </div>
@@ -95,8 +98,9 @@
 		                             <div class="row">
 		                                <div class="col-md-7">
 		                                    <div class="form-group row">
-		                                        <label class="control-label text-right col-md-3">Project</label>
-		                                        <div class="col-md-9">
+		                                        <div class="col-md-12">
+		                                        	<label class="control-label text-right">Project<span class="text_requried">*</span></label>
+		                                        
 			                                        <select  name="project"  class="form-control" required>
                                                     <option value=""></option>
 													@foreach($projects as $project)
@@ -108,8 +112,9 @@
 		                                </div>
 		                                <div class="col-md-5">
                                 	        <div class="form-group row">
-		                                        <label class="control-label text-right col-md-4">Location</label>
-		                                        <div class="col-md-8">
+		                                        <div class="col-md-12">
+		                                        	<label class="control-label text-right ">Location</label>
+		                                        
 		                                        	<input type="text" name="location" value="{!! old('location', optional($data)->location) !!}"  class="form-control " placeholder="Enter Location" >
 		                                        </div>
 		                                       

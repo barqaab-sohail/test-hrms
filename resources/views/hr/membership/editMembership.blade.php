@@ -38,8 +38,9 @@
 		                            <div class="row">
 		                                <div class="col-md-7">
 		                                    <div class="form-group row">
-		                                        <label class="control-label text-right col-md-2">Name</label>
-		                                        <div class="col-md-10">
+		                                        <div class="col-md-12">
+		                                        	<label class="control-label text-right ">Name<span class="text_requried">*</span></label>
+		                                        
 		                                           <select  id="name" name="name"  class="form-control" required>
                                                         
                                                         <option value="{{$data->name}}">{{$data->name}}</option> 
@@ -57,8 +58,9 @@
 		                                <!--/span-->
 		                                <div class="col-md-5">
 		                                    <div class="form-group row">
-		                                        <label class="control-label text-right col-md-4">Membership No.</label>
-		                                        <div class="col-md-8">
+		                                        <div class="col-md-12">
+		                                        	<label class="control-label text-right">Membership No.</label>
+		                                        
 		                                            <input type="text" name="membership_no" value="{!! old('membership_no', optional($data)->membership_no) !!}" class="form-control " placeholder="Enter Membership No" >
 		                                        </div>
 		                                    </div>
@@ -69,8 +71,9 @@
 		                             <div class="row">
 		                                <div class="col-md-7">
 		                                    <div class="form-group row">
-		                                        <label class="control-label text-right col-md-2">Expiry Date</label>
-		                                        <div class="col-md-5">
+		                                        <div class="col-md-7">
+		                                        	<label class="control-label text-right ">Expiry Date</label>
+		                                        
 		                                            <input type="date"  name="expiry_date" value="{!! old('expiry_date', optional($data)->expiry_date) !!}" class="form-control"  >
 		                                        </div>
 		                                       

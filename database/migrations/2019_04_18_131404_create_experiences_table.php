@@ -18,13 +18,13 @@ class CreateExperiencesTable extends Migration
             $table->bigInteger('employee_id')->unsigned();
             $table->string('employer');
             $table->string('position');
-            $table->text('activities');
+            $table->text('activities')->nullable();
             $table->date('from');
             $table->date('to')->nullable();
             $table->string('project')->nullable();
             $table->string('client')->nullable();
             $table->string('main_features')->nullable();
-            $table->string('location');
+            $table->string('location')->nullable();
             $table->string('country');           
             $table->timestamps();
             $table->foreign('employee_id')->references('id')->on('employees');

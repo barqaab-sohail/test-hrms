@@ -9559,3 +9559,7 @@ input[type=checkbox]:not(:disabled).tabbed:focus~.lever:after,input[type=checkbo
   background-color:#023061;
   color:;
 }
+
+.text_requried{
+  color: red;
+}

@@ -18,7 +18,7 @@ class CreatePromotionsTable extends Migration
             $table->bigInteger('employee_id')->unsigned();
             $table->string('promoted_designation');
             $table->date('effective_date');
-            $table->string('promotion_remarks');
+            $table->string('promotion_remarks')->nullable();
             $table->timestamps();
             $table->foreign('employee_id')->references('id')->on('employees');
         });

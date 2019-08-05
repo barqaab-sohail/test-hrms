@@ -43,8 +43,12 @@ class EmployeeController extends Controller
         DB::transaction(function () use ($request) {              
             //Change Date Format
             $data = $request->all();
+            if($request->filled('date_of_birth')){
             $data ['date_of_birth']= \Carbon\Carbon::parse($request->date_of_birth)->format('Y-m-d');
+            }
+            if($request->filled('cnic_expiry')){
             $data ['cnic_expiry']= \Carbon\Carbon::parse($request->cnic_expiry)->format('Y-m-d');
+            }
         
             $input = employee::create($data);
             $nationality1 = array('nationality_name'=>$request->input('nationality_name'),'employee_id'=>$input->id);
@@ -106,8 +110,13 @@ class EmployeeController extends Controller
 
             //Change Date Format
             $data = $request->all();
+            if($request->filled('date_of_birth')){
             $data ['date_of_birth']= \Carbon\Carbon::parse($request->date_of_birth)->format('Y-m-d');
+            }
+            
+            if($request->filled('cnic_expiry')){
             $data ['cnic_expiry']= \Carbon\Carbon::parse($request->cnic_expiry)->format('Y-m-d');
+            }
 
         employee::findOrFail($id)->update($data);
 

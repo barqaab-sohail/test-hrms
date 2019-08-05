@@ -39,8 +39,9 @@
 		                            <div class="row">
 		                                <div class="col-md-6">
 		                                    <div class="form-group row">
-		                                        <label class="control-label text-right col-md-3">House No.</label>
-		                                        <div class="col-md-9 text">
+		                                        <div class="col-md-12 text">
+		                                        <label class="control-label text-right ">House No.</label>
+		                                        
 		                                            <input type="text"  name="house" value="{!! old('house',isset($permanentAddress->house)?$permanentAddress->house:'')!!}" class="form-control" placeholder="Enter House Name / No." required>
 		                                        </div>
 		                                    </div>
@@ -49,8 +50,9 @@
 		                                <!--/span-->
 		                                <div class="col-md-6">
 		                                    <div class="form-group row">
-		                                        <label class="control-label text-right col-md-3">Street No.</label>
-		                                        <div class="col-md-9">
+		                                        <div class="col-md-12">
+		                                        	<label class="control-label text-right ">Street No.</label>
+		                                        
 		                                            <input type="text"  name="street" value="{!! old('street',isset($permanentAddress->street)?$permanentAddress->street:'')!!}" class="form-control" placeholder="Enter Street Name / No." >
 		                                        </div>
 		                                    </div>
@@ -60,8 +62,9 @@
 		                            <div class="row">
 		                                <div class="col-md-6">
 		                                    <div class="form-group row">
-		                                        <label class="control-label text-right col-md-3">Town / Village</label>
-		                                        <div class="col-md-9">
+		                                        <div class="col-md-12">
+		                                        	<label class="control-label text-right">Town / Village<span class="text_requried">*</span></label>
+		                                        
 		                                            <input type="text"  name="town" value="{!! old('house',isset($permanentAddress->town)?$permanentAddress->town:'')!!}" class="form-control" placeholder="Enter Town / Village" required>
 		                                        </div>
 		                                    </div>
@@ -70,8 +73,9 @@
 		                                <!--/span-->
 		                                <div class="col-md-6">
 		                                    <div class="form-group row">
-		                                        <label class="control-label text-right col-md-3">Tehsil</label>
-		                                        <div class="col-md-9">
+		                                        <div class="col-md-12">
+		                                        	<label class="control-label text-right ">Tehsil</label>
+		                                        
 		                                            <input type="text"  name="tehsil" value="{!! old('tehsil',isset($permanentAddress->tehsil)?$permanentAddress->tehsil:'')!!}" class="form-control" placeholder="Enter Tehsil Name " >
 		                                        </div>
 		                                    </div>
@@ -81,8 +85,9 @@
 		                             <div class="row">
 		                                <div class="col-md-6">
 		                                    <div class="form-group row">
-		                                        <label class="control-label text-right col-md-3">City / District</label>
-		                                        <div class="col-md-9">
+		                                        <div class="col-md-12">
+		                                        	<label class="control-label text-right">City / District<span class="text_requried">*</span></label>
+		                                        
 		                                            <input type="text"  name="city" value="{!! old('city',isset($permanentAddress->city)?$permanentAddress->city:'')!!}" class="form-control" placeholder="Enter City / District Name " required>
 		                                        </div>
 		                                    </div>
@@ -91,8 +96,9 @@
 		                                <!--/span-->
 		                                <div class="col-md-6">
 		                                    <div class="form-group row">
-		                                       <label class="control-label text-right col-md-3">Province</label>
-		                                        <div class="col-md-9">
+		                                       <div class="col-md-12">
+		                                       	<label class="control-label text-right ">Province<span class="text_requried">*</span></label>
+		                                        
 		                                            <input type="text"  name="province" value="{!! old('house',isset($permanentAddress->province)?$permanentAddress->province:'')!!}" class="form-control" placeholder="Enter Province" required>
 		                                        </div>
 
@@ -103,9 +109,16 @@
 		                            <div class="row">
 		                                <div class="col-md-6">
 		                                    <div class="form-group row">
-		                                        <label class="control-label text-right col-md-3">Country</label>
-		                                        <div class="col-md-9">
-		                                            <input type="text"  name="country" value="{!! old('country',isset($permanentAddress->country)?$permanentAddress->country:'')!!}" class="form-control" placeholder="Enter Country Name " required>
+		                                        <div class="col-md-12">
+		                                        	<label class="control-label text-right ">Country<span class="text_requried">*</span></label>
+		                                        
+		                                            	<select  name="country"  class="form-control" required>
+                                                        <option value=""></option>
+                                                        @foreach($countries as $country)
+														<option value="{{$country->name}}" @if($country->name == optional($permanentAddress)->country) selected="selected" @endif>{{$country->name}}</option>
+                                                    	@endforeach 	
+                                                        
+                                                    	</select>
 		                                        </div>
 		                                    </div>
 		                                </div>
@@ -121,8 +134,9 @@
 		                             <div class="row">
 		                                <div class="col-md-6">
 		                                    <div class="form-group row">
-		                                        <label class="control-label text-right col-md-3">Mobile No.</label>
-		                                        <div class="col-md-9">
+		                                        <div class="col-md-12">
+		                                        	<label class="control-label text-right ">Mobile No.<span class="text_requried">*</span></label>
+		                                        
 		                                            <input type="text"  name="mobile" value="{!! old('house',isset($permanentAddress->mobile)?$permanentAddress->mobile:'')!!}" class="form-control" placeholder="Enter Mobile No" required>
 		                                        </div>
 		                                    </div>
@@ -131,8 +145,9 @@
 		                                <!--/span-->
 		                                <div class="col-md-6">
 		                                    <div class="form-group row">
-		                                        <label class="control-label text-right col-md-3">Landline No.</label>
-		                                        <div class="col-md-9">
+		                                        <div class="col-md-12">
+		                                        	<label class="control-label text-right ">Landline No.</label>
+		                                        
 		                                            <input type="text"  name="landline" value="{!! old('landline',isset($permanentAddress->landline)?$permanentAddress->landline:'')!!}" class="form-control" placeholder="Enter Landline No. " >
 		                                        </div>
 												<input type="number" name="employee_id" value="{{session('employee_id')}}"   class="form-control " hidden>
@@ -174,12 +189,13 @@
 		                            
 		                            <h3 class="box-title">Current Address</h3>
 		                            <hr class="m-t-0 m-b-40">
-		                            <div class="row">
+     <div class="row">
 		                                <div class="col-md-6">
 		                                    <div class="form-group row">
-		                                        <label class="control-label text-right col-md-3">House No.</label>
-		                                        <div class="col-md-9">
-		                                            <input type="text"  name="house" value="{!! old('house',isset($currentAddress->house)?$currentAddress->house:'')!!}" class="form-control" placeholder="Enter House Name / No." >
+		                                        <div class="col-md-12 text">
+		                                        <label class="control-label text-right ">House No.</label>
+		                                        
+		                                            <input type="text"  name="house" value="{!! old('house',isset($currentAddress->house)?$currentAddress->house:'')!!}" class="form-control" placeholder="Enter House Name / No." required>
 		                                        </div>
 		                                    </div>
 		                                </div>
@@ -187,8 +203,9 @@
 		                                <!--/span-->
 		                                <div class="col-md-6">
 		                                    <div class="form-group row">
-		                                        <label class="control-label text-right col-md-3">Street No.</label>
-		                                        <div class="col-md-9">
+		                                        <div class="col-md-12">
+		                                        	<label class="control-label text-right ">Street No.</label>
+		                                        
 		                                            <input type="text"  name="street" value="{!! old('street',isset($currentAddress->street)?$currentAddress->street:'')!!}" class="form-control" placeholder="Enter Street Name / No." >
 		                                        </div>
 		                                    </div>
@@ -198,8 +215,9 @@
 		                            <div class="row">
 		                                <div class="col-md-6">
 		                                    <div class="form-group row">
-		                                        <label class="control-label text-right col-md-3">Town / Village</label>
-		                                        <div class="col-md-9">
+		                                        <div class="col-md-12">
+		                                        	<label class="control-label text-right">Town / Village<span class="text_requried">*</span></label>
+		                                        
 		                                            <input type="text"  name="town" value="{!! old('house',isset($currentAddress->town)?$currentAddress->town:'')!!}" class="form-control" placeholder="Enter Town / Village" required>
 		                                        </div>
 		                                    </div>
@@ -208,19 +226,21 @@
 		                                <!--/span-->
 		                                <div class="col-md-6">
 		                                    <div class="form-group row">
-		                                        <label class="control-label text-right col-md-3">Tehsil</label>
-		                                        <div class="col-md-9">
+		                                        <div class="col-md-12">
+		                                        	<label class="control-label text-right ">Tehsil</label>
+		                                        
 		                                            <input type="text"  name="tehsil" value="{!! old('tehsil',isset($currentAddress->tehsil)?$currentAddress->tehsil:'')!!}" class="form-control" placeholder="Enter Tehsil Name " >
 		                                        </div>
 		                                    </div>
 		                                    
 		                                </div>
 		                            </div>
-		                            <div class="row">
+		                             <div class="row">
 		                                <div class="col-md-6">
 		                                    <div class="form-group row">
-		                                        <label class="control-label text-right col-md-3">City / District</label>
-		                                        <div class="col-md-9">
+		                                        <div class="col-md-12">
+		                                        	<label class="control-label text-right">City / District<span class="text_requried">*</span></label>
+		                                        
 		                                            <input type="text"  name="city" value="{!! old('city',isset($currentAddress->city)?$currentAddress->city:'')!!}" class="form-control" placeholder="Enter City / District Name " required>
 		                                        </div>
 		                                    </div>
@@ -229,10 +249,12 @@
 		                                <!--/span-->
 		                                <div class="col-md-6">
 		                                    <div class="form-group row">
-		                                        <label class="control-label text-right col-md-3">Province</label>
-		                                        <div class="col-md-9">
+		                                       <div class="col-md-12">
+		                                       	<label class="control-label text-right ">Province<span class="text_requried">*</span></label>
+		                                        
 		                                            <input type="text"  name="province" value="{!! old('house',isset($currentAddress->province)?$currentAddress->province:'')!!}" class="form-control" placeholder="Enter Province" required>
 		                                        </div>
+
 		                                    </div>
 		                                    
 		                                </div>
@@ -240,9 +262,16 @@
 		                            <div class="row">
 		                                <div class="col-md-6">
 		                                    <div class="form-group row">
-		                                        <label class="control-label text-right col-md-3">Country</label>
-		                                        <div class="col-md-9">
-		                                            <input type="text"  name="country" value="{!! old('country',isset($currentAddress->country)?$currentAddress->country:'')!!}" class="form-control" placeholder="Enter Country Name " required>
+		                                        <div class="col-md-12">
+		                                        	<label class="control-label text-right ">Country<span class="text_requried">*</span></label>
+		                                        
+		                                             <select  name="country"  class="form-control" required>
+                                                        <option value=""></option>
+                                                        @foreach($countries as $country)
+														<option value="{{$country->name}}" @if($country->name == optional($currentAddress)->country) selected="selected" @endif>{{$country->name}}</option>
+                                                    	@endforeach 	
+                                                        
+                                                    </select>
 		                                        </div>
 		                                    </div>
 		                                </div>
@@ -258,8 +287,9 @@
 		                             <div class="row">
 		                                <div class="col-md-6">
 		                                    <div class="form-group row">
-		                                        <label class="control-label text-right col-md-3">Mobile No.</label>
-		                                        <div class="col-md-9">
+		                                        <div class="col-md-12">
+		                                        	<label class="control-label text-right ">Mobile No.<span class="text_requried">*</span></label>
+		                                        
 		                                            <input type="text"  name="mobile" value="{!! old('house',isset($currentAddress->mobile)?$currentAddress->mobile:'')!!}" class="form-control" placeholder="Enter Mobile No" required>
 		                                        </div>
 		                                    </div>
@@ -268,15 +298,14 @@
 		                                <!--/span-->
 		                                <div class="col-md-6">
 		                                    <div class="form-group row">
-		                                        <label class="control-label text-right col-md-3">Landline No.</label>
-		                                        <div class="col-md-9">
-
+		                                        <div class="col-md-12">
+		                                        	<label class="control-label text-right ">Landline No.</label>
+		                                        
 		                                            <input type="text"  name="landline" value="{!! old('landline',isset($currentAddress->landline)?$currentAddress->landline:'')!!}" class="form-control" placeholder="Enter Landline No. " >
 		                                        </div>
 												<input type="number" name="employee_id" value="{{session('employee_id')}}"   class="form-control " hidden>
 												
 												<input type="number" name="type" value="{{1}}"   class="form-control " hidden>
-
 
 		                                    </div>
 		                                    

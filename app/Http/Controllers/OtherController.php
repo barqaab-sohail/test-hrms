@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\StoreOther;
 use App\employee;
 use App\other_information;
 use App\blood_group;
@@ -25,13 +26,20 @@ class OtherController extends Controller
     }
 
     
-    public function update(Request $request, $id)
+    public function update(StoreOther $request, $id)
     {
-     
+      
+      $data = $request->all();
+      if($request->filled('passport_expiry')){
+      $data ['passport_expiry']= \Carbon\Carbon::parse($request->passport_expiry)->format('Y-m-d');
+      }
+      if($request->filled('licence_expiry')){
+      $data ['licence_expiry']= \Carbon\Carbon::parse($request->licence_expiry)->format('Y-m-d');
+      }
 
       other_information::updateOrCreate(
       ['employee_id' => $id],
-      $request->all());
+      $data);
 
       return redirect()->route('other.edit',['id'=>session('employee_id')])->with('success', 'Other Information  is saved succesfully');
 

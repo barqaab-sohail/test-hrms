@@ -46,8 +46,12 @@ class PostingController extends Controller
 	public function store(StorePosting $request){
 
         $data = $request->all();
+        if($request->filled('joining_date')){
         $data ['joining_date']= \Carbon\Carbon::parse($request->joining_date)->format('Y-m-d');
+        }
+        if($request->filled('posting_date')){
         $data ['posting_date']= \Carbon\Carbon::parse($request->posting_date)->format('Y-m-d');         
+        }
         posting::create($data);
         return redirect()->route('posting',['id'=>session('employee_id')])->with('success', 'Data is saved succesfully');
       
@@ -73,8 +77,11 @@ class PostingController extends Controller
     {
     
     $data = $request->all();
-     $data ['joining_date']= \Carbon\Carbon::parse($request->joining_date)->format('Y-m-d');
-    $data ['posting_date']= \Carbon\Carbon::parse($request->posting_date)->format('Y-m-d');  
+        if($request->filled('joining_date')){
+        $data ['joining_date']= \Carbon\Carbon::parse($request->joining_date)->format('Y-m-d');
+        }
+        if($request->filled('posting_date')){
+        $data ['posting_date']= \Carbon\Carbon::parse($request->posting_date)->format('Y-m-d');  
 
      posting::findOrFail($id)->update($data);
      return redirect()->route('posting.edit',['id'=>$id])->with('success', 'Posting is updated succesfully');

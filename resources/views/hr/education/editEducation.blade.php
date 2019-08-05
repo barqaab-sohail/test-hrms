@@ -38,8 +38,9 @@
 		                            <div class="row">
 		                                <div class="col-md-6">
 		                                    <div class="form-group row">
-		                                        <label class="control-label text-right col-md-3">Degree Name</label>
 		                                        <div class="col-md-9">
+		                                        <label class="control-label text-right">Degree Name<span class="text_requried">*</span></label>
+		                                        
 		                                            <input type="text"  name="degree_name" value="{!! old('degree_name', optional($data)->degree_name) !!}"class="form-control" placeholder="Enter Degree Name" required>
 		                                        </div>
 		                                    </div>
@@ -48,8 +49,9 @@
 		                                <!--/span-->
 		                                <div class="col-md-6">
 		                                    <div class="form-group row">
-		                                        <label class="control-label text-right col-md-3">Institute Name</label>
 		                                        <div class="col-md-9">
+		                                        	<label class="control-label text-right ">Institute Name<span class="text_requried">*</span></label>
+		                                        
 		                                            <input type="text" name="institute" value="{!! old('institute', optional($data)->institute) !!}" class="form-control " placeholder="Enter Institute Name" required>
 		                                        </div>
 		                                    </div>
@@ -61,12 +63,14 @@
 		                                <!--/span-->
 		                                <div class="col-md-6">
 		                                    <div class="form-group row">
-		                                        <label class="control-label text-right col-md-3">Marks Obtain</label>
-		                                        <div class="col-md-3">
+		                                        <div class="col-md-6">
+		                                        <label class="control-label text-right">Marks Obtain</label>
+		                                        
 		                                            <input type="text" name="marks_obtain" value="{!! old('marks_obtain', optional($data)->marks_obtain) !!}"   class="form-control " >
 		                                        </div>
-		                                         <label class="control-label text-right col-md-3">Total Marks</label>
-		                                        <div class="col-md-3">
+		                                        <div class="col-md-6">
+		                                        	<label class="control-label text-right">Total Marks</label>
+		                                        
 		                                            <input type="text" name="total_marks" value="{!! old('total_marks', optional($data)->total_marks) !!}"   class="form-control " >
 		                                        </div>
 		                                    </div>
@@ -74,8 +78,9 @@
 		                                <!--/span-->
 		                                <div class="col-md-6">	
 		                                    <div class="form-group row">
-		                                         <label class="control-label text-right col-md-3">Level of Degree</label>
-		                                        <div class="col-md-2">
+		                                        <div class="col-md-8">
+		                                        <label class="control-label text-right">Level of Degree<span class="text_requried">*</span></label>
+		                                        
 		                                            <select  name="level"  class="form-control" required>
 
 													<option value=""></option>
@@ -100,9 +105,8 @@
 		                             <div class="row">
 		                                <div class="col-md-6">
 		                                    <div class="form-group row">
-												<label class="control-label text-right col-md-3">Degree From</label>
-		                                        <div class="col-md-5">
-		                                           <label>Month</label>
+												<div class="col-md-6">
+		                                           <label>Degree Start Month</label>
 		                                           <select  name="from_month"  class="form-control" >
                                                         <option value=""></option>
                                                         @for($m=1; $m<=12; ++$m){
@@ -131,9 +135,9 @@
 		                                <!--/span-->
 		                                <div class="col-md-6">
 		                                    <div class="form-group row">
-		                                        <label class="control-label text-right col-md-3">Degree <br>To</label>
-		                                        <div class="col-md-5">
-		                                           <label>Month</label>
+		                                        
+		                                        <div class="col-md-8">
+		                                           <label>Degree Completion Month</label>
 		                                           <select  name="to_month"  class="form-control" >
                                                         <option value=""></option>
                                                         @for($m=1; $m<=12; ++$m){
@@ -144,7 +148,7 @@
 
 		                                        </div>
 		                                        <div class="col-md-3">
-		                                        <label>Year</label>
+		                                        <label>Year<span class="text_requried">*</span></label>
 		                                            <select  name="to_year"  class="form-control" required>
 
 													<option value=""></option>
@@ -161,20 +165,16 @@
 		                             <div class="row">
 		                                <div class="col-md-6">
 		                                    <div class="form-group row">
-		                                        <label class="control-label text-right col-md-3">Grade</label>
-		                                        <div class="col-md-5">
+		                                        <div class="col-md-4">
+		                                        	<label class="control-label text-right">Grade</label>
+		                                        
 		                                            <input type="text"  name="grade" value="{!! old('grade', optional($data)->grade) !!}" class="form-control" placeholder="Enter Grade" >
 		                                        </div>
-		                                    </div>
-		                                </div>
-		                                
-		                                <!--/span-->
-		                                <div class="col-md-6">
-		                                    <div class="form-group row">
-		                                        <label class="control-label text-right col-md-3">Country</label>
+		                                        <div class="col-md-2">
+		                                        </div>
 		                                        <div class="col-md-6">
-
-
+		                                        	<label class="control-label text-right">Country<span class="text_requried">*</span></label>
+		                                        
 													<select  name="country"  class="form-control" required>
 		                                           	<option value=""></option>
 		                                           	@foreach($countries as $country)
@@ -182,6 +182,15 @@
                                                     @endforeach 	
                                                     </select>
 
+		                                        </div>
+		                                    </div>
+		                                </div>
+		                                
+		                                <!--/span-->
+		                                <div class="col-md-6">
+		                                    <div class="form-group row">
+		                                        <div class="col-md-6">
+		                                        	
 		                                        </div>
 		                                    </div>
 		                                </div>

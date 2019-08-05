@@ -38,8 +38,9 @@
 		                            <div class="row">
 		                                <div class="col-md-7">
 		                                    <div class="form-group row">
-		                                        <label class="control-label text-right col-md-2">Name</label>
-		                                        <div class="col-md-10">
+		                                        <div class="col-md-12">
+		                                        	<label class="control-label text-right ">Name<span class="text_requried">*</span></label>
+		                                        
 		                                            <input type="text"  name="name" value="{!! old('name', optional($data)->name) !!}" class="form-control" placeholder="Enter Name" required>
 		                                        </div>
 		                                    </div>
@@ -48,9 +49,10 @@
 		                                <!--/span-->
 		                                <div class="col-md-5">
 		                                    <div class="form-group row">
-		                                        <label class="control-label text-right col-md-4">Date of Birth</label>
-		                                        <div class="col-md-8">
-		                                            <input type="date" name="date_of_birth" value="{!! old('date_of_birth', optional($data)->date_of_birth) !!}" class="form-control " placeholder="Enter Date of Birth" required>
+		                                        <div class="col-md-12">
+		                                        <label class="control-label text-right">Date of Birth</label>
+		                                        
+		                                            <input type="text" id="date_of_birth" name="date_of_birth" value="{!! old('date_of_birth', optional($data)->date_of_birth) !!}" class="form-control " placeholder="Enter Date of Birth" readonly>
 		                                        </div>
 		                                    </div>
 		                                </div>
@@ -60,8 +62,9 @@
 		                             <div class="row">
 		                                <div class="col-md-7">
 		                                    <div class="form-group row">
-		                                        <label class="control-label text-right col-md-2">Relation</label>
-		                                        <div class="col-md-10">
+		                                        <div class="col-md-12">
+		                                        	<label class="control-label text-right ">Relation<span class="text_requried">*</span></label>
+		                                        
 		                                            <input type="text"  name="relation" value="{!! old('relation', optional($data)->relation) !!}" class="form-control"  placeholder="Enter Relation with Employee" required>
 		                                        </div>
 		                                       		                                       
@@ -69,8 +72,9 @@
 		                                </div>
 		                                <div class="col-md-5">
 		                                    <div class="form-group row">
-		                                        <label class="control-label text-right col-md-4">Gender</label>
-		                                        <div class="col-md-8">
+		                                        <div class="col-md-6">
+		                                        	<label class="control-label text-right">Gender<span class="text_requried">*</span></label>
+		                                        
 		                                            <select  name="gender"  class="form-control" required>
                                                         @foreach($dependentIds as $dependentId)
 		                                             	<option value="Male" @if($dependentId->gender == 'Male') selected="selected" @endif>Male</option>
@@ -159,7 +163,13 @@
  @push('scripts')
         <script>
             $(document).ready(function(){
-			
+				$( "#date_of_birth" ).datepicker({
+			      dateFormat: 'dd-MM-yy',
+			      yearRange: '1960:'+ (new Date().getFullYear()),
+			      changeMonth: true,
+			      changeYear: true
+			    });
+
 			});
         </script>
     @endpush

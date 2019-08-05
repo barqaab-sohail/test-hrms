@@ -37,8 +37,8 @@
 		                            <div class="row">
 		                                <div class="col-md-6">
 		                                    <div class="form-group row">
-		                                        <label class="control-label text-right col-md-3">Email</label>
-		                                        <div class="col-md-9">
+												<div class="col-md-12">
+		                                        	<label class="control-label text-right">Email<span class="text_requried">*</span></label>
 		                                            <input type="email"  name="email" value="{!! old('email',isset($employee->user->email)?$employee->user->email:'')!!}" class="form-control" placeholder="Enter Email" required>
 		                                        </div>
 		                                    </div>
@@ -48,8 +48,9 @@
 		                                <div class="col-md-6">
 		                                    <div class="form-group row">
 		                                  @can('admin', Auth::user())
-		                                        <label class="control-label text-right col-md-3">User Role</label>
-		                                        <div class="col-md-5">
+		                                        <div class="col-md-8">
+		                                        	<label class="control-label text-right ">User Role</label>
+		                                        
 		                                            <select  name="role_id"  class="form-control" >
                                                         <option value="{{5}}"></option>
                                                         @foreach($roles as $role)

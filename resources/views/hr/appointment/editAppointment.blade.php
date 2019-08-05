@@ -41,8 +41,8 @@
 		                            <div class="row">
 		                                <div class="col-md-6">
 		                                    <div class="form-group row">
-		                                        <label class="control-label text-right col-md-3">Reference No.</label>
-		                                        <div class="col-md-9">
+		                                        <div class="col-md-12">
+		                                        	<label class="control-label text-right">Reference No.<span class="text_requried">*</span></label>
 		                                            <input type="text"  name="reference_no" value="{!! old('reference_no',isset($employee->appointment->reference_no)?$employee->appointment->reference_no:'')!!}" class="form-control" placeholder="Enter Appointment Letter Reference No." required>
 		                                        </div>
 		                                    </div>
@@ -51,8 +51,9 @@
 		                                <!--/span-->
 		                                <div class="col-md-6">
 		                                    <div class="form-group row">
-		                                        <label class="control-label text-right col-md-3">Letter Date</label>
-		                                        <div class="col-md-7">
+		                                       	<div class="col-md-12">
+		                                        	<label class="control-label text-right">Letter Date<span class="text_requried">*</span></label>
+		                                       
 		                                            <input type="text"  id="appointment_date" name="appointment_date" value="{!! old('appointment_date',isset($employee->appointment->appointment_date)?$employee->appointment->appointment_date:'')!!}" class="form-control" placeholder="Enter Appointment Letter Date " readonly required>
 		                                        </div>
 		                                    </div>
@@ -63,8 +64,9 @@
 									             <div class="row">
 		                                <div class="col-md-6">
 		                                    <div class="form-group row">
-		                                        <label class="control-label text-right col-md-3">Designation</label>
-		                                        <div class="col-md-9">
+		                                        <div class="col-md-12">
+			                                        <label class="control-label text-right">Designation<span class="text_requried">*</span></label>
+		                                        
 													<select  name="designation"  class="form-control" required>
                                                       <option></option>
                                                      @foreach($designations as $designation)
@@ -82,8 +84,9 @@
 		                                <!--/span-->
 		                                <div class="col-md-6">
 		                                   <div class="form-group row">
-		                                        <label class="control-label text-right col-md-3">Expiry Date</label>
-		                                        <div class="col-md-7">
+		                                        <div class="col-md-12">
+		                                        <label class="control-label text-right">Expiry Date</label>
+		                                        
 		                                            <input type="text"  id="expiry_date" name="expiry_date" value="{!! old('expiry_date',isset($employee->appointment->expiry_date)?$employee->appointment->expiry_date:'')!!}" class="form-control" placeholder="Enter Expiry Date of Appointment" readonly >
 
 		                                        </div>
@@ -96,8 +99,9 @@
 		                                <!--/span-->
 		                                <div class="col-md-6">
 		                                    <div class="form-group row">
-		                                        <label class="control-label text-right col-md-3">Category</label>
 		                                        <div class="col-md-3">
+		                                        	<label class="control-label text-right">Category<span class="text_requried">*</span></label>
+		                                        
 		                                            <select  name="category"  class="form-control" required>
                                                         <option value=""></option>
                                                         @if(isset($employee->appointment->category)){
@@ -111,8 +115,9 @@
                                                         @endif
                                                     </select>
 		                                        </div>
-		                                         <label class="control-label text-right col-md-3">Grade</label>
 		                                        <div class="col-md-3">
+		                                        	<label class="control-label text-right">Grade</label>
+		                                        
 		                                            <select  name="grade"  class="form-control" >
 		                                            @if(isset($employee->appointment->grade))
 		                                            <option value="{{$employee->appointment->grade}}">{{$employee->appointment->grade}}</option>
@@ -123,17 +128,13 @@
 													@for ($i = 1; $i < 15; $i++)
     												<option value="{{$i}}">{{ $i }}</option>
 													@endfor
-													
+
 		                                            </select>
 
 		                                        </div>
-		                                    </div>
-		                                </div>
-		                                <!--/span-->
-		                                <div class="col-md-6">
-		                                    <div class="form-group row">
-		                                         <label class="control-label text-right col-md-3">Letter Type</label>
-		                                        <div class="col-md-3">
+		                                        <div class="col-md-6">
+		                                        	<label class="control-label text-right">Letter Type<span class="text_requried">*</span></label>
+		                                        
 		                                            <select  name="appointment_letter_type"  class="form-control" required>
                                                         <option value=""></option>
                                                         @if(isset($employee->appointment->appointment_letter_type)){
@@ -145,6 +146,15 @@
                                                         <option value="2 Pages">Two Pages</option>
                                                         @endif
                                                     </select>
+
+		                                        </div>
+		                                    </div>
+		                                </div>
+		                                <!--/span-->
+		                                <div class="col-md-6">
+		                                    <div class="form-group row">
+		                                        <div class="col-md-3">
+		                                        
 		                                        </div>
 		                                         
 		                                        <div class="col-md-3">
@@ -187,12 +197,14 @@
 		                                <!--/span-->
 		                                <div class="col-md-6">
 		                                    <div class="form-group row">
-		                                        <label class="control-label text-right col-md-3">Basic Pay</label>
-		                                        <div class="col-md-3">
+		                                        <div class="col-md-6">
+		                                        	<label class="control-label text-right">Basic Pay</label>
+		                                        
 		                                            <input type="number" name="basic_pay" value="{!! old('basic_pay',isset($salary->basic_pay)?$salary->basic_pay:'')!!}"class="form-control prc" >
 		                                        </div>
-		                                         <label class="control-label text-right col-md-3">House Rent</label>
-		                                        <div class="col-md-3">
+		                                        <div class="col-md-6">
+		                                        	<label class="control-label text-right">House Rent</label>
+		                                        
 		                                            <input type="number" name="house_rent" value="{!! old('house_rent',isset($salary->house_rent)?$salary->house_rent:'')!!}"   class="form-control prc" >
 		                                        </div>
 		                                    </div>
@@ -200,12 +212,14 @@
 		                                <!--/span-->
 		                                <div class="col-md-6">
 		                                    <div class="form-group row">
-		                                         <label class="control-label text-right col-md-3">Dearness Allowance</label>
-		                                        <div class="col-md-3">
+		                                        <div class="col-md-6">
+		                                        	<label class="control-label text-right">Dearness Allowance</label>
+		                                        
 		                                            <input type="number" name="dearness_allowance" value="{!! old('dearness_allowance',isset($salary->dearness_allowance)?$salary->dearness_allowance:'')!!}"   class="form-control prc"  >
 		                                        </div>
-		                                         <label class="control-label text-right col-md-3">Adhoc 2009</label>
-		                                        <div class="col-md-3">
+		                                        <div class="col-md-6">
+		                                        	<label class="control-label text-right">Adhoc 2009</label>
+		                                        
 		                                            <input type="number" name="adhoc_2009" value="{!! old('adhoc_2009',isset($salary->adhoc_2009)?$salary->adhoc_2009:'')!!}"  class="form-control prc" >
                                             
 		                                        </div>
@@ -218,12 +232,14 @@
 		                                <!--/span-->
 		                                <div class="col-md-6">
 		                                    <div class="form-group row">
-		                                        <label class="control-label text-right col-md-3">Adhoc 2010</label>
-		                                        <div class="col-md-3">
+		                                        <div class="col-md-6">
+		                                        	<label class="control-label text-right">Adhoc 2010</label>
+		                                        
 		                                            <input type="number" name="adhoc_2010" value="{!! old('adhoc_2010',isset($salary->adhoc_2010)?$salary->adhoc_2010:'')!!}"   class="form-control prc" >
 		                                        </div>
-		                                         <label class="control-label text-right col-md-3">Adhoc 2012</label>
-		                                        <div class="col-md-3">
+		                                        <div class="col-md-6">
+		                                        	<label class="control-label text-right">Adhoc 2012</label>
+		                                        
 		                                            <input type="text" name="adhoc_2012" value="{!! old('adhoc_2012',isset($salary->adhoc_2012)?$salary->adhoc_2012:'')!!}"  class="form-control prc" >
 		                                        </div>
 		                                    </div>
@@ -231,12 +247,14 @@
 		                                <!--/span-->
 		                                <div class="col-md-6">
 		                                    <div class="form-group row">
-		                                         <label class="control-label text-right col-md-3">Adhoc 2013</label>
-		                                        <div class="col-md-3">
+		                                        <div class="col-md-6">
+		                                        	<label class="control-label text-right">Adhoc 2013</label>
+		                                        
 		                                            <input type="number" name="adhoc_2013" value="{!! old('adhoc_2013',isset($salary->adhoc_2013)?$salary->adhoc_2013:'')!!}"   class="form-control prc"  >
 		                                        </div>
-		                                         <label class="control-label text-right col-md-3">Field Allowance</label>
-		                                        <div class="col-md-3">
+		                                        <div class="col-md-6">
+		                                        <label class="control-label text-right">Field Allowance</label>
+		                                        
 		                                            <input type="number" name="field_allowance" value="{!! old('field_allowance',isset($salary->field_allowance)?$salary->field_allowance:'')!!}"   class="form-control prc" >
 		                                            
 		                                        </div>
@@ -249,13 +267,15 @@
 		                                <!--/span-->
 		                                <div class="col-md-6">
 		                                    <div class="form-group row">
-		                                        <label class="control-label text-right col-md-3">Other Allowance</label>
-		                                        <div class="col-md-3">
+		                                        <div class="col-md-6">
+		                                        	<label class="control-label text-right">Other Allowance</label>
+		                                        
 		                                            <input type="number" name="other_allowance" value="{!! old('other_allowance',isset($salary->other_allowance)?$salary->other_allowance:'')!!}" class="form-control prc" >
 		                                        </div>
-		                                         <label class="control-label text-right col-md-3">Gross Salary</label>
-		                                        <div class="col-md-3">
-		                                            <input type="text" name="total" id="total" value="{!! old('total',isset($salary->total)?$salary->total:'')!!}"   class="form-control " >
+		                                        <div class="col-md-6">
+		                                        	<label class="control-label text-right">Gross Salary<span class="text_requried">*</span></label>
+		                                        
+		                                            <input type="text" name="total" id="total" value="{!! old('total',isset($salary->total)?$salary->total:'')!!}"   class="form-control " required>
 		                                        </div>
 		                                    </div>
 		                                </div>
@@ -273,10 +293,9 @@
 		                                <!--/span-->
 		                                <div class="col-md-12">
 		                                    <div class="form-group row">
-		                                    	<div class="col-md-3">
-													<label class="control-label text-right col-md-12">Remakrs</label>
-												</div>
-												<div class="col-md-7">
+		                                    	<div class="col-md-12">
+													<label class="control-label text-right">Remakrs</label>
+																								
 			                                        <input type="text"  name="salary_remarks" value="{!! old('remarks',isset($salary->salary_remarks)?$salary->salary_remarks:'')!!}" class="form-control" placeholder="Enter Remarks." >
 			                                    </div>
 		                                    </div>

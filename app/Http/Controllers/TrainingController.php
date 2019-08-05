@@ -32,8 +32,12 @@ class TrainingController extends Controller
         
 
         $data = $request->all();
+        if($request->filled('from')){
         $data ['from']= \Carbon\Carbon::parse($request->from)->format('Y-m-d');
+        }
+        if($request->filled('to')){
         $data ['to']= \Carbon\Carbon::parse($request->to)->format('Y-m-d');
+        }
 
         training::create($data);
         return redirect()->route('training',['id'=>session('employee_id')])->with('success', 'Data is saved succesfully');
@@ -53,9 +57,13 @@ class TrainingController extends Controller
     public function update(StoreTraining $request, $id)
     {
      
-    $data = $request->all();
-    $data ['from']= \Carbon\Carbon::parse($request->from)->format('Y-m-d');
-    $data ['to']= \Carbon\Carbon::parse($request->to)->format('Y-m-d');
+     $data = $request->all();
+        if($request->filled('from')){
+        $data ['from']= \Carbon\Carbon::parse($request->from)->format('Y-m-d');
+        }
+        if($request->filled('to')){
+        $data ['to']= \Carbon\Carbon::parse($request->to)->format('Y-m-d');
+        }
     
     training::findOrFail($id)->update($data);
      return redirect()->route('training.edit',['id'=>$id])->with('success', 'training is updated succesfully');

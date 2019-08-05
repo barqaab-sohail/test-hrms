@@ -38,9 +38,10 @@
 		                            <div class="row">
 		                                <div class="col-md-7">
 		                                    <div class="form-group row">
-		                                        <label class="control-label text-right col-md-3">Driving Licence</label>
-		                                        <div class="col-md-9">
-		                                            <input type="text"  name="driving_licence" value="{!! old('driving_licence',isset($employee->other_information->driving_licence)?$employee->other_information->driving_licence:'')!!}" class="form-control" placeholder="Enter Driving Licence No." required>
+		                                        <div class="col-md-12">
+		                                        	<label class="control-label text-right ">Driving Licence</label>
+		                                        
+		                                            <input type="text"  name="driving_licence" value="{!! old('driving_licence',isset($employee->other_information->driving_licence)?$employee->other_information->driving_licence:'')!!}" class="form-control" placeholder="Enter Driving Licence No." >
 		                                        </div>
 		                                    </div>
 		                                </div>
@@ -48,9 +49,10 @@
 		                                <!--/span-->
 		                                <div class="col-md-5">
 		                                    <div class="form-group row">
-		                                        <label class="control-label text-right col-md-3">Expiry Date</label>
-		                                        <div class="col-md-7">
-		                                            <input type="date"  name="licence_expiry" value="{!! old('licence_expiry',isset($employee->other_information->licence_expiry)?$employee->other_information->licence_expiry:'')!!}" class="form-control" placeholder="Enter Driving Licence Expiry" required>
+		                                        <div class="col-md-12">
+		                                        <label class="control-label text-right">Expiry Date</label>
+		                                        
+		                                            <input type="text"  id="licence_expiry" name="licence_expiry" value="{!! old('licence_expiry',isset($employee->other_information->licence_expiry)?$employee->other_information->licence_expiry:'')!!}" class="form-control" placeholder="Enter Driving Licence Expiry" readonly>
 		                                        </div>
 		                                    </div>
 		                                    
@@ -61,9 +63,10 @@
 		                            <div class="row">
 		                                <div class="col-md-7">
 		                                    <div class="form-group row">
-		                                        <label class="control-label text-right col-md-3">Disability</label>
-		                                        <div class="col-md-9">
-		                                            <input type="text"  name="disability" value="{!! old('disability',isset($employee->other_information->disability)?$employee->other_information->disability:'')!!}" class="form-control" placeholder="Enter Disability Detail" required>
+		                                        <div class="col-md-12">
+		                                        <label class="control-label text-right ">Disability</label>
+		                                        
+		                                            <input type="text"  name="disability" value="{!! old('disability',isset($employee->other_information->disability)?$employee->other_information->disability:'')!!}" class="form-control" placeholder="Enter Disability Detail" >
 		                                        </div>
 		                                    </div>
 		                                </div>
@@ -71,8 +74,9 @@
 		                                <!--/span-->
 		                                <div class="col-md-5">
 		                                    <div class="form-group row">
-		                                        <label class="control-label text-right col-md-3">Blood Group</label>
-		                                        <div class="col-md-7">
+		                                        <div class="col-md-12">
+		                                        <label class="control-label text-right ">Blood Group</label>
+		                                        
 		                                            <select  name="blood_group"  class="form-control" required>
                                                         <option value=""></option>
                                                         @foreach($blood_groups as $blood_group)
@@ -94,9 +98,10 @@
 		                            <div class="row">
 		                                <div class="col-md-7">
 		                                    <div class="form-group row">
-		                                        <label class="control-label text-right col-md-3">Passport No</label>
-		                                        <div class="col-md-9">
-		                                            <input type="text"  name="passport_no" value="{!! old('passport_no',isset($employee->other_information->passport_no)?$employee->other_information->passport_no:'')!!}" class="form-control" placeholder="Enter Passport No." required>
+		                                        <div class="col-md-12">
+		                                        <label class="control-label text-right ">Passport No</label>
+		                                        
+		                                            <input type="text"  name="passport_no" value="{!! old('passport_no',isset($employee->other_information->passport_no)?$employee->other_information->passport_no:'')!!}" class="form-control" placeholder="Enter Passport No." >
 		                                        </div>
 		                                    </div>
 		                                </div>
@@ -104,9 +109,10 @@
 		                                <!--/span-->
 		                                <div class="col-md-5">
 		                                    <div class="form-group row">
-		                                        <label class="control-label text-right col-md-3">Expiry Date</label>
-		                                        <div class="col-md-7">
-		                                            <input type="date"  name="passport_expiry" value="{!! old('passport_expiry',isset($employee->other_information->passport_expiry)?$employee->other_information->passport_expiry:'')!!}" class="form-control" placeholder="Enter Passport Expiry" required>
+		                                        <div class="col-md-12">
+		                                        <label class="control-label text-right ">Expiry Date</label>
+		                                        
+		                                            <input type="text"  id="passport_expiry" name="passport_expiry" value="{!! old('passport_expiry',isset($employee->other_information->passport_expiry)?$employee->other_information->passport_expiry:'')!!}" class="form-control" placeholder="Enter Passport Expiry" readonly>
 		                                        </div>
 		                                    </div>
 		                                    <input type="text"  name="employee_id" value="{{session('employee_id')}}
@@ -140,6 +146,12 @@
  @push('scripts')
         <script>
         $(document).ready(function(){
+        	 $( "#passport_expiry, #licence_expiry" ).datepicker({
+		      dateFormat: 'dd-MM-yy',
+		      yearRange:  new Date().getFullYear()+':'+(new Date().getFullYear()+15),
+		      changeMonth: true,
+		      changeYear: true
+		    });
             
         });
         </script>

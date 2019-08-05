@@ -38,8 +38,9 @@
 		                            <div class="row">
 		                                <div class="col-md-6">
 		                                    <div class="form-group row">
-		                                        <label class="control-label text-right col-md-3">Name</label>
-		                                        <div class="col-md-9">
+		                                        <div class="col-md-12">
+		                                        	<label class="control-label text-right">Name<span class="text_requried">*</span></label>
+		                                        
 		                                            <input type="text"  name="name" value="{{ old('name') }}" class="form-control" placeholder="Enter Name" required>
 		                                        </div>
 		                                    </div>
@@ -48,8 +49,9 @@
 		                                <!--/span-->
 		                                <div class="col-md-6">
 		                                    <div class="form-group row">
-		                                        <label class="control-label text-right col-md-3">Relation</label>
-		                                        <div class="col-md-9">
+		                                        <div class="col-md-12">
+		                                        	<label class="control-label text-right">Relation</label>
+		                                        
 		                                            <input type="text" name="relation" value="{{ old('relation') }}" class="form-control " placeholder="Enter Relation Name" required>
 		                                        </div>
 		                                    </div>
@@ -60,8 +62,9 @@
 		                             <div class="row">
 		                                <div class="col-md-6">
 		                                    <div class="form-group row">
-		                                        <label class="control-label text-right col-md-3">Mobile No.</label>
-		                                        <div class="col-md-9">
+		                                        <div class="col-md-12">
+		                                        	<label class="control-label text-right">Mobile No.<span class="text_requried">*</span></label>
+		                                        
 		                                            <input type="text"  name="mobile" value="{{ old('mobile') }}" class="form-control"  required>
 		                                        </div>
 		                                       
@@ -70,8 +73,9 @@
 		                                </div>
 		                                <div class="col-md-6">
 		                                    <div class="form-group row">
-		                                        <label class="control-label text-right col-md-3">Landline No.</label>
-		                                        <div class="col-md-9">
+		                                        <div class="col-md-12">
+		                                        	<label class="control-label text-right">Landline No.</label>
+		                                        
 		                                            <input type="text"  name="landline" value="{{ old('landline') }}" class="form-control"  >
 		                                        </div>
 		                                       

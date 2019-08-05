@@ -30,8 +30,12 @@ class ExperienceController extends Controller
         
 
         $data = $request->all();
+        if($request->filled('from')){
         $data ['from']= \Carbon\Carbon::parse($request->from)->format('Y-m-d');
+        }
+        if($request->filled('to')){
         $data ['to']= \Carbon\Carbon::parse($request->to)->format('Y-m-d');
+        }
         Experience::create($data);
         return redirect()->route('experience',['id'=>session('employee_id')])->with('success', 'Data is saved succesfully');
       
@@ -47,8 +51,14 @@ class ExperienceController extends Controller
     
     public function update(StoreExperience $request, $id)
     {
-     
-     experience::findOrFail($id)->update($request->all());
+        $data = $request->all();
+        if($request->filled('from')){
+        $data ['from']= \Carbon\Carbon::parse($request->from)->format('Y-m-d');
+        }
+        if($request->filled('to')){
+        $data ['to']= \Carbon\Carbon::parse($request->to)->format('Y-m-d');
+        }
+     experience::findOrFail($id)->update($data);
      return redirect()->route('experience.edit',['id'=>$id])->with('success', 'Experience is updated succesfully');
     }
 

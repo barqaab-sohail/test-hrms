@@ -25,7 +25,7 @@ class StoreTraining extends FormRequest
     {
                    
         return [
-         'institute' => 'required|max:255',
+         'title' => 'required|max:255',
          'country' => 'required|max:255',
          'from' => 'nullable|date',
          'to' => 'nullable|date|after:from',

@@ -38,8 +38,9 @@
 		                            <div class="row">
 		                                <div class="col-md-7">
 		                                    <div class="form-group row">
-		                                        <label class="control-label text-right col-md-3">Employer</label>
-		                                        <div class="col-md-9">
+		                                        <div class="col-md-12">
+		                                        <label class="control-label text-right">Employer<span class="text_requried">*</span></label>
+		                                        
 		                                            <input type="text"  name="employer" value="{{ old('employer') }}" class="form-control" placeholder="Enter Employer Name" required>
 		                                        </div>
 		                                    </div>
@@ -48,8 +49,9 @@
 		                                <!--/span-->
 		                                <div class="col-md-5">
 		                                    <div class="form-group row">
-		                                        <label class="control-label text-right col-md-3">Position</label>
-		                                        <div class="col-md-9">
+		                                        <div class="col-md-12">
+		                                        	<label class="control-label text-right">Position<span class="text_requried">*</span></label>
+		                                        
 		                                            <input type="text" name="position" value="{{ old('position') }}" class="form-control " placeholder="Enter Position Name" required>
 		                                        </div>
 		                                    </div>
@@ -60,13 +62,15 @@
 		                             <div class="row">
 		                                <div class="col-md-7">
 		                                    <div class="form-group row">
-		                                        <label class="control-label text-right col-md-3">From</label>
-		                                        <div class="col-md-4">
-		                                            <input type="text" id="from" name="from" value="{{ old('from') }}" class="form-control"  required>
+		                                        <div class="col-md-6">
+		                                        	<label class="control-label text-right">From<span class="text_requried">*</span></label>
+		                                        
+		                                            <input type="text" id="from" name="from" value="{{ old('from') }}" class="form-control" readonly required>
 		                                        </div>
-		                                        <label class="control-label text-right col-md-1">To</label>
-		                                        <div class="col-md-4">
-		                                            <input type="text" id="to" name="to" value="{{ old('to') }}" class="form-control"  required>
+		                                        <div class="col-md-6">
+		                                        <label class="control-label text-right">To<span class="text_requried">*</span></label>
+		                                        
+		                                            <input type="text" id="to" name="to" value="{{ old('to') }}" class="form-control" readonly required>
 		                                        </div>
 		                                    </div>
 		                                </div>
@@ -74,8 +78,9 @@
 		                                <!--/span-->
 		                                <div class="col-md-5">
 		                                    <div class="form-group row">
-		                                        <label class="control-label text-right col-md-3">Assignment Name</label>
-		                                        <div class="col-md-9">
+		                                        <div class="col-md-12">
+		                                        	<label class="control-label text-right">Assignment Name</label>
+		                                       
 		                                            <input type="text" name="project" value="{{ old('project') }}" class="form-control">
 		                                        </div>
 		                                    </div>
@@ -84,9 +89,12 @@
 		                            <div class="row">
 		                                <div class="col-md-7">
 		                                    <div class="form-group row">
-		                                        <label class="control-label text-right col-md-3">Assignment Location</label>
-		                                        <div class="col-md-9">
-		                                            <input type="text"  name="location" value="{{ old('location') }}" class="form-control" placeholder="Enter Location" required>
+		                                        <div class="col-md-12">
+
+		                                         <label class="control-label text-right">Client</label>
+		                                       
+		                                             <input type="text"  name="client" value="{{ old('client') }}" class="form-control" placeholder="Enter Client Name" >
+		                                       
 		                                        </div>
 		                                    </div>
 		                                </div>
@@ -94,9 +102,10 @@
 		                                <!--/span-->
 		                                <div class="col-md-5">
 		                                    <div class="form-group row">
-		                                        <label class="control-label text-right col-md-3">Client</label>
-		                                        <div class="col-md-8">
-		                                             <input type="text"  name="client" value="{{ old('client') }}" class="form-control" placeholder="Enter Client Name" required>
+		                                        <div class="col-md-11">
+		                                       		 <label class="control-label text-right">Assignment Location</label>
+		                                        
+		                                            <input type="text"  name="location" value="{{ old('location') }}" class="form-control" placeholder="Enter Location">
 		                                        </div>
 		                                    </div>
 		                                </div>
@@ -112,8 +121,9 @@
 		                                <!--/span-->
 		                                <div class="col-md-5">
 		                                    <div class="form-group row">
-		                                        <label class="control-label text-right col-md-3">Country</label>
-		                                        <div class="col-md-8">
+		                                        <div class="col-md-11">
+		                                        	<label class="control-label text-right ">Country<span class="text_requried">*</span></label>
+		                                        
 		                                             <select  name="country"  class="form-control" required>
                                                         <option value=""></option>
                                                         @foreach($countries as $country)
@@ -129,8 +139,9 @@
 		                                <!--/span-->
 		                                <div class="col-md-12">
 		                                    <div class="form-group row">
-		                                        <label class="control-label text-right col-md-2">Main Features</label>
-		                                        <div class="col-md-9">
+		                                        <div class="col-md-12">
+		                                        <label class="control-label text-right">Main Features</label>
+		                                        
 		                                         <textarea  rows=1 cols=5 id="main_features" name="main_features" class="form-control " >{{ old('main_features') }}</textarea>
 		                                        												
 		                                        </div>  
@@ -144,8 +155,9 @@
 		                                <!--/span-->
 		                                <div class="col-md-12">
 		                                    <div class="form-group row">
-		                                        <label class="control-label text-right col-md-2">Activities</label>
-		                                        <div class="col-md-9">
+		                                        <div class="col-md-12">
+		                                        	<label class="control-label text-right">Activities</label>
+		                                        
 		                                         <textarea  rows=1 cols=5 id="activities" name="activities" class="form-control " >{{ old('activities') }}</textarea>
 		                                        
 												 <input type="number" name="employee_id" value="{{session('employee_id')}}"   class="form-control " hidden>

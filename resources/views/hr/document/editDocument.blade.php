@@ -36,8 +36,9 @@
 		                            <div class="row">
 		                                <div class="col-md-7">
 		                                    <div class="form-group row">
-		                                        <label class="control-label text-right col-md-3">Document Title</label>
-		                                        <div class="col-md-7">
+		                                        <div class="col-md-12">
+		                                        <label class="control-label text-right ">Document Name<span class="text_requried">*</span></label>
+		                                        
 		                                             <select  name="document_name" id="document_name"    class="form-control" required>
 
                                                        
@@ -57,8 +58,9 @@
 		                                <!--/span-->
 		                                <div class="col-md-5">
 		                                    <div class="form-group row">
-		                                        <label class="control-label text-right col-md-4">Reference No.</label>
-		                                        <div class="col-md-8">
+		                                        <div class="col-md-12">
+		                                        <label class="control-label text-right">Reference No.</label>
+		                                        
 		                                            <input type="text" name="reference_no" value="{!! old('reference_no', optional($data)->reference_no) !!}" class="form-control " placeholder="Enter Reference No" >
 		                                        </div>
 		                                    </div>
@@ -69,8 +71,9 @@
 		                             <div class="row">
 		                                <div class="col-md-7">
 		                                    <div class="form-group row">
-		                                        <label class="control-label text-right col-md-3">Date</label>
 		                                        <div class="col-md-6">
+		                                        <label class="control-label text-right">Date</label>
+		                                        
 		                                            <input ype="text"  id="date" name="date" value="{!! old('date', optional($data)->date) !!}" class="form-control" readonly >
 		                                        </div>
 		                                       
@@ -92,7 +95,7 @@
 		                                		<input type="file"  name="document" id="wizard-picture" class=""  hidden>
 		                                				                                		
 
-				                                <h6 id="h6" class="card-title m-t-10">Click On Image to Change New Document</h6>
+				                                <h6 id="h6" class="card-title m-t-10">Click On Image to Change New Document<span class="text_requried">*</span></h6>
 		                                
 					                            </center>
 		                                       

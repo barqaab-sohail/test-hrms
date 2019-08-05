@@ -36,8 +36,9 @@
 		                            <div class="row">
 		                                <div class="col-md-7">
 		                                    <div class="form-group row">
-		                                        <label class="control-label text-right col-md-3">Document Title</label>
-		                                        <div class="col-md-7">
+		                                        <div class="col-md-12">
+		                                        	<label class="control-label text-right">Document Name<span class="text_requried">*</span></label>
+		                                        
 		                                             <select  name="document_name" id="document_name"    class="form-control" required>
                                                         <option value=""></option>
                                                         <option value="CNIC Front"  {{ old('CNIC Front') == "CNIC Front" ? 'selected' : '' }}>CNIC Front </option>
@@ -54,8 +55,9 @@
 		                                <!--/span-->
 		                                <div class="col-md-5">
 		                                    <div class="form-group row">
-		                                        <label class="control-label text-right col-md-4">Reference No.</label>
-		                                        <div class="col-md-8">
+		                                        <div class="col-md-12">
+		                                        	<label class="control-label text-right">Reference No.</label>
+		                                        
 		                                            <input type="text" name="reference_no" value="{{ old('reference_no') }}" class="form-control " placeholder="Enter Reference No" >
 		                                        </div>
 		                                    </div>
@@ -66,8 +68,9 @@
 		                             <div class="row">
 		                                <div class="col-md-7">
 		                                    <div class="form-group row">
-		                                        <label class="control-label text-right col-md-3">Date</label>
 		                                        <div class="col-md-6">
+		                                        	<label class="control-label text-right ">Date</label>
+		                                        
 		                                            <input type="text"  id="date" name="date" value="{{ old('date') }}" class="form-control" readonly  >
 		                                        </div>
 		                                       
@@ -86,7 +89,7 @@
 		                                		<input type="file"  name="document" id="view" class="" required hidden>
 		                                				                                		
 
-				                                <h6 id="h6" class="card-title m-t-10">Click On Image to Add Document</h6>
+				                                <h6 id="h6" class="card-title m-t-10">Click On Image to Add Document<span class="text_requried">*</span></h6>
 		                                
 					                            </center>
 		                                       

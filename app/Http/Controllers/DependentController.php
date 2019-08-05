@@ -26,7 +26,9 @@ class DependentController extends Controller
 	public function store(Request $request){
 
        $data = $request->all();
+       if($request->filled('date_of_birth')){
        $data ['date_of_birth']= \Carbon\Carbon::parse($request->date_of_birth)->format('Y-m-d');
+        }
 
              
          $request->validate([
@@ -49,10 +51,14 @@ class DependentController extends Controller
     
     public function update(Request $request, $id)
     {
-     
-     dependent::findOrFail($id)->update($request->all());
+      $data = $request->all();
+       if($request->filled('date_of_birth')){
+       $data ['date_of_birth']= \Carbon\Carbon::parse($request->date_of_birth)->format('Y-m-d');
+        }
+     dependent::findOrFail($id)->update($data);
      return redirect()->route('dependent.edit',['id'=>$id])->with('success', 'Dependent Detail is updated succesfully');
     }
+    
     public function delete(Request $request, $id)
     {
     dependent::findOrFail($id)->delete(); 

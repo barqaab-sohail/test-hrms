@@ -38,8 +38,9 @@
 		                            <div class="row">
 		                                <div class="col-md-7">
 		                                    <div class="form-group row">
-		                                        <label class="control-label text-right col-md-2">Name of Bank</label>
-		                                        <div class="col-md-10">
+		                                        <div class="col-md-12">
+		                                        	<label class="control-label text-right">Name of Bank<span class="text_requried">*</span></label>
+		                                        
 		                                            <input type="text"  name="name" value="{{ old('name') }}" class="form-control" placeholder="Enter Bank Name" required>
 		                                        </div>
 		                                    </div>
@@ -48,8 +49,9 @@
 		                                <!--/span-->
 		                                <div class="col-md-5">
 		                                    <div class="form-group row">
-		                                        <label class="control-label text-right col-md-4">Account No.</label>
-		                                        <div class="col-md-8">
+		                                        <div class="col-md-12">
+		                                        <label class="control-label text-right ">Account No.<span class="text_requried">*</span></label>
+		                                        
 		                                            <input type="text" name="account_no" value="{{ old('account_no') }}" class="form-control " placeholder="Enter Account No " required>
 		                                        </div>
 		                                    </div>
@@ -60,8 +62,9 @@
 		                             <div class="row">
 		                                <div class="col-md-7">
 		                                    <div class="form-group row">
-		                                        <label class="control-label text-right col-md-2">Branch Name</label>
-		                                        <div class="col-md-10">
+		                                        <div class="col-md-12">
+		                                        <label class="control-label text-right ">Branch Name</label>
+		                                        
 		                                            <input type="text"  name="branch_name" value="{{ old('branch_name') }}" class="form-control"  required>
 		                                        </div>
 		                                       		                                       
@@ -69,8 +72,9 @@
 		                                </div>
 		                                <div class="col-md-5">
 		                                    <div class="form-group row">
-		                                        <label class="control-label text-right col-md-4">Branch Code</label>
-		                                        <div class="col-md-8">
+		                                        <div class="col-md-12">
+		                                        <label class="control-label text-right ">Branch Code</label>
+		                                        
 		                                            <input type="text"  name="branch_code" value="{{ old('branch_code') }}" class="form-control"  required>
 		                                        </div>
 		                                       

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\employee;
 use App\contact;
+use App\country;
 
 class ContactController extends Controller
 {
@@ -16,7 +17,7 @@ class ContactController extends Controller
     }
     
 	public function editAddress($id){
-
+      $countries = country::all();
        $employee = employee::find($id);
        if (isset($employee->contact->id))
        	{
@@ -27,7 +28,7 @@ class ContactController extends Controller
    				$currentAddress = null;
    				$permanentAddress = null;
    		}
-       return view ('hr.contact.editContact', compact('employee','permanentAddress','currentAddress'));
+       return view ('hr.contact.editContact', compact('employee','permanentAddress','currentAddress','countries'));
     }
 
     public function updatePermanent(Request $request, $id)

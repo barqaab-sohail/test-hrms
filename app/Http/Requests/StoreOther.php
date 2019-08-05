@@ -13,7 +13,7 @@ class StoreOther extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,14 @@ class StoreOther extends FormRequest
     public function rules()
     {
         return [
-            //
+          
+            'blood_group'=>'required',
+            'driving_licence'=>'nullable',
+            'licence_expiry'=>'required_with:driving_licence',
+            'passport_no'=>'nullable',
+            'passport_expiry'=>'required_with:passport_no',
+            
+
         ];
     }
 }

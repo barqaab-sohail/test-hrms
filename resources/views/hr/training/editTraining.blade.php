@@ -38,8 +38,9 @@
 									<div class="row">
 		                                <div class="col-md-6">
 		                                    <div class="form-group row">
-		                                        <label class="control-label text-right col-md-3">Title</label>
-		                                        <div class="col-md-9">
+		                                        <div class="col-md-12">
+		                                        	<label class="control-label text-right ">Title<span class="text_requried">*</span></label>
+		                                        
 		                                            <input type="text"  name="title" value="{!! old('title', optional($data)->title) !!}" class="form-control" placeholder="Enter Title Name" required>
 		                                        </div>
 		                                    </div>
@@ -48,8 +49,9 @@
 		                                <!--/span-->
 		                                <div class="col-md-6">
 		                                    <div class="form-group row">
-		                                        <label class="control-label text-right col-md-3">Venue</label>
-		                                        <div class="col-md-9">
+		                                        <div class="col-md-12">
+		                                        	<label class="control-label text-right ">Venue</label>
+		                                        
 		                                            <input type="text" name="venue" value="{!! old('venue', optional($data)->venue) !!}" class="form-control " placeholder="Enter Venue Name" >
 		                                        </div>
 		                                    </div>
@@ -61,9 +63,10 @@
 		                            <div class="row">
 		                                <div class="col-md-6">
 		                                    <div class="form-group row">
-		                                        <label class="control-label text-right col-md-3">Institution</label>
-		                                        <div class="col-md-9">
-		                                            <input type="text"  name="institute" value="{!! old('institute', optional($data)->institute) !!}" class="form-control" placeholder="Enter Institute Name" required>
+		                                        <div class="col-md-12">
+		                                        	<label class="control-label text-right ">Institution</label>
+		                                        
+		                                            <input type="text"  name="institute" value="{!! old('institute', optional($data)->institute) !!}" class="form-control" placeholder="Enter Institute Name">
 		                                        </div>
 		                                    </div>
 		                                </div>
@@ -71,8 +74,9 @@
 		                                <!--/span-->
 		                                <div class="col-md-6">
 		                                    <div class="form-group row">
-		                                        <label class="control-label text-right col-md-3">Country</label>
-		                                        <div class="col-md-9">
+		                                        <div class="col-md-12">
+		                                        	<label class="control-label text-right ">Country<span class="text_requried">*</span></label>
+		                                        
 		                                            <select  name="country"  class="form-control" required>
 		                                           	<option value=""></option>
 		                                           	@foreach($countries as $country)
@@ -89,9 +93,10 @@
 		                             <div class="row">
 		                                <div class="col-md-6">
 		                                    <div class="form-group row">
-		                                        <label class="control-label text-right col-md-3">From</label>
-		                                        <div class="col-md-6">
-		                                            <input type="text"  id="from" name="from" value="{!! old('from', optional($data)->from) !!}" class="form-control"  readonly required>
+		                                        <div class="col-md-9">
+		                                        	<label class="control-label text-right ">From</label>
+		                                        
+		                                            <input type="text"  id="from" name="from" value="{!! old('from', optional($data)->from) !!}" class="form-control"  readonly >
 		                                        </div>
 		                                        
 		                                    </div>
@@ -100,9 +105,10 @@
 		                                <!--/span-->
 		                                <div class="col-md-6">
 		                                	<div class="form-group row">
-		                                    	<label class="control-label text-right col-md-3">To</label>
-		                                        <div class="col-md-6">
-		                                            <input type="text"  id="to" name="to" value="{!! old('to', optional($data)->to) !!}" class="form-control" readonly required>
+		                                    	<div class="col-md-9">
+		                                    		<label class="control-label text-right ">To</label>
+		                                        
+		                                            <input type="text"  id="to" name="to" value="{!! old('to', optional($data)->to) !!}" class="form-control" readonly>
 		                                        </div>
 		                                    </div>
 		                                </div>
@@ -110,8 +116,9 @@
 		                            <div class="row">
 		                               	<div class="col-md-12">
 		                                    <div class="form-group row">
-		                                        <label class="control-label text-right col-md-2">Description</label>
-		                                        <div class="col-md-9">
+		                                        <div class="col-md-12">
+		                                        	<label class="control-label text-right">Description<span class="text_requried">*</span></label>
+		                                        
 		                                             <textarea  rows=6 cols=5 name="description" class="form-control " required>{!! old('description', optional($data)->description) !!}</textarea>
 		                                        </div>
 		                                    </div>
@@ -154,7 +161,7 @@
 					<thead>
 					
 					<tr>
-						<th>Institute</th>
+						<th>Title</th>
 						<th>Country</th>
 						<th>From</th>
 						<th>To</th>
@@ -164,7 +171,7 @@
 					<tbody>
 						@foreach($trainingIds as $trainingId)
 							<tr>
-								<td>{{$trainingId->institute}}</td>
+								<td>{{$trainingId->title}}</td>
 								<td>{{$trainingId->country}}</td>
 								<td>{{$trainingId->from}}</td>
 								<td>{{$trainingId->to}}</td>
