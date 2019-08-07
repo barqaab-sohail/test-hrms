@@ -96,7 +96,8 @@
 		                                        <div class="col-md-9">
 		                                        	<label class="control-label text-right ">From</label>
 		                                        
-		                                            <input type="text"  id="from" name="from" value="{!! old('from', optional($data)->from) !!}" class="form-control"  readonly >
+		                                            <input type="text"  id="from" name="from" value="{!! old('from', optional($data)->from) !!}" class="form-control"  readonly ><br>
+		                                            <i id="clearFrom" onclick="return confirm('Are you sure to clear date')" class="fas fa-trash-alt text_requried"></i>
 		                                        </div>
 		                                        
 		                                    </div>
@@ -108,7 +109,8 @@
 		                                    	<div class="col-md-9">
 		                                    		<label class="control-label text-right ">To</label>
 		                                        
-		                                            <input type="text"  id="to" name="to" value="{!! old('to', optional($data)->to) !!}" class="form-control" readonly>
+		                                            <input type="text"  id="to" name="to" value="{!! old('to', optional($data)->to) !!}" class="form-control" readonly><br>
+		                                            <i id="clearTo" onclick="return confirm('Are you sure to clear date')" class="fas fa-trash-alt text_requried"></i>
 		                                        </div>
 		                                    </div>
 		                                </div>
@@ -203,19 +205,65 @@
  @push('scripts')
         <script>
             $(document).ready(function(){
-			 $( "#from, #to" ).datepicker({
-		      dateFormat: 'dd-MM-yy',
-		      yearRange: '1940:'+ (new Date().getFullYear()+15),
-		      changeMonth: true,
-		      changeYear: true
-		    });
+				 $( "#from, #to" ).datepicker({
+			      dateFormat: 'dd-MM-yy',
+			      yearRange: '1940:'+ (new Date().getFullYear()+15),
+			      changeMonth: true,
+			      changeYear: true
+			    });
 
 
-            $('select').select2({
-  				width: "100%",
-	  		 	theme: "classic",
+	            $('select').select2({
+	  				width: "100%",
+		  		 	theme: "classic",
 
-			});
+				});
+
+
+	            //Posting To
+            	if($("#to").val()==''){
+            		$("#clearTo").hide();
+
+            	}else{
+            		$("#clearTo").show();
+	            		   		$("#clearTo").click(function(){
+					    		$("#to").val("");
+					    		$("#clearTo").hide();
+					 });
+
+            	}
+
+            	$("#to").change(function(){
+		    		$("#clearTo").show();
+		    		$("#clearTo").click(function(){
+		    		$("#to").val("");
+		    		$("#clearTo").hide();
+		    		});
+
+		    	});
+            	
+            	//Clear From
+            	if($("#from").val()==''){
+            		$("#clearFrom").hide();
+
+            	}else{
+            		$("#clearFrom").show();
+	            		   		$("#clearFrom").click(function(){
+					    		$("#from").val("");
+					    		$("#clearFrom").hide();
+					 });
+
+            	}
+
+            	$("#from").change(function(){
+		    		$("#clearFrom").show();
+		    		$("#clearFrom").click(function(){
+		    		$("#from").val("");
+		    		$("#clearFrom").hide();
+		    		});
+
+		    	});
+
 			
 			});
 			

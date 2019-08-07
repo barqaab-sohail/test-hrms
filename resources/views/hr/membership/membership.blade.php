@@ -70,7 +70,8 @@
 		                                        <div class="col-md-7">
 		                                        	<label class="control-label text-right ">Expiry Date</label>
 		                                        
-		                                            <input type="date"  name="expiry_date" value="{{ old('expiry_date') }}" class="form-control" >
+		                                            <input type="text"  id="expiry_date"  name="expiry_date"  value="{{ old('expiry_date') }}" class="form-control" readonly ><br>
+		                                            <i id="clearExpiryDate" onclick="return confirm('Are you sure to clear date')" class="fas fa-trash-alt text_requried"></i>
 		                                        </div>
 		                                       
 		                                       <input type="number" name="employee_id" value="{{session('employee_id')}}"   class="form-control " hidden>
@@ -156,25 +157,54 @@
         <script>
             $(document).ready(function(){
 			
-			$("#name").change(function (){
-				var other = $('#name').val();
-					if (other != 'PEC'){
-					var name=prompt("Enter Membership Name");
-					var select = $('#name');
-					select.empty().append(new Option(name, name, true, true),new Option('PEC', 'PEC'));
-						
+				$("#name").change(function (){
+					var other = $('#name').val();
+						if (other != 'PEC'){
+						var name=prompt("Enter Membership Name");
+						var select = $('#name');
+						select.empty().append(new Option(name, name, true, true),new Option('PEC', 'PEC'));
+							
+						}
+				});
+
+				$("#membership").submit(function(e) {
+					var name = $('#name').val();
+
+					if (name=='null'){
+						alert('null Value is not accepted');
+						e.preventDefault();
 					}
-			});
 
-			$("#membership").submit(function(e) {
-				var name = $('#name').val();
+				});
 
-				if (name=='null'){
-					alert('null Value is not accepted');
-					e.preventDefault();
-				}
+				$( "#expiry_date" ).datepicker({
+		      	dateFormat: 'dd-MM-yy',
+		      	yearRange:  new Date().getFullYear()+':'+(new Date().getFullYear()+15),
+		      	changeMonth: true,
+		      	changeYear: true
+		    	});
 
-			});
+		    	//Clear Expiry Date
+            	if($("#expiry_date").val()==''){
+            		$("#clearExpiryDate").hide();
+
+            	}else{
+            		$("#clearExpiryDate").show();
+	            		   		$("#clearExpiryDate").click(function(){
+					    		$("#expiry_date").val("");
+					    		$("#clearExpiryDate").hide();
+					 });
+
+            	}
+
+            	$("#expiry_date").change(function(){
+		    		$("#clearExpiryDate").show();
+		    		$("#clearExpiryDate").click(function(){
+		    		$("#expiry_date").val("");
+		    		$("#clearExpiryDate").hide();
+		    		});
+
+		    	});
 			
 			
 			});

@@ -82,7 +82,8 @@
 		                                        <div class="col-md-12">
 		                                        	<label class="control-label text-right">Date of Birth<span class="text_requried">*</span></label>
 		                                        
-		                                            <input type="text" id="date_of_birth" name="date_of_birth" value="{{ old('date_of_birth', $employee->date_of_birth) }}" class="form-control " placeholder="Enter Date of Birth" readonly required>
+		                                            <input type="text" id="date_of_birth" name="date_of_birth" value="{{ old('date_of_birth', $employee->date_of_birth) }}" class="form-control " placeholder="Enter Date of Birth" readonly required><br>
+		                                            <i id="clearBirthDate" onclick="return confirm('Are you sure to clear date')" class="fas fa-trash-alt text_requried"></i>
 		                                        </div>
 		                                    </div>
 		                                </div>
@@ -121,7 +122,8 @@
 		                                        <div class="col-md-12">
 		                                        	<label class="control-label text-right">CNIC Expiry<span class="text_requried">*</span></label>
 		                                        		                                            
-		                                            <input type="text" id="cnic_expiry" name="cnic_expiry" value="{{ old('cnic_expiry',$employee->cnic_expiry) }}" class="form-control " readonly required>
+		                                            <input type="text" id="cnic_expiry" name="cnic_expiry" value="{{ old('cnic_expiry',$employee->cnic_expiry) }}" placeholder="Enter CNIC Expiry Date" class="form-control " readonly required><br>
+		                                            <i id="clearCNICExpiryDate" onclick="return confirm('Are you sure to clear date')" class="fas fa-trash-alt text_requried"></i>
 		                                       
 		                                        </div>
 		                                    </div>
@@ -282,10 +284,52 @@
   		});
 
 
-        $("#nationality2").hide();
-		$("#add").click (function(){
-		  		$("#nationality2").toggle();
-	  	});
+
+			//Clear Date of Birth
+				if($("#date_of_birth").val()==''){
+            		$("#clearBirthDate").hide();
+
+            	}else{
+            		$("#clearBirthDate").show();
+	            		   		$("#clearBirthDate").click(function(){
+					    		$("#date_of_birth").val("");
+					    		$("#clearBirthDate").hide();
+					 });
+
+            	}
+
+            	$("#date_of_birth").change(function(){
+		    		$("#clearBirthDate").show();
+		    		$("#clearBirthDate").click(function(){
+		    		$("#date_of_birth").val("");
+		    		$("#clearBirthDate").hide();
+		    		});
+
+		    	});
+            	
+            	//Clear CNIC Expiry
+            	if($("#cnic_expiry").val()==''){
+            		$("#clearCNICExpiryDate").hide();
+
+            	}else{
+            		$("#clearCNICExpiryDate").show();
+	            		   		$("#clearCNICExpiryDate").click(function(){
+					    		$("#cnic_expiry").val("");
+					    		$("#clearCNICExpiryDate").hide();
+					 });
+
+            	}
+
+            	$("#cnic_expiry").change(function(){
+		    		$("#clearCNICExpiryDate").show();
+		    		$("#clearCNICExpiryDate").click(function(){
+		    		$("#cnic_expiry").val("");
+		    		$("#clearCNICExpiryDate").hide();
+		    		});
+
+		    	});
+
+
 	});
     </script>
 

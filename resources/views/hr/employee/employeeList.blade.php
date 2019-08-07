@@ -26,7 +26,9 @@
 						<th>CNIC</th>
 						<th>CNIC Expiry</th>
 						<th>Gender</th>
-						<th colspan="2"> Actions </th>
+						<th> Actions </th>
+						<th></th>
+
 					</tr>
 					</thead>
 					<tbody>
@@ -38,13 +40,13 @@
 								<td>{{$employee->cnic_expiry}}</td>
 								<td>{{$employee->gender}}</td>
 								<td>
-								 <a class="btn btn-info btn-sm" href="{{route('employee.edit',['id'=>$employee->id])}}" data-toggle="tooltip" data-original-title="Edit"> <i class="fas fa-pencil-alt text-white "></i></a>
+									<a class="btn btn-info btn-sm" href="{{route('employee.edit',['id'=>$employee->id])}}" data-toggle="tooltip" data-original-title="Edit"> <i class="fas fa-pencil-alt text-white "></i></a>
 								</td>
 								<td>
 								@can('admin', Auth::user())
-								 <a class="btn btn-danger btn-sm" onclick="return confirm('Are you Sure to Delete')" href="{{route('inactiveEmployee',['id'=>$employee->id])}}" data-toggle="tooltip" data-original-title="Delete"> <i class="fas fa-trash-alt"></i></a>
+									<a class="btn btn-danger btn-sm" onclick="return confirm('Are you Sure to Delete')" href="{{route('inactiveEmployee',['id'=>$employee->id])}}" data-toggle="tooltip" data-original-title="Delete"> <i class="fas fa-trash-alt"></i></a>
 								 @endcan
-								 </td>
+								</td>
 															
 							</tr>
 						@endforeach

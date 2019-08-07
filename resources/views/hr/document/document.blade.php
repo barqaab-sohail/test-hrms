@@ -71,7 +71,8 @@
 		                                        <div class="col-md-6">
 		                                        	<label class="control-label text-right ">Date</label>
 		                                        
-		                                            <input type="text"  id="date" name="date" value="{{ old('date') }}" class="form-control" readonly  >
+		                                            <input type="text"  id="date" name="date" value="{{ old('date') }}" class="form-control" readonly  ><br>
+		                                            <i id="clearDate" onclick="return confirm('Are you sure to clear date')" class="fas fa-trash-alt text_requried"></i>
 		                                        </div>
 		                                       
 		                                       
@@ -189,6 +190,32 @@
         
     <script>
         $(document).ready(function(){
+
+        	 //Clear Date
+            	if($("#date").val()==''){
+            		$("#clearDate").hide();
+
+            	}else{
+            		$("#clearDate").show();
+	            		   		$("#clearDate").click(function(){
+					    		$("#date").val("");
+					    		$("#clearDate").hide();
+					 });
+
+            	}
+
+            	$("#date").change(function(){
+		    		$("#clearDate").show();
+		    		$("#clearDate").click(function(){
+		    		$("#date").val("");
+		    		$("#clearDate").hide();
+		    		});
+
+		    	});
+
+
+            //Date Picker
+
         	$( "#date" ).datepicker({
 		      dateFormat: 'dd-MM-yy',
 		      yearRange: '1970:'+ (new Date().getFullYear()+1),

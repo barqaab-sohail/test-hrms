@@ -65,11 +65,13 @@
 		                                        <div class="col-md-7">
 		                                        	<label class="control-label text-right ">From<span class="text_requried">*</span></label>
 		                                        
-		                                            <input type="text" id="from" name="from" value="{!! old('from', optional($data)->from) !!}" class="form-control"  required readonly>
+		                                            <input type="text" id="from" name="from" value="{!! old('from', optional($data)->from) !!}" class="form-control"  required readonly><br>
+		                                            <i id="clearFrom" onclick="return confirm('Are you sure to clear date')" class="fas fa-trash-alt text_requried"></i>
 		                                        </div>
 		                                        <div class="col-md-5">
 		                                        	<label class="control-label text-right">To<span class="text_requried">*</span></label>
-		                                            <input type="text"  id="to" name="to" value="{!! old('to', optional($data)->to) !!}" class="form-control" readonly  required>
+		                                            <input type="text"  id="to" name="to" value="{!! old('to', optional($data)->to) !!}" class="form-control" readonly  required><br>
+		                                            <i id="clearTo" onclick="return confirm('Are you sure to clear date')" class="fas fa-trash-alt text_requried"></i>
 		                                        </div>
 		                                    </div>
 		                                </div>
@@ -250,6 +252,52 @@
 			      changeYear: true
 			    });
 		    	});
+
+
+		    	 //Posting To
+            	if($("#to").val()==''){
+            		$("#clearTo").hide();
+
+            	}else{
+            		$("#clearTo").show();
+	            		   		$("#clearTo").click(function(){
+					    		$("#to").val("");
+					    		$("#clearTo").hide();
+					 });
+
+            	}
+
+            	$("#to").change(function(){
+		    		$("#clearTo").show();
+		    		$("#clearTo").click(function(){
+		    		$("#to").val("");
+		    		$("#clearTo").hide();
+		    		});
+
+		    	});
+            	
+            	//Clear From
+            	if($("#from").val()==''){
+            		$("#clearFrom").hide();
+
+            	}else{
+            		$("#clearFrom").show();
+	            		   		$("#clearFrom").click(function(){
+					    		$("#from").val("");
+					    		$("#clearFrom").hide();
+					 });
+
+            	}
+
+            	$("#from").change(function(){
+		    		$("#clearFrom").show();
+		    		$("#clearFrom").click(function(){
+		    		$("#from").val("");
+		    		$("#clearFrom").hide();
+		    		});
+
+		    	});
+
 
 			   			
 			});

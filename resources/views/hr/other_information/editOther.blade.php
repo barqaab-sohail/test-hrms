@@ -52,7 +52,8 @@
 		                                        <div class="col-md-12">
 		                                        <label class="control-label text-right">Expiry Date</label>
 		                                        
-		                                            <input type="text"  id="licence_expiry" name="licence_expiry" value="{!! old('licence_expiry',isset($employee->other_information->licence_expiry)?$employee->other_information->licence_expiry:'')!!}" class="form-control" placeholder="Enter Driving Licence Expiry" readonly>
+		                                            <input type="text"  id="licence_expiry" name="licence_expiry" value="{!! old('licence_expiry',isset($employee->other_information->licence_expiry)?$employee->other_information->licence_expiry:'')!!}" class="form-control" placeholder="Enter Driving Licence Expiry" readonly><br>
+		                                            <i id="clearLicenceExpiry" onclick="return confirm('Are you sure to clear date')" class="fas fa-trash-alt text_requried"></i>
 		                                        </div>
 		                                    </div>
 		                                    
@@ -112,7 +113,8 @@
 		                                        <div class="col-md-12">
 		                                        <label class="control-label text-right ">Expiry Date</label>
 		                                        
-		                                            <input type="text"  id="passport_expiry" name="passport_expiry" value="{!! old('passport_expiry',isset($employee->other_information->passport_expiry)?$employee->other_information->passport_expiry:'')!!}" class="form-control" placeholder="Enter Passport Expiry" readonly>
+		                                            <input type="text"  id="passport_expiry" name="passport_expiry" value="{!! old('passport_expiry',isset($employee->other_information->passport_expiry)?$employee->other_information->passport_expiry:'')!!}" class="form-control" placeholder="Enter Passport Expiry" readonly><br>
+		                                            <i id="clearPassportExpiry" onclick="return confirm('Are you sure to clear date')" class="fas fa-trash-alt text_requried"></i>
 		                                        </div>
 		                                    </div>
 		                                    <input type="text"  name="employee_id" value="{{session('employee_id')}}
@@ -150,9 +152,61 @@
 		      dateFormat: 'dd-MM-yy',
 		      yearRange:  new Date().getFullYear()+':'+(new Date().getFullYear()+15),
 		      changeMonth: true,
-		      changeYear: true
+		      changeYear: true, 
+		      showButtonPanel: true
 		    });
             
+
+
+        	  //Clear Licence Expiry Date
+            	if($("#licence_expiry").val()==''){
+            		$("#clearLicenceExpiry").hide();
+
+            	}else{
+            		$("#clearLicenceExpiry").show();
+	            		   		$("#clearLicenceExpiry").click(function(){
+					    		$("#licence_expiry").val("");
+					    		$("#clearLicenceExpiry").hide();
+					 });
+
+            	}
+
+            	$("#licence_expiry").change(function(){
+		    		$("#clearLicenceExpiry").show();
+		    		$("#clearLicenceExpiry").click(function(){
+		    		$("#licence_expiry").val("");
+		    		$("#clearLicenceExpiry").hide();
+		    		});
+
+		    	});
+
+		    	  //Clear Passport Expiry Date
+            	if($("#passport_expiry").val()==''){
+            		$("#clearPassportExpiry").hide();
+
+            	}else{
+            		$("#clearPassportExpiry").show();
+	            		   		$("#clearPassportExpiry").click(function(){
+					    		$("#passport_expiry").val("");
+					    		$("#clearPassportExpiry").hide();
+					 });
+
+            	}
+
+            	$("#passport_expiry").change(function(){
+		    		$("#clearPassportExpiry").show();
+		    		$("#clearPassportExpiry").click(function(){
+		    		$("#passport_expiry").val("");
+		    		$("#clearPassportExpiry").hide();
+		    		});
+
+		    	});
+
+
+
+
+
+
         });
         </script>
     @endpush

@@ -61,7 +61,8 @@
 		                                        <div class="col-md-12">
 		                                        	<label class="control-label text-right">Posting Date<span class="text_requried">*</span></label>
 		                                        
-		                                            <input type="text" id="posting_date" name="posting_date" value="{{ old('posting_date') }}" class="form-control " placeholder="Enter Posting Date" required readonly>
+		                                            <input type="text" id="posting_date" name="posting_date" value="{{ old('posting_date') }}" class="form-control " placeholder="Enter Posting Date" required readonly><br>
+		                                            <i id="clearPostingDate" onclick="return confirm('Are you sure to clear date')" class="fas fa-trash-alt text_requried"></i>
 		                                        </div>
 		                                    </div>
 		                                </div>
@@ -89,7 +90,8 @@
 		                                        <div class="col-md-12">
 		                                        <label class="control-label text-right">Joining Date<span class="text_requried">*</span></label>
 		                                        
-		                                            <input type="text" id="joining_date" name="joining_date" value="{{ old('joining_date') }}" class="form-control " placeholder="Enter joining Date" required readonly>
+		                                            <input type="text" id="joining_date" name="joining_date" value="{{ old('joining_date') }}" class="form-control " placeholder="Enter joining Date" required readonly><br>
+		                                            <i id="clearJoiningDate" onclick="return confirm('Are you sure to clear date')" class="fas fa-trash-alt text_requried"></i>
 		                                        </div>
 		                                    </div>
 		                                </div>
@@ -220,6 +222,52 @@
 	      		changeMonth: true,
 	      		changeYear: true
 	    		});
+
+            	//Posting Date Clear
+            	if($("#posting_date").val()==''){
+            		$("#clearPostingDate").hide();
+
+            	}else{
+            		$("#clearPostingDate").show();
+	            		   		$("#clearPostingDate").click(function(){
+					    		$("#posting_date").val("");
+					    		$("#clearPostingDate").hide();
+					 });
+
+            	}
+
+            	$("#posting_date").change(function(){
+		    		$("#clearPostingDate").show();
+		    		$("#clearPostingDate").click(function(){
+		    		$("#posting_date").val("");
+		    		$("#clearPostingDate").hide();
+		    		});
+
+		    	});
+            	
+            	//Clear Joining Date
+            	if($("#joining_date").val()==''){
+            		$("#clearJoiningDate").hide();
+
+            	}else{
+            		$("#clearJoiningDate").show();
+	            		   		$("#clearJoiningDate").click(function(){
+					    		$("#joining_date").val("");
+					    		$("#clearJoiningDate").hide();
+					 });
+
+            	}
+
+            	$("#joining_date").change(function(){
+		    		$("#clearJoiningDate").show();
+		    		$("#clearJoiningDate").click(function(){
+		    		$("#joining_date").val("");
+		    		$("#clearJoiningDate").hide();
+		    		});
+
+		    	});
+
+
 			});
         </script>
     @endpush

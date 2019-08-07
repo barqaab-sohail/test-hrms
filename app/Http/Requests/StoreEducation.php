@@ -31,7 +31,7 @@ class StoreEducation extends FormRequest
         'level' => 'required',
         'to_year' => 'required',
         'from_year' => 'nullable|lte:to_year',
-        'grade' => 'required',
+        
         'country' => 'required',
         ];
     }

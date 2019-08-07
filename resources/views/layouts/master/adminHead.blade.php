@@ -42,5 +42,7 @@
     <link rel="stylesheet" href="{{asset('Massets/js/crop/croppie.css')}}" />
 
 
+    
+
    
 </head>

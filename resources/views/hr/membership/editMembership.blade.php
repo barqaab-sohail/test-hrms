@@ -74,7 +74,8 @@
 		                                        <div class="col-md-7">
 		                                        	<label class="control-label text-right ">Expiry Date</label>
 		                                        
-		                                            <input type="date"  name="expiry_date" value="{!! old('expiry_date', optional($data)->expiry_date) !!}" class="form-control"  >
+		                                            <input type="text"  readonly id="expiry_date" name="expiry_date" value="{!! old('expiry_date', optional($data)->expiry_date) !!}" class="form-control"  /> <br>
+		                                            <i id="clearExpiryDate" onclick="return confirm('Are you sure to clear date')" class="fas fa-trash-alt text_requried"></i>
 		                                        </div>
 		                                       
 		                                      
@@ -179,6 +180,38 @@
 				}
 
 				});
+
+				$( "#expiry_date" ).datepicker({
+		      	dateFormat: 'dd-MM-yy',
+		      	yearRange:  new Date().getFullYear()+':'+(new Date().getFullYear()+15),
+		      	changeMonth: true,
+		      	changeYear: true
+		    	});
+
+		    	//Clear Expiry Date
+            	if($("#expiry_date").val()==''){
+            		$("#clearExpiryDate").hide();
+
+            	}else{
+            		$("#clearExpiryDate").show();
+	            		   		$("#clearExpiryDate").click(function(){
+					    		$("#expiry_date").val("");
+					    		$("#clearExpiryDate").hide();
+					 });
+
+            	}
+
+            	$("#expiry_date").change(function(){
+		    		$("#clearExpiryDate").show();
+		    		$("#clearExpiryDate").click(function(){
+		    		$("#expiry_date").val("");
+		    		$("#clearExpiryDate").hide();
+		    		});
+
+		    	});
+
+
+
 			
 			});
         </script>

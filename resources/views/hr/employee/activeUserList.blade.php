@@ -1,5 +1,7 @@
 @extends('layouts.master.master')
 @section('Heading')
+	
+
 	<h3 class="text-themecolor">Active User List</h3>
 	<ol class="breadcrumb">
 		<li class="breadcrumb-item"><a href="javascript:void(0)"></a></li>
