@@ -70,8 +70,11 @@
 		                                        <div class="col-md-7">
 		                                        	<label class="control-label text-right ">Expiry Date</label>
 		                                        
-		                                            <input type="text"  id="expiry_date"  name="expiry_date"  value="{{ old('expiry_date') }}" class="form-control" readonly ><br>
-		                                            <i id="clearExpiryDate" onclick="return confirm('Are you sure to clear date')" class="fas fa-trash-alt text_requried"></i>
+		                                            <input type="text"  id="expiry_date"  name="expiry_date"  value="{{ old('expiry_date') }}" class="form-control" readonly >
+													@can('entry', Auth::user())
+		                                            <br>
+		                                            <i id="clearExpiryDate" class="fas fa-trash-alt text_requried"></i>
+		                                            @endcan
 		                                        </div>
 		                                       
 		                                       <input type="number" name="employee_id" value="{{session('employee_id')}}"   class="form-control " hidden>

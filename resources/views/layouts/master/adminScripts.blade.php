@@ -76,7 +76,39 @@
        $('select').select2({
             width: "100%",
             theme: "classic",
-            });
+        });
+
+                //get Date from Database and set as "Saturday, 24-August-2019"
+                var weekday = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
+                var months = ["January","February","March","April","May","June","July","August","September","October","November","December"];
+              
+
+                $(".formatDate").each(function(){
+                    if ($(this).find('input').val()!=''){
+                    var Date1 = new Date($(this).find('input').val());
+                    $(this).find('input').val(
+                    weekday[Date1.getDay()]+", "+
+                    Date1.getDate()+"-"+months[Date1.getMonth()]
+                    +"-"+Date1.getFullYear());
+                    }else{
+                        $(this).find('i').hide();
+                    }
+
+                });
+
+                $(".formatDate i").click(function (){
+                    $(this).siblings('input').val("");
+                    $(this).hide();
+                });
+
+                $(".formatDate input").change(function (){
+                    
+                    $(this).siblings('i').show();
+                    
+                });
+
+
+       
 
     });
 </script>

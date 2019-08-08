@@ -96,8 +96,11 @@
 		                                        <div class="col-md-9">
 		                                        	<label class="control-label text-right ">From</label>
 		                                        
-		                                            <input type="text"  id="from" name="from" value="{!! old('from', optional($data)->from) !!}" class="form-control"  readonly ><br>
-		                                            <i id="clearFrom" onclick="return confirm('Are you sure to clear date')" class="fas fa-trash-alt text_requried"></i>
+		                                            <input type="text"  id="from" name="from" value="{!! old('from', optional($data)->from) !!}" class="form-control"  readonly >
+													@can('entry', Auth::user())
+		                                            <br>
+		                                            <i id="clearFrom" class="fas fa-trash-alt text_requried"></i>
+		                                            @endcan
 		                                        </div>
 		                                        
 		                                    </div>
@@ -108,9 +111,11 @@
 		                                	<div class="form-group row">
 		                                    	<div class="col-md-9">
 		                                    		<label class="control-label text-right ">To</label>
-		                                        
-		                                            <input type="text"  id="to" name="to" value="{!! old('to', optional($data)->to) !!}" class="form-control" readonly><br>
-		                                            <i id="clearTo" onclick="return confirm('Are you sure to clear date')" class="fas fa-trash-alt text_requried"></i>
+		                                            <input type="text"  id="to" name="to" value="{!! old('to', optional($data)->to) !!}" class="form-control" readonly>
+													@can('entry', Auth::user())
+		                                            <br>
+		                                            <i id="clearTo" class="fas fa-trash-alt text_requried"></i>
+		                                            @endcan
 		                                        </div>
 		                                    </div>
 		                                </div>

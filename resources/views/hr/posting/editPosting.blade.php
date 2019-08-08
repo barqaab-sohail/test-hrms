@@ -58,8 +58,11 @@
 		                                    <div class="form-group row">
 		                                        <div class="col-md-12">
 		                                        	<label class="control-label text-right">Posting Date<span class="text_requried">*</span></label>
-		                                            <input type="text" name="posting_date" id="posting_date" value="{!! old('posting_date', optional($data)->posting_date) !!}" class="form-control " placeholder="Enter Posting Date" required readonly><br>
-		                                            <i id="clearPostingDate" onclick="return confirm('Are you sure to clear date')" class="fas fa-trash-alt text_requried"></i>
+		                                            <input type="text" name="posting_date" id="posting_date" value="{!! old('posting_date', optional($data)->posting_date) !!}" class="form-control " placeholder="Enter Posting Date" required readonly>
+													@can('entry', Auth::user())
+		                                            <br>
+		                                            <i id="clearPostingDate" class="fas fa-trash-alt text_requried"></i>
+		                                            @endcan
 		                                        </div>
 		                                    </div>
 		                                </div>
@@ -88,8 +91,11 @@
 		                                        <div class="col-md-12">
 		                                        <label class="control-label text-right">Joining Date<span class="text_requried">*</span></label>
 		                                        
-		                                            <input type="text" name="joining_date" id="joining_date" value="{!! old('joining_date', optional($data)->joining_date) !!}" class="form-control " placeholder="Enter Posting Date" required readonly><br>
-		                                            <i id="clearJoiningDate" onclick="return confirm('Are you sure to clear date')" class="fas fa-trash-alt text_requried"></i>
+		                                            <input type="text" name="joining_date" id="joining_date" value="{!! old('joining_date', optional($data)->joining_date) !!}" class="form-control " placeholder="Enter Posting Date" required readonly>
+													@can('entry', Auth::user())
+		                                            <br>
+		                                            <i id="clearJoiningDate" class="fas fa-trash-alt text_requried"></i>
+		                                            @endcan
 
 		                                        </div>
 		                                    </div>

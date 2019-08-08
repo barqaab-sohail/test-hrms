@@ -51,8 +51,11 @@
 		                                        <div class="col-md-12">
 		                                        <label class="control-label text-right">Effective Date<span class="text_requried">*</span></label>
 		                                        
-		                                            <input type="text" id="effective_date" name="effective_date" value="{{ old('effective_date')}}" class="form-control" required readonly><br>
-		                                            <i id="clearEffectiveDate" onclick="return confirm('Are you sure to clear date')" class="fas fa-trash-alt text_requried"></i>
+		                                            <input type="text" id="effective_date" name="effective_date" value="{{ old('effective_date')}}" class="form-control" required readonly>
+													@can('entry', Auth::user())
+		                                            <br>
+		                                            <i id="clearEffectiveDate" class="fas fa-trash-alt text_requried"></i>
+		                                            @endcan
 		                                        </div>
 		                                    </div>
 		                                </div>

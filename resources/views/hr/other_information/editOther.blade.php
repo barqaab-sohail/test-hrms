@@ -52,8 +52,11 @@
 		                                        <div class="col-md-12">
 		                                        <label class="control-label text-right">Expiry Date</label>
 		                                        
-		                                            <input type="text"  id="licence_expiry" name="licence_expiry" value="{!! old('licence_expiry',isset($employee->other_information->licence_expiry)?$employee->other_information->licence_expiry:'')!!}" class="form-control" placeholder="Enter Driving Licence Expiry" readonly><br>
-		                                            <i id="clearLicenceExpiry" onclick="return confirm('Are you sure to clear date')" class="fas fa-trash-alt text_requried"></i>
+		                                            <input type="text"  id="licence_expiry" name="licence_expiry" value="{!! old('licence_expiry',isset($employee->other_information->licence_expiry)?$employee->other_information->licence_expiry:'')!!}" class="form-control" placeholder="Enter Driving Licence Expiry" readonly>
+													@can('entry', Auth::user())
+		                                            <br>
+		                                            <i id="clearLicenceExpiry" class="fas fa-trash-alt text_requried"></i>
+		                                            @endcan
 		                                        </div>
 		                                    </div>
 		                                    
@@ -113,8 +116,11 @@
 		                                        <div class="col-md-12">
 		                                        <label class="control-label text-right ">Expiry Date</label>
 		                                        
-		                                            <input type="text"  id="passport_expiry" name="passport_expiry" value="{!! old('passport_expiry',isset($employee->other_information->passport_expiry)?$employee->other_information->passport_expiry:'')!!}" class="form-control" placeholder="Enter Passport Expiry" readonly><br>
-		                                            <i id="clearPassportExpiry" onclick="return confirm('Are you sure to clear date')" class="fas fa-trash-alt text_requried"></i>
+		                                            <input type="text"  id="passport_expiry" name="passport_expiry" value="{!! old('passport_expiry',isset($employee->other_information->passport_expiry)?$employee->other_information->passport_expiry:'')!!}" class="form-control" placeholder="Enter Passport Expiry" readonly>
+													@can('entry', Auth::user())
+		                                            <br>
+		                                            <i id="clearPassportExpiry" class="fas fa-trash-alt text_requried"></i>
+		                                            @endcan
 		                                        </div>
 		                                    </div>
 		                                    <input type="text"  name="employee_id" value="{{session('employee_id')}}

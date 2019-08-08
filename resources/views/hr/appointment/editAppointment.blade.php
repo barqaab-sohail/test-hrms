@@ -51,11 +51,14 @@
 		                                <!--/span-->
 		                                <div class="col-md-6">
 		                                    <div class="form-group row">
-		                                       	<div class="col-md-12">
+		                                       	<div class="col-md-12 formatDate">
 		                                        	<label class="control-label text-right">Letter Date<span class="text_requried">*</span></label>
 		                                       
-		                                            <input type="text"  id="appointment_date" name="appointment_date" value="{!! old('appointment_date',isset($employee->appointment->appointment_date)?$employee->appointment->appointment_date:'')!!}" class="form-control" placeholder="Enter Appointment Letter Date " readonly required><br>
-		                                            <i id="clearAppointmentDate" onclick="return confirm('Are you sure to clear date')" class="fas fa-trash-alt text_requried"></i>
+		                                            <input type="text" id="appointment_date" name="appointment_date" value="{!! old('appointment_date',isset($employee->appointment->appointment_date)?$employee->appointment->appointment_date:'')!!}" class="form-control" placeholder="Enter Appointment Letter Date " readonly required>
+													@can('entry', Auth::user())
+		                                            <br>
+		                                            <i  class="fas fa-trash-alt text_requried"></i>
+		                                            @endcan
 		                                        </div>
 		                                    </div>
 		                                    
@@ -85,11 +88,14 @@
 		                                <!--/span-->
 		                                <div class="col-md-6">
 		                                   <div class="form-group row">
-		                                        <div class="col-md-12">
+		                                        <div class="col-md-12 formatDate">
 		                                        <label class="control-label text-right">Expiry Date</label>
 		                                        
-		                                            <input type="text"  id="expiry_date" name="expiry_date" value="{!! old('expiry_date',isset($employee->appointment->expiry_date)?$employee->appointment->expiry_date:'')!!}" class="form-control" placeholder="Enter Expiry Date of Appointment" readonly ><br>
-		                                            <i id="clearExpiryDate" onclick="return confirm('Are you sure to clear date')" class="fas fa-trash-alt text_requried"></i>
+		                                            <input type="text"  id="expiry_date" name="expiry_date" value="{!! old('expiry_date',isset($employee->appointment->expiry_date)?$employee->appointment->expiry_date:'')!!}" class="form-control" placeholder="Enter Expiry Date of Appointment" readonly >
+													@can('entry', Auth::user())
+		                                            <br>
+		                                            <i  class="fas fa-trash-alt text_requried"></i>
+		                                            @endcan
 
 		                                        </div>
 		                                    </div>  
@@ -336,13 +342,24 @@
 //arguments.shift();
 //alert(arguments);
             $(document).ready(function(){
+
+            	
+            
+
+            	
 				
-            	$( "#joining_date, #expiry_date, #appointment_date" ).datepicker({
-	     		dateFormat: 'dd-MM-yy',
+    			
+    			
+	   
+
+				@can('entry', Auth::user())
+            	$( "#expiry_date, #appointment_date" ).datepicker({
+	     		dateFormat: 'DD, d-MM-yy',
 	      		yearRange: (new Date().getFullYear()-20)+':'+(new Date().getFullYear()+15),
 	      		changeMonth: true,
 	      		changeYear: true
 	    		});
+	    		@endcan
 	    		
 
 
@@ -361,50 +378,8 @@
 				});
 
 			
-				//Appointment Date Clear
-				if($("#appointment_date").val()==''){
-            		$("#clearAppointmentDate").hide();
-
-            	}else{
-            		$("#clearAppointmentDate").show();
-	            		   		$("#clearAppointmentDate").click(function(){
-					    		$("#appointment_date").val("");
-					    		$("#clearAppointmentDate").hide();
-					 });
-
-            	}
-
-            	$("#appointment_date").change(function(){
-		    		$("#clearAppointmentDate").show();
-		    		$("#clearAppointmentDate").click(function(){
-		    		$("#appointment_date").val("");
-		    		$("#clearAppointmentDate").hide();
-		    		});
-
-		    	});
+				            	
             	
-            	//Expiry Date Clear
-            	if($("#expiry_date").val()==''){
-            		$("#clearExpiryDate").hide();
-
-            	}else{
-            		$("#clearExpiryDate").show();
-	            		   		$("#clearExpiryDate").click(function(){
-					    		$("#expiry_date").val("");
-					    		$("#clearExpiryDate").hide();
-					 });
-
-            	}
-
-            	$("#expiry_date").change(function(){
-		    		$("#clearExpiryDate").show();
-		    		$("#clearExpiryDate").click(function(){
-		    		$("#expiry_date").val("");
-		    		$("#clearExpiryDate").hide();
-		    		});
-
-		    	});
-
 
 
 			});

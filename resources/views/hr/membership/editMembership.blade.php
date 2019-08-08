@@ -74,8 +74,11 @@
 		                                        <div class="col-md-7">
 		                                        	<label class="control-label text-right ">Expiry Date</label>
 		                                        
-		                                            <input type="text"  readonly id="expiry_date" name="expiry_date" value="{!! old('expiry_date', optional($data)->expiry_date) !!}" class="form-control"  /> <br>
-		                                            <i id="clearExpiryDate" onclick="return confirm('Are you sure to clear date')" class="fas fa-trash-alt text_requried"></i>
+		                                            <input type="text"  readonly id="expiry_date" name="expiry_date" value="{!! old('expiry_date', optional($data)->expiry_date) !!}" class="form-control"  />
+													@can('entry', Auth::user())
+		                                            <br>
+		                                            <i id="clearExpiryDate" class="fas fa-trash-alt text_requried"></i>
+		                                            @endcan
 		                                        </div>
 		                                       
 		                                      

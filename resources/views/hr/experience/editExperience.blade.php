@@ -65,13 +65,19 @@
 		                                        <div class="col-md-7">
 		                                        	<label class="control-label text-right ">From<span class="text_requried">*</span></label>
 		                                        
-		                                            <input type="text" id="from" name="from" value="{!! old('from', optional($data)->from) !!}" class="form-control"  required readonly><br>
-		                                            <i id="clearFrom" onclick="return confirm('Are you sure to clear date')" class="fas fa-trash-alt text_requried"></i>
+		                                            <input type="text" id="from" name="from" value="{!! old('from', optional($data)->from) !!}" class="form-control"  required readonly>
+													@can('entry', Auth::user())
+		                                            <br>
+		                                            <i id="clearFrom" class="fas fa-trash-alt text_requried"></i>
+		                                            @endcan
 		                                        </div>
 		                                        <div class="col-md-5">
 		                                        	<label class="control-label text-right">To<span class="text_requried">*</span></label>
-		                                            <input type="text"  id="to" name="to" value="{!! old('to', optional($data)->to) !!}" class="form-control" readonly  required><br>
-		                                            <i id="clearTo" onclick="return confirm('Are you sure to clear date')" class="fas fa-trash-alt text_requried"></i>
+		                                            <input type="text"  id="to" name="to" value="{!! old('to', optional($data)->to) !!}" class="form-control" readonly  required>
+													@can('entry', Auth::user())
+		                                            <br>
+		                                            <i id="clearTo" class="fas fa-trash-alt text_requried"></i>
+		                                            @endcan
 		                                        </div>
 		                                    </div>
 		                                </div>

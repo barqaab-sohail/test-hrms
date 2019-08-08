@@ -71,8 +71,11 @@
 		                                        <div class="col-md-6">
 		                                        	<label class="control-label text-right ">Date</label>
 		                                        
-		                                            <input type="text"  id="date" name="date" value="{{ old('date') }}" class="form-control" readonly  ><br>
-		                                            <i id="clearDate" onclick="return confirm('Are you sure to clear date')" class="fas fa-trash-alt text_requried"></i>
+		                                            <input type="text"  id="date" name="date" value="{{ old('date') }}" class="form-control" readonly  >
+													@can('entry', Auth::user())
+		                                            <br>
+		                                            <i id="clearDate" class="fas fa-trash-alt text_requried"></i>
+		                                            @endcan
 		                                        </div>
 		                                       
 		                                       
