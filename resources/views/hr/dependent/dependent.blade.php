@@ -49,13 +49,13 @@
 		                                <!--/span-->
 		                                <div class="col-md-5">
 		                                    <div class="form-group row">
-		                                        <div class="col-md-8">
+		                                        <div class="col-md-8 date_input">
 		                                        	<label class="control-label text-right">Date of Birth</label>
 		                                        
 		                                            <input type="text" id="date_of_birth" name="date_of_birth" value="{{ old('date_of_birth') }}" class="form-control " placeholder="Enter Date of Birth" readonly>
 													@can('entry', Auth::user())
 		                                            <br>
-		                                            <i id="clearDateOfBirth" o class="fas fa-trash-alt text_requried"></i>
+		                                            <i class="fas fa-trash-alt text_requried"></i>
 		                                            @endcan
 		                                        </div>
 		                                    </div>
@@ -167,37 +167,7 @@
         <script>
             $(document).ready(function(){
 
-
             	
-			    $( "#date_of_birth" ).datepicker({
-			      dateFormat: 'dd-MM-yy',
-			      yearRange: '1960:'+ (new Date().getFullYear()),
-			      changeMonth: true,
-			      changeYear: true
-			    });
-
-			    //Clear Date of Birth
-            	if($("#date_of_birth").val()==''){
-            		$("#clearDateOfBirth").hide();
-
-            	}else{
-            		$("#clearDateOfBirth").show();
-	            		   		$("#clearDateOfBirth").click(function(){
-					    		$("#date_of_birth").val("");
-					    		$("#clearDateOfBirth").hide();
-					 });
-
-            	}
-
-            	$("#date_of_birth").change(function(){
-		    		$("#clearDateOfBirth").show();
-		    		$("#clearDateOfBirth").click(function(){
-		    		$("#date_of_birth").val("");
-		    		$("#clearDateOfBirth").hide();
-		    		});
-
-		    	});
-
 
 			
 			});

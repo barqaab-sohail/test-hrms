@@ -80,13 +80,13 @@
 		                                <!--/span-->
 		                                <div class="col-md-6">
 		                                    <div class="form-group row">
-		                                        <div class="col-md-12">
+		                                        <div class="col-md-12 date_input">
 		                                        	<label class="control-label text-right">Date of Birth<span class="text_requried">*</span></label>
 		                                        
 		                                            <input type="text" id="date_of_birth" name="date_of_birth" value="{{ old('date_of_birth') }}" class="form-control " placeholder="Enter Date of Birth" required readonly>
 													@can('entry', Auth::user())
 		                                            <br>
-		                                            <i id="clearBirthDate" class="fas fa-trash-alt text_requried"></i> 
+		                                            <i class="fas fa-trash-alt text_requried"></i> 
 		                                            @endcan
 		                                        </div>
 		                                    </div>
@@ -122,13 +122,13 @@
 		                                </div>
 		                                <div class="col-md-6">
 		                                    <div class="form-group row">
-		                                        <div class="col-md-12">
+		                                        <div class="col-md-12 date_input">
 		                                        	<label class="control-label text-right">CNIC Expiry<span class="text_requried">*</span></label>
 		                                            
 		                                            <input type="text" id="cnic_expiry" name="cnic_expiry" value="{{ old('cnic_expiry') }}" class="form-control "  placeholder="Enter CNIC Expiry Date" readonly required>
 		                                            @can('entry', Auth::user())
 		                                            <br>
-		                                            <i id="clearCNICExpiryDate" class="fas fa-trash-alt text_requried"></i>
+		                                            <i class="fas fa-trash-alt text_requried"></i>
 		                                            @endcan
 		                                        
 		                                        </div>
@@ -264,83 +264,6 @@
 <script>
 
 	$(document).ready(function(){
-
-
-
-		
-
-	    
-    	@can('entry', Auth::user())
-        $( function() {
-		    $( "#date_of_birth" ).datepicker({
-		      dateFormat: 'DD, d-MM-yy',
-		      yearRange: '1940:'+ (new Date().getFullYear()-15),
-		      changeMonth: true,
-		      changeYear: true
-		    });
-		    $( "#cnic_expiry" ).datepicker({
-		      dateFormat: 'DD, d-MM-yy',
-		      yearRange:  new Date().getFullYear()+':'+(new Date().getFullYear()+15),
-		      changeMonth: true,
-		      changeYear: true
-		    });
-		    		    
-  		});
-  		@endcan
-	  	
-  			//Clear Date of Birth
-				if($("#date_of_birth").val()==''){
-            		$("#clearBirthDate").hide();
-
-            	}else{
-            		$("#clearBirthDate").show();
-	            		   		$("#clearBirthDate").click(function(){
-	            		   		if (confirm('Are you sure to clear date')){
-					    		$("#date_of_birth").val("");
-					    		$("#clearBirthDate").hide();
-					    		}
-					 });
-
-            	}
-
-            	$("#date_of_birth").change(function(){
-		    		$("#clearBirthDate").show();
-		    		$("#clearBirthDate").click(function(){
-		    		if (confirm('Are you sure to clear date')){
-		    		$("#date_of_birth").val("");
-		    		$("#clearBirthDate").hide();
-		    		}
-		    		});
-
-		    	});
-            	
-            	//Clear CNIC Expiry
-            	if($("#cnic_expiry").val()==''){
-            		$("#clearCNICExpiryDate").hide();
-
-            	}else{
-            		$("#clearCNICExpiryDate").show();
-	            		   		$("#clearCNICExpiryDate").click(function(){
-	            		   		if (confirm('Are you sure to clear date')){
-					    		$("#cnic_expiry").val("");
-					    		$("#clearCNICExpiryDate").hide();
-					    		}
-					 			});
-
-            	}
-
-            	$("#cnic_expiry").change(function(){
-		    		$("#clearCNICExpiryDate").show();
-		    		$("#clearCNICExpiryDate").click(function(){
-		    		if (confirm('Are you sure to clear date')){
-		    		$("#cnic_expiry").val("");
-		    		$("#clearCNICExpiryDate").hide();
-		    		}
-		    		});
-
-		    	});
-
-	  	
 
 	    $("#nationality2").hide();
 	    $("#add").click (function(){

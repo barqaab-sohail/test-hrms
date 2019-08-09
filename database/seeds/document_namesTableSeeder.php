@@ -14,5 +14,7 @@ class document_namesTableSeeder extends Seeder
     	DB::table('document_names')->insert(['name' => 'CNIC Front']);
     	DB::table('document_names')->insert(['name' => 'CNIC Back']);
     	DB::table('document_names')->insert(['name' => 'Appointment Letter']);
+        DB::table('document_names')->insert(['name' => 'HR Form']);
+        
     }
 }

@@ -34,8 +34,8 @@
 								@foreach($postings as $posting)
 									@if($posting->manager_id==$employee->manager_id)
 									<tr >
-										<td >{{$employee->first_name." ".$employee->last_name}}</td>
-										<td>{{$posting->employee->first_name." ".$posting->employee->last_name}}
+										<td>{{$employee->first_name." ".$employee->middle_name." ".$employee->last_name}}</td>
+										<td>{{$posting->employee->first_name." ".$posting->employee->middle_name." ".$posting->employee->last_name}}
 										</td>
 										<td>{{$posting->project}}
 										</td>
@@ -95,7 +95,13 @@
        			 }
 
    			 } );
+            $("table").rowspanizer({
+			  vertical_align: 'middle'
+			});
 
+
+
+            //Marge rowspan automatically 
             function fixit(selector) {
 		   		selector.each(function () {
         			var values = $(this).find("tr>td:first-of-type")
@@ -111,7 +117,7 @@
         			}
     			})
 			}
-			fixit($("table"))
+			//fixit($("table"))
 
         });
         $(document).ready(function () {

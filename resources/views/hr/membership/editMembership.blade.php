@@ -71,13 +71,13 @@
 		                             <div class="row">
 		                                <div class="col-md-7">
 		                                    <div class="form-group row">
-		                                        <div class="col-md-7">
+		                                        <div class="col-md-7 date_input">
 		                                        	<label class="control-label text-right ">Expiry Date</label>
 		                                        
 		                                            <input type="text"  readonly id="expiry_date" name="expiry_date" value="{!! old('expiry_date', optional($data)->expiry_date) !!}" class="form-control"  />
 													@can('entry', Auth::user())
 		                                            <br>
-		                                            <i id="clearExpiryDate" class="fas fa-trash-alt text_requried"></i>
+		                                            <i  class="fas fa-trash-alt text_requried"></i>
 		                                            @endcan
 		                                        </div>
 		                                       
@@ -183,37 +183,7 @@
 				}
 
 				});
-
-				$( "#expiry_date" ).datepicker({
-		      	dateFormat: 'dd-MM-yy',
-		      	yearRange:  new Date().getFullYear()+':'+(new Date().getFullYear()+15),
-		      	changeMonth: true,
-		      	changeYear: true
-		    	});
-
-		    	//Clear Expiry Date
-            	if($("#expiry_date").val()==''){
-            		$("#clearExpiryDate").hide();
-
-            	}else{
-            		$("#clearExpiryDate").show();
-	            		   		$("#clearExpiryDate").click(function(){
-					    		$("#expiry_date").val("");
-					    		$("#clearExpiryDate").hide();
-					 });
-
-            	}
-
-            	$("#expiry_date").change(function(){
-		    		$("#clearExpiryDate").show();
-		    		$("#clearExpiryDate").click(function(){
-		    		$("#expiry_date").val("");
-		    		$("#clearExpiryDate").hide();
-		    		});
-
-		    	});
-
-
+			
 
 			
 			});

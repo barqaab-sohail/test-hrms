@@ -31,7 +31,7 @@ class ReportsController extends Controller
        
          $employees =  DB:: table('employees')
                     ->join('postings','postings.manager_id','=','employees.id')
-                    ->select([DB::RAW('DISTINCT first_name, last_name, manager_id')])->get();
+                    ->select([DB::RAW('DISTINCT first_name,middle_name,last_name, manager_id')])->get();
 
         $postings = posting::orderBy('posting_date','DESC')->get(['employee_id','manager_id','project'])->unique('employee_id');
       

@@ -18,6 +18,7 @@ class CreateDocumentsTable extends Migration
             $table->bigInteger('employee_id')->unsigned();
             $table->string('document_name');
             $table->string('file_name');
+            $table->string('file_path');
             $table->string('type')->nullable();
             $table->string('reference_no')->nullable();
             $table->date('date')->nullable();

@@ -89,13 +89,13 @@
 		                             <div class="row">
 		                                <div class="col-md-6">
 		                                    <div class="form-group row">
-		                                        <div class="col-md-9">
+		                                        <div class="col-md-9 date_input">
 		                                        <label class="control-label text-right">From</label>
 		                                        
 		                                            <input type="text"  id="from" name="from" value="{{ old('from') }}" class="form-control" readonly>
 													@can('entry', Auth::user())
 		                                            <br>
-		                                            <i id="clearFrom" class="fas fa-trash-alt text_requried"></i>
+		                                            <i  class="fas fa-trash-alt text_requried"></i>
 		                                            @endcan
 		                                        </div>
 		                                        
@@ -105,13 +105,13 @@
 		                                <!--/span-->
 		                                <div class="col-md-6">
 		                               		<div class="form-group row">
-		                               			<div class="col-md-9">
+		                               			<div class="col-md-9 date_input">
 		                               				<label class="control-label text-right">To</label>
 		                                        
 		                                            <input type="text"  id="to" name="to" value="{{ old('to') }}" class="form-control" readonly >
 													@can('entry', Auth::user())
 		                                            <br>
-		                                            <i id="clearTo" class="fas fa-trash-alt text_requried"></i>
+		                                            <i  class="fas fa-trash-alt text_requried"></i>
 		                                            @endcan
 		                                        </div>
 		                                    </div>
@@ -209,69 +209,8 @@
  @push('scripts')
         <script>
             $(document).ready(function(){
-	             $( "#from, #to" ).datepicker({
-			      dateFormat: 'dd-MM-yy',
-			      yearRange: '1940:'+ (new Date().getFullYear()+15),
-			      changeMonth: true,
-			      changeYear: true
-			    });
-
-
-	            $('select').select2({
-	  				width: "100%",
-		  		 	theme: "classic",
-
-				});
-			
-	           
-		    	 //Posting To
-            	if($("#to").val()==''){
-            		$("#clearTo").hide();
-
-            	}else{
-            		$("#clearTo").show();
-	            		   		$("#clearTo").click(function(){
-					    		$("#to").val("");
-					    		$("#clearTo").hide();
-					 });
-
-            	}
-
-            	$("#to").change(function(){
-		    		$("#clearTo").show();
-		    		$("#clearTo").click(function(){
-		    		$("#to").val("");
-		    		$("#clearTo").hide();
-		    		});
-
-		    	});
-            	
-            	//Clear From
-            	if($("#from").val()==''){
-            		$("#clearFrom").hide();
-
-            	}else{
-            		$("#clearFrom").show();
-	            		   		$("#clearFrom").click(function(){
-					    		$("#from").val("");
-					    		$("#clearFrom").hide();
-					 });
-
-            	}
-
-            	$("#from").change(function(){
-		    		$("#clearFrom").show();
-		    		$("#clearFrom").click(function(){
-		    		$("#from").val("");
-		    		$("#clearFrom").hide();
-		    		});
-
-		    	});
-
-	            
-
-		    	
-		    	
+	             
+	              		    	
 
 			});
         </script>

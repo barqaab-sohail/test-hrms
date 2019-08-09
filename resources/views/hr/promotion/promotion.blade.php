@@ -48,13 +48,13 @@
 		                                <!--/span-->
 		                                <div class="col-md-4">
 		                                    <div class="form-group row">
-		                                        <div class="col-md-12">
+		                                        <div class="col-md-12 date_input">
 		                                        <label class="control-label text-right">Effective Date<span class="text_requried">*</span></label>
 		                                        
 		                                            <input type="text" id="effective_date" name="effective_date" value="{{ old('effective_date')}}" class="form-control" required readonly>
 													@can('entry', Auth::user())
 		                                            <br>
-		                                            <i id="clearEffectiveDate" class="fas fa-trash-alt text_requried"></i>
+		                                            <i  class="fas fa-trash-alt text_requried"></i>
 		                                            @endcan
 		                                        </div>
 		                                    </div>
@@ -268,35 +268,6 @@
    			 	
    			 	$("#total").val(sum);
 				});
-
-				$( "#effective_date" ).datepicker({
-	     		dateFormat: 'dd-MM-yy',
-	      		yearRange: (new Date().getFullYear()-20)+':'+(new Date().getFullYear()+15),
-	      		changeMonth: true,
-	      		changeYear: true
-	    		});
-
-				//Clear Effective Date
-            	if($("#effective_date").val()==''){
-            		$("#clearEffectiveDate").hide();
-
-            	}else{
-            		$("#clearEffectiveDate").show();
-	            		   		$("#clearEffectiveDate").click(function(){
-					    		$("#effective_date").val("");
-					    		$("#clearEffectiveDate").hide();
-					 });
-
-            	}
-
-            	$("#effective_date").change(function(){
-		    		$("#clearEffectiveDate").show();
-		    		$("#clearEffectiveDate").click(function(){
-		    		$("#effective_date").val("");
-		    		$("#clearEffectiveDate").hide();
-		    		});
-
-		    	});
 
 
 			});

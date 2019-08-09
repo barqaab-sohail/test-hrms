@@ -22,7 +22,7 @@ class CreateUsersTable extends Migration
             $table->bigInteger('role_id')->unsigned()->default(5); 
             $table->integer('user_status')->default(0);
             $table->bigInteger('employee_id')->unique()->unsigned();
-            $table->string('session_id')->nullable->unsigned();
+            $table->string('session_id')->nullable();
             $table->rememberToken();
             $table->timestamps();
             $table->foreign('role_id')->references('id')->on('roles');

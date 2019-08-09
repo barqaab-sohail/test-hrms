@@ -56,12 +56,12 @@
 		                                <!--/span-->
 		                                <div class="col-md-5">
 		                                    <div class="form-group row">
-		                                        <div class="col-md-12">
+		                                        <div class="col-md-12 date_input">
 		                                        	<label class="control-label text-right">Posting Date<span class="text_requried">*</span></label>
 		                                            <input type="text" name="posting_date" id="posting_date" value="{!! old('posting_date', optional($data)->posting_date) !!}" class="form-control " placeholder="Enter Posting Date" required readonly>
 													@can('entry', Auth::user())
 		                                            <br>
-		                                            <i id="clearPostingDate" class="fas fa-trash-alt text_requried"></i>
+		                                            <i class="fas fa-trash-alt text_requried"></i>
 		                                            @endcan
 		                                        </div>
 		                                    </div>
@@ -88,13 +88,13 @@
 		                                <!--/span-->
 		                                <div class="col-md-5">
 		                                    <div class="form-group row">
-		                                        <div class="col-md-12">
+		                                        <div class="col-md-12 date_input">
 		                                        <label class="control-label text-right">Joining Date<span class="text_requried">*</span></label>
 		                                        
 		                                            <input type="text" name="joining_date" id="joining_date" value="{!! old('joining_date', optional($data)->joining_date) !!}" class="form-control " placeholder="Enter Posting Date" required readonly>
 													@can('entry', Auth::user())
 		                                            <br>
-		                                            <i id="clearJoiningDate" class="fas fa-trash-alt text_requried"></i>
+		                                            <i class="fas fa-trash-alt text_requried"></i>
 		                                            @endcan
 
 		                                        </div>
@@ -215,57 +215,7 @@
  @push('scripts')
         <script>
             $(document).ready(function(){
-            	$( "#posting_date, #joining_date" ).datepicker({
-	     		dateFormat: 'dd-MM-yy',
-	      		yearRange: (new Date().getFullYear()-20)+':'+(new Date().getFullYear()+15),
-	      		changeMonth: true,
-	      		changeYear: true
-	    		});
-
-            	//Posting Date Clear
-            	if($("#posting_date").val()==''){
-            		$("#clearPostingDate").hide();
-
-            	}else{
-            		$("#clearPostingDate").show();
-	            		   		$("#clearPostingDate").click(function(){
-					    		$("#posting_date").val("");
-					    		$("#clearPostingDate").hide();
-					 });
-
-            	}
-
-            	$("#posting_date").change(function(){
-		    		$("#clearPostingDate").show();
-		    		$("#clearPostingDate").click(function(){
-		    		$("#posting_date").val("");
-		    		$("#clearPostingDate").hide();
-		    		});
-
-		    	});
             	
-            	//Clear Joining Date
-            	if($("#joining_date").val()==''){
-            		$("#clearJoiningDate").hide();
-
-            	}else{
-            		$("#clearJoiningDate").show();
-	            		   		$("#clearJoiningDate").click(function(){
-					    		$("#joining_date").val("");
-					    		$("#clearJoiningDate").hide();
-					 });
-
-            	}
-
-            	$("#joining_date").change(function(){
-		    		$("#clearJoiningDate").show();
-		    		$("#clearJoiningDate").click(function(){
-		    		$("#joining_date").val("");
-		    		$("#clearJoiningDate").hide();
-		    		});
-
-		    	});
-	    		
 	    	});
         </script>
     @endpush

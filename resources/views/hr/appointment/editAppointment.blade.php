@@ -51,7 +51,7 @@
 		                                <!--/span-->
 		                                <div class="col-md-6">
 		                                    <div class="form-group row">
-		                                       	<div class="col-md-12 formatDate">
+		                                       	<div class="col-md-12 date_input">
 		                                        	<label class="control-label text-right">Letter Date<span class="text_requried">*</span></label>
 		                                       
 		                                            <input type="text" id="appointment_date" name="appointment_date" value="{!! old('appointment_date',isset($employee->appointment->appointment_date)?$employee->appointment->appointment_date:'')!!}" class="form-control" placeholder="Enter Appointment Letter Date " readonly required>
@@ -88,7 +88,7 @@
 		                                <!--/span-->
 		                                <div class="col-md-6">
 		                                   <div class="form-group row">
-		                                        <div class="col-md-12 formatDate">
+		                                        <div class="col-md-12 date_input">
 		                                        <label class="control-label text-right">Expiry Date</label>
 		                                        
 		                                            <input type="text"  id="expiry_date" name="expiry_date" value="{!! old('expiry_date',isset($employee->appointment->expiry_date)?$employee->appointment->expiry_date:'')!!}" class="form-control" placeholder="Enter Expiry Date of Appointment" readonly >
@@ -344,23 +344,7 @@
             $(document).ready(function(){
 
             	
-            
 
-            	
-				
-    			
-    			
-	   
-
-				@can('entry', Auth::user())
-            	$( "#expiry_date, #appointment_date" ).datepicker({
-	     		dateFormat: 'DD, d-MM-yy',
-	      		yearRange: (new Date().getFullYear()-20)+':'+(new Date().getFullYear()+15),
-	      		changeMonth: true,
-	      		changeYear: true
-	    		});
-	    		@endcan
-	    		
 
 
             	//Total 
