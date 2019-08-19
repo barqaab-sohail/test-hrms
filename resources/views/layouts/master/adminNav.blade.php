@@ -58,7 +58,7 @@
                     </ul>
                 </li>
                 
-                 <li @if(request()->is('chart*')) class="active" @endif > <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i class="fas fa-chart-pie"></i><span class="hide-menu">Reports</span></a>
+                 <li @if(request()->is('reports*')) class="active" @endif > <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i class="fas fa-chart-pie"></i><span class="hide-menu">Reports</span></a>
                     <ul aria-expanded="false" class="collapse">
                         <li><a href="{{route('employeeReports')}}">List of Reports</a></li>
                         <li><a href="{{route('chart')}}">Charts</a></li>

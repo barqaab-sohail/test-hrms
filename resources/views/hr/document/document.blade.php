@@ -137,7 +137,7 @@
 			<!--<div class="float-right">
 				<input id="month" class="form-control" value="" type="month">
 			</div>-->
-			<h2 class="card-title">Stored Membership</h2>
+			<h2 class="card-title">Stored Documents</h2>
 			
 			<div class="table-responsive m-t-40">
 				

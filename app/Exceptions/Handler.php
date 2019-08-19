@@ -46,7 +46,12 @@ class Handler extends ExceptionHandler
      */
     public function render($request, Exception $exception)
     {
-        
+        //Additional Code for redirect if exception NotFundHttPException
+        if ($exception instanceof \Symfony\Component\HttpKernel\Exception\NotFoundHttpException) {
+            return redirect('dashboard');
+        } 
+        //end Additional Code
+
         return parent::render($request, $exception);
     }
 }

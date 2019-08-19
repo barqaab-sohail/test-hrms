@@ -99,7 +99,7 @@
 		                                		<input type="file"  name="document" id="wizard-picture" class=""  hidden>
 		                                				                                		
 
-				                                <h6 id="h6" class="card-title m-t-10">Click On Image to Change New Document<span class="text_requried">*</span></h6>
+				                                <h6 id="h6" class="card-title m-t-10">Click On Image to Change New Document</h6>
 		                                
 					                            </center>
 		                                       

@@ -19,10 +19,11 @@ class ContactController extends Controller
 	public function editAddress($id){
       $countries = country::all();
        $employee = employee::find($id);
-       if (isset($employee->contact->id))
+       if (isset($employee->contact->employee_id))
        	{
-       	$currentAddress = contact::find($employee->contact->id)->where('type','1')->first();
-       	$permanentAddress = contact::find($employee->contact->id)->where('type','0')->first();
+       	
+        $currentAddress = contact::where('employee_id',$employee->contact->employee_id)->where('type',1)->first();
+       	$permanentAddress = contact::where('employee_id',$employee->contact->employee_id)->where('type',0)->first();
    		}else
    		{
    				$currentAddress = null;
