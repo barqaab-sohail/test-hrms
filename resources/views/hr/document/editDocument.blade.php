@@ -44,8 +44,10 @@
                                                        
                                                         <option value="{{$data->document_name}}">{{$data->document_name}}</option>
                                                         <option value="CNIC Front" @if($data->document_name =="CNIC Front") selected="selected"@endif>CNIC Front </option>
-                                                        <option value="CNIC Back"  @if($data->document_name =="CNIC Back") selected="selected"@endif>CNIC Back </option>
-                                                        <option value="Appointment Letter"  @if($data->document_name =="Appointment Letter") selected="selected"@endif>Appointment Letter </option>
+                                                        <option value="CNIC Back"  @if($data->document_name =="CNIC Back") selected="selected"@endif>CNIC Back</option>
+                                                        <option value="Appointment Letter"  @if($data->document_name =="Appointment Letter") selected="selected"@endif>Appointment Letter</option>
+                                                        <option value="HR Form"  @if($data->document_name =="HR Form") selected="selected"@endif>HR Form</option>
+                                                        <option value="Joining Report"  @if($data->document_name =="Joining Report") selected="selected"@endif>Joining Report</option>
                                                         <option value="Other"  {{ old('name') == "Other" ? 'selected' : '' }}>Other</option>
                                                         
                                                     </select>
@@ -157,7 +159,7 @@
 						<th>View</th>
 						
 						
-						@can('entry', Auth::user())<th> Actions </th> @endcan
+						@can('entry', Auth::user())<th> Actions </th><th></th> @endcan
 					</tr>
 					</thead>
 					<tbody>
@@ -171,10 +173,14 @@
 								@endif
 								
 								
-								<td>
+								
 								@can('entry', Auth::user())
+								<td>
 								 <a class="btn btn-info btn-sm" href="{{route('document.edit',['id'=>$documentId->id])}}" data-toggle="tooltip" data-original-title="Edit"> <i class="fas fa-pencil-alt text-white "></i></a>
+								 </td>
+								 <td>
 								 <a class="btn btn-danger btn-sm" onclick="return confirm('Are you Sure to Delete')" href="{{route('deleteDocument',['id'=>$documentId->id])}}" data-toggle="tooltip" data-original-title="Delete"> <i class="fas fa-trash-alt"></i></a>
+								 </td>
 								 @endcan
 															
 							</tr>
