@@ -10,7 +10,7 @@ class employee extends Model implements Auditable
    use \OwenIt\Auditing\Auditable;
 
    protected $fillable = [
-        'first_name','middle_name','last_name','father_name','date_of_birth','gender','cnic','cnic_expiry','employee_no','marital_status','religon','status','manager_id','division_id',
+        'first_name','middle_name','last_name','father_name','date_of_birth','gender','cnic','cnic_expiry','employee_no','marital_status','religon','employee_status','manager_id','division_id',
     ];
 
     

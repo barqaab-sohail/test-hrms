@@ -60,6 +60,8 @@
 
 <script src="{{asset('Massets/js/crop/jquery.imgareaselect.min.js') }}"></script>
 <script src="{{asset('Massets/js/crop/croppie.min.js') }}"></script>
+
+ <!-- Duplicate rows Merge -->
 <script src="{{asset('Massets/js/rowsmerge/jquery.rowspanizer.min.js') }}"></script>
 
 

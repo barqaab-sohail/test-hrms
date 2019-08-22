@@ -99,26 +99,6 @@
 			  vertical_align: 'middle'
 			});
 
-
-
-            //Marge rowspan automatically 
-            function fixit(selector) {
-		   		selector.each(function () {
-        			var values = $(this).find("tr>td:first-of-type")
-        			var run = 1
-        			for (var i=values.length-1;i>-1;i--){
-            			if ( values.eq(i).text()=== values.eq(i-1).text()){
-                			values.eq(i).remove()
-                			run++
-            			}else{
-                			values.eq(i).attr("rowspan",run)
-                			run = 1
-            			}
-        			}
-    			})
-			}
-			//fixit($("table"))
-
         });
         $(document).ready(function () {
             $("#month").change(function(e){

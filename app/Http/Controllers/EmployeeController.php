@@ -27,7 +27,7 @@ class EmployeeController extends Controller
 
 
     public function index (){
-       $employees = employee::all()->where('status',0);
+       $employees = employee::all()->where('employee_status','0');
        return view('hr.employee.employeeList', compact('employees'));
     }
 
@@ -159,9 +159,10 @@ class EmployeeController extends Controller
 
     public function inactive(Request $request, $id)
     {
-       employee::findOrFail($id)->update(['status'=>1]);
-       $employees = employee::all()->where('status','0');
-       return view('hr.employee.employeeList', compact('employees'));
+       
+       employee::findOrFail($id)->update(['employee_status'=>'1']);
+      
+       return back();
     }
 
   
