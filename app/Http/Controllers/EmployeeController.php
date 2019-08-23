@@ -70,6 +70,8 @@ class EmployeeController extends Controller
 
 
     public function show($id){
+      
+
         $countries = country::all();
         $employee = employee::find($id);
         $divisions = division::all();
