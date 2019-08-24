@@ -49,7 +49,7 @@
 		                                <!--/span-->
 		                                <div class="col-md-4">
 		                                    <div class="form-group row">
-		                                        <div class="col-md-12">
+		                                        <div class="col-md-12 date_input">
 		                                        	<label class="control-label text-right">Effective Date<span class="text_requried">*</span></label>
 		                                        
 		                                            <input type="text" id="effective_date" name="effective_date" value="{!! old('effective_date', optional($data)->effective_date) !!}" class="form-control" readonly required >
@@ -216,7 +216,7 @@
 						<th>Effective Date</th>
 						<th>Revised Salary</th>
 						<th>Remarks</th>
-						@can('entry', Auth::user())<th> Actions </th> @endcan
+						@can('entry', Auth::user())<th> Actions </th> <th></th>@endcan
 					</tr>
 					</thead>
 					<tbody>
@@ -229,7 +229,10 @@
 								<td>
 								@can('entry', Auth::user())
 								 <a class="btn btn-info btn-sm" href="{{route('promotion.edit',['id'=>$promotionId->id])}}" data-toggle="tooltip" data-original-title="Edit"> <i class="fas fa-pencil-alt text-white "></i></a>
+								 </td>
+								 <td>
 								  <a class="btn btn-danger btn-sm" onclick="return confirm('Are you Sure to Delete')" href="{{route('deletePromotion',['id'=>$promotionId->id])}}" data-toggle="tooltip" data-original-title="Delete"> <i class="fas fa-trash-alt"></i></a>
+								  </td>
 								 @endcan
 															
 							</tr>
@@ -270,35 +273,7 @@
    			 	$("#total").val(sum);
 				});
 
-				$( "#effective_date" ).datepicker({
-	     		dateFormat: 'dd-MM-yy',
-	      		yearRange: (new Date().getFullYear()-20)+':'+(new Date().getFullYear()+15),
-	      		changeMonth: true,
-	      		changeYear: true
-	    		});
-
-				//Clear Effective Date
-            	if($("#effective_date").val()==''){
-            		$("#clearEffectiveDate").hide();
-
-            	}else{
-            		$("#clearEffectiveDate").show();
-	            		   		$("#clearEffectiveDate").click(function(){
-					    		$("#effective_date").val("");
-					    		$("#clearEffectiveDate").hide();
-					 });
-
-            	}
-
-            	$("#effective_date").change(function(){
-		    		$("#clearEffectiveDate").show();
-		    		$("#clearEffectiveDate").click(function(){
-		    		$("#effective_date").val("");
-		    		$("#clearEffectiveDate").hide();
-		    		});
-
-		    	});
-
+				
 
 	    		
 			});

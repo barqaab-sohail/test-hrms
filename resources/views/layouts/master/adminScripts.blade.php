@@ -61,6 +61,9 @@
 <script src="{{asset('Massets/js/crop/jquery.imgareaselect.min.js') }}"></script>
 <script src="{{asset('Massets/js/crop/croppie.min.js') }}"></script>
 
+ <!-- Duplicate rows Merge -->
+<script src="{{asset('Massets/js/rowsmerge/jquery.rowspanizer.min.js') }}"></script>
+
 
 
 
@@ -81,9 +84,9 @@
                 //get Date from Database and set as "Saturday, 24-August-2019"
                 var weekday = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
                 var months = ["January","February","March","April","May","June","July","August","September","October","November","December"];
-              
-
-                $(".formatDate").each(function(){
+                
+                //if Date not empty than enter date with format 'Wednesday, 10-August-2010'
+                $(".date_input").each(function(){
                     if ($(this).find('input').val()!=''){
                     var Date1 = new Date($(this).find('input').val());
                     $(this).find('input').val(
@@ -96,16 +99,36 @@
 
                 });
 
-                $(".formatDate i").click(function (){
+                //If Click icon than clear date
+                $(".date_input i").click(function (){
+                    if(confirm("Are you sure to clear date")){
                     $(this).siblings('input').val("");
                     $(this).hide();
+                    }
                 });
 
-                $(".formatDate input").change(function (){
-                    
-                    $(this).siblings('i').show();
-                    
+                //If Chane date input than show date clear icon
+                $(".date_input input").change(function (){
+                       $(this).siblings('i').show();
                 });
+
+                // DatePicker
+                @can('entry', Auth::user())
+                    $(".date_input input").datepicker({
+                    dateFormat: 'DD, d-MM-yy',
+                    yearRange: '1940:'+ (new Date().getFullYear()+15),
+                    changeMonth: true,
+                    changeYear: true
+                    });
+                
+                @endcan
+
+
+             $('#myTableStored').DataTable({
+                stateSave: false,
+                dom: 'flrtip',
+
+            });
 
 
        

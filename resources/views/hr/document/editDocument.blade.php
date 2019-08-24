@@ -44,8 +44,10 @@
                                                        
                                                         <option value="{{$data->document_name}}">{{$data->document_name}}</option>
                                                         <option value="CNIC Front" @if($data->document_name =="CNIC Front") selected="selected"@endif>CNIC Front </option>
-                                                        <option value="CNIC Back"  @if($data->document_name =="CNIC Back") selected="selected"@endif>CNIC Back </option>
-                                                        <option value="Appointment Letter"  @if($data->document_name =="Appointment Letter") selected="selected"@endif>Appointment Letter </option>
+                                                        <option value="CNIC Back"  @if($data->document_name =="CNIC Back") selected="selected"@endif>CNIC Back</option>
+                                                        <option value="Appointment Letter"  @if($data->document_name =="Appointment Letter") selected="selected"@endif>Appointment Letter</option>
+                                                        <option value="HR Form"  @if($data->document_name =="HR Form") selected="selected"@endif>HR Form</option>
+                                                        <option value="Joining Report"  @if($data->document_name =="Joining Report") selected="selected"@endif>Joining Report</option>
                                                         <option value="Other"  {{ old('name') == "Other" ? 'selected' : '' }}>Other</option>
                                                         
                                                     </select>
@@ -71,13 +73,13 @@
 		                             <div class="row">
 		                                <div class="col-md-7">
 		                                    <div class="form-group row">
-		                                        <div class="col-md-6">
+		                                        <div class="col-md-6 date_input">
 		                                        <label class="control-label text-right">Date</label>
 		                                        
 		                                            <input ype="text"  id="date" name="date" value="{!! old('date', optional($data)->date) !!}" class="form-control" readonly >
 													@can('entry', Auth::user())
 		                                            <br>
-		                                            <i id="clearDate" class="fas fa-trash-alt text_requried"></i>
+		                                            <i class="fas fa-trash-alt text_requried"></i>
 		                                            @endcan
 		                                        </div>
 		                                       
@@ -91,7 +93,7 @@
 		                                    <div class="form-group row">
 		                                        <center >
 		                                        @if($data->type!='application/pdf')
-		                                		<img  src="{{asset(isset($data->file_name)? 'storage/documents/'.$data->file_name: 'Massets/images/document.png') }}" class="img-round picture-container picture-src"  id="wizardPicturePreview" title="" width="150" />
+		                                		<img  src="{{asset(isset($data->file_name)? 'storage/'.$data->file_path.$data->file_name: 'Massets/images/document.png') }}" class="img-round picture-container picture-src"  id="wizardPicturePreview" title="" width="150" />
 		                                		@else
 		                                		<img  src="{{asset('Massets/images/document.png')}}" class="img-round picture-container picture-src"  id="wizardPicturePreview"  title="" width="150" >
 		                                		@endif
@@ -99,7 +101,7 @@
 		                                		<input type="file"  name="document" id="wizard-picture" class=""  hidden>
 		                                				                                		
 
-				                                <h6 id="h6" class="card-title m-t-10">Click On Image to Change New Document<span class="text_requried">*</span></h6>
+				                                <h6 id="h6" class="card-title m-t-10">Click On Image to Change New Document</h6>
 		                                
 					                            </center>
 		                                       
@@ -110,9 +112,9 @@
 		                                		                                
 		                            </div>
 									 <div class="row">
-		                                <div class="col-md-7" id="pdf">
+		                                <div class="col-md-12" id="pdf">
 		                                	@if($data->type=='application/pdf')
-		                            		<embed id="pdf" src="{{asset('storage/documents/'.$data->file_name)}}#toolbar=0&navpanes=0&scrollbar=0"  type="application/pdf" height="300" width="100%" />
+		                            		<embed id="pdf" src="{{asset('storage/'.$data->file_path.$data->file_name)}}#toolbar=0&navpanes=0&scrollbar=0"  type="application/pdf" height="300" width="100%" />
 		                            		@endif
 		                            		
 		                            	</div>
@@ -149,7 +151,7 @@
 			
 			<div class="table-responsive m-t-40">
 				
-				<table id="myTable" class="table table-bordered table-striped" width="100%" cellspacing="0">
+				<table id="myTableStored" class="table table-bordered table-striped" width="100%" cellspacing="0">
 					<thead>
 					
 					<tr>
@@ -157,7 +159,7 @@
 						<th>View</th>
 						
 						
-						@can('entry', Auth::user())<th> Actions </th> @endcan
+						@can('entry', Auth::user())<th> Actions </th><th></th> @endcan
 					</tr>
 					</thead>
 					<tbody>
@@ -165,16 +167,20 @@
 							<tr>
 								<td>{{$documentId->document_name}}</td>
 								@if($documentId->type!='application/pdf')
-								<td><img  id="viewIMG" src="{{asset(isset($documentId->file_name)? 'storage/documents/'.$documentId->file_name: 'Massets/images/document.png') }}" href="{{asset(isset($documentId->file_name)? 'storage/documents/'.$documentId->file_name: 'Massets/images/document.png') }}" width=30/></td>
+								<td><img  id="viewIMG" src="{{asset(isset($documentId->file_name)?  'storage/'.$documentId->file_path.$documentId->file_name: 'Massets/images/document.png') }}" href="{{asset(isset($documentId->file_name)?  'storage/'.$documentId->file_path.$documentId->file_name: 'Massets/images/document.png') }}" width=30/></td>
 								@else
-								<td><img  id="viewPDF" src="{{asset('Massets/images/document.png')}}" href="{{asset(isset($documentId->file_name)? 'storage/documents/'.$documentId->file_name: 'Massets/images/document.png') }}" width=30/></td>
+								<td><img  id="viewPDF" src="{{asset('Massets/images/document.png')}}" href="{{asset(isset($documentId->file_name)?  'storage/'.$documentId->file_path.$documentId->file_name: 'Massets/images/document.png') }}" width=30/></td>
 								@endif
 								
 								
-								<td>
+								
 								@can('entry', Auth::user())
+								<td>
 								 <a class="btn btn-info btn-sm" href="{{route('document.edit',['id'=>$documentId->id])}}" data-toggle="tooltip" data-original-title="Edit"> <i class="fas fa-pencil-alt text-white "></i></a>
+								 </td>
+								 <td>
 								 <a class="btn btn-danger btn-sm" onclick="return confirm('Are you Sure to Delete')" href="{{route('deleteDocument',['id'=>$documentId->id])}}" data-toggle="tooltip" data-original-title="Delete"> <i class="fas fa-trash-alt"></i></a>
+								 </td>
 								 @endcan
 															
 							</tr>
@@ -201,37 +207,7 @@
     <script>
         $(document).ready(function(){
 
-        	 //Clear Date
-            	if($("#date").val()==''){
-            		$("#clearDate").hide();
-
-            	}else{
-            		$("#clearDate").show();
-	            		   		$("#clearDate").click(function(){
-					    		$("#date").val("");
-					    		$("#clearDate").hide();
-					 });
-
-            	}
-
-            	$("#date").change(function(){
-		    		$("#clearDate").show();
-		    		$("#clearDate").click(function(){
-		    		$("#date").val("");
-		    		$("#clearDate").hide();
-		    		});
-
-		    	});
-
-
-        	//Date Picker
-        	$( "#date" ).datepicker({
-		      dateFormat: 'dd-MM-yy',
-		      yearRange: '1970:'+ (new Date().getFullYear()+1),
-		      changeMonth: true,
-		      changeYear: true
-		    });
-            
+        	            
         	$("#document_name").change(function (){
 				var other = $('#document_name').val();
 					if (other == 'Other'){
@@ -268,8 +244,8 @@
 
 		        	
 		        	 //Restrict File Size Less Than 500kb
-		        if (fileSize> 512000){
-		        	alert('File Size is bigger than 500kb');
+		        if (fileSize> 2048000){
+		        	alert('File Size is bigger than 2MB');
 		        	$(this).val('');
 		        }else{
 		        	//Restrict File Type

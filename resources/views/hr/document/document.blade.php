@@ -41,9 +41,11 @@
 		                                        
 		                                             <select  name="document_name" id="document_name"    class="form-control" required>
                                                         <option value=""></option>
-                                                        <option value="CNIC Front"  {{ old('CNIC Front') == "CNIC Front" ? 'selected' : '' }}>CNIC Front </option>
-                                                        <option value="CNIC Back"  {{ old('CNIC Back') == "CNIC Back" ? 'selected' : '' }}>CNIC Back </option>
-                                                        <option value="Appointment Letter"  {{ old('Appointment Letter') == "Appointment Letter" ? 'selected' : '' }}>Appointment Letter </option>
+                                                        <option value="CNIC Front"  {{ old('CNIC Front') == "CNIC Front" ? 'selected' : '' }}>CNIC Front</option>
+                                                        <option value="CNIC Back"  {{ old('CNIC Back') == "CNIC Back" ? 'selected' : '' }}>CNIC Back</option>
+                                                        <option value="Appointment Letter"  {{ old('Appointment Letter') == "Appointment Letter" ? 'selected' : '' }}>Appointment Letter</option>
+                                                        <option value="HR Form"  {{ old('HR Form') == "HR Form" ? 'selected' : '' }}>HR Form</option>
+                                                        <option value="Joining Report"  {{ old('Joining Report') == "Joining Report" ? 'selected' : '' }}>Joining Report</option>
                                                         <option value="Other"  {{ old('name') == "Other" ? 'selected' : '' }}>Other</option>
                                                         
                                                     </select>
@@ -68,13 +70,13 @@
 		                             <div class="row">
 		                                <div class="col-md-7">
 		                                    <div class="form-group row">
-		                                        <div class="col-md-6">
+		                                        <div class="col-md-6 date_input">
 		                                        	<label class="control-label text-right ">Date</label>
 		                                        
 		                                            <input type="text"  id="date" name="date" value="{{ old('date') }}" class="form-control" readonly  >
 													@can('entry', Auth::user())
 		                                            <br>
-		                                            <i id="clearDate" class="fas fa-trash-alt text_requried"></i>
+		                                            <i class="fas fa-trash-alt text_requried"></i>
 		                                            @endcan
 		                                        </div>
 		                                       
@@ -104,7 +106,7 @@
 		                                		                                
 		                            </div>
 									 <div class="row">
-		                                <div class="col-md-7" id="pdf">
+		                                <div class="col-md-12" id="pdf">
 		                            		<embed id="pdf" src="{{asset('Massets/images/02.pdf')}}#toolbar=0&navpanes=0&scrollbar=0"  type="application/pdf" height="300" width="100%" />
 
 		                            	</div>
@@ -137,11 +139,11 @@
 			<!--<div class="float-right">
 				<input id="month" class="form-control" value="" type="month">
 			</div>-->
-			<h2 class="card-title">Stored Membership</h2>
+			<h2 class="card-title">Stored Documents</h2>
 			
 			<div class="table-responsive m-t-40">
 				
-				<table id="myTable" class="table table-bordered table-striped" width="100%" cellspacing="0">
+				<table id="myTableStored" class="table table-bordered table-striped" width="100%" cellspacing="0">
 					<thead>
 					
 					<tr>
@@ -149,7 +151,7 @@
 						<th>View</th>
 						
 						
-						@can('entry', Auth::user())<th> Actions </th> @endcan
+						@can('entry', Auth::user())<th> Actions </th> <th></th>@endcan
 					</tr>
 					</thead>
 					<tbody>
@@ -157,17 +159,21 @@
 							<tr>
 								<td>{{$documentId->document_name}}</td>
 								@if($documentId->type!='application/pdf')
-								<td><img  id="ViewIMG" src="{{asset(isset($documentId->file_name)? 'storage/documents/'.$documentId->file_name: 'Massets/images/document.png') }}" href="{{asset(isset($documentId->file_name)? 'storage/documents/'.$documentId->file_name: 'Massets/images/document.png') }}" width=30/></td>
+								<td><img  id="ViewIMG" src="{{asset(isset($documentId->file_name)? 'storage/'.$documentId->file_path.$documentId->file_name: 'Massets/images/document.png') }}" href="{{asset(isset($documentId->file_name)?  'storage/'.$documentId->file_path.$documentId->file_name: 'Massets/images/document.png') }}" width=30/></td>
 								@else
-								<td><img  id="ViewPDF" src="{{asset('Massets/images/document.png')}}" href="{{asset(isset($documentId->file_name)? 'storage/documents/'.$documentId->file_name: 'Massets/images/document.png') }}" width=30/></td>
+								<td><img  id="ViewPDF" src="{{asset('Massets/images/document.png')}}" href="{{asset(isset($documentId->file_name)? 'storage/'.$documentId->file_path.$documentId->file_name: 'Massets/images/document.png') }}" width=30/></td>
 								@endif
 								
 								
-								<td>
+								
 								@can('entry', Auth::user())
+								<td>
 								 <a class="btn btn-info btn-sm" href="{{route('document.edit',['id'=>$documentId->id])}}" data-toggle="tooltip" data-original-title="Edit"> <i class="fas fa-pencil-alt text-white "></i></a>
 
+								</td>
+								<td>
 								  <a class="btn btn-danger btn-sm" onclick="return confirm('Are you Sure to Delete')" href="{{route('deleteDocument',['id'=>$documentId->id])}}" data-toggle="tooltip" data-original-title="Delete"> <i class="fas fa-trash-alt"></i></a>
+								  </td>
 								 @endcan
 															
 							</tr>
@@ -194,38 +200,7 @@
     <script>
         $(document).ready(function(){
 
-        	 //Clear Date
-            	if($("#date").val()==''){
-            		$("#clearDate").hide();
-
-            	}else{
-            		$("#clearDate").show();
-	            		   		$("#clearDate").click(function(){
-					    		$("#date").val("");
-					    		$("#clearDate").hide();
-					 });
-
-            	}
-
-            	$("#date").change(function(){
-		    		$("#clearDate").show();
-		    		$("#clearDate").click(function(){
-		    		$("#date").val("");
-		    		$("#clearDate").hide();
-		    		});
-
-		    	});
-
-
-            //Date Picker
-
-        	$( "#date" ).datepicker({
-		      dateFormat: 'dd-MM-yy',
-		      yearRange: '1970:'+ (new Date().getFullYear()+1),
-		      changeMonth: true,
-		      changeYear: true
-		    });
-
+        	
 
         	$("#document_name").change(function (){
 				var other = $('#document_name').val();
@@ -263,8 +238,8 @@
 		        	
 
 		        //Restrict File Size Less Than 500kb
-		        if (fileSize> 512000){
-		        	alert('File Size is bigger than 500kb');
+		        if (fileSize> 2048000){
+		        	alert('File Size is bigger than 2MB');
 		        	$(this).val('');
 		        }else{
 		        	//Restrict File Type

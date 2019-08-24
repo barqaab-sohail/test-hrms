@@ -62,22 +62,22 @@
 		                             <div class="row">
 		                                <div class="col-md-7">
 		                                    <div class="form-group row">
-		                                        <div class="col-md-6">
+		                                        <div class="col-md-6 date_input">
 		                                        	<label class="control-label text-right">From<span class="text_requried">*</span></label>
 		                                        
 		                                            <input type="text" id="from" name="from" value="{{ old('from') }}" class="form-control" readonly required>
 													@can('entry', Auth::user())
 		                                            <br>
-		                                            <i id="clearFrom" class="fas fa-trash-alt text_requried"></i>
+		                                            <i  class="fas fa-trash-alt text_requried"></i>
 		                                            @endcan
 		                                        </div>
-		                                        <div class="col-md-6">
+		                                        <div class="col-md-6 date_input">
 		                                        <label class="control-label text-right">To<span class="text_requried">*</span></label>
 		                                        
 		                                            <input type="text" id="to" name="to" value="{{ old('to') }}" class="form-control" readonly required>
 		                                            @can('entry', Auth::user())
 		                                            <br>
-		                                            <i id="clearTo" class="fas fa-trash-alt text_requried"></i>
+		                                            <i  class="fas fa-trash-alt text_requried"></i>
 		                                            @endcan
 		                                        </div>
 		                                    </div>
@@ -255,60 +255,8 @@
 
         <script>
             $(document).ready(function(){
-				$( function() {
-			    $( "#from, #to" ).datepicker({
-			      dateFormat: 'yy-M-dd',
-			      yearRange: '1960:'+ (new Date().getFullYear()),
-			      changeMonth: true,
-			      changeYear: true
-			    });
-		    	});
-
-		   	 //Posting To
-            	if($("#to").val()==''){
-            		$("#clearTo").hide();
-
-            	}else{
-            		$("#clearTo").show();
-	            		   		$("#clearTo").click(function(){
-					    		$("#to").val("");
-					    		$("#clearTo").hide();
-					 });
-
-            	}
-
-            	$("#to").change(function(){
-		    		$("#clearTo").show();
-		    		$("#clearTo").click(function(){
-		    		$("#to").val("");
-		    		$("#clearTo").hide();
-		    		});
-
-		    	});
-            	
-            	//Clear From
-            	if($("#from").val()==''){
-            		$("#clearFrom").hide();
-
-            	}else{
-            		$("#clearFrom").show();
-	            		   		$("#clearFrom").click(function(){
-					    		$("#from").val("");
-					    		$("#clearFrom").hide();
-					 });
-
-            	}
-
-            	$("#from").change(function(){
-		    		$("#clearFrom").show();
-		    		$("#clearFrom").click(function(){
-		    		$("#from").val("");
-		    		$("#clearFrom").hide();
-		    		});
-
-		    	});
-
-			
+				
+            
 
 			});
 

@@ -13,7 +13,7 @@ class StoreDocument extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,9 @@ class StoreDocument extends FormRequest
     public function rules()
     {
         return [
-            //
+            
+            'document_name'=>'required',
+            'document'=>'file|max:2000'
         ];
     }
 }

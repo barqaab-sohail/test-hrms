@@ -79,7 +79,7 @@
 		                                <!--/span-->
 		                                <div class="col-md-6">
 		                                    <div class="form-group row">
-		                                        <div class="col-md-12 formatDate">
+		                                        <div class="col-md-12 date_input">
 		                                        	<label class="control-label text-right">Date of Birth<span class="text_requried">*</span></label>
 		                                        
 		                                            <input type="text" id="date_of_birth" name="date_of_birth" value="{{ old('date_of_birth', $employee->date_of_birth) }}" class="form-control " placeholder="Enter Date of Birth" readonly required>
@@ -122,7 +122,7 @@
 		                                </div>
 		                                <div class="col-md-6">
 		                                    <div class="form-group row">
-		                                        <div class="col-md-12 formatDate">
+		                                        <div class="col-md-12 date_input">
 		                                        	<label class="control-label text-right">CNIC Expiry<span class="text_requried">*</span></label>
 		                                        		                                            
 		                                            <input type="text" id="cnic_expiry" name="cnic_expiry"  value="{{ old('cnic_expiry',$employee->cnic_expiry) }}" placeholder="Enter CNIC Expiry Date" class="form-control " readonly required>
@@ -273,29 +273,7 @@
     <script>
     $(document).ready(function(){
 
-    	   
-
-    
-    	//Date Picker
-    	@can('entry', Auth::user())
-        $( function() {
-		    $( "#date_of_birth" ).datepicker({
-		      dateFormat: 'DD, d-MM-yy',
-		      yearRange: '1940:'+ (new Date().getFullYear()-15),
-		      changeMonth: true,
-		      changeYear: true
-		    });
-		    $( "#cnic_expiry" ).datepicker({
-		      dateFormat: 'DD, d-MM-yy',
-		      yearRange:  new Date().getFullYear()+':'+(new Date().getFullYear()+15),
-		      changeMonth: true,
-		      changeYear: true
-		    });
-		    		    
-  		});
-  		@endcan
-
-       		
+    	      		
 
 		    $("#nationality2").hide();
 	    	$("#add").click (function(){

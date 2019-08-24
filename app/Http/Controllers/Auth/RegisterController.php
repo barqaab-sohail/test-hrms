@@ -102,7 +102,8 @@ class RegisterController extends Controller
 
                  return view('auth.login')->withErrors("You are already Registered.  Please Enter Email and Password");
 
-            }else{
+            }elseif($test->user_status==0)
+            {
 
             $user = User::where('email', $request->email)->first();
             $user->notify(New MailNotification);
@@ -113,6 +114,8 @@ class RegisterController extends Controller
            
                          
                 return redirect()->route('login')->with('success', 'You are Registered Sucessfully');
+            }else{
+                return view('auth.register')->withErrors("Please Contact to HR");
             }
         }
                

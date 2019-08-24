@@ -20,6 +20,7 @@ class PromotionController extends Controller
 	$employee = employee::find($id);
     $promotionIds = DB::table('salaries')
                     ->join('promotions','promotions.id','=','salaries.promotion_id')
+                    ->where('promotions.employee_id', $id)
                     ->get();
    
      return view ('hr.promotion.promotion',compact('employee','promotionIds'));
@@ -56,6 +57,7 @@ class PromotionController extends Controller
         $employee = employee::find(session('employee_id'));
         $promotionIds = DB::table('salaries')
                     ->join('promotions','promotions.id','=','salaries.promotion_id')
+                    ->where('promotions.employee_id', session('employee_id'))
                     ->get();
         
         $data = DB::table('salaries')
