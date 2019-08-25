@@ -6,27 +6,27 @@ use Illuminate\Console\Command;
 use Illuminate\Support\Collection;
 use Illuminate\Http\Request;
 use App\Notifications\DatabaseNotification;
-use App\user;
+use App\User;
 use DB;
 use App\employee;
 use Notification;
 use Illuminate\Support\Facades\Auth;
 
-class TestSchedule extends Command
+class CnicExpirySchedule extends Command
 {
     /**
      * The name and signature of the console command.
      *
      * @var string
      */
-    protected $signature = 'TestSchedule:check';
+    protected $signature = 'CnicExpirySchedule:check';
 
     /**
      * The console command description.
      *
      * @var string
      */
-    protected $description = 'Command description';
+    protected $description = 'Check CNIC Expiry of Employee';
 
     /**
      * Create a new command instance.
@@ -47,7 +47,7 @@ class TestSchedule extends Command
     {
         $expiryDays = \Carbon\Carbon::now()->addDays(300);
         $employeeIds = employee::whereDate('cnic_expiry', '<',$expiryDays)->pluck('id')->toArray(); 
-        $users = user::all()->whereIn('employee_id',$employeeIds);
+        $users = User::all()->whereIn('employee_id',$employeeIds);
 
         foreach($users as $user){
         $name = $user->employee->first_name ." ". $user->employee->middle_name ." ". $user->employee->last_name;
@@ -57,8 +57,7 @@ class TestSchedule extends Command
          Notification::send($user, new DatabaseNotification($letter));
 
         }
-
-       
-        
     }
 }
+//Blue Host Command 
+//cd /home1/barqaabc/public_html/hrms && php artisan schedule:run >> /dev/null 2>&1

@@ -30,6 +30,10 @@ Artisan::call('up');
 
 });
 */
+Route::get('/CnicExpiry', function () {
+Artisan::call('CnicExpirySchedule:check');
+    dd('OK');
+});
 
 Auth::routes();
 
