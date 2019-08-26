@@ -15,6 +15,7 @@ class Kernel extends ConsoleKernel
     protected $commands = [
         //
         Commands\CnicExpirySchedule::class,
+        Commands\BirthDaySchedule::class,
     ];
 
     /**
@@ -28,8 +29,11 @@ class Kernel extends ConsoleKernel
         // $schedule->command('inspire')
         //          ->hourly();
 
-         $schedule->command('CnicExpirySchedule:check')
+        $schedule->command('CnicExpirySchedule:check')
                  ->everyMinute();
+        $schedule->command('BirthDay:message')
+                 ->everyMinute();
+
     }
 
     /**

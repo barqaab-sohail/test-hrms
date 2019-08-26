@@ -53,6 +53,10 @@ return [
             'prefix' => '',
             'prefix_indexes' => true,
             'strict' => true,
+
+            //'dump_command_path'=>'C:\xampp\mysql\bin',
+            //'dump_command_timeout'=>60*5,
+            //'dump_using_single_transaction'=>true,
             'engine' => null,
             'options' => extension_loaded('pdo_mysql') ? array_filter([
                 PDO::MYSQL_ATTR_SSL_CA => env('MYSQL_ATTR_SSL_CA'),
