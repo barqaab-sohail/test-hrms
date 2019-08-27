@@ -295,6 +295,7 @@ Route::get('/project/edit/{id?}', [
             'uses' => 'ProjectController@edit',
             'as' => 'project.edit'
         ]);
+Route::get('/deleteProject/{id?}', 'ProjectController@delete')->name('deleteProject');
 Route::post('/editProject/{id?}', 'ProjectController@update')->name('editProject');
 
 

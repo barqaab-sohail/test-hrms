@@ -57,6 +57,7 @@
 						<th>Contractual Completion</th>
 						<th>Status</th>
 						<th> Actions </th>
+						<th></th>
 					</tr>
 					</thead>
 					<tbody>
@@ -68,8 +69,12 @@
 								<td>{{$project->contractual_completion}}</td>
 								<td>{{$project->status}}</td>
 								<td>
-								
-								 <a class="btn btn-info btn-sm" href="{{route('project.edit',['id'=>$project->id])}}" data-toggle="tooltip" data-original-title="Edit"> <i class="fas fa-pencil-alt text-white "></i></a>
+								 <a class="btn btn-info btn-sm" href="{{route('project.edit',['id'=>$project->id])}}" data-toggle="tooltip" title="Edit" > <i class="fas fa-pencil-alt text-white "></i></a>
+								 </td>
+								 <td>
+								  <a class="btn btn-danger btn-sm" onclick="return confirm('Are you Sure to Delete')"  href="{{route('deleteProject',['id'=>$project->id])}}" data-toggle="tooltip" title="Delete" > <i class="fas fa-trash-alt"></i></a>
+
+								 </td>
 															
 							</tr>
 						@endforeach

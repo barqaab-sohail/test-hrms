@@ -55,7 +55,9 @@
 @stack('scripts')
 <script src="{{asset('Massets/plugins/html5-editor/wysihtml5-0.3.0.js')}}"></script>
 <script src="{{asset('Massets/plugins/html5-editor/bootstrap-wysihtml5.js')}}"></script>
-<script src="{{asset('Massets/js/js-ui/jquery-ui.min.js') }}"></script>
+
+<script src="{{asset('Massets/js/js-ui/jquery-ui.min.js')}}"></script>
+
 <script src="{{asset('Massets/js/full-image/EZView.js') }}"></script>
 
 <script src="{{asset('Massets/js/crop/jquery.imgareaselect.min.js') }}"></script>
@@ -130,7 +132,7 @@
 
             });
 
-
+           
        
 
     });

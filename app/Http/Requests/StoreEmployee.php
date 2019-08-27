@@ -34,7 +34,7 @@ class StoreEmployee extends FormRequest
          'father_name' => 'required|max:191',
          'date_of_birth' =>'required',
          'gender' =>'required',
-         'cnic' => 'required|numeric|digits:13|unique:employees,cnic,'.session('employee_id'),
+         'cnic' => 'required|unique:employees,cnic,'.session('employee_id'),
          'cnic_expiry' => 'required|date',
          'employee_no' => 'nullable|unique:employees,employee_no,'.session('employee_id'),
          'marital_status' =>'required',

@@ -115,7 +115,7 @@
 		                                            <select  name="project"  class="form-control" required>
                                                         <option value=""></option>
                                                         @foreach($projects as $project)
-														<option value="{{$project->name}}" {{(old("project")==$project->name? "selected" : "")}}>{{$project->name}}</option>
+														<option value="{{$project->name}}" {{(old("project")==$project->name? "selected" : "")}}>{{$project->name." - ".$project->status}}</option>
                                                         @endforeach
                                                       
                                                     </select>

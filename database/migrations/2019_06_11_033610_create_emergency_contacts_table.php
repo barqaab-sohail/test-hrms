@@ -19,7 +19,7 @@ class CreateEmergencyContactsTable extends Migration
             $table->string('name');
             $table->string('relation');
             $table->string('mobile');
-            $table->string('landline');
+            $table->string('landline')->nullable();
             $table->timestamps();
             $table->foreign('employee_id')->references('id')->on('employees');
         });

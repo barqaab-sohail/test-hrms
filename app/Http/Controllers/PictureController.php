@@ -50,7 +50,7 @@ class PictureController extends Controller
 		        	unlink(public_path('storage/pictures/'.$picture->name));
 		            $image = $request->file('profile_picture');
 		            // Rename image
-		             $imageName = session('employee_id').'.'.$image->guessExtension();
+		             $imageName = session('employee_id')."-".$employee->first_name." ".$employee->middle_name." ".$employee->last_name.'.'.$image->guessExtension();
 		            $input['name'] = $imageName;
 		            $input['employee_id'] = session('employee_id');
 		            $input['type'] = $request->file('profile_picture')->getMimeType();
@@ -79,7 +79,7 @@ class PictureController extends Controller
 		        if ($request->hasFile('profile_picture')) {
 		            $image = $request->file('profile_picture');
 		            // Rename image
-		            $imageName = session('employee_id').'.'.$image->guessExtension();
+		            $imageName = session('employee_id')."-".$employee->first_name." ".$employee->middle_name." ".$employee->last_name.'.'.$image->guessExtension();
 		            $input['name'] = $imageName;
 		            $input['employee_id'] = session('employee_id');
 		            $input['type'] = $image->getMimeType();

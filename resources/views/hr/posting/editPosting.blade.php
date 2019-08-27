@@ -112,7 +112,7 @@
 			                                        <select  name="project"  class="form-control" required>
                                                     <option value=""></option>
 													@foreach($projects as $project)
-													<option value="{{$project->name}}" @if($project->name == $data->project) selected="selected" @endif>{{$project->name}}</option>
+													<option value="{{$project->name}}" @if($project->name == $data->project) selected="selected" @endif>{{$project->name." - ".$project->status}}</option>
                                                     @endforeach 	
                                                     </select>
 		                                        </div>

@@ -16,13 +16,12 @@ class ProjectController extends Controller
 	
 	public function index(){
 
-		$projects = project::all();
+	   $projects = project::all();
        return view ('project.projectList',compact('projects'));
 
     }
 
     public function create(){
-        
         return view ('project.createProject');
     }
 
@@ -43,6 +42,12 @@ class ProjectController extends Controller
         project::create($request->all());
         $projects = project::all();
         return view ('project.projectList',compact('projects'));
+    }
+
+   public function delete(Request $request, $id)
+    {
+    project::findOrFail($id)->delete();
+    return redirect()->route('projectList')->with('success', 'Project succesfully deleted');
     }
 
 

@@ -18,7 +18,6 @@
         "maatwebsite/excel": "^3.1",
         "mbezhanov/faker-provider-collection": "^1.2",
         "owen-it/laravel-auditing": "^9.2",
-        "spatie/db-dumper": "^2.14",
         "spatie/laravel-backup": "^5.12"
     },
     "require-dev": {

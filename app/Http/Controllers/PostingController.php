@@ -38,7 +38,7 @@ class PostingController extends Controller
                        ->select('employees.id','employees.first_name','employees.last_name','employees.middle_name','appointments.designation')->get();
 
         $postingIds = posting::all()->where('employee_id', $id);
-        $projects = project::all();
+        $projects = project::orderBy('status', 'desc')->get();
         $positions = designation::all();
         return view ('hr.posting.posting',compact('employee','employees','projects','postingIds','positions'));
     }

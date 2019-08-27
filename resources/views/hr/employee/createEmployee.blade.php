@@ -23,7 +23,7 @@
 		        	<div class="col-lg-10">
 						@can('entry', Auth::user())
 		                <div style="margin-top:10px; margin-right: 10px;">
-		                    <button type="button" onclick="window.location.href='{{route('employeeList')}}'" class="btn btn-info float-right">Back</button>
+		                    <button type="button" onclick="window.location.href='{{route('employeeList')}}'" class="btn btn-info float-right" data-toggle="tooltip" title="Back to List">Back</button>
 		                </div>
 		                @endcan
 		                <div class="card-body">
@@ -116,7 +116,7 @@
 		                                        <div class="col-md-12">
 		                                        	<label class="control-label text-right">CNIC<span class="text_requried">*</span></label>
 		                                        
-		                                            <input type="text" name="cnic" pattern="[0-9]{13}" title= "13 digit Number without dash" value="{{ old('cnic') }}" class="form-control " placeholder="Enter CNIC without dash" required>
+		                                            <input type="text" name="cnic" id="cnic" pattern="[0-9]{13}" title= "13 digit Number without dash" value="{{ old('cnic') }}" class="form-control" onkeyup='addHyphen(this)'  placeholder="Enter CNIC without dash" required>
 		                                        </div>
 		                                    </div>
 		                                </div>
@@ -194,7 +194,7 @@
                                                     </select> 
 		                                        </div>
 		                                        <div class="col-md-2"><br>
-		                                       		<button type="button" name="add" id="add" class="btn btn-success">+</button>
+		                                       		<button type="button" name="add" id="add" class="btn btn-success" >+</button>
 		                                        </div>
 		                                    </div>
 		                                </div>
@@ -268,8 +268,41 @@
 	    $("#nationality2").hide();
 	    $("#add").click (function(){
 		$("#nationality2").toggle();
+		$('#add').html($('#add').text() == '-' ? '+' : '-');
 	  	});
+	
+	
+	 //Make sure that the event fires on input change
+	$("#cnic").on('input', function(ev){
+		
+		//Prevent default
+		ev.preventDefault();
+		
+		//Remove hyphens
+		let input = ev.target.value.split("-").join("");
+		
+		//Make a new string with the hyphens
+		// Note that we make it into an array, and then join it at the end
+		// This is so that we can use .map() 
+		input = input.split('').map(function(cur, index){
+			
+			//If the size of input is 6 or 8, insert dash before it
+			//else, just insert input
+			if(index == 5 || index == 12)
+				return "-" + cur;
+			else
+				return cur;
+		}).join('');
+		
+		//Return the new string
+		$(this).val(input);
 	});
+
+
+
+	});
+
+	
 </script>
 
         

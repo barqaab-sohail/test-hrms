@@ -90,7 +90,13 @@ class DocumentController extends Controller
              
         }
         else{
-             document::findOrFail($data->id)->update($request->all());
+             
+            $input = $request->all();
+            if($request->filled('date')){
+            $input ['date']= \Carbon\Carbon::parse($request->date)->format('Y-m-d');
+            }
+
+             document::findOrFail($data->id)->update($input);
         }
     	
      return redirect()->route('document.edit',['id'=>$id])->with('success', 'Document is updated succesfully');
