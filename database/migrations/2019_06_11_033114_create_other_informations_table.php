@@ -22,7 +22,10 @@ class CreateOtherInformationsTable extends Migration
             $table->string('disability')->nullable();
             $table->string('passport_no')->nullable();
             $table->date('passport_expiry')->nullable();
-            $table->string('domicile')->nullable();
+            $table->string('kin_name')->nullable();
+            $table->string('kin_relation')->nullable();
+            $table->string('kin_address')->nullable();
+            $table->string('kin_contact_number')->nullable();
             $table->timestamps();
             $table->foreign('employee_id')->references('id')->on('employees');
         });

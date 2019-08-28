@@ -7,6 +7,8 @@
 		
 		
 	</ol>
+
+
 @stop
 @section('content')
    
@@ -65,7 +67,7 @@
 		                                        <div class="col-md-12">
 		                                        <label class="control-label text-right ">Branch Name</label>
 		                                        
-		                                            <input type="text"  name="branch_name" value="{{ old('branch_name') }}" class="form-control"  required>
+		                                            <input type="text"  name="branch_name" value="{{ old('branch_name') }}" class="form-control"  >
 		                                        </div>
 		                                       		                                       
 		                                    </div>
@@ -75,7 +77,7 @@
 		                                        <div class="col-md-12">
 		                                        <label class="control-label text-right ">Branch Code</label>
 		                                        
-		                                            <input type="text"  name="branch_code" value="{{ old('branch_code') }}" class="form-control"  required>
+		                                            <input type="text"  name="branch_code" value="{{ old('branch_code') }}" class="form-control"  >
 		                                        </div>
 		                                       
 		                                       <input type="number" name="employee_id" value="{{session('employee_id')}}"   class="form-control " hidden>
@@ -135,7 +137,7 @@
 								<td>
 								@can('entry', Auth::user())
 								 <a class="btn btn-info btn-sm" href="{{route('bank.edit',['id'=>$bankId->id])}}" data-toggle="tooltip" data-original-title="Edit"> <i class="fas fa-pencil-alt text-white "></i></a>
-								 <a class="btn btn-danger btn-sm" onclick="return confirm('Are you Sure to Delete')" href="{{route('deleteBank',['id'=>$bankId->id])}}" data-toggle="tooltip" data-original-title="Delete"> <i class="fas fa-trash-alt"></i></a>
+								  <button class="btn btn-danger btn-sm text-white" onclick="return confirm('Are you Sure to Delete')" id="delete,id={{$bankId->id}}" data-toggle="tooltip" data-original-title="Delete"> <i class="fas fa-trash-alt"></i></button>
 								 @endcan
 															
 							</tr>
@@ -156,11 +158,44 @@
         </div>
     </div>
  @push('scripts')
-        <script>
-            $(document).ready(function(){
-			
-			});
-        </script>
+    <script>
+       //Delete through AJAX
+     
+       @if($bankIds->count()!=0)
+            $('[id^=delete]').click(function(e){
+		        e.preventDefault();
+		        var id = $(this).attr('id');
+		        
+		        var url =  "{{route('deleteBank',['id'=>$bankId->id])}}";
+
+		        $.ajaxSetup({
+	          			headers: {
+	              		'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+	          			}
+      				});
+
+      				
+	     		
+	     			$.ajax({
+		            url: url, //this is the submit URL
+		            type: 'GET', //or POST
+		            data: $('#editBank').serialize(),
+		            	success: function(data){
+		            		if (data =="OK"){
+		            			$('#json_message').html('<div id="json_message" class="alert alert-success" align="left"><a href="#" class="close" data-dismiss="alert">&times;</a><strong>Data Sucessfuly Deleted</strong></div>');
+		            		}else{
+		            			$('#json_message').html('<div id="json_message" class="alert alert-danger" align="left"><a href="#" class="close" data-dismiss="alert">&times;</a><strong>Data is not  Deleted</strong></div>');
+		            		}
+			        	}
+	        		});
+
+
+
+		        
+		    });
+		@endif
+
+    </script>
     @endpush
 
 @stop

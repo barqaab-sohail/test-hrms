@@ -14,6 +14,7 @@
 				<input id="month" class="form-control" value="" type="month">
 			</div>-->
 			<h4 class="card-title">List of Employees</h4>
+
 			
 			<div class="table-responsive m-t-40">
 				
@@ -50,8 +51,6 @@
 															
 							</tr>
 						@endforeach
-					
-					 
 					
 					</tbody>
 				</table>
@@ -102,6 +101,10 @@
                 return false;
             });
         });
+
+    		
+
+
 	</script>
 	@endpush
 @stop

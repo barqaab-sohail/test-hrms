@@ -116,7 +116,7 @@
 		                                        <div class="col-md-12">
 		                                        	<label class="control-label text-right">CNIC<span class="text_requried">*</span></label>
 		                                        
-		                                            <input type="text" name="cnic" id="cnic" pattern="[0-9]{13}" title= "13 digit Number without dash" value="{{ old('cnic') }}" class="form-control" onkeyup='addHyphen(this)'  placeholder="Enter CNIC without dash" required>
+		                                            <input type="text" name="cnic" id="cnic" pattern="[0-9.-]{15}" title= "13 digit Number without dash" value="{{ old('cnic') }}" class="form-control" onkeyup='addHyphen(this)'  placeholder="Enter CNIC without dash" required>
 		                                        </div>
 		                                    </div>
 		                                </div>

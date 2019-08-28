@@ -33,7 +33,7 @@
                             <label for="cnic" class="col-md-4 col-form-label text-md-right">{{ __('CNIC') }}</label>
 
                             <div class="col-md-6">
-                                <input id="cnic" type="text" class="form-control{{ $errors->has('cnic') ? ' is-invalid' : '' }}" name="cnic"  placeholder="Enter CNIC without dash" value="{{ old('cnic') }}" required autofocus>
+                                <input id="cnic" type="text" class="form-control{{ $errors->has('cnic') ? ' is-invalid' : '' }}" pattern="[0-9.-]{15}" title= "13 digit Number without dash"  name="cnic"  placeholder="Enter CNIC without dash" value="{{ old('cnic') }}" required autofocus>
 
                                 @if ($errors->has('cnic'))
                                     <span class="invalid-feedback" role="alert">
@@ -92,4 +92,7 @@
         </div>
     </div>
 </div>
+
+
 @endsection
+

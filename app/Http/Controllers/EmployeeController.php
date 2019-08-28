@@ -191,6 +191,9 @@ class EmployeeController extends Controller
 
     }
     
+    public function employeeStatus(){
+         return "OK";
+    }
   
 
     

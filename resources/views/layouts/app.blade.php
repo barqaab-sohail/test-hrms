@@ -82,3 +82,51 @@
     </div>
 </body>
 </html>
+
+<script src="{{asset('Massets/plugins/jquery/jquery.min.js') }}"></script>
+
+<script>
+$(document).ready(function(){
+
+        $("#nationality2").hide();
+        $("#add").click (function(){
+        $("#nationality2").toggle();
+        $('#add').html($('#add').text() == '-' ? '+' : '-');
+        });
+    
+    
+     //Make sure that the event fires on input change
+    $("#cnic").on('input', function(ev){
+        
+        //Prevent default
+        ev.preventDefault();
+        
+        //Remove hyphens
+        let input = ev.target.value.split("-").join("");
+        
+        //Make a new string with the hyphens
+        // Note that we make it into an array, and then join it at the end
+        // This is so that we can use .map() 
+        input = input.split('').map(function(cur, index){
+            
+            //If the size of input is 6 or 8, insert dash before it
+            //else, just insert input
+            if(index == 5 || index == 12)
+                return "-" + cur;
+            else
+                return cur;
+        }).join('');
+        
+        //Return the new string
+        $(this).val(input);
+    });
+
+
+
+    });
+   
+   
+    
+</script>
+
+        

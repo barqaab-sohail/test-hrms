@@ -11,8 +11,7 @@ use App\user;
 | Here is where you can register web routes for your application. These
 | routes are loaded by the RouteServiceProvider within a group which
 | contains the "web" middleware group. Now create something great!
-|
-*/
+|*/
 
 /*Route::get('/', function () {
     return view('welcome');
@@ -90,6 +89,7 @@ Route::get('/hrms/employee/edit/{id?}', [
 Route::post('/editEmployee/{id?}', 'EmployeeController@update')->name('editEmployee');
 Route::get('/inactiveEmployee/{id?}', 'EmployeeController@inactive')->name('inactiveEmployee');
 Route::get('/hrms/userDetail/{id?}', 'EmployeeController@show')->name('userDetail');
+Route::post('/employeeStatus', 'EmployeeController@employeeStatus')->name('testingroute');
 
 //Add Position
 Route::get('/hrms/addDesignation', 'DesignationController@index')->name('addDesignation');

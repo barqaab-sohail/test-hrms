@@ -79,9 +79,9 @@
 		                                <div class="col-md-5">
 		                                    <div class="form-group row">
 		                                        <div class="col-md-12">
-		                                        <label class="control-label text-right ">Blood Group<span class="text_requried">*</span></label>
+		                                        <label class="control-label text-right ">Blood Group</label>
 		                                        
-		                                            <select  name="blood_group"  class="form-control" required>
+		                                            <select  name="blood_group"  class="form-control" >
                                                         <option value=""></option>
                                                         @foreach($blood_groups as $blood_group)
 															<option value="{{$blood_group->id}}"
@@ -123,6 +123,58 @@
 		                                            @endcan
 		                                        </div>
 		                                    </div>
+		                                   
+		                                </div>
+		                            </div>
+									
+									<hr>
+									<h3 class="box-title">Next to Kin Detail</h3>
+		                            		                           
+		                            <div class="row">
+		                                <div class="col-md-7">
+		                                    <div class="form-group row">
+		                                        <div class="col-md-12">
+		                                        <label class="control-label text-right ">Name</label>
+		                                        
+		                                            <input type="text"  name="kin_name" value="{!! old('kin_name',isset($employee->other_information->kin_name)?$employee->other_information->kin_name:'')!!}" class="form-control" placeholder="Enter Name" >
+		                                        </div>
+		                                    </div>
+		                                </div>
+		                                
+		                                <!--/span-->
+		                                <div class="col-md-5">
+		                                    <div class="form-group row">
+		                                        <div class="col-md-12">
+		                                        <label class="control-label text-right ">Relation</label>
+		                                        
+		                                            <input type="text"  name="kin_relation" value="{!! old('kin_relation',isset($employee->other_information->kin_relation)?$employee->other_information->kin_relation:'')!!}" class="form-control" placeholder="Enter Relation with Employee">
+													
+		                                        </div>
+		                                    </div>
+		                                    
+		                                </div>
+		                            </div>
+		                            <div class="row">
+		                                <div class="col-md-7">
+		                                    <div class="form-group row">
+		                                        <div class="col-md-12">
+		                                        <label class="control-label text-right ">Address</label>
+		                                        
+		                                            <input type="text"  name="kin_address" value="{!! old('kin_address',isset($employee->other_information->kin_address)?$employee->other_information->kin_address:'')!!}" class="form-control" placeholder="Enter Address" >
+		                                        </div>
+		                                    </div>
+		                                </div>
+		                                
+		                                <!--/span-->
+		                                <div class="col-md-5">
+		                                    <div class="form-group row">
+		                                        <div class="col-md-12 ">
+		                                        <label class="control-label text-right ">Contact No.</label>
+		                                        
+		                                            <input type="text"  name="kin_contact_number" value="{!! old('kin_contact_number',isset($employee->other_information->kin_contact_number)?$employee->other_information->kin_contact_number:'')!!}" class="form-control" placeholder="Enter Contact Number">
+													
+		                                        </div>
+		                                    </div>
 		                                    <input type="text"  name="employee_id" value="{{session('employee_id')}}
 		                                            " class="form-control" hidden >
 		                                    </div>
@@ -138,11 +190,14 @@
 		                                        <div class="col-md-offset-3 col-md-9">
 		                                            <button type="submit" class="btn btn-success">Save</button>
 		                                            <button type="button" onclick="window.location.href='{{route('employeeList')}}'" class="btn btn-inverse">Cancel</button>
+
 		                                        </div>
 		                                        @endcan
+
 		                                    </div>
 		                                </div>
 		                            </div>
+		                            <br>
 		                        </div>
 		                    </form>
 		        		</div>       

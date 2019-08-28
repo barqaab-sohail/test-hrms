@@ -29,3 +29,9 @@
             <strong></strong> {{Session::get('error')}}
         </div>
  @endif
+
+<div id="json_message" align="left">
+            
+</div>
+
+
