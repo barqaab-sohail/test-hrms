@@ -1,8 +1,8 @@
 @extends('layouts.master.master')
 @section('Heading')
-	<h3 class="text-themecolor">List of Employees</h3>
+	<h3 class="text-themecolor">Set User Rights</h3>
 	<ol class="breadcrumb">
-		<li class="breadcrumb-item"><a href="javascript:void(0)">List of Employees</a></li>
+		<li class="breadcrumb-item"><a href="javascript:void(0)"></a></li>
 	</ol>
 @stop
 @section('content')
@@ -11,9 +11,10 @@
 			<!--<div class="float-right">
 				<input id="month" class="form-control" value="" type="month">
 			</div>-->
-			<h4 class="card-title">List of Employees</h4>
+			<h4 class="card-title">Set Uer Rights</h4>
 
-			
+		<from id="updateUserRights">
+		 {{csrf_field()}}
 			<div class="table-responsive m-t-40">
 				
 				<table id="myTable" class="table table-bordered table-striped" width="100%" cellspacing="0">
@@ -21,12 +22,10 @@
 					
 					<tr>
 						<th>Employee Name</th>
-						<th>Email</th>
 						<th>CNIC</th>
-						<th>CNIC Expiry</th>
-						<th>Gender</th>
-						<th> Actions </th>
-						<th></th>
+						<th>Email</th>
+						<th>User Right</th>
+						<th>Actions</th>
 
 					</tr>
 					</thead>
@@ -34,25 +33,29 @@
 						@foreach($employees as $employee)
 							<tr>
 								<td>{{$employee->first_name}} {{$employee->middle_name}} {{$employee->last_name}}</td>
-								<td>{{isset($employee->user->email)? $employee->user->email:'No Email'}}</td>
 								<td>{{$employee->cnic}}</td>
-								<td>{{$employee->cnic_expiry}}</td>
-								<td>{{$employee->gender}}</td>
+								<td>{{isset($employee->user->email)? $employee->user->email:'No Email'}}</td>
+								<td> 
+									<select  name="role_id"  class="form-control" >
+                                    		<option value="{{5}}"></option>
+                                        @foreach($roles as $role)
+											<option value="{{$role->id}}"
+											@if(!empty($employee->user->role_id))
+												@if($role->id == $employee->user->role_id) selected="selected"@endif
+											@endif>{{$role->name}}</option>
+										@endforeach
+                                    </select>
+                                </td>
 								<td>
-									<a class="btn btn-info btn-sm" href="{{route('employee.edit',['id'=>$employee->id])}}" data-toggle="tooltip" title="Edit"><i class="fas fa-pencil-alt text-white "></i></a>
-								</td>
-								<td>
-								@can('admin', Auth::user())
-									<a class="btn btn-danger btn-sm" onclick="return confirm('Are you Sure to Delete')" href="{{route('inactiveEmployee',['id'=>$employee->id])}}" data-toggle="tooltip" title="Delete"> <i class="fas fa-trash-alt"></i></a>
-								 @endcan
-								</td>
-															
+									<a class="btn btn-info btn-sm" id="update,id={{$employee->id}}" data-toggle="tooltip" title="Update"><i class="fas fa-save text-white"></i></a>
+								</td>	
 							</tr>
 						@endforeach
 					
 					</tbody>
 				</table>
 			</div>
+		</from>
 		</div>
 	</div>
 @push('scripts')
@@ -100,6 +103,36 @@
             });
         });
 
+        //Update through AJAX
+        $('a[id^=update]').click(function(e){
+		        e.preventDefault();
+		        var updateId = $(this).attr('id');
+		        var arr = updateId.split('=');
+		        var id = arr[1];
+
+		        //alert(updateId);
+
+		        var url = "http://localhost/hrms/public/adminInfo/updateActiveUsers/4";
+		        
+		        var 
+
+		        $.ajaxSetup({
+	          			headers: {
+	              		'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+	          			}
+      				});
+
+      				
+	     			$.ajax({
+		            url: url, //this is the submit URL
+		            type: 'POST', //or POST
+		            data: {},
+		                  	success: function(data){
+		            		alert(data);
+			        	}
+	        		});
+ 
+		    });
     		
 
 

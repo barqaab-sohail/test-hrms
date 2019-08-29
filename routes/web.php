@@ -78,8 +78,6 @@ Route::get('/reports/allManagers', 'ReportsController@allManagers')->name('allMa
 //Employee & User Routes
 
 Route::get('/hrms/employeeList', 'EmployeeController@index')->name('employeeList');
-Route::get('/hrms/activeUsers', 'EmployeeController@activeUsers')->name('activeUsers');
-
 Route::post('/storeEmployee', 'EmployeeController@store')->name('storeEmployee');
 Route::get('/hrms/createEmployee', 'EmployeeController@create')->name('createEmployee');
 Route::get('/hrms/employee/edit/{id?}', [
@@ -300,6 +298,10 @@ Route::post('/editProject/{id?}', 'ProjectController@update')->name('editProject
 
 
 
+//Admin Routes
+Route::get('/adminInfo/activeUsers', 'AdminController@activeUsers')->name('activeUsers');
+Route::post('/adminInfo/updateActiveUsers/{$id}', 'AdminController@updateActiveUsers')->name('updateActiveUsers');
+Route::get('/adminInfo/setUserRights', 'AdminController@setUserRights')->name('setUserRights');
 
 
 

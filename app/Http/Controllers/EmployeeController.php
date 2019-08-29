@@ -14,6 +14,7 @@ use App\nationality;
 use DB;
 use App\sessions;
 
+
 class EmployeeController extends Controller
 {
     
@@ -169,32 +170,9 @@ class EmployeeController extends Controller
 
   
 
-    public function activeUsers(){
-
-     // Get time session life time from config.
-     $time =  time() - (config('session.lifetime')*60); 
-
-     // Total login users (user can be log on 2 devices will show once.)
-     $totalActiveUsers = sessions::where('last_activity','>=', $time)->
-     count(DB::raw('DISTINCT user_id'));
-     
-
-    // Total active sessions
-    // $activeUsers = sessions::where('last_activity','>=', $time)->     get();
-
-     $activeUsers = DB::table('employees')
-                    ->join('users','employees.id','=','users.employee_id')
-                    ->join('sessions','users.id','=','sessions.user_id')
-                    ->select('employees.*','sessions.*','users.*')->where('last_activity','>=', $time)->get();
-
-       return view('hr.employee.activeUserList', compact('activeUsers','totalActiveUsers'));
-
-    }
+   
     
-    public function employeeStatus(){
-         return "OK";
-    }
-  
+    
 
     
 

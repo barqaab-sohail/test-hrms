@@ -41,12 +41,13 @@
 		                                        
 		                                             <select  name="document_name" id="document_name"    class="form-control" required>
                                                         <option value=""></option>
+                                                        <option value="Other"  {{ old('name') == "Other" ? 'selected' : '' }}>Other</option>
                                                         <option value="CNIC Front"  {{ old('CNIC Front') == "CNIC Front" ? 'selected' : '' }}>CNIC Front</option>
                                                         <option value="CNIC Back"  {{ old('CNIC Back') == "CNIC Back" ? 'selected' : '' }}>CNIC Back</option>
                                                         <option value="Appointment Letter"  {{ old('Appointment Letter') == "Appointment Letter" ? 'selected' : '' }}>Appointment Letter</option>
                                                         <option value="HR Form"  {{ old('HR Form') == "HR Form" ? 'selected' : '' }}>HR Form</option>
                                                         <option value="Joining Report"  {{ old('Joining Report') == "Joining Report" ? 'selected' : '' }}>Joining Report</option>
-                                                        <option value="Other"  {{ old('name') == "Other" ? 'selected' : '' }}>Other</option>
+                                                        
                                                         
                                                     </select>
 		                                            

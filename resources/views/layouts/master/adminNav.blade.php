@@ -1,3 +1,5 @@
+
+
 <aside class="left-sidebar">
     <!-- Sidebar scroll-->
     <div class="scroll-sidebar">
@@ -52,7 +54,6 @@
                         <li><a href="{{route('employeeList')}}">List of Employees</a></li>
                         <li><a href="{{route('createEmployee')}}">Add Employee</a></li>
                         <li><a href="{{route('addDesignation')}}">Add Designation</a></li>
-                         <li><a href="{{route('activeUsers')}}">Active User List</a></li>
                         @endcan
                        
                     </ul>
@@ -66,16 +67,21 @@
                 </li>
 
                 @can('admin', Auth::user())
+                
+                 <li @if(request()->is('adminInfo*')) class="active" @endif > <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i class="mdi mdi-briefcase"></i><span class="hide-menu">Admin Info</span></a>
+                    <ul aria-expanded="false" class="collapse">
+                        <li><a href="{{route('activeUsers')}}">Active User List</a></li>
+                        <li><a href="{{route('setUserRights')}}">Set User Rights</a></li>
+                    </ul>
+                </li>
+
                 <li @if(request()->is('project*')) class="active" @endif > <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i class="mdi mdi-briefcase"></i><span class="hide-menu">Projects</span></a>
                     <ul aria-expanded="false" class="collapse">
                         <li><a href="{{route('projectList')}}">List of Projects</a></li>
                         <li><a href="{{route('createProject')}}">Add Projects</a></li>
-                        
-                        
                     </ul>
-
                 </li>
-                
+
 
                 <li @if(request()->is('*phone*')) class="active" @endif > <a class="has-arrow waves-effect waves-dark" href="{{route('phoneList')}}" aria-expanded="false"><i class="fas fa-phone"></i><span class="hide-menu">Contact Numbers</span></a>
                     

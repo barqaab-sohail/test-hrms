@@ -175,7 +175,6 @@
 	          			}
       				});
       				
-	     			
 	     			$.ajax({
 		            url: url, //this is the submit URL
 		            type: 'POST', //or POST
@@ -203,6 +202,8 @@
 		        
 		        var url =  "{{route('deleteBank',['id'=>$bankId->id])}}";
 
+		        alert('Not Deleted');
+		        //type from POST to GET for deleted
 
 
 		        $.ajaxSetup({
@@ -215,7 +216,7 @@
 	     		
 	     			$.ajax({
 		            url: url, //this is the submit URL
-		            type: 'GET', //or POST
+		            type: 'POST', //or POST
 		            data: $('#editBank').serialize(),
 		            	success: function(data){
 		            		if (data =="OK"){
