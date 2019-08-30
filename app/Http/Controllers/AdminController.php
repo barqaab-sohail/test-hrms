@@ -7,13 +7,14 @@ use App\sessions;
 use DB;
 use App\employee;
 use App\role;
+use App\User;
 
 class AdminController extends Controller
 {
     public function __construct()
     {
         $this->middleware('auth');
-        $this->middleware('updation')->only('delete','update', 'store','create','index');
+        $this->middleware('updation')->only('activeUsers','setUserRights', 'updateActiveUsers');
     }
 
     public function activeUsers(){
@@ -42,14 +43,16 @@ class AdminController extends Controller
        return view('admin.setUserRights', compact('employees','roles'));
     }
 
-    public function updateActiveUsers(request $request, $id){
-        $employee = employee::find($id);
-        $userId = $employee->user->id;
-        User::findOrFail($userId)->update($request->all());
-
-        return 'OK';
-
+    public function updateActiveUsers(Request $request, $id){
+        User::updateOrCreate(['employee_id' => $id], $request->all());
+        return "OK";
     }
+
+    public function deleteUser($id){
+        User::where('employee_id', $id)->firstOrFail()->delete(); 
+        return "OK";
+    }
+
 
 
 }

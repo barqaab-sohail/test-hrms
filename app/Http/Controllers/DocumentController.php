@@ -104,9 +104,7 @@ class DocumentController extends Controller
 
     public function delete(Request $request, $id)
     {
-    
     $document = document::findOrFail($id);
-    
     unlink(public_path('storage/'.$document->file_path.$document->file_name));
     $document->forceDelete(); 
         

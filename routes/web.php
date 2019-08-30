@@ -300,8 +300,9 @@ Route::post('/editProject/{id?}', 'ProjectController@update')->name('editProject
 
 //Admin Routes
 Route::get('/adminInfo/activeUsers', 'AdminController@activeUsers')->name('activeUsers');
-Route::post('/adminInfo/updateActiveUsers/{$id}', 'AdminController@updateActiveUsers')->name('updateActiveUsers');
+Route::post('/adminInfo/updateActiveUsers/{id?}', 'AdminController@updateActiveUsers')->name('updateActiveUsers');
 Route::get('/adminInfo/setUserRights', 'AdminController@setUserRights')->name('setUserRights');
+Route::post('/deleteUser/{id?}', 'AdminController@deleteUser')->name('deleteUser');
 
 
 

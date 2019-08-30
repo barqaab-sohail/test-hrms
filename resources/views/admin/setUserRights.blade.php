@@ -26,6 +26,7 @@
 						<th>Email</th>
 						<th>User Right</th>
 						<th>Actions</th>
+						<th></th>
 
 					</tr>
 					</thead>
@@ -34,12 +35,14 @@
 							<tr>
 								<td>{{$employee->first_name}} {{$employee->middle_name}} {{$employee->last_name}}</td>
 								<td>{{$employee->cnic}}</td>
-								<td>{{isset($employee->user->email)? $employee->user->email:'No Email'}}</td>
+								<td>
+									<input id="email{{$employee->id}}" value="{{isset($employee->user->email)? $employee->user->email:''}}"/>
+								</td>
 								<td> 
-									<select  name="role_id"  class="form-control" >
-                                    		<option value="{{5}}"></option>
+									<select  name="role_id"  id="role{{$employee->id}}" class="form-control" >
+                                    		<option  value=""></option>
                                         @foreach($roles as $role)
-											<option value="{{$role->id}}"
+											<option  value="{{$role->id}}"
 											@if(!empty($employee->user->role_id))
 												@if($role->id == $employee->user->role_id) selected="selected"@endif
 											@endif>{{$role->name}}</option>
@@ -48,6 +51,9 @@
                                 </td>
 								<td>
 									<a class="btn btn-info btn-sm" id="update,id={{$employee->id}}" data-toggle="tooltip" title="Update"><i class="fas fa-save text-white"></i></a>
+								</td>
+								<td>
+									<a class="btn btn-danger btn-sm" id="delete,id={{$employee->id}}" data-toggle="tooltip" title="Delete"><i class="fas fa-trash-alt text-white"></i></a>
 								</td>	
 							</tr>
 						@endforeach
@@ -109,26 +115,81 @@
 		        var updateId = $(this).attr('id');
 		        var arr = updateId.split('=');
 		        var id = arr[1];
-
-		        //alert(updateId);
-
-		        var url = "http://localhost/hrms/public/adminInfo/updateActiveUsers/4";
+		        var role_id = $('#role'+id).children("option:selected").val();
+		        var email = $('#email'+id).val();
 		        
-		        var 
-
+		        if ((role_id=='') || (email=='')){
+		        	alert ("Please enter Email address and select User Rights");
+		        	return;
+		        }
+		    	
+		    	if(!isValidEmailAddress(email)) {
+		    		alert("Email Address is not a Valid Email Address")
+		    		return;
+		    	}
+		        var url = "{{route('updateActiveUsers')}}"+"/"+id;
+		        
+				//alert(email);	
 		        $.ajaxSetup({
 	          			headers: {
 	              		'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
 	          			}
       				});
-
       				
 	     			$.ajax({
 		            url: url, //this is the submit URL
 		            type: 'POST', //or POST
-		            data: {},
-		                  	success: function(data){
-		            		alert(data);
+		            data: {role_id:role_id, email:email},
+
+		            	success: function(data){
+		            		
+		            		if (data =="OK"){
+		            			
+		            			$('#json_message').html('<div id="json_message" class="alert alert-success" align="left"><a href="#" class="close" data-dismiss="alert">&times;</a><strong>User Right Updated Sucessfully</strong></div>');
+		            			$('html,body').animate({scrollTop:0},0);
+
+		            		}else{
+
+		            			$('#json_message').html('<div id="json_message" class="alert alert-danger" align="left"><a href="#" class="close" data-dismiss="alert">&times;</a><strong>User Right is not Updated Sucessfully</strong></div>');
+		            				$('html,body').animate({scrollTop:0},0);
+		            		}
+			        	}
+	        		});
+ 
+		    });
+
+                //Delete through AJAX
+        $('a[id^=delete]').click(function(e){
+		        e.preventDefault();
+		        var deleteId = $(this).attr('id');
+		        var arr = deleteId.split('=');
+		        var id = arr[1];
+
+		        var url = "{{route('deleteUser')}}"+"/"+id;
+		        
+				//alert(url);
+				
+				
+		        $.ajaxSetup({
+	          			headers:{
+	              		'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+	          			}
+      				});
+      				
+	     			$.ajax({
+		            url: url, //this is the submit URL
+		            type: 'POST', //or POST
+		            //data: {role_id:role_id, email:email},
+		            	success: function(data){
+		            			$('#json_message').html('<div id="json_message" class="alert alert-success" align="left"><a href="#" class="close" data-dismiss="alert">&times;</a><strong>User Deleted Sucessfully</strong></div>');
+		            			$('html,body').animate({scrollTop:0},0);
+		            			$('#role'+id).val('').trigger('change');
+		        				$('#email'+id).val('');
+			        	},
+			        	error: function (jqXHR, textStatus, errorThrown){
+			        		$('#json_message').html('<div id="json_message" class="alert alert-danger" align="left"><a href="#" class="close" data-dismiss="alert">&times;</a><strong>User is not deleted</strong></div>');
+		            			$('html,body').animate({scrollTop:0},0);
+			        		
 			        	}
 	        		});
  

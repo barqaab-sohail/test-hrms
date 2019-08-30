@@ -54,9 +54,8 @@ class BankController extends Controller
 
     public function delete(Request $request, $id)
     {
-
+      
     bank::findOrFail($id)->delete(); 
     return "OK";
     }
-
 }
