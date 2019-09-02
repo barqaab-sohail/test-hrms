@@ -17,18 +17,16 @@ use App\user;
     return view('welcome');
 });
 
-
 Route::get('/HRMS_Maintenance', function () {
 Artisan::call('down --message="Upgrading Database" --retry=60');
     dd('OK Down');
-
 });
 Route::get('/HRMS_Up', function () {
 Artisan::call('up');
     dd('OK Up');
-
 });
 */
+
 Route::get('/CnicExpiry', function () {
 Artisan::call('CnicExpirySchedule:check');
     dd('OK');
@@ -98,7 +96,6 @@ Route::get('/hrms/designation/edit/{id?}', [
         ]);
 Route::post('/editDesignation/{id?}', 'DesignationController@update')->name('editDesignation');
 Route::get('/deleteDesignation/{id?}', 'DesignationController@delete')->name('deleteDesignation');
-
 
 
 
@@ -216,8 +213,6 @@ Route::post('/editPromotion/{id?}', 'PromotionController@update')->name('editPro
 Route::get('/deletePromotion/{id?}', 'PromotionController@delete')->name('deletePromotion');
 
 
-
-
 //Document Routes
 Route::get('/hrms/document/{id?}', 'DocumentController@create')->name('document');
 Route::post('/storeDocument', 'DocumentController@store')->name('storeDocument');
@@ -227,8 +222,6 @@ Route::get('/hrms/document/edit/{id?}', [
         ]);
 Route::post('/editDocument/{id?}', 'DocumentController@update')->name('editDocument');
 Route::get('/deleteDocument/{id?}', 'DocumentController@delete')->name('deleteDocument');
-
-
 
 //Bank
 Route::get('/hrms/bank/{id?}', 'BankController@create')->name('bank');
@@ -297,26 +290,16 @@ Route::get('/deleteProject/{id?}', 'ProjectController@delete')->name('deleteProj
 Route::post('/editProject/{id?}', 'ProjectController@update')->name('editProject');
 
 
-
 //Admin Routes
-Route::get('/adminInfo/activeUsers', 'AdminController@activeUsers')->name('activeUsers');
-Route::post('/adminInfo/updateActiveUsers/{id?}', 'AdminController@updateActiveUsers')->name('updateActiveUsers');
-Route::get('/adminInfo/setUserRights', 'AdminController@setUserRights')->name('setUserRights');
-Route::post('/deleteUser/{id?}', 'AdminController@deleteUser')->name('deleteUser');
-
-
-
-
+Route::get('/adminInfo/activeUsers', 'Admin\AdminController@activeUsers')->name('activeUsers');
+Route::post('/adminInfo/updateUserRights/{id?}', 'Admin\AdminController@updateActiveUsers')->name('updateActiveUsers');
+Route::get('/adminInfo/setUserRights', 'Admin\AdminController@setUserRights')->name('setUserRights');
+Route::post('/deleteUser/{id?}', 'Admin\AdminController@deleteUser')->name('deleteUser');
 
 
 
 Route::get('/', function (){
-
 return  redirect()->route('login');
-
 //view ('auth.login');
-
 });
-
-
 

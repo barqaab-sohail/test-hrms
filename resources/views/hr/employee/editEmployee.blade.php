@@ -156,10 +156,10 @@
 		                                        <div class="col-md-8">
 		                                        	<label class="control-label text-right">Marital Status<span class="text_requried">*</span></label>
 		                                        	                                           
-		                                           	<select  name="marital_status"  class="form-control" required>
+		                                           	<select  name="marital_status_id"  class="form-control" required>
                                                         
+														 <option value=""></option>
                                                         @foreach($maritalStatuses as $maritalStatus)
-														
 														<option value="{{$maritalStatus->id}}" @if($maritalStatus->id == $employee->marital_status) selected="selected" @endif>{{$maritalStatus->name}}</option>                                                        
                                                         @endforeach
                                                         

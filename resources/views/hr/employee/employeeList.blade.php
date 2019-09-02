@@ -21,10 +21,13 @@
 					
 					<tr>
 						<th>Employee Name</th>
+						<th>Father's Name</th>
 						<th>Email</th>
 						<th>CNIC</th>
 						<th>CNIC Expiry</th>
 						<th>Gender</th>
+						<th>Division</th>
+						<th>Marital Status</th>
 						<th> Actions </th>
 						<th></th>
 
@@ -34,10 +37,14 @@
 						@foreach($employees as $employee)
 							<tr>
 								<td>{{$employee->first_name}} {{$employee->middle_name}} {{$employee->last_name}}</td>
+								<td>{{$employee->father_name}}</td>
 								<td>{{isset($employee->user->email)? $employee->user->email:'No Email'}}</td>
 								<td>{{$employee->cnic}}</td>
 								<td>{{$employee->cnic_expiry}}</td>
 								<td>{{$employee->gender}}</td>
+								<td>{{$employee->division->name}}</td>
+								<td>{{$employee->marital_status->name}}</td>
+								
 								<td>
 									<a class="btn btn-info btn-sm" href="{{route('employee.edit',['id'=>$employee->id])}}" data-toggle="tooltip" title="Edit"><i class="fas fa-pencil-alt text-white "></i></a>
 								</td>
@@ -55,6 +62,13 @@
 			</div>
 		</div>
 	</div>
+	<style>
+	 th, td { white-space: nowrap; }
+    div.dataTables_wrapper {
+        width: auto;
+        
+    }
+	</style>
 @push('scripts')
 	
 	
@@ -62,6 +76,13 @@
         $(document).ready(function() {
             $('#myTable').DataTable({
                 stateSave: false,
+                scrollY:        "300px",
+        scrollX:        true,
+        scrollCollapse: true,
+        paging:         false,
+        fixedColumns:   {
+            leftColumns: 2
+        },
                 dom: 'Blfrtip',
                 buttons: [
                     {

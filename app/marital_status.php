@@ -11,7 +11,7 @@ class marital_status extends Model implements Auditable
 
     protected $table = 'marital_status';
 
-    public function employee(){
-		return $this->belongsTo('App\employee');
+   public function employee(){
+	return $this->hasMany('App\employee');
 	}
 }

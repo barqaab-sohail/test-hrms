@@ -10,7 +10,7 @@ class employee extends Model implements Auditable
    use \OwenIt\Auditing\Auditable;
 
    protected $fillable = [
-        'first_name','middle_name','last_name','father_name','date_of_birth','gender','cnic','cnic_expiry','employee_no','marital_status','religon','employee_status','manager_id','division_id',
+        'first_name','middle_name','last_name','father_name','date_of_birth','gender','cnic','cnic_expiry','employee_no','marital_status_id','religon','employee_status','manager_id','division_id',
     ];
 
     
@@ -21,7 +21,7 @@ class employee extends Model implements Auditable
 
     public function marital_status()
     {
-        return $this->hasOne('App\marital_status');
+        return $this->belongsTo('App\marital_status');
     }
      public function blood_group()
     {
@@ -49,7 +49,7 @@ class employee extends Model implements Auditable
 
     public function division()
     {
-        return $this->hasOne('App\division');
+        return $this->belongsTo('App\division');
     }
 
      public function dependent()
