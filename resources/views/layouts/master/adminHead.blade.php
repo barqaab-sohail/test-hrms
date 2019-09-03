@@ -9,7 +9,7 @@
     <link rel="icon" type="image/png" sizes="16x16" href="{{asset('Massets/images/favicon.ico') }}">
     <title>BARQAAB HRMS</title>
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <meta name="user_id" content="{{ Auth::check() ? Auth::user()->id :''}}">
+    <meta name="user_id" content="{{Auth::check() ? Auth::user()->id :''}}">
 
     <!-- Bootstrap Core CSS -->
     <link href="{{asset('Massets/js/js-ui/jquery-ui.min.css') }}" rel="stylesheet">
