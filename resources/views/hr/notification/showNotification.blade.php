@@ -31,6 +31,13 @@
 		                                </div>
 
 		                                <div class="form-group row">
+		                                    <label class="control-label text-right col-md-2">From:</label>
+		                                    <div class="col-md-9" >
+		                                        {{$notification->data['letter']['from']}}
+		                                    </div>
+		                                </div>
+
+		                                <div class="form-group row">
 		                                    <label class="control-label text-right col-md-2">Subject:</label>
 		                                    <div class="col-md-9" >
 		                                        {{$notification->data['letter']['subject']}}
@@ -41,7 +48,7 @@
 		                                <div class="form-group row">
 		                                    <label class="control-label text-right col-md-2">Message:</label>
 		                                    <div class="col-md-9" style="text-align: justify">
-		                                        {{$notification->data['letter']['message']}}
+		                                        {!!$notification->data['letter']['message']!!}
 		                                    </div>
 		                                </div>
 		                            

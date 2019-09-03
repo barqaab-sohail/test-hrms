@@ -71,7 +71,11 @@
         $(document).ready(function() {
             $('#myTable').DataTable({
                 stateSave: false,
-                dom: 'Blfrtip',
+                scrollY:        "300px",
+      			scrollX:        true,
+        		scrollCollapse: true,
+        		paging:         false,
+                dom: 'Blfrti',
                 buttons: [
                     {
                         extend: 'copyHtml5',

@@ -160,7 +160,7 @@
                                                         
 														 <option value=""></option>
                                                         @foreach($maritalStatuses as $maritalStatus)
-														<option value="{{$maritalStatus->id}}" @if($maritalStatus->id == $employee->marital_status) selected="selected" @endif>{{$maritalStatus->name}}</option>                                                        
+														<option value="{{$maritalStatus->id}}" @if($maritalStatus->id == $employee->marital_status_id) selected="selected" @endif>{{$maritalStatus->name}}</option>
                                                         @endforeach
                                                         
                                                     </select>

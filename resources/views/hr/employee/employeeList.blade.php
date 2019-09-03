@@ -16,9 +16,8 @@
 			
 			<div class="table-responsive m-t-40">
 				
-				<table id="myTable" class="table table-bordered table-striped" width="100%" cellspacing="0">
+				<table id="myTable" class="table table-bordered table-striped"  style="width:100%" >
 					<thead>
-					
 					<tr>
 						<th>Employee Name</th>
 						<th>Father's Name</th>
@@ -30,7 +29,6 @@
 						<th>Marital Status</th>
 						<th> Actions </th>
 						<th></th>
-
 					</tr>
 					</thead>
 					<tbody>
@@ -66,7 +64,6 @@
 	 th, td { white-space: nowrap; }
     div.dataTables_wrapper {
         width: auto;
-        
     }
 	</style>
 @push('scripts')
@@ -76,13 +73,7 @@
         $(document).ready(function() {
             $('#myTable').DataTable({
                 stateSave: false,
-                scrollY:        "300px",
-        scrollX:        true,
-        scrollCollapse: true,
-        paging:         false,
-        fixedColumns:   {
-            leftColumns: 2
-        },
+        
                 dom: 'Blfrtip',
                 buttons: [
                     {
@@ -108,7 +99,15 @@
                             columns: [ 0, 1, 2,3,4]
                         }
                     },
-                ]
+                ],
+                scrollY:        "300px",
+      			scrollX:        true,
+        		scrollCollapse: true,
+        		paging:         false,
+        		fixedColumns:   {
+            		leftColumns: 1,
+            		rightColumns:2
+        		}
             });
         });
         $(document).ready(function () {

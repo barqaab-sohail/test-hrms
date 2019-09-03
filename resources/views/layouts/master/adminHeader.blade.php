@@ -79,7 +79,11 @@
                      <div class="dropdown-menu dropdown-menu-right scale-up">
                         <ul class="dropdown-user">
                             <li><a href="{{route('notificationList')}}"  class="link" data-toggle="tooltip" title=""><i class="fa fa-bell"></i> View Notifications</a></li>
+                            @can('admin', Auth::user())
                             <li><a href="{{route('createNotification')}}"  class="link" data-toggle="tooltip" title=""><i class="fa fa-bell"></i> Create Notification</a></li>
+                            @endcan
+                            <li><a href="{{route('createUserNotification')}}"  class="link" data-toggle="tooltip" title=""><i class="fa fa-bell"></i> Create Notification to HR</a></li>
+
 
                         </ul>
                         

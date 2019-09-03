@@ -62,7 +62,7 @@
 		                             <div class="row">
 		                                <div class="col-md-7">
 		                                    <div class="form-group row">
-		                                        <div class="col-md-7 date_input">
+		                                        <div class="col-md-8 date_input">
 		                                        	<label class="control-label text-right ">From<span class="text_requried">*</span></label>
 		                                        
 		                                            <input type="text" id="from" name="from" value="{!! old('from', optional($data)->from) !!}" class="form-control"  required readonly>
@@ -71,7 +71,14 @@
 		                                            <i  class="fas fa-trash-alt text_requried"></i>
 		                                            @endcan
 		                                        </div>
-		                                        <div class="col-md-5 date_input">
+		                                        
+		                                    </div>
+		                                </div>
+		                                
+		                                <!--/span-->
+		                                <div class="col-md-5">
+		                                    <div class="form-group row">
+		                                        <div class="col-md-12 date_input">
 		                                        	<label class="control-label text-right">To<span class="text_requried">*</span></label>
 		                                            <input type="text"  id="to" name="to" value="{!! old('to', optional($data)->to) !!}" class="form-control" readonly  required>
 													@can('entry', Auth::user())
@@ -81,54 +88,12 @@
 		                                        </div>
 		                                    </div>
 		                                </div>
-		                                
-		                                <!--/span-->
-		                                <div class="col-md-5">
-		                                    <div class="form-group row">
-		                                        <div class="col-md-12">
-		                                        <label class="control-label text-right">Assignment Name</label>
-		                                        
-		                                            <input type="text" name="project" value="{!! old('project', optional($data)->project) !!}" class="form-control">
-		                                        </div>
-		                                    </div>
-		                                </div>
 		                            </div>
+		                            
 		                            <div class="row">
 		                                <div class="col-md-7">
 		                                    <div class="form-group row">
-		                                        <div class="col-md-12">
-
-		                                        	<label class="control-label text-right ">Client</label>
-		                                        
-		                                             <input type="text"  name="client" value="{!! old('client', optional($data)->client) !!}" class="form-control" placeholder="Enter Client Name" required>
-
-		                                        	
-		                                        </div>
-		                                    </div>
-		                                </div>
-		                                
-		                                <!--/span-->
-		                                <div class="col-md-5">
-		                                    <div class="form-group row">
-		                                        <div class="col-md-12">
-		                                        	<label class="control-label text-right ">Assignment Location</label>
-		                                            <input type="text"  name="location" value="{!! old('location', optional($data)->location) !!}" class="form-control" placeholder="Enter Location" required>
-		                                        </div>
-		                                    </div>
-		                                </div>
-		                            </div>
-		                            <div class="row">
-		                                <div class="col-md-7">
-		                                    <div class="form-group row">
-		                                        
-		                                        
-		                                    </div>
-		                                </div>
-		                                
-		                                <!--/span-->
-		                                <div class="col-md-5">
-		                                    <div class="form-group row">
-		                                        <div class="col-md-12">
+		                                        <div class="col-md-8">
 		                                        	<label class="control-label text-right ">Country<span class="text_requried">*</span></label>
 		                                        
 		                                             <select  name="country"  class="form-control" required>
@@ -136,27 +101,20 @@
                                                         @foreach($countries as $country)
 														<option value="{{$country->name}}" @if($country->name == $data->country) selected="selected" @endif>{{$country->name}}</option>
                                                     	@endforeach 	
-                                                        
                                                     </select>
 		                                        </div>
-		                                    </div>
-		                                </div>
-		                            </div>
-									 <div class="row">
-		                                <!--/span-->
-		                                <div class="col-md-12">
-		                                    <div class="form-group row">
-		                                        <div class="col-md-12">
-		                                        	<label class="control-label text-right">Main Features</label>
 		                                        
-		                                         <textarea  rows=1 cols=5 id="main_features" name="main_features" class="form-control " >{!! old('main_features', optional($data)->main_features) !!}</textarea>
-		                                        												
-		                                        </div>  
 		                                    </div>
-		                                
 		                                </div>
+		                                
 		                                <!--/span-->
+		                                <div class="col-md-5">
+		                                    <div class="form-group row">
+		                                        
+		                                    </div>
+		                                </div>
 		                            </div>
+									
 		                            <div class="row">
 		                                <!--/span-->
 		                                <div class="col-md-12">

@@ -9,6 +9,8 @@
     <link rel="icon" type="image/png" sizes="16x16" href="{{asset('Massets/images/favicon.ico') }}">
     <title>BARQAAB HRMS</title>
     <meta name="csrf-token" content="{{ csrf_token() }}">
+    <meta name="user_id" content="{{ Auth::check() ? Auth::user()->id :''}}">
+
     <!-- Bootstrap Core CSS -->
     <link href="{{asset('Massets/js/js-ui/jquery-ui.min.css') }}" rel="stylesheet">
     <link href="{{asset('Massets/plugins/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
@@ -37,9 +39,12 @@
     <link href="{{asset('Massets/plugins/wizard/steps.css')}}" rel="stylesheet" type="text/css">
     <link href="{{asset('Massets/plugins/datatables/media/css/dataTables.bootstrap4.css')}}" rel="stylesheet">
     <link rel="stylesheet" href="{{asset('Massets/plugins/html5-editor/bootstrap-wysihtml5.css')}}" />
-
-
     <link rel="stylesheet" href="{{asset('Massets/js/crop/croppie.css')}}" />
+    <!-- start - This is for datatabe Fixed Columns only -->
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css" />
+     <link rel="stylesheet" href="https://cdn.datatables.net/fixedcolumns/3.2.6/css/fixedColumns.bootstrap.min.css" />
+
+    <!-- end - This is for datatabe Fixed Columns only -->
 
 
     

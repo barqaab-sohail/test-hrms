@@ -22,8 +22,9 @@
 					<thead>
 					
 					<tr>
+						<th>From</th>
 						<th>Subject</th>
-						<th>Message</th>
+						
 						<th>Created at</th>
 						<th> View </th>
 						<th>Delete</th>
@@ -32,8 +33,8 @@
 					<tbody>
 						@foreach(auth()->user()->Notifications as $notification)
 							<tr>
-								<td>{{substr($notification->data['letter']['subject'],0,10)}}</td>
-								<td>{{substr($notification->data['letter']['message'],0,25)}}</td>
+								<td>{{$notification->data['letter']['from']}}</td>
+								<td>{{substr($notification->data['letter']['subject'],0,50)}}</td>
 								<td>{{date('d-M-Y',strtotime($notification->created_at))}}</td>
 								<td>
 								

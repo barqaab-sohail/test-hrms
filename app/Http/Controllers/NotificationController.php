@@ -2,6 +2,7 @@
 
 
 namespace App\Http\Controllers;
+use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Collection;
 use Illuminate\Http\Request;
 use App\Notifications\DatabaseNotification;
@@ -18,7 +19,7 @@ class NotificationController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
-        $this->middleware('updation')->only('store','create');
+        $this->middleware('updation')->only('create');
     }
 
     public function index(){
@@ -31,26 +32,37 @@ class NotificationController extends Controller
     	return view ('hr.notification.createNotification',compact('employees'));
     }
 
+     public function createUser(){
+        
+        return view ('hr.notification.createUserNotification');
+    }
+
     public function store(request $request){
 
-   	$letter = collect(['subject'=>$request->subject, 'message'=>$request->message]);
+    $senderUser = User::where('id', $request->user_id)->first();
+    $senderName = $senderUser->employee->first_name." ".$senderUser->employee->middle_name." ".$senderUser->employee->last_name;
+    
+    $letter = collect(['from'=>$senderName,'subject'=>$request->subject, 'message'=>$request->message]);
     
     if ($request->to=='all'){
 
         $users = user::all();
 
-    }elseif($request->to=='allManagers'){
-    
+    }elseif($request->to=='HR'){
+         $users = user::all()->whereIn('role_id','4');
+    }
+    elseif($request->to=='allManagers'){
         $managerIds = posting::all()->pluck('manager_id')->toArray();
         $users = user::all()->whereIn('employee_id',$managerIds);
-         
     }else{
         $users = user::all()->where('employee_id',$request->to);
     }
-   
-   	Notification::send($users, new DatabaseNotification($letter));
-    return redirect()->route('createNotification')->with('success', 'Notification saved succesfully');
     
+   	Notification::send($users, new DatabaseNotification($letter));
+   
+   
+    return Redirect::back()->with('success', 'You messages has been send to HR sucessfulyy ');
+        
     }
 
     public function show($id){

@@ -27,14 +27,7 @@
 		                                <div class="form-group row">
 		                                    <label class="control-label text-right col-md-2">To</label>
 		                                    <div class="col-md-4">
-
-		                                    	<select  name="to"  class="form-control" required>
-		                                           	<option value="all">All Active User</option>
-		                                           	<option value="allManagers">All Managers</option>
-		                                           	@foreach($employees as $employee)
-													<option value="{{$employee->id}}" {{(old("to")==$employee->first_name." ".$employee->middle_name." ".$employee->last_name? "selected" : "")}}>{{$employee->first_name." ".$employee->middle_name." ".$employee->last_name}}</option>
-                                                    @endforeach 	
-                                                </select> 
+		                                    	<input type="text"  name="to" value="{{'HR'}}" class="form-control" required readonly>
                                             </div>
 		                                </div>
 
@@ -50,11 +43,11 @@
 		                                    <label class="control-label text-right col-md-2">Message</label>
 		                                    <div class="col-md-10">
 		                                        <textarea name="message" rows=8 class="form-control" placeholder="Enter Message of Notification"  >{!! old('message') !!}</textarea>
-
 		                                    </div>
 		                                </div>
-
+		                                
 		                                <input type="number" name="user_id" value="{{Auth::user()->employee_id}}"   class="form-control " hidden>
+		                                        
 		                            
 		                        </div>
 		                         <hr>

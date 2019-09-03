@@ -43,10 +43,10 @@ Route::post('/login', [
 //notification
 Route::get('/notificationList', 'NotificationController@index')->name('notificationList');
 Route::get('/createNotification','NotificationController@create')->name('createNotification');
+Route::get('/createUserNotification','NotificationController@createUser')->name('createUserNotification');
 Route::post('/storeNotification','NotificationController@store')->name('storeNotification');
 Route::get ('/showNotification/{id?}','NotificationController@show')->name('showNotification');
 Route::get('/deleteAllNotification/{id?}', 'NotificationController@deleteNotification')->name('deleteNotification');
-
 
 //import data from excel
 Route::post('/import_excel/import', 'ImportExcelController@import')->name('importExcel');
@@ -59,12 +59,10 @@ Route::get('/phone/edit/{id?}', [
             'as' => 'phone.edit'
         ]);
 
-
 //Dashboard
 Route::get('reports/chart', 'ChartController@index')->name('chart');
 Route::get('/genderChart', 'ChartController@gender')->name('genderChart');
 Route::get('/dashboard', 'HomeController@index')->name('dashboard')->middleware('verified');
-
 
 //Reports
 Route::get('/reports', 'ReportsController@index')->name('employeeReports');
