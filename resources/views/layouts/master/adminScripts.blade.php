@@ -78,18 +78,35 @@
 <script src="https://cdn.datatables.net/fixedcolumns/3.2.6/js/dataTables.fixedColumns.min.js"></script>
 <!-- end - This is for datatabe Fixed Columns only -->
 
+<!-- Scripts -->
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.9.0/moment.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/2.2.7/fullcalendar.min.js"></script>
+ 
+{!! $calendar_details->script() !!}
+
+
 <script src="https://cdn.tiny.cloud/1/6k6kj2mbbmwv1jqeh7sqe7jf29uemxfwvq4kzdpz5a4j9gm1/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
 <script> tinymce.init({
     selector: 'textarea',
     forced_root_block:"",
    
   });</script>
+
+
 <script>
+
+// Function Prevent Explorer Back Button 
+function preventBack(){
+    window.history.forward();
+}
+setTimeout("preventBack()",0);
+window.onunload = function(){null};
+
+//end function
+
    
     $(document).ready(function() {
-
-
-
 
        $('select').select2({
             width: "100%",

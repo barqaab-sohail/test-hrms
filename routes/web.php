@@ -63,6 +63,10 @@ Route::get('/phone/edit/{id?}', [
 Route::get('reports/chart', 'ChartController@index')->name('chart');
 Route::get('/genderChart', 'ChartController@gender')->name('genderChart');
 Route::get('/dashboard', 'HomeController@index')->name('dashboard')->middleware('verified');
+Route::post('/dashboard', 'HomeController@addEvent')->name('dashboard.add');
+
+//Route::get('events', 'EventController@index')->name('events.index');
+//Route::post('events', 'EventController@addEvent')->name('events.add');
 
 //Reports
 Route::get('/reports', 'ReportsController@index')->name('employeeReports');

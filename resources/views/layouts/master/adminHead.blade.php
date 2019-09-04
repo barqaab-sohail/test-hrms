@@ -45,7 +45,7 @@
      <link rel="stylesheet" href="https://cdn.datatables.net/fixedcolumns/3.2.6/css/fixedColumns.bootstrap.min.css" />
 
     <!-- end - This is for datatabe Fixed Columns only -->
-
+    
 
     
 

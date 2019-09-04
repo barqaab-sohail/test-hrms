@@ -59,8 +59,7 @@ class NotificationController extends Controller
     }
     
    	Notification::send($users, new DatabaseNotification($letter));
-   
-   
+     
     return Redirect::back()->with('success', 'You messages has been send to HR sucessfulyy ');
         
     }

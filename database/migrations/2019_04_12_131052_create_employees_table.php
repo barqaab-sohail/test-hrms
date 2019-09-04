@@ -25,7 +25,7 @@ class CreateEmployeesTable extends Migration
             $table->string('cnic')->unique();
             $table->date('cnic_expiry');
             $table->string('employee_no')->nullable()->unique();
-            $table->string('marital_status')->nullable();
+            $table->string('marital_status_id');
             $table->string('religon')->nullable();
             $table->tinyInteger('employee_status')->default(0)->comment('0 onboard, 1 resigned, 2 terminated, 3 onleave, 4 manmonth ended' );
             $table->timestamps();
