@@ -78,12 +78,9 @@
 <script src="https://cdn.datatables.net/fixedcolumns/3.2.6/js/dataTables.fixedColumns.min.js"></script>
 <!-- end - This is for datatabe Fixed Columns only -->
 
-<!-- Scripts -->
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.9.0/moment.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/2.2.7/fullcalendar.min.js"></script>
  
-{!! $calendar_details->script() !!}
+
 
 
 <script src="https://cdn.tiny.cloud/1/6k6kj2mbbmwv1jqeh7sqe7jf29uemxfwvq4kzdpz5a4j9gm1/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
@@ -107,6 +104,15 @@ window.onunload = function(){null};
 
    
     $(document).ready(function() {
+        
+        //Active Anchor tage with compare url and href
+        $('.sidebar-nav li a').each(function(){
+        var ThisHref = ($(this).attr('href').split('?'))[0];
+        if(window.location.href.indexOf(ThisHref) > -1) {
+            $(this).closest('a').not("#notInclude").css('color','red');
+        }
+        });
+   
 
        $('select').select2({
             width: "100%",

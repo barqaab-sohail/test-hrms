@@ -96,7 +96,8 @@
 
    			 } );
             $("table").rowspanizer({
-			  vertical_align: 'middle'
+			  vertical_align: 'middle',
+			  columns: [0]
 			});
 
         });

@@ -298,6 +298,8 @@ Route::post('/adminInfo/updateUserRights/{id?}', 'Admin\AdminController@updateAc
 Route::get('/adminInfo/setUserRights', 'Admin\AdminController@setUserRights')->name('setUserRights');
 Route::post('/deleteUser/{id?}', 'Admin\AdminController@deleteUser')->name('deleteUser');
 
+//Personal Files
+Route::get('personalFiles/list','PersonalFileController@index')->name('personalFileList');
 
 
 Route::get('/', function (){

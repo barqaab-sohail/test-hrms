@@ -41,6 +41,10 @@
     </div>
 </div>
 @include('layouts.master.adminScripts')
+@yield('footer')
+    <div style="text-align:center">
+        <p>Developed by: BARQAAB IT</p>
+    </div>
 </body>
 </html>
 

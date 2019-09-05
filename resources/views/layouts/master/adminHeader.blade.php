@@ -93,7 +93,7 @@
                 <!-- Notification -->
                 <li class="nav-item dropdown"> 
                     <a class="nav-link dropdown-toggle text-muted waves-effect waves-dark"  href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    @if(Auth::User()->unreadNotifications->count())<span class="badge badge-danger">{{Auth::User()->unreadNotifications->count()}}</span>@endif<i class="fas fa-bell"></i>
+                    @if(Auth::User()->unreadNotifications->count())<span class="badge badge-danger">{{Auth::User()->unreadNotifications->count()}}</span>@endif<i class="fas fa-bell" ></i>
                     </a>
                      <div class="dropdown-menu dropdown-menu-right scale-up">
                         <ul class="dropdown-user">

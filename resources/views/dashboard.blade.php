@@ -1,4 +1,5 @@
 @extends('layouts.master.master')
+
 @section('Heading')
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/2.2.7/fullcalendar.min.css"/>
  
@@ -12,6 +13,7 @@
 	</ol>
 @stop
 @section('content')
+
 	<div class="card">
 		<div class="card-body">
 			<!--<div class="float-right">
@@ -82,8 +84,9 @@
             <div class="panel panel-primary">
               <div class="panel-heading">MY Event Details</div>
               <div class="panel-body" >
-                  {!! $calendar_details->calendar()!!}
-                  {!! $calendar_details->script() !!}
+
+                {!! $calendar_details->calendar()!!}
+                 
               </div>
             </div>
  
@@ -94,4 +97,9 @@
 	</div>
 	@endcan
 
+@stop
+@section('footer')
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.9.0/moment.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/2.2.7/fullcalendar.min.js"></script>
+{!! $calendar_details->script()!!}
 @stop

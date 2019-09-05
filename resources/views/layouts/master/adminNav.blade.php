@@ -42,7 +42,7 @@
                 {{--<li> <a class="" href="#" aria-expanded="false"><i class="mdi mdi-account-circle">  </i><span class="hide-menu">Users</span></a>--}}
                 {{--</li>--}}
                 -->
-                 <li @if(request()->is('dashboard')) class="active" @endif><a class="waves-effect waves-dark" href="{{route('dashboard')}}" aria-expanded="false"><i class="fas fa-tachometer-alt"></i><span class="hide-menu">Dashboard </span></a>
+                 <li @if(request()->is('dashboard')) class="active" @endif><a id="notInclude" class="waves-effect waves-dark" href="{{route('dashboard')}}" aria-expanded="false"><i class="fas fa-tachometer-alt"></i><span class="hide-menu">Dashboard </span></a>
                 </li>
                
 
@@ -66,8 +66,16 @@
                     </ul>
                 </li>
 
-                @can('admin', Auth::user())
-                
+               
+                @can('entry', Auth::user())
+                 <li @if(request()->is('personalFiles*')) class="active" @endif > <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i class="mdi mdi-file-document"></i><span class="hide-menu">Personal Files</span></a>
+                    <ul aria-expanded="false" class="collapse">
+                        <li><a href="{{route('personalFileList')}}">List of Personal Files</a></li>
+                        
+                    </ul>
+                </li>
+                @endcan
+                 @can('admin', Auth::user())
                  <li @if(request()->is('adminInfo*')) class="active" @endif > <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i class="mdi mdi-server-network"></i><span class="hide-menu">Admin Info</span></a>
                     <ul aria-expanded="false" class="collapse">
                         <li><a href="{{route('activeUsers')}}">Active User List</a></li>
@@ -83,7 +91,7 @@
                 </li>
 
 
-                <li @if(request()->is('*phone*')) class="active" @endif > <a class="has-arrow waves-effect waves-dark" href="{{route('phoneList')}}" aria-expanded="false"><i class="fas fa-phone"></i><span class="hide-menu">Contact Numbers</span></a>
+                <li @if(request()->is('*phone*')) class="active" @endif > <a id="notInclude" class="has-arrow waves-effect waves-dark" href="{{route('phoneList')}}" aria-expanded="false"><i class="fas fa-phone"></i><span class="hide-menu">Contact Numbers</span></a>
                     
 
                 </li>
@@ -162,4 +170,5 @@
         <a href="#" onclick="event.preventDefault(); document.getElementById('logout-form').submit();" class="link" data-toggle="tooltip" title="Logout"><i class="mdi mdi-power"></i></a></div>
     <form id="logout-form" action="#" method="POST" style="display: none;">{{ csrf_field() }}</form>
     <!-- End Bottom points-->
+     
 </aside>
