@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateInitialLeaveBalancesTable extends Migration
+class CreateLeaveCompensatoriesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,16 +13,18 @@ class CreateInitialLeaveBalancesTable extends Migration
      */
     public function up()
     {
-        Schema::create('initial_leave_balances', function (Blueprint $table) {
+        Schema::create('leave_compensatories', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->bigInteger('leave_type_id')->unsigned();
             $table->bigInteger('employee_id')->unsigned();
-            $table->smallInteger('balance');
-            $table->date('effective_date');
+            $table->date('from');
+            $table->date('to');
+            $table->string('reason');
+            $table->bigInteger('manager_id')->unsigned();
+            $table->tinyInteger('manager_confirmation')->defulat(0);
+            $table->string('manager_remarks')->nullable();
             $table->timestamps();
-            $table->foreign('leave_type_id')->references('id')->on('leave_types');
+            $table->foreign('manager_id')->references('id')->on('employees');
             $table->foreign('employee_id')->references('id')->on('employees');
-
         });
     }
 
@@ -33,6 +35,6 @@ class CreateInitialLeaveBalancesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('initial_leave_balances');
+        Schema::dropIfExists('leave_compensatories');
     }
 }

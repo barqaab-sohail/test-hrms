@@ -125,6 +125,20 @@ class employee extends Model implements Auditable
     {
         return $this->hasMany('App\emergency_contact');
     }
+
+    public function leave_request()
+    {
+        return $this->hasMany('App\leave_request');
+    }
+    public function leave_compensatory()
+    {
+        return $this->hasMany('App\leave_compensatory');
+    }
+    public function leave_inital_balance()
+    {
+        return $this->hasOne('leave_inital_balance');
+    }
+
    
 
 

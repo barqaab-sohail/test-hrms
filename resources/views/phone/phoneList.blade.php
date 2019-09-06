@@ -1,6 +1,6 @@
 @extends('layouts.master.master')
 @section('Heading')
-	<h3 class="text-themecolor">List of Projects</h3>
+	<h3 class="text-themecolor">Contact Numbers</h3>
 	<ol class="breadcrumb">
 		<li class="breadcrumb-item"><a href="javascript:void(0)"></a></li>
 		

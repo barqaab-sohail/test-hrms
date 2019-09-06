@@ -28,7 +28,7 @@ class CreateLeaveRequestsTable extends Migration
             $table->string('recommendation_remarks')->nullable();
             $table->string('approval_remarks')->nullable();
             $table->timestamps();
-            $table->foreign('leave_type_id')->references('id')->on('leave_types');
+           
             $table->foreign('employee_id')->references('id')->on('employees');
         });
     }

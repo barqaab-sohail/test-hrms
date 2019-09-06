@@ -302,6 +302,15 @@ Route::post('/deleteUser/{id?}', 'Admin\AdminController@deleteUser')->name('dele
 Route::get('personalFiles/list','PersonalFileController@index')->name('personalFileList');
 
 
+//Leave Management
+Route::get('leave/applyLeave','Leave\LeaveController@applyLeave')->name('applyLeave');
+Route::get('leave/showInitialBalance','Leave\LeaveController@showInitialBalance')->name('showInitialBalance');
+Route::post('leave/storeInitialBalance','Leave\LeaveController@storeInitialBalance')->name('storeInitialBalance');
+
+
+
+
+
 Route::get('/', function (){
 return  redirect()->route('login');
 //view ('auth.login');

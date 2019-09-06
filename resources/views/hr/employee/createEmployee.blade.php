@@ -160,7 +160,7 @@
 		                                           	<select  name="marital_status_id"  class="form-control" required>
                                                         <option value=""></option>
                                                         @foreach($maritalStatus as $maritalStatus)
-														<option value="{{$maritalStatus->id}}" {{(old("marital_status")==$maritalStatus->name? "selected" : "")}}>{{$maritalStatus->name}}</option>
+														<option value="{{$maritalStatus->id}}" {{(old("marital_status_id")==$maritalStatus->id? "selected" : "")}}>{{$maritalStatus->name}}</option>
                                                         @endforeach
                                                       
                                                     </select>
