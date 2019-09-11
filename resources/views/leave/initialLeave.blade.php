@@ -24,7 +24,7 @@
 		                                    <div class="form-group row">
 		                                        <div class="col-md-8">
 		                                        	<label class="control-label text-right ">Name of Employee</label>
-		                                        	<select  name="employee_id"  class="form-control" required>
+		                                        	<select id="employee_id" name="employee_id"  class="form-control" required>
                                                         <option value=""></option>
                                                         @foreach($employees as $employee)
 														<option value="{{$employee->id}}" {{(old("employee_id")==$employee->id? "selected" : "")}}>{{$employee->first_name." ".$employee->middle_name." ".$employee->last_name}}</option>
@@ -35,7 +35,7 @@
 		                                        </div>
 		                                        <div class="col-md-4">
 		                                        	<label class="control-label text-right ">Leave Type</label>
-		                                        	<select  name="leave_type_id"  class="form-control" required>
+		                                        	<select id="leave_type" name="leave_type_id"  class="form-control" required>
                                                         <option value=""></option>
                                                         @foreach($leaveTypes as $leaveType)
 														<option value="{{$leaveType->id}}" {{(old("leave_type_id")==$leaveType->name? "selected" : "")}}>{{$leaveType->name}}</option>
@@ -51,11 +51,15 @@
 		                                    <div class="form-group row">
 		                                        <div class="col-md-3">
 		                                        	<label class="control-label text-right">Balance</label>
-		                                             <input type="number" name="balance" value="{{ old('balance')}}"   class="form-control prc"  >
+		                                             <input type="number" id="balance" name="balance" value="{{ old('balance')}}"   class="form-control prc"  >
 		                                        </div>
 		                                        <div class="col-md-9 date_input">
 											   		<label class="control-label text-right">Effective Date</label>
-		                                             <input type="text" name="effective_date" value="{{ old('effective_date')}}"   class="form-control prc"  readonly>
+		                                             <input type="text" id="effective_date" name="effective_date" value="{{ old('effective_date')}}"   class="form-control prc"  readonly>
+		                                             @can('entry', Auth::user())
+		                                            <br>
+		                                            <i class="fas fa-trash-alt text_requried"></i> 
+		                                            @endcan
 		                                        </div>
 		                                    </div>
 		                                </div>
@@ -63,46 +67,21 @@
 		                             </div>
 				   			<button type="submit" class="btn btn-success">Save</button>
 				   </form>
+				   
 		</div>
 
 		<hr>
 @if($initialLeaves->count()!=0)
 			<h4 class="card-title">List of Initial Leave Balance</h4>
 				
-			
-			<div class="table-responsive m-t-40">
+		
+			<div id="append_data" class="table-responsive m-t-40">
 				
-				<table id="myTable" class="table table-bordered table-striped" width="100%" cellspacing="0">
-					<thead>
-					
-					<tr>
-						<th>Employee Name</th>
-						<th>Leave Type</th>
-						<th>Balance</th>
-						<th> Actions </th>
-						
-					</tr>
-					</thead>
-					<tbody>
-						@foreach($initialLeaves as $initialLeave)
-							<tr>
-								<td>{{$initialLeave->employee->first_name. " ".$initialLeave->employee->middle_name." ".$initialLeave->employee->last_name}}</td>
-								<td>{{$initialLeave->leave_type->name}}</td>
-								<td>{{$initialLeave->balance}}</td>
-								
-								<td>
-								 <a class="btn btn-info btn-sm" href="" data-toggle="tooltip" data-original-title="Edit"> <i class="fas fa-pencil-alt text-white "></i></a>
-															
-							</tr>
-						@endforeach
-					
-					 
-					
-					</tbody>
-				</table>
+				
 			</div>
+		
 	@else
-	<h4 class="card-title">No Phone Record Entered</h4>
+	<h4 class="card-title">No Initial Leave Balance Entered</h4>
 
 	@endif
 
@@ -123,6 +102,8 @@
 	<!-- end - This is for export functionality only -->
 	<script>
         $(document).ready(function() {
+        	
+
             $('#myTable').DataTable({
                 stateSave: false,
                 dom: 'Blfrtip',
@@ -162,6 +143,63 @@
                 return false;
             });
         });
+
+       
+   /*     $('#append').click(function(e){
+		    e.preventDefault();
+
+		    var url = "{{route('load_data')}}";
+
+	        $.ajax({
+			            url: url, //this is the submit URL
+			            type: 'GET', //or POST
+			               	success: function(data){
+			            	
+				            	$('#append_data').append(data);
+				            	$('#append').hide();
+
+				        	}
+		    });
+		
+ 		});*/
+        var url = "{{route('load_data')}}";
+        $("#append_data").load(url);
+ 		
+ 		$(document).ready(function () {
+ 		//Ajax Update Initial Leave
+			$('a[id^=update]').click(function(e){
+				e.preventDefault();
+				var updateId = $(this).attr('id');
+				var arr = updateId.split('=');
+				var id = arr[1];
+				var employeeName = $(this).closest('tr').find('td:nth-child(1)').text();
+				var leaveType = $(this).closest('tr').find('td:nth-child(2)').text();
+				var balance = $(this).closest('tr').find('td:nth-child(3)').text();
+				var effectiveDate = $(this).closest('tr').find('td:nth-child(4)').text();
+				
+				
+				$("#leave_type option").filter(function() {
+  				//may want to use $.trim in here
+  				return $(this).text() == leaveType;
+				}).prop('selected', true);
+
+				$("#employee_id option").filter(function() {
+  				//may want to use $.trim in here
+  				return $(this).text() == employeeName;
+				}).prop('selected', true);
+
+				$('#leave_type, #employee_id').select2({
+            		width: "100%",
+            		theme: "classic",
+        		}).trigger('change');							        
+
+				$("#balance").val(balance);
+				$("#effective_date").val(effectiveDate);
+								        
+			});
+
+		});
+
 	</script>
 	@endpush
 @stop
