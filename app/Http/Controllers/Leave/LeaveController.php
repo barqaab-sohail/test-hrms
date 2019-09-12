@@ -54,6 +54,7 @@ class LeaveController extends Controller
 								
 								<td>
 								 <a class="btn btn-info btn-sm" id="update,id='.$initialLeave->id.'" data-toggle="tooltip" data-original-title="Edit"> <i class="fas fa-pencil-alt text-white "></i></a>
+								</td>
 					</tr>
 					';
 			}
@@ -83,8 +84,11 @@ class LeaveController extends Controller
             $data ['effective_date']= \Carbon\Carbon::parse($request->effective_date)->format('Y-m-d');
         }
 
-    	leave_initial_balance::create($data);
-    	return Redirect::back()->with('success', 'Data is saved Sucessfully');
+    	leave_initial_balance::updateOrCreate(
+        ['id' => $request->id],
+        $data);
+   	
+    	return "OK";
     }
 
 
