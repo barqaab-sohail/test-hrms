@@ -27,25 +27,13 @@ class LanguageController extends Controller
     }
 
 	public function store(StoreLanguage $request){
-         $request->validate([
-         'name' => 'required|max:255',
-         ]);
+         
 
-              //Duplicate Language for One Employee
-              $getEmpLanguages = language::all()->where('employee_id',session('employee_id'));
-              foreach($getEmpLanguages as $getEmpLanguage){
-              $storedLanugage = $getEmpLanguage->name .session('employee_id');
-              $requestLanguage = $request->name.session('employee_id');
-                  if ($storedLanugage==$requestLanguage){
-                    return redirect()->route('language',['id'=>session('employee_id')])->with('error', 'Language is already saved');
-                  }
-              }
         
         $data = language::create($request->all());
 
         return redirect()->route('language',['id'=>session('employee_id')])->with('success', 'Data is saved succesfully');
-      // return redirect()->route('language',['id'=>$data->id])->with('success', 'User is created succesfully');
-
+    
 
     }
 
@@ -60,16 +48,6 @@ class LanguageController extends Controller
     
     public function update(StoreLanguage $request, $id)
     {
-
-           //Duplicate Language for One Employee
-              $getEmpLanguages = language::all()->where('employee_id',session('employee_id'))->where('id', '!=', $id);
-              foreach($getEmpLanguages as $getEmpLanguage){
-              $storedLanugage = $getEmpLanguage->name .session('employee_id');
-              $requestLanguage = $request->name.session('employee_id');
-                  if ($storedLanugage==$requestLanguage){
-                    return redirect()->route('language.edit',['id'=>$id])->with('error', 'Edit Language is already saved');
-                  }
-              }
      
      language::findOrFail($id)->update($request->all());
      return redirect()->route('language.edit',['id'=>$id])->with('success', 'Language Detail is updated succesfully');

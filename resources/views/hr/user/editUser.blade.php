@@ -51,7 +51,7 @@
 		                                        <div class="col-md-8">
 		                                        	<label class="control-label text-right ">User Role</label>
 		                                        
-		                                            <select  name="role_id"  class="form-control" >
+		                                            <select  name="role_id"  class="form-control selectTwo" >
                                                         <option value="{{5}}"></option>
                                                         @foreach($roles as $role)
 															<option value="{{$role->id}}"

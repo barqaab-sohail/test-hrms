@@ -72,8 +72,7 @@
 		<hr>
 @if($initialLeaves->count()!=0)
 			<h4 class="card-title">List of Initial Leave Balance</h4>
-				
-		
+	
 			<div id="append_data" class="table-responsive m-t-40">
 				
 				
@@ -127,6 +126,7 @@
 				var leaveType = $(this).closest('tr').find('td:nth-child(2)').text();
 				var balance = $(this).closest('tr').find('td:nth-child(3)').text();
 				var effectiveDate = $(this).closest('tr').find('td:nth-child(4)').text();
+
 				
 				
 				$("#leave_type option").filter(function() {
@@ -199,18 +199,90 @@
 		            			$('#json_message').html('<div id="json_message" class="alert alert-danger" align="left"><a href="#" class="close" data-dismiss="alert">&times;</a><strong>Data is not  Saved</strong></div>');
 		            			
 		            		}
-			        	}
+			        	},
+
+			        	error: function (request, status, error) {
+                				json = $.parseJSON(request.responseText);
+                				$.each(json.errors, function(key, value){
+                                
+                				$('#json_message').html('<div id="json_message" class="alert alert-danger" align="left"><a href="#" class="close" data-dismiss="alert">&times;</a><strong>'+value+'</strong></div>');
+                			});
+            			}
+
+	        		});
+
+		    	});
+			});
+
+
+
+ 		//Ajax Dete Data
+	 		$(document).on("click", 'a[id^=delete]', function(event) {
+		        event.preventDefault();
+
+		    if (confirm('Are you sure to delete this record?')) {
+		        var updateId = $(this).attr('id');
+		        var arr = updateId.split('=');
+		        var id = arr[1];
+		        var url = "{{route('deleteInitialBalance')}}"+"/"+id;
+
+		       	     	
+	     			$.ajaxSetup({
+	          			headers: {
+	              		'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+	          			}
+      				});
+
+      				$.ajax({
+		            url: url, //this is the submit URL
+		            type: 'POST', //or POST
+		           
+		            	success: function(data){
+		            		if (data =="OK"){
+		            			
+		            			var loadUrl = "{{route('load_data')}}";
+
+		            			$("#append_data").load(loadUrl, function (){
+    	    						
+    	    						$('#myTable').DataTable({
+    	 	 						
+    	 	 							destroy: true,
+    	 	 							stateSave: false,
+              							dom: 'lfrtip'
+               
+									});
+    	    					});
+
+
+        						$('#json_message').html('<div id="json_message" class="alert alert-success" align="left"><a href="#" class="close" data-dismiss="alert">&times;</a><strong>Data Sucessfuly Deleted</strong></div>');
+
+		            		}else{
+
+		            			$('#json_message').html('<div id="json_message" class="alert alert-danger" align="left"><a href="#" class="close" data-dismiss="alert">&times;</a><strong>Data is not  Deleted</strong></div>');
+		            			
+		            		}
+			        	},
+
+			        	error: function (request, status, error) {
+                				json = $.parseJSON(request.responseText);
+                				$.each(json.errors, function(key, value){
+                                
+                				$('#json_message').html('<div id="json_message" class="alert alert-danger" align="left"><a href="#" class="close" data-dismiss="alert">&times;</a><strong>'+value+'</strong></div>');
+                			});
+            			}
+
 	        		});
 
 
-
+      			}//end confirmation
 
 		    });
 
 
-           
+         
 
-		});
+
+
 
 	</script>
 	@endpush

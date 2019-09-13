@@ -39,7 +39,7 @@
 		                                        <label class="control-label text-right">Position<span class="text_requried">*</span></label>
 		                                        
 		                                           
-												<select  name="position"  class="form-control" required>
+												<select  name="position"  class="form-control selectTwo" required>
                                                       <option></option>
                                                      @foreach($positions as $position)
 														
@@ -73,7 +73,7 @@
 		                                        <div class="col-md-9">
 		                                        	<label class="control-label text-right">Manager Name<span class="text_requried">*</span></label>
 		                                        
-			                                        <select  name="manager_id"  class="form-control" required>
+			                                        <select  name="manager_id"  class="form-control selectTwo" required>
                                                     <option value=""></option>
 													@foreach($employees as $employee)
 													<option value="{{$employee->id}}" @if($employee->id == $data->manager_id) selected="selected" @endif>{{$employee->first_name." ".$employee->last_name.", ".$employee->designation}}</option>
@@ -109,7 +109,7 @@
 		                                        <div class="col-md-12">
 		                                        	<label class="control-label text-right">Project<span class="text_requried">*</span></label>
 		                                        
-			                                        <select  name="project"  class="form-control" required>
+			                                        <select  name="project"  class="form-control selectTwo" required>
                                                     <option value=""></option>
 													@foreach($projects as $project)
 													<option value="{{$project->name}}" @if($project->name == $data->project) selected="selected" @endif>{{$project->name." - ".$project->status}}</option>

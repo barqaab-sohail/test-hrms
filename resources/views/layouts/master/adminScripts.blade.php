@@ -105,7 +105,7 @@ window.onunload = function(){null};
         });
    
 
-       $('select').select2({
+       $('.selectTwo').select2({
             width: "100%",
             theme: "classic",
         });

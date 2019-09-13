@@ -71,7 +71,7 @@
 		                                        <div class="col-md-12">
 			                                        <label class="control-label text-right">Designation<span class="text_requried">*</span></label>
 		                                        
-													<select  name="designation"  class="form-control" required>
+													<select  name="designation"  class="form-control selectTwo" required>
                                                       <option></option>
                                                      @foreach($designations as $designation)
 														
@@ -110,7 +110,7 @@
 		                                        <div class="col-md-3">
 		                                        	<label class="control-label text-right">Category<span class="text_requried">*</span></label>
 		                                        
-		                                            <select  name="category"  class="form-control" required>
+		                                            <select  name="category"  class="form-control selectTwo" required>
                                                         <option value=""></option>
                                                         @if(isset($employee->appointment->category)){
                                                         <option value="A" @if($employee->appointment->category == 'A') selected="selected" @endif>A</option>
@@ -126,7 +126,7 @@
 		                                        <div class="col-md-3">
 		                                        	<label class="control-label text-right">Grade</label>
 		                                        
-		                                            <select  name="grade"  class="form-control" >
+		                                            <select  name="grade"  class="form-control selectTwo">
 		                                            @if(isset($employee->appointment->grade))
 		                                            <option value="{{$employee->appointment->grade}}">{{$employee->appointment->grade}}</option>
 		                                            @else
@@ -143,7 +143,7 @@
 		                                        <div class="col-md-6">
 		                                        	<label class="control-label text-right">Letter Type<span class="text_requried">*</span></label>
 		                                        
-		                                            <select  name="appointment_letter_type"  class="form-control" required>
+		                                            <select  name="appointment_letter_type"  class="form-control selectTwo" required>
                                                         <option value=""></option>
                                                         @if(isset($employee->appointment->appointment_letter_type)){
                                                         <option value="1 Page" @if($employee->appointment->appointment_letter_type == '1 Page') selected="selected" @endif>1 Page</option>

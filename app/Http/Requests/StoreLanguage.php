@@ -7,6 +7,8 @@ use App\language;
 
 class StoreLanguage extends FormRequest
 {
+    
+
     /**
      * Determine if the user is authorized to make this request.
      *
@@ -24,17 +26,28 @@ class StoreLanguage extends FormRequest
      */
     public function rules()
     {
+        
+        $id = $this->route('id');
        
-      
         return [
           
-        'name' => 'required',
+        'name' => "required|unique_with:languages,employee_id,$id",
         'speaking' => 'required',
         'writing' => 'required',
         'reading' => 'required',
+
+        //'first_name' => 'required|unique_with:users,last_name,2',
              
         //'name'=>['required',Rule::unique('languages')->ignore(session('employee_id')),],
 
+        ];
+    }
+
+    public function messages()
+    {
+        return [
+            'name.unique_with' => 'This Language is already Entered',
+            
         ];
     }
 }
