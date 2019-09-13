@@ -26,7 +26,7 @@
 						<th>CNIC Expiry</th>
 						<th>Gender</th>
 						<th>Division</th>
-						<th>Marital Status</th>
+						<th>Created at</th>
 						<th> Actions </th>
 						<th></th>
 					</tr>
@@ -41,7 +41,7 @@
 								<td>{{$employee->cnic_expiry}}</td>
 								<td>{{$employee->gender}}</td>
 								<td>{{$employee->division->name}}</td>
-								<td>{{$employee->marital_status->name}}</td>
+								<td>{{$employee->created_at}}</td>
 								
 								<td>
 									<a class="btn btn-info btn-sm" href="{{route('employee.edit',['id'=>$employee->id])}}" data-toggle="tooltip" title="Edit"><i class="fas fa-pencil-alt text-white "></i></a>
@@ -67,7 +67,10 @@
     }
 	</style>
 @push('scripts')
-	
+	<!-- start - This is for datatabe Fixed Columns only -->
+<script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap.min.js"></script>
+<script src="https://cdn.datatables.net/fixedcolumns/3.2.6/js/dataTables.fixedColumns.min.js"></script>
+<!-- end - This is for datatabe Fixed Columns only -->
 	
 	<script>
         $(document).ready(function() {

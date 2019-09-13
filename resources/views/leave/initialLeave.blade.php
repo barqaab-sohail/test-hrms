@@ -10,20 +10,18 @@
 @section('content')
 	<div class="card">
 		<div class="card-body">
-			<!--<div class="float-right">
-				<input id="month" class="form-control" value="" type="month">
-			</div>-->
+			
 		<div class="container">
    					<h3 align="center">Add Initial Balance</h3>
 
-				   	<form method="post" enctype="multipart/form-data" action="{{route('storeInitialBalance')}}">
+				   	<form id="initialBalance" method="post" enctype="multipart/form-data" action="{{route('storeInitialBalance')}}">
 				    {{ csrf_field() }}
 				    <div class="row">
 		                                <!--/span-->
 		                                <div class="col-md-7">
 		                                    <div class="form-group row">
 		                                        <div class="col-md-8">
-		                                        	<label class="control-label text-right ">Name of Employee</label>
+		                                        	<label class="control-label text-right ">Name of Employee</label><span class="text_requried">*</span>
 		                                        	<select id="employee_id" name="employee_id"  class="form-control" required>
                                                         <option value=""></option>
                                                         @foreach($employees as $employee)
@@ -34,7 +32,7 @@
 		                                            
 		                                        </div>
 		                                        <div class="col-md-4">
-		                                        	<label class="control-label text-right ">Leave Type</label>
+		                                        	<label class="control-label text-right ">Leave Type</label><span class="text_requried">*</span>
 		                                        	<select id="leave_type" name="leave_type_id"  class="form-control" required>
                                                         <option value=""></option>
                                                         @foreach($leaveTypes as $leaveType)
@@ -50,12 +48,12 @@
 		                                <div class="col-md-5">
 		                                    <div class="form-group row">
 		                                        <div class="col-md-3">
-		                                        	<label class="control-label text-right">Balance</label>
-		                                             <input type="number" id="balance" name="balance" value="{{ old('balance')}}"   class="form-control prc"  >
+		                                        	<label class="control-label text-right">Balance</label><span class="text_requried">*</span>
+		                                             <input type="number" id="balance" name="balance" class="form-control prc" required>
 		                                        </div>
 		                                        <div class="col-md-9 date_input">
-											   		<label class="control-label text-right">Effective Date</label>
-		                                             <input type="text" id="effective_date" name="effective_date" value="{{ old('effective_date')}}"   class="form-control prc"  readonly>
+											   		<label class="control-label text-right">Effective Date</label><span class="text_requried">*</span>
+		                                             <input type="text" id="effective_date" name="effective_date" class="form-control prc"  required readonly>
 		                                             @can('entry', Auth::user())
 		                                            <br>
 		                                            <i class="fas fa-trash-alt text_requried"></i> 
@@ -64,6 +62,7 @@
 		                                    </div>
 		                                </div>
 		                                <!--/span-->
+		                                <input type="text" id="id" name="id" value=""   class="form-control "  hidden>
 		                             </div>
 				   			<button type="submit" class="btn btn-success">Save</button>
 				   </form>
@@ -73,8 +72,7 @@
 		<hr>
 @if($initialLeaves->count()!=0)
 			<h4 class="card-title">List of Initial Leave Balance</h4>
-				
-		
+	
 			<div id="append_data" class="table-responsive m-t-40">
 				
 				
@@ -101,81 +99,34 @@
 	<script src="https://cdn.datatables.net/buttons/1.2.2/js/buttons.print.min.js"></script>
 	<!-- end - This is for export functionality only -->
 	<script>
-        $(document).ready(function() {
-        	
-
-            $('#myTable').DataTable({
-                stateSave: false,
-                dom: 'Blfrtip',
-                buttons: [
-                    {
-                        extend: 'copyHtml5',
-                        exportOptions: {
-                            columns: [ 0, 1, 2,3,4]
-                        }
-                    },
-                    {
-                        extend: 'excelHtml5',
-                        exportOptions: {
-                            columns: [ 0, 1, 2,3,4]
-                        }
-                    },
-                    {
-                        extend: 'pdfHtml5',
-                        exportOptions: {
-                            columns: [ 0, 1, 2,3,4]
-                        }
-                    }, {
-                        extend: 'csvHtml5',
-                        exportOptions: {
-                            columns: [ 0, 1, 2,3,4]
-                        }
-                    },
-                ]
-            });
-        });
-        $(document).ready(function () {
-            $("#month").change(function(e){
-                var url = "/" + $(this).val();
-                if (url) {
-                    window.location = url;
-                }
-                return false;
-            });
-        });
-
        
-   /*     $('#append').click(function(e){
-		    e.preventDefault();
-
-		    var url = "{{route('load_data')}}";
-
-	        $.ajax({
-			            url: url, //this is the submit URL
-			            type: 'GET', //or POST
-			               	success: function(data){
-			            	
-				            	$('#append_data').append(data);
-				            	$('#append').hide();
-
-				        	}
-		    });
-		
- 		});*/
-        var url = "{{route('load_data')}}";
-        $("#append_data").load(url);
- 		
  		$(document).ready(function () {
- 		//Ajax Update Initial Leave
-			$('a[id^=update]').click(function(e){
-				e.preventDefault();
+        
+	        var loadUrl = "{{route('load_data')}}";
+    	    $("#append_data").load(loadUrl, function (){
+    	    	$('#myTable').DataTable({
+    	 	 	stateSave: false,
+                dom: 'lfrtip'
+               
+				});
+    	    });
+    	    
+    	   
+
+            
+
+	 		$(document).on("click", 'a[id^=update]', function(event) {
+    		
+				event.preventDefault();
 				var updateId = $(this).attr('id');
 				var arr = updateId.split('=');
 				var id = arr[1];
+
 				var employeeName = $(this).closest('tr').find('td:nth-child(1)').text();
 				var leaveType = $(this).closest('tr').find('td:nth-child(2)').text();
 				var balance = $(this).closest('tr').find('td:nth-child(3)').text();
 				var effectiveDate = $(this).closest('tr').find('td:nth-child(4)').text();
+
 				
 				
 				$("#leave_type option").filter(function() {
@@ -195,10 +146,143 @@
 
 				$("#balance").val(balance);
 				$("#effective_date").val(effectiveDate);
+				$("#id").val(id);
+
+				$('html,body').animate({scrollTop:0},0);
+				$(".date_input").find('i').show();
 								        
 			});
 
-		});
+		//Ajax Save Data
+	 		$("#initialBalance").submit(function(e){
+		        e.preventDefault();
+		        var url="{!!route('storeInitialBalance')!!}";
+	     	
+	     			$.ajaxSetup({
+	          			headers: {
+	              		'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+	          			}
+      				});
+
+      				$.ajax({
+		            url: url, //this is the submit URL
+		            type: 'POST', //or POST
+		            data: $('#initialBalance').serialize(),
+
+		            	success: function(data){
+		            		if (data =="OK"){
+		            			
+		            			var loadUrl = "{{route('load_data')}}";
+
+		            			$("#append_data").load(loadUrl, function (){
+    	    						
+    	    						$('#myTable').DataTable({
+    	 	 						
+    	 	 							destroy: true,
+    	 	 							stateSave: false,
+              							dom: 'lfrtip'
+               
+									});
+    	    					});
+
+		            			$('#initialBalance').trigger("reset");
+		            			$(".date_input").find('i').hide();
+		            			$('#leave_type, #employee_id').select2({
+            					width: "100%",
+            					theme: "classic",
+        						}).trigger('change');	
+
+        						$('#json_message').html('<div id="json_message" class="alert alert-success" align="left"><a href="#" class="close" data-dismiss="alert">&times;</a><strong>Data Sucessfuly Saved</strong></div>');
+
+		            		}else{
+
+		            			$('#json_message').html('<div id="json_message" class="alert alert-danger" align="left"><a href="#" class="close" data-dismiss="alert">&times;</a><strong>Data is not  Saved</strong></div>');
+		            			
+		            		}
+			        	},
+
+			        	error: function (request, status, error) {
+                				json = $.parseJSON(request.responseText);
+                				$.each(json.errors, function(key, value){
+                                
+                				$('#json_message').html('<div id="json_message" class="alert alert-danger" align="left"><a href="#" class="close" data-dismiss="alert">&times;</a><strong>'+value+'</strong></div>');
+                			});
+            			}
+
+	        		});
+
+		    	});
+			});
+
+
+
+ 		//Ajax Dete Data
+	 		$(document).on("click", 'a[id^=delete]', function(event) {
+		        event.preventDefault();
+
+		    if (confirm('Are you sure to delete this record?')) {
+		        var updateId = $(this).attr('id');
+		        var arr = updateId.split('=');
+		        var id = arr[1];
+		        var url = "{{route('deleteInitialBalance')}}"+"/"+id;
+
+		       	     	
+	     			$.ajaxSetup({
+	          			headers: {
+	              		'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+	          			}
+      				});
+
+      				$.ajax({
+		            url: url, //this is the submit URL
+		            type: 'POST', //or POST
+		           
+		            	success: function(data){
+		            		if (data =="OK"){
+		            			
+		            			var loadUrl = "{{route('load_data')}}";
+
+		            			$("#append_data").load(loadUrl, function (){
+    	    						
+    	    						$('#myTable').DataTable({
+    	 	 						
+    	 	 							destroy: true,
+    	 	 							stateSave: false,
+              							dom: 'lfrtip'
+               
+									});
+    	    					});
+
+
+        						$('#json_message').html('<div id="json_message" class="alert alert-success" align="left"><a href="#" class="close" data-dismiss="alert">&times;</a><strong>Data Sucessfuly Deleted</strong></div>');
+
+		            		}else{
+
+		            			$('#json_message').html('<div id="json_message" class="alert alert-danger" align="left"><a href="#" class="close" data-dismiss="alert">&times;</a><strong>Data is not  Deleted</strong></div>');
+		            			
+		            		}
+			        	},
+
+			        	error: function (request, status, error) {
+                				json = $.parseJSON(request.responseText);
+                				$.each(json.errors, function(key, value){
+                                
+                				$('#json_message').html('<div id="json_message" class="alert alert-danger" align="left"><a href="#" class="close" data-dismiss="alert">&times;</a><strong>'+value+'</strong></div>');
+                			});
+            			}
+
+	        		});
+
+
+      			}//end confirmation
+
+		    });
+
+
+         
+
+
+
 
 	</script>
 	@endpush

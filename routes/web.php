@@ -306,6 +306,7 @@ Route::get('personalFiles/list','PersonalFileController@index')->name('personalF
 Route::get('leave/applyLeave','Leave\LeaveController@applyLeave')->name('applyLeave');
 Route::get('leave/showInitialBalance','Leave\LeaveController@showInitialBalance')->name('showInitialBalance');
 Route::post('leave/storeInitialBalance','Leave\LeaveController@storeInitialBalance')->name('storeInitialBalance');
+Route::post('leave/deleteInitialBalance/{id?}','Leave\LeaveController@deleteInitialBalance')->name('deleteInitialBalance');
 Route::get('leave/appendLeave','Leave\LeaveController@load_data')->name('load_data');
 
 

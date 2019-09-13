@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Leave;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\leave\storeInitialBalance;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Redirect;
 use App\employee;
@@ -39,6 +40,7 @@ class LeaveController extends Controller
 						<th>Balance</th>
 						<th>Effective Date</th>
 						<th> Actions </th>
+                        <th></th>
 						
 					</tr>
 					</thead>
@@ -54,6 +56,11 @@ class LeaveController extends Controller
 								
 								<td>
 								 <a class="btn btn-info btn-sm" id="update,id='.$initialLeave->id.'" data-toggle="tooltip" data-original-title="Edit"> <i class="fas fa-pencil-alt text-white "></i></a>
+								</td>
+                                <td>
+                                 <a class="btn btn-danger btn-sm" id="delete,id='.$initialLeave->id.'"data-toggle="tooltip" data-original-title="Delete"><i class="fas fa-trash-alt text-white "></i></a>
+                                </td>
+                                
 					</tr>
 					';
 			}
@@ -76,18 +83,26 @@ class LeaveController extends Controller
 
     }
 
-    public function storeInitialBalance(Request $request){
+    public function storeInitialBalance(storeInitialBalance $request){
 
     	$data = $request->all();
     	if($request->filled('effective_date')){
             $data ['effective_date']= \Carbon\Carbon::parse($request->effective_date)->format('Y-m-d');
         }
 
-    	leave_initial_balance::create($data);
-    	return Redirect::back()->with('success', 'Data is saved Sucessfully');
+    	leave_initial_balance::updateOrCreate(
+        ['id' => $request->id],
+        $data);
+   	
+    	return "OK";
     }
 
+    public function deleteInitialBalance($id){
 
+       leave_initial_balance::findOrFail($id)->delete(); 
+    
+        return "OK";
+    }
 
 
 }

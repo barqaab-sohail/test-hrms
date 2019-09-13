@@ -96,7 +96,7 @@
 		                                        <div class="col-md-8">
 		                                        	<label class="control-label text-right">Gender<span class="text_requried">*</span></label>
 		                                        
-		                                           	 <select  name="gender"  class="form-control" required>
+		                                           	 <select  name="gender"  class="form-control selectTwo" required>
                                                         <option value=""></option>
                                                         <option value="Male"  {{ old('gender') == "Male" ? 'selected' : '' }}>Male </option>
                                                         <option value="Female"  {{ old('gender') == "Female" ? 'selected' : '' }}>Female </option>
@@ -157,7 +157,7 @@
 
 		                                        	<label class="control-label text-right">Marital Status<span class="text_requried">*</span></label>
 		                                       
-		                                           	<select  name="marital_status_id"  class="form-control" required>
+		                                           	<select  name="marital_status_id"  class="form-control selectTwo" required>
                                                         <option value=""></option>
                                                         @foreach($maritalStatus as $maritalStatus)
 														<option value="{{$maritalStatus->id}}" {{(old("marital_status_id")==$maritalStatus->id? "selected" : "")}}>{{$maritalStatus->name}}</option>
@@ -186,7 +186,7 @@
 		                                    <div class="form-group row">
 												<div class="col-md-10">
 		                                        	<label class="control-label text-right">Nationality<span class="text_requried">*</span></label>
-		                                           	<select  name="nationality_name"  class="form-control" required>
+		                                           	<select  name="nationality_name"  class="form-control selectTwo" required>
 			                                           	<option value=""></option>
 			                                        @foreach($countries as $country)
 														<option value="{{$country->name}}" {{(old("nationality_name")==$country->name? "selected" : "")}}>{{$country->name}}</option>
@@ -206,7 +206,7 @@
 		                                    <div class="form-group row">
 		                                        <div class="col-md-8">
 		                                        	<label class="control-label text-right">Division<span class="text_requried">*</span></label>
-		                                        	<select  name="division_id"  class="form-control" required>
+		                                        	<select  name="division_id"  class="form-control selectTwo" required>
                                                         <option value=""></option>
                                                         @foreach($divisions as $division)
 														<option value="{{$division->id}}" {{(old("division_id")==$division->id? "selected" : "")}}>{{$division->name}}</option>								
@@ -222,7 +222,7 @@
 		                                        <div class="col-md-10">
 		                                    	    <label class="control-label text-right ">Nationality-2</label>
 		                                        
-		                                           <select  name="nationality_name2"  class="form-control" >
+		                                           <select  name="nationality_name2"  class="form-control selectTwo">
 		                                           	<option value=""></option>
 		                                           	@foreach($countries as $country)
 													<option value="{{$country->name}}" {{(old("nationality_name2")==$country->name? "selected" : "")}}>{{$country->name}}</option>

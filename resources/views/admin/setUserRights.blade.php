@@ -162,7 +162,7 @@
  
 		    });
 
-                //Delete through AJAX
+         //Delete through AJAX
         $('a[id^=delete]').click(function(e){
 		        e.preventDefault();
 		        var deleteId = $(this).attr('id');
