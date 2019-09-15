@@ -20,10 +20,10 @@
             <a type="submit" role="button"  href="{{route('language', session('employee_id'))}}" class="btn btn-info @if(request()->is('*language*')) active @endif">Language</a>
             <a type="submit" role="button"  href="{{route('experience', session('employee_id'))}}" class="btn btn-info @if(request()->is('*experience*')) active @endif">Experience</a>
             <a type="submit" role="button"  href="{{route('promotion', session('employee_id'))}}" class="btn btn-info @if(request()->is('*promotion*')) active @endif">Promotion</a>
-            <a type="submit" role="button"  href="{{route('bank', session('employee_id'))}}" class="btn btn-info @if(request()->is('*bank*')) active @endif">Bank</a>
+            <a type="submit" role="button"  href="{{route('bank.create', session('employee_id'))}}" class="btn btn-info @if(request()->is('*bank*')) active @endif">Bank</a>
             <a type="submit" role="button" href="{{route('contact.edit', session('employee_id'))}}" class="btn btn-info @if(request()->is('*contact/edit*')) active @endif">Contact Detail</a>
             <a type="submit" role="button"  href="{{route('emergency', session('employee_id'))}}" class="btn btn-info @if(request()->is('*emergency*')) active @endif">Emergency Contact</a>
-            <a type="submit" role="button"  href="{{route('dependent', session('employee_id'))}}" class="btn btn-info @if(request()->is('*dependent*')) active @endif">Dependent</a>
+            <a type="submit" role="button"  href="{{route('dependent.create')}}" class="btn btn-info @if(request()->is('*dependent*')) active @endif">Dependent</a>
             <a type="submit" role="button"  href="{{route('document', session('employee_id'))}}" class="btn btn-info @if(request()->is('*document*')) active @endif">Document</a>
             <a type="submit" role="button"  href="{{route('other.edit', session('employee_id'))}}" class="btn btn-info @if(request()->is('*other/edit*')) active @endif">Other Information</a>
             

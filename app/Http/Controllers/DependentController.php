@@ -15,13 +15,15 @@ class DependentController extends Controller
         $this->middleware('updation')->only('delete','update', 'store');
     }
 
-    public function create($id){
+    public function create(){
 
-        $employee = employee::find($id);
-        $dependentIds = dependent::all()->where('employee_id', $id);
+        $employee = employee::find(session('employee_id'));
+        $dependentIds = dependent::all()->where('employee_id', session('employee_id'));
         $employees = employee::all();
         return view ('hr.dependent.dependent',compact('employee','employees','dependentIds'));
     }
+
+
 
 	public function store(Request $request){
 
@@ -37,7 +39,7 @@ class DependentController extends Controller
 
         dependent::create($data);
 
-        return redirect()->route('dependent',['id'=>session('employee_id')])->with('success', 'Data is saved succesfully');
+        return redirect()->route('dependent.create',['id'=>session('employee_id')])->with('success', 'Data is saved succesfully');
     // return redirect()->route('dependent',['id'=>$data->id])->with('success', 'User is created succesfully');
 
     }
@@ -59,9 +61,11 @@ class DependentController extends Controller
      return redirect()->route('dependent.edit',['id'=>$id])->with('success', 'Dependent Detail is updated succesfully');
     }
     
-    public function delete(Request $request, $id)
+    
+    public function destroy($id)
     {
+    dd($id);
     dependent::findOrFail($id)->delete(); 
-    return redirect()->route('dependent',['id'=>session('employee_id')])->with('success', 'Dependent is deleted succesfully');
+    return view('dependent.create',['id'=>session('employee_id')])->with('success', 'Dependent is deleted succesfully');
     }
 }

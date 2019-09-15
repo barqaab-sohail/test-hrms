@@ -16,10 +16,10 @@ class BankController extends Controller
         $this->middleware('updation')->only('delete','update', 'store');
     }
 
-    public function create($id){
+    public function create(){
 
-        $employee = employee::find($id);
-        $bankIds = bank::all()->where('employee_id', $id);
+        $employee = employee::find(session('employee_id'));
+        $bankIds = bank::all()->where('employee_id', session('employee_id'));
         $employees = employee::all();
         return view ('hr.bank.bank',compact('employee','employees','bankIds'));
     }
@@ -31,7 +31,7 @@ class BankController extends Controller
 
         $data = bank::create($request->all());
 
-        return redirect()->route('bank',['id'=>session('employee_id')])->with('success', 'Data is saved succesfully');
+        return redirect()->route('bank.create')->with('success', 'Data is saved succesfully');
       // return redirect()->route('bank',['id'=>$data->id])->with('success', 'User is created succesfully');
 
 
@@ -52,7 +52,7 @@ class BankController extends Controller
      return "OK";
     }
 
-    public function delete(Request $request, $id)
+    public function destroy(Request $request, $bank)
     {
       
     bank::findOrFail($id)->delete(); 

@@ -29,7 +29,7 @@
 		                @endcan
 		                <div class="card-body">
 
-		                    <form action="{{route('storeDependent')}}" method="post" class="form-horizontal" enctype="multipart/form-data">
+		                    <form action="{{route('dependent.store')}}" method="post" class="form-horizontal" enctype="multipart/form-data">
 		                        {{csrf_field()}}
 		                        <div class="form-body">
 		                            
@@ -142,8 +142,14 @@
 								<td>{{$dependentId->gender}}</td>
 								<td>
 								@can('entry', Auth::user())
+								<td>
 								 <a class="btn btn-info btn-sm" href="{{route('dependent.edit',['id'=>$dependentId->id])}}" data-toggle="tooltip" data-original-title="Edit"> <i class="fas fa-pencil-alt text-white "></i></a>
-								 <a class="btn btn-danger btn-sm" onclick="return confirm('Are you Sure to Delete')" href="{{route('deleteDependent',['id'=>$dependentId->id])}}" data-toggle="tooltip" data-original-title="Delete"> <i class="fas fa-trash-alt"></i></a>
+								 </td>
+								 <td>
+								 <form action="{{route('dependent.destroy',['id'=>$dependentId->id])}}" method="DELETE">
+								 <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Are you Sure to Delete')" href= data-toggle="tooltip" data-original-title="Delete"> <i class="fas fa-trash-alt"></i></button>
+								 </form>
+								 </td>
 								 @endcan
 															
 							</tr>

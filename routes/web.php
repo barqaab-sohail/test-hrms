@@ -226,25 +226,29 @@ Route::post('/editDocument/{id?}', 'DocumentController@update')->name('editDocum
 Route::get('/deleteDocument/{id?}', 'DocumentController@delete')->name('deleteDocument');
 
 //Bank
-Route::get('/hrms/bank/{id?}', 'BankController@create')->name('bank');
-Route::post('/storeBank', 'BankController@store')->name('storeBank');
-Route::get('/hrms/bank/edit/{id?}', [
-            'uses' => 'BankController@edit',
-            'as' => 'bank.edit'
-        ]);
-Route::post('/editBank/{id?}', 'BankController@update')->name('editBank');
-Route::get('/deleteBank/{id?}', 'BankController@delete')->name('deleteBank');
+// Route::get('/hrms/bank/{id?}', 'BankController@create')->name('bank');
+// Route::post('/storeBank', 'BankController@store')->name('storeBank');
+// Route::get('/hrms/bank/edit/{id?}', [
+//             'uses' => 'BankController@edit',
+//             'as' => 'bank.edit'
+//         ]);
+// Route::post('/editBank/{id?}', 'BankController@update')->name('editBank');
+// Route::get('/deleteBank/{id?}', 'BankController@delete')->name('deleteBank');
+
+Route::resource('hrms/bank', 'BankController');
+
 
 //Dependent
-Route::get('/hrms/dependent/{id?}', 'DependentController@create')->name('dependent');
-Route::post('/storeDependent', 'DependentController@store')->name('storeDependent');
-Route::get('/hrms/dependent/edit/{id?}', [
-            'uses' => 'DependentController@edit',
-            'as' => 'dependent.edit'
-        ]);
-Route::post('/editDependent/{id?}', 'DependentController@update')->name('editDependent');
-Route::get('/deleteDependent/{id?}', 'DependentController@delete')->name('deleteDependent');
+// Route::get('/hrms/dependent/{id?}', 'DependentController@create')->name('dependent');
+// Route::post('/storeDependent', 'DependentController@store')->name('storeDependent');
+// Route::get('/hrms/dependent/edit/{id?}', [
+//             'uses' => 'DependentController@edit',
+//             'as' => 'dependent.edit'
+//         ]);
+// Route::post('/editDependent/{id?}', 'DependentController@update')->name('editDependent');
+// Route::get('/deleteDependent/{id?}', 'DependentController@delete')->name('deleteDependent');
 
+Route::resource('hrms/dependent','DependentController');
 //Language
 Route::get('/hrms/language/{id?}', 'LanguageController@create')->name('language');
 Route::post('/storeLanguage', 'LanguageController@store')->name('storeLanguage');

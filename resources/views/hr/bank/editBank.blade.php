@@ -80,7 +80,7 @@
 		                                        
 		                                            <input type="text"  name="branch_code" value="{!! old('branch_code', optional($data)->branch_code) !!}" class="form-control"  >
 		                                        </div>
-		                                       
+		                                       <input type="text" id="id" name="id" value="{{$data->id}}"   class="form-control "  hidden>
 		                                       
 		                                    </div>
 		                                </div>
@@ -164,8 +164,9 @@
            $("#editBank").submit(function(e){
 		        e.preventDefault();
         		
+        		var id = $("#id").val();
 
-        		var url="{!!route('editBank', ['id'=>$data->id])!!}";
+        		var url="{!!route('bank.update')!!}";
 
 
 
@@ -177,7 +178,7 @@
       				
 	     			$.ajax({
 		            url: url, //this is the submit URL
-		            type: 'POST', //or POST
+		            type: 'PUT', //or POST
 		            data: $('#editBank').serialize(),
 
 		            	success: function(data){
@@ -200,9 +201,9 @@
 		        e.preventDefault();
 		        var id = $(this).attr('id');
 		        
-		        var url =  "{{route('deleteBank',['id'=>$bankId->id])}}";
+		        var url =  "{{route('bank.destroy',['id'=>$bankId->id])}}";
 
-		        alert('Not Deleted');
+		        //alert('Not Deleted');
 		        //type from POST to GET for deleted
 
 
@@ -216,7 +217,7 @@
 	     		
 	     			$.ajax({
 		            url: url, //this is the submit URL
-		            type: 'POST', //or POST
+		            type: 'DELETE', //or POST
 		            data: $('#editBank').serialize(),
 		            	success: function(data){
 		            		if (data =="OK"){

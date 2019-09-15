@@ -31,7 +31,7 @@
 		                @endcan
 		                <div class="card-body">
 
-		                    <form action="{{route('storeBank')}}" method="post" class="form-horizontal" enctype="multipart/form-data">
+		                    <form action="{{route('bank.store')}}" method="post" class="form-horizontal" enctype="multipart/form-data">
 		                        {{csrf_field()}}
 		                        <div class="form-body">
 		                            
@@ -164,9 +164,13 @@
        @if($bankIds->count()!=0)
             $('[id^=delete]').click(function(e){
 		        e.preventDefault();
-		        var id = $(this).attr('id');
 		        
-		        var url =  "{{route('deleteBank',['id'=>$bankId->id])}}";
+		        var bankId = $(this).attr('id');
+		        var arr = deleteId.split('=');
+		        var bank = arr[1];
+		     		        
+		        
+
 
 		        $.ajaxSetup({
 	          			headers: {
@@ -178,7 +182,7 @@
 	     		
 	     			$.ajax({
 		            url: url, //this is the submit URL
-		            type: 'GET', //or POST
+		            type: 'DELETE', //or POST
 		            data: $('#editBank').serialize(),
 		            	success: function(data){
 		            		if (data =="OK"){
