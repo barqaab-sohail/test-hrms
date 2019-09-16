@@ -24,12 +24,11 @@
 						@can('entry', Auth::user())
 		                <div style="margin-top:10px; margin-right: 10px;">
 		                    <button type="button" onclick="window.location.href='{{route('employeeList')}}'" class="btn btn-info float-right">Back</button>
-		                    
 		                </div>
 		                @endcan
 		                <div class="card-body">
 
-		                    <form action="{{route('storeExperience')}}" method="post" class="form-horizontal" enctype="multipart/form-data">
+		                    <form action="{{route('experience.store')}}" method="POST" class="form-horizontal" enctype="multipart/form-data">
 		                        {{csrf_field()}}
 		                        <div class="form-body">
 		                            
@@ -97,7 +96,7 @@
 		                                        <div class="col-md-8">
 		                                        	<label class="control-label text-right ">Country<span class="text_requried">*</span></label>
 		                                        
-		                                             <select  name="country"  class="form-control" required>
+		                                             <select  name="country"  class="form-control selectTwo" required>
                                                         <option value=""></option>
                                                         @foreach($countries as $country)
 														<option value="{{$country->name }}">{{$country->name}}</option>
@@ -154,54 +153,9 @@
 		                            </div>
 		                        </div>
 		                    </form>
-		@if($experienceIds->count()!=0)		                    
-			                    <br>
-			                    <hr>
-			                    <br>
-		<div class="card">
-		<div class="card-body">
-			<!--<div class="float-right">
-				<input id="month" class="form-control" value="" type="month">
-			</div>-->
-			<h2 class="card-title">Stored Experience</h2>
-			
-			<div class="table-responsive m-t-40">
-				
-				<table id="myTable" class="table table-bordered table-striped" width="100%" cellspacing="0">
-					<thead>
-					
-					<tr>
-						<th>Employer Name</th>
-						<th>Position</th>
-						<th>From</th>
-						<th>To</th>
-						 @can('entry', Auth::user())<th> Actions </th> @endcan
-					</tr>
-					</thead>
-					<tbody>
-						@foreach($experienceIds as $experienceId)
-							<tr>
-								<td>{{$experienceId->employer}}</td>
-								<td>{{$experienceId->position}}</td>
-								<td>{{$experienceId->from}}</td>
-								<td>{{$experienceId->to}}</td>
-								<td>
-								 @can('entry', Auth::user())
-								 <a class="btn btn-info btn-sm" href="{{route('experience.edit',['id'=>$experienceId->id])}}" data-toggle="tooltip" data-original-title="Edit"> <i class="fas fa-pencil-alt text-white "></i></a>
-								  <a class="btn btn-danger btn-sm" onclick="return confirm('Are you Sure to Delete')" href="{{route('deleteExperience',['id'=>$experienceId->id])}}" data-toggle="tooltip" data-original-title="Delete"> <i class="fas fa-trash-alt"></i></a>
-								 @endcan
-															
-							</tr>
-						@endforeach
-					
-					 
-					
-					</tbody>
-				</table>
-			</div>
-		</div>
-	</div>
-	
+	@if($experienceIds->count()!=0)		                    
+	@include('hr.experience.list')
+		
 	@endif
 			                    
 		        		</div>       

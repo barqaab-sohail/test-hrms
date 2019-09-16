@@ -64,8 +64,9 @@ class DependentController extends Controller
     
     public function destroy($id)
     {
-    dd($id);
+    
     dependent::findOrFail($id)->delete(); 
-    return view('dependent.create',['id'=>session('employee_id')])->with('success', 'Dependent is deleted succesfully');
+    return redirect()->route('dependent.create')->with('success', 'Dependent Detail is deleted succesfully');
+  
     }
 }

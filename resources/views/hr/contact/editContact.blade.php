@@ -112,7 +112,7 @@
 		                                        <div class="col-md-12">
 		                                        	<label class="control-label text-right ">Country<span class="text_requried">*</span></label>
 		                                        
-		                                            	<select  name="country"  class="form-control" required>
+		                                            	<select  name="country"  class="form-control selectTwo" required>
                                                         <option value=""></option>
                                                         @foreach($countries as $country)
 														<option value="{{$country->name}}" @if($country->name == optional($permanentAddress)->country) selected="selected" @endif>{{$country->name}}</option>
@@ -265,7 +265,7 @@
 		                                        <div class="col-md-12">
 		                                        	<label class="control-label text-right ">Country<span class="text_requried">*</span></label>
 		                                        
-		                                             <select  name="country"  class="form-control" required>
+		                                             <select  name="country"  class="form-control selectTwo" required>
                                                         <option value=""></option>
                                                         @foreach($countries as $country)
 														<option value="{{$country->name}}" @if($country->name == optional($currentAddress)->country) selected="selected" @endif>{{$country->name}}</option>

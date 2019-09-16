@@ -46,7 +46,7 @@
 		                                    <div class="form-group row">
 		                                        <label class="control-label text-right col-md-6">Designation Level</label>
 		                                        <div class="col-md-6">
-		                                            <select  name="level"  class="form-control" >
+		                                            <select  name="level"  class="form-control selectTwo" >
                                                         <option value=""></option>
                                                         @for ($i = 1; $i < 15; $i++)
     													<option value="{{$i}}">{{ $i }}</option>

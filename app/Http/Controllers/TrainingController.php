@@ -19,11 +19,11 @@ class TrainingController extends Controller
         $this->middleware('updation')->only('delete','update', 'store');
     }
 
-    public function create($id){
+    public function create(){
 
         $countries = country::all();
-        $employee = employee::find($id);
-        $trainingIds = training::all()->where('employee_id', $id);
+        $employee = employee::find(session('employee_id'));
+        $trainingIds = training::all()->where('employee_id', session('employee_id'));
         $employees = employee::all();
         return view ('hr.training.training',compact('employee','employees','trainingIds','countries'));
     }
@@ -40,10 +40,7 @@ class TrainingController extends Controller
         }
 
         training::create($data);
-        return redirect()->route('training',['id'=>session('employee_id')])->with('success', 'Data is saved succesfully');
-      // return redirect()->route('training',['id'=>$data->id])->with('success', 'User is created succesfully');
-
-
+        return redirect()->route('training.create')->with('success', 'Data is saved succesfully');
     }
 
     public function edit($id){
@@ -69,9 +66,9 @@ class TrainingController extends Controller
      return redirect()->route('training.edit',['id'=>$id])->with('success', 'training is updated succesfully');
     }
 
-    public function delete(Request $request, $id)
+    public function destroy(Request $request, $id)
     {
     training::findOrFail($id)->delete(); 
-    return redirect()->route('training',['id'=>session('employee_id')])->with('success', 'Training is deleted succesfully');
+    return redirect()->route('training.create')->with('success', 'Training is deleted succesfully');
     }
 }

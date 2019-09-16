@@ -85,7 +85,7 @@
 		                                    <div class="form-group row">
 		                                        <label class="control-label text-right col-md-3">Type</label>
 		                                        <div class="col-md-6">
-		                                  		<select  name="type"  class="form-control" required>
+		                                  		<select  name="type"  class="form-control selectTwo" required>
                                                     <option value=""></option>
                                                     <option value="Lumpsum">Lumpsum</option>
                                                     <option value="Time Based">Time Based</option>

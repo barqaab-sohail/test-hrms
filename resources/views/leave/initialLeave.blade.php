@@ -22,7 +22,7 @@
 		                                    <div class="form-group row">
 		                                        <div class="col-md-8">
 		                                        	<label class="control-label text-right ">Name of Employee</label><span class="text_requried">*</span>
-		                                        	<select id="employee_id" name="employee_id"  class="form-control" required>
+		                                        	<select id="employee_id" name="employee_id"  class="form-control selectTwo" required>
                                                         <option value=""></option>
                                                         @foreach($employees as $employee)
 														<option value="{{$employee->id}}" {{(old("employee_id")==$employee->id? "selected" : "")}}>{{$employee->first_name." ".$employee->middle_name." ".$employee->last_name}}</option>
@@ -33,7 +33,7 @@
 		                                        </div>
 		                                        <div class="col-md-4">
 		                                        	<label class="control-label text-right ">Leave Type</label><span class="text_requried">*</span>
-		                                        	<select id="leave_type" name="leave_type_id"  class="form-control" required>
+		                                        	<select id="leave_type" name="leave_type_id"  class="form-control selectTwo" required>
                                                         <option value=""></option>
                                                         @foreach($leaveTypes as $leaveType)
 														<option value="{{$leaveType->id}}" {{(old("leave_type_id")==$leaveType->name? "selected" : "")}}>{{$leaveType->name}}</option>

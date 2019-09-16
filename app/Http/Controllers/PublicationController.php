@@ -16,10 +16,10 @@ class PublicationController extends Controller
          $this->middleware('updation')->only('delete','update', 'store');
     }
 
-    public function create($id){
+    public function create(){
 
-        $employee = employee::find($id);
-        $publicationIds = publication::all()->where('employee_id', $id);
+        $employee = employee::find(session('employee_id'));
+        $publicationIds = publication::all()->where('employee_id', session('employee_id'));
         $employees = employee::all();
         return view ('hr.publication.publication',compact('employee','employees','publicationIds'));
     }
@@ -31,7 +31,7 @@ class PublicationController extends Controller
 
         $data = publication::create($request->all());
 
-        return redirect()->route('publication',['id'=>session('employee_id')])->with('success', 'Data is saved succesfully');
+        return redirect()->route('publication.create')->with('success', 'Data is saved succesfully');
       // return redirect()->route('publication',['id'=>$data->id])->with('success', 'User is created succesfully');
 
 
@@ -51,10 +51,10 @@ class PublicationController extends Controller
      return redirect()->route('publication.edit',['id'=>$id])->with('success', 'Publication is updated succesfully');
     }
 
-    public function delete(Request $request, $id)
+    public function destroy(Request $request, $id)
     {
     publication::findOrFail($id)->delete(); 
-    return redirect()->route('publication',['id'=>session('employee_id')])->with('success', 'Publication is deleted succesfully');
+    return redirect()->route('publication.create')->with('success', 'Publication is deleted succesfully');
     }
 
 

@@ -29,7 +29,7 @@
 		                @endcan
 		                <div class="card-body">
 
-		                    <form id="education" action="{{route('storeEducation')}}" method="post" class="form-horizontal" enctype="multipart/form-data">
+		                    <form id="education" action="{{route('education.store')}}" method="post" class="form-horizontal" enctype="multipart/form-data">
 		                        {{csrf_field()}}
 		                        <div class="form-body">
 		                            
@@ -82,7 +82,7 @@
 		                                        	<label class="control-label text-right ">Level of Degree<span class="text_requried">*</span></label>
 		                                        
 		                                            
-													<select  name="level"  class="form-control" required>
+													<select  name="level"  class="form-control selectTwo" required>
 
 													<option value=""></option>
 													@for ($i = 5; $i < 21; $i++)
@@ -95,11 +95,7 @@
 		                                        </div>
 		                                        
 		                                        <div class="col-md-3">
-		                                        
-
-														                                            												
-
-		                                             <input type="number" name="employee_id" value="{{session('employee_id')}}"   class="form-control " hidden>
+		                                            <input type="number" name="employee_id" value="{{session('employee_id')}}"   class="form-control " hidden>
 		                                        </div>
 		                                    </div>
 		                                </div>
@@ -112,7 +108,7 @@
 		                                        
 		                                        <div class="col-md-6">
 		                                           <label>Degree Start Month</label>
-		                                           <select  name="from_month"  id="from_month" class="form-control" >
+		                                           <select  name="from_month"  id="from_month" class="form-control selectTwo" >
                                                         <option value=""></option>
                                                         @for($m=1; $m<=12; ++$m){
                                                         <option value="{{date('F', mktime(0, 0, 0, $m, 1))}}"> {{date('F', mktime(0, 0, 0, $m, 1))}}</option>
@@ -123,7 +119,7 @@
 		                                        </div>
 		                                        <div class="col-md-3">
 		                                        <label>Year</label>
-		                                            <select  name="from_year"  id="from_year" class="form-control" >
+		                                            <select  name="from_year"  id="from_year" class="form-control selectTwo" >
 
 													<option value=""></option>
 													@for ($i = (date('Y')-65); $i < (date('Y')+1); $i++)
@@ -140,7 +136,7 @@
 		                                        
 		                                        <div class="col-md-7">
 		                                         <label>Degree Completion Month</label>
-		                                           <select  name="to_month"  id="to_month"class="form-control">
+		                                           <select  name="to_month"  id="to_month"class="form-control selectTwo">
                                                         <option value=""></option>
                                                         @for($m=1; $m<=12; ++$m){
     													<option value="{{date('F', mktime(0, 0, 0, $m, 1))}}"> {{date('F', mktime(0, 0, 0, $m, 1))}}</option>
@@ -151,7 +147,7 @@
 		                                        </div>
 		                                        <div class="col-md-3">
 		                                         <label>Year<span class="text_requried">*</span></label>
-		                                            <select  name="to_year" id="to_year"  class="form-control" required>
+		                                            <select  name="to_year" id="to_year"  class="form-control selectTwo" required>
 
 													<option value=""></option>
 													@for ($i = (date('Y')-65); $i < (date('Y')+1); $i++)
@@ -176,7 +172,7 @@
 		                                         <div class="col-md-6">
 		                                        	<label class="control-label text-right">Country<span class="text_requried">*</span></label>
 		                                        
-		                                          <select  name="country"  class="form-control" required>
+		                                          <select  name="country"  class="form-control selectTwo" required>
                                                         <option value=""></option>
                                                         @foreach($countries as $country)
 														<option value="{{$country->name }}">{{$country->name}}</option>
@@ -216,58 +212,8 @@
 		                            </div>
 		                        </div>
 		                    </form>
-		@if($educationIds->count()!=0)		                    
-			                    <br>
-			                    <hr>
-			                    <br>
-		<div class="card">
-		<div class="card-body">
-			<!--<div class="float-right">
-				<input id="month" class="form-control" value="" type="month">
-			</div>-->
-			<h2 class="card-title">Stored Education</h2>
-			
-			<div class="table-responsive m-t-40">
-				
-				<table id="myTable" class="table table-bordered table-striped" width="100%" cellspacing="0">
-					<thead>
-					
-					<tr>
-						<th>Degree Name</th>
-						<th>Institute</th>
-						<th>Completion Year</th>
-						<th>Grade</th>
-						 @can('entry', Auth::user())<th colspan="2"> Actions </th> @endcan
-					</tr>
-					</thead>
-					<tbody>
-						@foreach($educationIds as $educationId)
-							<tr>
-								<td>{{$educationId->degree_name}}</td>
-								<td>{{$educationId->institute}}</td>
-								<td>{{$educationId->to_year}}</td>
-								<td>{{$educationId->grade}}</td>
-								
-								 @can('entry', Auth::user())
-								 <td>
-								 <a class="btn btn-info btn-sm" href="{{route('education.edit',['id'=>$educationId->id])}}" data-toggle="tooltip" data-original-title="Edit"> <i class="fas fa-pencil-alt text-white "></i></a>
-								 </td>
-								 <td>
-								  <a class="btn btn-danger btn-sm" onclick="return confirm('Are you Sure to Delete')" href="{{route('deleteEducation',['id'=>$educationId->id])}}" data-toggle="tooltip" data-original-title="Delete"> <i class="fas fa-trash-alt"></i></a>
-								  </td>
-								 @endcan
-
-															
-							</tr>
-						@endforeach
-					
-					 
-					
-					</tbody>
-				</table>
-			</div>
-		</div>
-	</div>
+	@if($educationIds->count()!=0)		                    
+	@include('hr.education.list')
 	
 	@endif
 			                    

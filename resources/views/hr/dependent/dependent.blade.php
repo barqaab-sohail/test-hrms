@@ -30,70 +30,9 @@
 		                <div class="card-body">
 
 		                    <form action="{{route('dependent.store')}}" method="post" class="form-horizontal" enctype="multipart/form-data">
-		                        {{csrf_field()}}
-		                        <div class="form-body">
-		                            
-		                            <h3 class="box-title">Dependent Detail</h3>
-		                            <hr class="m-t-0 m-b-40">
-		                            <div class="row">
-		                                <div class="col-md-7">
-		                                    <div class="form-group row">
-		                                        <div class="col-md-12">
-		                                        	<label class="control-label text-right">Name<span class="text_requried">*</span></label>
-		                                        
-		                                            <input type="text"  name="name" value="{{ old('name') }}" class="form-control" placeholder="Enter Name" required>
-		                                        </div>
-		                                    </div>
-		                                </div>
-		                                
-		                                <!--/span-->
-		                                <div class="col-md-5">
-		                                    <div class="form-group row">
-		                                        <div class="col-md-8 date_input">
-		                                        	<label class="control-label text-right">Date of Birth</label>
-		                                        
-		                                            <input type="text" id="date_of_birth" name="date_of_birth" value="{{ old('date_of_birth') }}" class="form-control " placeholder="Enter Date of Birth" readonly>
-													@can('entry', Auth::user())
-		                                            <br>
-		                                            <i class="fas fa-trash-alt text_requried"></i>
-		                                            @endcan
-		                                        </div>
-		                                    </div>
-		                                </div>
-		                            </div>
-		                                
-		                            <!--/row-->
-		                             <div class="row">
-		                                <div class="col-md-7">
-		                                    <div class="form-group row">
-		                                        <div class="col-md-12">
-		                                        	<label class="control-label text-right ">Relation<span class="text_requried">*</span></label>
-		                                        
-		                                            <input type="text"  name="relation" value="{{ old('relation') }}" class="form-control"  placeholder="Enter Relation with Employee" required>
-		                                        </div>
-		                                       		                                       
-		                                    </div>
-		                                </div>
-		                                <div class="col-md-5">
-		                                    <div class="form-group row">
-		                                        <div class="col-md-6">
-		                                        	<label class="control-label text-right ">Gender<span class="text_requried">*</span></label>
-		                                        
-		                                            <select  name="gender"  class="form-control" required>
-                                                        <option value=""></option>
-                                                        <option value="Male">Male</option>
-                                                        <option value="Female">Female</option>
-                                                    </select>
-		                                        </div>
-		                                       
-		                                       <input type="number" name="employee_id" value="{{session('employee_id')}}"   class="form-control " hidden>
-		                                    </div>
-		                                </div>
-		                                		                                
-		                            </div>
-		                            		                           
-		                        </div>
-		                         <hr>
+		                       @include('hr.dependent.form')
+
+		                        <hr>
 		                        <div class="form-actions">
 		                            <div class="row">
 		                                <div class="col-md-6">
@@ -109,58 +48,8 @@
 		                            </div>
 		                        </div>
 		                    </form>
-		@if($dependentIds->count()!=0)		                    
-			                    <br>
-			                    <hr>
-			                    <br>
-		<div class="card">
-		<div class="card-body">
-			<!--<div class="float-right">
-				<input id="month" class="form-control" value="" type="month">
-			</div>-->
-			<h2 class="card-title">Stored Dependent Detail</h2>
-			
-			<div class="table-responsive m-t-40">
-				
-				<table id="myTable" class="table table-bordered table-striped" width="100%" cellspacing="0">
-					<thead>
-					
-					<tr>
-						<th>Name</th>
-						<th>Date of Birth</th>
-						<th>Relation</th>
-						<th>Gender</th>
-						@can('entry', Auth::user())<th> Actions </th> @endcan
-					</tr>
-					</thead>
-					<tbody>
-						@foreach($dependentIds as $dependentId)
-							<tr>
-								<td>{{$dependentId->name}}</td>
-								<td>{{$dependentId->date_of_birth}}</td>
-								<td>{{$dependentId->relation}}</td>
-								<td>{{$dependentId->gender}}</td>
-								<td>
-								@can('entry', Auth::user())
-								<td>
-								 <a class="btn btn-info btn-sm" href="{{route('dependent.edit',['id'=>$dependentId->id])}}" data-toggle="tooltip" data-original-title="Edit"> <i class="fas fa-pencil-alt text-white "></i></a>
-								 </td>
-								 <td>
-								 <form action="{{route('dependent.destroy',['id'=>$dependentId->id])}}" method="DELETE">
-								 <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Are you Sure to Delete')" href= data-toggle="tooltip" data-original-title="Delete"> <i class="fas fa-trash-alt"></i></button>
-								 </form>
-								 </td>
-								 @endcan
-															
-							</tr>
-						@endforeach
-					 
-					
-					</tbody>
-				</table>
-			</div>
-		</div>
-	</div>
+	@if($dependentIds->count()!=0)		                    
+		@include('hr.dependent.list')	
 	
 	@endif
 		        		</div>       

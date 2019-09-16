@@ -16,10 +16,10 @@ class MembershipController extends Controller
         $this->middleware('updation')->only('delete','update', 'store');
     }
 
-    public function create($id){
+    public function create(){
 
-        $employee = employee::find($id);
-        $membershipIds = membership::all()->where('employee_id', $id);
+        $employee = employee::find(session('employee_id'));
+        $membershipIds = membership::all()->where('employee_id', session('employee_id'));
         $employees = employee::all();
         return view ('hr.membership.membership',compact('employee','employees','membershipIds'));
     }
@@ -32,7 +32,7 @@ class MembershipController extends Controller
             }
         membership::create($data);
 
-        return redirect()->route('membership',['id'=>session('employee_id')])->with('success', 'Data is saved succesfully');
+        return redirect()->route('membership.create')->with('success', 'Data is saved succesfully');
       // return redirect()->route('membership',['id'=>$data->id])->with('success', 'User is created succesfully');
 
 
@@ -55,10 +55,10 @@ class MembershipController extends Controller
      return redirect()->route('membership.edit',['id'=>$id])->with('success', 'Membership is updated succesfully');
     }
 
-     public function delete(Request $request, $id)
+     public function destroy(Request $request, $id)
     {
     membership::findOrFail($id)->delete(); 
-    return redirect()->route('membership',['id'=>session('employee_id')])->with('success', 'Membership is deleted succesfully');
+    return redirect()->route('membership.create')->with('success', 'Membership is deleted succesfully');
     }
 
 }

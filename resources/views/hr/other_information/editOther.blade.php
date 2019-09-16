@@ -81,7 +81,7 @@
 		                                        <div class="col-md-12">
 		                                        <label class="control-label text-right ">Blood Group</label>
 		                                        
-		                                            <select  name="blood_group"  class="form-control" >
+		                                            <select  name="blood_group"  class="form-control selectTwo" >
                                                         <option value=""></option>
                                                         @foreach($blood_groups as $blood_group)
 															<option value="{{$blood_group->id}}"

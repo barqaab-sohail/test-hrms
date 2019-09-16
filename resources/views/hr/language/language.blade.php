@@ -41,7 +41,7 @@
 		                                        <label class="control-label text-right col-md-2">Language</label>
 		                                        <div class="col-md-3">
 		                                            										
-													<select  name="name"  class="form-control" required>
+													<select  name="name"  class="form-control selectTwo" required>
                                                         <option value=""></option>
                                                         @foreach($allLanguages as $language)
 														<option value="{{$language->name_1 }}">{{$language->name_1}}</option>
@@ -70,7 +70,7 @@
 		                                        
 		                                        <div class="col-md-3">
 		                                        <label class="control-label text-right">Reading </label>
-		                                             <select  name="reading"  class="form-control" required>
+		                                             <select  name="reading"  class="form-control selectTwo" required>
                                                         <option value=""></option>
                                                         <option value="Average">Average</option>
                                                         <option value="Good">Good</option>
@@ -79,7 +79,7 @@
 		                                        </div>
 		                                        <div class="col-md-3">
 		                                        <label class="control-label text-right">Speaking </label>
-		                                             <select  name="speaking"  class="form-control" required>
+		                                             <select  name="speaking"  class="form-control selectTwo" required>
                                                         <option value=""></option>
                                                         <option value="Average">Average</option>
                                                         <option value="Good">Good</option>
@@ -88,7 +88,7 @@
 		                                        </div>
 		                                        <div class="col-md-3">
 		                                        <label class="control-label text-right">Writing </label>
-		                                             <select  name="writing"  class="form-control" required>
+		                                             <select  name="writing"  class="form-control selectTwo" required>
                                                         <option value=""></option>
                                                         <option value="Average">Average</option>
                                                         <option value="Good">Good</option>

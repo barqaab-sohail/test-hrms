@@ -41,7 +41,7 @@
 		                                        <label class="control-label text-right col-md-2">Language</label>
 		                                        <div class="col-md-3">
 		                                            										
-													<select  name="name"  class="form-control" required>
+													<select  name="name"  class="form-control selectTwo" required>
                                                         @foreach($allLanguages as $language)
 		                                             	<option value="{{$language->name_1}}" @if($data->name == $language->name_1) selected="selected" @endif>{{$language->name_1}}</option>
                                                                                                               
@@ -70,7 +70,7 @@
 		                                        
 		                                        <div class="col-md-3">
 		                                        <label class="control-label text-right">Reading </label>
-		                                             <select  name="reading"  class="form-control" required>
+		                                             <select  name="reading"  class="form-control selectTwo" required>
                                                         <option value="Average"  @if($data->reading == 'Average')selected="selected" @endif>Average</option>
 		                                             	
                                                         <option value="Good" @if($data->reading == 'Good') selected="selected" @endif>Good</option>
@@ -80,7 +80,7 @@
 		                                        </div>
 		                                        <div class="col-md-3">
 		                                        <label class="control-label text-right">Speaking </label>
-		                                             <select  name="speaking"  class="form-control" required>
+		                                             <select  name="speaking"  class="form-control selectTwo" required>
                                                        <option value="Average"  @if($data->speaking == 'Average')selected="selected" @endif>Average</option>
 		                                             	
                                                         <option value="Good" @if($data->speaking == 'Good') selected="selected" @endif>Good</option>
@@ -90,7 +90,7 @@
 		                                        </div>
 		                                        <div class="col-md-3">
 		                                        <label class="control-label text-right">Writing </label>
-		                                             <select  name="writing"  class="form-control" required>
+		                                             <select  name="writing"  class="form-control selectTwo" required>
                                                         <option value="Average"  @if($data->writing == 'Average')selected="selected" @endif>Average</option>
 		                                             	
                                                         <option value="Good" @if($data->writing == 'Good') selected="selected" @endif>Good</option>

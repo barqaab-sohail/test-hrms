@@ -18,10 +18,10 @@ class ExperienceController extends Controller
         $this->middleware('updation')->only('delete','update', 'store');
     }
 
-    public function create($id){
+    public function create(){
         $countries = country::all();
-        $employee = employee::find($id);
-        $experienceIds = experience::all()->where('employee_id', $id);
+        $employee = employee::find(session('employee_id'));
+        $experienceIds = experience::all()->where('employee_id', session('employee_id'));
         $employees = employee::all();
         return view ('hr.experience.experience',compact('employee','employees','experienceIds','countries'));
     }
@@ -37,7 +37,7 @@ class ExperienceController extends Controller
         $data ['to']= \Carbon\Carbon::parse($request->to)->format('Y-m-d');
         }
         Experience::create($data);
-        return redirect()->route('experience',['id'=>session('employee_id')])->with('success', 'Data is saved succesfully');
+        return redirect()->route('experience.create')->with('success', 'Data is saved succesfully');
       
     }
 
@@ -62,12 +62,12 @@ class ExperienceController extends Controller
      return redirect()->route('experience.edit',['id'=>$id])->with('success', 'Experience is updated succesfully');
     }
 
-    public function delete(Request $request, $id)
+    public function destroy(Request $request, $id)
     {
           
     experience::findOrFail($id)->delete();
 
-    return redirect()->route('experience',['id'=>session('employee_id')])->with('success', 'Experience is deleted succesfully');
+    return redirect()->route('experience.create')->with('success', 'Experience is deleted succesfully');
     
     }
 }

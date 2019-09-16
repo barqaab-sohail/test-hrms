@@ -28,7 +28,7 @@
 		                                    <label class="control-label text-right col-md-2">To</label>
 		                                    <div class="col-md-4">
 
-		                                    	<select  name="to"  class="form-control" required>
+		                                    	<select  name="to"  class="form-control selectTwo" required>
 		                                           	<option value="all">All Active User</option>
 		                                           	<option value="allManagers">All Managers</option>
 		                                           	@foreach($employees as $employee)

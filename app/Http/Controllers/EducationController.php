@@ -18,10 +18,10 @@ class EducationController extends Controller
         $this->middleware('updation')->only('delete','update', 'store');
     }
 
-    public function create($id){
-        $employee = employee::find($id);
+    public function create(){
+        $employee = employee::find(session('employee_id'));
         $countries = country::all();
-        $educationIds = education::all()->where('employee_id', $id);
+        $educationIds = education::all()->where('employee_id', session('employee_id'));
         $employees = employee::all();
         return view ('hr.education.education',compact('employee','employees','educationIds','countries'));
     }
@@ -30,7 +30,7 @@ class EducationController extends Controller
         
         $data = $request->all();
         Education::create($data);
-        return redirect()->route('education',['id'=>session('employee_id')])->with('success', 'Data is saved succesfully');
+        return redirect()->route('education.create')->with('success', 'Data is saved succesfully');
     }
 
     public function edit($id){
@@ -50,11 +50,10 @@ class EducationController extends Controller
      return redirect()->route('education.edit',['id'=>$id])->with('success', 'Education is updated succesfully');
     }
 
-    public function delete(Request $request, $id)
+    public function destroy(Request $request, $id)
     {
-          
     Education::findOrFail($id)->delete(); 
-    return redirect()->route('education',['id'=>session('employee_id')])->with('success', 'Education is deleted succesfully');
+    return redirect()->route('education.create')->with('success', 'Education is deleted succesfully');
     
     }
 

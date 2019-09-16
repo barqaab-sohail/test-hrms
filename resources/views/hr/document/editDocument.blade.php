@@ -39,7 +39,7 @@
 		                                        <div class="col-md-12">
 		                                        <label class="control-label text-right ">Document Name<span class="text_requried">*</span></label>
 		                                        
-		                                             <select  name="document_name" id="document_name"    class="form-control" required>
+		                                             <select  name="document_name" id="document_name"    class="form-control selectTwo" required>
 
                                                        
                                                         <option value="{{$data->document_name}}">{{$data->document_name}}</option>
