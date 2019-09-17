@@ -30,14 +30,14 @@ class PostingController extends Controller
     }
 
 
-    public function create($id){
+    public function create(){
 
-        $employee = employee::find($id);
+        $employee = employee::find(session('employee_id'));
         $employees = DB::table('employees')
                     ->join('appointments','employees.id','=','appointments.employee_id')
                        ->select('employees.id','employees.first_name','employees.last_name','employees.middle_name','appointments.designation')->get();
 
-        $postingIds = posting::all()->where('employee_id', $id);
+        $postingIds = posting::all()->where('employee_id', session('employee_id'));
         $projects = project::orderBy('status', 'desc')->get();
         $positions = designation::all();
         return view ('hr.posting.posting',compact('employee','employees','projects','postingIds','positions'));
@@ -53,7 +53,7 @@ class PostingController extends Controller
         $data ['posting_date']= \Carbon\Carbon::parse($request->posting_date)->format('Y-m-d');         
         }
         posting::create($data);
-        return redirect()->route('posting',['id'=>session('employee_id')])->with('success', 'Data is saved succesfully');
+        return redirect()->route('posting.create')->with('success', 'Data is saved succesfully');
       
 
     }
@@ -88,10 +88,10 @@ class PostingController extends Controller
      return redirect()->route('posting.edit',['id'=>$id])->with('success', 'Posting is updated succesfully');
     }
 
-    public function delete(Request $request, $id)
+    public function destroy(Request $request, $id)
     {
         
     posting::findOrFail($id)->delete();
-    return redirect()->route('posting',['id'=>session('employee_id')])->with('success', 'Document is deleted succesfully');
+    return redirect()->route('posting.create')->with('success', 'Document is deleted succesfully');
     }
 }

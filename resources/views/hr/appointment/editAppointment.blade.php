@@ -23,13 +23,14 @@
 		        	<div class="col-lg-10">
 						 @can('entry', Auth::user())
 		                <div style="margin-top:10px; margin-right: 10px;">
-		                    <button type="button" onclick="window.location.href='{{route('employeeList')}}'" class="btn btn-info float-right">Back</button>
+		                    <button type="button" onclick="window.location.href='{{route('employee.index')}}'" class="btn btn-info float-right">Back</button>
 		                    
 		                </div>
 		                @endcan
 		                <div class="card-body">
 
-		                    <form action="{{route('editAppointment', ['id'=>$employee->id])}}" method="post" class="form-horizontal" enctype="multipart/form-data">
+		                    <form action="{{route('appointment.update', ['id'=>$employee->id])}}" method="post" class="form-horizontal" enctype="multipart/form-data">
+		                    @method('PATCH')
 		                        {{csrf_field()}}
 		                        <div class="form-body">
 		                            
@@ -71,15 +72,14 @@
 		                                        <div class="col-md-12">
 			                                        <label class="control-label text-right">Designation<span class="text_requried">*</span></label>
 		                                        
-													<select  name="designation"  class="form-control selectTwo" required>
+													<select  name="designation_id"  class="form-control selectTwo" required>
                                                       <option></option>
                                                      @foreach($designations as $designation)
 														
-														<option value="{{$designation->name}}" @if($designation->name == optional($employee->appointment)->designation)) selected="selected" @endif>{{$designation->name}}</option>
+														<option value="{{$designation->id}}" @if($designation->id == optional($employee->appointment)->designation_id)) selected="selected" @endif>{{$designation->name}}</option>
                                                         @endforeach
                                                         
                                                     </select>
-
 		                                            
 		                                        </div>
 		                                    </div>
@@ -184,7 +184,7 @@
 		                                    	@can('entry', Auth::user())
 		                                        <div class="col-md-offset-3 col-md-9">
 		                                            <button type="submit" class="btn btn-success">Save</button>
-		                                            <button type="button" onclick="window.location.href='{{route('employeeList')}}'" class="btn btn-inverse">Cancel</button>
+		                                            <button type="button" onclick="window.location.href='{{route('employee.index')}}'" class="btn btn-inverse">Cancel</button>
 		                                        </div>
 		                                        @endcan
 		                                    </div>
@@ -195,7 +195,8 @@
 		                    <hr>
 		                    <br>
 
-		                    <form action="{{route('editSalary', ['id'=>$employee->id])}}" method="post" class="form-horizontal" enctype="multipart/form-data">
+		                    <form action="{{route('salary.update', ['id'=>$employee->id])}}" method="post" class="form-horizontal" enctype="multipart/form-data">
+		                    @method('PATCH')
 		                        {{csrf_field()}}
 		                        <div class="form-body">
 
@@ -321,7 +322,7 @@
 		                                    	@can('entry', Auth::user())
 		                                        <div class="col-md-offset-3 col-md-9">
 		                                            <button type="submit" class="btn btn-success">Save</button>
-		                                            <button type="button" onclick="window.location.href='{{route('employeeList')}}'" class="btn btn-inverse">Cancel</button>
+		                                            <button type="button" onclick="window.location.href='{{route('employee.index')}}'" class="btn btn-inverse">Cancel</button>
 		                                        </div>
 		                                        @endcan
 		                                    </div>

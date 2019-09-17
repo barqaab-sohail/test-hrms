@@ -21,13 +21,13 @@
 		        	<div class="col-lg-10">
 						@can('entry', Auth::user())
 		                <div style="margin-top:10px; margin-right: 10px;">
-		                    <button type="button" onclick="window.location.href='{{route('employeeList')}}'" class="btn btn-info float-right">Back</button>
+		                    <button type="button" onclick="window.location.href='{{route('employee.index')}}'" class="btn btn-info float-right">Back</button>
 		                    
 		                </div>
 		                @endcan
 		                <div class="card-body">
 
-		                    <form action="{{route('storeDocument')}}" method="post" class="form-horizontal" id="document" enctype="multipart/form-data">
+		                    <form action="{{route('document.store')}}" method="post" class="form-horizontal" id="document" enctype="multipart/form-data">
 		                        {{csrf_field()}}
 		                        <div class="form-body">
 		                            
@@ -123,7 +123,7 @@
 		                                        <div class="col-md-offset-3 col-md-9">
 		                                            <button type="submit" class="btn btn-success">Add Document</button>
 
-		                                            <button type="button" onclick="window.location.href='{{route('employeeList')}}'" class="btn btn-inverse">Cancel</button>
+		                                            <button type="button" onclick="window.location.href='{{route('employee.index')}}'" class="btn btn-inverse">Cancel</button>
 		                                        </div>
 		                                        @endcan
 		                                    </div>
@@ -131,63 +131,10 @@
 		                            </div>
 		                        </div>
 		                    </form>
-		@if($documentIds->count()!=0)		                    
-			                    <br>
-			                    <hr>
-			                    <br>
-		<div class="card">
-		<div class="card-body">
-			<!--<div class="float-right">
-				<input id="month" class="form-control" value="" type="month">
-			</div>-->
-			<h2 class="card-title">Stored Documents</h2>
-			
-			<div class="table-responsive m-t-40">
-				
-				<table id="myTableStored" class="table table-bordered table-striped" width="100%" cellspacing="0">
-					<thead>
-					
-					<tr>
-						<th>Document Name</th>
-						<th>View</th>
-						
-						
-						@can('entry', Auth::user())<th> Actions </th> <th></th>@endcan
-					</tr>
-					</thead>
-					<tbody>
-						@foreach($documentIds as $documentId)
-							<tr>
-								<td>{{$documentId->document_name}}</td>
-								@if($documentId->type!='application/pdf')
-								<td><img  id="ViewIMG" src="{{asset(isset($documentId->file_name)? 'storage/'.$documentId->file_path.$documentId->file_name: 'Massets/images/document.png') }}" href="{{asset(isset($documentId->file_name)?  'storage/'.$documentId->file_path.$documentId->file_name: 'Massets/images/document.png') }}" width=30/></td>
-								@else
-								<td><img  id="ViewPDF" src="{{asset('Massets/images/document.png')}}" href="{{asset(isset($documentId->file_name)? 'storage/'.$documentId->file_path.$documentId->file_name: 'Massets/images/document.png') }}" width=30/></td>
-								@endif
-								
-								
-								
-								@can('entry', Auth::user())
-								<td>
-								 <a class="btn btn-info btn-sm" href="{{route('document.edit',['id'=>$documentId->id])}}" data-toggle="tooltip" data-original-title="Edit"> <i class="fas fa-pencil-alt text-white "></i></a>
+	@if($documentIds->count()!=0)
 
-								</td>
-								<td>
-								  <a class="btn btn-danger btn-sm" onclick="return confirm('Are you Sure to Delete')" href="{{route('deleteDocument',['id'=>$documentId->id])}}" data-toggle="tooltip" data-original-title="Delete"> <i class="fas fa-trash-alt"></i></a>
-								  </td>
-								 @endcan
-															
-							</tr>
-						@endforeach
-					
-					 
-					
-					</tbody>
-				</table>
-			</div>
-		</div>
-	</div>
-	
+	@include('hr.document.list')		                    
+		
 	@endif
 			                    
 		        		</div>       

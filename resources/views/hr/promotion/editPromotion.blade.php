@@ -22,13 +22,14 @@
 		        	<div class="col-lg-10">
 						@can('entry', Auth::user())
 		                <div style="margin-top:10px; margin-right: 10px;">
-		                    <button type="button" onclick="window.location.href='{{route('employeeList')}}'" class="btn btn-info float-right">Back</button>
+		                    <button type="button" onclick="window.location.href='{{route('employee.index')}}'" class="btn btn-info float-right">Back</button>
 		                  
 		                </div>
 		                @endcan
 		                <div class="card-body">
 
-		                    <form action="{!!route('editPromotion', ['id'=>optional($data)->id])!!}" method="post" class="form-horizontal" enctype="multipart/form-data">
+		                    <form action="{!!route('promotion.update', ['id'=>optional($data)->id])!!}" method="post" class="form-horizontal" enctype="multipart/form-data">
+		                    @method('PATCH')
 		                        {{csrf_field()}}
 		                        <div class="form-body">
 		                            
@@ -187,7 +188,7 @@
 		                                    @can('entry', Auth::user())
 		                                        <div class="col-md-offset-3 col-md-9">
 		                                            <button type="submit" class="btn btn-success">Save</button>
-		                                            <button type="button" onclick="window.location.href='{{route('employeeList')}}'" class="btn btn-inverse">Cancel</button>
+		                                            <button type="button" onclick="window.location.href='{{route('employee.index')}}'" class="btn btn-inverse">Cancel</button>
 		                                        </div>
 		                                    @endcan
 		                                    </div>
@@ -196,57 +197,10 @@
 		                        </div>
 		                    </form>
 @if($promotionIds->count()!=0)		                    
-<br>
-<hr>
-<br>
-		<div class="card">
-		<div class="card-body">
-			<!--<div class="float-right">
-				<input id="month" class="form-control" value="" type="month">
-			</div>-->
-			<h2 class="card-title">Stored Pormotion</h2>
-			
-			<div class="table-responsive m-t-40">
-				
-				<table id="myTable" class="table table-bordered table-striped" width="100%" cellspacing="0">
-					<thead>
-					
-					<tr>
-						<th>Promoted Designation</th>
-						<th>Effective Date</th>
-						<th>Revised Salary</th>
-						<th>Remarks</th>
-						@can('entry', Auth::user())<th> Actions </th> <th></th>@endcan
-					</tr>
-					</thead>
-					<tbody>
-						@foreach($promotionIds as $promotionId)
-							<tr>
-								<td>{{$promotionId->promoted_designation}}</td>
-								<td>{{$promotionId->effective_date}}</td>
-								<td>{{$promotionId->total}}</td>
-								<td>{{$promotionId->promotion_remarks}}</td>
-								<td>
-								@can('entry', Auth::user())
-								 <a class="btn btn-info btn-sm" href="{{route('promotion.edit',['id'=>$promotionId->id])}}" data-toggle="tooltip" data-original-title="Edit"> <i class="fas fa-pencil-alt text-white "></i></a>
-								 </td>
-								 <td>
-								  <a class="btn btn-danger btn-sm" onclick="return confirm('Are you Sure to Delete')" href="{{route('deletePromotion',['id'=>$promotionId->id])}}" data-toggle="tooltip" data-original-title="Delete"> <i class="fas fa-trash-alt"></i></a>
-								  </td>
-								 @endcan
-															
-							</tr>
-						@endforeach
-					
-					 
-					
-					</tbody>
-				</table>
-			</div>
-		</div>
-	</div>
-	
-	@endif
+
+@include('hr.promotion.list')	
+
+@endif
 		        		</div>       
 		        	</div>
 		        </div>

@@ -23,12 +23,12 @@
 		        	<div class="col-lg-10">
 						@can('entry', Auth::user())
 		                <div style="margin-top:10px; margin-right: 10px;">
-		                    <button type="button" onclick="window.location.href='{{route('employeeList')}}'" class="btn btn-info float-right" data-toggle="tooltip" title="Back to List">Back</button>
+		                    <button type="button" onclick="window.location.href='{{route('employee.index')}}'" class="btn btn-info float-right" data-toggle="tooltip" title="Back to List">Back</button>
 		                </div>
 		                @endcan
 		                <div class="card-body">
 
-		                    <form action="{{route('storeEmployee')}}" method="post" class="form-horizontal" enctype="multipart/form-data">
+		                    <form action="{{route('employee.store')}}" method="post" class="form-horizontal" enctype="multipart/form-data">
 		                        {{csrf_field()}}
 		                        <div class="form-body">
 		                            
@@ -244,7 +244,7 @@
 		                                    @can('entry', Auth::user())
 		                                        <div class="col-md-offset-3 col-md-9">
 		                                            <button type="submit" class="btn btn-success">Add Employee</button>
-		                                            <button type="button" onclick="window.location.href='{{route('employeeList')}}'" class="btn btn-inverse">Cancel</button>
+		                                            <button type="button" onclick="window.location.href='{{route('employee.index')}}'" class="btn btn-inverse">Cancel</button>
 		                                        </div>
 		                                    @endcan
 		                                    </div>

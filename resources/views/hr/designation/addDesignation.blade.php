@@ -25,7 +25,7 @@
 		                </div>
 		                <div class="card-body">
 
-		                    <form action="{{route('storeDesignation')}}" method="post" class="form-horizontal" enctype="multipart/form-data">
+		                    <form action="{{route('designation.store')}}" method="post" class="form-horizontal" enctype="multipart/form-data">
 		                        {{csrf_field()}}
 		                        <div class="form-body">
 		                            
@@ -74,52 +74,11 @@
 		                        </div>
 		                    </form>
 
-@if($designationIds->count()!=0)		                    
-			                    <br>
-			                    <hr>
-			                    <br>
-		<div class="card">
-		<div class="card-body">
-			<!--<div class="float-right">
-				<input id="month" class="form-control" value="" type="month">
-			</div>-->
-			<h2 class="card-title">Stored Designations</h2>
-			
-			<div class="table-responsive m-t-40">
-				
-				<table id="myTable" class="table table-bordered table-striped" width="100%" cellspacing="0">
-					<thead>
-					
-					<tr>
-						<th>Designation Name</th>
-						<th>Level</th>
-						@if(Auth::user()->role_id==1)<th> Actions </th> @endif
-					</tr>
-					</thead>
-					<tbody>
-						@foreach($designationIds as $designationId)
-							<tr>
-								<td>{{$designationId->name}}</td>
-								<td>{{$designationId->level}}</td>
-								
-								<td>
-								@if(Auth::user()->role_id==1)
-								 <a class="btn btn-info btn-sm" href="{{route('designation.edit',['id'=>$designationId->id])}}" data-toggle="tooltip" data-original-title="Edit"> <i class="fas fa-pencil-alt text-white "></i></a>
-								  <a class="btn btn-danger btn-sm" onclick="return confirm('Are you Sure to Delete')" href="{{route('deleteDesignation',['id'=>$designationId->id])}}" data-toggle="tooltip" data-original-title="Delete"> <i class="fas fa-trash-alt"></i></a>
-								 @endif
-															
-							</tr>
-						@endforeach
-					
-					 
-					
-					</tbody>
-				</table>
-			</div>
-		</div>
-	</div>
+@if($designationIds->count()!=0)
+
+@include('hr.designation.list')
 	
-	@endif
+@endif
 
 
 		        		</div>       

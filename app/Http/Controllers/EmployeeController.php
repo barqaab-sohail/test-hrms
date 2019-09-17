@@ -25,10 +25,8 @@ class EmployeeController extends Controller
     }
 
 
-
-
     public function index (){
-       $employees = employee::all()->where('employee_status','0');
+       $employees = employee::with('user')->where('employee_status','0')->get();
        return view('hr.employee.employeeList', compact('employees'));
     }
 

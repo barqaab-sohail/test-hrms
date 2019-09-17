@@ -16,11 +16,11 @@ class PromotionController extends Controller
         $this->middleware('updation')->only('delete','update', 'store');
     }
 
-	public function create($id){
-	$employee = employee::find($id);
+	public function create(){
+	$employee = employee::find(session('employee_id'));
     $promotionIds = DB::table('salaries')
                     ->join('promotions','promotions.id','=','salaries.promotion_id')
-                    ->where('promotions.employee_id', $id)
+                    ->where('promotions.employee_id', session('employee_id'))
                     ->get();
    
      return view ('hr.promotion.promotion',compact('employee','promotionIds'));
@@ -32,9 +32,9 @@ class PromotionController extends Controller
         $appointment = DB::table('appointments')->where('employee_id',session('employee_id'))->first();
         
         if($salary==null){
-            return redirect()->route('promotion',['id'=>session('employee_id')])->with('error', 'Appointment Letter Salary is not Entered. Please Enter Appointment Letter Salary');
+            return redirect()->route('promotion.create')->with('error', 'Appointment Letter Salary is not Entered. Please Enter Appointment Letter Salary');
         }else if($appointment==null){
-             return redirect()->route('promotion',['id'=>session('employee_id')])->with('error', 'Appointment Letter Designation is not Entered. Please Enter Appointment Letter Designation');
+             return redirect()->route('promotion.create')->with('error', 'Appointment Letter Designation is not Entered. Please Enter Appointment Letter Designation');
         }
         else{
             
@@ -48,7 +48,7 @@ class PromotionController extends Controller
                     salary::create($request->all() + ['promotion_id' => $input->id]);
                 });
        
-        return redirect()->route('promotion',['id'=>session('employee_id')])->with('success', 'Data is saved succesfully');
+        return redirect()->route('promotion.create')->with('success', 'Data is saved succesfully');
         }
     }
 
@@ -83,14 +83,14 @@ class PromotionController extends Controller
     return redirect()->route('promotion.edit',['id'=>$id])->with('success', 'Promotion is updated succesfully');
     }
 
-    public function delete(Request $request, $id)
+    public function destroy(Request $request, $id)
     {
          DB::transaction(function () use ($id) {
                 promotion::findOrFail($id)->delete();
                 salary::where('promotion_id','=',$id)->firstOrFail()->delete();
         });
 
-    return redirect()->route('promotion',['id'=>session('employee_id')])->with('success', 'Promotion is deleted succesfully');
+    return redirect()->route('promotion.create')->with('success', 'Promotion is deleted succesfully');
     }
 
 

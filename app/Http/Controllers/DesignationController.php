@@ -14,7 +14,7 @@ class DesignationController extends Controller
     }
 
 
-    public function index(){
+    public function create(){
 
 	   $designationIds = designation::all();
        return view ('hr.designation.addDesignation',compact('designationIds'));
@@ -24,7 +24,7 @@ class DesignationController extends Controller
     public function store (Request $request){
                 
         designation::create($request->all());
-		return redirect()->route('addDesignation')->with('success', 'Designation is saved succesfully');
+		return redirect()->route('designation.create')->with('success', 'Designation is saved succesfully');
        
     }
 
@@ -41,10 +41,10 @@ class DesignationController extends Controller
      return redirect()->route('designation.edit',['id'=>$id])->with('success', 'Designation is updated succesfully');
     }
 
- 	public function delete(Request $request, $id)
+ 	public function destroy(Request $request, $id)
     {
     designation::findOrFail($id)->delete(); 
-    return redirect()->route('addDesignation')->with('success', 'Designation is deleted succesfully');
+    return redirect()->route('designation.create')->with('success', 'Designation is deleted succesfully');
     }
 
 

@@ -17,11 +17,11 @@ class LanguageController extends Controller
         $this->middleware('updation')->only('delete','update', 'store');
     }
 
-    public function create($id){
+    public function create(){
 
         $allLanguages = all_languages::all();
-        $employee = employee::find($id);
-        $languageIds = language::all()->where('employee_id', $id);
+        $employee = employee::find(session('employee_id'));
+        $languageIds = language::all()->where('employee_id', session('employee_id'));
         $employees = employee::all();
         return view ('hr.language.language',compact('employee','employees','languageIds','allLanguages'));
     }
@@ -32,7 +32,7 @@ class LanguageController extends Controller
         
         $data = language::create($request->all());
 
-        return redirect()->route('language',['id'=>session('employee_id')])->with('success', 'Data is saved succesfully');
+        return redirect()->route('language.create')->with('success', 'Data is saved succesfully');
     
 
     }
@@ -53,12 +53,12 @@ class LanguageController extends Controller
      return redirect()->route('language.edit',['id'=>$id])->with('success', 'Language Detail is updated succesfully');
     }
 
-    public function delete(Request $request, $id)
+    public function destroy(Request $request, $id)
     {
           
     language::findOrFail($id)->delete();
 
-    return redirect()->route('language',['id'=>session('employee_id')])->with('success', 'Language is deleted succesfully');
+    return redirect()->route('language.create')->with('success', 'Language is deleted succesfully');
     
     }
 }

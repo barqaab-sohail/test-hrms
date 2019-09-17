@@ -23,13 +23,13 @@
 		        	<div class="col-lg-10">
 						@can('entry', Auth::user())
 		                <div style="margin-top:10px; margin-right: 10px;">
-		                    <button type="button" onclick="window.location.href='{{route('employeeList')}}'" class="btn btn-info float-right">Back</button>
+		                    <button type="button" onclick="window.location.href='{{route('employee.index')}}'" class="btn btn-info float-right">Back</button>
 		                    
 		                </div>
 		                @endcan
 		                <div class="card-body">
 
-		                    <form action="{{route('storeEmergency')}}" method="post" class="form-horizontal" enctype="multipart/form-data">
+		                    <form action="{{route('emergency.store')}}" method="post" class="form-horizontal" enctype="multipart/form-data">
 		                        {{csrf_field()}}
 		                        <div class="form-body">
 		                            
@@ -94,7 +94,7 @@
 		                                    @can('entry', Auth::user())
 		                                        <div class="col-md-offset-3 col-md-9">
 		                                            <button type="submit" class="btn btn-success">Save Contact</button>
-		                                            <button type="button" onclick="window.location.href='{{route('employeeList')}}'" class="btn btn-inverse">Cancel</button>
+		                                            <button type="button" onclick="window.location.href='{{route('employee.index')}}'" class="btn btn-inverse">Cancel</button>
 		                                        </div>
 		                                    @endcan
 		                                    </div>
@@ -102,54 +102,10 @@
 		                            </div>
 		                        </div>
 		                    </form>
-		@if($emergencyIds->count()!=0)		                    
-			                    <br>
-			                    <hr>
-			                    <br>
-		<div class="card">
-		<div class="card-body">
-			<!--<div class="float-right">
-				<input id="month" class="form-control" value="" type="month">
-			</div>-->
-			<h2 class="card-title">Stored Emergency Contact Detail</h2>
-			
-			<div class="table-responsive m-t-40">
-				
-				<table id="myTable" class="table table-bordered table-striped" width="100%" cellspacing="0">
-					<thead>
-					
-					<tr>
-						<th>Name</th>
-						<th>Relation</th>
-						<th>Mobile No. </th>
-						<th>Landline No.</th>
-						@can('entry', Auth::user())<th> Actions </th> @endcan
-					</tr>
-					</thead>
-					<tbody>
-						@foreach($emergencyIds as $emergencyId)
-							<tr>
-								<td>{{$emergencyId->name}}</td>
-								<td>{{$emergencyId->relation}}</td>
-								<td>{{$emergencyId->mobile}}</td>
-								<td>{{$emergencyId->landline}}</td>
-								<td>
-								@can('entry', Auth::user())
-								<a class="btn btn-info btn-sm" href="{{route('emergency.edit',['id'=>$emergencyId->id])}}" data-toggle="tooltip" data-original-title="Edit"> <i class="fas fa-pencil-alt text-white "></i></a>
-								<a class="btn btn-danger btn-sm" onclick="return confirm('Are you Sure to Delete')" href="{{route('deleteEmergency',['id'=>$emergencyId->id])}}" data-toggle="tooltip" data-original-title="Delete"> <i class="fas fa-trash-alt"></i></a>
-							
-								@endcan
-															
-							</tr>
-						@endforeach
-					 
-					
-					</tbody>
-				</table>
-			</div>
-		</div>
-	</div>
-	
+	@if($emergencyIds->count()!=0)		                    
+
+	@include('hr.emergency.list')
+		
 	@endif
 		        		</div>       
 		        	</div>

@@ -17,10 +17,10 @@ class DocumentController extends Controller
         $this->middleware('updation')->only('delete','update', 'store');
     }
 
-    public function create($id){
+    public function create(){
 
-        $employee = employee::find($id);
-        $documentIds = document::all()->where('employee_id', $id);
+        $employee = employee::find(session('employee_id'));
+        $documentIds = document::all()->where('employee_id', session('employee_id'));
         $employees = employee::all();
         return view ('hr.document.document',compact('employee','employees','documentIds'));
 
@@ -53,7 +53,7 @@ class DocumentController extends Controller
         $input['size'] = $imageSize;
 
         document::create($input);
-        return redirect()->route('document',['id'=>session('employee_id')])->with('success', 'Data is saved succesfully');
+        return redirect()->route('document.create')->with('success', 'Data is saved succesfully');
       // return redirect()->route('document',['id'=>$data->id])->with('success', 'User is created succesfully');
 
 
@@ -102,13 +102,13 @@ class DocumentController extends Controller
      return redirect()->route('document.edit',['id'=>$id])->with('success', 'Document is updated succesfully');
     }
 
-    public function delete(Request $request, $id)
+    public function destroy(Request $request, $id)
     {
     $document = document::findOrFail($id);
     unlink(public_path('storage/'.$document->file_path.$document->file_name));
     $document->forceDelete(); 
         
-    return redirect()->route('document',['id'=>session('employee_id')])->with('success', 'Document is deleted succesfully');
+    return redirect()->route('document.create')->with('success', 'Document is deleted succesfully');
     
     }
 }

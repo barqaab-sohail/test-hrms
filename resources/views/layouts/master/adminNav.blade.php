@@ -49,11 +49,12 @@
                 <li @if(request()->is('hrms*')) class="active" @endif > <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i class="fas fa-user"></i><span class="hide-menu">Human Resource</span></a>
                     <ul aria-expanded="false" class="collapse">
                        
-                        <li><a href="{{route('userDetail', ['id'=>Auth::user()->employee_id])}}">User Detail</a></li>
+                        <li><a href="{{route('employee.show', ['id'=>Auth::user()->employee_id])}}">User Detail</a></li>
                         @can('entry', Auth::user())
-                        <li><a href="{{route('employeeList')}}">List of Employees</a></li>
-                        <li><a href="{{route('createEmployee')}}">Add Employee</a></li>
-                        <li><a href="{{route('addDesignation')}}">Add Designation</a></li>
+                       
+                        <li><a href="{{route('employee.create')}}">Add Employee</a></li>
+                        <li><a href="{{route('employee.index')}}">List of Employees</a></li>
+                        <li><a href="{{route('designation.create')}}">Add Designation</a></li>
                         @endcan
                        
                     </ul>

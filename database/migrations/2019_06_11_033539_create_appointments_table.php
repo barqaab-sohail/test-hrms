@@ -18,7 +18,7 @@ class CreateAppointmentsTable extends Migration
             $table->bigInteger('employee_id')->unique()->unsigned();
             $table->string('reference_no');
             $table->date('appointment_date')->nullable();
-            $table->string('designation');
+            $table->bigInteger('designation_id');
             $table->date('expiry_date')->nullable();
             $table->string('category');
             $table->string('grade')->nullable();

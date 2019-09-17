@@ -23,13 +23,13 @@
 		        	<div class="col-lg-10">
 						 @can('entry', Auth::user())
 		                <div style="margin-top:10px; margin-right: 10px;">
-		                    <button type="button" onclick="window.location.href='{{route('employeeList')}}'" class="btn btn-info float-right">Back</button>
+		                    <button type="button" onclick="window.location.href='{{route('employee.index')}}'" class="btn btn-info float-right">Back</button>
 		                    
 		                </div>
 		                @endcan
 		                <div class="card-body">
 
-		                    <form action="{{route('storePosting')}}" method="post" class="form-horizontal" enctype="multipart/form-data">
+		                    <form action="{{route('posting.store')}}" method="post" class="form-horizontal" enctype="multipart/form-data">
 		                        {{csrf_field()}}
 		                        <div class="form-body">
 		                            
@@ -152,7 +152,7 @@
 		                                    	@can('entry', Auth::user())
 		                                        <div class="col-md-offset-3 col-md-9">
 		                                            <button type="submit" class="btn btn-success">Add Posting</button>
-		                                            <button type="button" onclick="window.location.href='{{route('employeeList')}}'" class="btn btn-inverse">Cancel</button>
+		                                            <button type="button" onclick="window.location.href='{{route('employee.index')}}'" class="btn btn-inverse">Cancel</button>
 		                                        </div>
 		                                        @endcan
 		                                    </div>
@@ -160,57 +160,10 @@
 		                            </div>
 		                        </div>
 		                    </form>
-		@if($postingIds->count()!=0)		                    
-			                    <br>
-			                    <hr>
-			                    <br>
-		<div class="card">
-		<div class="card-body">
-			<!--<div class="float-right">
-				<input id="month" class="form-control" value="" type="month">
-			</div>-->
-			<h2 class="card-title">Stored Posting</h2>
-			
-			<div class="table-responsive m-t-40">
-				
-				<table id="myTable" class="table table-bordered table-striped" width="100%" cellspacing="0">
-					<thead>
-					
-					<tr>
-						<th>Project</th>
-						<th>Position</th>
-						<th>Date of Posting</th>
-						
-						@if(Auth::user()->role_id==1)<th colspan="2"> Actions </th> @endif
-					</tr>
-					</thead>
-					<tbody>
-						@foreach($postingIds as $postingId)
-							<tr>
-								<td>{{$postingId->project}}</td>
-								<td>{{$postingId->position}}</td>
-								<td>{{$postingId->posting_date}}</td>
-								
-								 @can('entry', Auth::user())
-								 <td>
-								 <a class="btn btn-info btn-sm" href="{{route('posting.edit',['id'=>$postingId->id])}}" data-toggle="tooltip" data-original-title="Edit"> <i class="fas fa-pencil-alt text-white "></i></a>
-								 </td>
-								 <td>
-								  <a class="btn btn-danger btn-sm" onclick="return confirm('Are you Sure to Delete')" href="{{route('deletePosting',['id'=>$postingId->id])}}" data-toggle="tooltip" data-original-title="Delete"> <i class="fas fa-trash-alt"></i></a>
-								  </td>
-								 @endcan
-															
-							</tr>
-						@endforeach
-					
-					 
-					
-					</tbody>
-				</table>
-			</div>
-		</div>
-	</div>
+	@if($postingIds->count()!=0)		                    
 	
+	@include('hr.posting.list')
+
 	@endif
 			                    
 		        		</div>       

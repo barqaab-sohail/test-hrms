@@ -76,7 +76,9 @@ Route::get('/reports/allManagers', 'ReportsController@allManagers')->name('allMa
 
 
 //Employee & User Routes
-Route::get('/hrms/employeeList', 'EmployeeController@index')->name('employeeList');
+Route::resource('hrms/employee', 'EmployeeController');
+
+/*Route::get('/hrms/employeeList', 'EmployeeController@index')->name('employeeList');
 Route::post('/storeEmployee', 'EmployeeController@store')->name('storeEmployee');
 Route::get('/hrms/createEmployee', 'EmployeeController@create')->name('createEmployee');
 Route::get('/hrms/employee/edit/{id?}', [
@@ -84,20 +86,15 @@ Route::get('/hrms/employee/edit/{id?}', [
             'as' => 'employee.edit'
         ]);
 Route::post('/editEmployee/{id?}', 'EmployeeController@update')->name('editEmployee');
+Route::get('/hrms/userDetail/{id?}', 'EmployeeController@show')->name('userDetail');*/
+
+
+
 Route::get('/inactiveEmployee/{id?}', 'EmployeeController@inactive')->name('inactiveEmployee');
-Route::get('/hrms/userDetail/{id?}', 'EmployeeController@show')->name('userDetail');
 Route::post('/employeeStatus', 'EmployeeController@employeeStatus')->name('testingroute');
 
 //Add Position
-Route::get('/hrms/addDesignation', 'DesignationController@index')->name('addDesignation');
-Route::post('/storeDesignation', 'DesignationController@store')->name('storeDesignation');
-Route::get('/hrms/designation/edit/{id?}', [
-            'uses' => 'DesignationController@edit',
-            'as' => 'designation.edit'
-        ]);
-Route::post('/editDesignation/{id?}', 'DesignationController@update')->name('editDesignation');
-Route::get('/deleteDesignation/{id?}', 'DesignationController@delete')->name('deleteDesignation');
-
+Route::resource('hrms/designation', 'DesignationController');
 
 
 //Picture Routes
@@ -116,11 +113,7 @@ Route::get('/hrms/user/edit/{id?}', [
 Route::post('/editUser/{id?}', 'UserController@update')->name('editUser');
 
 //Salary
-Route::get('/hrms/salary/edit/{id?}', [
-            'uses' => 'SalaryController@edit',
-            'as' => 'salary.edit'
-        ]);
-Route::post('/editSalary/{id?}', 'SalaryController@update')->name('editSalary');
+Route::resource('hrms/salary', 'SalaryController');
 
 
 //Contact Detail
@@ -130,13 +123,6 @@ Route::get('/hrms/contact/edit/{id?}', [
         ]);
 Route::post('/editPermanentAddress/{id?}', 'ContactController@updatePermanent')->name('editPermanentAddress');
 Route::post('/editCurrentAddress/{id?}', 'ContactController@updateCurrent')->name('editCurrentAddress');
-
-//Other Information
-Route::get('/hrms/other/edit/{id?}', [
-            'uses' => 'OtherController@edit',
-            'as' => 'other.edit'
-        ]);
-Route::post('/editOther/{id?}', 'OtherController@update')->name('editOther');
 
 
 //Education Routes
@@ -150,11 +136,6 @@ Route::resource('hrms/training', 'TrainingController');
 
 
 //Publication Routes
-/*Route::get('/hrms/publication/create', 'PublicationController@create')->name('publication.create');
-Route::post('/hrms/publication', 'PublicationController@store')->name('publication.store');
-Route::get('/hrms/publication/{id}/edit', 'PublicationController@edit')->name('publication.edit');
-Route::patch('/hrms/publication/{id}', 'PublicationController@update')->name('publication.update');
-Route::delete('/hrms/publication/{id}', 'PublicationController@destroy')->name('publication.destroy');*/
 Route::resource('hrms/publication', 'PublicationController');
 
 
@@ -163,36 +144,23 @@ Route::resource('hrms/membership', 'MembershipController');
 
 
 //Posting Routes
-Route::get('/hrms/posting/{id?}', 'PostingController@create')->name('posting');
-Route::post('/storePosting', 'PostingController@store')->name('storePosting');
-Route::get('/hrms/posting/edit/{id?}', [
-            'uses' => 'PostingController@edit',
-            'as' => 'posting.edit'
-        ]);
-Route::post('/editPosting/{id?}', 'PostingController@update')->name('editPosting');
-Route::get('/deletePosting/{id?}', 'PostingController@delete')->name('deletePosting');
-
+Route::resource('hrms/posting', 'PostingController');
 
 //Promotion Routes
-Route::get('/hrms/promotion/{id?}', 'PromotionController@create')->name('promotion');
-Route::post('/storePromotion', 'PromotionController@store')->name('storePromotion');
-Route::get('/hrms/promotion/edit/{id?}', [
-            'uses' => 'PromotionController@edit',
-            'as' => 'promotion.edit'
-        ]);
-Route::post('/editPromotion/{id?}', 'PromotionController@update')->name('editPromotion');
-Route::get('/deletePromotion/{id?}', 'PromotionController@delete')->name('deletePromotion');
+Route::resource('hrms/promotion', 'PromotionController');
 
 
 //Document Routes
-Route::get('/hrms/document/{id?}', 'DocumentController@create')->name('document');
+Route::resource('hrms/document', 'DocumentController');
+
+/*Route::get('/hrms/document/{id?}', 'DocumentController@create')->name('document');
 Route::post('/storeDocument', 'DocumentController@store')->name('storeDocument');
 Route::get('/hrms/document/edit/{id?}', [
             'uses' => 'DocumentController@edit',
             'as' => 'document.edit'
         ]);
 Route::post('/editDocument/{id?}', 'DocumentController@update')->name('editDocument');
-Route::get('/deleteDocument/{id?}', 'DocumentController@delete')->name('deleteDocument');
+Route::get('/deleteDocument/{id?}', 'DocumentController@delete')->name('deleteDocument');*/
 
 //Bank
 // Route::get('/hrms/bank/{id?}', 'BankController@create')->name('bank');
@@ -212,40 +180,25 @@ Route::resource('hrms/dependent','DependentController');
 
 
 //Language
-Route::get('/hrms/language/{id?}', 'LanguageController@create')->name('language');
-Route::post('/storeLanguage', 'LanguageController@store')->name('storeLanguage');
-Route::get('/hrms/language/edit/{id?}', [
-            'uses' => 'LanguageController@edit',
-            'as' => 'language.edit'
-        ]);
-Route::post('/editLanguage/{id?}', 'LanguageController@update')->name('editLanguage');
-Route::get('/deleteLanguage/{id?}', 'LanguageController@delete')->name('deleteLanguage');
+Route::resource('hrms/language','LanguageController');
 
 
 //Emergency Contact
-Route::get('/hrms/emergency/{id?}', 'EmergencyController@create')->name('emergency');
-Route::post('/storeEmergency', 'EmergencyController@store')->name('storeEmergency');
-Route::get('/hrms/emergency/edit/{id?}', [
-            'uses' => 'EmergencyController@edit',
-            'as' => 'emergency.edit'
-        ]);
-Route::post('/editEmergency/{id?}', 'EmergencyController@update')->name('editEmergency');
-Route::get('/deleteEmergency/{id?}', 'EmergencyController@delete')->name('deleteEmergency');
+Route::resource('hrms/emergency','EmergencyController');
+
+/*Route::get('/hrms/emergency/create', 'EmergencyController@create')->name('emergency.create');
+Route::post('/hrms/emergency', 'EmergencyController@store')->name('emergency.store');
+Route::get('/hrms/emergency/{id}/edit', 'EmergencyController@edit')->name('emergency.edit');
+Route::patch('/hrms/emergency/{id}', 'EmergencyController@update')->name('emergency.update');
+Route::delete('/hrms/emergency/{id}', 'EmergencyController@destroy')->name('emergency.destroy');*/
 
 
 //Other Information
-Route::get('/hrms/other/edit/{id?}', [
-            'uses' => 'OtherController@edit',
-            'as' => 'other.edit'
-        ]);
-Route::post('/hrms/editOther/{id?}', 'OtherController@update')->name('editOther');
+Route::resource('hrms/otherInformation','OtherController');
 
 //Agreement Detail
-Route::get('/hrms/appointment/edit/{id?}', [
-            'uses' => 'AppointmentController@edit',
-            'as' => 'appointment.edit'
-        ]);
-Route::post('/hrms/editAppointment/{id?}', 'AppointmentController@update')->name('editAppointment');
+Route::resource('hrms/appointment','AppointmentController');
+
 
 //Project
 Route::get('/project/projectList', 'ProjectController@index')->name('projectList');

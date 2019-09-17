@@ -25,7 +25,7 @@ class StoreAppointment extends FormRequest
     {
         return [
             
-        'designation' => 'required|max:255',
+        'designation_id' => 'required|max:255',
         'appointment_letter_type' => 'required',
 
         ];

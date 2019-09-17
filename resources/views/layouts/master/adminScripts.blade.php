@@ -90,20 +90,36 @@
 }
 setTimeout("preventBack()",0);
 window.onunload = function(){null};*/
-
 //end function
 
    
     $(document).ready(function() {
+
+        //Active Anchor tage with compare url and href
+        var url = window.location.pathname;
+        var lastTenUrl = url.substr(url.length - 10)
+        $('.sidebar-nav li a').each(function() {
+        var href = $(this).attr('href'); 
+        var lastTenHref = href.substr(href.length - 10)
+            if (lastTenUrl == lastTenHref){
+                  $(this).closest('a').not("#notInclude").css('color','red');
+            }
+
+        });
+
+
+     
         
         //Active Anchor tage with compare url and href
-        $('.sidebar-nav li a').each(function(){
+       /* $('.sidebar-nav li a').each(function(){
         var ThisHref = ($(this).attr('href').split('?'))[0];
         if(window.location.href.indexOf(ThisHref) > -1) {
             $(this).closest('a').not("#notInclude").css('color','red');
         }
-        });
-   
+        });*/
+      
+
+      
 
        $('.selectTwo').select2({
             width: "100%",
