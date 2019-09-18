@@ -97,10 +97,10 @@ window.onunload = function(){null};*/
 
         //Active Anchor tage with compare url and href
         var url = window.location.pathname;
-        var lastTenUrl = url.substr(url.length - 10)
+        var lastTenUrl = url.substr(url.length - 15)
         $('.sidebar-nav li a').each(function() {
         var href = $(this).attr('href'); 
-        var lastTenHref = href.substr(href.length - 10)
+        var lastTenHref = href.substr(href.length - 15)
             if (lastTenUrl == lastTenHref){
                   $(this).closest('a').not("#notInclude").css('color','red');
             }

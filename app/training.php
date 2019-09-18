@@ -14,7 +14,12 @@ class training extends Model implements Auditable
     ];	
 
 
-     public function employee(){
+    public function employee(){
 		return $this->belongsTo('App\employee');
 	}
+
+	public function country()
+    {
+        return $this->belongsTo('App\country');
+    }
 }

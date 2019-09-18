@@ -72,27 +72,27 @@
 		                                        <label class="control-label text-right">Reading </label>
 		                                             <select  name="reading"  class="form-control selectTwo" required>
                                                         <option value=""></option>
-                                                        <option value="Average">Average</option>
-                                                        <option value="Good">Good</option>
-                                                        <option value="Excellent">Excellent</option>
+                                                        <option value="Average" @if(old('reading')=='Average') selected="selected" @endif>Average</option>
+                                                        <option value="Good" @if(old('reading')=='Good') selected="selected" @endif>Good</option>
+                                                        <option value="Excellent" @if(old('reading')=='Excellent') selected="selected" @endif>Excellent</option>
                                                     </select>
 		                                        </div>
 		                                        <div class="col-md-3">
 		                                        <label class="control-label text-right">Speaking </label>
 		                                             <select  name="speaking"  class="form-control selectTwo" required>
                                                         <option value=""></option>
-                                                        <option value="Average">Average</option>
-                                                        <option value="Good">Good</option>
-                                                        <option value="Excellent">Excellent</option>
+                                                        <option value="Average" @if(old('speaking')=='Average') selected="selected" @endif>Average</option>
+                                                        <option value="Good" @if(old('speaking')=='Good') selected="selected" @endif>Good</option>
+                                                        <option value="Excellent" @if(old('speaking')=='Excellent') selected="selected" @endif>Excellent</option>
                                                     </select>
 		                                        </div>
 		                                        <div class="col-md-3">
 		                                        <label class="control-label text-right">Writing </label>
 		                                             <select  name="writing"  class="form-control selectTwo" required>
                                                         <option value=""></option>
-                                                        <option value="Average">Average</option>
-                                                        <option value="Good">Good</option>
-                                                        <option value="Excellent">Excellent</option>
+                                                        <option value="Average" @if(old('writing')=='Average') selected="selected" @endif>Average</option>
+                                                        <option value="Good" @if(old('writing')=='Good') selected="selected" @endif>Good</option>
+                                                        <option value="Excellent" @if(old('writing')=='Excellent') selected="selected" @endif>Excellent</option>
                                                     </select>
 		                                        </div>
 		                                    </div>
