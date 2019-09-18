@@ -33,14 +33,14 @@ class StoreEmployee extends FormRequest
          'last_name' => 'required|max:191',
          'father_name' => 'required|max:191',
          'date_of_birth' =>'required',
-         'gender' =>'required',
+         'gender_id' =>'required',
          'cnic' => 'required|min:15|max:15|unique:employees,cnic,'.session('employee_id'),
          'cnic_expiry' => 'required|date',
          'employee_no' => 'nullable|unique:employees,employee_no,'.session('employee_id'),
          'marital_status_id' =>'required',
          'religon' =>'required',
-         'nationality_name' =>'required',
-         'nationality_name2' => 'nullable|different:nationality_name',
+         'country_id' =>'required',
+         'country_id2' => 'nullable|different:country_id',
          'division_id' =>'required',
 
         ];

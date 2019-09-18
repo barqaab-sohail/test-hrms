@@ -96,10 +96,11 @@
 		                                        <div class="col-md-8">
 		                                        	<label class="control-label text-right">Gender<span class="text_requried">*</span></label>
 		                                        
-		                                           	 <select  name="gender"  class="form-control selectTwo" required>
-                                                        <option value=""></option>
-                                                        <option value="Male"  {{ old('gender') == "Male" ? 'selected' : '' }}>Male </option>
-                                                        <option value="Female"  {{ old('gender') == "Female" ? 'selected' : '' }}>Female </option>
+		                                           	 <select  name="gender_id"  class="form-control selectTwo" required>
+                                                         <option value=""></option>
+                                                        @foreach($genders as $gender)
+														<option value="{{$gender->id}}" {{(old("gender_id")==$gender->id? "selected" : "")}}>{{$gender->name}}</option>
+                                                        @endforeach
                                                         
                                                     </select>
 		                                        	                                        
@@ -186,10 +187,10 @@
 		                                    <div class="form-group row">
 												<div class="col-md-10">
 		                                        	<label class="control-label text-right">Nationality<span class="text_requried">*</span></label>
-		                                           	<select  name="nationality_name"  class="form-control selectTwo" required>
+		                                           	<select  name="country_id"  class="form-control selectTwo" required>
 			                                           	<option value=""></option>
 			                                        @foreach($countries as $country)
-														<option value="{{$country->name}}" {{(old("nationality_name")==$country->name? "selected" : "")}}>{{$country->name}}</option>
+														<option value="{{$country->id}}" {{(old("country_id")==$country->id? "selected" : "")}}>{{$country->name}}</option>
                                                     @endforeach 	
                                                     </select> 
 		                                        </div>
@@ -222,10 +223,10 @@
 		                                        <div class="col-md-10">
 		                                    	    <label class="control-label text-right ">Nationality-2</label>
 		                                        
-		                                           <select  name="nationality_name2"  class="form-control selectTwo">
+		                                           <select  name="country_id2"  class="form-control selectTwo">
 		                                           	<option value=""></option>
 		                                           	@foreach($countries as $country)
-													<option value="{{$country->name}}" {{(old("nationality_name2")==$country->name? "selected" : "")}}>{{$country->name}}</option>
+													<option value="{{$country->id}}" {{(old("country_id2")==$country->id? "selected" : "")}}>{{$country->name}}</option>
                                                     @endforeach 	
                                                     </select>
 		                                        </div>

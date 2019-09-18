@@ -20,7 +20,7 @@ class CreateExperiencesTable extends Migration
             $table->string('position');
             $table->date('from');
             $table->date('to');
-            $table->string('country');
+            $table->bigInteger('country_id');
             $table->text('activities')->nullable();
             $table->timestamps();
             $table->foreign('employee_id')->references('id')->on('employees');

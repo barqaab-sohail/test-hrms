@@ -39,7 +39,7 @@
 								<td>{{isset($employee->user->email)? $employee->user->email:'No Email'}}</td>
 								<td>{{$employee->cnic}}</td>
 								<td>{{$employee->cnic_expiry}}</td>
-								<td>{{$employee->gender}}</td>
+								<td>{{$employee->gender->name}}</td>
 								<td>{{$employee->division->name}}</td>
 								<td>{{$employee->created_at}}</td>
 								

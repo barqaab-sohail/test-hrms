@@ -25,7 +25,7 @@
 					<tbody>
 						@foreach($languageIds as $languageId)
 							<tr>
-								<td>{{$languageId->name}}</td>
+								<td>{{$languageId->all_language->name_1}}</td>
 								<td>{{$languageId->reading}}</td>
 								<td>{{$languageId->speaking}}</td>
 								<td>{{$languageId->writing}}</td>

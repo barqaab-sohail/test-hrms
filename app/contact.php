@@ -9,7 +9,7 @@ class contact extends Model implements Auditable
 {
 	use \OwenIt\Auditing\Auditable;
 
-     protected $fillable = [ 'house','street','town','tehsil','city','province','landline','mobile','country','type','employee_id'
+     protected $fillable = [ 'house','street','town','tehsil','city','province','landline','mobile','country_id','type','employee_id'
      ];
 
     public function employee(){

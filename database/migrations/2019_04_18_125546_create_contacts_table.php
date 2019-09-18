@@ -25,7 +25,7 @@ class CreateContactsTable extends Migration
             $table->string('province');
             $table->string('landline')->nullable();
             $table->string('mobile');
-            $table->string('country');
+            $table->bigInteger('country_id');
             $table->timestamps();
             $table->foreign('employee_id')->references('id')->on('employees');
         });

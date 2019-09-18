@@ -112,10 +112,10 @@
 		                                        <div class="col-md-12">
 		                                        	<label class="control-label text-right ">Country<span class="text_requried">*</span></label>
 		                                        
-		                                            	<select  name="country"  class="form-control selectTwo" required>
+		                                            	<select  name="country_id"  class="form-control selectTwo" required>
                                                         <option value=""></option>
                                                         @foreach($countries as $country)
-														<option value="{{$country->name}}" @if($country->name == optional($permanentAddress)->country) selected="selected" @endif>{{$country->name}}</option>
+														<option value="{{$country->id}}" @if($country->id == optional($permanentAddress)->country_id) selected="selected" @endif>{{$country->name}}</option>
                                                     	@endforeach 	
                                                         
                                                     	</select>
@@ -265,10 +265,10 @@
 		                                        <div class="col-md-12">
 		                                        	<label class="control-label text-right ">Country<span class="text_requried">*</span></label>
 		                                        
-		                                             <select  name="country"  class="form-control selectTwo" required>
+		                                             <select  name="country_id"  class="form-control selectTwo" required>
                                                         <option value=""></option>
                                                         @foreach($countries as $country)
-														<option value="{{$country->name}}" @if($country->name == optional($currentAddress)->country) selected="selected" @endif>{{$country->name}}</option>
+														<option value="{{$country->id}}" @if($country->id == optional($currentAddress)->country_id) selected="selected" @endif>{{$country->name}}</option>
                                                     	@endforeach 	
                                                         
                                                     </select>

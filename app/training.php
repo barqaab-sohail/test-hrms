@@ -10,7 +10,7 @@ class training extends Model implements Auditable
     use \OwenIt\Auditing\Auditable;
 
     protected $fillable = [
-        'title', 'venue','institute', 'country', 'from','to','description','employee_id',
+        'title', 'venue','institute', 'country_id', 'from','to','description','employee_id',
     ];	
 
 

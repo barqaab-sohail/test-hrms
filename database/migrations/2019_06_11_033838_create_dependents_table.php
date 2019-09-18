@@ -19,7 +19,7 @@ class CreateDependentsTable extends Migration
             $table->string('name');
             $table->date('date_of_birth')->format('d.m.y')->nullable();
             $table->string('relation');
-            $table->string('gender');
+            $table->bigInteger('gender_id');
             $table->timestamps();
             $table->foreign('employee_id')->references('id')->on('employees');
         });

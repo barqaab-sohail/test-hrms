@@ -96,10 +96,10 @@
 		                                        <div class="col-md-8">
 		                                        	<label class="control-label text-right ">Country<span class="text_requried">*</span></label>
 		                                        
-		                                             <select  name="country"  class="form-control selectTwo" required>
+		                                             <select  name="country_id"  class="form-control selectTwo" required>
                                                         <option value=""></option>
                                                         @foreach($countries as $country)
-														<option value="{{$country->name }}">{{$country->name}}</option>
+														<option value="{{$country->id}}" {{(old("country_id")==$country->id? "selected" : "")}}>{{$country->name}}</option>
                                                         @endforeach
                                                         
                                                     </select>

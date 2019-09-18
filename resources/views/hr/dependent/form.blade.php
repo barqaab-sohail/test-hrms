@@ -47,10 +47,13 @@
 		                                        <div class="col-md-6">
 		                                        	<label class="control-label text-right ">Gender<span class="text_requried">*</span></label>
 		                                        
-		                                            <select  name="gender"  class="form-control" required>
+		                                            <select  name="gender_id"  class="form-control" required>
                                                         <option value=""></option>
-                                                        <option value="Male" {{isset($data)?$data->gender == 'Male' ?'selected':'':''}}>Male</option>
-                                                        <option value="Female" {{isset($data)?$data->gender == 'Female' ?'selected':'':''}}>Female</option>
+                                                        
+                                                        @foreach($genders as $gender)
+														 <option value="{{$gender->id}}" {{isset($data)?$data->gender_id == $gender->id ?'selected':'':''}}>{{$gender->name}}</option>
+                                                        @endforeach
+
                                                     </select>
 		                                        </div>
 		                                       

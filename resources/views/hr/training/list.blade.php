@@ -25,7 +25,7 @@
 						@foreach($trainingIds as $trainingId)
 							<tr>
 								<td>{{$trainingId->title}}</td>
-								<td>{{$trainingId->country}}</td>
+								<td>{{$trainingId->country_i}}</td>
 								<td>{{$trainingId->from}}</td>
 								<td>{{$trainingId->to}}</td>
 								<td>

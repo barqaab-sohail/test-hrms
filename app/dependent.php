@@ -9,10 +9,15 @@ class dependent extends Model implements Auditable
 {
    use \OwenIt\Auditing\Auditable;
     protected $fillable = [
-        'name', 'date_of_birth', 'relation','gender','employee_id',
+        'name', 'date_of_birth', 'relation','gender_id','employee_id',
     ];
 
     public function employee(){
 		return $this->belongsTo('App\employee');
 	}
+
+	public function gender()
+    {
+        return $this->belongsTo('App\gender');
+    }
 }

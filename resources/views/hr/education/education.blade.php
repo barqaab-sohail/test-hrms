@@ -175,7 +175,7 @@
 		                                          <select  name="country"  class="form-control selectTwo" required>
                                                         <option value=""></option>
                                                         @foreach($countries as $country)
-														<option value="{{$country->name }}">{{$country->name}}</option>
+														<option value="{{$country->id }}">{{$country->name}}</option>
                                                         @endforeach
                                                         
                                                     </select>

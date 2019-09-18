@@ -97,10 +97,10 @@
 		                                        <div class="col-md-8">
 		                                        	<label class="control-label text-right ">Country<span class="text_requried">*</span></label>
 		                                        
-		                                             <select  name="country"  class="form-control selectTwo" required>
+		                                             <select  name="country_id"  class="form-control selectTwo" required>
                                                         <option value=""></option>
                                                         @foreach($countries as $country)
-														<option value="{{$country->name}}" @if($country->name == $data->country) selected="selected" @endif>{{$country->name}}</option>
+														<option value="{{$country->id}}" @if($country->id == $data->country_id) selected="selected" @endif>{{$country->name}}</option>
                                                     	@endforeach 	
                                                     </select>
 		                                        </div>
@@ -123,7 +123,7 @@
 		                                        <div class="col-md-12">
 		                                        	<label class="control-label text-right">Activities</label>
 		                                        
-		                                         <textarea  rows=1 cols=5 name="activities" class="form-control " required>{!! old('activities', optional($data)->activities) !!}</textarea>
+		                                         <textarea  rows=1 cols=5 name="activities" class="form-control " >{!! old('activities', optional($data)->activities) !!}</textarea>
 		                                        </div>  
 		                                    </div>
 		                                
@@ -142,7 +142,7 @@
 		                                    	@can('entry', Auth::user())
 		                                        <div class="col-md-offset-3 col-md-9">
 		                                            <button type="submit" class="btn btn-success">Edit Experience</button>
-		                                            <button type="button" onclick="window.location.href='{{route('employeeList')}}'" class="btn btn-inverse">Cancel</button>
+		                                            <button type="button" onclick="window.location.href='{{route('employee.index')}}'" class="btn btn-inverse">Cancel</button>
 		                                        </div>
 		                                        @endcan
 		                                    </div>

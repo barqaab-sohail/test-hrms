@@ -10,7 +10,7 @@ class experience extends Model implements Auditable
  use \OwenIt\Auditing\Auditable;
 
 	protected $fillable = [
-        'employer', 'position', 'from','to','country','activities','employee_id',
+        'employer', 'position', 'from','to','country_id','activities','employee_id',
     ];
 
      public function employee(){

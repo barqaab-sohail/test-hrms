@@ -27,7 +27,7 @@
 								<td>{{$dependentId->name}}</td>
 								<td>{{$dependentId->date_of_birth}}</td>
 								<td>{{$dependentId->relation}}</td>
-								<td>{{$dependentId->gender}}</td>
+								<td>{{$dependentId->gender->name}}</td>
 								<td>
 								@can('entry', Auth::user())
 								<td>

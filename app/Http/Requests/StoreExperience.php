@@ -27,7 +27,7 @@ class StoreExperience extends FormRequest
            
         'employer' => 'required|max:191',
         'position' => 'required|max:191',
-        'country' => 'required',
+        'country_id' => 'required',
         'from' => 'required|date',
         'to' => 'required|date|after:from',
         ];

@@ -77,7 +77,7 @@
 			                                        <select  name="manager_id"  class="form-control selectTwo" required>
                                                     <option value=""></option>
 													@foreach($employees as $employee)
-													<option value="{{$employee->id}}" @if($employee->id == $data->manager_id) selected="selected" @endif>{{$employee->first_name." ".$employee->last_name.", ".$employee->designation}}</option>
+													<option value="{{$employee->id}}" @if($employee->id == $data->manager_id) selected="selected" @endif>{{$employee->first_name." ".$employee->last_name}}</option>
                                                     @endforeach 	
                                                     </select>
                                                                                                         

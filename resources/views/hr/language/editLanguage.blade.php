@@ -42,9 +42,9 @@
 		                                        <label class="control-label text-right col-md-2">Language</label>
 		                                        <div class="col-md-3">
 		                                            										
-													<select  name="name"  class="form-control selectTwo" required>
+													<select  name="all_language_id"  class="form-control selectTwo" required>
                                                         @foreach($allLanguages as $language)
-		                                             	<option value="{{$language->name_1}}" @if($data->name == $language->name_1) selected="selected" @endif>{{$language->name_1}}</option>
+		                                             	<option value="{{$language->id}}" @if($data->all_language_id == $language->id) selected="selected" @endif>{{$language->name_1}}</option>
                                                                                                               
                                                      @endforeach    
                                                         

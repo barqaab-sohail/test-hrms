@@ -16,7 +16,7 @@ class CreateLanguagesTable extends Migration
         Schema::create('languages', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->bigInteger('employee_id')->unsigned();
-            $table->string('name');
+            $table->bigInteger('all_language_id');
             $table->string('writing');
             $table->string('speaking');
             $table->string('reading');

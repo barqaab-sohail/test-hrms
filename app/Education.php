@@ -13,7 +13,7 @@ class education extends Model implements Auditable
 	protected $table = 'educations';
 	
 	protected $fillable = [
-        'degree_name', 'institute', 'level','completion','from_month','from_year','to_month', 'to_year','marks_obtain','total_marks','country','grade','employee_id',
+        'degree_name', 'institute', 'level','completion','from_month','from_year','to_month', 'to_year','marks_obtain','total_marks','country_id','grade','employee_id',
     ];
 
      public function employee(){

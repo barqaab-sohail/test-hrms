@@ -10,7 +10,7 @@ class nationality extends Model implements Auditable
    use \OwenIt\Auditing\Auditable;
 
     protected $fillable = [
-        'nationality_name', 'employee_id',
+        'country_id', 'employee_id',
     ];	
 
      public function employee(){

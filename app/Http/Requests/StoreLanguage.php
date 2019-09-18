@@ -31,12 +31,13 @@ class StoreLanguage extends FormRequest
        
         return [
           
-        'name' => "required|unique_with:languages,employee_id,$id",
+        'all_language_id' => "required",
         'speaking' => 'required',
         'writing' => 'required',
         'reading' => 'required',
 
         //'first_name' => 'required|unique_with:users,last_name,2',
+        //'language' => "required|unique_with:languages,employee_id,$id",
              
         //'name'=>['required',Rule::unique('languages')->ignore(session('employee_id')),],
 

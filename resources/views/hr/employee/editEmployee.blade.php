@@ -96,10 +96,13 @@
 		                                        <div class="col-md-8">
 		                                        	<label class="control-label text-right">Gender<span class="text_requried">*</span></label>
 		                                        		                                            
-		                                           	<select  name="gender"  class="form-control selectTwo" required>
+		                                           	<select  name="gender_id"  class="form-control selectTwo" required>
                                                          
-		                                             	<option value="Male" @if($employee->gender == 'Male') selected="selected" @endif>Male</option>
-                                                        <option value="Female" @if($employee->gender == 'Female') selected="selected" @endif>Female</option>
+														<option value=""></option>
+                                                        @foreach($genders as $gender)
+														<option value="{{$gender->id}}" @if($gender->id == $employee->gender_id) selected="selected" @endif>{{$gender->name}}</option>
+                                                        @endforeach
+		                                             	
                                                                                                           
                                                     </select>
 		                                        		                                        
@@ -187,14 +190,12 @@
 		                                        <div class="col-md-10">
 		                                        	<label class="control-label text-right">Nationality<span class="text_requried">*</span></label>
 		                                          
-		                                           	<select  name="nationality_name"  class="form-control selectTwo" required>
-		                                           	<option value=""></option>	
-		                                           	@foreach($countries as $country)
-		                                           	<option value="{{$country->name}}" 
-													@if($country->name ==  optional($nationality1)->nationality_name)
-		                                           	selected="selected" @endif>{{$country->name}}</option>
-                                                    @endforeach
-                                                    
+		                                           	<select  name="country_id"  class="form-control selectTwo" required>
+		                                           	
+		  	                                        	<option value=""></option>	
+		  	                                        	@foreach($countries as $country)
+		                                              	<option value="{{$country->id}}" @if($country->id == optional($nationality1)->country_id) selected="selected" @endif>{{$country->name}}</option>
+          												@endforeach
                                                     </select>
 		                                            
 		                                        </div>
@@ -235,8 +236,11 @@
 		                                        
 		                                          	<select  name="nationality_name2"  class="form-control selectTwo" >
 		                                           	<option value=""></option>
+		                                           	
 		                                           	@foreach($countries as $country)
-													<option value="{{$country->name}}" @if($country->name == optional($nationality2)->nationality_name) selected="selected" @endif>{{$country->name}}</option>
+														
+														<option value="{{$country->id}}" @if($country->id == optional($nationality2)->country_id) selected="selected" @endif>{{$country->name}}</option>
+                                                    	
                                                     @endforeach 	
                                                     </select>
 		                                        </div>

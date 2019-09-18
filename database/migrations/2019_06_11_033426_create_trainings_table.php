@@ -19,7 +19,7 @@ class CreateTrainingsTable extends Migration
             $table->string('title');
             $table->string('venue')->nullable();
             $table->string('institute')->nullable();
-            $table->string('country');
+            $table->bigInteger('country_id');
             $table->string('description');
             $table->date('from')->nullable();
             $table->date('to')->nullable();

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\employee;
 use App\dependent;
+use App\gender;
 use DB;
 
 class DependentController extends Controller
@@ -20,7 +21,9 @@ class DependentController extends Controller
         $employee = employee::find(session('employee_id'));
         $dependentIds = dependent::all()->where('employee_id', session('employee_id'));
         $employees = employee::all();
-        return view ('hr.dependent.dependent',compact('employee','employees','dependentIds'));
+        $genders = gender::all();
+        
+        return view ('hr.dependent.dependent',compact('employee','employees','dependentIds','genders'));
     }
 
 
@@ -48,7 +51,8 @@ class DependentController extends Controller
         $employee = employee::find(session('employee_id'));
         $dependentIds = dependent::all()->where('employee_id', session('employee_id'));
         $data = dependent::find($id);
-        return view ('hr.dependent.editDependent',compact('data','employee','dependentIds'));
+        $genders = gender::all();
+        return view ('hr.dependent.editDependent',compact('data','employee','dependentIds','genders'));
     }
     
     public function update(Request $request, $id)

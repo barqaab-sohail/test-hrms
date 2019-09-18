@@ -11,6 +11,7 @@ use App\Education;
 use App\country;
 use App\employee;
 use App\nationality;
+use App\gender;
 use DB;
 use App\sessions;
 
@@ -34,8 +35,10 @@ class EmployeeController extends Controller
         session()->put('employee_id', '');
         $countries = country::all();
         $divisions = division::all();
+        $genders = gender::all();
         $maritalStatus = marital_status::all();
-        return view ('hr.employee.createEmployee', compact('divisions','maritalStatus','countries'));
+
+        return view ('hr.employee.createEmployee', compact('divisions','maritalStatus','countries','genders'));
     }
     public function store (StoreEmployee $request){
             
@@ -50,11 +53,13 @@ class EmployeeController extends Controller
             }
         
             $input = employee::create($data);
-            $nationality1 = array('nationality_name'=>$request->input('nationality_name'),'employee_id'=>$input->id);
+
+            // Save Data into nationality Table
+            $nationality1 = array('country_id'=>$request->input('country_id'),'employee_id'=>$input->id);
             nationality::create($nationality1);
-            if($request->filled('nationality_name2'))
+            if($request->filled('country_id2'))
             {
-            $nationality2 = array('nationality_name'=>$request->input('nationality_name2'),'employee_id'=>$input->id);
+            $nationality2 = array('country_id'=>$request->input('country_id2'),'employee_id'=>$input->id);
             nationality::create($nationality2);
             }
 
@@ -73,13 +78,20 @@ class EmployeeController extends Controller
 
         $countries = country::all();
         $employee = employee::find($id);
+        $genders = gender::all();
         $divisions = division::all();
         $maritalStatuses = marital_status::all();
         $employeeId = session()->put('employee_id', $employee->id);
         $nationality1 = nationality::where('employee_id',$employee->id)->get()->first();
-        $nationality2 = nationality::where('employee_id',$employee->id)->get()->last();
+        $nationality2 = nationality::where('employee_id',$employee->id)->get();
+
+        if($nationality2->count()>1){
+             $nationality2 = nationality::where('employee_id',$employee->id)->get()->last();
+        }else{
+             $nationality2 = 'null';
+        }
         
-        return view ('hr.employee.editEmployee', compact('employee','divisions','maritalStatuses','countries','nationality1','nationality2'));
+        return view ('hr.employee.editEmployee', compact('employee','divisions','maritalStatuses','countries','nationality1','nationality2','genders'));
     }
 
 
@@ -87,20 +99,20 @@ class EmployeeController extends Controller
         $countries = country::all();
         $employee = employee::find($id);
         $divisions = division::all();
+        $genders = gender::all();
         $maritalStatuses = marital_status::all();
         $employeeId = session()->put('employee_id', $employee->id);
         $nationality1 = nationality::where('employee_id',$employee->id)->get()->first();
-         $nationality2 = nationality::where('employee_id',$employee->id)->get();
+        $nationality2 = nationality::where('employee_id',$employee->id)->get();
         
         if($nationality2->count()>1){
              $nationality2 = nationality::where('employee_id',$employee->id)->get()->last();
         }else{
              $nationality2 = 'null';
         }
-
        
         
-        return view ('hr.employee.editEmployee', compact('employee','divisions','maritalStatuses','countries','nationality1','nationality2'));
+        return view ('hr.employee.editEmployee', compact('employee','divisions','maritalStatuses','countries','nationality1','nationality2','genders'));
     }
 
 
@@ -122,7 +134,7 @@ class EmployeeController extends Controller
         employee::findOrFail($id)->update($data);
 
         //first Nationality 
-        $nationality1 = array('nationality_name'=>$request->input('nationality_name'),'employee_id'=>session('employee_id'));
+        $nationality1 = array('country_id'=>$request->input('country_id'),'employee_id'=>session('employee_id'));
 
         nationality::updateOrCreate(
          ['employee_id' => session('employee_id')],
@@ -131,10 +143,10 @@ class EmployeeController extends Controller
        
         //Second Nationality 
             $nationalityCount = nationality::where('employee_id',session('employee_id'))->get();
-            if($request->input('nationality_name2')!=null){
+            if($request->input('country_id2')!=null){
                  
                  //Convert nationalirty_name2 to nationality_name
-                $nationality2 = array('nationality_name'=>$request->input('nationality_name2'),'employee_id'=>session('employee_id'));
+                $nationality2 = array('country_id'=>$request->input('country_id2'),'employee_id'=>session('employee_id'));
                 //Check Nationality2 already exist or Not
                 if($nationalityCount->count()>1){
                        $nationalityId = nationality::where('employee_id',session('employee_id'))->get()->last();
@@ -144,7 +156,7 @@ class EmployeeController extends Controller
                      nationality::create($nationality2);
                 }
             }else{
-                //Already Saved Nationality2 Delete
+                //Already Saved Nationality2 want to update null 
                 if($nationalityCount->count()>1){
                     $nationalityId = nationality::where('employee_id',session('employee_id'))->get()->last();
                     nationality::findOrFail($nationalityId->id)->delete();
