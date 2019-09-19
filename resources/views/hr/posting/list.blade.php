@@ -25,7 +25,7 @@
 						@foreach($postingIds as $postingId)
 							<tr>
 								<td>{{$postingId->project}}</td>
-								<td>{{$postingId->position}}</td>
+								<td>{{$postingId->designation->name}}</td>
 								<td>{{$postingId->posting_date}}</td>
 								
 								@can('entry', Auth::user())

@@ -40,11 +40,11 @@
 		                                        <label class="control-label text-right">Position<span class="text_requried">*</span></label>
 		                                        
 		                                           
-												<select  name="position"  class="form-control selectTwo" required>
+												<select  name="designation_id"  class="form-control selectTwo" required>
                                                       <option></option>
                                                      @foreach($positions as $position)
 														
-														<option value="{{$position->name}}" @if($position->name == optional($data)->position)) selected="selected" @endif>{{$position->name}}</option>
+														<option value="{{$position->id}}" @if($position->id == optional($data)->designation_id)) selected="selected" @endif>{{$position->name}}</option>
                                                         @endforeach
                                                         
                                                     </select>

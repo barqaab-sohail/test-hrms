@@ -41,7 +41,7 @@ class OtherController extends Controller
       ['employee_id' => $id],
       $data);
 
-      return redirect()->route('other.edit',['id'=>session('employee_id')])->with('success', 'Other Information  is saved succesfully');
+      return redirect()->route('otherInformation.edit',['id'=>session('employee_id')])->with('success', 'Other Information  is saved succesfully');
 
     }
 }

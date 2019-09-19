@@ -79,7 +79,7 @@
                 @can('admin', Auth::user())
                 <li @if(request()->is('leave*')) class="active" @endif > <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i class="mdi mdi-file-document"></i><span class="hide-menu">Leave</span></a>
                     <ul aria-expanded="false" class="collapse">
-                        <li><a href="{{route('showInitialBalance')}}">Initial Leave Balance</a></li>
+                        <li><a href="{{route('initialBalance.create')}}">Initial Leave Balance</a></li>
                         
                     </ul>
                 </li>

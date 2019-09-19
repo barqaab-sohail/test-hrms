@@ -24,7 +24,7 @@ class StorePosting extends FormRequest
     public function rules()
     {
         return [
-         'position' => 'required|max:255',
+         'designation_id' => 'required|max:255',
          'project' => 'required|max:255',
          'manager_id' => 'required',
          'posting_date' => 'required|date', 

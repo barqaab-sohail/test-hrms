@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\employee;
 use App\promotion;
+use App\Http\Requests\StorePromotion;
 use App\salary;
 use DB;
 
@@ -26,7 +27,7 @@ class PromotionController extends Controller
      return view ('hr.promotion.promotion',compact('employee','promotionIds'));
     }
 
-    public function store(Request $request){
+    public function store(StorePromotion $request){
     
         $salary = DB::table('salaries')->where('employee_id',session('employee_id'))->where('promotion_id',NULL)->first();
         $appointment = DB::table('appointments')->where('employee_id',session('employee_id'))->first();
@@ -68,7 +69,7 @@ class PromotionController extends Controller
         return view ('hr.promotion.editPromotion',compact('data','employee','promotionIds'));
     }
 
-    public function update(request $request, $id)
+    public function update(StorePromotion $request, $id)
     {
         
         DB::transaction(function () use ($request, $id) {

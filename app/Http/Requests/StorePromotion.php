@@ -13,7 +13,7 @@ class StorePromotion extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -23,8 +23,18 @@ class StorePromotion extends FormRequest
      */
     public function rules()
     {
-        return [
-            //
+         return [
+           'basic_pay' => 'nullable|numeric',
+           'house_rent' => 'nullable|numeric',
+           'dearness_allowance' => 'nullable|numeric',
+           'adhoc_2009' => 'nullable|numeric',
+           'adhoc_2010' => 'nullable|numeric',
+           'adhoc_2012' => 'nullable|numeric',
+           'adhoc_2013' => 'nullable|numeric',
+           'field_allowance' => 'nullable|numeric',
+           'other_allowance' => 'nullable|numeric',
+           'total' => 'required|numeric',
+                    
         ];
     }
 }

@@ -13,4 +13,8 @@ class designation extends Model implements Auditable
 	protected $fillable = [
         'name', 'level',
     ];	
+
+    public function posting(){
+	return $this->hasMany('App\posting');
+	}
 }

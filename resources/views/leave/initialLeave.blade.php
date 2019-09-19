@@ -14,7 +14,7 @@
 		<div class="container">
    					<h3 align="center">Add Initial Balance</h3>
 
-				   	<form id="initialBalance" method="post" enctype="multipart/form-data" action="{{route('storeInitialBalance')}}">
+				   	<form id="initialBalance" method="post" enctype="multipart/form-data" action="{{route('initialBalance.store')}}">
 				    {{ csrf_field() }}
 				    <div class="row">
 		                                <!--/span-->
@@ -102,7 +102,7 @@
        
  		$(document).ready(function () {
         
-	        var loadUrl = "{{route('load_data')}}";
+	        var loadUrl = "{{route('initialBalance.index')}}";
     	    $("#append_data").load(loadUrl, function (){
     	    	$('#myTable').DataTable({
     	 	 	stateSave: false,
@@ -156,7 +156,7 @@
 		//Ajax Save Data
 	 		$("#initialBalance").submit(function(e){
 		        e.preventDefault();
-		        var url="{!!route('storeInitialBalance')!!}";
+		        var url="{!!route('initialBalance.store')!!}";
 	     	
 	     			$.ajaxSetup({
 	          			headers: {
@@ -172,7 +172,7 @@
 		            	success: function(data){
 		            		if (data =="OK"){
 		            			
-		            			var loadUrl = "{{route('load_data')}}";
+		            			var loadUrl = "{{route('initialBalance.index')}}";
 
 		            			$("#append_data").load(loadUrl, function (){
     	    						
@@ -224,9 +224,8 @@
 		        var updateId = $(this).attr('id');
 		        var arr = updateId.split('=');
 		        var id = arr[1];
-		        var url = "{{route('deleteInitialBalance')}}"+"/"+id;
-
-		       	     	
+		        var url = "{{url('leave/initialBalance')}}"+"/"+id;
+		        		       	     	
 	     			$.ajaxSetup({
 	          			headers: {
 	              		'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -240,7 +239,7 @@
 		            	success: function(data){
 		            		if (data =="OK"){
 		            			
-		            			var loadUrl = "{{route('load_data')}}";
+		            			var loadUrl = "{{route('initialBalance.index')}}";
 
 		            			$("#append_data").load(loadUrl, function (){
     	    						
