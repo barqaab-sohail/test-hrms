@@ -9549,10 +9549,26 @@ input[type=checkbox]:not(:disabled).tabbed:focus~.lever:after,input[type=checkbo
 .switch label input[type=checkbox]:checked+.lever.switch-col-white:after {
   background-color: #ffffff;
 }
-
-.text-required input::placeholder {
-        color: #42aaf5;
+/* Placeholder Color for Chrome/Opera/Safari */
+ .form-control::-webkit-input-placeholder {
+  color: #a1cff7;
+} 
+/* Placeholder Color for IE 10+ */
+.form-control:-ms-input-placeholder {
+  color: #a1cff7;
 }
+/* Placeholder Color for Firefox 19  */
+.form-control::-moz-placeholder {
+  color: #a1cff7;
+}
+
+/* Input Text Color  */
+.form-control {
+  color: black;
+}
+
+
+
 
 .btn-info:hover{
 

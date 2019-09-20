@@ -261,10 +261,14 @@
     </div>
  @push('scripts')
 
-
+<script src="{{asset('Massets/js/floating-placeholder/placeholder.label.min.js') }}"></script>
 <script>
 
 	$(document).ready(function(){
+
+		$('input[placeholder]').placeholderLabel();
+		});
+
 
 	    $("#nationality2").hide();
 	    $("#add").click (function(){

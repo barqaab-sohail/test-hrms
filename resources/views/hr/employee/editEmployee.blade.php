@@ -41,7 +41,7 @@
 		                                        <div class="col-md-12">
 		                                        	<label class="control-label text-right">First Name<span class="text_requried">*</span></label>
 		                                        
-		                                            <input type="text"  name="first_name" value="{{old('first_name', $employee->first_name)}}"   class="form-control" placeholder="Enter First Name" required>
+		                                            <input type="text"  name="first_name" value="{{old('first_name', $employee->first_name)}}"   class="form-control " placeholder="Enter First Name" required>
 		                                        </div>
 		                                    </div>
 		                                </div>

@@ -1,4 +1,3 @@
-
 @extends('layouts.master.master')
 @section('Heading')
 	<h3 class="text-themecolor">Contact Numbers</h3>
@@ -21,12 +20,13 @@
 		<div class="container">
    					<h3 align="center">Add Contact Number</h3>
 
-				   	<form method="post" enctype="multipart/form-data" action="{{route('contactNumber.store')}}">
+				   	<form method="post" enctype="multipart/form-data" action="{{route('contactNumber.edit')}}">
+				   	@method('PATCH')
 				    {{ csrf_field() }}
 				   		
-				   		@include('phone.form')
+				   	@include('phone.form')
 				   
-				   	<button type="submit" class="btn btn-success">Add Contact Detail</button>
+				   	<button type="submit" class="btn btn-success">Edit Contact Detail</button>
 
 				   </form>
 		</div>

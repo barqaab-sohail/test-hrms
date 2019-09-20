@@ -99,7 +99,7 @@
                 </li>
 
 
-                <li @if(request()->is('*phone*')) class="active" @endif > <a id="notInclude" class="has-arrow waves-effect waves-dark" href="{{route('phoneList')}}" aria-expanded="false"><i class="fas fa-phone"></i><span class="hide-menu">Contact Numbers</span></a>
+                <li @if(request()->is('*phone*')) class="active" @endif > <a id="notInclude" class="has-arrow waves-effect waves-dark" href="{{route('contactNumber.index')}}" aria-expanded="false"><i class="fas fa-phone"></i><span class="hide-menu">Contact Numbers</span></a>
                     
 
                 </li>

@@ -37,4 +37,34 @@ class ContactNumberController extends Controller
     return back()->with('success', 'Excel Data Imported successfully.');
     }
 
+    public function store(Request $request){
+        contact_number::create($request->all());
+        return redirect()->route('contactNumber.index')->with('success', 'Data is saved succesfully');
+    }
+
+
+    public function edit($id){
+        $phones = contact_number::all();
+        $data = contact_number::find($id);
+        return view ('phone.phoneList',compact('data','phones'));
+    }
+
+
+    public function update(Request $request, $id)
+    {
+        contact_number::findOrFail($id)->update($request->all());
+        return redirect()->route('contactNumber.edit',['id'=>$id])->with('success', 'Contact Detail is updated succesfully');
+    }
+    public function destroy(Request $request, $id)
+    {
+    contact_number::findOrFail($id)->delete();
+    return redirect()->route('contactNumber.index')->with('success', 'Contact Detail is deleted succesfully');
+    
+    }
+
+
+
+
+
+
 }

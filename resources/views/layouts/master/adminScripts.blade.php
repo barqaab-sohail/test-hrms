@@ -68,6 +68,9 @@
 
  <!-- Duplicate rows Merge -->
 <script src="{{asset('Massets/js/rowsmerge/jquery.rowspanizer.min.js') }}"></script>
+ 
+ <!-- Floating Placeholder -->
+
 
 
  
@@ -124,6 +127,7 @@ window.onunload = function(){null};*/
        $('.selectTwo').select2({
             width: "100%",
             theme: "classic",
+
         });
 
                 //get Date from Database and set as "Saturday, 24-August-2019"

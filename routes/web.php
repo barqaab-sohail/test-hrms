@@ -53,11 +53,13 @@ Route::post('/import_excel/import', 'ImportExcelController@import')->name('impor
 
 //Phone Contact Number
 Route::post('/import_excel/phone', 'ContactNumberController@import')->name('importPhone');
-Route::get('/phone/phoneList', 'ContactNumberController@index')->name('phoneList');
-Route::get('/phone/edit/{id?}', [
-            'uses' => 'ContactNumberController@edit',
-            'as' => 'phone.edit'
-        ]);
+Route::post('/phone/contactNumber', 'ContactNumberController@store')->name('contactNumber.store');
+Route::patch('/phone/contactNumber', 'ContactNumberController@update')->name('contactNumber.update');
+Route::get('/phone/contactNumber/{id}/edit', 'ContactNumberController@edit')->name('contactNumber.edit');
+Route::get('/phone/contactNumber', 'ContactNumberController@index')->name('contactNumber.index');
+Route::delete('/hrms/contactNumber/{id}', 'ContactNumberController@destroy')->name('contactNumber.destroy');
+
+
 
 //Dashboard
 Route::get('reports/chart', 'ChartController@index')->name('chart');
@@ -77,17 +79,6 @@ Route::get('/reports/allManagers', 'ReportsController@allManagers')->name('allMa
 
 //Employee & User Routes
 Route::resource('hrms/employee', 'EmployeeController');
-
-/*Route::get('/hrms/employeeList', 'EmployeeController@index')->name('employeeList');
-Route::post('/storeEmployee', 'EmployeeController@store')->name('storeEmployee');
-Route::get('/hrms/createEmployee', 'EmployeeController@create')->name('createEmployee');
-Route::get('/hrms/employee/edit/{id?}', [
-            'uses' => 'EmployeeController@edit',
-            'as' => 'employee.edit'
-        ]);
-Route::post('/editEmployee/{id?}', 'EmployeeController@update')->name('editEmployee');
-Route::get('/hrms/userDetail/{id?}', 'EmployeeController@show')->name('userDetail');*/
-
 
 
 Route::get('/inactiveEmployee/{id?}', 'EmployeeController@inactive')->name('inactiveEmployee');
@@ -153,14 +144,6 @@ Route::resource('hrms/promotion', 'PromotionController');
 //Document Routes
 Route::resource('hrms/document', 'DocumentController');
 
-/*Route::get('/hrms/document/{id?}', 'DocumentController@create')->name('document');
-Route::post('/storeDocument', 'DocumentController@store')->name('storeDocument');
-Route::get('/hrms/document/edit/{id?}', [
-            'uses' => 'DocumentController@edit',
-            'as' => 'document.edit'
-        ]);
-Route::post('/editDocument/{id?}', 'DocumentController@update')->name('editDocument');
-Route::get('/deleteDocument/{id?}', 'DocumentController@delete')->name('deleteDocument');*/
 
 //Bank
 // Route::get('/hrms/bank/{id?}', 'BankController@create')->name('bank');
