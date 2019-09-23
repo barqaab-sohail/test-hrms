@@ -5,9 +5,9 @@
 
 
 @section('Heading')
-	<h3 class="text-themecolor">Dashboard</h3>
+	<h3 class="text-themecolor">Charts</h3>
 	<ol class="breadcrumb">
-		<li class="breadcrumb-item"><a href="javascript:void(0)">Dashboard</a></li>
+		<li class="breadcrumb-item"><a href="javascript:void(0)">Division Chart</a></li>
 		
 		
 	</ol>

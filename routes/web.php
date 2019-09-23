@@ -54,14 +54,14 @@ Route::post('/import_excel/import', 'ImportExcelController@import')->name('impor
 //Phone Contact Number
 Route::post('/import_excel/phone', 'ContactNumberController@import')->name('importPhone');
 Route::post('/phone/contactNumber', 'ContactNumberController@store')->name('contactNumber.store');
-Route::patch('/phone/contactNumber', 'ContactNumberController@update')->name('contactNumber.update');
+Route::patch('/phone/contactNumber/{id}', 'ContactNumberController@update')->name('contactNumber.update');
 Route::get('/phone/contactNumber/{id}/edit', 'ContactNumberController@edit')->name('contactNumber.edit');
 Route::get('/phone/contactNumber', 'ContactNumberController@index')->name('contactNumber.index');
 Route::delete('/hrms/contactNumber/{id}', 'ContactNumberController@destroy')->name('contactNumber.destroy');
 
 
-
 //Dashboard
+Route::get('reports/chart/age','ChartController@age')->name('chart.age');
 Route::get('reports/chart', 'ChartController@index')->name('chart');
 Route::get('/genderChart', 'ChartController@gender')->name('genderChart');
 Route::get('/dashboard', 'HomeController@index')->name('dashboard')->middleware('verified');

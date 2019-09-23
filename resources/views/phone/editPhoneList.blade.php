@@ -20,12 +20,11 @@
 		<div class="container">
    					<h3 align="center">Add Contact Number</h3>
 
-				   	<form method="post" enctype="multipart/form-data" action="{{route('contactNumber.edit')}}">
+				   	<form method="POST" enctype="multipart/form-data" action="{!!route('contactNumber.update', ['id'=>optional($data)->id])!!}">
 				   	@method('PATCH')
-				    {{ csrf_field() }}
-				   		
 				   	@include('phone.form')
 				   
+
 				   	<button type="submit" class="btn btn-success">Edit Contact Detail</button>
 
 				   </form>

@@ -126,7 +126,7 @@ window.onunload = function(){null};*/
 
        $('.selectTwo').select2({
             width: "100%",
-            theme: "classic",
+            theme: "classic"
 
         });
 

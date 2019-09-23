@@ -262,14 +262,34 @@
  @push('scripts')
 
 <script src="{{asset('Massets/js/floating-placeholder/placeholder.label.min.js') }}"></script>
+
+
 <script>
+$(document).ready(function (){
+  /*$('input[placeholder]').placeholderLabel({
+    // placeholder color
+    placeholderColor:"#898989",
+    // label color
+    labelColor:"#4AA2CC",
+    // size of label
+    labelSize:"14px",
+    // font style
+    fontStyle:"normal",
+    // uses border color
+    useBorderColor:true,
+    // displayed in the input
+    inInput:true,
+    // time to move
+    timeMove: 200
+
+  });*/
+
+})
+
 
 	$(document).ready(function(){
 
-		$('input[placeholder]').placeholderLabel();
-		});
-
-
+		
 	    $("#nationality2").hide();
 	    $("#add").click (function(){
 		$("#nationality2").toggle();

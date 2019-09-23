@@ -144,13 +144,13 @@ $(function() {
             // Initailize croppie instance and assign it to global variable
             croppie = new Croppie(el, {
                     viewport: {
-                        width: 200,
-                        height: 200,
+                        width: 300,
+                        height: 300,
                         type: 'canvas'
                     },
                     boundary: {
-                        width: 250,
-                        height: 250
+                        width: 350,
+                        height: 350
                     },
                     enableOrientation: true
                 });

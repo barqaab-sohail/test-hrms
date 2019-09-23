@@ -13,7 +13,13 @@ class ChartController extends Controller
       $this->middleware('updation')->only('delete','update', 'store');
   }
 
+    public function age(){
 
+
+      dd('testing');
+      return view('hr.charts.ageChart');
+
+    }
 
    public function index(){
 
@@ -26,7 +32,7 @@ class ChartController extends Controller
     $chart->dataset('My dataset', 'pie', [$power, $water, $finance])
     ->backgroundColor(['rgba(255, 99, 132, 0.4)','rgba(255, 205, 86, 0.4)','rgba(75, 192, 192, 0.4)']);
     //->title("Department");
-     return view('chart', compact('chart'));
+     return view('hr.charts.divisionChart', compact('chart'));
 	}
 
 

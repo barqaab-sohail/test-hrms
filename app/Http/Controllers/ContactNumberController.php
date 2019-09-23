@@ -38,6 +38,7 @@ class ContactNumberController extends Controller
     }
 
     public function store(Request $request){
+        
         contact_number::create($request->all());
         return redirect()->route('contactNumber.index')->with('success', 'Data is saved succesfully');
     }
@@ -46,12 +47,14 @@ class ContactNumberController extends Controller
     public function edit($id){
         $phones = contact_number::all();
         $data = contact_number::find($id);
-        return view ('phone.phoneList',compact('data','phones'));
+
+        return view ('phone.editPhoneList',compact('data','phones'));
     }
 
 
     public function update(Request $request, $id)
     {
+        
         contact_number::findOrFail($id)->update($request->all());
         return redirect()->route('contactNumber.edit',['id'=>$id])->with('success', 'Contact Detail is updated succesfully');
     }
