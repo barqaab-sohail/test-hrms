@@ -22,7 +22,7 @@
 		        	<div class="col-lg-10">
 
 		                <div style="margin-top:10px; margin-right: 10px;">
-		                    <button type="button" onclick="window.location.href='{{route('employeeList')}}'" class="btn btn-info float-right">Back</button>
+		                    
 		                </div>
 		                <div class="card-body">
 
@@ -156,7 +156,7 @@
 		                                    <div class="row">
 		                                        <div class="col-md-offset-3 col-md-9">
 		                                            <button type="submit" class="btn btn-success">Add Project</button>
-		                                            <button type="button" onclick="window.location.href='{{route('employeeList')}}'" class="btn btn-inverse">Cancel</button>
+		                                           
 		                                        </div>
 		                                    </div>
 		                                </div>

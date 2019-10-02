@@ -32,7 +32,7 @@ class StoreEducation extends FormRequest
         'to_year' => 'required',
         'from_year' => 'nullable|lte:to_year',
         
-        'country' => 'required',
+        'country_id' => 'required',
         ];
     }
 }

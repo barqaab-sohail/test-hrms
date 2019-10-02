@@ -27,5 +27,6 @@ class posting extends Model implements Auditable
         return $this->belongsTo('App\designation');
     }
 
+
 	
 }

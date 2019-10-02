@@ -19,14 +19,7 @@ class PostingController extends Controller
 
     public function index(){
         
-       
-       /* $postings = posting::all();
-           foreach($postings as $posting){
-            echo $posting->employee->first_name." ".$posting->employee->middle_name." ".$posting->employee->last_name;
-            echo '--------';
-            echo $posting->manager->first_name." ".$posting->manager->middle_name." ".$posting->manager->last_name.'<br>';
-           }
-        dd();*/
+              
     }
 
 
@@ -34,8 +27,12 @@ class PostingController extends Controller
 
         $employee = employee::find(session('employee_id'));
         $employees = DB::table('employees')
-                    ->join('appointments','employees.id','=','appointments.employee_id')
-                       ->select('employees.id','employees.first_name','employees.last_name','employees.middle_name','appointments.designation_id')->get();
+                    ->join('postings','employees.id','=','postings.employee_id')
+                    ->join('designations','postings.designation_id','=','designations.id')
+                    ->get();
+        $employees = $employees->unique('employee_id');
+
+        $employees->values()->all();
 
         $postingIds = posting::all()->where('employee_id', session('employee_id'));
         $projects = project::orderBy('status', 'desc')->get();
@@ -59,11 +56,25 @@ class PostingController extends Controller
     }
 
     public function edit($id){
+        
+        
         $employees = DB::table('employees')
-                    ->join('appointments','employees.id','=','appointments.employee_id')
-                       ->select('employees.id','employees.first_name','employees.last_name','employees.middle_name','appointments.designation_id')->get();
-        
-        
+                    ->join('postings','employees.id','=','postings.employee_id')
+                    ->join('designations','postings.designation_id','=','designations.id')
+                    ->get();
+        $employees = $employees->unique('employee_id');
+
+        $employees->values()->all();
+
+        /*foreach ($unique as $uni)
+        {
+            echo $uni->employee_id.' '.$uni->first_name.' '.$uni->last_name.' '.$uni->designation_id.'<br>';    
+        }
+        dd('testing');*/
+
+
+
+
         $employee = employee::find(session('employee_id'));
         //Requried for Stored Posting
         $postingIds = posting::all()->where('employee_id', session('employee_id'));

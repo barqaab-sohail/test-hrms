@@ -20,4 +20,5 @@ class dependent extends Model implements Auditable
     {
         return $this->belongsTo('App\gender');
     }
+
 }

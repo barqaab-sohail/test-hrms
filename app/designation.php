@@ -14,7 +14,11 @@ class designation extends Model implements Auditable
         'name', 'level',
     ];	
 
-    public function posting(){
-	return $this->hasMany('App\posting');
-	}
+   
+	
+	public function posting()
+    {
+        return $this->hasMany('App\posting');
+    }
+    
 }

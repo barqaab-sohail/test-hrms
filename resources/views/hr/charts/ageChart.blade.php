@@ -27,18 +27,33 @@
       google.charts.setOnLoadCallback(drawChart);
 
       function drawChart() {
+        var aboveSixty = {{$countAboveSixty}};
+        var belowSixty = {{$countBelowSixty}};
+        
 
         var data = google.visualization.arrayToDataTable([
-          ['Task', 'Hours per Day'],
-          ['Work',     11],
-          ['Eat',      2],
-          ['Commute',  2],
-          ['Watch TV', 2],
-          ['Sleep',    7]
+          ['Description', 'Quantity'],
+          ['Above Sixty',     aboveSixty],
+          ['Below sixty',      belowSixty]
+          
         ]);
 
+        colorsHex = [
+        
+    '#1e8449',
+    '#007fff'
+  ];
+  colorsRgba = [
+   
+    'rgba(30,132,73,0.3)',
+    'rgba(0,127,255,0.3)'
+  ];
+
         var options = {
-          title: 'Agewise Chart'
+          title: 'Agewise Chart',
+          colors: colorsHex,
+          is3D: true,
+          pieSliceText: 'value'
         };
 
         var chart = new google.visualization.PieChart(document.getElementById('piechart'));

@@ -56,11 +56,19 @@ class employee extends Model implements Auditable
         return $this->belongsTo('App\gender');
     }
 
-     public function dependent()
+    public function dependent()
     {
         return $this->hasMany('App\dependent');
     }
-     public function notification()
+
+    
+    public function posting()
+    {
+        return $this->hasMany('App\posting');
+    }
+
+
+    public function notification()
     {
         return $this->hasMany('App\notification');
     }
@@ -100,11 +108,7 @@ class employee extends Model implements Auditable
     {
         return $this->hasOne('App\picture');
     }
-    public function posting()
-    {
-        return $this->hasMany('App\posting','employee_id');
-    }
-
+    
        
     public function project()
     {

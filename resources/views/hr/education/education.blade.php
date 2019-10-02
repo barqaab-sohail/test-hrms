@@ -1,12 +1,7 @@
 
 @extends('layouts.master.master')
 @section('Heading')
-	<h3 class="text-themecolor">Employee Name: {{$employee->first_name. " ".$employee->last_name}}</h3>
-	<ol class="breadcrumb">
-		<li class="breadcrumb-item"><a href="javascript:void(0)"></a></li>
-		
-		
-	</ol>
+	@include('hr.hrHeading')
 @stop
 @section('content')
    
@@ -172,7 +167,7 @@
 		                                         <div class="col-md-6">
 		                                        	<label class="control-label text-right">Country<span class="text_requried">*</span></label>
 		                                        
-		                                          <select  name="country"  class="form-control selectTwo" required>
+		                                          <select  name="country_id"  class="form-control selectTwo" required>
                                                         <option value=""></option>
                                                         @foreach($countries as $country)
 														<option value="{{$country->id }}">{{$country->name}}</option>

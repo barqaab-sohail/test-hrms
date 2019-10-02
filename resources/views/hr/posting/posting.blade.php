@@ -1,12 +1,7 @@
 
 @extends('layouts.master.master')
 @section('Heading')
-	<h3 class="text-themecolor">Employee Name: {{$employee->first_name. " ".$employee->last_name}}</h3>
-	<ol class="breadcrumb">
-		<li class="breadcrumb-item"><a href="javascript:void(0)"></a></li>
-		
-		
-	</ol>
+	@include('hr.hrHeading')
 @stop
 @section('content')
    
@@ -79,7 +74,7 @@
 		                                           <select  name="manager_id"  class="form-control selectTwo" required>
                                                         <option value=""></option>
                                                         @foreach($employees as $employee)
-														<option value="{{$employee->id}}" {{(old("manager_id")==$employee->id? "selected" : "")}}>{{$employee->first_name." ".$employee->last_name}}</option>
+														<option value="{{$employee->id}}" {{(old("manager_id")==$employee->id? "selected" : "")}}>{{$employee->first_name." ".$employee->middle_name." ".$employee->last_name." - ".$employee->name}}</option>
                                                        @endforeach
                                                       
                                                     </select>

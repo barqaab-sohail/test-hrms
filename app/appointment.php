@@ -11,7 +11,14 @@ class appointment extends Model implements Auditable
 
     protected $fillable = [
         'designation_id','expiry_date','reference_no','appointment_date','category','grade','appointment_letter_type','employee_id',]; 
+    
     public function employee(){
 		return $this->belongsTo('App\employee');
 	}
+
+	public function designation(){
+		return $this->belongsTo('App\designation');
+	}
+
+
 }
