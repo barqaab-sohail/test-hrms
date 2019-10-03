@@ -36,7 +36,16 @@
 		                                    <div class="form-group row">
 		                                        <div class="col-md-12">
 		                                        	<label class="control-label text-right">Promoted Designation<span class="text_requried">*</span></label>
-		                                        	<input type="text" name="promoted_designation" value="{{ old('promoted_designation')}}" class="form-control" required>
+
+													<select  name="designation_id"  class="form-control selectTwo" required>
+                                                      <option></option>
+                                                     @foreach($designations as $designation)
+														
+														<option value="{{$designation->id}}" {{(old("designation_id")==$designation->id? "selected" : "")}}>{{$designation->name}}</option>
+                                                        @endforeach
+                                                        
+                                                    </select>
+		                                        	
 		                                        </div>
 		                                    </div>
 		                                </div>

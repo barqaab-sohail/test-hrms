@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Redirect;
 use App\Http\Requests\StoreDocument;
 use App\employee;
 use App\document;
@@ -105,10 +106,26 @@ class DocumentController extends Controller
     public function destroy(Request $request, $id)
     {
     $document = document::findOrFail($id);
-    unlink(public_path('storage/'.$document->file_path.$document->file_name));
-    $document->forceDelete(); 
+    
+    $path = public_path('storage/'.$document->file_path.$document->file_name);
+
+        if(is_file($path)){
+
+           unlink($path);
+            $document->forceDelete(); 
+            
+            return redirect()->route('document.create')->with('success', 'Document is deleted succesfully');
+        }
+        else{
+            
+            dd($path);
+           // return Redirect::back()->withErrors(['Document is not Deleted']);
+        }
+
         
-    return redirect()->route('document.create')->with('success', 'Document is deleted succesfully');
+    
+      
+    
     
     }
 }

@@ -18,4 +18,9 @@ class salary extends Model implements Auditable
 		return $this->belongsTo('App\employee');
 	}
 
+	public function promotion()
+    {
+        return $this->belongsTo('App\promotion');
+    }
+
 }

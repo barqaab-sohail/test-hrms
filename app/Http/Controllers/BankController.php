@@ -47,15 +47,18 @@ class BankController extends Controller
     public function update(Request $request, $id)
     {
      
-     bank::findOrFail($id)->update($request->all());
-          
-     return "OK";
+    bank::findOrFail($id)->update($request->all());
+
+     return redirect()->route('bank.edit',['id'=>$id])->with('success', 'Bank Detail is updated succesfully');
+    
+    
     }
 
-    public function destroy(Request $request, $bank)
+    public function destroy($id)
     {
-      
+    
     bank::findOrFail($id)->delete(); 
-    return "OK";
+    return redirect()->route('bank.create')->with('success', 'Bank Detail is deleted succesfully');
+   
     }
 }

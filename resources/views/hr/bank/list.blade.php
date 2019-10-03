@@ -1,12 +1,12 @@
-<br>
-<hr>
-<br>
+	                    <br>
+			                    <hr>
+			                    <br>
 		<div class="card">
 		<div class="card-body">
 			<!--<div class="float-right">
 				<input id="month" class="form-control" value="" type="month">
 			</div>-->
-			<h2 class="card-title">Stored Pormotion</h2>
+			<h2 class="card-title">Stored Banks Detail</h2>
 			
 			<div class="table-responsive m-t-40">
 				
@@ -14,27 +14,27 @@
 					<thead>
 					
 					<tr>
-						<th>Promoted Designation</th>
-						<th>Effective Date</th>
-						<th>Revised Salary</th>
-						<th>Remarks</th>
-						@can('entry', Auth::user())<th colspan="2" style="text-align: center;"> Actions </th>@endcan
+						<th>Name of Bank</th>
+						<th>Account No</th>
+						<th>Branch Name</th>
+						<th>Branch Code</th>
+						@can('entry', Auth::user())<th> Actions </th> @endcan
 					</tr>
 					</thead>
 					<tbody>
-						@foreach($promotionIds as $promotionId)
+						@foreach($bankIds as $bankId)
 							<tr>
-								<td>{{$promotionId->designation->name}}</td>
-								<td>{{$promotionId->effective_date}}</td>
-								<td>{{$promotionId->salary->total}}</td>
-								<td>{{$promotionId->promotion_remarks}}</td>
-								
+								<td>{{$bankId->name}}</td>
+								<td>{{$bankId->account_no}}</td>
+								<td>{{$bankId->branch_name}}</td>
+								<td>{{$bankId->branch_code}}</td>
+								<td>
 								@can('entry', Auth::user())
 								<td>
-								 <a class="btn btn-info btn-sm" href="{{route('promotion.edit',['id'=>$promotionId->id])}}" data-toggle="tooltip" data-original-title="Edit"> <i class="fas fa-pencil-alt text-white "></i></a>
+								 <a class="btn btn-info btn-sm" href="{{route('bank.edit',['id'=>$bankId->id])}}" data-toggle="tooltip" data-original-title="Edit"> <i class="fas fa-pencil-alt text-white "></i></a>
 								 </td>
 								 <td>
-								 <form action="{{route('promotion.destroy',['id'=>$promotionId->id])}}" method="POST">
+								 <form action="{{route('bank.destroy',['id'=>$bankId->id])}}" method="POST">
 								 @method('DELETE')
 								 @csrf
 								 <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Are you Sure to Delete')" href= data-toggle="tooltip" data-original-title="Delete"> <i class="fas fa-trash-alt"></i></button>
@@ -44,7 +44,6 @@
 															
 							</tr>
 						@endforeach
-					
 					 
 					
 					</tbody>

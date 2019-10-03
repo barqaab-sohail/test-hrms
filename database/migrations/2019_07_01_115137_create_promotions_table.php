@@ -16,7 +16,7 @@ class CreatePromotionsTable extends Migration
         Schema::create('promotions', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->bigInteger('employee_id')->unsigned();
-            $table->string('promoted_designation');
+            $table->bigInteger('designation_id');
             $table->date('effective_date');
             $table->string('promotion_remarks')->nullable();
             $table->timestamps();

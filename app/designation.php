@@ -21,4 +21,8 @@ class designation extends Model implements Auditable
         return $this->hasMany('App\posting');
     }
     
+    public function promotion()
+    {
+        return $this->hasMany('App\promotion');
+    }
 }

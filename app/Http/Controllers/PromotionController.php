@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\employee;
 use App\promotion;
+use App\designation;
 use App\Http\Requests\StorePromotion;
 use App\salary;
 use DB;
@@ -19,12 +20,10 @@ class PromotionController extends Controller
 
 	public function create(){
 	$employee = employee::find(session('employee_id'));
-    $promotionIds = DB::table('salaries')
-                    ->join('promotions','promotions.id','=','salaries.promotion_id')
-                    ->where('promotions.employee_id', session('employee_id'))
-                    ->get();
+    $designations = designation::all();
+    $promotionIds = promotion::all()->where('employee_id',session('employee_id'));
    
-     return view ('hr.promotion.promotion',compact('employee','promotionIds'));
+     return view ('hr.promotion.promotion',compact('employee','promotionIds','designations'));
     }
 
     public function store(StorePromotion $request){
@@ -56,17 +55,16 @@ class PromotionController extends Controller
 
      public function edit($id){
         $employee = employee::find(session('employee_id'));
-        $promotionIds = DB::table('salaries')
-                    ->join('promotions','promotions.id','=','salaries.promotion_id')
-                    ->where('promotions.employee_id', session('employee_id'))
-                    ->get();
+        $designations = designation::all();
+       
+        $promotionIds = promotion::all()->where('employee_id',session('employee_id'));
         
         $data = DB::table('salaries')
                     ->join('promotions','promotions.id','=','salaries.promotion_id')
                     ->where('promotions.id',$id)
                     ->first();
         
-        return view ('hr.promotion.editPromotion',compact('data','employee','promotionIds'));
+        return view ('hr.promotion.editPromotion',compact('data','employee','promotionIds','designations'));
     }
 
     public function update(StorePromotion $request, $id)

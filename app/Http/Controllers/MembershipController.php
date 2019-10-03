@@ -57,7 +57,9 @@ class MembershipController extends Controller
 
      public function destroy(Request $request, $id)
     {
+
     membership::findOrFail($id)->delete(); 
+    
     return redirect()->route('membership.create')->with('success', 'Membership is deleted succesfully');
     }
 
