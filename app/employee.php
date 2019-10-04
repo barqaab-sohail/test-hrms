@@ -37,6 +37,10 @@ class employee extends Model implements Auditable
     {
         return $this->hasMany('App\charging');
     }
+    public function task()
+    {
+        return $this->hasMany('App\task');
+    }
 
     public function contact()
     {

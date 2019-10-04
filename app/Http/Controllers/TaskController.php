@@ -1,0 +1,35 @@
+<?php
+
+namespace App\Http\Controllers;
+use Illuminate\Support\Facades\Redirect;
+use Illuminate\Http\Request;
+use App\task;
+
+class TaskController extends Controller
+{
+    
+	public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
+
+    public function store(Request $request){
+    	
+    	$data = $request->all();
+            
+            if($request->filled('completion_date')){
+            $data ['completion_date']= \Carbon\Carbon::parse($request->completion_date)->format('Y-m-d');
+            }
+
+    	task::create($data);
+    	return Redirect::back()->with('success', 'You task has been saved sucessfuly');
+    }
+
+    public function destroy($id){
+
+    	task::findOrFail($id)->delete(); 
+    	return Redirect::back()->with('success', 'Task has been deleted sucessfuly');
+    }
+
+}

@@ -28,22 +28,28 @@
 		</div>
 	</div>
 	@can('admin', Auth::user())
-	<div class="card">
-		<div class="card-body">
-			<div class="container">
-        
-          <!-- Button trigger modal -->
-          <button type="button" class="btn btn-info" data-toggle="modal" data-target="#exampleModal">
-            Add New Task
-          </button>
-          
-          <!-- Modeal Include-->
-          @include('hr.task.modal')
-  
-      </div>
-			
+		<div class="card">
+			<div class="card-body">
+				<div class="container">
+	        
+	          	<!-- Button trigger modal -->
+	          	<button type="button" class="btn btn-info" data-toggle="modal" data-target="#exampleModal">
+	            Add New Task
+	          	</button>
+	          
+	          	<!-- Modeal Include-->
+	          	@include('hr.task.modal')
+	  
+	      		</div>
+			</div>
+			@if($taskIds->count()!=0)
+				@include('hr.task.list')
+			@endif
+
+
+	
 		</div>
-	</div>
+
 	@endcan
 
 @stop
@@ -56,7 +62,7 @@
 
     $('#taskFrom').submit(function(){
 
-      alert('form is submitted');
+     
 
     });
   </script>

@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\Redirect;
 use Validator;
 use App\Event;
 use Calendar;
+use App\task;
 
 
 class HomeController extends Controller
@@ -34,19 +35,10 @@ class HomeController extends Controller
 
     public function index()
     {
-        $events = Event::get();
-        $event_list = [];
-        foreach ($events as $key => $event) {
-            $event_list[] = Calendar::event(
-                $event->event_name,
-                true,
-                new \DateTime($event->start_date),
-                new \DateTime($event->end_date)
-            );
-        }
-        $calendar_details = Calendar::addEvents($event_list); 
+        
         $user = Auth::user();
-        return view('dashboard')->with(compact('user', 'calendar_details'));
+        $taskIds = task::all()->where('employee_id', Auth::user()->id);
+        return view('dashboard')->with(compact('user', 'taskIds'));
     }
 
     public function addEvent(Request $request)

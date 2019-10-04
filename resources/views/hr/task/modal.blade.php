@@ -10,7 +10,7 @@
                 </div>
                 <div class="modal-body">
                  
-                     <form id="taskFrom" method="post" class="form-horizontal" enctype="multipart/form-data">
+                     <form id="taskFrom" action="{{route('task.store')}}" method="post" class="form-horizontal" enctype="multipart/form-data">
                             {{csrf_field()}}
                             <div class="form-body">
                               <div class="form-group row">
@@ -32,6 +32,8 @@
                                  
                                 </div>
                               </div>
+
+                              <input type="number" name="employee_id" value="{{Auth::User()->employee->id}}"   class="form-control " hidden>
                                                                                              
                             </div>
                              <hr>
