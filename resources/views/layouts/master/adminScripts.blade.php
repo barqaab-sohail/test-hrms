@@ -174,7 +174,13 @@ window.onunload = function(){null};*/
                 @endcan
 
 
-             $('#myTableStored').DataTable({
+            $('#myTableStored').DataTable({
+                stateSave: false,
+                dom: 'flrtip',
+
+            });
+
+            $('#myDataTable').DataTable({
                 stateSave: false,
                 dom: 'flrtip',
 

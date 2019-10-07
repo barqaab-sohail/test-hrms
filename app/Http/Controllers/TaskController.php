@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Redirect;
+use App\Http\Requests\StoreTask;
 use Illuminate\Http\Request;
 use App\task;
 
@@ -14,7 +15,7 @@ class TaskController extends Controller
     }
 
 
-    public function store(Request $request){
+    public function store(StoreTask $request){
     	
     	$data = $request->all();
             

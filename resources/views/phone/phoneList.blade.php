@@ -26,7 +26,7 @@
 				   		
 				   		@include('phone.form')
 				   
-				   	<button type="submit" class="btn btn-success">Add Contact Detail</button>
+				   	<button type="submit" class="btn btn-success" >Add Contact Detail</button>
 
 				   </form>
 		</div>
@@ -56,6 +56,10 @@
 	<script src="https://cdn.datatables.net/buttons/1.2.2/js/buttons.print.min.js"></script>
 	<!-- end - This is for export functionality only -->
 	<script>
+		
+   	
+
+
         $(document).ready(function() {
             $('#myTable').DataTable({
                 stateSave: false,

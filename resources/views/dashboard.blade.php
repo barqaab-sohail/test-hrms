@@ -33,7 +33,7 @@
 				<div class="container">
 	        
 	          	<!-- Button trigger modal -->
-	          	<button type="button" class="btn btn-info" data-toggle="modal" data-target="#exampleModal">
+	          	<button type="button" class="btn btn-info" data-toggle="modal" data-target="#exampleModal"> <i class="spinner fa fa-spinner fa-spin" ></i>
 	            Add New Task
 	          	</button>
 	          
@@ -47,7 +47,6 @@
 			@endif
 
 
-	
 		</div>
 
 	@endcan
@@ -60,11 +59,11 @@
     })
 
 
-    $('#taskFrom').submit(function(){
+   /* $('#taskFrom').submit(function(){
 
      
 
-    });
+    });*/
   </script>
 
   @endpush

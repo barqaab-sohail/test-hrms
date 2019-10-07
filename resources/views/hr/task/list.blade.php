@@ -1,5 +1,4 @@
 	                   						                   
-			                    <br>
 		<div class="card">
 		<div class="card-body">
 			<!--<div class="float-right">
@@ -9,7 +8,7 @@
 			
 			<div class="table-responsive m-t-40">
 				
-				<table id="myTable" class="table table-bordered table-striped" width="100%" cellspacing="0">
+				<table id="myDataTable" class="table table-bordered table-striped" width="100%" cellspacing="0">
 					<thead>
 					
 					<tr>
@@ -18,7 +17,7 @@
 						<th>Remaining Days</th>
 						<th>Status</th>
 						
-						@can('entry', Auth::user())<th colspan="2" style="text-align: center;"> Actions </th>@endcan
+						@can('entry', Auth::user())<th colspan="2" style="text-align: center;"> Actions </th><th></th>@endcan
 					</tr>
 					</thead>
 					<tbody>
@@ -26,8 +25,17 @@
 							<tr>
 								<td>{{$taskId->task_detail}}</td>
 								<td>{{$taskId->completion_date}}</td>
-								<td></td>
-								<td>{{$taskId->status}}</td>
+								<td>@php 
+										$date1 = new DateTime($taskId->completion_date);
+										$date2 = new DateTime(now());
+										echo $date1->diff($date2)->format("%d").' Days';
+									@endphp
+								</td>
+								@if($taskId->status == 0)
+									<td><a class="btn btn-warning btn-sm" href="" data-toggle="tooltip" data-original-title="Change Status"> <i class="fas fa-pencil-alt text-white "></i>{{$taskId->status}}</a></td>
+								@else
+									<td><a class="btn btn-success btn-sm" href="" data-toggle="tooltip" data-original-title="Change Status"> <i class="fas fa-pencil-alt text-white "></i>{{$taskId->status}}</a></td>
+								@endif
 								
 								<td>
 								 @can('entry', Auth::user())

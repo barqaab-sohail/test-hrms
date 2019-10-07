@@ -38,6 +38,7 @@ class HomeController extends Controller
         
         $user = Auth::user();
         $taskIds = task::all()->where('employee_id', Auth::user()->id);
+        
         return view('dashboard')->with(compact('user', 'taskIds'));
     }
 

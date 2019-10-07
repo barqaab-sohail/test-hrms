@@ -10,9 +10,12 @@ class task extends Model
         'task_detail', 'completion_date','remarks', 'employee_id'
     ];
 
+    //default value of status=0
     protected $attributes = [
-        'status' => 1
+        'status' => 0 //0 pending and 1 completed 
     ];
+    
+    //get value of status and show in string as per statusOptions
     public function getStatusAttribute($attribute)
     {
         return $this->statusOptions()[$attribute];
