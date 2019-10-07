@@ -95,6 +95,14 @@ setTimeout("preventBack()",0);
 window.onunload = function(){null};*/
 //end function
 
+(function(){
+    $('.form-prevent-multiple-submits').on('submit', function(){
+
+        $('.btn-prevent-multiple-submits').attr('disabled','ture');
+        $('.spinner').show();
+    })
+
+})();
    
     $(document).ready(function() {
 

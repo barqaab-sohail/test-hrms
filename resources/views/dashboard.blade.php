@@ -33,7 +33,7 @@
 				<div class="container">
 	        
 	          	<!-- Button trigger modal -->
-	          	<button type="button" class="btn btn-info" data-toggle="modal" data-target="#exampleModal"> <i class="spinner fa fa-spinner fa-spin" ></i>
+	          	<button type="button" class="btn btn-info" data-toggle="modal" data-target="#exampleModal"> 
 	            Add New Task
 	          	</button>
 	          

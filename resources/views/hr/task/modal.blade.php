@@ -10,7 +10,7 @@
                 </div>
                 <div class="modal-body">
                  
-                     <form id="taskFrom" action="{{route('task.store')}}" method="post" class="form-horizontal" enctype="multipart/form-data">
+                     <form id="taskFrom" action="{{route('task.store')}}" method="post" class="form-horizontal form-prevent-multiple-submits" enctype="multipart/form-data">
                             {{csrf_field()}}
                             <div class="form-body">
                               <div class="form-group row">
@@ -25,7 +25,7 @@
                                 <div class="col-md-12 date_input">
                                   <label class="control-label text-right">Completion Date<span class="text_requried">*</span></label>
                                                 
-                                  <input type="text" id="completion_date" name="completion_date" value="{{ old('completion_date') }}" class="form-control "  placeholder="Enter Task Completion Date" readonly required>
+                                  <input type="text" id="completion_date" name="completion_date" value="{{ old('completion_date') }}" class="form-control "  placeholder="Enter Task Completion Date" required readonly>
                                   
                                   <br>
                                   <i class="fas fa-trash-alt text_requried"></i>
@@ -43,7 +43,7 @@
                                         <div class="row">
                                        @can('entry', Auth::user())
                                             <div class="col-md-offset-3 col-md-9">
-                                                <button type="submit" class="btn btn-success">Save</button>
+                                                <button type="submit" class="btn btn-success btn-prevent-multiple-submits"><i class="spinner fa fa-spinner fa-spin" ></i>Save</button>
                                                 
                                             </div>
                                         @endcan
