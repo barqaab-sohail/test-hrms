@@ -25,7 +25,7 @@
 				   	@include('phone.form')
 				   
 
-				   	<button type="submit" class="btn btn-success">Edit Contact Detail</button>
+				   	<button type="submit" class="btn btn-success btn-prevent-multiple-submits">Edit Contact Detail</button>
 
 				   </form>
 		</div>

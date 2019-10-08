@@ -64,7 +64,7 @@
 		                                <!--/span-->
 		                                <input type="text" id="id" name="id" value=""   class="form-control "  hidden>
 		                             </div>
-				   			<button type="submit" class="btn btn-success">Save</button>
+				   			<button type="submit" class="btn btn-success btn-prevent-multiple-submits">Save</button>
 				   </form>
 				   
 		</div>

@@ -18,7 +18,7 @@
 			                    <button type="button" onclick="window.location.href='{{route('notificationList')}}'" class="btn btn-info float-right">List</button>
 			                </div>
 
-		                    <form action="{{route('storeNotification')}}" method="post" class="form-horizontal" enctype="multipart/form-data">
+		                    <form action="{{route('storeNotification')}}" method="post" class="form-horizontal form-prevent-multiple-submits" enctype="multipart/form-data">
 		                        {{csrf_field()}}
 		                        <div class="form-body">
 		                        <h3 class="box-title">Create Notification</h3>
@@ -56,7 +56,7 @@
 		                                <div class="col-md-6">
 		                                    <div class="row">
 		                                        <div class="col-md-offset-3 col-md-9">
-		                                            <button type="submit" class="btn btn-success">Submit</button>
+		                                            <button type="submit" class="btn btn-success btn-prevent-multiple-submits">Submit</button>
 		                                        </div>
 		                                    </div>
 		                                </div>

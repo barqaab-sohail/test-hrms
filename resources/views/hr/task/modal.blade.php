@@ -10,7 +10,7 @@
                 </div>
                 <div class="modal-body">
                  
-                     <form id="taskFrom" action="{{route('task.store')}}" method="post" class="form-horizontal form-prevent-multiple-submits" enctype="multipart/form-data">
+                     <form id="taskFrom" action="{{route('task.store')}}" method="post" class="form-horizontal form-prevent-multiple-submits form-prevent-multiple-submits" enctype="multipart/form-data">
                             {{csrf_field()}}
                             <div class="form-body">
                               <div class="form-group row">

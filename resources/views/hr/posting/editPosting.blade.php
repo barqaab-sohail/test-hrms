@@ -21,7 +21,7 @@
 		                @endcan
 		                <div class="card-body">
 
-		                    <form action="{!!route('posting.update', ['id'=>optional($data)->id])!!}" method="post" class="form-horizontal" enctype="multipart/form-data">
+		                    <form action="{!!route('posting.update', ['id'=>optional($data)->id])!!}" method="post" class="form-horizontal form-prevent-multiple-submits" enctype="multipart/form-data">
 		                    @method('PATCH')
 		                        {{csrf_field()}}
 		                        <div class="form-body">
@@ -138,7 +138,7 @@
 		                                    <div class="row">
 		                                    	@can('entry', Auth::user())
 		                                        <div class="col-md-offset-3 col-md-9">
-		                                            <button type="submit" class="btn btn-success">Edit Posting</button>
+		                                            <button type="submit" class="btn btn-success btn-prevent-multiple-submits">Edit Posting</button>
 		                                            <button type="button" onclick="window.location.href='{{route('employee.index')}}'" class="btn btn-inverse">Cancel</button>
 		                                        </div>
 		                                        @endcan

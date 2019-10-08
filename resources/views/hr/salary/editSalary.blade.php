@@ -22,7 +22,7 @@
 		                </div>
 		                <div class="card-body">
 
-		                    <form action="{!!route('salary.update', ['id'=>$employee->id])!!}" method="post" class="form-horizontal" enctype="multipart/form-data">
+		                    <form action="{!!route('salary.update', ['id'=>$employee->id])!!}" method="post" class="form-horizontal form-prevent-multiple-submits" enctype="multipart/form-data">
 		                    @method('PATCH')
 		                        {{csrf_field()}}
 		                        <div class="form-body">
@@ -126,7 +126,7 @@
 		                                <div class="col-md-6">
 		                                    <div class="row">
 		                                        <div class="col-md-offset-3 col-md-9">
-		                                            <button type="submit" class="btn btn-success">Save</button>
+		                                            <button type="submit" class="btn btn-success btn-prevent-multiple-submits">Save</button>
 		                                            <button type="button" onclick="window.location.href='{{route('employee.index')}}'" class="btn btn-inverse">Cancel</button>
 		                                        </div>
 		                                    </div>

@@ -24,7 +24,7 @@
 		                @endcan
 		                <div class="card-body">
 
-		                    <form action="{!!route('dependent.update', ['id'=>optional($data)->id])!!}" method="POST" class="form-horizontal" enctype="multipart/form-data">
+		                    <form action="{!!route('dependent.update', ['id'=>optional($data)->id])!!}" method="POST" class="form-horizontal form-prevent-multiple-submits" enctype="multipart/form-data">
 		                    @method('PATCH')
 		                    @include('hr.dependent.form')
 		                       
@@ -35,7 +35,7 @@
 		                                    <div class="row">
 		                                    	@can('entry', Auth::user())
 		                                        <div class="col-md-offset-3 col-md-9">
-		                                            <button type="submit" class="btn btn-success">Save</button>
+		                                            <button type="submit" class="btn btn-success btn-prevent-multiple-submits">Save</button>
 		                                            <button type="button" onclick="window.location.href='{{route('employee.index')}}'" class="btn btn-inverse">Cancel</button>
 		                                        </div>
 		                                        @endcan
