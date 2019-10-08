@@ -31,10 +31,10 @@
 										echo $date1->diff($date2)->format("%d").' Days';
 									@endphp
 								</td>
-								@if($taskId->status == 0)
-									<td><a class="btn btn-warning btn-sm" href="" data-toggle="tooltip" data-original-title="Change Status"> <i class="fas fa-pencil-alt text-white "></i>{{$taskId->status}}</a></td>
-								@else
-									<td><a class="btn btn-success btn-sm" href="" data-toggle="tooltip" data-original-title="Change Status"> <i class="fas fa-pencil-alt text-white "></i>{{$taskId->status}}</a></td>
+								@if($taskId->status === 'Pending')
+									<td><a class="btn btn-warning btn-sm" href=""  onclick="return confirm('Are you Sure to Change Status')" id="update,id={{$taskId->id}}"  data-toggle="tooltip" data-original-title="Change Status"> <i class="fas fa-pencil-alt text-white "></i>{{$taskId->status}}</a></td>
+								@elseif($taskId->status === 'Completed')
+									<td><a class="btn btn-success btn-sm" onclick="return confirm('Are you Sure to Change Status')" id="update,id={{$taskId->id}}" href="" data-toggle="tooltip" data-original-title="Change Status"> <i class="fas fa-pencil-alt text-white "></i>{{$taskId->status}}</a></td>
 								@endif
 								
 								<td>

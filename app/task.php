@@ -7,7 +7,7 @@ class task extends Model
 {
     
     protected $fillable = [
-        'task_detail', 'completion_date','remarks', 'employee_id'
+        'task_detail', 'completion_date','remarks', 'status', 'employee_id'
     ];
 
     //default value of status=0

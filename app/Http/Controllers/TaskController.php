@@ -27,6 +27,20 @@ class TaskController extends Controller
     	return Redirect::back()->with('success', 'You task has been saved sucessfuly');
     }
 
+    public function update (Request $request, $id){
+        $data = task::findOrFail($id);
+        if($data->status === 'Pending'){
+
+        $data->update(['status'=>1]);
+
+         }else
+         {
+            $data->update(['status'=>0]);
+         }
+
+        return 'OK';
+    }
+
     public function destroy($id){
 
     	task::findOrFail($id)->delete(); 

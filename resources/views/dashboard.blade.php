@@ -59,11 +59,45 @@
     })
 
 
-   /* $('#taskFrom').submit(function(){
+   //Update Task Status through AJAX
+        $('a[id^=update]').click(function(e){
+		        e.preventDefault();
+		        var updateId = $(this).attr('id');
+		        var arr = updateId.split('=');
+		        var id = arr[1];
+		       
+		        var url = "{{url('hrms/task')}}"+"/"+id;
+		        // alert(url);
+		        // return;
+		        
+				//alert(email);	
+		        $.ajaxSetup({
+	          			headers: {
+	              		'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+	          			}
+      				});
+      				
+	     			$.ajax({
+		            url: url, //this is the submit URL
+		            type: 'PUT', //or POST
+		            data: {id:id},
 
-     
+		            	success: function(data){
+		            		
+		            		if (data =="OK"){
+		            			
+		            			$('#json_message').html('<div id="json_message" class="alert alert-success" align="left"><a href="#" class="close" data-dismiss="alert">&times;</a><strong>User Right Updated Sucessfully</strong></div>');
+		            			$('html,body').animate({scrollTop:0},0);
 
-    });*/
+		            		}else{
+
+		            			$('#json_message').html('<div id="json_message" class="alert alert-danger" align="left"><a href="#" class="close" data-dismiss="alert">&times;</a><strong>User Right is not Updated Sucessfully</strong></div>');
+		            				$('html,body').animate({scrollTop:0},0);
+		            		}
+			        	}
+	        		});
+ 
+		    });
   </script>
 
   @endpush
