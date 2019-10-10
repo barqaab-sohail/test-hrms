@@ -1,5 +1,5 @@
           <!-- Modal -->
-          <div class="modal fade" id="taskModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal fade" id="editTaskModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
               <div class="modal-content">
                 <div class="modal-header">
@@ -10,14 +10,15 @@
                 </div>
                 <div class="modal-body">
                  
-                     <form id="taskFrom" action="{{route('task.store')}}" method="post" class="form-horizontal form-prevent-multiple-submits form-prevent-multiple-submits" enctype="multipart/form-data">
+                     <form id="editTaskFrom" action="{{route('task.store')}}" method="post" class="form-horizontal form-prevent-multiple-submits form-prevent-multiple-submits" enctype="multipart/form-data">
+                     @method('PATCH')
                             {{csrf_field()}}
                             <div class="form-body">
                               <div class="form-group row">
                                 <div class="col-md-12">
-                                  <label class="control-label text-right">Task Detail<span class="text_requried">*</span></label>
+                                  <label class="control-label text-right">Task tail<span class="text_requried">*</span></label>
                                             
-                                   <input type="text"  id='task_detail' name="task_detail" value="{{ old('task_detail') }}" class="form-control" placeholder="Enter Task Detail" required>
+                                   <input type="text" id='edit_task_detail' name="task_detail" value="{{ old('task_detail') }}" class="form-control" placeholder="Enter Task Detail" required>
                                 </div>
                               </div>
 

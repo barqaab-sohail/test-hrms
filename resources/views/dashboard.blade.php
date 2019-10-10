@@ -33,12 +33,13 @@
 				<div class="container">
 	        
 	          	<!-- Button trigger modal -->
-	          	<button type="button" class="btn btn-info" data-toggle="modal" data-target="#exampleModal"> 
+	          	<button type="button" class="btn btn-info" data-toggle="modal" data-target="#taskModal"> 
 	            Add New Task
 	          	</button>
 	          
 	          	<!-- Modeal Include-->
 	          	@include('hr.task.modal')
+	          	@include('hr.task.editModal')
 	  
 	      		</div>
 			
@@ -63,6 +64,10 @@
     	    $("#append_data").load(loadUrl, function (){
     	    	$('#myTable').DataTable({
     	 	 	stateSave: false,
+    	 	 	 "order": [[ 3, "desc" ]],
+    	 	 	  "columnDefs": [
+    				{ "width": "30%", "targets": 0 }
+ 				 ],
                 dom: 'lfrtip'
                
 				});
@@ -70,11 +75,34 @@
    	
     });
 
-    $('#myModal').on('shown.bs.modal', function () {
-      $('#myInput').trigger('focus')
-    })
+    $('#taskModal').on('shown.bs.modal', function () {
+     $('#task_detail').trigger('focus');
+      $('#task_detail').val('ttt');
 
+    });
 
+    
+
+    //Update Task Status through AJAX
+   		$(document).on("click", 'a[id^=edit]', function(e){
+		        e.preventDefault();
+		         	var updateId = $(this).attr('id');
+		        var arr = updateId.split('=');
+		        var id = arr[1];
+		
+		$('#editTaskModal').on('shown.bs.modal', function () {
+     	$('#edit_task_detail').trigger('focus');
+
+		var task_detail = $('a[id^=edit][id$='+id+']').closest('tr').find('td:first').text();
+
+		 $('#edit_task_detail').val(task_detail);	
+
+   		 });
+
+		      
+
+		        
+		});
    
    //Update Task Status through AJAX
    		$(document).on("click", 'a[id^=update]', function(e){
@@ -109,7 +137,13 @@
 		            				var loadUrl = "{{route('task.index')}}";
     	    						$("#append_data").load(loadUrl, function (){
     	    							$('#myTable').DataTable({
+    	    							destroy: true,
     	 	 							stateSave: false,
+    	 	 							"order": [[ 3, "desc" ]],
+    	 	 							"columnDefs": [
+    										{ "width": "30%", "targets": 0 }
+ 				 						],
+
                 						dom: 'lfrtip'
                							});
     	    						});
@@ -154,6 +188,10 @@
     	 	 						
     	 	 							destroy: true,
     	 	 							stateSave: false,
+    	 	 							 "order": [[ 3, "desc" ]],
+    	 	 							 "columnDefs": [
+    										{ "width": "30%", "targets": 0 }
+ 										 ],
               							dom: 'lfrtip'
                
 									});

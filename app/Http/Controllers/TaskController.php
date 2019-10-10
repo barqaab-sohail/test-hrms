@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\StoreTask;
 use Illuminate\Http\Request;
 use App\task;
@@ -18,7 +19,10 @@ class TaskController extends Controller
     public function index(){
 
 
-        $taskIds = task::all();
+        $taskIds = task::where('employee_id',  Auth::user()->id)->get();
+
+    if($taskIds->count()!=0){
+
         $output = '';
 
         $output .='<table id="myTable" class="table table-bordered table-striped" width="100%" cellspacing="0">
@@ -30,7 +34,7 @@ class TaskController extends Controller
                         <th>Remaining Days</th>
                         <th>Status</th>
                         
-                        <th  style="text-align: center;"> Actions </th><th></th>
+                        <th> Edit </th><th>Delete</th>
                         
                     </tr>
                     </thead>
@@ -59,7 +63,7 @@ class TaskController extends Controller
 
                     $output .= '<td>
                                  
-                                  <a class="btn btn-info btn-sm" href="'.route('task.edit',['id'=>$taskId->id]).'" data-toggle="tooltip" data-original-title="Edit"> <i class="fas fa-pencil-alt text-white "></i></a>
+                                  <a class="btn btn-info btn-sm" id=edit,id='.$taskId->id.' data-original-title="Edit" data-toggle="modal" data-target="#editTaskModal"> <i class="fas fa-pencil-alt text-white "></i></a>
                                  
                                  </td>
                                  <td>
@@ -80,6 +84,7 @@ class TaskController extends Controller
                     </tbody>
                 </table>';
             echo $output;
+        }
     }
 
     public function store(StoreTask $request){
