@@ -41,10 +41,12 @@
 	          	@include('hr.task.modal')
 	  
 	      		</div>
+			
+			<div id="append_data" class="table-responsive m-t-40">
+
 			</div>
-			@if($taskIds->count()!=0)
-				@include('hr.task.list')
-			@endif
+			
+			
 
 
 		</div>
@@ -54,14 +56,30 @@
 @stop
   @push('scripts')
   <script>
+
+  	$(document).ready(function () {
+        
+	        var loadUrl = "{{route('task.index')}}";
+    	    $("#append_data").load(loadUrl, function (){
+    	    	$('#myTable').DataTable({
+    	 	 	stateSave: false,
+                dom: 'lfrtip'
+               
+				});
+    	    });
+   	
+    });
+
     $('#myModal').on('shown.bs.modal', function () {
       $('#myInput').trigger('focus')
     })
 
 
+   
    //Update Task Status through AJAX
-        $('a[id^=update]').click(function(e){
+   		$(document).on("click", 'a[id^=update]', function(e){
 		        e.preventDefault();
+		    if (confirm('Are you sure to change status?')) {
 		        var updateId = $(this).attr('id');
 		        var arr = updateId.split('=');
 		        var id = arr[1];
@@ -80,14 +98,21 @@
 	     			$.ajax({
 		            url: url, //this is the submit URL
 		            type: 'PUT', //or POST
-		            data: {id:id},
-
+		            
 		            	success: function(data){
 		            		
 		            		if (data =="OK"){
 		            			
 		            			$('#json_message').html('<div id="json_message" class="alert alert-success" align="left"><a href="#" class="close" data-dismiss="alert">&times;</a><strong>User Right Updated Sucessfully</strong></div>');
 		            			$('html,body').animate({scrollTop:0},0);
+
+		            				var loadUrl = "{{route('task.index')}}";
+    	    						$("#append_data").load(loadUrl, function (){
+    	    							$('#myTable').DataTable({
+    	 	 							stateSave: false,
+                						dom: 'lfrtip'
+               							});
+    	    						});
 
 		            		}else{
 
@@ -96,8 +121,70 @@
 		            		}
 			        	}
 	        		});
- 
+ 				}//end confirmation
+		    }); //end Change Status
+
+ 		//Ajax Delete Data
+	 		$(document).on("click", 'a[id^=delete]', function(event) {
+		        event.preventDefault();
+
+		    if (confirm('Are you sure to delete this record?')) {
+		        var deleteId = $(this).attr('id');
+		        var arr = deleteId.split('=');
+		        var id = arr[1];
+		        var url = "{{url('hrms/task')}}"+"/"+id;
+		        		       	     	
+	     			$.ajaxSetup({
+	          			headers: {
+	              		'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+	          			}
+      				});
+
+      				$.ajax({
+		            url: url, //this is the submit URL
+		            type: 'DELETE', //or POST
+		           
+		            	success: function(data){
+		            		if (data =="OK"){
+		            					            			
+		            			var loadUrl = "{{route('task.index')}}";
+		            			$("#append_data").load(loadUrl, function (){
+    	    						
+    	    						$('#myTable').DataTable({
+    	 	 						
+    	 	 							destroy: true,
+    	 	 							stateSave: false,
+              							dom: 'lfrtip'
+               
+									});
+    	    					});
+
+
+        						$('#json_message').html('<div id="json_message" class="alert alert-success" align="left"><a href="#" class="close" data-dismiss="alert">&times;</a><strong>Data Sucessfuly Deleted</strong></div>');
+
+		            		}else{
+
+		            			$('#json_message').html('<div id="json_message" class="alert alert-danger" align="left"><a href="#" class="close" data-dismiss="alert">&times;</a><strong>Data is not  Deleted</strong></div>');
+		            			
+		            		}
+			        	},
+
+			        	error: function (request, status, error) {
+                				json = $.parseJSON(request.responseText);
+                				$.each(json.errors, function(key, value){
+                                
+                				$('#json_message').html('<div id="json_message" class="alert alert-danger" align="left"><a href="#" class="close" data-dismiss="alert">&times;</a><strong>'+value+'</strong></div>');
+                			});
+            			}
+
+	        		});
+
+
+      			}//end confirmation
+
 		    });
+
+
   </script>
 
   @endpush
