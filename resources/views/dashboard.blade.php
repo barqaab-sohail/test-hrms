@@ -57,52 +57,157 @@
 @stop
   @push('scripts')
   <script>
-
-  	$(document).ready(function () {
-        
-	        var loadUrl = "{{route('task.index')}}";
+  function load_data(){
+  	var loadUrl = "{{route('task.index')}}";
     	    $("#append_data").load(loadUrl, function (){
     	    	$('#myTable').DataTable({
     	 	 	stateSave: false,
-    	 	 	 "order": [[ 3, "desc" ]],
-    	 	 	  "columnDefs": [
-    				{ "width": "30%", "targets": 0 }
+    	 	 	"order": [[ 3, "desc" ]],
+    	 	 	"columnDefs": [
+    				{ "width": "30%", "targets": 0, },
+    				{"targets": "_all", "className": "dt-center"}
  				 ],
+
                 dom: 'lfrtip'
                
 				});
     	    });
+  }
+
+  	$(document).ready(function () {
+        
+	        load_data();
    	
     });
 
+  	//Store Task
     $('#taskModal').on('shown.bs.modal', function () {
-     $('#task_detail').trigger('focus');
-      $('#task_detail').val('ttt');
+    	$('#task_detail').trigger('focus');
+    	$('.btn-prevent-multiple-submits').attr('disabled',false);
+        $('.spinner').hide();
+
+    	$(document).one("submit", function(e){
+		e.preventDefault();
+		
+				$.ajaxSetup({
+	          		headers: {
+	              	'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+	          		}
+      			});
+				var url ="{!!route('task.store')!!}";
+
+      			$.ajax({
+		        url: url, //this is the submit URL
+		            type: 'POST', //or POST
+		            data: $('#taskFrom').serialize(),
+
+		            	success: function(data){
+		            		if (data =="OK"){
+		            			
+		            			load_data();
+
+		            			$('#taskFrom').trigger("reset");
+		            			$('#taskModal').modal('toggle');
+
+        						$('#json_message').html('<div id="json_message" class="alert alert-success" align="left"><a href="#" class="close" data-dismiss="alert">&times;</a><strong>Data Sucessfuly Saved</strong></div>');
+
+		            		}else{
+
+		            			$('#json_message').html('<div id="json_message" class="alert alert-danger" align="left"><a href="#" class="close" data-dismiss="alert">&times;</a><strong>Data is not  Saved</strong></div>');
+
+		            			$('#taskFrom').trigger("reset");
+		            			$('#taskModal').modal('toggle');
+		            			
+		            		}
+			        	},
+
+			        	error: function (request, status, error) {
+                				json = $.parseJSON(request.responseText);
+                				$.each(json.errors, function(key, value){
+                                
+                				$('#json_message').html('<div id="json_message" class="alert alert-danger" align="left"><a href="#" class="close" data-dismiss="alert">&times;</a><strong>'+value+'</strong></div>');
+                			});
+            			}//end error
+
+	        		});//end ajax
+
+		    	});//end submis
+    	
 
     });
 
     
 
-    //Update Task Status through AJAX
-   		$(document).on("click", 'a[id^=edit]', function(e){
-		        e.preventDefault();
-		         	var updateId = $(this).attr('id');
+    //Update Tasks through AJAX
+   		$(document).on("click", 'a[id^=edit]', function(){
+		        
+		        var updateId = $(this).attr('id');
 		        var arr = updateId.split('=');
 		        var id = arr[1];
 		
-		$('#editTaskModal').on('shown.bs.modal', function () {
-     	$('#edit_task_detail').trigger('focus');
+			$('#editTaskModal').on('shown.bs.modal', function () {
 
-		var task_detail = $('a[id^=edit][id$='+id+']').closest('tr').find('td:first').text();
+		     	$('#edit_task_detail').trigger('focus');
+    			$('.btn-prevent-multiple-submits').attr('disabled',false);
+        		$('.spinner').hide();
+        		var task_detail = $('a[id^=edit][id$='+id+']').closest('tr').find('td:first').text();
+				var completion_date = $('a[id^=edit][id$='+id+']').closest('tr').find('td:nth-child(2)').text();
+				$('#edit_task_detail').val(task_detail);
+				$('#edit_completion_date').val(completion_date);
 
-		 $('#edit_task_detail').val(task_detail);	
+				var url = "{{url('hrms/task')}}"+"/"+id;
+				$('#editTaskFrom').attr('action',url);
 
-   		 });
+        		$('#editTaskFrom').one("submit", function(e){
+				e.preventDefault();
+			
+				
+				$.ajaxSetup({
+	          		headers: {
+	              	'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+	          		}
+      			});
+				
+	      			$.ajax({
+			        url: url, //this is the submit URL
+			            type: 'PUT', //or POST
+			            data: $('#editTaskFrom').serialize(),
 
-		      
+		            	success: function(data){
+		            		if (data =="OK"){
+		            			
+		            			load_data();
 
-		        
-		});
+		            			$('#editTaskFrom').trigger("reset");
+		            			$('#editTaskModal').modal('toggle');
+
+        						$('#json_message').html('<div id="json_message" class="alert alert-success" align="left"><a href="#" class="close" data-dismiss="alert">&times;</a><strong>Data Sucessfuly Saved</strong></div>');
+
+		            		}else{
+
+		            			$('#json_message').html('<div id="json_message" class="alert alert-danger" align="left"><a href="#" class="close" data-dismiss="alert">&times;</a><strong>Data is not  Saved</strong></div>');
+
+		            			$('#editTaskFrom').trigger("reset");
+		            			$('#editTaskModal').modal('toggle');
+		            			
+		            		}
+			        	},
+
+			        	error: function (request, status, error) {
+                				json = $.parseJSON(request.responseText);
+                				$.each(json.errors, function(key, value){
+                                
+                				$('#json_message').html('<div id="json_message" class="alert alert-danger" align="left"><a href="#" class="close" data-dismiss="alert">&times;</a><strong>'+value+'</strong></div>');
+                			});
+            			}//end error
+
+	        		});//end ajax
+
+      			});//end submis
+	   	
+	   		});//end modal
+
+		});//end click
    
    //Update Task Status through AJAX
    		$(document).on("click", 'a[id^=update]', function(e){
@@ -134,20 +239,7 @@
 		            			$('#json_message').html('<div id="json_message" class="alert alert-success" align="left"><a href="#" class="close" data-dismiss="alert">&times;</a><strong>User Right Updated Sucessfully</strong></div>');
 		            			$('html,body').animate({scrollTop:0},0);
 
-		            				var loadUrl = "{{route('task.index')}}";
-    	    						$("#append_data").load(loadUrl, function (){
-    	    							$('#myTable').DataTable({
-    	    							destroy: true,
-    	 	 							stateSave: false,
-    	 	 							"order": [[ 3, "desc" ]],
-    	 	 							"columnDefs": [
-    										{ "width": "30%", "targets": 0 }
- 				 						],
-
-                						dom: 'lfrtip'
-               							});
-    	    						});
-
+		            				load_data();
 		            		}else{
 
 		            			$('#json_message').html('<div id="json_message" class="alert alert-danger" align="left"><a href="#" class="close" data-dismiss="alert">&times;</a><strong>User Right is not Updated Sucessfully</strong></div>');
@@ -159,7 +251,7 @@
 		    }); //end Change Status
 
  		//Ajax Delete Data
-	 		$(document).on("click", 'a[id^=delete]', function(event) {
+	 		$(document).one("click", 'a[id^=delete]', function(event) {
 		        event.preventDefault();
 
 		    if (confirm('Are you sure to delete this record?')) {
@@ -181,21 +273,7 @@
 		            	success: function(data){
 		            		if (data =="OK"){
 		            					            			
-		            			var loadUrl = "{{route('task.index')}}";
-		            			$("#append_data").load(loadUrl, function (){
-    	    						
-    	    						$('#myTable').DataTable({
-    	 	 						
-    	 	 							destroy: true,
-    	 	 							stateSave: false,
-    	 	 							 "order": [[ 3, "desc" ]],
-    	 	 							 "columnDefs": [
-    										{ "width": "30%", "targets": 0 }
- 										 ],
-              							dom: 'lfrtip'
-               
-									});
-    	    					});
+		            			load_data();
 
 
         						$('#json_message').html('<div id="json_message" class="alert alert-success" align="left"><a href="#" class="close" data-dismiss="alert">&times;</a><strong>Data Sucessfuly Deleted</strong></div>');
@@ -221,7 +299,6 @@
       			}//end confirmation
 
 		    });
-
 
   </script>
 

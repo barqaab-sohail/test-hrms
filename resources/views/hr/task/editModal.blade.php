@@ -16,7 +16,7 @@
                             <div class="form-body">
                               <div class="form-group row">
                                 <div class="col-md-12">
-                                  <label class="control-label text-right">Task tail<span class="text_requried">*</span></label>
+                                  <label class="control-label text-right">Task Detail<span class="text_requried">*</span></label>
                                             
                                    <input type="text" id='edit_task_detail' name="task_detail" value="{{ old('task_detail') }}" class="form-control" placeholder="Enter Task Detail" required>
                                 </div>
@@ -26,11 +26,19 @@
                                 <div class="col-md-12 date_input">
                                   <label class="control-label text-right">Completion Date<span class="text_requried">*</span></label>
                                                 
-                                  <input type="text" id="completion_date" name="completion_date" value="{{ old('completion_date') }}" class="form-control "  placeholder="Enter Task Completion Date" required readonly>
+                                  <input type="text" id="edit_completion_date" name="completion_date" value="{{ old('completion_date') }}" class="form-control "  placeholder="Enter Task Completion Date" required readonly>
                                   
                                   <br>
                                   <i class="fas fa-trash-alt text_requried"></i>
                                  
+                                </div>
+                              </div>
+
+                               <div class="form-group row">
+                                <div class="col-md-12">
+                                  <label class="control-label text-right">Remarks</label>
+                                            
+                                   <input type="text" id='edit_remarks' name="remarks" value="{{ old('remarks') }}" class="form-control" placeholder="Enter Remarks">
                                 </div>
                               </div>
 

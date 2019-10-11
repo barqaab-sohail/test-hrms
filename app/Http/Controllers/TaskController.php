@@ -33,9 +33,7 @@ class TaskController extends Controller
                         <th>Completion Date</th>
                         <th>Remaining Days</th>
                         <th>Status</th>
-                        
                         <th> Edit </th><th>Delete</th>
-                        
                     </tr>
                     </thead>
                     <tbody>';
@@ -48,15 +46,15 @@ class TaskController extends Controller
                         <tr>
                             <td>'.$taskId->task_detail.'</td>
                             <td>'.$taskId->completion_date.'</td>
-                            <td>'.$remainingDyas.'</td>
+                            <td >'.$remainingDyas.'</td>
                             ';
                         
                             if($taskId->status==="Pending"){
                             
-                            $output .= '<td><a class="btn btn-warning btn-sm text-white"   onclick="return confirm(\"Are you Sure to Change Status"\)" id="update,id='.$taskId->id.'"  data-toggle="tooltip" data-original-title="Change Status"> <i class="fas fa-pencil-alt text-white "></i>'.$taskId->status.'</a></td>';
+                            $output .= '<td><a style="background-color:red"class="btn btn-sm text-white"   onclick="return confirm(\"Are you Sure to Change Status"\)" id="update,id='.$taskId->id.'"  data-toggle="tooltip" data-original-title="Change Status"> <i class="fas fa-pencil-alt text-white "></i>'.$taskId->status.'</a></td>';
                             }else{
 
-                                $output .= '<td><a class="btn btn-success btn-sm text-white"   onclick="return confirm(\"Are you Sure to Change Status"\)" id="update,id='.$taskId->id.'"  data-toggle="tooltip" data-original-title="Change Status"> <i class="fas fa-pencil-alt text-white "></i>'.$taskId->status.'</a></td>';
+                                $output .= '<td><a style="background-color:green" class="btn btn-sm text-white"   onclick="return confirm(\"Are you Sure to Change Status"\)" id="update,id='.$taskId->id.'"  data-toggle="tooltip" data-original-title="Change Status"> <i class="fas fa-pencil-alt text-white "></i>'.$taskId->status.'</a></td>';
                             }
 
 
@@ -91,24 +89,34 @@ class TaskController extends Controller
     	
     	$data = $request->all();
             
-            if($request->filled('completion_date')){
-            $data ['completion_date']= \Carbon\Carbon::parse($request->completion_date)->format('Y-m-d');
-            }
+        if($request->filled('completion_date')){
+        $data ['completion_date']= \Carbon\Carbon::parse($request->completion_date)->format('Y-m-d');
+        }
 
     	task::create($data);
-    	return Redirect::back()->with('success', 'You task has been saved sucessfuly');
+    	return 'OK';
+        //Redirect::back()->with('success', 'You task has been saved sucessfuly');
     }
 
     public function update (Request $request, $id){
-        $data = task::findOrFail($id);
-        if($data->status === 'Pending'){
+        //$data = task::findOrFail($id);
+        
+        $data = $request->all();
+            
+        if($request->filled('completion_date')){
+        $data ['completion_date']= \Carbon\Carbon::parse($request->completion_date)->format('Y-m-d');
+        }
+
+        task::findOrFail($id)->update($data);
+        
+        /*if($data->status === 'Pending'){
 
         $data->update(['status'=>1]);
 
          }else
          {
             $data->update(['status'=>0]);
-         }
+         }*/
 
         return 'OK';
     }
