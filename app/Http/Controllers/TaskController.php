@@ -61,7 +61,7 @@ class TaskController extends Controller
 
                     $output .= '<td>
                                  
-                                  <a class="btn btn-info btn-sm" id=edit,id='.$taskId->id.' data-original-title="Edit" data-toggle="modal" data-target="#editTaskModal"> <i class="fas fa-pencil-alt text-white "></i></a>
+                                  <a class="btn btn-info btn-sm" id=edit,id='.$taskId->id.' data-original-title="Edit" data-toggle="modal" data-target=""> <i class="fas fa-pencil-alt text-white "></i></a>
                                  
                                  </td>
                                  <td>
@@ -99,24 +99,31 @@ class TaskController extends Controller
     }
 
     public function update (Request $request, $id){
-        //$data = task::findOrFail($id);
         
-        $data = $request->all();
+        //check if request has task detail then update ELSE toggle status
+        if($request->has('task_detail')){
+            $data = $request->all();
+            if($request->filled('completion_date')){
+            $data ['completion_date']= \Carbon\Carbon::parse($request->completion_date)->format('Y-m-d');
+            }
+
+            task::findOrFail($id)->update($data);
+        }else{
+
+            $data = task::findOrFail($id);
             
-        if($request->filled('completion_date')){
-        $data ['completion_date']= \Carbon\Carbon::parse($request->completion_date)->format('Y-m-d');
+            if($data->status === 'Pending'){
+
+            $data->update(['status'=>1]);
+
+             }else
+             {
+                $data->update(['status'=>0]);
+             }
+
         }
-
-        task::findOrFail($id)->update($data);
         
-        /*if($data->status === 'Pending'){
-
-        $data->update(['status'=>1]);
-
-         }else
-         {
-            $data->update(['status'=>0]);
-         }*/
+       
 
         return 'OK';
     }

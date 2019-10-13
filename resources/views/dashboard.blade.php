@@ -27,7 +27,7 @@
 			
 		</div>
 	</div>
-	@can('admin', Auth::user())
+	
 		<div class="card">
 			<div class="card-body">
 				<div class="container">
@@ -52,7 +52,7 @@
 
 		</div>
 
-	@endcan
+	
 
 @stop
   @push('scripts')
@@ -63,6 +63,7 @@
     	    	$('#myTable').DataTable({
     	 	 	stateSave: false,
     	 	 	"order": [[ 3, "desc" ]],
+    	 	 	"destroy": true,
     	 	 	"columnDefs": [
     				{ "width": "30%", "targets": 0, },
     				{"targets": "_all", "className": "dt-center"}
@@ -145,9 +146,7 @@
 		        var arr = updateId.split('=');
 		        var id = arr[1];
 		
-			$('#editTaskModal').on('shown.bs.modal', function () {
-
-		     	$('#edit_task_detail').trigger('focus');
+				$('#editTaskModal').modal('toggle');
     			$('.btn-prevent-multiple-submits').attr('disabled',false);
         		$('.spinner').hide();
         		var task_detail = $('a[id^=edit][id$='+id+']').closest('tr').find('td:first').text();
@@ -205,7 +204,6 @@
 
       			});//end submis
 	   	
-	   		});//end modal
 
 		});//end click
    
@@ -236,13 +234,13 @@
 		            		
 		            		if (data =="OK"){
 		            			
-		            			$('#json_message').html('<div id="json_message" class="alert alert-success" align="left"><a href="#" class="close" data-dismiss="alert">&times;</a><strong>User Right Updated Sucessfully</strong></div>');
+		            			$('#json_message').html('<div id="json_message" class="alert alert-success" align="left"><a href="#" class="close" data-dismiss="alert">&times;</a><strong>Data Updated Sucessfully</strong></div>');
 		            			$('html,body').animate({scrollTop:0},0);
 
 		            				load_data();
 		            		}else{
 
-		            			$('#json_message').html('<div id="json_message" class="alert alert-danger" align="left"><a href="#" class="close" data-dismiss="alert">&times;</a><strong>User Right is not Updated Sucessfully</strong></div>');
+		            			$('#json_message').html('<div id="json_message" class="alert alert-danger" align="left"><a href="#" class="close" data-dismiss="alert">&times;</a><strong>Data is not Updated Sucessfully</strong></div>');
 		            				$('html,body').animate({scrollTop:0},0);
 		            		}
 			        	}
@@ -251,7 +249,7 @@
 		    }); //end Change Status
 
  		//Ajax Delete Data
-	 		$(document).one("click", 'a[id^=delete]', function(event) {
+	 		$(document).on("click", 'a[id^=delete]', function(event) {
 		        event.preventDefault();
 
 		    if (confirm('Are you sure to delete this record?')) {

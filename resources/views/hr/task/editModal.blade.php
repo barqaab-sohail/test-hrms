@@ -3,7 +3,7 @@
             <div class="modal-dialog" role="document">
               <div class="modal-content">
                 <div class="modal-header">
-                  <h5 class="modal-title" id="exampleModalLabel">Add New Task</h5>
+                  <h5 class="modal-title" id="exampleModalLabel">Edit Task</h5>
                   <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                   </button>
@@ -34,13 +34,13 @@
                                 </div>
                               </div>
 
-                               <div class="form-group row">
+                               {{-- <div class="form-group row">
                                 <div class="col-md-12">
                                   <label class="control-label text-right">Remarks</label>
                                             
                                    <input type="text" id='edit_remarks' name="remarks" value="{{ old('remarks') }}" class="form-control" placeholder="Enter Remarks">
                                 </div>
-                              </div>
+                              </div> --}}
 
                               <input type="number" name="employee_id" value="{{Auth::User()->employee->id}}"   class="form-control " hidden>
                                                                                              
