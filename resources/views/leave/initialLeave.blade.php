@@ -234,7 +234,7 @@
 
       				$.ajax({
 		            url: url, //this is the submit URL
-		            type: 'POST', //or POST
+		            type: 'DELETE', //or POST
 		           
 		            	success: function(data){
 		            		if (data =="OK"){
