@@ -5,7 +5,10 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\User;
 use App\Education;
+use App\employee;
 use DB;
+use App\posting;
+use App\leave_annual_balance;
 
 class HrController extends Controller
 {
@@ -15,6 +18,21 @@ class HrController extends Controller
         $this->middleware('auth');
     }
 
+    public function testing (){
+
+        $data = employee::all()->where('employee_status',0);
+
+        foreach($data as $d){
+
+            $input['leave_type_id'] = 1;
+            $input['employee_id'] = $d->id;
+            $input['year'] = 2019;
+            $input['quota'] = 12;
+
+             leave_annual_balance::create($input);
+        }
+        dd('OK');
+    }
 
     public function index (){
 
