@@ -99,6 +99,7 @@
                     <ul aria-expanded="false" class="collapse">
                         <li><a href="{{route('activeUsers')}}">Active User List</a></li>
                         <li><a href="{{route('setUserRights')}}">Set User Rights</a></li>
+                        <li><a href="">Add Roles & Premissions</a></li>
                     </ul>
                 </li>
 

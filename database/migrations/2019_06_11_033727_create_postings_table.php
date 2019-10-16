@@ -16,7 +16,7 @@ class CreatePostingsTable extends Migration
         Schema::create('postings', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->bigInteger('employee_id')->unsigned();
-            $table->string('position');
+            $table->string('designation_id');
             $table->date('posting_date');
             $table->string('project');
             $table->date('joining_date');
