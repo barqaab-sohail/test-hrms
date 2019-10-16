@@ -171,7 +171,9 @@ window.onunload = function(){null};*/
                 });
 
                 // DatePicker
-                @can('entry', Auth::user())
+                 
+ 
+
                     $(".date_input input").datepicker({
                     dateFormat: 'DD, d-MM-yy',
                     yearRange: '1940:'+ (new Date().getFullYear()+15),
@@ -179,7 +181,9 @@ window.onunload = function(){null};*/
                     changeYear: true
                     });
                 
-                @endcan
+                 
+ 
+
 
 
             $('#myTableStored').DataTable({

@@ -166,6 +166,7 @@ return [
         Intervention\Image\ImageServiceProvider::class,
         MaddHatter\LaravelFullcalendar\ServiceProvider::class,
         Felixkiss\UniqueWithValidator\ServiceProvider::class,
+        Spatie\Permission\PermissionServiceProvider::class,
        
         /*
          * Package Service Providers...

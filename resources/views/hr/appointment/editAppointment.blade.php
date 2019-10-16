@@ -16,12 +16,16 @@
 					</div>
         			
 		        	<div class="col-lg-10">
-						 @can('entry', Auth::user())
+						  
+ 
+
 		                <div style="margin-top:10px; margin-right: 10px;">
 		                    <button type="button" onclick="window.location.href='{{route('employee.index')}}'" class="btn btn-info float-right">Back</button>
 		                    
 		                </div>
-		                @endcan
+		                 
+ 
+
 		                <div class="card-body">
 
 		                    <form action="{{route('appointment.update', ['id'=>$employee->id])}}" method="post" class="form-horizontal form-prevent-m" enctype="multipart/form-data">
@@ -51,10 +55,14 @@
 		                                        	<label class="control-label text-right">Letter Date<span class="text_requried">*</span></label>
 		                                       
 		                                            <input type="text" id="appointment_date" name="appointment_date" value="{!! old('appointment_date',isset($employee->appointment->appointment_date)?$employee->appointment->appointment_date:'')!!}" class="form-control" placeholder="Enter Appointment Letter Date " readonly required>
-													@can('entry', Auth::user())
+													 
+ 
+
 		                                            <br>
 		                                            <i  class="fas fa-trash-alt text_requried"></i>
-		                                            @endcan
+		                                             
+ 
+
 		                                        </div>
 		                                    </div>
 		                                    
@@ -87,10 +95,14 @@
 		                                        <label class="control-label text-right">Expiry Date</label>
 		                                        
 		                                            <input type="text"  id="expiry_date" name="expiry_date" value="{!! old('expiry_date',isset($employee->appointment->expiry_date)?$employee->appointment->expiry_date:'')!!}" class="form-control" placeholder="Enter Expiry Date of Appointment" readonly >
-													@can('entry', Auth::user())
+													 
+ 
+
 		                                            <br>
 		                                            <i  class="fas fa-trash-alt text_requried"></i>
-		                                            @endcan
+		                                             
+ 
+
 
 		                                        </div>
 		                                    </div>  
@@ -176,12 +188,16 @@
 		                            <div class="row">
 		                                <div class="col-md-6">
 		                                    <div class="row">
-		                                    	@can('entry', Auth::user())
+		                                    	 
+ 
+
 		                                        <div class="col-md-offset-3 col-md-9">
 		                                            <button type="submit" class="btn btn-success btn-prevent-multiple-submits">Save</button>
 		                                            <button type="button" onclick="window.location.href='{{route('employee.index')}}'" class="btn btn-inverse">Cancel</button>
 		                                        </div>
-		                                        @endcan
+		                                         
+ 
+
 		                                    </div>
 		                                </div>
 		                            </div>
@@ -314,12 +330,16 @@
 		                            <div class="row">
 		                                <div class="col-md-6">
 		                                    <div class="row">
-		                                    	@can('entry', Auth::user())
+		                                    	 
+ 
+
 		                                        <div class="col-md-offset-3 col-md-9">
 		                                            <button type="submit" class="btn btn-success btn-prevent-multiple-submits">Save</button>
 		                                            <button type="button" onclick="window.location.href='{{route('employee.index')}}'" class="btn btn-inverse">Cancel</button>
 		                                        </div>
-		                                        @endcan
+		                                         
+ 
+
 		                                    </div>
 		                                </div>
 		                            </div>

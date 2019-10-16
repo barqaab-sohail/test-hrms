@@ -30,7 +30,7 @@ class employee extends Model implements Auditable
 
     public function bank()
     {
-        return $this->hasOne('App\bank');
+        return $this->hasMany('App\bank');
     }
 
     public function charging()

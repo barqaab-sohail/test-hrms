@@ -16,7 +16,11 @@
 					<tr>
 						<th>Designation Name</th>
 						<th>Level</th>
-						<th>Actions</th>@can('admin', Auth::user())<th></th>@endcan
+						<th>Actions</th> 
+ 
+<th></th> 
+ 
+
 					</tr>
 					</thead>
 					<tbody>
@@ -25,12 +29,18 @@
 								<td>{{$designationId->name}}</td>
 								<td>{{$designationId->level}}</td>
 								
-								@can('entry', Auth::user())
+								 
+ 
+
 								<td>
 								 <a class="btn btn-info btn-sm" href="{{route('designation.edit',['id'=>$designationId->id])}}" data-toggle="tooltip" data-original-title="Edit"> <i class="fas fa-pencil-alt text-white "></i></a>
 								 </td>
-								 @endcan
-								 @can('admin', Auth::user())
+								  
+ 
+
+								  
+ 
+
 								 <td>
 								 <form action="{{route('designation.destroy',['id'=>$designationId->id])}}" method="POST">
 								 @method('DELETE')
@@ -38,7 +48,9 @@
 								 <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Are you Sure to Delete')" href= data-toggle="tooltip" data-original-title="Delete"> <i class="fas fa-trash-alt"></i></button>
 								 </form>
 								 </td>
-								 @endcan
+								  
+ 
+
 								 
 															
 							</tr>

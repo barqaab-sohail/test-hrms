@@ -50,12 +50,16 @@
                     <ul aria-expanded="false" class="collapse">
                        
                         <li><a href="{{route('employee.show', ['id'=>Auth::user()->employee_id])}}">User Detail</a></li>
-                        @can('entry', Auth::user())
+                         
+ 
+
                        
                         <li><a href="{{route('employee.create')}}">Add Employee</a></li>
                         <li><a href="{{route('employee.index')}}">List of Employees</a></li>
                         <li><a href="{{route('designation.create')}}">Add Designation</a></li>
-                        @endcan
+                         
+ 
+
                        
                     </ul>
                 </li>
@@ -69,15 +73,21 @@
                 </li>
 
                
-                @can('entry', Auth::user())
+                 
+ 
+
                  <li @if(request()->is('personalFiles*')) class="active" @endif > <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i class="mdi mdi-file-document-box"></i><span class="hide-menu">Personal Files</span></a>
                     <ul aria-expanded="false" class="collapse">
                         <li><a href="{{route('personalFileList')}}">List of Personal Files</a></li>
                         
                     </ul>
                 </li>
-                @endcan
-                @can('admin', Auth::user())
+                 
+ 
+
+                 
+ 
+
                 <li @if(request()->is('leave*')) class="active" @endif > <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i class="mdi mdi-file-document"></i><span class="hide-menu">Leave</span></a>
                     <ul aria-expanded="false" class="collapse">
                         <li><a href="{{route('initialBalance.create')}}">Initial Leave Balance</a></li>
@@ -104,7 +114,9 @@
                     
 
                 </li>
-                @endcan
+                 
+ 
+
 
                 <!--
                 <li  ><a class="has-arrow waves-effect waves-dark" href="#"><i class="mdi mdi-alarm-check"></i><span class="hide-menu">Attendance</span></a>

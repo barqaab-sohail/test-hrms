@@ -16,11 +16,15 @@
 					</div>
         	
 		        	<div class="col-lg-10">
-						@can('entry', Auth::user())
+						 
+ 
+
 		                <div style="margin-top:10px; margin-right: 10px;">
 		                    <button type="button" onclick="window.location.href='{{route('employee.index')}}'" class="btn btn-info float-right" data-toggle="tooltip" title="Back to List">Back</button>
 		                </div>
-		                @endcan
+		                 
+ 
+
 		                <div class="card-body">
 
 		                    <form id="employee" action="{{route('employee.update', ['id'=>$employee->id])}}" method="post" class="form-horizontal form-prevent-multiple-submits" enctype="multipart/form-data">
@@ -79,10 +83,14 @@
 		                                        	<label class="control-label text-right">Date of Birth<span class="text_requried">*</span></label>
 		                                        
 		                                            <input type="text" id="date_of_birth" name="date_of_birth" value="{{ old('date_of_birth', $employee->date_of_birth) }}" class="form-control " placeholder="Enter Date of Birth" readonly required>
-		                                            @can('entry', Auth::user())
+		                                             
+ 
+
 		                                            <br>
 		                                            <i class="fas fa-trash-alt text_requried"></i>
-		                                            @endcan
+		                                             
+ 
+
 		                                        </div>
 		                                    </div>
 		                                </div>
@@ -125,10 +133,14 @@
 		                                        	<label class="control-label text-right">CNIC Expiry<span class="text_requried">*</span></label>
 		                                        		                                            
 		                                            <input type="text" id="cnic_expiry" name="cnic_expiry"  value="{{ old('cnic_expiry',$employee->cnic_expiry) }}" placeholder="Enter CNIC Expiry Date" class="form-control " readonly required>
-													@can('entry', Auth::user())
+													 
+ 
+
 		                                            <br>
 		                                            <i class="fas fa-trash-alt text_requried"></i>
-		                                            @endcan
+		                                             
+ 
+
 		                                       
 		                                        </div>
 		                                    </div>
@@ -247,7 +259,9 @@
 
 
 		                        </div>
-		                        @can('entry', Auth::user())
+		                         
+ 
+
 		                        <hr>
 		                        <div class="form-actions">
 		                            <div class="row">
@@ -261,7 +275,9 @@
 		                                </div>
 		                            </div>
 		                        </div>
-		                        @endcan
+		                         
+ 
+
 		                    </form>
 		        		</div>       
 		        	</div>

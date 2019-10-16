@@ -9,8 +9,12 @@ class role extends Model implements Auditable
 {
     use \OwenIt\Auditing\Auditable;
 
-	 public function employee(){
+	public function employee(){
 		return $this->belongsTo('App\employee');
+	}
+
+	public function user(){
+		return $this->belongsTo('App\user');
 	}
 
 }

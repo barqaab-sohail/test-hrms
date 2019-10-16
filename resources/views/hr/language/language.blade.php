@@ -16,12 +16,16 @@
 					</div>
         			
 		        	<div class="col-lg-10">
-						@can('entry', Auth::user())
+						 
+ 
+
 		                <div style="margin-top:10px; margin-right: 10px;">
 		                    <button type="button" onclick="window.location.href='{{route('employee.index')}}'" class="btn btn-info float-right">Back</button>
 		                    
 		                </div>
-		                @endcan
+		                 
+ 
+
 		                <div class="card-body">
 
 		                    <form action="{{route('language.store')}}" method="post" class="form-horizontal form-prevent-multiple-submits" enctype="multipart/form-data">
@@ -100,12 +104,16 @@
 		                            <div class="row">
 		                                <div class="col-md-6">
 		                                    <div class="row">
-		                                     @can('entry', Auth::user())
+		                                      
+ 
+
 		                                        <div class="col-md-offset-3 col-md-9">
 		                                            <button type="submit" class="btn btn-success btn-prevent-multiple-submits">Save Language</button>
 		                                            <button type="button" onclick="window.location.href='{{route('employee.index')}}'" class="btn btn-inverse">Cancel</button>
 		                                        </div>
-		                                       @endcan
+		                                        
+ 
+
 		                                    </div>
 		                                </div>
 		                            </div>

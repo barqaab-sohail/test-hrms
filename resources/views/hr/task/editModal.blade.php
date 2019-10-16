@@ -50,12 +50,16 @@
                                 <div class="row">
                                     <div class="col-md-6">
                                         <div class="row">
-                                       @can('entry', Auth::user())
+                                        
+ 
+
                                             <div class="col-md-offset-3 col-md-9">
                                                 <button type="submit" class="btn btn-success btn-prevent-multiple-submits"><i class="spinner fa fa-spinner fa-spin" ></i>Save</button>
                                                 
                                             </div>
-                                        @endcan
+                                         
+ 
+
                                         </div>
                                     </div>
                                 </div>

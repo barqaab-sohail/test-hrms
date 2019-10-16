@@ -47,9 +47,13 @@
 									<a class="btn btn-info btn-sm" href="{{route('employee.edit',['id'=>$employee->id])}}" data-toggle="tooltip" title="Edit"><i class="fas fa-pencil-alt text-white "></i></a>
 								</td>
 								<td>
-								@can('admin', Auth::user())
+								 
+ 
+
 									<a class="btn btn-danger btn-sm" onclick="return confirm('Are you Sure to Delete')" href="{{route('inactiveEmployee',['id'=>$employee->id])}}" data-toggle="tooltip" title="Delete"> <i class="fas fa-trash-alt"></i></a>
-								 @endcan
+								  
+ 
+
 								</td>
 															
 							</tr>

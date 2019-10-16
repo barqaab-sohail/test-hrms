@@ -54,10 +54,14 @@
 		                                        <div class="col-md-9 date_input">
 											   		<label class="control-label text-right">Effective Date</label><span class="text_requried">*</span>
 		                                             <input type="text" id="effective_date" name="effective_date" class="form-control prc"  required readonly>
-		                                             @can('entry', Auth::user())
+		                                              
+ 
+
 		                                            <br>
 		                                            <i class="fas fa-trash-alt text_requried"></i> 
-		                                            @endcan
+		                                             
+ 
+
 		                                        </div>
 		                                    </div>
 		                                </div>

@@ -22,7 +22,8 @@
         "mbezhanov/faker-provider-collection": "^1.2",
         "owen-it/laravel-auditing": "^9.2",
         "pusher/pusher-php-server": "~4.0",
-        "spatie/laravel-backup": "^5.12"
+        "spatie/laravel-backup": "^5.12",
+        "spatie/laravel-permission": "^3.0"
     },
     "require-dev": {
         "beyondcode/laravel-dump-server": "^1.0",

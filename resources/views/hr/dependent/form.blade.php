@@ -21,10 +21,14 @@
 		                                        	<label class="control-label text-right">Date of Birth</label>
 		                                        
 		                                            <input type="text" id="date_of_birth" name="date_of_birth" value="{!! old('date_of_birth')?? isset($data)?$data->date_of_birth:'' !!}" class="form-control " placeholder="Enter Date of Birth" readonly>
-													@can('entry', Auth::user())
+													 
+ 
+
 		                                            <br>
 		                                            <i class="fas fa-trash-alt text_requried"></i>
-		                                            @endcan
+		                                             
+ 
+
 		                                        </div>
 		                                    </div>
 		                                </div>

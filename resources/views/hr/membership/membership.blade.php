@@ -16,12 +16,16 @@
 					</div>
         			
 		        	<div class="col-lg-10">
-						@can('entry', Auth::user())
+						 
+ 
+
 		                <div style="margin-top:10px; margin-right: 10px;">
 		                    <button type="button" onclick="window.location.href='{{route('employee.index')}}'" class="btn btn-info float-right">Back</button>
 		                    
 		                </div>
-		                @endcan
+		                 
+ 
+
 		                <div class="card-body">
 
 		                    <form action="{{route('membership.store')}}" method="post" class="form-horizontal form-prevent-multiple-submits" id="membership" enctype="multipart/form-data">
@@ -66,10 +70,14 @@
 		                                        	<label class="control-label text-right ">Expiry Date</label>
 		                                        
 		                                            <input type="text"  id="expiry_date"  name="expiry_date"  value="{{ old('expiry_date') }}" class="form-control" readonly >
-													@can('entry', Auth::user())
+													 
+ 
+
 		                                            <br>
 		                                            <i  class="fas fa-trash-alt text_requried"></i>
-		                                            @endcan
+		                                             
+ 
+
 		                                        </div>
 		                                       
 		                                       <input type="number" name="employee_id" value="{{session('employee_id')}}"   class="form-control " hidden>
@@ -84,12 +92,16 @@
 		                            <div class="row">
 		                                <div class="col-md-6">
 		                                    <div class="row">
-		                                    	@can('entry', Auth::user())
+		                                    	 
+ 
+
 		                                        <div class="col-md-offset-3 col-md-9">
 		                                            <button type="submit" class="btn btn-success btn-prevent-multiple-submits">Add Membership</button>
 		                                            <button type="button" onclick="window.location.href='{{route('employee.index')}}'" class="btn btn-inverse">Cancel</button>
 		                                        </div>
-		                                        @endcan
+		                                         
+ 
+
 		                                    </div>
 		                                </div>
 		                            </div>

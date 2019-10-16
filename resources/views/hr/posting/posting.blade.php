@@ -16,12 +16,16 @@
 					</div>
         			
 		        	<div class="col-lg-10">
-						 @can('entry', Auth::user())
+						  
+ 
+
 		                <div style="margin-top:10px; margin-right: 10px;">
 		                    <button type="button" onclick="window.location.href='{{route('employee.index')}}'" class="btn btn-info float-right">Back</button>
 		                    
 		                </div>
-		                @endcan
+		                 
+ 
+
 		                <div class="card-body">
 
 		                    <form action="{{route('posting.store')}}" method="post" class="form-horizontal form-prevent-multiple-submits" enctype="multipart/form-data">
@@ -57,10 +61,14 @@
 		                                        	<label class="control-label text-right">Posting Date<span class="text_requried">*</span></label>
 		                                        
 		                                            <input type="text" id="posting_date" name="posting_date" value="{{ old('posting_date') }}" class="form-control " placeholder="Enter Posting Date" required readonly>
-													@can('entry', Auth::user())
+													 
+ 
+
 		                                            <br>
 		                                            <i class="fas fa-trash-alt text_requried"></i>
-		                                            @endcan
+		                                             
+ 
+
 		                                        </div>
 		                                    </div>
 		                                </div>
@@ -89,10 +97,14 @@
 		                                        <label class="control-label text-right">Joining Date<span class="text_requried">*</span></label>
 		                                        
 		                                            <input type="text" id="joining_date" name="joining_date" value="{{ old('joining_date') }}" class="form-control " placeholder="Enter joining Date" required readonly>
-													@can('entry', Auth::user())
+													 
+ 
+
 		                                            <br>
 		                                            <i  class="fas fa-trash-alt text_requried"></i>
-		                                            @endcan
+		                                             
+ 
+
 		                                        </div>
 		                                    </div>
 		                                </div>
@@ -144,12 +156,16 @@
 		                                <div class="col-md-6">
 		                                    <div class="row">
 
-		                                    	@can('entry', Auth::user())
+		                                    	 
+ 
+
 		                                        <div class="col-md-offset-3 col-md-9">
 		                                            <button type="submit" class="btn btn-success btn-prevent-multiple-submits">Add Posting</button>
 		                                            <button type="button" onclick="window.location.href='{{route('employee.index')}}'" class="btn btn-inverse">Cancel</button>
 		                                        </div>
-		                                        @endcan
+		                                         
+ 
+
 		                                    </div>
 		                                </div>
 		                            </div>

@@ -18,7 +18,11 @@
 						<th>View</th>
 						
 						
-						@can('entry', Auth::user())<th colspan="2" style="text-align: center;"> Actions </th>@endcan
+						 
+ 
+<th colspan="2" style="text-align: center;"> Actions </th> 
+ 
+
 					</tr>
 					</thead>
 					<tbody>
@@ -33,7 +37,9 @@
 								
 								
 								
-								@can('entry', Auth::user())
+								 
+ 
+
 								<td>
 								 <a class="btn btn-info btn-sm" href="{{route('document.edit',['id'=>$documentId->id])}}" data-toggle="tooltip" data-original-title="Edit"> <i class="fas fa-pencil-alt text-white "></i></a>
 								 </td>
@@ -44,7 +50,9 @@
 								 <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Are you Sure to Delete')" href= data-toggle="tooltip" data-original-title="Delete"> <i class="fas fa-trash-alt"></i></button>
 								 </form>
 								 </td>
-								 @endcan
+								  
+ 
+
 															
 							</tr>
 						@endforeach

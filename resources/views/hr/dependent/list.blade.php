@@ -18,7 +18,11 @@
 						<th>Date of Birth</th>
 						<th>Relation</th>
 						<th>Gender</th>
-						@can('entry', Auth::user())<th> Actions </th> @endcan
+						 
+ 
+<th> Actions </th>  
+ 
+
 					</tr>
 					</thead>
 					<tbody>
@@ -29,7 +33,9 @@
 								<td>{{$dependentId->relation}}</td>
 								<td>{{$dependentId->gender->name}}</td>
 								<td>
-								@can('entry', Auth::user())
+								 
+ 
+
 								<td>
 								 <a class="btn btn-info btn-sm" href="{{route('dependent.edit',['id'=>$dependentId->id])}}" data-toggle="tooltip" data-original-title="Edit"> <i class="fas fa-pencil-alt text-white "></i></a>
 								 </td>
@@ -40,7 +46,9 @@
 								 <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Are you Sure to Delete')" href= data-toggle="tooltip" data-original-title="Delete"> <i class="fas fa-trash-alt"></i></button>
 								 </form>
 								 </td>
-								 @endcan
+								  
+ 
+
 															
 							</tr>
 						@endforeach

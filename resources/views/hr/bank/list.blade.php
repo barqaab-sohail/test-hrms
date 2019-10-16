@@ -18,7 +18,11 @@
 						<th>Account No</th>
 						<th>Branch Name</th>
 						<th>Branch Code</th>
-						@can('entry', Auth::user())<th> Actions </th> @endcan
+						 
+ 
+<th> Actions </th>  
+ 
+
 					</tr>
 					</thead>
 					<tbody>
@@ -29,7 +33,9 @@
 								<td>{{$bankId->branch_name}}</td>
 								<td>{{$bankId->branch_code}}</td>
 								<td>
-								@can('entry', Auth::user())
+								 
+ 
+
 								<td>
 								 <a class="btn btn-info btn-sm" href="{{route('bank.edit',['id'=>$bankId->id])}}" data-toggle="tooltip" data-original-title="Edit"> <i class="fas fa-pencil-alt text-white "></i></a>
 								 </td>
@@ -40,7 +46,9 @@
 								 <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Are you Sure to Delete')" href= data-toggle="tooltip" data-original-title="Delete"> <i class="fas fa-trash-alt"></i></button>
 								 </form>
 								 </td>
-								 @endcan
+								  
+ 
+
 															
 							</tr>
 						@endforeach

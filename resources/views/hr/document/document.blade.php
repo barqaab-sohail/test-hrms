@@ -14,12 +14,16 @@
 					</div>
 
 		        	<div class="col-lg-10">
-						@can('entry', Auth::user())
+						 
+ 
+
 		                <div style="margin-top:10px; margin-right: 10px;">
 		                    <button type="button" onclick="window.location.href='{{route('employee.index')}}'" class="btn btn-info float-right">Back</button>
 		                    
 		                </div>
-		                @endcan
+		                 
+ 
+
 		                <div class="card-body">
 
 		                    <form action="{{route('document.store')}}" method="post" class="form-horizontal form-prevent-multiple-submits" id="document" enctype="multipart/form-data">
@@ -70,10 +74,14 @@
 		                                        	<label class="control-label text-right ">Date</label>
 		                                        
 		                                            <input type="text"  id="date" name="date" value="{{ old('date') }}" class="form-control" readonly  >
-													@can('entry', Auth::user())
+													 
+ 
+
 		                                            <br>
 		                                            <i class="fas fa-trash-alt text_requried"></i>
-		                                            @endcan
+		                                             
+ 
+
 		                                        </div>
 		                                       
 		                                       
@@ -82,7 +90,9 @@
 		        						<div class="col-md-2">
 		        						</div>
 		                                <div class="col-md-3">
-		                                	@can('entry', Auth::user())
+		                                	 
+ 
+
 		                                    <div class="form-group row">
 		                                        <center >
 		                                		<img src="{{asset('Massets/images/document.png')}}" class="img-round picture-container picture-src"  id="wizardPicturePreview"  title="" width="150" >
@@ -97,7 +107,9 @@
 		                                       
 		                                       <input type="number" name="employee_id" value="{{session('employee_id')}}"   class="form-control " hidden>
 		                                    </div>
-		                                    @endcan
+		                                     
+ 
+
 		                                </div>
 		                                		                                
 		                            </div>
@@ -114,13 +126,17 @@
 		                            <div class="row">
 		                                <div class="col-md-6">
 		                                    <div class="row">
-		                                    	@can('entry', Auth::user())
+		                                    	 
+ 
+
 		                                        <div class="col-md-offset-3 col-md-9">
 		                                            <button type="submit" class="btn btn-success btn-prevent-multiple-submits">Add Document</button>
 
 		                                            <button type="button" onclick="window.location.href='{{route('employee.index')}}'" class="btn btn-inverse">Cancel</button>
 		                                        </div>
-		                                        @endcan
+		                                         
+ 
+
 		                                    </div>
 		                                </div>
 		                            </div>

@@ -73,7 +73,9 @@
                 
                 <!-- Top Right Side User Picutre  -->
                 <!-- Message -->
-                @can('admin', Auth::user())
+                 
+ 
+
                 <li class="nav-item dropdown"> 
                     <a class="nav-link dropdown-toggle text-muted waves-effect waves-dark"  href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     @if(Auth::User()->unreadNotifications->count())<span class="badge badge-danger">{{Auth::User()->unreadNotifications->count()}}</span>@endif<i class="fas fa-envelope"></i>
@@ -89,7 +91,9 @@
                     </div>
                     
                 </li>
-                @endcan
+                 
+ 
+
                 <!-- Notification -->
                 <li class="nav-item dropdown"> 
                     <a class="nav-link dropdown-toggle text-muted waves-effect waves-dark"  href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -98,9 +102,13 @@
                      <div class="dropdown-menu dropdown-menu-right scale-up">
                         <ul class="dropdown-user">
                             <li><a href="{{route('notificationList')}}"  class="link" data-toggle="tooltip" title="Notification List"><i class="fa fa-tv"></i> View Notifications</a></li>
-                            @can('admin', Auth::user())
+                             
+ 
+
                             <li><a href="{{route('createNotification')}}"  class="link" data-toggle="tooltip" title="Create Notification"><i class="fa fa-bell"></i> Create Notification</a></li>
-                            @endcan
+                             
+ 
+
                             <li><a href="{{route('createUserNotification')}}"  class="link" data-toggle="tooltip" title="Send Notification to HR"><i class="fas fa-arrow-right"></i> Send Notification to HR</a></li>
 
 

@@ -16,12 +16,16 @@
 					</div>
         			
 		        	<div class="col-lg-10">
-						@can('entry', Auth::user())
+						 
+ 
+
 		                <div style="margin-top:10px; margin-right: 10px;">
 		                    <button type="button" onclick="window.location.href='{{route('employee.index')}}'" class="btn btn-info float-right">Back</button>
 		                    
 		                </div>
-		                @endcan
+		                 
+ 
+
 		                <div class="card-body">
 
 		                    <form id="education" action="{!!route('education.update', ['id'=>optional($data)->id])!!}" method="post" class="form-horizontal form-prevent-multiple-submits" enctype="multipart/form-data">
@@ -194,7 +198,9 @@
 		                          
 		                           
 		                        </div>
-		                        @can('entry', Auth::user())
+		                         
+ 
+
 		                         <hr>
 		                        <div class="form-actions">
 		                            <div class="row">
@@ -209,7 +215,9 @@
 		                                </div>
 		                            </div>
 		                        </div>
-		                        @endcan
+		                         
+ 
+
 		                    </form>
 		
 	@if($educationIds->count()!=0)                    
