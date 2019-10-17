@@ -222,3 +222,5 @@ return  redirect()->route('login');
 
 Route::resource('hrms/task','TaskController');
 
+Route::resource('admin/role','Admin\RoleController');
+Route::resource('admin/premission','Admin\PremissionController');

@@ -97,7 +97,9 @@
                     <ul aria-expanded="false" class="collapse">
                         <li><a href="{{route('activeUsers')}}">Active User List</a></li>
                         <li><a href="{{route('setUserRights')}}">Set User Rights</a></li>
-                        <li><a href="">Add Roles & Premissions</a></li>
+                        <li><a href="{{route('role.index')}}">Add Roles</a></li>
+                        <li><a href="{{route('premission.index')}}">Add Premission</a></li>
+                        <li><a href="">Give Premissions</a></li>
                     </ul>
                 </li>
 
