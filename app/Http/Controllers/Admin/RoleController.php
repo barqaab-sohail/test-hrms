@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Spatie\Permission\Models\Role;
+use App\Http\Requests\Admin\StoreRole;
 
 class RoleController extends Controller
 {
@@ -20,7 +21,7 @@ class RoleController extends Controller
     	return view('admin.role.index', compact('roleIds'));
     }
 
-    public function store (Request $request){
+    public function store (StoreRole $request){
 
     	$role = Role::create(['name' => $request->name]);
 
@@ -34,7 +35,7 @@ class RoleController extends Controller
         return view ('admin.role.edit',compact('data','roleIds'));
     }
     
-    public function update(Request $request, $id)
+    public function update(StoreRole $request, $id)
     {
      
      Role::findOrFail($id)->update(['name' => $request->name]);

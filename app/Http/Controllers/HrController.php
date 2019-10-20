@@ -7,6 +7,7 @@ use App\User;
 use App\Education;
 use App\employee;
 use DB;
+use Illuminate\Support\Facades\Auth;
 use App\posting;
 use App\leave_annual_balance;
 
@@ -20,18 +21,19 @@ class HrController extends Controller
 
     public function testing (){
 
-        $data = employee::all()->where('employee_status',0);
+        // $data = employee::all()->where('employee_status',0);
 
-        foreach($data as $d){
+        // foreach($data as $d){
 
-            $input['leave_type_id'] = 1;
-            $input['employee_id'] = $d->id;
-            $input['year'] = 2019;
-            $input['quota'] = 12;
+        //     $input['leave_type_id'] = 1;
+        //     $input['employee_id'] = $d->id;
+        //     $input['year'] = 2019;
+        //     $input['quota'] = 12;
 
-             leave_annual_balance::create($input);
-        }
-        dd('OK');
+        //      leave_annual_balance::create($input);
+        // }
+        // dd('OK');
+        Auth::user()->givePermissionTo('view contact');
     }
 
     public function index (){

@@ -98,8 +98,8 @@
                         <li><a href="{{route('activeUsers')}}">Active User List</a></li>
                         <li><a href="{{route('setUserRights')}}">Set User Rights</a></li>
                         <li><a href="{{route('role.index')}}">Add Roles</a></li>
-                        <li><a href="{{route('premission.index')}}">Add Premission</a></li>
-                        <li><a href="">Give Premissions</a></li>
+                        <li><a href="{{route('permission.index')}}">Add Permission</a></li>
+                        <li><a href="">Give Permissions</a></li>
                     </ul>
                 </li>
 
@@ -110,13 +110,13 @@
                     </ul>
                 </li>
 
-
+                @can('view', Auth::user())
                 <li @if(request()->is('*phone*')) class="active" @endif > <a id="notInclude" class="has-arrow waves-effect waves-dark" href="{{route('contactNumber.index')}}" aria-expanded="false"><i class="fas fa-phone"></i><span class="hide-menu">Contact Numbers</span></a>
                     
 
                 </li>
                  
- 
+                @endcan
 
 
                 <!--

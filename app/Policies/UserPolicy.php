@@ -32,5 +32,11 @@ class UserPolicy
         return $user->role_id ==1;
     }
 
+    public function view (User $user){
+        if ($user->can('view contact')){
+            return true;
+        }
+
+    }
     
 }

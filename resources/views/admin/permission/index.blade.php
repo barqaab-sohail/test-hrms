@@ -25,18 +25,18 @@
 		                </div>
 		                <div class="card-body">
 
-		                    <form action="{{route('premission.store')}}" method="post" class="form-horizontal form-prevent-multiple-submits" enctype="multipart/form-data">
+		                    <form action="{{route('permission.store')}}" method="post" class="form-horizontal form-prevent-multiple-submits" enctype="multipart/form-data">
 		                        {{csrf_field()}}
 		                        <div class="form-body">
 		                            
-		                            <h3 class="box-title">Add Premission</h3>
+		                            <h3 class="box-title">Add Permission</h3>
 		                            <hr class="m-t-0 m-b-40">
 		                            <div class="row">
 		                                <div class="col-md-9">
 		                                    <div class="form-group row">
-		                                        <label class="control-label text-right col-md-3">Premission Name</label>
+		                                        <label class="control-label text-right col-md-3">Permission Name</label>
 		                                        <div class="col-md-9">
-		                                            <input type="text"  name="name" value="" class="form-control" placeholder="Enter Premission Name" required>
+		                                            <input type="text"  name="name" value="" class="form-control" placeholder="Enter permission Name" required>
 		                                        </div>
 		                                    </div>
 		                                </div>
@@ -63,9 +63,9 @@
 		                       
 		                    </form>
 
-@if($premissionIds->count()!=0)
+@if($permissionIds->count()!=0)
 
-@include('admin.premission.list')
+@include('admin.permission.list')
 	
 @endif
 

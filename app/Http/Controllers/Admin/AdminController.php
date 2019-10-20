@@ -7,7 +7,7 @@ use App\Http\Controllers\Controller;
 use App\sessions;
 use DB;
 use App\employee;
-use App\role;
+use Spatie\Permission\Models\Role;
 use App\User;
 
 class AdminController extends Controller
@@ -40,12 +40,16 @@ class AdminController extends Controller
 
     public function setUserRights(){
        $employees = employee::all()->where('employee_status','0');
-       $roles = role::all();
+       $roles = Role::all();
        return view('admin.setUserRights', compact('employees','roles'));
     }
 
     public function updateActiveUsers(Request $request, $id){
-        User::updateOrCreate(['employee_id' => $id], $request->all());
+       
+        $user = User::all()->where('employee_id', $id)->first();
+        $role = Role::all()->where('id', $request->role_id)->first();
+        $user->assignRole($role->name);
+        //User::updateOrCreate(['employee_id' => $id], $request->all());
         return "OK";
     }
 
