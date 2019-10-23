@@ -15,7 +15,7 @@ class CreateLeaveTypesTable extends Migration
     {
         Schema::create('leave_types', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('name');
+            $table->string('name')->unique();
             $table->tinyInteger('annual_quota')->unsigned();
             $table->boolean('isAccumulate')->default(false);
             $table->tinyInteger('accumulate_limit')->default(0);

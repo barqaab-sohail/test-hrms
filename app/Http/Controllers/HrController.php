@@ -9,7 +9,8 @@ use App\employee;
 use DB;
 use Illuminate\Support\Facades\Auth;
 use App\posting;
-use App\leave_annual_balance;
+use App\leave_balance;
+use App\leave_type;
 
 class HrController extends Controller
 {
@@ -21,19 +22,32 @@ class HrController extends Controller
 
     public function testing (){
 
-        // $data = employee::all()->where('employee_status',0);
-
+        $data = employee::all()->where('employee_status',0);
+        $leaveType=leave_type::all();
+        //dd($data->appointment->category);
         // foreach($data as $d){
 
-        //     $input['leave_type_id'] = 1;
-        //     $input['employee_id'] = $d->id;
-        //     $input['year'] = 2019;
-        //     $input['quota'] = 12;
+        //     foreach($leaveType as $leave){
+        //         $balance = 0;
 
-        //      leave_annual_balance::create($input);
+        //         if (($leave->name =="Earned Leave")&&($d->appointment->category=="A")){
+        //             $balance = 18;
+        //         }elseif(($leave->name =="Earned Leave")&&($d->appointment->category!="A")){
+        //              $balance = 0;
+        //         }elseif($leave->name =="Casual Leave"){
+        //              $balance = 12;
+        //         }
+
+        //     $input['leave_type_id'] = $leave->id;
+        //     $input['employee_id'] = $d->id;
+        //     $input['balance'] = $balance;
+        //     $input['year'] = 2019;
+
+        //      leave_balance::create($input);
+        //     }
         // }
-        // dd('OK');
-        Auth::user()->givePermissionTo('view contact');
+        dd('OK');
+       // Auth::user()->givePermissionTo('view contact');
     }
 
     public function index (){
