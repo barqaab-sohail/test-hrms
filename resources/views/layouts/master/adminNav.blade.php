@@ -50,17 +50,10 @@
                     <ul aria-expanded="false" class="collapse">
                        
                         <li><a href="{{route('employee.show', ['id'=>Auth::user()->employee_id])}}">User Detail</a></li>
-                         
- 
-
-                       
                         <li><a href="{{route('employee.create')}}">Add Employee</a></li>
                         <li><a href="{{route('employee.index')}}">List of Employees</a></li>
                         <li><a href="{{route('designation.create')}}">Add Designation</a></li>
-                         
- 
-
-                       
+                      
                     </ul>
                 </li>
                 
@@ -88,7 +81,7 @@
 
                 <li @if(request()->is('leave*')) class="active" @endif > <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i class="mdi mdi-file-document"></i><span class="hide-menu">Leave</span></a>
                     <ul aria-expanded="false" class="collapse">
-                        <li><a href="">Initial Leave Balance</a></li>
+                        <li><a href="{{route('leaveType.index')}}">Leave Types</a></li>
                         
                     </ul>
                 </li>
@@ -110,13 +103,13 @@
                     </ul>
                 </li>
 
-                @can('view', Auth::user())
+                
                 <li @if(request()->is('*phone*')) class="active" @endif > <a id="notInclude" class="has-arrow waves-effect waves-dark" href="{{route('contactNumber.index')}}" aria-expanded="false"><i class="fas fa-phone"></i><span class="hide-menu">Contact Numbers</span></a>
                     
 
                 </li>
                  
-                @endcan
+             
 
 
                 <!--
