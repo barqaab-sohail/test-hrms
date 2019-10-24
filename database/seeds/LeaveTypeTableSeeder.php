@@ -19,8 +19,8 @@ class LeaveTypeTableSeeder extends Seeder
                 "isAccumulate" => false,
                 "isHalfLeave" => true,
                 "accumulate_limit"=>0,
-                "starting"=>1,
-                "ending"=>12,
+                "starting_month"=>1,
+                "ending_month"=>12,
                 "isEncashment"=>false),
           array(
                 "name" => "Earned Leave",
@@ -28,8 +28,8 @@ class LeaveTypeTableSeeder extends Seeder
                 "isAccumulate" => true,
                 "isHalfLeave" => false,
                 "accumulate_limit"=>60.0,
-                "starting"=>1,
-                "ending"=>12,
+                "starting_month"=>1,
+                "ending_month"=>12,
                 "isEncashment"=>false),
            );
 		DB::table('leave_types')->insert($leaveTypes);

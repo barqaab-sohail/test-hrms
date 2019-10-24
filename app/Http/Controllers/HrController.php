@@ -25,28 +25,41 @@ class HrController extends Controller
         $data = employee::all()->where('employee_status',0);
         $leaveType=leave_type::all();
         //dd($data->appointment->category);
-        // foreach($data as $d){
+        DB::beginTransaction();
+        try { 
+            foreach($data as $d){
 
-        //     foreach($leaveType as $leave){
-        //         $balance = 0;
+                foreach($leaveType as $leave){
+                    $balance = 0;
 
-        //         if (($leave->name =="Earned Leave")&&($d->appointment->category=="A")){
-        //             $balance = 18;
-        //         }elseif(($leave->name =="Earned Leave")&&($d->appointment->category!="A")){
-        //              $balance = 0;
-        //         }elseif($leave->name =="Casual Leave"){
-        //              $balance = 12;
-        //         }
+                        if( isset($d->appointment->category)){
 
-        //     $input['leave_type_id'] = $leave->id;
-        //     $input['employee_id'] = $d->id;
-        //     $input['balance'] = $balance;
-        //     $input['year'] = 2019;
+                            if (($leave->name =="Earned Leave")&&($d->appointment->category=="A")){
+                                $balance = 18;
+                            }elseif($leave->name =="Casual Leave"){
+                                 $balance = 12;
+                            }elseif(($leave->name =="Earned Leave")&&($d->appointment->category!="A")){
+                                 continue;
+                            }
+                        }
 
-        //      leave_balance::create($input);
-        //     }
-        // }
-        dd('OK');
+                    $input['leave_type_id'] = $leave->id;
+                    $input['employee_id'] = $d->id;
+                    $input['balance'] = $balance;
+                    $input['year'] = 2019;
+
+                 leave_balance::create($input);
+                }
+            }
+        DB::commit();
+        return redirect()->route('dashboard')->with('success', 'Leave Assigned  succesfully');
+        }catch(\Illuminate\Database\QueryException $ex){ 
+             //$error = $ex->getMessage();
+            $error = "We Found Some error"; 
+            DB::rollback();
+            return redirect()->route('dashboard')->with('error', $error);
+             // Note any method of class PDOException can be called on $ex.
+        }
        // Auth::user()->givePermissionTo('view contact');
     }
 
