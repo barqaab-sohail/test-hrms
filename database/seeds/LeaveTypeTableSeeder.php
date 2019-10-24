@@ -15,17 +15,19 @@ class LeaveTypeTableSeeder extends Seeder
          $leaveTypes = array(
             array(
                 "name" => "Casual Leave",
-                "annual_quota" => 12,
+                "annual_quota" => 12.0,
                 "isAccumulate" => false,
+                "isHalfLeave" => true,
                 "accumulate_limit"=>0,
                 "starting"=>1,
                 "ending"=>12,
                 "isEncashment"=>false),
           array(
                 "name" => "Earned Leave",
-                "annual_quota" => 18,
+                "annual_quota" => 18.0,
                 "isAccumulate" => true,
-                "accumulate_limit"=>60,
+                "isHalfLeave" => false,
+                "accumulate_limit"=>60.0,
                 "starting"=>1,
                 "ending"=>12,
                 "isEncashment"=>false),

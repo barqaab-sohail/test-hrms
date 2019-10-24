@@ -16,11 +16,12 @@ class CreateLeaveTypesTable extends Migration
         Schema::create('leave_types', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('name')->unique();
-            $table->tinyInteger('annual_quota')->unsigned();
+            $table->float('annual_quota')->unsigned();
             $table->boolean('isAccumulate')->default(false);
-            $table->tinyInteger('accumulate_limit')->default(0);
-            $table->tinyInteger('starting');
-            $table->tinyInteger('ending');
+            $table->boolean('isHalfLeave')->default(false);
+            $table->float('accumulate_limit')->default(0);
+            $table->tinyInteger('starting_month');
+            $table->tinyInteger('ending_month');
             $table->boolean('isEncashment')->default(false);
             $table->timestamps();
         });
