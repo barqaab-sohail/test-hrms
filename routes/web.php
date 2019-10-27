@@ -214,7 +214,8 @@ Route::get('personalFiles/list','PersonalFileController@index')->name('personalF
 //Initial Balance
 //Route::resource('leave/initialBalance','Leave\InitialBalanceController');
 
-Route::resource('leave/leaveType','Leave\LeaveTypeController');
+
+Route::resource('leave/leaveQuota','Leave\LeaveQuotaController');
 
 Route::get('/', function (){
 return  redirect()->route('login');

@@ -77,12 +77,40 @@
 		                            <div class="row">
 		                             	<div class="col-md-12">
 		                            		<div class="form-group row">
-												<div class="col-md-12">
+												<div class="col-md-8">
 												<label class="control-label text-right">Remarks</label>
 		                            			
 		                            			<input type="text" name="promotion_remarks" value="{{ old('promotion_remarks')}}" class="form-control"  requried>
 		                            			</div>
+		                            			<!--span-->
+		                            			<div class="col-md-2">
+		                                        	<label class="control-label text-right">Category</label>
+		                                        
+		                                            <select  name="category"  class="form-control selectTwo" >
+                                                        <option value=""></option>
+                                                        
+                                                        <option value="A">A</option>
 
+														<option value="B">B</option>
+														<option value="C">C</option>                                                       
+                                                    </select>
+		                                        </div>
+		                                        <div class="col-md-2">
+		                                        	<label class="control-label text-right">Grade</label>
+		                                        
+		                                            <select  name="grade"  class="form-control selectTwo">
+		                                            
+		                                            <option value=""></option>
+		                                            
+
+													@for ($i = 1; $i < 15; $i++)
+    												<option value="{{$i}}">{{ $i }}</option>
+													@endfor
+
+		                                            </select>
+
+		                                        </div>
+		                            			<!--/span-->
 		                            		</div>
 		                            	</div>
 

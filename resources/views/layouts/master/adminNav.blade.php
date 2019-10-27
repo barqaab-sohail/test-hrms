@@ -81,7 +81,7 @@
 
                 <li @if(request()->is('leave*')) class="active" @endif > <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i class="mdi mdi-file-document"></i><span class="hide-menu">Leave</span></a>
                     <ul aria-expanded="false" class="collapse">
-                        <li><a href="{{route('leaveType.index')}}">Leave Types</a></li>
+                        <li><a href="{{route('leaveQuota.index')}}">Leave Quota</a></li>
                         
                     </ul>
                 </li>

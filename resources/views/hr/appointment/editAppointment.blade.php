@@ -118,16 +118,16 @@
 		                                        	<label class="control-label text-right">Category<span class="text_requried">*</span></label>
 		                                        
 		                                            <select  name="category"  class="form-control selectTwo" required>
-                                                        <option value=""></option>
-                                                        @if(isset($employee->appointment->category)){
-                                                        <option value="A" @if($employee->appointment->category == 'A') selected="selected" @endif>A</option>
-                                                        <option value="B" @if($employee->appointment->category == 'B') selected="selected" @endif>B</option> 
-                                                        <option value="C" @if($employee->appointment->category == 'C') selected="selected" @endif>C</option> }
-                                                        @else
+                                                        @if(isset($employee->appointment->category))
+ 														<option value="{{$employee->appointment->category }}">
+														{{$employee->appointment->category }}</option>
+														@else
+														<option value=""></option>
+														@endif
+
                                                         <option value="A">A</option>
                                                         <option value="B">B</option>
                                                         <option value="C">C</option>
-                                                        @endif
                                                     </select>
 		                                        </div>
 		                                        <div class="col-md-3">

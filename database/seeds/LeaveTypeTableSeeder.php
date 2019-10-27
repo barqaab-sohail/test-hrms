@@ -5,13 +5,12 @@ use Illuminate\Database\Seeder;
 class LeaveTypeTableSeeder extends Seeder
 {
     /**
-     * Run the database seeds.
-     *
-     * @return void
-     */
+    * Run the database seeds.
+    *
+    * @return void
+    */
     public function run()
     {
-        
          $leaveTypes = array(
             array(
                 "name" => "Casual Leave",
@@ -22,7 +21,7 @@ class LeaveTypeTableSeeder extends Seeder
                 "starting_month"=>1,
                 "ending_month"=>12,
                 "isEncashment"=>false),
-          array(
+            array(
                 "name" => "Earned Leave",
                 "annual_quota" => 18.0,
                 "isAccumulate" => true,
@@ -31,7 +30,7 @@ class LeaveTypeTableSeeder extends Seeder
                 "starting_month"=>1,
                 "ending_month"=>12,
                 "isEncashment"=>false),
-           );
+            );
 		DB::table('leave_types')->insert($leaveTypes);
     }
 }

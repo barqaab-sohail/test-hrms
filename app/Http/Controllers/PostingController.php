@@ -26,18 +26,25 @@ class PostingController extends Controller
     public function create(){
 
         $employee = employee::find(session('employee_id'));
-        $employees = DB::table('employees')
-                    ->join('postings','employees.id','=','postings.employee_id')
-                    ->join('designations','postings.designation_id','=','designations.id')
+        $managers = DB::table('employees')
+                    ->leftJoin('postings','employees.id','=','postings.employee_id')    
+                   // ->leftJoin('designations AS d','postings.designation_id','=','d.id')
+                      ->rightJoin('promotions','employees.id','=','promotions.employee_id')
+                   //  ->leftJoin('designations AS p','promotions.designation_id','=','p.id')
                     ->get();
-        $employees = $employees->unique('employee_id');
+       // $managers = $managers->unique('employee_id');
 
-        $employees->values()->all();
+        //$managers->values()->all();
+        dd($managers);
+        //$employees = employee::all();
+        foreach ($managers as $employee){
+            dd($employee);
+        }
 
         $postingIds = posting::all()->where('employee_id', session('employee_id'));
         $projects = project::orderBy('status', 'desc')->get();
         $positions = designation::all();
-        return view ('hr.posting.posting',compact('employee','employees','projects','postingIds','positions'));
+        return view ('hr.posting.posting',compact('employee','managers','projects','postingIds','positions'));
     }
 
 	public function store(StorePosting $request){
@@ -59,8 +66,8 @@ class PostingController extends Controller
         
         
         $employees = DB::table('employees')
-                    ->join('postings','employees.id','=','postings.employee_id')
-                    ->join('designations','postings.designation_id','=','designations.id')
+                    ->join('promotions','employees.id','=','promotions.employee_id')
+                    ->join('designations','promotions.designation_id','=','designations.id')
                     ->get();
         $employees = $employees->unique('employee_id');
 

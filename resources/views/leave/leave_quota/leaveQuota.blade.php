@@ -21,15 +21,22 @@
 		                        {{csrf_field()}}
 		                        <div class="form-body">
 		                            
-		                            <h3 class="box-title">Leave Types</h3>
+		                            <h3 class="box-title">Leave Quota</h3>
 		                            <hr class="m-t-0 m-b-40">
 		                            <div class="row">
-		                                <div class="col-md-5">
+		                                <div class="col-md-4">
 		                                    <div class="form-group row">
 		                                        <div class="col-md-12">
-		                                        <label class="control-label text-right">Leave Name<span class="text_requried">*</span></label>
+		                                        <label class="control-label text-right">Employee Name<span class="text_requried">*</span></label>
 		                                        											
-													<input type="text" id="name" name="name" value="{{ old('name') }}" class="form-control " placeholder="Enter Leave Name" required >
+													 <select  name="employee_id"  class="form-control selectTwo" required>
+                                                        <option value=""></option>
+                                                        @foreach($employees as $employee)
+														<option value="{{$employee->id}}" {{(old("employee_id")==$employee->id? "selected" : "")}}>{{$employee->first_name." ".$employee->middle_name." ".$employee->last_name." - ".$employee->name}}</option>
+                                                       @endforeach
+                                                      
+                                                    </select>
+
 		                                        </div>
 		                                    </div>
 		                                </div>
@@ -38,9 +45,9 @@
 		                                <div class="col-md-2">
 		                                    <div class="form-group row">
 		                                        <div class="col-md-12">
-		                                        	<label class="control-label text-right">Annual Quota<span class="text_requried">*</span></label>
+		                                        	<label class="control-label text-right">Leave Type<span class="text_requried">*</span></label>
 		                                        
-		                                            <input type="number" id="annual_quota" name="annual_quota" value="{{ old('annual_quota') }}" class="form-control "  required>
+		                                            
 
 
 		                                        </div>

@@ -10,7 +10,7 @@ class promotion extends Model implements Auditable
 	use \OwenIt\Auditing\Auditable;
 
     protected $fillable = [
-        'designation_id', 'effective_date', 'promotion_remarks', 'employee_id',
+        'designation_id', 'effective_date', 'promotion_remarks', 'employee_id', 'category', 'grade',
     ];	
     public function employee(){
 		return $this->belongsTo('App\employee');

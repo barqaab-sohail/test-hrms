@@ -81,7 +81,7 @@
 		                                        
 		                                           <select  name="manager_id"  class="form-control selectTwo" required>
                                                         <option value=""></option>
-                                                        @foreach($employees as $employee)
+                                                        @foreach($managers as $employee)
 														<option value="{{$employee->id}}" {{(old("manager_id")==$employee->id? "selected" : "")}}>{{$employee->first_name." ".$employee->middle_name." ".$employee->last_name." - ".$employee->name}}</option>
                                                        @endforeach
                                                       

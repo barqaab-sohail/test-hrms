@@ -24,7 +24,7 @@ class HrController extends Controller
 
         $data = employee::all()->where('employee_status',0);
         $leaveType=leave_type::all();
-        //dd($data->appointment->category);
+       
         DB::beginTransaction();
         try { 
             foreach($data as $d){
@@ -41,6 +41,10 @@ class HrController extends Controller
                             }elseif(($leave->name =="Earned Leave")&&($d->appointment->category!="A")){
                                  continue;
                             }
+                        }elseif($leave->name =="Casual Leave"){
+                                 $balance = 12;
+                        }else{
+                            continue;
                         }
 
                     $input['leave_type_id'] = $leave->id;
