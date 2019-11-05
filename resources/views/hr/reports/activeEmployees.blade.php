@@ -25,6 +25,7 @@
 					<tr>
 						<th>Employee Name</th>
 						<th>Email</th>
+						<th>Degree Name</th>
 						<th>CNIC</th>
 						<th>CNIC Expiry</th>
 						<th>Gender</th>
@@ -35,10 +36,11 @@
 						@foreach($employees as $employee)
 							<tr>
 								<td>{{$employee->first_name}} {{$employee->last_name}}</td>
+								<td>{{$employee->appointment->appointment_date}}</td>
 								<td>{{isset($employee->user->email)? $employee->user->email:'No Email'}}</td>
 								<td>{{$employee->cnic}}</td>
 								<td>{{$employee->cnic_expiry}}</td>
-								<td>{{$employee->gender}}</td>
+								<td>{{$employee->gender->name}}</td>
 																							
 							</tr>
 						@endforeach

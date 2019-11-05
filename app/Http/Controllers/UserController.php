@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Requests\StoreUser;
 use App\employee;
-use App\role;
 use App\User;
 
 class UserController extends Controller
@@ -20,9 +19,9 @@ class UserController extends Controller
 	public function edit($id){
 
         $employee = employee::find($id);
-        $roles = role::all();
+       
         
-       return view ('hr.user.editUser', compact('employee','roles'));
+       return view ('hr.user.editUser', compact('employee'));
         //return redirect()->route('user.edit',['employee'=>$employee,'roles'=>$roles]);
 
     }

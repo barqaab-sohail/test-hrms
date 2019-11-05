@@ -53,14 +53,7 @@
 		                                        	<label class="control-label text-right ">User Role</label>
 		                                        
 		                                            <select  name="role_id"  class="form-control selectTwo" >
-                                                        <option value="{{5}}"></option>
-                                                        @foreach($roles as $role)
-															<option value="{{$role->id}}"
-															@if(!empty($employee->user->role_id))
-																@if($role->id == $employee->user->role_id) selected="selected" @endif
-															@endif
-															>{{$role->name}}</option>
-														@endforeach
+                                                       
                                                                                                    
                                                     </select>
 		                                        </div>

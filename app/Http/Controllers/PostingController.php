@@ -26,20 +26,18 @@ class PostingController extends Controller
     public function create(){
 
         $employee = employee::find(session('employee_id'));
+        //first left join with promotion (in view if promotion designation null than use appointment letter designaation)
         $managers = DB::table('employees')
-                    ->leftJoin('postings','employees.id','=','postings.employee_id')    
-                   // ->leftJoin('designations AS d','postings.designation_id','=','d.id')
-                      ->rightJoin('promotions','employees.id','=','promotions.employee_id')
-                   //  ->leftJoin('designations AS p','promotions.designation_id','=','p.id')
-                    ->get();
-       // $managers = $managers->unique('employee_id');
+                    ->select('employees.id','employees.first_name','employees.middle_name','employees.last_name','designations.name AS promotion_designation','ap_designation.name as appointment_designation','promotions.id AS pr_id')
+                    ->leftJoin('promotions','employees.id','=','promotions.employee_id')
+                    ->leftJoin('appointments','employees.id','=','appointments.employee_id')
+                    ->leftJoin('designations','designations.id','=','promotions.designation_id') 
+                    ->leftJoin('designations AS ap_designation','ap_designation.id','=','appointments.designation_id') 
 
-        //$managers->values()->all();
-        dd($managers);
-        //$employees = employee::all();
-        foreach ($managers as $employee){
-            dd($employee);
-        }
+                    ->orderBy('pr_id','desc')
+                    
+                    ->get();
+       $managers = $managers->unique('id')->all();
 
         $postingIds = posting::all()->where('employee_id', session('employee_id'));
         $projects = project::orderBy('status', 'desc')->get();
@@ -64,22 +62,18 @@ class PostingController extends Controller
 
     public function edit($id){
         
-        
-        $employees = DB::table('employees')
-                    ->join('promotions','employees.id','=','promotions.employee_id')
-                    ->join('designations','promotions.designation_id','=','designations.id')
+
+        $managers = DB::table('employees')
+                    ->select('employees.id','employees.first_name','employees.middle_name','employees.last_name','designations.name AS promotion_designation','ap_designation.name as appointment_designation','promotions.id AS pr_id')
+                    ->leftJoin('promotions','employees.id','=','promotions.employee_id')
+                    ->leftJoin('appointments','employees.id','=','appointments.employee_id')
+                    ->leftJoin('designations','designations.id','=','promotions.designation_id') 
+                    ->leftJoin('designations AS ap_designation','ap_designation.id','=','appointments.designation_id') 
+
+                    ->orderBy('pr_id','desc')
+                    
                     ->get();
-        $employees = $employees->unique('employee_id');
-
-        $employees->values()->all();
-
-        /*foreach ($unique as $uni)
-        {
-            echo $uni->employee_id.' '.$uni->first_name.' '.$uni->last_name.' '.$uni->designation_id.'<br>';    
-        }
-        dd('testing');*/
-
-
+       $managers = $managers->unique('id')->all();
 
 
         $employee = employee::find(session('employee_id'));
@@ -88,7 +82,7 @@ class PostingController extends Controller
         $projects = project::all();
         $data = posting::find($id);
         $positions = designation::all();
-        return view ('hr.posting.editPosting',compact('data','employee','employees','postingIds','projects','positions'));
+        return view ('hr.posting.editPosting',compact('data','employee','managers','postingIds','projects','positions'));
     }
     
     public function update(StorePosting $request, $id)

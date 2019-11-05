@@ -74,13 +74,13 @@
 		                             <div class="row">
 		                                <div class="col-md-7">
 		                                     <div class="form-group row">
-		                                        <div class="col-md-9">
+		                                        <div class="col-md-12">
 		                                        	<label class="control-label text-right">Manager Name<span class="text_requried">*</span></label>
 		                                        
 			                                        <select  name="manager_id"  class="form-control selectTwo" required>
                                                     <option value=""></option>
-													@foreach($employees as $employee)
-													<option value="{{$employee->id}}" @if($employee->id == $data->manager_id) selected="selected" @endif>{{$employee->first_name." ".$employee->middle_name." ".$employee->last_name." - ".$employee->name}}</option>
+													@foreach($managers as $employee)
+													<option value="{{$employee->id}}" @if($employee->id == $data->manager_id) selected="selected" @endif>{{$employee->first_name." ".$employee->middle_name." ".$employee->last_name." - "}}{{isset($employee->promotion_designation)?$employee->promotion_designation:$employee->appointment_designation}}</option>
                                                     @endforeach 	
                                                     </select>
                                                                                                         
