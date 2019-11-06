@@ -16,6 +16,7 @@ class OtherController extends Controller
         $this->middleware('auth');
         $this->middleware('updation')->only('delete','update', 'store');
     }
+    
 
     public function edit($id){
 

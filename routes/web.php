@@ -149,6 +149,7 @@ Route::resource('hrms/promotion', 'PromotionController');
 
 //Document Routes
 Route::resource('hrms/document', 'DocumentController');
+Route::resource('hrms/status', 'StatusController');
 
 
 //Bank

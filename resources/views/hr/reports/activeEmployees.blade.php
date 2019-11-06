@@ -39,8 +39,6 @@
 						<th>Emergency Contact Relation</th>
 						<th>Document Name</th>
 						<th>Other Information Kin Relation</th>
-						
-						
 					</tr>
 					</thead>
 					<tbody>
@@ -48,18 +46,22 @@
 							<tr>
 								<td>{{$employee->first_name}} {{$employee->middle_name}} {{$employee->last_name}}</td>
 								<td>{{isset($employee->user->email)? $employee->user->email:'No Email'}}</td>
-								<td>{{isset($employee->picture->appointment_date)?$employee->picture->appointment_date:'Not Entered'}}</td>
-
-								
-								<td>{{isset($employee->appointment->appointment_date)?$employee->appointment->appointment_date:'Not Entered'}}</td>
-								
+								<td>{{isset($employee->picture->name)?$employee->picture->name:'Not Entered'}}</td>
+								<td>{{isset($employee->appointment->category)?$employee->appointment->category:'Not Entered'}}</td>
+								<td>{{$employee->salary->implode('total','+ ')}}</td>
+								<td>{{$employee->posting->implode('posting_date','+ ')}}</td>
 								<td>{{$employee->education->implode('degree_name','+ ')}}</td>
-								
+								<td>{{$employee->membership->implode('membership_no','+ ')}}</td>
+								<td>{{$employee->language->implode('all_language_id','+ ')}}</td>
+								<td>{{$employee->experience->implode('employer','+ ')}}</td>
+								<td>{{$employee->promotion->implode('designation_id','+ ')}}</td>
+								<td>{{$employee->contact->implode('house','+ ')}}</td>
+								<td>{{$employee->emergency_contact->implode('relation','+ ')}}</td>
+								<td>{{$employee->document->implode('document_name','+ ')}}</td>
+								<td>{{isset($employee->other_information->kin_relation)?$employee->other_information->kin_relation:'Not Entered'}}</td>
 
 								
-								<td>{{$employee->cnic}}</td>
-								<td>{{$employee->cnic_expiry}}</td>
-								<td>{{$employee->gender->name}}</td>
+								
 																							
 							</tr>
 						@endforeach
@@ -95,7 +97,7 @@
                     {
                         extend: 'excelHtml5',
                         exportOptions: {
-                            columns: [ 0, 1, 2,3,4]
+                            columns: [ 0, 1, 2,3,4,5,6,7,8,9,10,11,12,13,14]
                         }
                     },
                     {
