@@ -20,7 +20,7 @@ class CreateEmployeesTable extends Migration
             $table->string('middle_name')->nullable();
             $table->string('last_name');
             $table->string('father_name');
-            $table->date('date_of_birth')->nullable();
+            $table->date('date_of_birth');
             $table->bigInteger('gender_id');
             $table->string('cnic')->unique();
             $table->date('cnic_expiry');

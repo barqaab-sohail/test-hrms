@@ -19,25 +19,44 @@
 			
 			<div class="table-responsive m-t-40">
 				
-				<table id="myTable" class="table table-bordered table-striped" width="100%" cellspacing="0">
+				
+				<table id="myTable" class="table table-bordered table-striped"  style="width:100%" >
 					<thead>
 					
 					<tr>
 						<th>Employee Name</th>
 						<th>Email</th>
-						<th>Degree Name</th>
-						<th>CNIC</th>
-						<th>CNIC Expiry</th>
-						<th>Gender</th>
+						<th>Picture</th>
+						<th>Appointment Category</th>
+						<th>Salary Total</th>
+						<th>Posting Date</th>
+						<th>Education</th>
+						<th>Membership</th>
+						<th>Language</th>
+						<th>Experience Employer</th>
+						<th>Promotion Designation</th>
+						<th>Contact House</th>
+						<th>Emergency Contact Relation</th>
+						<th>Document Name</th>
+						<th>Other Information Kin Relation</th>
+						
 						
 					</tr>
 					</thead>
 					<tbody>
 						@foreach($employees as $employee)
 							<tr>
-								<td>{{$employee->first_name}} {{$employee->last_name}}</td>
-								<td>{{$employee->appointment->appointment_date}}</td>
+								<td>{{$employee->first_name}} {{$employee->middle_name}} {{$employee->last_name}}</td>
 								<td>{{isset($employee->user->email)? $employee->user->email:'No Email'}}</td>
+								<td>{{isset($employee->picture->appointment_date)?$employee->picture->appointment_date:'Not Entered'}}</td>
+
+								
+								<td>{{isset($employee->appointment->appointment_date)?$employee->appointment->appointment_date:'Not Entered'}}</td>
+								
+								<td>{{$employee->education->implode('degree_name','+ ')}}</td>
+								
+
+								
 								<td>{{$employee->cnic}}</td>
 								<td>{{$employee->cnic_expiry}}</td>
 								<td>{{$employee->gender->name}}</td>
@@ -52,6 +71,12 @@
 			</div>
 		</div>
 	</div>
+	<style>
+	 th, td { white-space: nowrap; }
+    div.dataTables_wrapper {
+        width: auto;
+    }
+	</style>
 @push('scripts')
 	
 	

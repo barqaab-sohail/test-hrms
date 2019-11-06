@@ -19,6 +19,28 @@ class employee extends Model implements Auditable
         return $this->hasOne('App\user');
     }
 
+    public function appointment()
+    {
+        return $this->hasOne('App\appointment');
+    }
+
+    public function gender()
+    {
+        return $this->belongsTo('App\gender');
+    }
+    public function education()
+    {
+        return $this->hasMany('App\education');
+    }
+    public function picture()
+    {
+        return $this->hasOne('App\picture');
+    }
+
+
+
+
+
     public function marital_status()
     {
         return $this->belongsTo('App\marital_status');
@@ -46,19 +68,13 @@ class employee extends Model implements Auditable
     {
         return $this->hasOne('App\contact');
     }
-     public function appointment()
-    {
-        return $this->hasOne('App\appointment');
-    }
+  
 
     public function division()
     {
         return $this->belongsTo('App\division');
     }
-    public function gender()
-    {
-        return $this->belongsTo('App\gender');
-    }
+   
 
     public function dependent()
     {
@@ -89,10 +105,7 @@ class employee extends Model implements Auditable
     {
         return $this->hasMany('App\document');
     }
-    public function education()
-    {
-        return $this->hasMany('App\education');
-    }
+    
     public function experience()
     {
         return $this->hasMany('App\experience');
@@ -108,10 +121,7 @@ class employee extends Model implements Auditable
         return $this->hasOne('App\other_information');
     }
 
-    public function picture()
-    {
-        return $this->hasOne('App\picture');
-    }
+   
     
        
     public function project()
