@@ -17,7 +17,7 @@ public function __construct()
 
 
 public function index (){
-    $employees = employee::all()->where('employee_status','0');
+    $employees = employee::all()->where('employee_status_id',1);
     $documents = document::all();
     return view('hr.personalFiles.index', compact('employees','documents'));
 }

@@ -10,6 +10,7 @@ class task extends Model
         'task_detail', 'completion_date','remarks', 'status', 'employee_id'
     ];
 
+
     //default value of status=0
     protected $attributes = [
         'status' => 0 //0 pending and 1 completed 

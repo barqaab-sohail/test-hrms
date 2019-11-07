@@ -15,8 +15,8 @@ class ChartController extends Controller
 
     public function age(){
 
-      $countAboveSixty= employee::where('date_of_birth','<',\Carbon\Carbon::now()->subYears(60))->where('employee_status',0)->count();
-      $countBelowSixty = employee::where('employee_status',0)
+      $countAboveSixty= employee::where('date_of_birth','<',\Carbon\Carbon::now()->subYears(60))->where('employee_status_id',1)->count();
+      $countBelowSixty = employee::where('employee_status_id',1)
                         ->count()-$countAboveSixty;
       
 

@@ -28,7 +28,7 @@ class CreateEmployeesTable extends Migration
             $table->string('marital_status_id');
             $table->string('religon')->nullable();
             $table->string('remarks')->nullable();
-            $table->tinyInteger('employee_status')->default(0)->comment('0 onboard, 1 resigned, 2 terminated, 3 onleave, 4 manmonth ended' );
+            $table->tinyInteger('employee_status_id')->default(1)->comment('1 onboard, 2 resigned, 3 terminated, 4 onleave, 5 manmonth ended' );
             $table->timestamps();
             $table->foreign('division_id')->references('id')->on('divisions');
         });

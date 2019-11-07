@@ -23,7 +23,7 @@ class ReportsController extends Controller
     }
 
     public function activeEmployee (){
-       $employees = employee::all()->where('status',0);
+       $employees = employee::with('user','picture','appointment','salary','posting','membership','experience','education','language','promotion','contact','emergency_contact','document','other_information')->get();
        return view('hr.reports.activeEmployees', compact('employees'));
     }
 
