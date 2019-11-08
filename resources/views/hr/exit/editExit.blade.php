@@ -27,7 +27,8 @@
 
 		                <div class="card-body">
 
-		                    <form action="{{route('exit.store')}}" method="post" class="form-horizontal form-prevent-multiple-submits" enctype="multipart/form-data">
+		                    <form action="{!!route('exit.update', ['id'=>optional($data)->id])!!}" method="post" class="form-horizontal form-prevent-multiple-submits" enctype="multipart/form-data">
+		                     @method('PATCH')
 		                     
 		                        {{csrf_field()}}
 		                        <div class="form-body">
@@ -43,9 +44,11 @@
 		                                        	 <select  name="employee_status_id"  class="form-control selectTwo" >
 		                                        		<option value=""></option>
 	                                                    @foreach($status as $status)
-														<option value="{{$status->id}}" @if($status->id == $employee->employee_status_id) selected="selected" @endif>{{$status->name}}</option>
+														<option value="{{$status->id}}" @if($status->id == optional($data)->employee_status_id)
+														selected="selected" @endif>{{$status->name}}</option>
 	                                                    @endforeach
-                                        
+	                                                    
+	                                                    
                                                     </select>
 		                                           
 		                                        </div>
@@ -58,7 +61,8 @@
 		                                        <div class="col-md-12 date_input">
 		                                        	<label class="control-label text-right ">Effective Date</label>
 
-		                                        	<input type="text" id="effective_date" name="effective_date" value="{{ old('effective_date') }}" class="form-control " placeholder="Enter Effective Date" required readonly>
+		                                        	<input type="text" id="effective_date" name="effective_date" value="{!! old('effective_date', optional($data)->effective_date) !!}" 
+		                                        	 class="form-control " placeholder="Enter Effective Date" required readonly>
  		                                            <br>
 		                                            <i class="fas fa-trash-alt text_requried"></i>
 		          									 
@@ -75,7 +79,7 @@
 		                                    <div class="form-group row">
 												<div class="col-md-12">
 		                                        	<label class="control-label text-right ">Reason</label>
-		          									<input type="text"  name="reason" value="{{old('reason')}}" class="form-control" placeholder="Enter Reason">
+		          									<input type="text"  name="reason" value="{!! old('reason', optional($data)->reason) !!}" class="form-control" placeholder="Enter Reason">
 		                                        </div>
 		                                    </div>
 		                                </div>
@@ -85,7 +89,7 @@
 		                                    <div class="form-group row">
 												<div class="col-md-12">
 		                                        	<label class="control-label text-right ">Remarks</label>
-		          									<input type="text"  name="remarks" value="{{old('remarks')}}" class="form-control" placeholder="Enter Remarks">
+		          									<input type="text"  name="remarks" value="{!! old('remarks', optional($data)->remarks) !!}" class="form-control" placeholder="Enter Remarks">
 		                                        </div>
 		                                    </div>
 		                                </div>

@@ -13,7 +13,7 @@ class StoreExit extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -23,8 +23,10 @@ class StoreExit extends FormRequest
      */
     public function rules()
     {
-        return [
-            //
+         return [
+         'employee_status_id' => 'required',
+         'effective_date' => 'required|date',
+         'reason' =>'required'
         ];
     }
 }

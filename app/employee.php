@@ -10,7 +10,7 @@ class employee extends Model implements Auditable
    use \OwenIt\Auditing\Auditable;
 
    protected $fillable = [
-        'first_name','middle_name','last_name','father_name','date_of_birth','gender_id','cnic','cnic_expiry','employee_no','marital_status_id','religon','remarks','employee_status_id','manager_id','division_id',
+        'first_name','middle_name','last_name','father_name','date_of_birth','gender_id','cnic','cnic_expiry','employee_no','marital_status_id','religon','employee_status_id','manager_id','division_id',
     ];
 
      //default value of employee_status=0
@@ -94,6 +94,11 @@ class employee extends Model implements Auditable
     }
 
 
+
+
+    public function employee_status(){
+        return $this->belongsTo('App\employee_status');
+    }
 
     public function gender()
     {
