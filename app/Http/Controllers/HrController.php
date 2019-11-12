@@ -174,6 +174,38 @@ public function storeEducation (Request $request){
 
     }
 
+    public function prime(){
+
+    $number = 773;  //number greater than 1
+    $i = 2;
+
+        while($i<$number){       //n+1
+            if($number%$i==0){          //n  
+                echo "not prime";     //1
+                exit;
+            }
+
+            else $i++;          //n time
+
+        }
+        
+        // Input Number 
+        //Initialize Count with 2;
+        // If number modulus count is equal to count 
+                //print "Not Prime" and exit
+        //Else
+            //Increment 1 count
+
+        //End Whiel Loop
+
+        //Print "Prime"
+
+        
+            echo"prime";    //1
+            // 2+n+1+n+n+1 = 3n+4 = O(n)
+        
+    }
+
 
 
 }

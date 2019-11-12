@@ -33,6 +33,7 @@ echo "Sucessfully Link Create";
 });
 
 Route::get ('/testing', 'HrController@testing');
+Route::get ('/prime','HrController@prime');
 Route::get('/CnicExpiry', function () {
 Artisan::call('CnicExpirySchedule:check');
     dd('OK');
