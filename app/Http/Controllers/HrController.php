@@ -176,7 +176,7 @@ public function storeEducation (Request $request){
 
     public function prime(){
 
-    $number = 773;  //number greater than 1
+    $number = 3;  //number greater than 1
     $i = 2;
 
         while($i<$number){       //n+1
@@ -188,11 +188,12 @@ public function storeEducation (Request $request){
             else $i++;          //n time
 
         }
-        
+         echo"prime"; 
+       
         // Input Number 
         //Initialize Count with 2;
-        // If number modulus count is equal to count 
-                //print "Not Prime" and exit
+        // If number modulus count is equal to zero 
+                //print "Not Prime" and exit the function
         //Else
             //Increment 1 count
 
@@ -201,7 +202,7 @@ public function storeEducation (Request $request){
         //Print "Prime"
 
         
-            echo"prime";    //1
+              //1
             // 2+n+1+n+n+1 = 3n+4 = O(n)
         
     }

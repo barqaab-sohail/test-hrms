@@ -26,6 +26,7 @@ class CreateLeaveRequestsTable extends Migration
             $table->bigInteger('approved_by')->unsigned();
             $table->string('recommended_remarks')->nullable();
             $table->string('approved_remarks')->nullable();
+            $table->year('leave_status')->default(1)->comment('1 Pending, 2 Approved, 3 Rejected, 4 Cancel');
             $table->foreign('leave_type_id')->references('id')->on('leave_types');
             $table->foreign('employee_id')->references('id')->on('employees');
             $table->timestamps();

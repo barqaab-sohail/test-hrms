@@ -19,6 +19,7 @@ class CreateLeaveBalanceTable extends Migration
             $table->bigInteger('leave_type_id')->unsigned();
             $table->float('balance')->unsigned();
             $table->year('year');
+            
             $table->unique(['employee_id', 'leave_type_id','year']);
             $table->foreign('leave_type_id')->references('id')->on('leave_types');
             $table->foreign('employee_id')->references('id')->on('employees');
