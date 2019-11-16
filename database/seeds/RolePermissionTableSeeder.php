@@ -3,6 +3,7 @@
 use Illuminate\Database\Seeder;
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
+use App\user;
 
 class RolePermissionTableSeeder extends Seeder
 {
@@ -31,6 +32,9 @@ class RolePermissionTableSeeder extends Seeder
         $HrAssistant->givePermissionTo($edit);
         $HrManager->givePermissionTo($edit);
         $SuperAdmin->givePermissionTo($edit);
+
+        $user = user::find(1);
+        $user->assignRole('Super Admin');
 
 
     }
