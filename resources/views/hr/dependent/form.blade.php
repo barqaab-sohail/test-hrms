@@ -25,7 +25,7 @@
  
 
 		                                            <br>
-		                                            <i class="fas fa-trash-alt text_requried"></i>
+		                                            @can('edit record')<i class="fas fa-trash-alt text_requried"></i>@endcan
 		                                             
  
 

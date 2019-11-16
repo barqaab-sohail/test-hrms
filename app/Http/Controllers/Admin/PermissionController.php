@@ -7,7 +7,8 @@ use App\Http\Controllers\Controller;
 use Spatie\Permission\Models\Permission;
 use App\Http\Requests\Admin\StorePermission;
 
-class permissionController extends Controller
+
+class PermissionController extends Controller
 {
     public function __construct()
     {
@@ -34,7 +35,7 @@ class permissionController extends Controller
         return view ('admin.permission.edit',compact('data','permissionIds'));
     }
     
-    public function update(StorePermission $request, $id)
+    public function update(Request $request, $id)
     {
      
      Permission::findOrFail($id)->update(['name' => $request->name]);

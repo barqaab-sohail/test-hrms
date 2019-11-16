@@ -16,6 +16,7 @@
 <!-- Main wrapper - style you can find in pages.scss -->
 <!-- ============================================================== -->
 <div id="main-wrapper">
+
     @include('layouts.master.adminHeader')
     @include('layouts.master.adminNav')
     <div class="page-wrapper">
@@ -44,7 +45,7 @@
 @include('layouts.master.adminScripts')
 @yield('footer')
     <div style="text-align:center">
-        <p>Developed by: BARQAAB IT</p>
+        <p>HRMS 2.0.0 - Developed by: BARQAAB IT</p>
     </div>
 </body>
 </html>

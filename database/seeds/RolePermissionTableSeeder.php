@@ -21,7 +21,6 @@ class RolePermissionTableSeeder extends Seeder
 
     	$view = Permission::create(['name' => 'view personal record']);
         $edit = Permission::create(['name' => 'edit record']);
-        $save = Permission::create(['name' => 'save record']);
 
         $user->givePermissionTo($view);
         $manager->givePermissionTo($view);
@@ -32,10 +31,6 @@ class RolePermissionTableSeeder extends Seeder
         $HrAssistant->givePermissionTo($edit);
         $HrManager->givePermissionTo($edit);
         $SuperAdmin->givePermissionTo($edit);
-
-        $HrAssistant->givePermissionTo($save);
-        $HrManager->givePermissionTo($save);
-        $SuperAdmin->givePermissionTo($save);
 
 
     }

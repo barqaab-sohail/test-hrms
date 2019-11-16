@@ -20,7 +20,7 @@
  
 
 		                <div style="margin-top:10px; margin-right: 10px;">
-		                    <button type="button" onclick="window.location.href='{{route('employee.index')}}'" class="btn btn-info float-right">Back</button>
+		                    
 		                </div>
 		                 
  
@@ -48,16 +48,31 @@
 		                                    <div class="form-group row">
 		                                   
  
-
+		                                    	@can('edit record')
 		                                        <div class="col-md-8">
-		                                        	<label class="control-label text-right ">User Role</label>
+		                                        	<label class="control-label text-right ">Role</label>
 		                                        
-		                                            <select  name="role_id"  class="form-control selectTwo" >
+		                                            <select  name="role"  class="form-control selectTwo" >
+		                                            <option value=""></option>
+		                                            @foreach($roles as $role)
+														<option value="{{$role->name}}" @if($role->name == $roleName)selected="selected" @endif>{{$role->name}}</option>
+                                                        @endforeach
                                                        
                                                                                                    
                                                     </select>
 		                                        </div>
-		                                   	 
+		                                      	@else
+		                                      	<div class="col-md-8">
+		                                        	<label class="control-label text-right ">Role</label>
+		                                        	 <input   name="role" value="{{$roleName}}" class="form-control" readonly>
+
+
+		                                        </div>
+
+		                                   	 	
+
+
+		                                   	 	@endcan
  
 
 		                                    </div>
@@ -68,6 +83,17 @@
 		                            </div>
 
 		                        </div>
+		                        @can('edit record')
+		                        <div>
+		                        @if($permissions!=null)
+		                        <h3>{{$employee->first_name. " ".$employee->middle_name." ".$employee->last_name}} has following permission</h3>
+		                        
+		                        @foreach($permissions as $permission)
+		                        <li>{{$permission->name}}</li>
+		                        @endforeach
+		                        @endif
+		                        </div>
+		                        @endcan
 		                         <hr>
 		                        <div class="form-actions">
 		                            <div class="row">
@@ -75,11 +101,12 @@
 		                                    <div class="row">
 		                                    	 
  
-
+		                                    	@can('edit record')
 		                                        <div class="col-md-offset-3 col-md-9">
 		                                            <button type="submit" class="btn btn-success btn-prevent-multiple-submits">Save</button>
-		                                            <button type="button" onclick="window.location.href='{{route('employee.index')}}'" class="btn btn-inverse">Cancel</button>
+		                                            
 		                                        </div>
+		                                        @endcan
 		                                         
  
 

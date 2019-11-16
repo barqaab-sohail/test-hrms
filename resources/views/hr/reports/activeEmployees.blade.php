@@ -15,7 +15,7 @@
 			</div>-->
 			<h4 class="card-title">List of Active Employees</h4>
 
-						<button type="button" onclick="window.location.href='{{route('employeeReports')}}'" class="btn btn-info float-right">Back</button>
+						<button type="button" onclick="window.location.href='{{route('employeeReports')}}'" class="btn btn-info float-right">Back to List</button>
 			
 			<div class="table-responsive m-t-40">
 				

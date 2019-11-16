@@ -25,7 +25,7 @@
  
 
 		                <div style="margin-top:10px; margin-right: 10px;">
-		                    <button type="button" onclick="window.location.href='{{route('employee.index')}}'" class="btn btn-info float-right" data-toggle="tooltip" title="Back to List">Back</button>
+		                    <button type="button" onclick="window.location.href='{{route('employee.index')}}'" class="btn btn-info float-right" data-toggle="tooltip" title="Back to List">Back to List</button>
 		                </div>
 		                 
  
@@ -92,7 +92,7 @@
  
 
 		                                            <br>
-		                                            <i class="fas fa-trash-alt text_requried"></i> 
+		                                            @can('edit record')<i class="fas fa-trash-alt text_requried"></i>@endcan 
 		                                             
  
 
@@ -139,7 +139,7 @@
  
 
 		                                            <br>
-		                                            <i class="fas fa-trash-alt text_requried"></i>
+		                                            @can('edit record')<i class="fas fa-trash-alt text_requried"></i>@endcan
 		                                             
  
 
@@ -259,7 +259,7 @@
 
 		                                        <div class="col-md-offset-3 col-md-9">
 		                                            <button type="submit" class="btn btn-success btn-prevent-multiple-submits">Add Employee</button>
-		                                            <button type="button" onclick="window.location.href='{{route('employee.index')}}'" class="btn btn-inverse">Cancel</button>
+		                                            
 		                                        </div>
 		                                     
  

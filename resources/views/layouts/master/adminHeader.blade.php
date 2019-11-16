@@ -33,6 +33,7 @@
                 <li class="nav-item"> <a class="nav-link sidebartoggler hidden-sm-down text-muted waves-effect waves-dark" href="javascript:void(0)"><i class="ti-menu"></i></a> </li>
 
 
+
                 <!-- ============================================================== -->
                 <!-- Search -->
                 <!-- ============================================================== 
@@ -96,6 +97,7 @@
 
                 <!-- Notification -->
                 <li class="nav-item dropdown"> 
+
                     <a class="nav-link dropdown-toggle text-muted waves-effect waves-dark"  href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     @if(Auth::User()->unreadNotifications->count())<span class="badge badge-danger">{{Auth::User()->unreadNotifications->count()}}</span>@endif<i class="fas fa-bell" ></i>
                     </a>
@@ -146,9 +148,17 @@
                             <li><a href="#"><i class="ti-settings"></i> Account Setting</a></li>
                             <li role="separator" class="divider"></li>
                             -->
-                            <li><a href="#"  onclick="event.preventDefault(); document.getElementById('logout-form').submit();"class="link" data-toggle="tooltip" title=""><i class="fa fa-power-off"></i> Logout</a></li>
+                            <li><a id="logout" href="#"  onclick="event.preventDefault(); document.getElementById('logout-form').submit();"class="link" data-toggle="tooltip" title=""><i class="fa fa-power-off"></i> Logout</a></li>
                         </ul>
                         <form id="logout-form" action="{{route('logout')}}" method="POST" style="display: none;">{{ csrf_field() }}</form>
+                    
+                        <!-- If URL Manualy then redirect to login -->
+                        @if(!isset($_SERVER['HTTP_REFERER']))
+                        {
+                            <script>window.location.href = "{{route('login')}}";</script>
+                        }
+                        @endif
+                        
 
                     </div>
                 </li>

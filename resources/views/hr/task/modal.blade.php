@@ -28,7 +28,7 @@
                                   <input type="text" id="completion_date" name="completion_date" value="{{ old('completion_date') }}" class="form-control "  placeholder="Enter Task Completion Date" required readonly>
                                   
                                   <br>
-                                  <i class="fas fa-trash-alt text_requried"></i>
+                                  @can('edit record')<i class="fas fa-trash-alt text_requried"></i>@endcan
                                  
                                 </div>
                               </div>

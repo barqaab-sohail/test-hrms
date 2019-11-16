@@ -18,7 +18,7 @@
  
 
 		                <div style="margin-top:10px; margin-right: 10px;">
-		                    <button type="button" onclick="window.location.href='{{route('employee.index')}}'" class="btn btn-info float-right">Back</button>
+		                    
 		                </div>
                          
  
@@ -31,7 +31,7 @@
         <div class="card text-center">
          <div class="alert alert-danger" style="display:none"></div>
             <div class="card-body">
-                <h5 class="card-title">Current Picture </h5>
+                <h5 class="card-title">Picture </h5>
                  <span id="success" class="text-success"></span>
                  <span id="wanings" class="text-danger"></span>
 
@@ -40,13 +40,14 @@
                 </div>
                   
  
-
+                @can('edit record')
                 <div id="preview-img" class="btn btn-dark">
 
                     <input type="file" class="file-upload" id="file-upload" 
                     name="profile_picture" accept="image/*">
                     
                 </div>
+                @endcan
                  
  
 

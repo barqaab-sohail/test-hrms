@@ -20,7 +20,7 @@
  
 
 		                <div style="margin-top:10px; margin-right: 10px;">
-		                    <button type="button" onclick="window.location.href='{{route('employee.index')}}'" class="btn btn-info float-right">Back</button>
+		                    
 		                    
 		                </div>
 		                 
@@ -55,10 +55,10 @@
 		                                            <input type="text"  id="licence_expiry" name="licence_expiry" value="{!! old('licence_expiry',isset($employee->other_information->licence_expiry)?$employee->other_information->licence_expiry:'')!!}" class="form-control" placeholder="Enter Driving Licence Expiry" readonly>
 													 
  
-
+		                                            @can('edit record')
 		                                            <br>
 		                                            <i  class="fas fa-trash-alt text_requried"></i>
-		                                             
+		                                             @endcan
  
 
 		                                        </div>
@@ -123,10 +123,10 @@
 		                                            <input type="text"  id="passport_expiry" name="passport_expiry" value="{!! old('passport_expiry',isset($employee->other_information->passport_expiry)?$employee->other_information->passport_expiry:'')!!}" class="form-control" placeholder="Enter Passport Expiry" readonly>
 													 
  
-
+		                                            @can('edit record')
 		                                            <br>
 		                                            <i  class="fas fa-trash-alt text_requried"></i>
-		                                             
+		                                             @endcan
  
 
 		                                        </div>
@@ -198,8 +198,9 @@
  
 
 		                                        <div class="col-md-offset-3 col-md-9">
+		                                        @can('edit record')
 		                                            <button type="submit" class="btn btn-success btn-prevent-multiple-submits">Save</button>
-		                                            <button type="button" onclick="window.location.href='{{route('employee.index')}}'" class="btn btn-inverse">Cancel</button>
+		                                        @endcan
 
 		                                        </div>
 		                                         

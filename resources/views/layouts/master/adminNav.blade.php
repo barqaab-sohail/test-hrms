@@ -50,13 +50,15 @@
                     <ul aria-expanded="false" class="collapse">
                        
                         <li><a href="{{route('employee.show', ['id'=>Auth::user()->employee_id])}}">User Detail</a></li>
+                    @can('edit record')
                         <li><a href="{{route('employee.create')}}">Add Employee</a></li>
                         <li><a href="{{route('employee.index')}}">List of Employees</a></li>
                         <li><a href="{{route('designation.create')}}">Add Designation</a></li>
+                    @endcan
                       
                     </ul>
                 </li>
-                
+                @can('edit record')
                  <li @if(request()->is('reports*')) class="active" @endif > <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i class="fas fa-chart-pie"></i><span class="hide-menu">Reports</span></a>
                     <ul aria-expanded="false" class="collapse">
                         <li><a href="{{route('employeeReports')}}">List of Reports</a></li>
@@ -172,6 +174,7 @@
                 -->
                 <li  class="" > <a class="waves-effect waves-dark" href="#" aria-expanded="false"><i class="mdi mdi-help-circle"></i><span class="hide-menu">Help</span></a>
                 </li>
+                @endcan
                 {{--///////// Second End--}}
             </ul>
         </nav>

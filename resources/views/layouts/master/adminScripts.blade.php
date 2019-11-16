@@ -88,11 +88,12 @@
 <script>
 
 // Function Prevent Explorer Back Button 
-/*function preventBack(){
+function preventBack(){
     window.history.forward();
 }
 setTimeout("preventBack()",0);
-window.onunload = function(){null};*/
+
+window.onunload = function(){null};
 //end function
 
 (function(){

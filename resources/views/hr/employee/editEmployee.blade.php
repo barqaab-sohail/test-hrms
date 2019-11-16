@@ -20,7 +20,7 @@
  
 
 		                <div style="margin-top:10px; margin-right: 10px;">
-		                    <button type="button" onclick="window.location.href='{{route('employee.index')}}'" class="btn btn-info float-right" data-toggle="tooltip" title="Back to List">Back</button>
+		                    
 		                </div>
 		                 
  
@@ -85,9 +85,10 @@
 		                                            <input type="text" id="date_of_birth" name="date_of_birth" value="{{ old('date_of_birth', $employee->date_of_birth) }}" class="form-control " placeholder="Enter Date of Birth" readonly required>
 		                                             
  
-
+		                                            @can('edit record')
 		                                            <br>
-		                                            <i class="fas fa-trash-alt text_requried"></i>
+		                                            @can('edit record')<i class="fas fa-trash-alt text_requried"></i>@endcan
+		                                            @endcan
 		                                             
  
 
@@ -135,9 +136,10 @@
 		                                            <input type="text" id="cnic_expiry" name="cnic_expiry"  value="{{ old('cnic_expiry',$employee->cnic_expiry) }}" placeholder="Enter CNIC Expiry Date" class="form-control " readonly required>
 													 
  
-
+		                                            @can('edit record')
 		                                            <br>
-		                                            <i class="fas fa-trash-alt text_requried"></i>
+		                                            @can('edit record')<i class="fas fa-trash-alt text_requried"></i>@endcan
+		                                            @endcan
 		                                             
  
 
@@ -268,8 +270,10 @@
 		                                <div class="col-md-6">
 		                                    <div class="row">
 		                                        <div class="col-md-offset-3 col-md-9">
+		                                        	@can('edit record')
 		                                            <button type="submit" class="btn btn-success btn-prevent-multiple-submits">Edit Employee</button>
-		                                            <button type="button" onclick="window.location.href='{{route('employee.index')}}'" class="btn btn-inverse">Cancel</button>
+		                                            @endcan
+		                                            
 		                                        </div>
 		                                    </div>
 		                                </div>

@@ -20,6 +20,29 @@ class HrController extends Controller
         $this->middleware('auth');
     }
 
+    public function user(){
+        $user= user::find(1);
+        dd($user);
+        //$user->assignRole('Super Admin');
+        //echo "OK";
+        
+    }
+    public function employee_status(){
+
+        $employees = employee::all();
+
+        foreach($employees as $employee)
+        {
+
+              employee::findOrFail($employee->id)->update(['employee_status_id'=>'1']);
+
+        }
+
+        echo 'OK';
+    }
+
+
+
     public function testing (){
 
         $data = employee::all()->where('employee_status',0);

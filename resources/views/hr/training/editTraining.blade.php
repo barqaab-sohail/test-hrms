@@ -20,7 +20,7 @@
  
 
 		                <div style="margin-top:10px; margin-right: 10px;">
-		                    <button type="button" onclick="window.location.href='{{route('employee.index')}}'" class="btn btn-info float-right">Back</button>
+		                    
 		                    
 		                </div>
 		                 
@@ -101,7 +101,7 @@
  
 
 		                                            <br>
-		                                            <i class="fas fa-trash-alt text_requried"></i>
+		                                            @can('edit record')<i class="fas fa-trash-alt text_requried"></i>@endcan
 		                                             
  
 
@@ -152,8 +152,10 @@
  
 
 		                                        <div class="col-md-offset-3 col-md-9">
+		                                        	@can('edit record')
 		                                            <button type="submit" class="btn btn-success btn-prevent-multiple-submits">Edit Training</button>
-		                                            <button type="button" onclick="window.location.href='{{route('employee.index')}}'" class="btn btn-inverse">Cancel</button>
+		                                            @endcan
+		                                            
 		                                        </div>
 		                                         
  

@@ -33,7 +33,8 @@ echo "Sucessfully Link Create";
 });
 
 Route::get ('/testing', 'HrController@testing');
-Route::get ('/prime','HrController@prime');
+Route::get ('/employee_status','HrController@employee_status');
+Route::get ('/user','HrController@user');
 Route::get('/CnicExpiry', function () {
 Artisan::call('CnicExpirySchedule:check');
     dd('OK');
@@ -81,7 +82,6 @@ Route::post('/dashboard', 'HomeController@addEvent')->name('dashboard.add');
 Route::get('/reports', 'ReportsController@index')->name('employeeReports');
 Route::get('/reports/acitveEmployee', 'ReportsController@activeEmployee')->name('activeEmployee');
 Route::get('/reports/allManagers', 'ReportsController@allManagers')->name('allManagers');
-
 
 
 //Employee & User Routes
@@ -225,5 +225,5 @@ return  redirect()->route('login');
 });
 
 Route::resource('hrms/task','TaskController');
-Route::resource('admin/role','Admin\RoleController');
-Route::resource('admin/permission','Admin\PermissionController');
+Route::resource('adminInfo/role','Admin\RoleController');
+Route::resource('adminInfo/permission','Admin\PermissionController');

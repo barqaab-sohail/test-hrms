@@ -20,7 +20,7 @@
  
 
 		                <div style="margin-top:10px; margin-right: 10px;">
-		                    <button type="button" onclick="window.location.href='{{route('employee.index')}}'" class="btn btn-info float-right">Back</button>
+		                    
 		                    
 		                </div>
 		                 
@@ -77,9 +77,10 @@
 		                                            <input type="text"  readonly id="expiry_date" name="expiry_date" value="{!! old('expiry_date', optional($data)->expiry_date) !!}" class="form-control"  />
 													 
  
-
+		                                            @can('edit record')
 		                                            <br>
 		                                            <i  class="fas fa-trash-alt text_requried"></i>
+		                                            @endcan
 		                                             
  
 
@@ -101,8 +102,10 @@
  
 
 		                                        <div class="col-md-offset-3 col-md-9">
+		                                        @can('edit record')
 		                                            <button type="submit" class="btn btn-success btn-prevent-multiple-submits">Edit Membership</button>
-		                                            <button type="button" onclick="window.location.href='{{route('employee.index')}}'" class="btn btn-inverse">Cancel</button>
+		                                        @endcan
+		                                            
 		                                        </div>
 		                                         
  

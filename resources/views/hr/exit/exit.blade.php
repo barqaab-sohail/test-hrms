@@ -60,7 +60,7 @@
 
 		                                        	<input type="text" id="effective_date" name="effective_date" value="{{ old('effective_date') }}" class="form-control " placeholder="Enter Effective Date" required readonly>
  		                                            <br>
-		                                            <i class="fas fa-trash-alt text_requried"></i>
+		                                            @can('edit record')<i class="fas fa-trash-alt text_requried"></i>@endcan
 		          									 
 		                                        </div>
 
@@ -102,7 +102,7 @@
 
 		                                        <div class="col-md-offset-3 col-md-9">
 		                                            <button type="submit" class="btn btn-success btn-prevent-multiple-submits">Save</button>
-		                                            <button type="button" onclick="window.location.href='{{route('employee.index')}}'" class="btn btn-inverse">Cancel</button>
+		                                            
 		                                        </div>
 		                                         
  

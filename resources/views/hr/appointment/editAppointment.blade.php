@@ -20,7 +20,7 @@
  
 
 		                <div style="margin-top:10px; margin-right: 10px;">
-		                    <button type="button" onclick="window.location.href='{{route('employee.index')}}'" class="btn btn-info float-right">Back</button>
+		                    
 		                    
 		                </div>
 		                 
@@ -57,9 +57,10 @@
 		                                            <input type="text" id="appointment_date" name="appointment_date" value="{!! old('appointment_date',isset($employee->appointment->appointment_date)?$employee->appointment->appointment_date:'')!!}" class="form-control" placeholder="Enter Appointment Letter Date " readonly required>
 													 
  
-
+		                                            @can('edit record')
 		                                            <br>
 		                                            <i  class="fas fa-trash-alt text_requried"></i>
+		                                            @endcan
 		                                             
  
 
@@ -183,6 +184,7 @@
 		                                </div>
 		                                <!--/span-->
 		                             </div>
+								@can('edit record')
 								<hr>
 		                        <div class="form-actions">
 		                            <div class="row">
@@ -190,11 +192,12 @@
 		                                    <div class="row">
 		                                    	 
  
-
+		                                    	
 		                                        <div class="col-md-offset-3 col-md-9">
 		                                            <button type="submit" class="btn btn-success btn-prevent-multiple-submits">Save</button>
-		                                            <button type="button" onclick="window.location.href='{{route('employee.index')}}'" class="btn btn-inverse">Cancel</button>
+		                                            
 		                                        </div>
+		                        
 		                                         
  
 
@@ -202,6 +205,7 @@
 		                                </div>
 		                            </div>
 		                        </div>
+		                        @endcan
 		                    </form>
 		                    <hr>
 		                    <br>
@@ -332,11 +336,12 @@
 		                                    <div class="row">
 		                                    	 
  
-
+		                                    	@can('edit record')
 		                                        <div class="col-md-offset-3 col-md-9">
 		                                            <button type="submit" class="btn btn-success btn-prevent-multiple-submits">Save</button>
-		                                            <button type="button" onclick="window.location.href='{{route('employee.index')}}'" class="btn btn-inverse">Cancel</button>
+		                                            
 		                                        </div>
+		                                        @endcan
 		                                         
  
 

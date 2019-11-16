@@ -20,7 +20,7 @@
  
 
 		                <div style="margin-top:10px; margin-right: 10px;">
-		                    <button type="button" onclick="window.location.href='{{route('employee.index')}}'" class="btn btn-info float-right">Back</button>
+		                    
 		                    
 		                </div>
 		                 
@@ -108,8 +108,10 @@
  
 
 		                                        <div class="col-md-offset-3 col-md-9">
+		                                        @can('edit record')
 		                                            <button type="submit" class="btn btn-success btn-prevent-multiple-submits">Save Language</button>
-		                                            <button type="button" onclick="window.location.href='{{route('employee.index')}}'" class="btn btn-inverse">Cancel</button>
+		                                        @endcan
+		                                            
 		                                        </div>
 		                                        
  
