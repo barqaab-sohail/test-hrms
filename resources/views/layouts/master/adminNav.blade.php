@@ -80,21 +80,26 @@
                  
                 
  
-
+                @role('Super Admin')
                 <li @if(request()->is('leave*')) class="active" @endif > <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i class="mdi mdi-file-document"></i><span class="hide-menu">Leave</span></a>
                     <ul aria-expanded="false" class="collapse">
+                       
                         <li><a href="{{route('leaveQuota.index')}}">Leave Quota</a></li>
+
                         
                     </ul>
                 </li>
+                @endrole
                 
                 <li @if(request()->is('adminInfo*')) class="active" @endif > <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i class="mdi mdi-server-network"></i><span class="hide-menu">Admin Info</span></a>
                     <ul aria-expanded="false" class="collapse">
                         <li><a href="{{route('activeUsers')}}">Active User List</a></li>
                         <li><a href="{{route('setUserRights')}}">Set User Rights</a></li>
+                         @role('Super Admin')
                         <li><a href="{{route('role.index')}}">Add Roles</a></li>
                         <li><a href="{{route('permission.index')}}">Add Permission</a></li>
                         <li><a href="">Give Permissions</a></li>
+                        @endrole
                     </ul>
                 </li>
 
@@ -105,8 +110,10 @@
                     </ul>
                 </li>
 
-                
+
+                @role('Super Admin')
                 <li @if(request()->is('*phone*')) class="active" @endif > <a id="notInclude" class="has-arrow waves-effect waves-dark" href="{{route('contactNumber.index')}}" aria-expanded="false"><i class="fas fa-phone"></i><span class="hide-menu">Contact Numbers</span></a>
+                @endrole
                     
 
                 </li>

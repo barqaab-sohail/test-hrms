@@ -21,6 +21,7 @@ class UserController extends Controller
 
         $employee = employee::find($id);
         $user = User::where ('employee_id',$id)->first();
+        
         $permissions = '';
         if($user!=null){
         $permissions = $user->getAllPermissions();
@@ -32,6 +33,7 @@ class UserController extends Controller
           }
        
         $roles = role::all();
+        $roles->forget(4);
 
        
         
@@ -54,7 +56,11 @@ class UserController extends Controller
 
      				User::findOrFail($user->id)->update($request->all());
               if($user->roles->first()!=null){
-              $user->removeRole($user->roles->first());
+                $allRoles = $user->getRoleNames();
+
+                foreach($allRoles as $role){
+                  $user->removeRole($role);
+                }
               }
             
             $user->assignRole($request->role);

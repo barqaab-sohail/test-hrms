@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Requests\StoreExit;
 use App\employee;
+use App\user;
 use App\employee_status;
 use App\employee_exit;
 
@@ -21,16 +22,24 @@ class ExitController extends Controller
     $employee = employee::find(session('employee_id'));
     $status = employee_status::all();
      $exitIds = employee_exit::all()->where('employee_id', session('employee_id'));
-    return view ('hr.exit.exit', compact('employee','status','exitIds'));
+     $user = user::where('employee_id',session('employee_id'))->first();
+     
+    return view ('hr.exit.exit', compact('employee','status','exitIds','user'));
   }
 
   public function store(StoreExit $request){
+
     employee::findOrFail($request->employee_id)->update(['employee_status_id'=>$request->employee_status_id]);
     $data = $request->all();
+    if ($request->filled('user_status')){
+       $user = user::where('employee_id',session('employee_id'))->first();
+       $user->update(['user_status'=>$request->user_status]);
+    }
     if($request->filled('effective_date')){
             $data ['effective_date']= \Carbon\Carbon::parse($request->effective_date)->format('Y-m-d');
             }
     employee_exit::create($data);
+
     return redirect()->back()->with('message', 'Data Sucessfully Save');
 
   }
@@ -40,12 +49,22 @@ class ExitController extends Controller
        $status = employee_status::all();
        $data = employee_exit::find($id);
        $exitIds = employee_exit::all()->where('employee_id', session('employee_id'));
-       return view ('hr.exit.editExit', compact('employee','status','data','exitIds'));
+        $user = user::where('employee_id',session('employee_id'))->first();
+       return view ('hr.exit.editExit', compact('employee','status','data','exitIds','user'));
   }
     
   public function update(Request $request, $id)  {
             
-   	//dd($request->employee_status_id);
+    employee::findOrFail($request->employee_id)->update(['employee_status_id'=>$request->employee_status_id]);
+    $data = $request->all();
+    if ($request->filled('user_status')){
+       $user = user::where('employee_id',session('employee_id'))->first();
+       $user->update(['user_status'=>$request->user_status]);
+    }
+    if($request->filled('effective_date')){
+            $data ['effective_date']= \Carbon\Carbon::parse($request->effective_date)->format('Y-m-d');
+    }
+       employee_exit::findOrFail($id)->update($data);
    
     return redirect()->back()->with('message', 'Data Sucessfully Save');
             

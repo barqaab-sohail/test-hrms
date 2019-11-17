@@ -41,15 +41,23 @@ class AdminController extends Controller
     public function setUserRights(){
        $employees = employee::all()->where('employee_status_id','1');
        $roles = Role::all();
+       $roles->forget(4);
+
        return view('admin.setUserRights', compact('employees','roles'));
     }
 
     public function updateActiveUsers(Request $request, $id){
        
         $user = User::all()->where('employee_id', $id)->first();
-        $role = Role::all()->where('id', $request->role_id)->first();
-        $user->assignRole($role->name);
-        //User::updateOrCreate(['employee_id' => $id], $request->all());
+        
+        $allRoles = $user->getRoleNames();    
+                foreach($allRoles as $role){
+                  $user->removeRole($role);
+                }
+        
+
+        $user->assignRole($request->role_name);
+        
         return "OK";
     }
 

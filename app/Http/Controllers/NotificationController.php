@@ -49,7 +49,7 @@ class NotificationController extends Controller
         $users = user::all();
 
     }elseif($request->to=='HR'){
-         $users = user::all()->whereIn('role_id','4');
+         $users = User::role('HR Manager')->get();
     }
     elseif($request->to=='allManagers'){
         $managerIds = posting::all()->pluck('manager_id')->toArray();

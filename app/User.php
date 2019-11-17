@@ -7,6 +7,8 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use OwenIt\Auditing\Contracts\Auditable;
 use Spatie\Permission\Traits\HasRoles;
+use Spatie\Permission\Models\Role;
+
 
 class User extends Authenticatable implements Auditable
 {
@@ -22,6 +24,8 @@ class User extends Authenticatable implements Auditable
     protected $fillable = [
         'email','employee_id','session_id','user_status',
     ];
+     
+
 
     /**
      * The attributes that should be hidden for arrays.
@@ -45,8 +49,5 @@ class User extends Authenticatable implements Auditable
         return $this->belongsTo('App\employee');
     }
 
-    public function role(){
-        return $this->hasMany('App\role');
-    }
-
+    
 }

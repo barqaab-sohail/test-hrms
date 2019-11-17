@@ -36,7 +36,7 @@
 		                            <h3 class="box-title">Exit</h3>
 		                            <hr class="m-t-0 m-b-40">
 		                            <div class="row">
-		                                <div class="col-md-6">
+		                                <div class="col-md-4">
 		                                    <div class="form-group row">
 												<div class="col-md-12">
 		                                        	<label class="control-label text-right">Current Status<span class="text_requried">*</span></label>
@@ -56,7 +56,7 @@
 		                                </div>
 		                                
 		                                <!--/span-->
-		                                <div class="col-md-6">
+		                                <div class="col-md-4">
 		                                    <div class="form-group row">
 		                                        <div class="col-md-12 date_input">
 		                                        	<label class="control-label text-right ">Effective Date</label>
@@ -69,10 +69,27 @@
 		                                        </div>
 
 		                                    </div>
-		                                    <input type="text"  name="employee_id" value="{{session('employee_id')}}
-		                                            " class="form-control" hidden >
+		                                    
+		                                    </div>
+
+		                                    <div class="col-md-4">
+		                                    <div class="form-group row">
+												<div class="col-md-12">
+		                                        	<label class="control-label text-right">Current Status<span class="text_requried">*</span></label>
+
+		                                        	 <select  name="user_status"  class="form-control selectTwo" >
+		                                        		
+		                                        		<option value=""></option>
+		                                        		<option value="{{0}}" {{ $user->user_status === 0 ? 'selected' : '' }}>{{'Not Registered'}}</option>
+		                                        		<option value="{{1}}" {{ $user->user_status === 1 ? 'selected' : '' }}>{{'Registered'}}</option>
+		                                        		<option value="{{2}}" {{ $user->user_status === 2 ? 'selected' : '' }}>{{'Blocked'}}</option>
+                                        
+                                                    </select>
+		                                           
+		                                        </div>
 		                                    </div>
 		                                </div>
+		                             </div>
 		                            </div>
 		                            <div class="row">
 		                                <div class="col-md-12">
@@ -94,7 +111,8 @@
 		                                    </div>
 		                                </div>
 		                            </div>
-
+		                            <input type="text"  name="employee_id" value="{{session('employee_id')}}
+		                                            " class="form-control" hidden >
 		                        </div>
 		                         <hr>
 		                        <div class="form-actions">

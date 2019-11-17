@@ -39,12 +39,12 @@
 									<input id="email{{$employee->id}}" value="{{isset($employee->user->email)? $employee->user->email:''}}"/>
 								</td>
 								<td> 
-									<select  name="role_id"  id="role{{$employee->id}}" class="form-control" >
+									<select  name="role_name"  id="role{{$employee->id}}" class="form-control" >
                                     		<option  value=""></option>
                                         @foreach($roles as $role)
-											<option  value="{{$role->id}}"
-											@if(!empty($employee->user->role_id))
-												@if($role->id == $employee->user->role_id) selected="selected"@endif
+											<option  value="{{$role->name}}"
+											@if(!empty($employee->user->email))
+												@if($role->name == $employee->user->getRoleNames()->first()) selected="selected"@endif
 											@endif>{{$role->name}}</option>
 										@endforeach
                                     </select>
@@ -119,10 +119,10 @@
 		        var updateId = $(this).attr('id');
 		        var arr = updateId.split('=');
 		        var id = arr[1];
-		        var role_id = $('#role'+id).children("option:selected").val();
+		        var role_name = $('#role'+id).children("option:selected").val();
 		        var email = $('#email'+id).val();
-		        
-		        if ((role_id=='') || (email=='')){
+		       
+		        if ((role_name=='') || (email=='')){
 		        	alert ("Please enter Email address and select User Rights");
 		        	return;
 		        }
@@ -143,7 +143,7 @@
 	     			$.ajax({
 		            url: url, //this is the submit URL
 		            type: 'POST', //or POST
-		            data: {role_id:role_id, email:email},
+		            data: {role_name:role_name, email:email},
 
 		            	success: function(data){
 		            		
