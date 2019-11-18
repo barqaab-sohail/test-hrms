@@ -18,11 +18,12 @@
 		        	<div class="col-lg-10">
 						 
  
-
+		        		@can('edit record')
 		                <div style="margin-top:10px; margin-right: 10px;">
 		                    <button type="button"  id ="hideButton"  class="btn btn-info float-right">Add Education</button>
 		                    
 		                </div>
+		                @endcan
 		                 
  
 

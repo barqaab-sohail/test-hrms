@@ -50,10 +50,10 @@
                                     </select>
                                 </td>
 								<td>
-									<a class="btn btn-info btn-sm" id="update,id={{$employee->id}}" data-toggle="tooltip" title="Update"><i class="fas fa-save text-white"></i></a>
+									<a class="btn btn-info btn-sm" id="update,id={{$employee->id}}" title="Update"><i class="fas fa-save text-white"></i></a>
 								</td>
 								<td>
-									<a class="btn btn-danger btn-sm" id="delete,id={{$employee->id}}" data-toggle="tooltip" title="Delete"><i class="fas fa-trash-alt text-white"></i></a>
+									<a class="btn btn-danger btn-sm" id="delete,id={{$employee->id}}" title="Delete"><i class="fas fa-trash-alt text-white"></i></a>
 								</td>	
 							</tr>
 						@endforeach
@@ -70,37 +70,14 @@
 	<script>
         $(document).ready(function() {
             $('#myTable').DataTable({
+
                 stateSave: false,
                 scrollY:        "300px",
       			scrollX:        true,
         		scrollCollapse: true,
         		paging:         false,
-                dom: 'Blfrti',
-                buttons: [
-                    {
-                        extend: 'copyHtml5',
-                        exportOptions: {
-                            columns: [ 0, 1, 2,3]
-                        }
-                    },
-                    {
-                        extend: 'excelHtml5',
-                        exportOptions: {
-                            columns: [ 0, 1, 2,3,4]
-                        }
-                    },
-                    {
-                        extend: 'pdfHtml5',
-                        exportOptions: {
-                            columns: [ 0, 1, 2,3,4]
-                        }
-                    }, {
-                        extend: 'csvHtml5',
-                        exportOptions: {
-                            columns: [ 0, 1, 2,3,4]
-                        }
-                    },
-                ]
+                dom: 'lfrti'
+
             });
         });
         $(document).ready(function () {

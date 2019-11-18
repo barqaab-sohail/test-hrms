@@ -116,6 +116,7 @@
             		rightColumns:2
         		}
             });
+            
         });
         $(document).ready(function () {
             $("#month").change(function(e){
