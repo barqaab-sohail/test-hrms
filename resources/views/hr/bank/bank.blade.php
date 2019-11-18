@@ -22,13 +22,12 @@
  
 
 		                <div style="margin-top:10px; margin-right: 10px;">
-		                    
-		                    
+		                    <button type="button"  id ="hideButton"  class="btn btn-info float-right">Add Bank</button>
 		                </div>
 		                 
  
 
-		                <div class="card-body">
+		                <div class="card-body" id="hideDiv">
 
 		                    <form action="{{route('bank.store')}}" method="post" class="form-horizontal form-prevent-multiple-submits" enctype="multipart/form-data">
 		                        {{csrf_field()}}
@@ -108,11 +107,12 @@
 		                            </div>
 		                        </div>
 		                    </form>
+		                </div>
 	@if($bankIds->count()!=0)		                    
 	@include('hr.bank.list')
 		
 	@endif
-		        		</div>       
+		        		       
 		        	</div>
 		        </div>
             </div>

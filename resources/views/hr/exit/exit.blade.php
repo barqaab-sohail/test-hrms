@@ -20,12 +20,12 @@
  
 
 		                <div style="margin-top:10px; margin-right: 10px;">
-		                    
+		                    <button type="button"  id ="hideButton"  class="btn btn-info float-right">Add Exit</button>
 		                </div>
 		                 
  
 
-		                <div class="card-body">
+		                <div class="card-body" id="hideDiv">
 
 		                    <form action="{{route('exit.store')}}" method="post" class="form-horizontal form-prevent-multiple-submits" enctype="multipart/form-data">
 		                     
@@ -90,7 +90,7 @@
 		                                    <input type="text"  name="employee_id" value="{{session('employee_id')}}
 		                                            " class="form-control" hidden >
 		                                 </div>
-		                                </div>
+		                                
 		                            </div>
 		                            <div class="row">
 		                                <div class="col-md-12">
@@ -133,12 +133,13 @@
 		                                </div>
 		                            </div>
 		                        </div>
+
 		                    </form>
+		                </div>
 @if($exitIds->count()!=0)		                    
 	@include('hr.exit.list')
 @endif
 
-		        		</div>       
 		        	</div>
 		        </div>
             </div>

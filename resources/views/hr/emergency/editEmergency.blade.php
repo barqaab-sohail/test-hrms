@@ -96,7 +96,7 @@
 
 		                                        <div class="col-md-offset-3 col-md-9">
 		                                        @can('edit record')
-		                                            <button type="submit" class="btn btn-success btn-prevent-multiple-submits">Edit Contact</button>
+		                                            <button type="submit" class="btn btn-success btn-prevent-multiple-submits">Edit</button>
 		                                        @endcan
 		                                            
 		                                        </div>

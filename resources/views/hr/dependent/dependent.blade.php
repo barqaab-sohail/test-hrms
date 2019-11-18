@@ -20,13 +20,12 @@
  
 
 		                <div style="margin-top:10px; margin-right: 10px;">
-		                    
-		                    
+		                    <button type="button"  id ="hideButton"  class="btn btn-info float-right">Add Dependent</button>
 		                </div>
 		                 
  
 
-		                <div class="card-body">
+		                <div class="card-body" id="hideDiv">
 
 		                    <form action="{{route('dependent.store')}}" method="post" class="form-horizontal form-prevent-multiple-submits" enctype="multipart/form-data">
 		                       @include('hr.dependent.form')
@@ -52,11 +51,12 @@
 		                            </div>
 		                        </div>
 		                    </form>
+		                </div>
 	@if($dependentIds->count()!=0)		                    
 		@include('hr.dependent.list')	
 	
 	@endif
-		        		</div>       
+		        		       
 		        	</div>
 		        </div>
             </div>

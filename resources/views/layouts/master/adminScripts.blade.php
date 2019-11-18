@@ -120,7 +120,11 @@ window.onunload = function(){null};
         });
 
 
-     
+        $('#hideDiv').hide();
+                $('#hideButton').click(function(){
+                    $('#hideDiv').toggle();
+
+        });
         
         //Active Anchor tage with compare url and href
        /* $('.sidebar-nav li a').each(function(){

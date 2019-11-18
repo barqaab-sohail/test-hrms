@@ -21,12 +21,13 @@
 
 		                <div style="margin-top:10px; margin-right: 10px;">
 		                    
+		                    <button type="button"  id ="hideButton"  class="btn btn-info float-right">Add Posting</button>
 		                    
 		                </div>
 		                 
  
 
-		                <div class="card-body">
+		                <div class="card-body" id="hideDiv" >
 
 		                    <form action="{{route('posting.store')}}" method="post" class="form-horizontal form-prevent-multiple-submits" enctype="multipart/form-data">
 		                        {{csrf_field()}}
@@ -161,7 +162,7 @@
 
 		                                        <div class="col-md-offset-3 col-md-9">
 		                                        	@can('edit record')
-		                                            <button type="submit" class="btn btn-success btn-prevent-multiple-submits">Add Posting</button>
+		                                            <button type="submit" class="btn btn-success btn-prevent-multiple-submits">Save</button>
 		                                            @endcan
 		                                            
 		                                        </div>
@@ -173,13 +174,14 @@
 		                            </div>
 		                        </div>
 		                    </form>
+		                </div>   
 	@if($postingIds->count()!=0)		                    
 	
 	@include('hr.posting.list')
 
 	@endif
 			                    
-		        		</div>       
+		        		    
 		        	</div>
 		        </div>
             </div>
@@ -188,8 +190,6 @@
  @push('scripts')
         <script>
             $(document).ready(function(){
-            	
-
             	
 
 

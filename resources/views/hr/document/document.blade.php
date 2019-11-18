@@ -18,13 +18,12 @@
  
 
 		                <div style="margin-top:10px; margin-right: 10px;">
-		                    
-		                    
+		                    <button type="button"  id ="hideButton"  class="btn btn-info float-right">Add Document</button>
 		                </div>
 		                 
  
 
-		                <div class="card-body">
+		                <div class="card-body" id="hideDiv">
 
 		                    <form action="{{route('document.store')}}" method="post" class="form-horizontal form-prevent-multiple-submits" id="document" enctype="multipart/form-data">
 		                        {{csrf_field()}}
@@ -131,7 +130,7 @@
 
 		                                        <div class="col-md-offset-3 col-md-9">
 		                                        @can('edit record')
-		                                            <button type="submit" class="btn btn-success btn-prevent-multiple-submits">Add Document</button>
+		                                            <button type="submit" class="btn btn-success btn-prevent-multiple-submits">Save</button>
 		                                        @endcan
 
 		                                            
@@ -144,13 +143,13 @@
 		                            </div>
 		                        </div>
 		                    </form>
+		                </div>
 	@if($documentIds->count()!=0)
 
 	@include('hr.document.list')		                    
 		
 	@endif
 			                    
-		        		</div>       
 		        	</div>
 		        </div>
             </div>
