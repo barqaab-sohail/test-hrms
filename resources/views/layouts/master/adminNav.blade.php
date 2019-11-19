@@ -59,11 +59,11 @@
                     </ul>
                 </li>
                 @can('edit record')
-                 <li @if(request()->is('reports*')) class="active" @endif > <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i class="fas fa-chart-pie"></i><span class="hide-menu">Reports</span></a>
+                 <li @if(request()->is('reports*')) class="active" @endif > <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i class="fas fa-chart-pie"></i><span class="hide-menu">Reports & Charts</span></a>
                     <ul aria-expanded="false" class="collapse">
-                        <li><a href="{{route('employeeReports')}}">List of Reports</a></li>
-                        <li><a href="{{route('chart')}}">Charts Divisionwise</a></li>
-                        <li><a href="{{route('chart.age')}}">Charts Agewise</a></li>
+                        <li><a href="{{route('hr.reports')}}">Reports</a></li>
+                         <li><a href="{{route('hr.charts')}}">Charts</a></li>
+    
                     </ul>
                 </li>
 

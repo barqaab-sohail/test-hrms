@@ -69,19 +69,18 @@ Route::delete('/hrms/contactNumber/{id}', 'ContactNumberController@destroy')->na
 
 
 //Dashboard
-Route::get('reports/chart/age','ChartController@age')->name('chart.age');
-Route::get('reports/chart', 'ChartController@index')->name('chart');
-Route::get('/genderChart', 'ChartController@gender')->name('genderChart');
 Route::get('/dashboard', 'HomeController@index')->name('dashboard')->middleware('verified');
-Route::post('/dashboard', 'HomeController@addEvent')->name('dashboard.add');
 
-//Route::get('events', 'EventController@index')->name('events.index');
-//Route::post('events', 'EventController@addEvent')->name('events.add');
 
 //Reports
-Route::get('/reports', 'ReportsController@index')->name('employeeReports');
+Route::get('/reports', 'ReportsController@index')->name('hr.reports');
 Route::get('/reports/acitveEmployee', 'ReportsController@activeEmployee')->name('activeEmployee');
 Route::get('/reports/allManagers', 'ReportsController@allManagers')->name('allManagers');
+
+//Charts
+Route::get('reports/charts','ChartController@index')->name('hr.charts');
+Route::get('reports/charts/age','ChartController@age')->name('chart.age');
+Route::get('reports/charts/division', 'ChartController@division')->name('chart.division');
 
 
 //Employee & User Routes

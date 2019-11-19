@@ -15,7 +15,10 @@
 @section('content')
 	<div class="card">
 		<div class="card-body">
+				<button type="button" onclick="window.location.href='{{route('hr.charts')}}'" class="btn btn-info float-right">Back to List</button>
+		 
 		 <h2 class="box-title">Departmentwise Charts</h2>
+
 			<div id="app">
             {!! $chart->container() !!}
         </div>

@@ -13,7 +13,7 @@
 @section('content')
 	<div class="card">
 		<div class="card-body">
-		
+		            <button type="button" onclick="window.location.href='{{route('hr.charts')}}'" class="btn btn-info float-right">Back to List</button>
 		<div id="piechart" style="width: 900px; height: 500px;"></div>
         			
 		</div>

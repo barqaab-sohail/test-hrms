@@ -24,7 +24,7 @@ class ReportsController extends Controller
 
     public function activeEmployee (){
        $employees = employee::with('user','picture','appointment','salary','posting','membership','experience','education','language','promotion','contact','emergency_contact','document','other_information')->get();
-       return view('hr.reports.activeEmployees', compact('employees'));
+       return view('hr.reports.tables.activeEmployees', compact('employees'));
     }
 
     public function allManagers(){
@@ -36,7 +36,7 @@ class ReportsController extends Controller
         $postings = posting::orderBy('posting_date','DESC')->get(['employee_id','manager_id','project'])->unique('employee_id');
       
              
-        return view('hr.reports.allManagers', compact('postings','employees'));
+        return view('hr.reports.tables.allManagers', compact('postings','employees'));
     }
 
     
