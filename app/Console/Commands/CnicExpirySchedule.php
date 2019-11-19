@@ -52,9 +52,15 @@ class CnicExpirySchedule extends Command
         foreach($users as $user){
         $name = $user->employee->first_name ." ". $user->employee->middle_name ." ". $user->employee->last_name;
         $expiryDate = $user->employee->cnic_expiry;
-        $letter = collect(['subject'=>'CNIC Expiry', 'message'=>"Dear $name your CNIC is near to expiry on $expiryDate, please renew your CNIC and informed to HR"]);
+        $letter = collect(['from'=>'HRMS','subject'=>'CNIC Expiry', 'message'=>"Dear $name your CNIC is near to expiry on $expiryDate, please renew your CNIC and informed to HR"]);
 
          Notification::send($user, new DatabaseNotification($letter));
+         
+        $hrManager = User::role('HR Manager')->get();
+
+        $message = collect(['from'=>'HRMS','subject'=>"$name, CNIC Expiry on $expiryDate", 'message'=>"Dear $name your CNIC is near to expiry on $expiryDate, please renew your CNIC and informed to HR"]);
+        Notification::send($hrManager, new DatabaseNotification($message));
+
 
         }
     }

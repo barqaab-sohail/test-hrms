@@ -21,8 +21,12 @@ class HrController extends Controller
     }
 
     public function user(){
-        $user= user::find(1);
-        dd($user);
+       
+        // $collection = collect(['user'=>1]);
+        // $collection->push('user'=>2);
+        // dd($collection);
+
+
         //$user->assignRole('Super Admin');
         //echo "OK";
         
