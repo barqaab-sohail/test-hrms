@@ -13,7 +13,7 @@
 			<!--<div class="float-right">
 				<input id="month" class="form-control" value="" type="month">
 			</div>-->
-		<div class="container">
+		<div class="container" id='hideDiv'>
    					<h3 align="center">Import Excel File</h3>
 
 				   	<form method="post" enctype="multipart/form-data" action="{{route('importExcel')}}">
@@ -37,9 +37,10 @@
 				     </table>
 				    </div>
 				   </form>
+		<hr>
 		</div>
 
-		<hr>
+		
 
 @if($projects->count()!=0)
 			<h4 class="card-title">List of Projects</h4>

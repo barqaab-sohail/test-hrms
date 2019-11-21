@@ -13,27 +13,6 @@ class employee extends Model implements Auditable
         'first_name','middle_name','last_name','father_name','date_of_birth','gender_id','cnic','cnic_expiry','employee_no','marital_status_id','religon','employee_status_id','manager_id','division_id',
     ];
 
-     //default value of employee_status=0
-    protected $attributes = [
-        'employee_status' => 0 
-    ];
-    
-    //get value of status and show in string as per statusOptions
-    public function getStatusAttribute($attribute)
-    {
-        return $this->statusOptions()[$attribute];
-    }
-
-    public function statusOptions()
-    {
-        return [
-            0 => 'On Board',
-            1 => 'Resigned',
-            2 => 'Terminated',
-            3 => 'Long Leave',
-            4 => 'Manmonth Ended'
-        ];
-    }
     
     public function user()
     {

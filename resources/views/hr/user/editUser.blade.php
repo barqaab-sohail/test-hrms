@@ -85,7 +85,7 @@
 		                        </div>
 		                        @can('edit record')
 		                        <div>
-		                        @if($permissions->count()!=0)
+		                        @if($permissions!=null)
 			                        <h3>{{$employee->first_name. " ".$employee->middle_name." ".$employee->last_name}} has following permission</h3>
 			                        
 				                        @foreach($permissions as $permission)

@@ -15,8 +15,7 @@
 			</div>-->
 		@include('phone.import')
 
-		<hr>
-
+		
 		<div class="container">
    					<h3 align="center">Add Contact Number</h3>
 

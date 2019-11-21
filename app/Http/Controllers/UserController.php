@@ -20,9 +20,10 @@ class UserController extends Controller
 	public function edit($id){
 
         $employee = employee::find($id);
-        $user = User::where ('employee_id',$id)->first();
+      
+         $user = User::where ('employee_id',$id)->first();
         
-        $permissions = '';
+        $permissions = null;
         if($user!=null){
         $permissions = $user->getAllPermissions();
         }
@@ -31,10 +32,9 @@ class UserController extends Controller
           if($user!=null){ 
             $roleName = $user->getRoleNames()->first(); 
           }
-       
+        
         $roles = role::all();
         $roles->forget(4);
-
        
         
        return view ('hr.user.editUser', compact('employee','roles','roleName','permissions'));
