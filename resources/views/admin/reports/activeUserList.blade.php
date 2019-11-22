@@ -2,7 +2,7 @@
 @section('Heading')
 	
 
-	<h3 class="text-themecolor">Active User List</h3>
+	<h3 class="text-themecolor">Login User List</h3>
 	<ol class="breadcrumb">
 		<li class="breadcrumb-item"><a href="javascript:void(0)"></a></li>
 		
@@ -15,7 +15,7 @@
 			<!--<div class="float-right">
 				<input id="month" class="form-control" value="" type="month">
 			</div>-->
-			<h4 class="card-title">Total Active Users = {{$totalActiveUsers}}</h4>
+			<h4 class="card-title">Total Login Users = {{$totalActiveUsers}}</h4>
 			
 			<div class="table-responsive m-t-40">
 				

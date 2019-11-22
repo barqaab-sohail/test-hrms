@@ -120,9 +120,9 @@ window.onunload = function(){null};
         });
 
 
-        $('#hideDiv').hide();
+        $('[id^=hideDiv]').hide();
                 $('#hideButton').click(function(){
-                    $('#hideDiv').toggle();
+                    $('[id^=hideDiv]').toggle();
 
         });
         

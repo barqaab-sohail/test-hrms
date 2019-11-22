@@ -95,10 +95,10 @@
        			 }
 
    			 } );
-            $("table").rowspanizer({
+           /* $("table").rowspanizer({
 			  vertical_align: 'middle',
 			  columns: [0]
-			});
+			});*/
 
         });
         $(document).ready(function () {

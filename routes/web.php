@@ -32,6 +32,8 @@ Artisan::call('storage:link');
 echo "Sucessfully Link Create";
 });*/
 
+
+
 Route::get ('/testing', 'HrController@testing');
 Route::get ('/employee_status','HrController@employee_status');
 Route::get ('/user','HrController@user');

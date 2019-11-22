@@ -93,7 +93,7 @@
                 
                 <li @if(request()->is('adminInfo*')) class="active" @endif > <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i class="mdi mdi-server-network"></i><span class="hide-menu">Admin Info</span></a>
                     <ul aria-expanded="false" class="collapse">
-                        <li><a href="{{route('activeUsers')}}">Active User List</a></li>
+                        <li><a href="{{route('activeUsers')}}">Login User List</a></li>
                         <li><a href="{{route('setUserRights')}}">Set User Rights</a></li>
                          @role('Super Admin')
                         <li><a href="{{route('role.index')}}">Add Roles</a></li>

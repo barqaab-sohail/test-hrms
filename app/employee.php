@@ -10,9 +10,12 @@ class employee extends Model implements Auditable
    use \OwenIt\Auditing\Auditable;
 
    protected $fillable = [
-        'first_name','middle_name','last_name','father_name','date_of_birth','gender_id','cnic','cnic_expiry','employee_no','marital_status_id','religon','employee_status_id','manager_id','division_id',
+        'first_name','middle_name','last_name','father_name','date_of_birth','gender_id','cnic','cnic_expiry','employee_no','marital_status_id','religon','employee_status_id','division_id',
     ];
 
+    public function manager(){
+        return $this->hasMany('App\Posting','manager_id');
+    }
     
     public function user()
     {

@@ -1,4 +1,4 @@
-<div class="container" id="hideDiv">
+<div class="container" >
    					<h3 align="center">Import Excel File</h3>
 
 				   	<form method="post" enctype="multipart/form-data" action="{{route('importPhone')}}">

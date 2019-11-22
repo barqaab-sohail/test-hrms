@@ -13,8 +13,7 @@
 			<!--<div class="float-right">
 				<input id="month" class="form-control" value="" type="month">
 			</div>-->
-		@include('phone.import')
-
+	
 		
 		<div class="container">
    					<h3 align="center">Add Contact Number</h3>
@@ -22,10 +21,7 @@
 				   	<form method="POST" enctype="multipart/form-data" action="{!!route('contactNumber.update', ['id'=>optional($data)->id])!!}">
 				   	@method('PATCH')
 				   	@include('phone.form')
-				   
-
 				   	<button type="submit" class="btn btn-success btn-prevent-multiple-submits">Edit Contact Detail</button>
-
 				   </form>
 		</div>
 
