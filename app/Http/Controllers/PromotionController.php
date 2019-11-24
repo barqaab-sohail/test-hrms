@@ -21,7 +21,7 @@ class PromotionController extends Controller
 	public function create(){
 	$employee = employee::find(session('employee_id'));
     $designations = designation::all();
-    $promotionIds = promotion::all()->where('employee_id',session('employee_id'));
+    $promotionIds = promotion::all()->where('employee_id',session('employee_id'))->sortByDesc('effective_date');
    
      return view ('hr.promotion.promotion',compact('employee','promotionIds','designations'));
     }
@@ -57,7 +57,7 @@ class PromotionController extends Controller
         $employee = employee::find(session('employee_id'));
         $designations = designation::all();
        
-        $promotionIds = promotion::all()->where('employee_id',session('employee_id'));
+        $promotionIds = promotion::all()->where('employee_id',session('employee_id'))->sortByDesc('effective_date');
         
         $data = DB::table('salaries')
                     ->join('promotions','promotions.id','=','salaries.promotion_id')

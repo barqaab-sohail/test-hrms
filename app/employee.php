@@ -12,10 +12,6 @@ class employee extends Model implements Auditable
    protected $fillable = [
         'first_name','middle_name','last_name','father_name','date_of_birth','gender_id','cnic','cnic_expiry','employee_no','marital_status_id','religon','employee_status_id','division_id',
     ];
-
-    public function manager(){
-        return $this->hasMany('App\Posting','manager_id');
-    }
     
     public function user()
     {
@@ -36,7 +32,7 @@ class employee extends Model implements Auditable
     }
     public function posting()
     {
-        return $this->hasMany('App\posting');
+        return $this->hasMany('App\posting')->latest();
     }
     public function education()
     {

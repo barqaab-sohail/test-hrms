@@ -1,6 +1,7 @@
 <?php
 
 use App\user;
+use App\employee;
 
 
 /*
@@ -32,6 +33,43 @@ Artisan::call('storage:link');
 echo "Sucessfully Link Create";
 });*/
 
+//  function manager($id){
+//     $employee = employee::find($id);
+
+//    // dd($employee);
+//     if($employee){
+//     $firstManagerObject = $employee->posting->first();
+//         if($firstManagerObject){
+//         $firstManager = employee::find($firstManagerObject->manager_id);
+        
+//         echo "1    Manager: " . $firstManager->first_name . ' '. $firstManager->middle_name. ' '.$firstManager->last_name;
+//         }
+//     }
+
+// }
+
+Route::get('direct',function(){
+manager(1);
+// $employee = employee::find(4);
+// $firstManagerObject = $employee->posting->first();
+// $firstManager = employee::find($firstManagerObject->manager_id);
+
+// $secondManagerObject = $firstManager->posting->first();
+// $secondManager = employee::find($secondManagerObject->manager_id);
+
+// echo $employee->first_name . ' '. $employee->middle_name. ' '.$employee->last_name.'<br>';
+
+// echo "1    Manager: " . $firstManager->first_name . ' '. $firstManager->middle_name. ' '.$firstManager->last_name.'<br>';
+// echo "2    Manager: " . $secondManager->first_name . ' '. $secondManager->middle_name. ' '.$secondManager->last_name.'<br>';
+
+//dd($manager);
+    //$manager = user::all();
+// foreach ($manager as $m){
+//     $name = employee::find($m->manager_id);
+//     echo '1-  '. $name->last_name .'-'.$m->posting_date.'<br>';
+// }
+
+});
 
 
 Route::get ('/testing', 'HrController@testing');
@@ -43,6 +81,10 @@ Artisan::call('CnicExpirySchedule:check');
 });
 
 Auth::routes();
+Route::get('/code','Auth\RegisterController@create')->name('otp.create');
+Route::Post('/code','Auth\RegisterController@confirm')->name('otp.confirm');
+
+
 
 //Route::get('/testing', 'PostingController@index');
 Route::post('/login', [

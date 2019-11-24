@@ -39,7 +39,7 @@ class PostingController extends Controller
                     ->get();
        $managers = $managers->unique('id')->all();
 
-        $postingIds = posting::all()->where('employee_id', session('employee_id'));
+        $postingIds = posting::all()->where('employee_id', session('employee_id'))->sortByDesc('posting_date');
         $projects = project::orderBy('status', 'desc')->get();
         $positions = designation::all();
         return view ('hr.posting.posting',compact('employee','managers','projects','postingIds','positions'));
@@ -78,7 +78,7 @@ class PostingController extends Controller
 
         $employee = employee::find(session('employee_id'));
         //Requried for Stored Posting
-        $postingIds = posting::all()->where('employee_id', session('employee_id'));
+         $postingIds = posting::all()->where('employee_id', session('employee_id'))->sortByDesc('posting_date');
         $projects = project::all();
         $data = posting::find($id);
         $positions = designation::all();

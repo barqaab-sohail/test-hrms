@@ -40,7 +40,7 @@
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
                         <!-- Authentication Links -->
-                       @if (request()->is('login')||request()->is('register'))
+                       @if (request()->is('login')||request()->is('register')||request()->is('code'))
                             <li class="nav-item ">
                                 <a class="nav-link" style="color: white;" href="{{ route('login') }}">{{ __('Login') }}</a>
                             </li>

@@ -11,14 +11,16 @@ class MailNotification extends Notification
 {
     use Queueable;
 
+    protected $otp;
+
     /**
      * Create a new notification instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct($otp)
     {
-        //
+        $this->otp = $otp;
     }
 
     /**
@@ -40,10 +42,11 @@ class MailNotification extends Notification
      */
     public function toMail($notifiable)
     {
-        return (new MailMessage)
-                    ->subject('New Registered User')
+           
+            return (new MailMessage)
+                    ->subject('Registration Code '.$this->otp)
                     ->from('noreply@barqaab.com', 'HRMS Admin')
-                    ->line('Your are sucessfuly registered.')
+                    ->line('Your registration code is '. $this->otp)
                     ->action('Notification Action', url('/'))
                     ->line('Thank you for using HRMS');
     }

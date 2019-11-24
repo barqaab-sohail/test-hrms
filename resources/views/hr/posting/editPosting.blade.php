@@ -17,7 +17,7 @@
  
 
 		                <div style="margin-top:10px; margin-right: 10px;">
-		                    
+		                    <a type="submit" role="button" href="{{route('posting.create')}}"  class="btn btn-info float-right">Back to List</a>
 		                    
 		                </div>
 		                 

@@ -14,8 +14,8 @@
 					<thead>
 					
 					<tr>
-						<th>Project</th>
 						<th>Position</th>
+						<th>Project</th>
 						<th>Date of Posting</th>
 						
 						 
@@ -28,12 +28,9 @@
 					<tbody>
 						@foreach($postingIds as $postingId)
 							<tr>
-								<td>{{$postingId->project}}</td>
 								<td>{{$postingId->designation->name}}</td>
+								<td>{{$postingId->project}}</td>
 								<td>{{$postingId->posting_date}}</td>
-								
-								 
- 
 
 								<td>
 								 <a class="btn btn-info btn-sm" href="{{route('posting.edit',['id'=>$postingId->id])}}" data-toggle="tooltip" data-original-title="Edit"> <i class="fas fa-pencil-alt text-white "></i></a>

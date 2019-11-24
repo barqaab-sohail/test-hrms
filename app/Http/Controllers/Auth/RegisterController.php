@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Redirect;
+use App\Http\Requests\Auth\StoreOTP;
 use App\User;
 use App\employee;
 use App\Notifications\MailNotification;
@@ -55,7 +57,7 @@ class RegisterController extends Controller
         return Validator::make($data, [
             'cnic' => ['required','min:15','max:15'],
             'email' => ['required', 'string', 'email', 'max:255', ],
-            'password' => ['required', 'string', 'min:8', 'confirmed'],
+            //'password' => ['required', 'string', 'min:8', 'confirmed'],
         ]);
     }
     /**
@@ -64,16 +66,26 @@ class RegisterController extends Controller
      * @param  array  $data
      * @return \App\User
      */
-    protected function create(array $data)
+    protected function create()
     {
-     /*$user =  User::create([
-            'cnic' => $data['cnic'],
-            'email' => $data['email'],
-            'password' => Hash::make($data['password']),
-        ]);
-        
-        return $user;
-        */
+
+      return view('auth.codeConfirmation');
+    }
+
+    public function confirm(StoreOTP $request){
+
+        $user = user::all()->where('email',$request->email)->first();
+       
+        if ($user->code == $request->otp){
+         
+            $user->update(['user_status' => 1, 'email_verified_at' =>  \Carbon\Carbon::now(),'password' => Hash::make($request->password) ]); 
+        return redirect()->route('login')->with('success', 'You are sucessfully registered')->with(['email'=>$request->email]);
+
+        }else{
+
+            
+            return back()->with( ['email'=>$request->email])->withErrors("code is not correct");
+        }
     }
 
     public function register(Request $request)
@@ -83,14 +95,10 @@ class RegisterController extends Controller
          $test = DB::table('users')
                     ->join('employees','employees.id','=','users.employee_id')
                     ->where('email', $request->email)->where('cnic',$request->cnic)->first();
-
-
-        
-        
         
         if ($test == null)
         {
-            return view('auth.register')->withErrors("Please Contact to HR");
+            return view('auth.register')->withErrors("Your CNIC and Email is not matched. Please Contact to HR");
 
         }
         else
@@ -104,21 +112,26 @@ class RegisterController extends Controller
 
             }elseif($test->user_status==0)
             {
-
-            $user = User::where('email', $request->email)->first();
-            $user->notify(New MailNotification);
+            $otpcode = rand (10000,65000);
 
             DB::table('users')
                 ->where('email', $request->email)
-                ->update(['user_status' => 1, 'password' => Hash::make($request->password) ]);
-           
-                         
-                return redirect()->route('login')->with('success', 'You are Registered Sucessfully');
+                ->update(['code' => $otpcode]);
+
+            $email = $request->email;
+
+            $user = User::where('email', $request->email)->first();
+            $user->notify(New MailNotification($otpcode));
+
+            $message = 'Verification code is send to your email address.  Please enter below for varification';
+
+              
+            return Redirect::route('otp.create')->with( ['message' => $message, 'email'=>$email] );
+            
             }else{
                 return view('auth.register')->withErrors("Please Contact to HR");
             }
         }
-               
         //$this->validator($request->all())->validate();
         //event(new Registered($user = $this->create($request->all())));
         //$this->guard()->login($user);
