@@ -27,8 +27,11 @@
 					<tbody>
 						
 						<tr>
-							<td><a href="{{route('activeEmployee')}}">Active Employee List</a></td>
+							<td><a href="{{route('activeEmployee')}}">Active Employee Data Missing</a></td>
 							
+						</tr>
+						<tr>
+							<td><a href="{{route('allEmployees')}}">All Active Employees List and their Managers</a></td>
 						</tr>
 						<tr>
 							<td><a href="{{route('allManagers')}}">All Manager List</a></td>

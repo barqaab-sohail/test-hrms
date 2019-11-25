@@ -120,6 +120,7 @@ Route::get('/dashboard', 'HomeController@index')->name('dashboard')->middleware(
 Route::get('/reports', 'ReportsController@index')->name('hr.reports');
 Route::get('/reports/acitveEmployee', 'ReportsController@activeEmployee')->name('activeEmployee');
 Route::get('/reports/allManagers', 'ReportsController@allManagers')->name('allManagers');
+Route::get('/reports/allEmployees', 'ReportsController@allEmployees')->name('allEmployees');
 
 //Charts
 Route::get('reports/charts','ChartController@index')->name('hr.charts');
