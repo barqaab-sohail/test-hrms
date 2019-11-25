@@ -19,7 +19,7 @@ class TaskController extends Controller
     public function index(){
 
 
-        $taskIds = task::where('employee_id',  Auth::user()->id)->get();
+    $taskIds = task::where('employee_id',  Auth::user()->id)->get();
 
     if($taskIds->count()!=0){
 

@@ -263,6 +263,9 @@ Route::get('personalFiles/list','PersonalFileController@index')->name('personalF
 
 Route::resource('leave/leaveQuota','Leave\LeaveQuotaController');
 
+Route::get('/manager','Admin\ManagerController@index');
+Route::get('/manager/{id?}','Admin\ManagerController@show');
+
 Route::get('/', function (){
 return  redirect()->route('login');
 //view ('auth.login');
