@@ -39,7 +39,7 @@ class AdminController extends Controller
     }
 
     public function setUserRights(){
-       $employees = employee::all()->where('employee_status_id','1');
+       $employees = employee::where('employee_status_id','1')->with('user')->get();
        $roles = Role::all();
        $roles->forget(4);
 

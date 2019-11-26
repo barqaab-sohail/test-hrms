@@ -121,6 +121,10 @@ Route::get('/reports', 'ReportsController@index')->name('hr.reports');
 Route::get('/reports/acitveEmployee', 'ReportsController@activeEmployee')->name('activeEmployee');
 Route::get('/reports/allManagers', 'ReportsController@allManagers')->name('allManagers');
 Route::get('/reports/allEmployees', 'ReportsController@allEmployees')->name('allEmployees');
+    //Employee Hierarchy
+Route::get('/manager','Admin\ManagerController@index');
+Route::get('/manager/{id?}','Admin\ManagerController@show')->name('employee.manager');
+
 
 //Charts
 Route::get('reports/charts','ChartController@index')->name('hr.charts');
@@ -263,8 +267,6 @@ Route::get('personalFiles/list','PersonalFileController@index')->name('personalF
 
 Route::resource('leave/leaveQuota','Leave\LeaveQuotaController');
 
-Route::get('/manager','Admin\ManagerController@index');
-Route::get('/manager/{id?}','Admin\ManagerController@show');
 
 Route::get('/', function (){
 return  redirect()->route('login');

@@ -29,7 +29,6 @@
 					</thead>
 					<tbody>
 						@foreach($employees as $employee)
-								
 							<tr >
 								<td>{{$employee->first_name." ".$employee->middle_name." ".$employee->last_name}}</td>
 								<td>{{managerName($employee->posting->first()!=null?$employee->posting->first()->manager_id:'')}}</td>

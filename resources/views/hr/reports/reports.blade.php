@@ -35,6 +35,8 @@
 						</tr>
 						<tr>
 							<td><a href="{{route('allManagers')}}">All Manager List</a></td>
+						</tr><tr>
+							<td><a href="{{route('employee.manager')}}">Employee Manager Hierarchy</a></td>
 						</tr>
 						
 								 

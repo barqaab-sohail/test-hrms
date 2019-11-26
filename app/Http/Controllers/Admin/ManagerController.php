@@ -31,36 +31,41 @@ class ManagerController extends Controller
     	$employee = employee::find($id);
 
     	$employees = managerLevel($employee->id);
-        $employees = $employees->reverse();
-        $level =0;
+       
+        if($employees != 'No Manager Assigned'){
+            $employees = $employees->reverse();
+            $level =0;
+            $output = '';
 
-        $output = '';
-
-        $output .='<table id="myTable" class="table table-bordered table-striped" width="100%" cellspacing="0">
-                   <thead>
-                    
-                    <tr>
-                        <th>Level</th>
-                        <th>Manager Name</th>
+            $output .='<table id="myTable" class="table table-bordered table-striped" width="100%" cellspacing="0">
+                       <thead>
                         
-                    </tr>
-                    </thead>
-                    <tbody>';
-        foreach ($employees as $employee){
+                        <tr>
+                            <th>Level</th>
+                            <th>Manager Name</th>
+                            
+                        </tr>
+                        </thead>
+                        <tbody>';
+            foreach ($employees as $employee){
 
-        $output .='
-                    <tr>
-                     	<td>'.'Level-'.$level.'</td>
-                        <td>'.$employee->first_name . ' '.$employee->middle_name.' '.$employee->last_name.'</td>
-                    </tr>';
-            
-            $level++;
+            $output .='
+                        <tr>
+                         	<td>'.'Level-'.$level.'</td>
+                            <td>'.$employee->first_name . ' '.$employee->middle_name.' '.$employee->last_name.'</td>
+                        </tr>';
+                
+                $level++;
 
+            }
+            $output .='
+                        </tbody>
+                    </table>';
+            echo $output;
+        }else{
+
+            echo 'No Manager Assigned';
         }
-        $output .='
-                    </tbody>
-                </table>';
-    echo $output;
 
 
     }

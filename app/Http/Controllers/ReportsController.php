@@ -44,20 +44,17 @@ class ReportsController extends Controller
         $employees = employee::with('posting')->where('employee_status_id',1)->get();
         return view('hr.reports.tables.allemployees', compact('employees'));
         
-
         //$employee = employee::find(1);
-
-        /*$employees = managerLevel(4);
+        /*$employees = managerLevel(61);
         $employees = $employees->reverse();
+
         $level =0;
         foreach ($employees as $employee){
-
             echo $employee->first_name . ' '.$employee->middle_name.' '.$employee->last_name . ' - Level-'.$level.'<br>';
             $level++;
         }*/
-
         // dd($employee->posting->first()->manager_id);
-        
+      
 
         
     }
