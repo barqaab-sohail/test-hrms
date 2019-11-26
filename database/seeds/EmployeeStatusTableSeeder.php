@@ -11,11 +11,12 @@ class EmployeeStatusTableSeeder extends Seeder
      */
     public function run()
     {
-         DB::table('employee_statuses')->insert(['name' => 'On Board']);
-         DB::table('employee_statuses')->insert(['name' => 'Resigned']);
-         DB::table('employee_statuses')->insert(['name' => 'Terminated']);
-         DB::table('employee_statuses')->insert(['name' => 'Long Leave']);
-         DB::table('employee_statuses')->insert(['name' => 'Manmonth Ended']);
-        }
+        DB::table('employee_statuses')->insert(['name' => 'On Board']);
+        DB::table('employee_statuses')->insert(['name' => 'Resigned']);
+        DB::table('employee_statuses')->insert(['name' => 'Terminated']);
+        DB::table('employee_statuses')->insert(['name' => 'Long Leave']);
+        DB::table('employee_statuses')->insert(['name' => 'Manmonth Ended']);
+        DB::table('employee_statuses')->insert(['name' => 'Retired']);
+    }
 }
  

@@ -24,7 +24,6 @@
 						<th>Email</th>
 						<th>CNIC</th>
 						<th>CNIC Expiry</th>
-						<th>Gender</th>
 						<th>Division</th>
 						<th>Created at</th>
 						<th> Actions </th>
@@ -39,7 +38,6 @@
 								<td>{{isset($employee->user->email)? $employee->user->email:'No Email'}}</td>
 								<td>{{$employee->cnic}}</td>
 								<td>{{$employee->cnic_expiry}}</td>
-								<td>{{$employee->gender->name}}</td>
 								<td>{{$employee->division->name}}</td>
 								<td>{{$employee->created_at}}</td>
 								
@@ -49,8 +47,9 @@
 								<td>
 								 
  
-
+								@role('Super Admin')
 									<a class="btn btn-danger btn-sm" onclick="return confirm('Are you Sure to Delete')" href="{{route('inactiveEmployee',['id'=>$employee->id])}}" title="Delete"> <i class="fas fa-trash-alt"></i></a>
+								@endrole
 								  
  
 

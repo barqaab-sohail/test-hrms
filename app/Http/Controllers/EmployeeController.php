@@ -173,7 +173,7 @@ class EmployeeController extends Controller
     public function inactive(Request $request, $id)
     {
        
-       employee::findOrFail($id)->update(['employee_status_id'=>'2']);
+       //employee::findOrFail($id)->update(['employee_status_id'=>'2']);
       
        return back();
     }

@@ -76,10 +76,11 @@
 		                                        	<select  name="user_status"  class="form-control selectTwo" >
 		                                        		
 		                                        		<option value=""></option>
+		                                        		@if(isset($user->user_status))
 		                                        		<option value="{{0}}" {{ $user->user_status === 0 ? 'selected' : '' }}>{{'Not Registered'}}</option>
 		                                        		<option value="{{1}}" {{ $user->user_status === 1 ? 'selected' : '' }}>{{'Registered'}}</option>
 		                                        		<option value="{{2}}" {{ $user->user_status === 2 ? 'selected' : '' }}>{{'Blocked'}}</option>
-		                                        		
+		                                        		@endif
 	                                                   
                                         
                                                     </select>
@@ -112,6 +113,25 @@
 		                                    </div>
 		                                </div>
 		                            </div>
+		                            <div class="row">
+		                                <div class="col-md-12">
+		                                    <div class="form-group row">
+												<div class="col-md-12">
+												@if($managee->count()>0)
+												<h3 class="text_requried">He is Manager of following employees, please condisder it before change employee status</h3>
+												<ol>
+												@foreach($managee as $manage)
+
+												{!!'<li>'.$manage->employee->first_name.' '.$manage->employee->middle_name.' '.$manage->employee->last_name.'</li>'!!}
+												@endforeach
+												</ol>
+												@endif
+												</div>
+											</div>
+										</div>
+									</div>
+
+
 
 		                        </div>
 		                         <hr>
