@@ -18,7 +18,7 @@ class CreatePostingsTable extends Migration
             $table->bigInteger('employee_id')->unsigned();
             $table->string('designation_id');
             $table->date('posting_date');
-            $table->string('project');
+            $table->bigInteger('project_id')->unsigned();
             $table->date('joining_date');
             $table->string('location')->nullable();
             $table->bigInteger('manager_id')->unsigned();

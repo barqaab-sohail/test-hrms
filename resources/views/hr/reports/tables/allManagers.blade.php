@@ -37,7 +37,7 @@
 										<td>{{$employee->first_name." ".$employee->middle_name." ".$employee->last_name}}</td>
 										<td>{{$posting->employee->first_name." ".$posting->employee->middle_name." ".$posting->employee->last_name}}
 										</td>
-										<td>{{$posting->project}}
+										<td>{{$posting->project->name}}
 										</td>
 									</tr>
 									@endif

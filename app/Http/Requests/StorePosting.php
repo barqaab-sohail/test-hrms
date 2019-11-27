@@ -25,7 +25,7 @@ class StorePosting extends FormRequest
     {
         return [
          'designation_id' => 'required|max:255',
-         'project' => 'required|max:255',
+         'project_id' => 'required',
          'manager_id' => 'required',
          'posting_date' => 'required|date', 
          'joining_date' => 'required|date', 

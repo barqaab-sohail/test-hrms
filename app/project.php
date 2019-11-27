@@ -13,5 +13,7 @@ class project extends Model implements Auditable
         'name','type','client','commencement','contractual_completion','actual_completion','status','role','share',
     ];
 
+    
+    
     //
 }

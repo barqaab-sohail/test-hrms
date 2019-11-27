@@ -121,10 +121,10 @@
 		                                        <label class="control-label text-right">Project<span class="text_requried">*</span></label>
 		                                        
 			
-		                                            <select  name="project"  class="form-control selectTwo" required>
+		                                            <select  name="project_id"  class="form-control selectTwo" required>
                                                         <option value=""></option>
                                                         @foreach($projects as $project)
-														<option value="{{$project->name}}" {{(old("project")==$project->name? "selected" : "")}}>{{$project->name." - ".$project->status}}</option>
+														<option value="{{$project->id}}" {{(old("project")==$project->id? "selected" : "")}}>{{$project->name." - ".$project->status}}</option>
                                                         @endforeach
                                                       
                                                     </select>

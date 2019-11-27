@@ -16,7 +16,7 @@ class CreateChargingsTable extends Migration
         Schema::create('chargings', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->bigInteger('employee_id')->unsigned();
-            $table->string('project');
+            $table->bigInteger('project_id')->unsgined();
             $table->string('position');
             $table->date('from');
             $table->date('to');

@@ -117,10 +117,10 @@
 		                                        <div class="col-md-12">
 		                                        	<label class="control-label text-right">Project<span class="text_requried">*</span></label>
 		                                        
-			                                        <select  name="project"  class="form-control selectTwo" required>
+			                                        <select  name="project_id"  class="form-control selectTwo" required>
                                                     <option value=""></option>
 													@foreach($projects as $project)
-													<option value="{{$project->name}}" @if($project->name == $data->project) selected="selected" @endif>{{$project->name." - ".$project->status}}</option>
+													<option value="{{$project->id}}" @if($project->id == $data->project_id) selected="selected" @endif>{{$project->name." - ".$project->status}}</option>
                                                     @endforeach 	
                                                     </select>
 		                                        </div>
