@@ -14,7 +14,16 @@
 	<div class="card">
 		<div class="card-body">
 		            <button type="button" onclick="window.location.href='{{route('hr.charts')}}'" class="btn btn-info float-right">Back to List</button>
-		<div id="piechart" style="width: 900px; height: 500px;"></div>
+                <br>
+                <br>
+        <div class="row">
+            <div class="col-md-6">
+    		    <div id="piechart" style="width: 700px; height: 500px;"></div>
+            </div>
+             <div class="col-md-6">
+            <div id="piechart1" style="width: 700px; height: 500px;"></div>
+            </div>
+        </div>
    
         			
 		</div>
@@ -41,6 +50,14 @@
           
         ]);
 
+        var data1 = google.visualization.arrayToDataTable([
+          ['Description', '', { role: 'style' }, { role: 'annotation' }],
+          ['Category A',     categoryA, '#e94922', categoryA],
+          ['Category B',      categoryB, '#4f328a', categoryB],
+          ['Category C',      categoryC, '#00a49f', categoryC]
+          
+        ]);
+
         colorsHex = [
         
     '#e94922',
@@ -55,9 +72,18 @@
           pieSliceText: 'value'
         };
 
+        var options1 = {
+          title: 'Categorywise Chart',
+          colors: colorsHex,
+           legend: { position: 'top', maxLines: 3 },
+           isStacked: true,
+        };
+
         var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+        var chart1 = new google.visualization.ColumnChart(document.getElementById('piechart1'));
 
         chart.draw(data, options);
+        chart1.draw(data1, options1);
       }
     </script>
 
