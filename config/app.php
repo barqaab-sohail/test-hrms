@@ -167,6 +167,7 @@ return [
         MaddHatter\LaravelFullcalendar\ServiceProvider::class,
         Felixkiss\UniqueWithValidator\ServiceProvider::class,
         Spatie\Permission\PermissionServiceProvider::class,
+        ConsoleTVs\Charts\ChartsServiceProvider::class,
        
         /*
          * Package Service Providers...
@@ -236,6 +237,7 @@ return [
         'Calendar' => MaddHatter\LaravelFullcalendar\Facades\Calendar::class,
         'Form' => Collective\Html\FormFacade::class,
         'Html' => Collective\Html\HtmlFacade::class,
+        'Charts' => ConsoleTVs\Charts\Facades\Charts::class,
         
     ],
 

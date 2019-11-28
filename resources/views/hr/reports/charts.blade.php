@@ -33,6 +33,9 @@
 						<tr>
 							<td><a href="{{route('chart.age')}}">Agewise Chart</a></td>
 						</tr>
+						<tr>
+							<td><a href="{{route('chart.category')}}">Categorywise Chart</a></td>
+						</tr>
 						
 								 
 					

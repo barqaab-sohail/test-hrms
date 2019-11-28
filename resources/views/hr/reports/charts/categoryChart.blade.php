@@ -4,9 +4,9 @@
 
 @section('Heading')
 	<h3 class="text-themecolor">Charts</h3>
+  
 	<ol class="breadcrumb">
-		<li class="breadcrumb-item"><a href="javascript:void(0)">Age Chart</a></li>
-		
+		<li class="breadcrumb-item"><a href="javascript:void(0)">Category Chart</a></li>
 		
 	</ol>
 @stop
@@ -15,6 +15,7 @@
 		<div class="card-body">
 		            <button type="button" onclick="window.location.href='{{route('hr.charts')}}'" class="btn btn-info float-right">Back to List</button>
 		<div id="piechart" style="width: 900px; height: 500px;"></div>
+   
         			
 		</div>
 	</div>
@@ -27,25 +28,28 @@
       google.charts.setOnLoadCallback(drawChart);
 
       function drawChart() {
-        var aboveSixty = {{$countAboveSixty}};
-        var belowSixty = {{$countBelowSixty}};
+        var categoryA = {{$categoryA}};
+        var categoryB = {{$categoryB}};
+        var categoryC = {{$categoryC}};
         
 
         var data = google.visualization.arrayToDataTable([
           ['Description', 'Quantity'],
-          ['Above Sixty',     aboveSixty],
-          ['Below sixty',      belowSixty]
+          ['Category A Employees',     categoryA],
+          ['Category B Employees',      categoryB],
+          ['Category C Employees',      categoryC]
           
         ]);
 
         colorsHex = [
         
-    '#1e8449',
-    '#007fff'
+    '#e94922',
+    '#4f328a',
+    '#00a49f'
   ];
- 
+  
         var options = {
-          title: 'Agewise Chart',
+          title: 'Categorywise Chart',
           colors: colorsHex,
           is3D: true,
           pieSliceText: 'value'

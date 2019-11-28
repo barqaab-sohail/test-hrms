@@ -130,6 +130,7 @@ Route::get('/manager/{id?}','Admin\ManagerController@show')->name('employee.mana
 Route::get('reports/charts','ChartController@index')->name('hr.charts');
 Route::get('reports/charts/age','ChartController@age')->name('chart.age');
 Route::get('reports/charts/division', 'ChartController@division')->name('chart.division');
+Route::get('reports/charts/category', 'ChartController@category')->name('chart.category');
 
 
 //Employee & User Routes
