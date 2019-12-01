@@ -1,4 +1,5 @@
 @extends('layouts.master.master')
+@section('title', 'BARQAAB HR')
 @section('Heading')
 	<h3 class="text-themecolor">Human Resource</h3>
 	<ol class="breadcrumb">

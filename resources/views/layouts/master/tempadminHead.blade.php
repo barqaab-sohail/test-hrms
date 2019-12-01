@@ -8,6 +8,7 @@
     <!-- Favicon icon -->
     <link rel="icon" type="image/png" sizes="16x16" href="{{asset('Massets/images/favicon.ico') }}">
     <title>{{config('app.name')}}</title>
+    
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta name="user_id" content="{{Auth::check() ? Auth::user()->id :''}}">
 
@@ -41,7 +42,8 @@
     <link rel="stylesheet" href="{{asset('Massets/plugins/html5-editor/bootstrap-wysihtml5.css')}}" />
     <link rel="stylesheet" href="{{asset('Massets/js/crop/croppie.css')}}" />
     <!-- start - This is for datatabe Fixed Columns only -->
-    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css" />
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css" />
+    <link rel="stylesheet" href="https://cdn.datatables.net/buttons/1.6.1/css/buttons.dataTables.min.css" />
      <link rel="stylesheet" href="https://cdn.datatables.net/fixedcolumns/3.2.6/css/fixedColumns.bootstrap.min.css" />
      
     <!-- end - This is for datatabe Fixed Columns only -->

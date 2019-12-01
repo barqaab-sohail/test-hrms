@@ -1,4 +1,5 @@
 @extends('layouts.master.master')
+@section('title', 'BARQAAB HR')
 @section('Heading')
 	<h3 class="text-themecolor"></h3>
 	<ol class="breadcrumb">
@@ -21,7 +22,8 @@
 		        	<div class="col-lg-10">
 						
 		                <div style="margin-top:10px; margin-right: 10px;">
-		                    		                    
+		                    		    
+		                    		    <button type="button" onclick="window.location.href='{{route('hr.reports')}}'" class="btn btn-info float-right">Back to List</button>                
 		                </div>
 		                <div class="card-body">
 

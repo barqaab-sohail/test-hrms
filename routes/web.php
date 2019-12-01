@@ -119,8 +119,11 @@ Route::get('/dashboard', 'HomeController@index')->name('dashboard')->middleware(
 //Reports
 Route::get('/reports', 'ReportsController@index')->name('hr.reports');
 Route::get('/reports/acitveEmployee', 'ReportsController@activeEmployee')->name('activeEmployee');
-Route::get('/reports/allManagers', 'ReportsController@allManagers')->name('allManagers');
-Route::get('/reports/allEmployees', 'ReportsController@allEmployees')->name('allEmployees');
+Route::get('/reports/allManagers', 'ReportsController@managers')->name('managers');
+Route::get('/reports/allEmployees', 'ReportsController@employeesManagers')->name('employees.managers');
+Route::get('/reports/custom','ReportsController@custom')->name('employees.custom');
+Route::get('/reports/customData','ReportsController@customData')->name('custom.data');
+
     //Employee Hierarchy
 Route::get('/manager','Admin\ManagerController@index');
 Route::get('/manager/{id?}','Admin\ManagerController@show')->name('employee.manager');

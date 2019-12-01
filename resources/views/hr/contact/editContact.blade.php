@@ -1,4 +1,5 @@
 @extends('layouts.master.master')
+@section('title', 'BARQAAB HR')
 @section('Heading')
 	@include('hr.hrHeading')
 
@@ -136,7 +137,7 @@
 		                                        <div class="col-md-12">
 		                                        	<label class="control-label text-right ">Mobile No.<span class="text_requried">*</span></label>
 		                                        
-		                                            <input type="text"  name="mobile" value="{!! old('house',isset($permanentAddress->mobile)?$permanentAddress->mobile:'')!!}" class="form-control" placeholder="Enter Mobile No" required>
+		                                            <input type="text"  id='mobileP' name="mobile" value="{!! old('house',isset($permanentAddress->mobile)?$permanentAddress->mobile:'')!!}" class="form-control" placeholder="Enter Mobile No" required>
 		                                        </div>
 		                                    </div>
 		                                </div>
@@ -294,7 +295,7 @@
 		                                        <div class="col-md-12">
 		                                        	<label class="control-label text-right ">Mobile No.<span class="text_requried">*</span></label>
 		                                        
-		                                            <input type="text"  name="mobile" value="{!! old('house',isset($currentAddress->mobile)?$currentAddress->mobile:'')!!}" class="form-control" placeholder="Enter Mobile No" required>
+		                                            <input type="text" id='mobileC' name="mobile" value="{!! old('house',isset($currentAddress->mobile)?$currentAddress->mobile:'')!!}" class="form-control" placeholder="Enter Mobile No" required>
 		                                        </div>
 		                                    </div>
 		                                </div>
@@ -347,9 +348,34 @@
         </div>
     </div>
  @push('scripts')
-        <script>
-           
-        </script>
+    <script>
+    $(document).ready(function(){
+           $("#mobileP, #mobileC").on('input', function(ev){
+		
+		//Prevent default
+		ev.preventDefault();
+		
+		//Remove hyphens
+		let input = ev.target.value.split("-").join("");
+		
+		//Make a new string with the hyphens
+		// Note that we make it into an array, and then join it at the end
+		// This is so that we can use .map() 
+			input = input.split('').map(function(cur, index){
+				
+				//If the size of input is 4 or 7, insert dash before it
+				//else, just insert input
+				if(index == 4)
+					return "-" + cur;
+				else
+					return cur;
+			}).join('');
+			
+		//Return the new string
+		$(this).val(input);
+		});
+    });
+    </script>
     @endpush
 
 @stop

@@ -1,4 +1,5 @@
 @extends('layouts.master.master')
+@section('title', 'BARQAAB HR')
 @section('Heading')
 	<h3 class="text-themecolor">Set User Rights</h3>
 	<ol class="breadcrumb">

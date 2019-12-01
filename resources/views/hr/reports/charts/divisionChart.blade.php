@@ -1,4 +1,5 @@
 @extends('layouts.master.master')
+@section('title', 'BARQAAB HR')
  @push('scripts')
       
     @endpush

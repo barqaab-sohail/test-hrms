@@ -1,7 +1,11 @@
 <!-- All Jquery -->
 <!-- ============================================================== -->
 
-<script src="{{asset('Massets/plugins/jquery/jquery.min.js') }}"></script>
+<script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+<script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/1.6.1/js/dataTables.buttons.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/1.6.1/js/buttons.colVis.min.js"></script>
+
 <!-- Bootstrap tether Core JavaScript -->
 <script src="{{asset('Massets/plugins/popper/popper.min.js') }}"></script>
 <script src="{{asset('Massets/plugins/bootstrap/js/bootstrap.min.js') }}"></script>
@@ -118,6 +122,14 @@ window.onunload = function(){null};
             }
 
         });
+        
+        //email type input in lower case
+        $('input[type=email]').keyup(function() {
+        $(this).val($(this).val().toLowerCase());
+        });
+
+    
+
 
 
         $('[id^=hideDiv]').hide();

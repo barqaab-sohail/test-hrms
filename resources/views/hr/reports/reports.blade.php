@@ -1,4 +1,5 @@
 @extends('layouts.master.master')
+@section('title', 'BARQAAB HR')
 @section('Heading')
 	<h3 class="text-themecolor">Employee Reports</h3>
 	<ol class="breadcrumb">
@@ -27,17 +28,20 @@
 					<tbody>
 						
 						<tr>
-							<td><a href="{{route('activeEmployee')}}">Active Employee Data Missing</a></td>
-							
+							<td><a href="{{route('employees.custom')}}">Employees Custom Reports</a></td>
 						</tr>
 						<tr>
-							<td><a href="{{route('allEmployees')}}">All Active Employees List and their Managers</a></td>
+							<td><a href="{{route('employees.managers')}}">Employees List and their Managers</a></td>
 						</tr>
 						<tr>
-							<td><a href="{{route('allManagers')}}">All Manager List</a></td>
+							<td><a href="{{route('managers')}}">Managers List</a></td>
 						</tr><tr>
 							<td><a href="{{route('employee.manager')}}">Employee Manager Hierarchy</a></td>
 						</tr>
+						<tr>
+							<td><a href="{{route('activeEmployee')}}">Missing Data</a></td>
+							
+						</tr>	
 						
 								 
 					

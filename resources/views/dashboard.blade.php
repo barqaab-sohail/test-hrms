@@ -1,4 +1,6 @@
 @extends('layouts.master.master')
+@section('title', 'BARQAAB HR')
+
 
 @section('Heading')
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/2.2.7/fullcalendar.min.css"/>

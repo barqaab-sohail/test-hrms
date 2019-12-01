@@ -18,12 +18,16 @@ function manager($id){
 
 function managerName($id){
 
-	if($id){
     $employee = employee::find($id);
-    return  $employee->first_name . ' '. $employee->middle_name. ' '.$employee->last_name;   
+    
+    if($employee->posting->first()!=null){
+    $managerId = $employee->posting->first()->manager_id;
+    $manager = employee::find($managerId);
+    return  $manager->first_name . ' '. $manager->middle_name. ' '.$manager->last_name;   
+	
 	}else{
 
-		return 'No Manager';
+		return 'No Manager Assigned';
 	}
 }
 

@@ -1,5 +1,5 @@
-
 @extends('layouts.master.master')
+@section('title', 'BARQAAB HR')
 @section('Heading')
 	@include('hr.hrHeading')
 @stop
