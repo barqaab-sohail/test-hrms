@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use OwenIt\Auditing\Contracts\Auditable;
-
+ 
 class posting extends Model implements Auditable
 {
     use \OwenIt\Auditing\Auditable;
@@ -21,6 +21,7 @@ class posting extends Model implements Auditable
 	public function manager(){
 		return $this->belongsTo('App\employee','manager_id');
 	}
+    
 
 	public function designation()
     {

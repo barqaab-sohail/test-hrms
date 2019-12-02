@@ -1,5 +1,6 @@
 <?php
 use App\employee;
+use App\posting;
 
 function manager($id){
     $employee = employee::find($id);
@@ -79,6 +80,24 @@ function upperManager($id){
 	}else{
 		return 'No Manager';
 	}
+}
+
+//Manager subordinate list
+function managee($id){
+
+$employee= employee::find($id);
+     
+        $posting = posting::orderBy('joining_date','desc')->get();
+        $posting = $posting->unique('employee_id')->all();
+
+
+        foreach($posting as $p){
+            if($p->manager_id==$employee->id){
+
+                echo $p->employee->first_name.' '.$p->employee->middle_name.' '.$p->employee->last_name.'<br>';
+
+            }
+        }
 }
 
 

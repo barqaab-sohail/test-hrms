@@ -18,8 +18,8 @@ class ReportsController extends Controller
 
 
     public function index(){
-
-    	return view('hr.reports.reports');
+        
+        return view('hr.reports.reports');
     }
     public function custom(){
         $employees = employee::with('user','contact','division')->where('employee_status_id',1)->get();
