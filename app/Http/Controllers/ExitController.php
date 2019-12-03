@@ -17,8 +17,7 @@ class ExitController extends Controller
         $this->middleware('auth');
         $this->middleware('updation')->only('delete','update', 'store');
   }
-
-
+  
   public function create(){
     $employee = employee::find(session('employee_id'));
     $status = employee_status::all();

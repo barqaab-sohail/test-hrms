@@ -76,11 +76,12 @@
 
 		                                        	<select  name="user_status"  class="form-control selectTwo" >
 		                                        		
-		                                        		<option value=""></option>
 		                                        		@if(isset($user->user_status))
 		                                        		<option value="{{0}}" {{ $user->user_status === 0 ? 'selected' : '' }}>{{'Not Registered'}}</option>
 		                                        		<option value="{{1}}" {{ $user->user_status === 1 ? 'selected' : '' }}>{{'Registered'}}</option>
 		                                        		<option value="{{2}}" {{ $user->user_status === 2 ? 'selected' : '' }}>{{'Blocked'}}</option>
+		                                        		@else
+		                                        		<option value="">User Email is not Entered</option>
 		                                        		@endif
 	                                                   
                                         

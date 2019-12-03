@@ -98,7 +98,7 @@
                          @role('Super Admin')
                         <li><a href="{{route('role.index')}}">Add Roles</a></li>
                         <li><a href="{{route('permission.index')}}">Add Permission</a></li>
-                        <li><a href="">Give Permissions</a></li>
+                        <li><a href="{{route('permissionRole.index')}}">Give Permissions to Roles</a></li>
                         @endrole
                     </ul>
                 </li>

@@ -86,7 +86,7 @@ function upperManager($id){
 function managee($id){
 
 $employee= employee::find($id);
-     
+     	//Order by joining date because when unique applied then only latest joining data remain.
         $posting = posting::orderBy('joining_date','desc')->get();
         $posting = $posting->unique('employee_id')->all();
 
