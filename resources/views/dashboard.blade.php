@@ -54,7 +54,6 @@
 
 		</div>
 
-	
 
 @stop
   @push('scripts')
@@ -64,7 +63,7 @@
     	    $("#append_data").load(loadUrl, function (){
     	    	$('#myTable').DataTable({
     	 	 	stateSave: false,
-    	 	 	"order": [[ 3, "desc" ]],
+    	 	 	"order": [[ 2, "asc" ]],
     	 	 	"destroy": true,
     	 	 	"columnDefs": [
     				{ "width": "30%", "targets": 0, },

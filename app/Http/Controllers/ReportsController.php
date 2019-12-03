@@ -15,12 +15,11 @@ class ReportsController extends Controller
         $this->middleware('updation')->only('delete','update', 'store','create','index');
     }
     
-
-
     public function index(){
         
         return view('hr.reports.reports');
     }
+    
     public function custom(){
         $employees = employee::with('user','contact','division')->where('employee_status_id',1)->get();
         $postings = posting::all();
