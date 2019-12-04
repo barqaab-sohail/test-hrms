@@ -15,8 +15,6 @@
 					<tr>
 						<th>Permission Name</th>
 						<th>Role Name</th>
-						
-						<th>Edit</th>
 						<th>Delete</th> 
  
 
@@ -29,21 +27,19 @@
 						@endphp
 							@foreach($allPermissions as $allPermission)
 							<tr>
-								<td>{{$allPermission->name}}</td>
-								<td>{{$role->name}}</td>
+								<td width="20%">{{$allPermission->name}}</td>
+								<td >{{$role->name}}</td>
 							
 								<td>
-								 <a class="btn btn-info btn-sm" href="" data-toggle="tooltip" data-original-title="Edit"> <i class="fas fa-pencil-alt text-white "></i></a>
-								 </td>
-								  
- 
-								 <td>
-								 <form action="" method="POST">
-								 @method('DELETE')
+								 @can('edit record')
+								 <form action="{{route('permissionRole.delete',['role_id'=>$role->id, 'permission_id'=>$permission->id])}}" method="POST">
 								 @csrf
-								 <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Are you Sure to Delete')" href= data-toggle="tooltip" data-original-title="Delete"> <i class="fas fa-trash-alt"></i></button>
+								 <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Are you Sure to revoke permission to role')" href= data-toggle="tooltip" data-original-title="Delete"> <i class="fas fa-trash-alt"></i></button>
 								 </form>
+								 @endcan
 								 </td>
+ 
+								
 								  								
 							</tr>
 							@endforeach
@@ -56,3 +52,4 @@
 			</div>
 		</div>
 	</div>
+

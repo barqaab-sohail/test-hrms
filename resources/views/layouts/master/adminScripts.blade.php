@@ -91,6 +91,7 @@
 
 <script>
 
+
 // Function Prevent Explorer Back Button 
 function preventBack(){
     window.history.forward();
@@ -110,6 +111,13 @@ window.onunload = function(){null};
 })();
    
     $(document).ready(function() {
+       var role = "{{Auth::User()->getRoleNames()->first()}}";
+
+       if(role == 'Manager'){
+        $('input[type="text"]').prop('readonly', true);
+        $('select').attr("disabled", true); 
+        $('input[type="text"]').datepicker('destroy');
+       }
 
         //Active Anchor tage with compare url and href
         var url = window.location.pathname;

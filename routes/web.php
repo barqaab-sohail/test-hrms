@@ -281,3 +281,4 @@ Route::resource('hrms/task','TaskController');
 Route::resource('adminInfo/role','Admin\RoleController');
 Route::resource('adminInfo/permission','Admin\PermissionController');
 Route::resource('adminInfo/permissionRole','Admin\PermissionRoleController');
+Route::post('adminInfo/deletePermission/{role_id?}/{permission_id?}','Admin\PermissionRoleController@delete')->name('permissionRole.delete');

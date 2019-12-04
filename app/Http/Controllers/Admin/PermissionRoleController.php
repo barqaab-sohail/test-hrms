@@ -18,19 +18,24 @@ class PermissionRoleController extends Controller
     public function index(){
     	$roles = Role::all();
     	$permissions = permission::all();
-        	foreach($roles as $role){
-                
-                $permissions = $role->getAllPermissions();
-
-                foreach($permissions as $permission){
-                     $role->name.' - '.$permission->name.'<br>';
-                }      
-
-            }
-  	
-        return view('admin.permissionRole.index', compact('roles','permissions'));
-        
+    	return view('admin.permissionRole.index', compact('roles','permissions'));
     }
 
+    public function store(Request $request){
+        $permission = permission::where('name',$request->permission)->first();
+        $role = role::where('name',$request->role)->first();
+        $permission->assignRole($role);
+        return back()->with('success', 'Permission successfully assigned.');
+    }
+
+    public function delete(Request $request, $role_id, $permission_id)
+    {
+        $role = role::where('id',$role_id)->first();
+        $permission = role::where('id',$permission_id)->first();
+        $role->revokePermissionTo($permission);
+        
+        return back()->with('success', 'Successfully revoke permission to role.');
+
+    }
 
 }

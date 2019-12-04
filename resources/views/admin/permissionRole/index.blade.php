@@ -25,7 +25,7 @@
 		                </div>
 		                <div class="card-body">
 
-		                    <form action="{{route('role.store')}}" method="post" class="form-horizontal form-prevent-multiple-submits" enctype="multipart/form-data">
+		                    <form action="{{route('permissionRole.store')}}" method="post" class="form-horizontal form-prevent-multiple-submits" enctype="multipart/form-data">
 		                        {{csrf_field()}}
 		                        <div class="form-body">
 		                            
@@ -40,7 +40,7 @@
 		                                            <select  name="permission"  class="form-control selectTwo" required>
                                                         <option></option>
                                                         @foreach($permissions as $permission)
-														<option value="{{$permission->id}}" {{(old("permission")==$permission->id? "selected" : "")}}>{{$permission->name}}</option>
+														<option value="{{$permission->name}}" {{(old("permission")==$permission->id? "selected" : "")}}>{{$permission->name}}</option>
                                                         @endforeach
                                                         
                                                     </select>
@@ -56,7 +56,7 @@
 		                                            <select  name="role"  class="form-control selectTwo" required>
                                                         <option></option>
                                                         @foreach($roles as $role)
-														<option value="{{$role->id}}" {{(old("role")==$role->id? "selected" : "")}}>{{$role->name}}</option>
+														<option value="{{$role->name}}" {{(old("role")==$role->id? "selected" : "")}}>{{$role->name}}</option>
                                                         @endforeach
                                                         
                                                     </select>
@@ -98,12 +98,13 @@
             </div>
         </div>
     </div>
+    
  @push('scripts')
         <script>
            $(document).ready(function() {
             $('#myTable').DataTable({
                 stateSave: false,
-                "order": [[ 1, "asc" ]],
+                "order": [[ 0, "asc" ]],
                 "columnDefs": [
     				{ "width": "70%", "targets": 0, },
     				{"targets": [-1,-2], "className": "dt-center"}

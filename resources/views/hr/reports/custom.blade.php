@@ -81,7 +81,7 @@
 		                         <hr>
 		                       
 		        <div class="table-responsive m-t-40">
-				
+			
 				<table id="myTable" class="cell-border"  style="width:100%" >
 				
 					<thead>
