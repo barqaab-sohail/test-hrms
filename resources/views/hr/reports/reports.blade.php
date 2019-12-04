@@ -38,10 +38,12 @@
 						</tr><tr>
 							<td><a href="{{route('employee.manager')}}">Employee Manager Hierarchy</a></td>
 						</tr>
+						@role('Super Admin')
 						<tr>
-							<td><a href="{{route('activeEmployee')}}">Missing Data</a></td>
-							
+						
+							<td><a href="{{route('activeEmployee')}}">Missing Data</a></td>					
 						</tr>	
+						@endrole
 						
 								 
 					

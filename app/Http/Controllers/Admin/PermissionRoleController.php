@@ -18,10 +18,18 @@ class PermissionRoleController extends Controller
     public function index(){
     	$roles = Role::all();
     	$permissions = permission::all();
-    	dd($permissions->roles);
+        	foreach($roles as $role){
+                
+                $permissions = $role->getAllPermissions();
 
-    	$test = hasPermission('view personal record');
-    	return view('admin.permissionRole.index', compact('roles','permissions'));
+                foreach($permissions as $permission){
+                     $role->name.' - '.$permission->name.'<br>';
+                }      
+
+            }
+  	
+        return view('admin.permissionRole.index', compact('roles','permissions'));
+        
     }
 
 

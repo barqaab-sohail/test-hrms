@@ -23,9 +23,14 @@
 					</tr>
 					</thead>
 					<tbody>
-						@foreach($permissions as $permissionId)
+						@foreach($roles as $role)
+						@php
+							$allPermissions = $role->getAllPermissions();
+						@endphp
+							@foreach($allPermissions as $allPermission)
 							<tr>
-								<td>{{$permissionId->name}}</td>
+								<td>{{$allPermission->name}}</td>
+								<td>{{$role->name}}</td>
 							
 								<td>
 								 <a class="btn btn-info btn-sm" href="" data-toggle="tooltip" data-original-title="Edit"> <i class="fas fa-pencil-alt text-white "></i></a>
@@ -39,12 +44,9 @@
 								 <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Are you Sure to Delete')" href= data-toggle="tooltip" data-original-title="Delete"> <i class="fas fa-trash-alt"></i></button>
 								 </form>
 								 </td>
-								  
- 
-
-								 
-															
+								  								
 							</tr>
+							@endforeach
 						@endforeach
 					
 					 
