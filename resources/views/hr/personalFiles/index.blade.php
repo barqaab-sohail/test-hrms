@@ -57,7 +57,6 @@
 	</div>
 @push('scripts')
 	
-	
 	<script>
         $(document).ready(function() {
             $('#myTable').DataTable({
@@ -67,6 +66,14 @@
         		scrollCollapse: true,
         		paging:         false,
                 dom: 'Blfrti',
+                "columnDefs": [
+            
+		            {
+		                "targets": [ 2,3],
+		                "searchable": false
+		            }
+        		],
+
                 buttons: [
                     {
                         extend: 'copyHtml5',

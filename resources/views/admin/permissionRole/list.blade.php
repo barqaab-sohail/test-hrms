@@ -37,15 +37,11 @@
 								 <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Are you Sure to revoke permission to role')" href= data-toggle="tooltip" data-original-title="Delete"> <i class="fas fa-trash-alt"></i></button>
 								 </form>
 								 @endcan
-								 </td>
- 
-								
-								  								
+								</td>
+ 			  								
 							</tr>
 							@endforeach
 						@endforeach
-					
-					 
 					
 					</tbody>
 				</table>
