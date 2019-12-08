@@ -7,6 +7,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <link rel="icon" type="image/png" sizes="16x16" href="{{asset('Massets/images/favicon.ico') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
     <title>{{ config('app.name', 'Laravel') }}</title>
 
@@ -40,7 +41,7 @@
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
                         <!-- Authentication Links -->
-                       @if (request()->is('login')||request()->is('register')||request()->is('code'))
+                       @if (request()->is('login')||request()->is('register')||request()->is('code')||request()->is('password/reset'))
                             <li class="nav-item ">
                                 <a class="nav-link" style="color: white;" href="{{ route('login') }}">{{ __('Login') }}</a>
                             </li>
@@ -86,13 +87,22 @@
 <script src="{{asset('Massets/plugins/jquery/jquery.min.js') }}"></script>
 
 <script>
+ $('.fa-spinner').hide();
 $(document).ready(function(){
+    
+    (function(){
+        $('.form-prevent-multiple-submits').on('submit', function(){
+            $('.fa-spinner').show();
+            $('.btn-prevent-multiple-submits').attr('disabled','ture');
+           
+        })
+    })();
 
-        $("#nationality2").hide();
-        $("#add").click (function(){
-        $("#nationality2").toggle();
-        $('#add').html($('#add').text() == '-' ? '+' : '-');
-        });
+        // $("#nationality2").hide();
+        // $("#add").click (function(){
+        // $("#nationality2").toggle();
+        // $('#add').html($('#add').text() == '-' ? '+' : '-');
+        // });
     
     
      //Make sure that the event fires on input change

@@ -18,8 +18,6 @@
         	
 		        	<div class="col-lg-10">
 						 
- 
-
 		                <div style="margin-top:10px; margin-right: 10px;">
 		                    
 		                </div>
@@ -83,7 +81,7 @@
 		                                        <div class="col-md-12 date_input">
 		                                        	<label class="control-label text-right">Date of Birth<span class="text_requried">*</span></label>
 		                                        
-		                                            <input type="text" id="date_of_birth" name="date_of_birth" value="{{ old('date_of_birth', $employee->date_of_birth) }}" class="form-control " placeholder="Enter Date of Birth" readonly required>
+		                                            <input type="text" id="date_of_birth" name="date_of_birth" value="{{ old('date_of_birth', $employee->date_of_birth) }}" class="form-control " placeholder="Enter Date of Birth"  required>
 		                                             
  
 		                                            @can('edit record')

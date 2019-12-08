@@ -53,7 +53,7 @@
     <script src="https://cdn.rawgit.com/bpampuch/pdfmake/0.1.18/build/pdfmake.min.js"></script>
     <script src="https://cdn.rawgit.com/bpampuch/pdfmake/0.1.18/build/vfs_fonts.js"></script>
     <script src="https://cdn.datatables.net/buttons/1.2.2/js/buttons.html5.min.js"></script>
-    <script src=""></script>
+   
     <!-- end - This is for export functionality only -->
 
 
@@ -113,10 +113,11 @@ window.onunload = function(){null};
     $(document).ready(function() {
        var role = "{{Auth::User()->getRoleNames()->first()}}";
 
-       if(role == 'Manager'){
-        $('input[type="text"]').prop('readonly', true);
+       if(role == 'User'){
+        $('input[type="text"]').prop('disabled', true);
+        $('.notReadonly').prop('disabled',false);
         $('select').attr("disabled", true); 
-        $('input[type="text"]').datepicker('destroy');
+        
        }
 
         //Active Anchor tage with compare url and href

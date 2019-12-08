@@ -35,7 +35,7 @@
 		                                <div class="form-group row">
 		                                    <label class="control-label text-right col-md-2">Subject</label>
 		                                    <div class="col-md-10">
-		                                        <input type="text"  name="subject" value="{{old('subject')}}" class="form-control" placeholder="Enter Subject of Notification" required>
+		                                        <input type="text"  name="subject" value="{{old('subject')}}" class="form-control notReadonly" placeholder="Enter Subject of Notification" required>
 		                                    </div>
 		                                </div>
 		                        

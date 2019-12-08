@@ -52,6 +52,7 @@ class NotificationController extends Controller
     }
     elseif($request->to=='allManagers'){
         $managerIds = posting::all()->pluck('manager_id')->toArray();
+        
         $users = user::all()->whereIn('employee_id',$managerIds);
     }else{
         $users = user::all()->where('employee_id',$request->to);

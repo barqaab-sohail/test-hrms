@@ -110,7 +110,7 @@
                             <li><a href="{{route('createNotification')}}"  class="link" data-toggle="tooltip" title="Create Notification"><i class="fa fa-bell"></i> Create Notification</a></li>
                             @endcan
  
-                            @hasanyrole('user|manager')
+                            @hasanyrole('User|Manager')
                             <li><a href="{{route('createUserNotification')}}"  class="link" data-toggle="tooltip" title="Send Notification to HR"><i class="fas fa-arrow-right"></i> Send Message to HR</a></li>
                             @endhasanyrole
 

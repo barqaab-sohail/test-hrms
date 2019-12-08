@@ -17,7 +17,7 @@
                                 <div class="col-md-12">
                                   <label class="control-label text-right">Task Detail<span class="text_requried">*</span></label>
                                             
-                                   <input type="text"  id='task_detail' name="task_detail" value="{{ old('task_detail') }}" class="form-control" placeholder="Enter Task Detail" required>
+                                   <input type="text"  id='task_detail' name="task_detail" value="{{ old('task_detail') }}" class="form-control notReadonly" placeholder="Enter Task Detail" required>
                                 </div>
                               </div>
 
@@ -25,7 +25,7 @@
                                 <div class="col-md-12 date_input">
                                   <label class="control-label text-right">Completion Date<span class="text_requried">*</span></label>
                                                 
-                                  <input type="text" id="completion_date" name="completion_date" value="{{ old('completion_date') }}" class="form-control "  placeholder="Enter Task Completion Date" required readonly>
+                                  <input type="text" id="completion_date" name="completion_date" value="{{ old('completion_date') }}" class="form-control notReadonly"  placeholder="Enter Task Completion Date" required readonly>
                                   
                                   <br>
                                   @can('edit record')<i class="fas fa-trash-alt text_requried"></i>@endcan
