@@ -38,15 +38,14 @@ class TaskController extends Controller
                     </thead>
                     <tbody>';
                     foreach($taskIds as $taskId){
-                        $now = \Carbon\Carbon::now()->format('Y-m-d');
                         $end_date = \Carbon\Carbon::parse($taskId->completion_date);
-                        $remainingDyas = $end_date->diffInDays($now);
-                       
+                        $remainingDays = $end_date->diffInDays(\Carbon\Carbon::today(),false)*-1;
+
                     $output .='
                         <tr>
                             <td>'.$taskId->task_detail.'</td>
                             <td>'.$taskId->completion_date.'</td>
-                            <td >'.$remainingDyas.'</td>
+                            <td >'.$remainingDays.'</td>
                             ';
                         
                             if($taskId->status==="Pending"){

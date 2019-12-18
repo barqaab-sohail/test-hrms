@@ -77,8 +77,6 @@
                             .draw();
                     } );
  				
-
-
                 column.data().unique().sort().each( function ( d, j ) {
                     select.append( '<option value="'+d+'">'+d+'</option>' )
                 } );
@@ -87,7 +85,7 @@
           		  } );
        			 }
 
-   			 } );
+   			} );
            /* $("table").rowspanizer({
 			  vertical_align: 'middle',
 			  columns: [0]

@@ -70,7 +70,21 @@
     				{"targets": "_all", "className": "dt-center"}
  				 ],
 
-                dom: 'lfrtip'
+                dom: 'Blfrtip',
+	                buttons: [
+	                    {
+	                        extend: 'copyHtml5',
+	                        exportOptions: {
+	                            columns: [ 0, 1, 2]
+	                        }
+	                    },
+	                    {
+	                        extend: 'excelHtml5',
+	                        exportOptions: {
+	                            columns: [ 0, 1, 2]
+	                        }
+	                   	},
+	                ]
                
 				});
     	    });
