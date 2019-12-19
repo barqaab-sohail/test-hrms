@@ -13,7 +13,8 @@ public function create(){
 
 	$genders = gender::all();
 
-	return view ('cvs.uploadCv',compact('genders'));
+	return view ('bio-data.test',compact('genders'));
+	//return view ('bio-data.uploadCv',compact('genders'));
 }
 
 
