@@ -82,11 +82,9 @@
  
                 @role('Super Admin')
                 <li @if(request()->is('uploadCv/create')) class="active" @endif > <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i class="mdi mdi-database"></i><span class="hide-menu">CV Records</span></a>
-                    <ul aria-expanded="false" class="collapse">
-                       
+                    <ul aria-expanded="false" class="collapse">  
                         <li><a href="{{route('uploadCv.create')}}">CV Upload</a></li>
-
-                        
+                        <li><a href="{{route('addExpertize.index')}}">Add Expertize</a></li>    
                     </ul>
                 </li>
                 @endrole
@@ -109,7 +107,6 @@
                         <li><a href="{{route('createProject')}}">Add Projects</a></li>
                     </ul>
                 </li>
-
 
                 @role('Super Admin')
                 <li @if(request()->is('*phone*')) class="active" @endif > <a id="notInclude" class="has-arrow waves-effect waves-dark" href="{{route('contactNumber.index')}}" aria-expanded="false"><i class="fas fa-phone"></i><span class="hide-menu">Contact Numbers</span></a>

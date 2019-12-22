@@ -25,7 +25,7 @@
 
 		                <div class="card-body">
 
-		                    <form action="{{route('employee.store')}}" method="post" class="form-horizontal form-prevent-multiple-submits" enctype="multipart/form-data">
+		                    <form action="{{route('uploadCv.store')}}" method="post" class="form-horizontal form-prevent-multiple-submits" enctype="multipart/form-data">
 		                        {{csrf_field()}}
 		                        <div class="form-body">
 		                            
@@ -36,7 +36,7 @@
 		                                    <div class="form-group row">
 		                                        <div class="col-md-12">
 		                                       		<label class="control-label text-right">Full Name<span class="text_requried">*</span></label><br>
-		                                       		<input type="text"  name="full_name" value="{{ old('full_name') }}"  class="form-control" placeholder="Enter Full Name" required>
+		                                       		<input type="text"  name="full_name" value="{{ old('full_name') }}"  class="form-control" placeholder="Enter Full Name" >
 		                                        </div>
 		                                    </div>
 		                                </div>
@@ -46,7 +46,7 @@
 		                                        <div class="col-md-4">
 		                                        	<label class="control-label text-right">CNIC<span class="text_requried">*</span></label>
 		                                        
-		                                            <input type="text" name="cnic" id="cnic" pattern="[0-9.-]{15}" title= "13 digit Number without dash" value="{{ old('cnic') }}" class="form-control" onkeyup='addHyphen(this)'  placeholder="Enter CNIC without dash" required>
+		                                            <input type="text" name="cnic" id="cnic" pattern="[0-9.-]{15}" title= "13 digit Number without dash" value="{{ old('cnic') }}" class="form-control" onkeyup='addHyphen(this)'  placeholder="Enter CNIC without dash" >
 		                                        </div>
 		                                        
 		                                        <div class="col-md-5 date_input">
@@ -60,7 +60,7 @@
 		                                        </div>
 		                                        <div class="col-md-3">
 		                                        	<label class="control-label text-right">Gender<span class="text_requried">*</span></label>
-		                                        	 <select  name="gender_id"  class="form-control selectTwo" required>
+		                                        	 <select  name="gender_id"  class="form-control selectTwo" >
                                                         <option value=""></option>
                                                         @foreach($genders as $gender)
 														<option value="{{$gender->id}}" {{(old("gender_id")==$gender->id? "selected" : "")}}>{{$gender->name}}</option>
@@ -82,7 +82,7 @@
 		                                    <div class="form-group row">
 		                                        <div class="col-md-12">
 		                                       		<label class="control-label text-right">Higher Degree<span class="text_requried">*</span></label><br>
-		                                       		<input type="text"  name="full_name" value="{{ old('full_name') }}"  class="form-control" placeholder="Enter Full Name" required>
+		                                       		<input type="text"  name="full_name" value="{{ old('full_name') }}"  class="form-control" placeholder="Enter Full Name" >
 		                                        </div>
 		                                    </div>
 		                                </div>
@@ -91,13 +91,12 @@
 		                                    <div class="form-group row">
 		                                        <div class="col-md-4">
 		                                        	<label class="control-label text-right">Expertize<span class="text_requried">*</span></label>
-		                                        	<select class="mdb-select md-form" multiple searchable="Search here..">
-													  <option value="" disabled selected>Choose your country</option>
-													  <option value="1">USA</option>
-													  <option value="2">Germany</option>
-													  <option value="3">France</option>
-													  <option value="3">Poland</option>
-													  <option value="3">Japan</option>
+		                                        	<br>	
+		                                        	<select class="mdb-select md-form" multiple searchable="Search here.." name="expertize[]">
+		                                        	@foreach($expertizes as $expertize)
+														<option value="{{$expertize->id}}">{{$expertize->name}}</option>
+                                                    @endforeach
+													
 													</select>
 		                                        
 		                                            
@@ -106,7 +105,7 @@
 		                                        <div class="col-md-5 date_input">
 		                                        	<label class="control-label text-right">Date of Birth<span class="text_requried">*</span></label>
 		                                        
-		                                            <input type="text" id="date_of_birth" name="date_of_birth" value="{{ old('date_of_birth') }}" class="form-control " placeholder="Enter Date of Birth" required readonly>
+		                                            <input type="text" id="date_of_birth" name="date_of_birth" value="{{ old('date_of_birth') }}" class="form-control " placeholder="Enter Date of Birth"  readonly>
 													 
 		                                            <br>
 		                                           <i class="fas fa-trash-alt text_requried"></i> 
@@ -114,11 +113,9 @@
 		                                        </div>
 		                                        <div class="col-md-3">
 		                                        	<label class="control-label text-right">Gender<span class="text_requried">*</span></label>
-		                                        	 <select  name="gender_id"  class="form-control selectTwo" required>
+		                                        	 <select  name="gender_id"  class="form-control selectTwo" >
                                                         <option value=""></option>
-                                                        @foreach($genders as $gender)
-														<option value="{{$gender->id}}" {{(old("gender_id")==$gender->id? "selected" : "")}}>{{$gender->name}}</option>
-                                                        @endforeach
+                                                        
                                                         
                                                     </select>
 		                                        
@@ -136,7 +133,7 @@
 		                                    <div class="form-group row">
 		                                        <div class="col-md-12">
 		                                       		<label class="control-label text-right">Attached CV<span class="text_requried">*</span></label><br>
-		                                       		<input type="file"  name="full_name" value="{{ old('full_name') }}"  class="form-control" placeholder="Enter Full Name" required>
+		                                       		<input type="file"  name="full_name" value="{{ old('full_name') }}"  class="form-control" placeholder="Enter Full Name" >
 		                                        </div>
 		                                    </div>
 		                                </div>
@@ -175,7 +172,11 @@
 
 	$(document).ready(function(){
 	
-	
+	$('select').select2({
+    minimumResultsForSearch: 20, // at least 20 results must be displayed
+    width: "100%",
+    theme: "classic"
+});
 	 //Make sure that the event fires on input change
 	$("#cnic").on('input', function(ev){
 		

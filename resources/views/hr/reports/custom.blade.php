@@ -147,11 +147,7 @@
           text-align: center }
 	</style>
  @push('scripts')
-        <script>
-       
-    
- 		
-        
+    <script>  
         $(document).ready(function() {
         	
         	var table = $('#myTable').DataTable( {
@@ -197,20 +193,16 @@
             if($(this).prop("checked") == true){
             	var column = table.column( $(this).attr('data-column') );
             	column.visible(true);
-
-
-            	
             }
             else if($(this).prop("checked") == false){
             	var column = table.column( $(this).attr('data-column') );
             	 column.visible(false);
-               
             }
-        });
+    	    });
         });
             
 
-        </script>
+    </script>
     @endpush
 
 @stop
