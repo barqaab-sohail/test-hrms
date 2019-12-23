@@ -22,6 +22,7 @@ class UploadCvController extends Controller
 	public function store(request $request){
 
 		dd($request->expertize);
+		
 	}
 
 
