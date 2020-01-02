@@ -8,6 +8,7 @@ use App\Http\Controllers\Controller;
 use App\gender;
 use App\cv_expertize;
 use App\Helper\DocxConversion;
+use Spatie\PdfToText\Pdf;
 
 class UploadCvController extends Controller
 {
@@ -25,10 +26,17 @@ class UploadCvController extends Controller
 
 	public function store(request $request){
 
-		$filename= public_path('test.xlsx');
+		putenv('PATH=$PATH:/usr/local/bin/:/usr/bin');
 
-		$testing = DocxConversion::xlsx_to_text($filename);
-		return $testing;
+		$filename= public_path('test1.pdf');
+		// $text = (new Extract())
+  //   ->pdf($filename)
+  //   ->text();
+
+		$text = (new Pdf())->setPdf($filename)->text();
+
+		// $testing = new DocxConversion($filename);
+		// return $testing->convertToText();
 		
 		/*$striped_content = '';
         $content = '';

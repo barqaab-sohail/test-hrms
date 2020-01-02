@@ -1,5 +1,8 @@
- <?php
- class fileConversion{
+<?php
+
+namespace App\Helper;
+
+class DocxConversion{
     private $filename;
 
     public function __construct($filePath) {
