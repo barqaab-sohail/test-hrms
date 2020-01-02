@@ -52,7 +52,7 @@
 		                                        <div class="col-md-5 date_input">
 		                                        	<label class="control-label text-right">Date of Birth<span class="text_requried">*</span></label>
 		                                        
-		                                            <input type="text" id="date_of_birth" name="date_of_birth" value="{{ old('date_of_birth') }}" class="form-control " placeholder="Enter Date of Birth" required readonly>
+		                                            <input type="text" id="date_of_birth" name="date_of_birth" value="{{ old('date_of_birth') }}" class="form-control " placeholder="Enter Date of Birth" readonly>
 													 
 		                                            <br>
 		                                           <i class="fas fa-trash-alt text_requried"></i> 
@@ -82,14 +82,14 @@
 		                                    <div class="form-group row">
 		                                        <div class="col-md-12">
 		                                       		<label class="control-label text-right">Higher Degree<span class="text_requried">*</span></label><br>
-		                                       		<input type="text"  name="full_name" value="{{ old('full_name') }}"  class="form-control" placeholder="Enter Full Name" >
+		                                       		<input type="text"  name="higher_degree" value="{{ old('higher_degree') }}"  class="form-control" placeholder="Enter Higher Degree Name" >
 		                                        </div>
 		                                    </div>
 		                                </div>
 		                                <!--/span-->
 		                                <div class="col-md-8">
 		                                    <div class="form-group row">
-		                                        <div class="col-md-4">
+		                                        <div class="col-md-12">
 		                                        	<label class="control-label text-right">Expertize<span class="text_requried">*</span></label>
 		                                        	<br>	
 		                                        	<select class="mdb-select md-form" multiple searchable="Search here.." name="expertize[]">
@@ -102,25 +102,8 @@
 		                                            
 		                                        </div>
 		                                        
-		                                        <div class="col-md-5 date_input">
-		                                        	<label class="control-label text-right">Date of Birth<span class="text_requried">*</span></label>
 		                                        
-		                                            <input type="text" id="date_of_birth" name="date_of_birth" value="{{ old('date_of_birth') }}" class="form-control " placeholder="Enter Date of Birth"  readonly>
-													 
-		                                            <br>
-		                                           <i class="fas fa-trash-alt text_requried"></i> 
-		                                             
-		                                        </div>
-		                                        <div class="col-md-3">
-		                                        	<label class="control-label text-right">Gender<span class="text_requried">*</span></label>
-		                                        	 <select  name="gender_id"  class="form-control selectTwo" >
-                                                        <option value=""></option>
-                                                        
-                                                        
-                                                    </select>
-		                                        
-		                                            
-		                                        </div>
+		                                       
 
 		                                    </div>
 		                                    
@@ -133,7 +116,7 @@
 		                                    <div class="form-group row">
 		                                        <div class="col-md-12">
 		                                       		<label class="control-label text-right">Attached CV<span class="text_requried">*</span></label><br>
-		                                       		<input type="file"  name="full_name" value="{{ old('full_name') }}"  class="form-control" placeholder="Enter Full Name" >
+		                                       		<input type="file"  name="cv" value="{{ old('cv') }}"  class="form-control" >
 		                                        </div>
 		                                    </div>
 		                                </div>

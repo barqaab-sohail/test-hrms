@@ -10,6 +10,7 @@ use App\employee;
 use App\document;
 use DB;
 
+
 class DocumentController extends Controller
 {
      public function __construct()

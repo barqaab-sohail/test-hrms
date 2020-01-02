@@ -159,7 +159,10 @@
                             columns: [ 0, 1, 2,3,4]
                         }
                     },
-                ]
+                ],
+                "columnDefs": [
+    				{ "width": "15%", "targets": 2 }
+  				]
             });
         });
         $(document).ready(function () {

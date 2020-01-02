@@ -9,7 +9,7 @@
 					<tr>
 						<th>Name</th>
 						<th>Designation</th>
-						<th >Mobile-1</th>
+						<th>Mobile-1</th>
 						<th>Mobile-2</th>
 						
 						<th> Actions </th>
