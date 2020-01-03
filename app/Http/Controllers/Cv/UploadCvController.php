@@ -26,55 +26,19 @@ class UploadCvController extends Controller
 
 	public function store(request $request){
 
-		putenv('PATH=$PATH:/usr/local/bin/:/usr/bin');
-
-		$filename= public_path('test1.pdf');
-		// $text = (new Extract())
-  //   ->pdf($filename)
-  //   ->text();
-
-		$text = (new Pdf())->setPdf($filename)->text();
-
-		// $testing = new DocxConversion($filename);
-		// return $testing->convertToText();
+		$extension = request()->cv->getClientOriginalExtension();
 		
-		/*$striped_content = '';
-        $content = '';
-
-        $zip = zip_open($filename);
-
-        if (!$zip || is_numeric($zip)) return false;
-
-        while ($zip_entry = zip_read($zip)) {
-
-            if (zip_entry_open($zip, $zip_entry) == FALSE) continue;
-
-            if (zip_entry_name($zip_entry) != "word/document.xml") continue;
-
-            $content .= zip_entry_read($zip_entry, zip_entry_filesize($zip_entry));
-
-            zip_entry_close($zip_entry);
-        }// end while
-
-        zip_close($zip);
-
-        $content = str_replace('</w:r></w:p></w:tc><w:tc>', " ", $content);
-        $content = str_replace('</w:r></w:p>', "\r\n", $content);
-        $striped_content = strip_tags($content);
-
-        return $striped_content;*/
-
-/*
-		//$path = $request->file('cv')->store('cvs');
-		//dd($path);
-		$file= public_path('testt.doc');
-		//$content = file_get_contents($file);
-
-		$content = DocxConversion($file)->read_docx();
-		//$docObj = new Filetotext("test1.doc");
- 		//$return = $docObj -> convertToText();
-
-		dd($content);*/
+			if (($extension == 'doc')||($extension == 'docx')){
+			$fileName = time().'.'.request()->cv->getClientOriginalExtension();
+			$request->file('cv')->storeAs('public/cv',$fileName);
+			$file_path = storage_path('app/public/cv/'.$fileName);
+			$testing = new DocxConversion($file_path);
+			return $testing->convertToText();
+			}
+		
+		echo "File is Not Document";
+		
+		
 		
 	}
 
