@@ -35,6 +35,13 @@ class UploadCvController extends Controller
 			$testing = new DocxConversion($file_path);
 			return $testing->convertToText();
 			}
+			else if ($extension == 'pdf'){
+			$fileName = time().'.'.request()->cv->getClientOriginalExtension();
+			$request->file('cv')->storeAs('public/cv',$fileName);
+			$file_path = storage_path('app/public/cv/'.$fileName);
+			echo Pdf::getText($file_path);
+			
+			}
 		
 		echo "File is Not Document";
 		
