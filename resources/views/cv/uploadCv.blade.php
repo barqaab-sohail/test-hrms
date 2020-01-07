@@ -1,7 +1,7 @@
 @extends('layouts.master.master')
 @section('title', 'BARQAAB HR')
 @section('Heading')
-	<h3 class="text-themecolor">Upload CV</h3>
+	<h3 class="text-themecolor">CV Detail</h3>
 	<ol class="breadcrumb">
 		<li class="breadcrumb-item"><a href="javascript:void(0)"></a></li>
 		
@@ -29,7 +29,7 @@
 		                        {{csrf_field()}}
 		                        <div class="form-body">
 		                            
-		                            <h3 class="box-title">Upload CV</h3>
+		                            <h3 class="box-title">CV Detail</h3>
 		                            <hr class="m-t-0 m-b-40">
 		                            <div class="row">
 		                                <div class="col-md-4">

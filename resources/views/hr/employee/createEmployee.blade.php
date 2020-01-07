@@ -17,11 +17,9 @@
             <div class="card card-outline-info">
 			
 				<div class="row">
-					<div class="col-lg-2">
-					@include('layouts.master.hrVerticalButton')
-					</div>
+				
         	
-		        	<div class="col-lg-10">
+		        	<div class="col-lg-12">
 						 
  
 
