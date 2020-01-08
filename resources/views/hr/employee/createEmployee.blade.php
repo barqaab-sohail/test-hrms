@@ -17,7 +17,12 @@
             <div class="card card-outline-info">
 			
 				<div class="row">
+<<<<<<< HEAD
 				        	
+=======
+				
+        	
+>>>>>>> ae5782b23ad74dbdad999359e607c923ec5c8625
 		        	<div class="col-lg-12">
 						 
  

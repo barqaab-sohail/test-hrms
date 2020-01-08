@@ -1,5 +1,6 @@
 <div class="btn-group-vertical" role="group" aria-label="vertical button group">
 
+<<<<<<< HEAD
          
           <br>
           
@@ -33,5 +34,17 @@
             <br>
             
              @endif
+=======
+         <style>
+            
+        .btn-info:active { background-color: red; }
+            
+        </style>
+
+          <br>
+
+              <a type="submit" role="button" href="{{route('employee.create')}}" class="btn btn-info @if(request()->is('createEmployee')) active @endif" >Personal Information</a>
+
+>>>>>>> ae5782b23ad74dbdad999359e607c923ec5c8625
              
 </div>

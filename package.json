@@ -23,6 +23,6 @@
         "vue": "^2.5.17"
     },
     "dependencies": {
-        "mdbootstrap": "^4.10.1"
+        "mdbootstrap": "^4.11.0"
     }
 }
