@@ -26,6 +26,8 @@ class UploadCvController extends Controller
 
 	public function store(request $request){
 
+	include ('PdfToText.phpclass');
+	
 		$extension = request()->cv->getClientOriginalExtension();
 		
 			if (($extension == 'doc')||($extension == 'docx')){
@@ -39,8 +41,10 @@ class UploadCvController extends Controller
 			$fileName = time().'.'.request()->cv->getClientOriginalExtension();
 			$request->file('cv')->storeAs('public/cv',$fileName);
 			$file_path = storage_path('app/public/cv/'.$fileName);
-			echo Pdf::getText($file_path);
+			//echo Pdf::getText($file_path);
 			
+
+
 			}
 		
 		echo "File is Not Document";
