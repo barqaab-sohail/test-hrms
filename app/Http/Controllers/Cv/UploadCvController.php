@@ -26,17 +26,13 @@ class UploadCvController extends Controller
 	}
 
 	public function store(request $request){
-<<<<<<< HEAD
 
-	include ('PdfToText.phpclass');
-	
 		$extension = request()->cv->getClientOriginalExtension();
-=======
+
 		$fileName =request()->full_name.'-'. time().'.'.request()->cv->getClientOriginalExtension();
 		$request->file('cv')->storeAs('public/cv',$fileName);
 		$file_path = storage_path('app/public/cv/'.$fileName);	
 		$input['content']='';
->>>>>>> ae5782b23ad74dbdad999359e607c923ec5c8625
 		
 		$extension = request()->cv->getClientOriginalExtension();
 			if (($extension == 'doc')||($extension == 'docx')){
@@ -46,35 +42,16 @@ class UploadCvController extends Controller
 
 				$var = shell_exec("/usr/local/bin/pdftotext $file_path test.txt 2>&1");
 				echo $var;
-				//$mypdf = file_get_contents("test.txt");
-				//echo $mypdf;
-
-					//echo Pdf::getText($file_path);
-	
-	//$pdf	=  new \PdfToText ( $file_path ) ;
-	//return $pdf -> Text;
+				
 
 			}
-<<<<<<< HEAD
-			else if ($extension == 'pdf'){
-			$fileName = time().'.'.request()->cv->getClientOriginalExtension();
-			$request->file('cv')->storeAs('public/cv',$fileName);
-			$file_path = storage_path('app/public/cv/'.$fileName);
-			//echo Pdf::getText($file_path);
+
 			
-
-
-			}
-=======
-
 		$input['name']=$fileName;
 		$input['path']=$file_path;
 		$input['extension']=$extension;
 
 		//return back()->with('success', 'Data successfully saved.');
-			
->>>>>>> ae5782b23ad74dbdad999359e607c923ec5c8625
-		
 		
 		
 		
