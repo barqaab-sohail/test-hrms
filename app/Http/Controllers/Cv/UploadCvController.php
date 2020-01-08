@@ -9,7 +9,6 @@ use App\gender;
 use App\cv_expertize;
 use App\Helper\DocxConversion;
 use Spatie\PdfToText\Pdf;
-include ('PdfToText.phpclass');
 
 class UploadCvController extends Controller
 {
@@ -35,27 +34,21 @@ class UploadCvController extends Controller
 		$input['content']='';
 		
 		$extension = request()->cv->getClientOriginalExtension();
+		
 			if (($extension == 'doc')||($extension == 'docx')){
-			$text = new DocxConversion($file_path);
-			$input['content']=$text->convertToText();
+				$text = new DocxConversion($file_path);
+				$input['content']=$text->convertToText();
 			}else if ($extension =='pdf'){
-
-				$var = shell_exec("/usr/local/bin/pdftotext $file_path test.txt 2>&1");
-				echo $var;
-				
-
+				$reader = new \Asika\Pdf2text;
+				$input['content'] = $reader->decode($file_path);
 			}
 
-			
 		$input['name']=$fileName;
 		$input['path']=$file_path;
 		$input['extension']=$extension;
 
 		//return back()->with('success', 'Data successfully saved.');
-		
-		
-		
-		
+				
 	}
 
 
