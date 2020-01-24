@@ -90,11 +90,11 @@
 		                                <div class="col-md-8">
 		                                    <div class="form-group row">
 		                                        <div class="col-md-12">
-		                                        	<label class="control-label text-right">Expertize<span class="text_requried">*</span></label>
+		                                        	<label class="control-label text-right">Specialization<span class="text_requried">*</span></label>
 		                                        	<br>	
 		                                        	<select class="mdb-select md-form" multiple searchable="Search here.." name="expertize[]">
-		                                        	@foreach($expertizes as $expertize)
-														<option value="{{$expertize->id}}">{{$expertize->name}}</option>
+		                                        	@foreach($specializations as $specialization)
+														<option value="{{$specialization->id}}">{{$specialization->name}}</option>
                                                     @endforeach
 													
 													</select>

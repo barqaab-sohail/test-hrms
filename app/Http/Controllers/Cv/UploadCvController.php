@@ -6,7 +6,7 @@ namespace App\Http\Controllers\Cv;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\gender;
-use App\cv_expertize;
+use App\cv_specialization;
 use App\Helper\DocxConversion;
 use Spatie\PdfToText\Pdf;
 
@@ -18,10 +18,10 @@ class UploadCvController extends Controller
 	public function create(){
 
 		$genders = gender::all();
-		$expertizes = cv_expertize::all();
+		$specializations = cv_specialization::all();
 
 		//return view ('bio-data.test',compact('genders'));
-		return view ('cv.uploadCv',compact('genders','expertizes'));
+		return view ('cv.uploadCv',compact('genders','specializations'));
 	}
 
 	public function store(request $request){
