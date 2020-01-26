@@ -14,7 +14,6 @@ class CreateCvSpecializationCvField extends Migration
     public function up()
     {
         Schema::create('cv_specialization_cv_field', function (Blueprint $table) {
-            $table->bigIncrements('id');
 
             $table->bigInteger('cv_specialization_id')->unsigned()->index();
             $table->foreign('cv_specialization_id')->references('id')->on('cv_specializations')->onDelete('cascade');

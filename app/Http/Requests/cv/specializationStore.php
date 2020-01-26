@@ -4,7 +4,7 @@ namespace App\Http\Requests\cv;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class addExpertizeStore extends FormRequest
+class specializationStore extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,7 +24,7 @@ class addExpertizeStore extends FormRequest
     public function rules()
     {
         return [
-        'name' => 'required|unique:cv_expertize,name,'
+        'name' => 'required|unique:cv_specializations,name,'
         ];
     }
 
@@ -32,7 +32,7 @@ class addExpertizeStore extends FormRequest
     {
         
         return [
-            'name.unique' => 'This Expertize is already exist',
+            'name.unique' => 'This Specialization is already exist'
             
         ];
     }

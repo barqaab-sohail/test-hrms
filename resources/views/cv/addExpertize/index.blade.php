@@ -66,7 +66,7 @@
 
 @if($expertizes->count()!=0)
 
-@include('bio-data.addExpertize.list')
+@include('cv.addExpertize.list')
 	
 @endif
 
