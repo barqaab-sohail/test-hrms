@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateCvContactCountry extends Migration
+class CreateCountryCvContact extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,13 @@ class CreateCvContactCountry extends Migration
      */
     public function up()
     {
-        Schema::create('cv_contact_country', function (Blueprint $table) {
-            $table->bigInteger('cv_contact_id')->unsigned()->index();
+        Schema::create('country_cv_contact', function (Blueprint $table) {
+             $table->bigInteger('cv_contact_id')->unsigned()->index();
             $table->foreign('cv_contact_id')->references('id')->on('cv_contacts')->onDelete('cascade');
 
             $table->bigInteger('country_id')->unsigned()->index();
             $table->foreign('country_id')->references('id')->on('countries')->onDelete('cascade');
+            
             $table->timestamps();
         });
     }
@@ -30,6 +31,6 @@ class CreateCvContactCountry extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('cv_contact_country');
+        Schema::dropIfExists('country_cv_contact');
     }
 }

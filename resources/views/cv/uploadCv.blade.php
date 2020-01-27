@@ -17,8 +17,8 @@
             <div class="card card-outline-info">
 			
 				<div class="row">
-					
-        	
+				
+      	
 		        	<div class="col-lg-12">
 						 
 
@@ -31,8 +31,10 @@
 		                            
 		                            <h3 class="box-title">CV Detail</h3>
 		                            <hr class="m-t-0 m-b-40">
+		                            <!--row 1 -->
 		                            <div class="row">
-		                                <div class="col-md-4">
+		                                <div class="col-md-3">
+		                                 <!--/span 1-1 -->
 		                                    <div class="form-group row">
 		                                        <div class="col-md-12">
 		                                       		<label class="control-label text-right">Full Name<span class="text_requried">*</span></label><br>
@@ -40,43 +42,157 @@
 		                                        </div>
 		                                    </div>
 		                                </div>
-		                                <!--/span-->
-		                                <div class="col-md-8">
+		                                <!--/span 1-2 -->
+		                                <div class="col-md-3">
 		                                    <div class="form-group row">
-		                                        <div class="col-md-4">
+		                                        <div class="col-md-12 ">
+		                                        	<label class="control-label">Father Name</label>
+		                                        
+		                                            <input type="text"  name="father_name" value="{{ old('father_name') }}"  class="form-control" placeholder="Enter Father Name" >
+		                                        </div>
+		                                    </div>
+		                                </div>
+		                                <!--/span 1-3 -->
+		                                <div class="col-md-3">
+		                                    <div class="form-group row">
+		                                        <div class="col-md-12 date_input">
 		                                        	<label class="control-label text-right">CNIC<span class="text_requried">*</span></label>
 		                                        
 		                                            <input type="text" name="cnic" id="cnic" pattern="[0-9.-]{15}" title= "13 digit Number without dash" value="{{ old('cnic') }}" class="form-control" onkeyup='addHyphen(this)'  placeholder="Enter CNIC without dash" >
 		                                        </div>
-		                                        
-		                                        <div class="col-md-5 date_input">
+		                                    </div>
+		                                </div>
+		                                 <!--/span 1-4 -->
+		                                <div class="col-md-3">
+		                                    <div class="form-group row">
+		                                        <div class="col-md-12 date_input">
 		                                        	<label class="control-label text-right">Date of Birth<span class="text_requried">*</span></label>
 		                                        
 		                                            <input type="text" id="date_of_birth" name="date_of_birth" value="{{ old('date_of_birth') }}" class="form-control " placeholder="Enter Date of Birth" readonly>
 													 
 		                                            <br>
 		                                           <i class="fas fa-trash-alt text_requried"></i> 
-		                                             
 		                                        </div>
-		                                        <div class="col-md-3">
-		                                        	<label class="control-label text-right">Gender<span class="text_requried">*</span></label>
-		                                        	 <select  name="gender_id"  class="form-control selectTwo" >
-                                                        <option value=""></option>
-                                                        @foreach($genders as $gender)
-														<option value="{{$gender->id}}" {{(old("gender_id")==$gender->id? "selected" : "")}}>{{$gender->name}}</option>
-                                                        @endforeach
-                                                        
-                                                    </select>
-		                                        
-		                                            
-		                                        </div>
-
 		                                    </div>
-		                                    
+		                                </div>
+	                               
+		                            </div>
+		                             <!--row 2-->
+		                            <div class="row">
+		                                <div class="col-md-6">
+		                                 <!--/span 2-1 -->
+		                                    <div class="form-group row">
+		                                        <div class="col-md-12">
+		                                       		<label class="control-label ">Address</label><br>
+		                                       		<input type="text"  name="address" value="{{ old('address') }}"  class="form-control" placeholder="Enter Address" >
+		                                        </div>
+		                                    </div>
 		                                </div>
 		                               
+		                                <!--/span 2-2 -->
+		                                <div class="col-md-3">
+		                                    <div class="form-group row">
+		                                        <div class="col-md-12">
+		                                        	<label class="control-label text-right">City<span class="text_requried">*</span></label>
+		                                       		<input type="text"  name="city" value="{{ old('city') }}"  class="form-control">
+		                                        </div>
+		                                    </div>
+		                                </div>
+		                                 <!--/span 2-3 -->
+		                                <div class="col-md-3">
+		                                    <div class="form-group row">
+		                                        <div class="col-md-12">
+		                                        	<label class="control-label text-right">Province<span class="text_requried">*</span></label>
+		                                       		<input type="text"  name="province" value="{{ old('province') }}"  class="form-control">
+		                                        </div>
+		                                    </div>
+		                                </div>
 		                            </div>
-		                            <!--/row-->
+		                            <!--row 3-->
+		                            <div class="row" >
+		                                <div class="col-md-3">
+		                                	<!--/span 3-1 -->
+		                                    <div class="form-group row">
+		                                        <div class="col-md-12">
+		                                       		<label class="control-label text-right">Country<span class="text_requried">*</span></label><br>
+		                                       		<input type="text"  name="country" value="{{ old('country') }}"  class="form-control" >
+		                                        </div>
+		                                    </div>
+		                                </div>
+		                                <!--/span 3-2 -->
+		                                <div class="col-md-3">
+		                                    <div class="form-group row">
+		                                        <div class="col-md-12 ">
+		                                        	<label class="control-label">Mobile Number<span class="text_requried">*</span></label>
+		                                        
+		                                            <input type="text"  name="phone" value="{{ old('phone') }}"  class="form-control" placeholder="Enter Mobile Number" >
+		                                        </div>
+		                                    </div>
+		                                </div>
+		                                <!--/span 3-3 -->
+		                                <div class="col-md-3">
+		                                    <div class="form-group row">
+		                                        <div class="col-md-12">
+		                                        	<label class="control-label text-right">Email</label>
+		                                        
+		                                            <input type="email" name="email" value="{{ old('email') }}" class="form-control" placeholder="Enter Email Address " >
+		                                        </div>
+		                                    </div>
+		                                </div>
+		                                 <!--/span 3-4 -->
+		                                <div class="col-md-3">
+		                                    <div class="form-group row">
+		                                        <div class="col-md-12 date_input">
+		                                        	<label class="control-label text-right">Job Starting Date<span class="text_requried">*</span></label>
+		                                        
+		                                            <input type="text" id="job_starting_date" name="job_starting_date" value="{{ old('job_starting_date') }}" class="form-control " placeholder="Enter Date of Birth" readonly>
+													 
+		                                            <br>
+		                                           <i class="fas fa-trash-alt text_requried"></i> 
+		                                        </div>
+		                                    </div>
+		                                </div>
+		                            </div>
+
+		                             <!--row 4-->
+		                            <div class="row" >
+		                                <div class="col-md-3">
+		                                	<!--/span 4-1 -->
+		                                    <div class="form-group row">
+		                                        <div class="col-md-12">
+		                                       		<label class="control-label text-right">Name of Degree<span class="text_requried">*</span></label><br>
+		                                       		<input type="text"  name="degree_name" value="{{ old('degree_name') }}"  class="form-control" >
+		                                        </div>
+		                                    </div>
+		                                </div>
+		                                <!--/span 3-2 -->
+		                                <div class="col-md-6">
+		                                    <div class="form-group row">
+		                                        <div class="col-md-12 ">
+		                                        	<label class="control-label">Name of Institute<span class="text_requried">*</span></label>
+		                                        
+		                                            <input type="text"  name="institute" value="{{ old('institute') }}"  class="form-control" placeholder="Enter Institute Name" >
+		                                        </div>
+		                                    </div>
+		                                </div>
+		                                <!--/span 3-3 -->
+		                                <div class="col-md-3">
+		                                    <div class="form-group row">
+		                                        <div class="col-md-8">
+		                                        	<label class="control-label text-right">Passing Year<span class="text_requried">*</span></label>
+		                                        
+		                                            <input type="text" name="passing_year" value="{{ old('passing_year') }}" class="form-control" >
+		                                        </div>
+												<div class="col-md-4">
+		                                        <br>
+		                                        <button type="button" name="add" id="add" class="btn btn-success" >Add</button>
+		                                        </div>
+		                                    </div>
+		                                </div>
+		                                
+		                            </div>
+		                            
+		                            <!--row -->
 		                            <div class="row">
 		                                <div class="col-md-4">
 		                                    <div class="form-group row">
@@ -110,7 +226,9 @@
 		                                </div>
 		                               
 		                            </div>
-		                            <!--/row-->
+		                            
+
+		                            <!--row-->
 		                             <div class="row">
 		                                <div class="col-md-4">
 		                                    <div class="form-group row">

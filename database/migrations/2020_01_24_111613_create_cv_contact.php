@@ -16,9 +16,10 @@ class CreateCvContact extends Migration
         Schema::create('cv_contacts', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('address');
+            $table->string('city');
             $table->string('province');
             $table->string('country');
-            $table->string('email');
+            $table->string('email')->nullable();
             $table->bigInteger('cv_detail_id')->unsigned();
             $table->foreign('cv_detail_id')->references('id')->on('cv_details')->onDelete('cascade');
             $table->timestamps();

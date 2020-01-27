@@ -6,14 +6,12 @@ namespace App\Http\Controllers\Cv;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\gender;
-use App\cv_specialization;
+use App\models\cv\cv_specialization;
 use App\Helper\DocxConversion;
 use Spatie\PdfToText\Pdf;
 
 class UploadCvController extends Controller
 {
-
-
     
 	public function create(){
 
