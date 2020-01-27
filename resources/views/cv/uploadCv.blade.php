@@ -155,7 +155,7 @@
 		                            </div>
 
 		                             <!--row 4-->
-		                            <div class="row" >
+		                            <div class="row element" id='div_1' >
 		                                <div class="col-md-3">
 		                                	<!--/span 4-1 -->
 		                                    <div class="form-group row">
@@ -185,7 +185,7 @@
 		                                        </div>
 												<div class="col-md-4">
 		                                        <br>
-		                                        <button type="button" name="add" id="add" class="btn btn-success" >Add</button>
+		                                        <button type="button" name="add" id="add" class="btn btn-success" >+</button>
 		                                        </div>
 		                                    </div>
 		                                </div>
@@ -273,40 +273,76 @@
 
 	$(document).ready(function(){
 	
-	$('select').select2({
-    minimumResultsForSearch: 20, // at least 20 results must be displayed
-    width: "100%",
-    theme: "classic"
-});
+		$('select').select2({
+	    minimumResultsForSearch: 20, // at least 20 results must be displayed
+	    width: "100%",
+	    theme: "classic"
+		});
 	 //Make sure that the event fires on input change
-	$("#cnic").on('input', function(ev){
-		
-		//Prevent default
-		ev.preventDefault();
-		
-		//Remove hyphens
-		let input = ev.target.value.split("-").join("");
-		
-		//Make a new string with the hyphens
-		// Note that we make it into an array, and then join it at the end
-		// This is so that we can use .map() 
-		input = input.split('').map(function(cur, index){
+		$("#cnic").on('input', function(ev){
 			
-			//If the size of input is 6 or 8, insert dash before it
-			//else, just insert input
-			if(index == 5 || index == 12)
-				return "-" + cur;
-			else
-				return cur;
-		}).join('');
-		
-		//Return the new string
-		$(this).val(input);
-	});
+			//Prevent default
+			ev.preventDefault();
+			
+			//Remove hyphens
+			let input = ev.target.value.split("-").join("");
+			
+			//Make a new string with the hyphens
+			// Note that we make it into an array, and then join it at the end
+			// This is so that we can use .map() 
+			input = input.split('').map(function(cur, index){
+				
+				//If the size of input is 6 or 8, insert dash before it
+				//else, just insert input
+				if(index == 5 || index == 12)
+					return "-" + cur;
+				else
+					return cur;
+			}).join('');
+			
+			//Return the new string
+			$(this).val(input);
+		});
+	//Dynamic add education
 
+		 // Add new element
+		 $("#add").click(function(){
+		 	
+		  // Finding total number of elements added
+		  var total_element = $(".element").length;
+		 	
+		  // last <div> with element class id
+		  var lastid = $(".element:last").attr("id");
+		  var split_id = lastid.split("_");
+		  var nextindex = Number(split_id[1]) + 1;
 
+		  var max = 5;
+		  alert(max);
+		  // Check total number elements
+		  if(total_element < max ){
+		   // Adding new div container after last occurance of element class
+		   $(".element:last").after("<div class='row element' id='div_"+ nextindex +"'></div>");
+		 
+		   // Adding element to <div>
+		   $("#div_" + nextindex).append("");
+		 
+		  }
+		 
+		 });
 
-	});
+		 // Remove element
+		 $('.row element').on('click','.remove',function(){
+		 
+		  var id = this.id;
+		  var split_id = id.split("_");
+		  var deleteindex = split_id[1];
+
+		  // Remove <div> with id
+		  $("#div_" + deleteindex).remove();
+
+ 		}); 
+
+	});	
 
 	
 </script>
