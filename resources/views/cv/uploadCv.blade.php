@@ -165,7 +165,7 @@
 		                                        </div>
 		                                    </div>
 		                                </div>
-		                                <!--/span 3-2 -->
+		                                <!--/span 4-2 -->
 		                                <div class="col-md-6">
 		                                    <div class="form-group row">
 		                                        <div class="col-md-12 ">
@@ -175,7 +175,7 @@
 		                                        </div>
 		                                    </div>
 		                                </div>
-		                                <!--/span 3-3 -->
+		                                <!--/span 4-3 -->
 		                                <div class="col-md-3">
 		                                    <div class="form-group row">
 		                                        <div class="col-md-8">
@@ -185,7 +185,9 @@
 		                                        </div>
 												<div class="col-md-4">
 		                                        <br>
-		                                        <button type="button" name="add" id="add" class="btn btn-success" >+</button>
+			                                        <div>
+			                                        <button type="button" name="add" id="add" class="btn btn-success add" >+</button>
+													</div>
 		                                        </div>
 		                                    </div>
 		                                </div>
@@ -315,30 +317,34 @@
 		  var lastid = $(".element:last").attr("id");
 		  var split_id = lastid.split("_");
 		  var nextindex = Number(split_id[1]) + 1;
-
 		  var max = 5;
-		  alert(max);
 		  // Check total number elements
 		  if(total_element < max ){
 		   // Adding new div container after last occurance of element class
-		   $(".element:last").after("<div class='row element' id='div_"+ nextindex +"'></div>");
+		   //$(".element:last").after("<div class='row element' id='div_"+ nextindex +"'></div>");
 		 
 		   // Adding element to <div>
-		   $("#div_" + nextindex).append("");
+		   //$("#div_" + nextindex).append("");
+		 
+		   //$("#div_1").clone().insertAfter("div.element:last");
+		   //$("#div_1").clone().insertAfter("div.element:last").$(this).find('.btn btn-success add').text('-');
+		   	var $clone = $("#div_1").clone();
+		  	$clone.prop('id','div_'+nextindex);
+		   	$clone.find("#add").html('-').prop("class", "btn btn-success remove");
+		   	$clone.insertAfter("div.element:last");
 		 
 		  }
 		 
 		 });
 
 		 // Remove element
-		 $('.row element').on('click','.remove',function(){
-		 
-		  var id = this.id;
-		  var split_id = id.split("_");
-		  var deleteindex = split_id[1];
-
-		  // Remove <div> with id
-		  $("#div_" + deleteindex).remove();
+		 $(document).on("click", '.remove', function(){
+		 $(this).closest(".element").remove();
+		  // var id = this.id;
+		  // var split_id = id.split("_");
+		  // var deleteindex = split_id[1];
+		  // // Remove <div> with id
+		  // $("#div_" + deleteindex).remove();
 
  		}); 
 
