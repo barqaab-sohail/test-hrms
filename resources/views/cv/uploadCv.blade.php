@@ -25,7 +25,7 @@
 
 		                <div class="card-body">
 
-		                    <form action="{{route('uploadCv.store')}}" method="post" class="form-horizontal form-prevent-multiple-submits" enctype="multipart/form-data">
+		                    <form id="test" action="{{route('uploadCv.store')}}" method="post" class="form-horizontal form-prevent-multiple-submits" enctype="multipart/form-data">
 		                        {{csrf_field()}}
 		                        <div class="form-body">
 		                            
@@ -161,7 +161,7 @@
 		                                    <div class="form-group row">
 		                                        <div class="col-md-12">
 		                                       		<label class="control-label text-right">Name of Degree<span class="text_requried">*</span></label><br>
-		                                       		<input type="text"  name="degree_name" value="{{ old('degree_name') }}"  class="form-control" >
+		                                       		<input type="text"  name="degree_name[]" data-validation="required" value="{{ old('degree_name') }}"  class="form-control" >
 		                                        </div>
 		                                    </div>
 		                                </div>
@@ -171,7 +171,7 @@
 		                                        <div class="col-md-12 ">
 		                                        	<label class="control-label">Name of Institute<span class="text_requried">*</span></label>
 		                                        
-		                                            <input type="text"  name="institute" value="{{ old('institute') }}"  class="form-control" placeholder="Enter Institute Name" >
+		                                            <input type="text" name="institute[]" value="{{ old('institute') }}"  class="form-control" placeholder="Enter Institute Name" >
 		                                        </div>
 		                                    </div>
 		                                </div>
@@ -181,7 +181,7 @@
 		                                        <div class="col-md-8">
 		                                        	<label class="control-label text-right">Passing Year<span class="text_requried">*</span></label>
 		                                        
-		                                            <input type="text" name="passing_year" value="{{ old('passing_year') }}" class="form-control" >
+		                                            <input type="text" name="passing_yea[]r" value="{{ old('passing_year') }}" class="form-control" >
 		                                        </div>
 												<div class="col-md-4">
 		                                        <br>
@@ -267,6 +267,10 @@
  @push('scripts')
 
 <script src="{{asset('Massets/js/floating-placeholder/placeholder.label.min.js') }}"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery-form-validator/2.3.26/jquery.form-validator.min.js"></script>
+<script>
+$.validate();
+</script>
 
 
 <script>
@@ -329,7 +333,7 @@
 		   //$("#div_1").clone().insertAfter("div.element:last");
 		   //$("#div_1").clone().insertAfter("div.element:last").$(this).find('.btn btn-success add').text('-');
 		   	var $clone = $("#div_1").clone();
-		  	$clone.prop('id','div_'+nextindex);
+		  	$clone.prop('id','div_'+nextindex).find('input:text').val('');
 		   	$clone.find("#add").html('-').prop("class", "btn btn-success remove");
 		   	$clone.insertAfter("div.element:last");
 		 

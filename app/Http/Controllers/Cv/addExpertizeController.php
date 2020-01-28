@@ -19,7 +19,8 @@ class addExpertizeController extends Controller
 
     public function store (specializationStore $request){
 
-    	cv_specialization::create(['name' => $request->name]);
+    	
+        cv_specialization::create(['name' => $request->name]);
 
     	 return redirect()->route('addExpertize.index')->with('success', 'Data is saved succesfully');
     }

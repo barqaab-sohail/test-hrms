@@ -23,7 +23,7 @@ class UploadCvController extends Controller
 	}
 
 	public function store(request $request){
-
+		dd($request);
 		$extension = request()->cv->getClientOriginalExtension();
 
 		$fileName =request()->full_name.'-'. time().'.'.request()->cv->getClientOriginalExtension();
