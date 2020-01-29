@@ -155,7 +155,7 @@
 		                            </div>
 
 		                             <!--row 4-->
-		                            <div class="row element" id='div_1' >
+		                            <div class="row education" id='div_1' >
 		                                <div class="col-md-3">
 		                                	<!--/span 4-1 -->
 		                                    <div class="form-group row">
@@ -216,19 +216,11 @@
                                                     @endforeach
 													
 													</select>
-		                                        
-		                                            
 		                                        </div>
-		                                        
-		                                        
-		                                       
-
 		                                    </div>
 		                                    
 		                                </div>
-		                               
 		                            </div>
-		                            
 
 		                            <!--row-->
 		                             <div class="row">
@@ -265,18 +257,13 @@
         </div>
     </div>
  @push('scripts')
-
-<script src="{{asset('Massets/js/floating-placeholder/placeholder.label.min.js') }}"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/jquery-form-validator/2.3.26/jquery.form-validator.min.js"></script>
+	
 <script>
 $.validate();
 </script>
 
 
 <script>
-
-
-
 	$(document).ready(function(){
 	
 		$('select').select2({
@@ -315,10 +302,10 @@ $.validate();
 		 $("#add").click(function(){
 		 	
 		  // Finding total number of elements added
-		  var total_element = $(".element").length;
+		  var total_element = $(".education").length;
 		 	
 		  // last <div> with element class id
-		  var lastid = $(".element:last").attr("id");
+		  var lastid = $(".education:last").attr("id");
 		  var split_id = lastid.split("_");
 		  var nextindex = Number(split_id[1]) + 1;
 		  var max = 5;
@@ -335,7 +322,7 @@ $.validate();
 		   	var $clone = $("#div_1").clone();
 		  	$clone.prop('id','div_'+nextindex).find('input:text').val('');
 		   	$clone.find("#add").html('-').prop("class", "btn btn-success remove");
-		   	$clone.insertAfter("div.element:last");
+		   	$clone.insertAfter("div.education:last");
 		 
 		  }
 		 
@@ -343,7 +330,7 @@ $.validate();
 
 		 // Remove element
 		 $(document).on("click", '.remove', function(){
-		 $(this).closest(".element").remove();
+		 $(this).closest(".education").remove();
 		  // var id = this.id;
 		  // var split_id = id.split("_");
 		  // var deleteindex = split_id[1];

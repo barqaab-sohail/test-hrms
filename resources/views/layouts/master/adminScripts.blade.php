@@ -21,6 +21,9 @@
 <!--Custom JavaScript in HRMS -->
 <script src="{{asset('Massets/js/custom.js') }}"></script>
 
+<!-- JS Validations -->
+<script   src="{{asset('Massets/js/js-validation/jquery.form-validator.min.js') }}"></script>
+
 <!-- ============================================================== -->
 <!-- This page plugins -->
 <!-- ============================================================== -->

@@ -18,6 +18,9 @@
     <!-- Bootstrap Core CSS -->
     <link href="{{asset('Massets/js/js-ui/jquery-ui.min.css') }}" rel="stylesheet">
     <link href="{{asset('Massets/plugins/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
+   
+    <!-- JS Validation  CSS -->
+    <link href="{{asset('Massets/css/js-validation/js-validation.min.css')}}" rel="stylesheet" type="text/css" />
 
     <!-- chartist CSS -->
     <link href="{{asset('Massets/plugins/chartist-js/dist/chartist.min.css') }}" rel="stylesheet">
