@@ -8,6 +8,7 @@ use App\Http\Controllers\Controller;
 use App\gender;
 use App\models\cv\cv_detail;
 use App\models\cv\cv_skill;
+use App\models\cv\cv_contact;
 use App\models\cv\cv_specialization;
 use App\models\cv\cv_field;
 use App\models\cv\cv_education;
@@ -82,18 +83,18 @@ class UploadCvController extends Controller
 			}
 
 		//add membership
-
 			for ($i=0;$i<count($request->input('membership_name'));$i++){
 			$membershipId = $request->input("membership_name.$i");
 			$numberId = $request->input("number.$i");
 			
-			$cv_id->cv_membership()->attach($membershipId, ['membership_number'=>$numberId]);
-						
-
+			$cv_id->cv_membership()->attach($membershipId, ['membership_number'=>$numberId]);			
 			}
-		
 
+		//add address
+			$address = $request->only('address','city','province','country','email');
+			$address['cv_detail_id'] = $cv_id->id;
 
+			cv_contact::create($address);
 		
 		});  //end transaction
 

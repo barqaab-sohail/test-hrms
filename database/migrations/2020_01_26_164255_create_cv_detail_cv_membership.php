@@ -13,12 +13,12 @@ class CreateCvDetailCvMembership extends Migration
      */
     public function up()
     {
-        Schema::create('cv_detail_cv_memebership', function (Blueprint $table) {
+        Schema::create('cv_detail_cv_membership', function (Blueprint $table) {
            $table->bigInteger('cv_detail_id')->unsigned()->index();
             $table->foreign('cv_detail_id')->references('id')->on('cv_details')->onDelete('cascade');
 
-            $table->bigInteger('cv_membership')->unsigned()->index();
-            $table->foreign('cv_membership')->references('id')->on('cv_memberships')->onDelete('cascade');
+            $table->bigInteger('cv_membership_id')->unsigned()->index();
+            $table->foreign('cv_membership_id')->references('id')->on('cv_memberships')->onDelete('cascade');
             $table->string('membership_number');
             $table->timestamps();
         });
@@ -31,6 +31,6 @@ class CreateCvDetailCvMembership extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('cv_detail_cv_memebership');
+        Schema::dropIfExists('cv_detail_cv_membership');
     }
 }
