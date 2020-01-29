@@ -38,7 +38,7 @@
 		                                    <div class="form-group row">
 		                                        <div class="col-md-12">
 		                                       		<label class="control-label text-right">Full Name<span class="text_requried">*</span></label><br>
-		                                       		<input type="text"  name="full_name" value="{{ old('full_name') }}"  class="form-control" placeholder="Enter Full Name" >
+		                                       		<input type="text"  name="full_name" value="{{ old('full_name') }}" data-validation="length required" data-validation-length="min4"class="form-control" placeholder="Enter Full Name" >
 		                                        </div>
 		                                    </div>
 		                                </div>
@@ -55,10 +55,10 @@
 		                                <!--/span 1-3 -->
 		                                <div class="col-md-3">
 		                                    <div class="form-group row">
-		                                        <div class="col-md-12 date_input">
+		                                        <div class="col-md-12">
 		                                        	<label class="control-label text-right">CNIC<span class="text_requried">*</span></label>
 		                                        
-		                                            <input type="text" name="cnic" id="cnic" pattern="[0-9.-]{15}" title= "13 digit Number without dash" value="{{ old('cnic') }}" class="form-control" onkeyup='addHyphen(this)'  placeholder="Enter CNIC without dash" >
+		                                            <input type="text" name="cnic" id="cnic" pattern="[0-9.-]{15}" title= "13 digit Number without dash" value="{{ old('cnic') }}" class="form-control" onkeyup='addHyphen(this)' data-validation="length required" data-validation-length="15"placeholder="Enter CNIC without dash" >
 		                                        </div>
 		                                    </div>
 		                                </div>
@@ -68,7 +68,7 @@
 		                                        <div class="col-md-12 date_input">
 		                                        	<label class="control-label text-right">Date of Birth<span class="text_requried">*</span></label>
 		                                        
-		                                            <input type="text" id="date_of_birth" name="date_of_birth" value="{{ old('date_of_birth') }}" class="form-control " placeholder="Enter Date of Birth" readonly>
+		                                            <input type="text" id="date_of_birth" name="date_of_birth" value="{{ old('date_of_birth') }}" class="form-control " data-validation="required" placeholder="Enter Date of Birth" readonly>
 													 
 		                                            <br>
 		                                           <i class="fas fa-trash-alt text_requried"></i> 
@@ -94,7 +94,7 @@
 		                                    <div class="form-group row">
 		                                        <div class="col-md-12">
 		                                        	<label class="control-label text-right">City<span class="text_requried">*</span></label>
-		                                       		<input type="text"  name="city" value="{{ old('city') }}"  class="form-control">
+		                                       		<input type="text"  name="city" value="{{ old('city') }}"  data-validation="required" class="form-control">
 		                                        </div>
 		                                    </div>
 		                                </div>
@@ -103,7 +103,7 @@
 		                                    <div class="form-group row">
 		                                        <div class="col-md-12">
 		                                        	<label class="control-label text-right">Province<span class="text_requried">*</span></label>
-		                                       		<input type="text"  name="province" value="{{ old('province') }}"  class="form-control">
+		                                       		<input type="text"  data-validation="required" name="province" value="{{ old('province') }}"  class="form-control">
 		                                        </div>
 		                                    </div>
 		                                </div>
@@ -115,7 +115,7 @@
 		                                    <div class="form-group row">
 		                                        <div class="col-md-12">
 		                                       		<label class="control-label text-right">Country<span class="text_requried">*</span></label><br>
-		                                       		<input type="text"  name="country" value="{{ old('country') }}"  class="form-control" >
+		                                       		<input type="text"  name="country" value="{{ old('country') }}"  data-validation="required" class="form-control" >
 		                                        </div>
 		                                    </div>
 		                                </div>
@@ -125,7 +125,7 @@
 		                                        <div class="col-md-12 ">
 		                                        	<label class="control-label">Mobile Number<span class="text_requried">*</span></label>
 		                                        
-		                                            <input type="text"  name="phone" value="{{ old('phone') }}"  class="form-control" placeholder="Enter Mobile Number" >
+		                                            <input type="text"  name="phone" value="{{ old('phone') }}" data-validation="required" class="form-control" placeholder="Enter Mobile Number" >
 		                                        </div>
 		                                    </div>
 		                                </div>
@@ -145,7 +145,7 @@
 		                                        <div class="col-md-12 date_input">
 		                                        	<label class="control-label text-right">Job Starting Date<span class="text_requried">*</span></label>
 		                                        
-		                                            <input type="text" id="job_starting_date" name="job_starting_date" value="{{ old('job_starting_date') }}" class="form-control " placeholder="Enter Date of Birth" readonly>
+		                                            <input type="text" id="job_starting_date" name="job_starting_date" value="{{ old('job_starting_date') }}" data-validation="required" class="form-control " placeholder="Enter Date of Birth" readonly>
 													 
 		                                            <br>
 		                                           <i class="fas fa-trash-alt text_requried"></i> 
@@ -155,7 +155,7 @@
 		                            </div>
 
 		                             <!--row 4-->
-		                            <div class="row education" id='div_1' >
+		                            <div class="row education" id='edu_1' >
 		                                <div class="col-md-3">
 		                                	<!--/span 4-1 -->
 		                                    <div class="form-group row">
@@ -171,7 +171,7 @@
 		                                        <div class="col-md-12 ">
 		                                        	<label class="control-label">Name of Institute<span class="text_requried">*</span></label>
 		                                        
-		                                            <input type="text" name="institute[]" value="{{ old('institute') }}"  class="form-control" placeholder="Enter Institute Name" >
+		                                            <input type="text" name="institute[]" value="{{ old('institute') }}"  class="form-control" data-validation="required" placeholder="Enter Institute Name" >
 		                                        </div>
 		                                    </div>
 		                                </div>
@@ -181,7 +181,15 @@
 		                                        <div class="col-md-8">
 		                                        	<label class="control-label text-right">Passing Year<span class="text_requried">*</span></label>
 		                                        
-		                                            <input type="text" name="passing_yea[]r" value="{{ old('passing_year') }}" class="form-control" >
+		                                            <select  name="passing_year[]"  class="form-control selectTwo" data-validation="required">
+
+													<option value=""></option>
+													@for ($i = 1958; $i <= now()->year; $i++)
+    												<option value="{{$i}}">{{ $i }}</option>
+													@endfor
+
+													</select>
+
 		                                        </div>
 												<div class="col-md-4">
 		                                        <br>
@@ -193,37 +201,55 @@
 		                                </div>
 		                                
 		                            </div>
-		                            
-		                            <!--row -->
-		                            <div class="row">
-		                                <div class="col-md-4">
+		                             <!--row 5-->
+		                            <div class="row specialization" id='spe_1' >
+		                                <div class="col-md-3">
+		                                	<!--/span 5-1 -->
 		                                    <div class="form-group row">
 		                                        <div class="col-md-12">
-		                                       		<label class="control-label text-right">Higher Degree<span class="text_requried">*</span></label><br>
-		                                       		<input type="text"  name="higher_degree" value="{{ old('higher_degree') }}"  class="form-control" placeholder="Enter Higher Degree Name" >
+		                                       		<label class="control-label text-right">Speciality<span class="text_requried">*</span></label><br>
+		                                       		<input type="text"  name="speciality_name[]" data-validation="required" value="{{ old('speciality_name') }}"  class="form-control" >
 		                                        </div>
 		                                    </div>
 		                                </div>
-		                                <!--/span-->
-		                                <div class="col-md-8">
+		                                <!--/span 5-2 -->
+		                                <div class="col-md-6">
 		                                    <div class="form-group row">
-		                                        <div class="col-md-12">
-		                                        	<label class="control-label text-right">Specialization<span class="text_requried">*</span></label>
-		                                        	<br>	
-		                                        	<select class="mdb-select md-form" multiple searchable="Search here.." name="expertize[]">
-		                                        	@foreach($specializations as $specialization)
-														<option value="{{$specialization->id}}">{{$specialization->name}}</option>
-                                                    @endforeach
-													
-													</select>
+		                                        <div class="col-md-12 ">
+		                                        	<label class="control-label">Field of Speciality<span class="text_requried">*</span></label>
+		                                        
+		                                            <input type="text" name="field_name[]" value="{{ old('field_name') }}"  class="form-control" data-validation="required" placeholder="Enter Institute Name" >
 		                                        </div>
 		                                    </div>
-		                                    
 		                                </div>
-		                            </div>
+		                                <!--/span 5-3 -->
+		                                <div class="col-md-3">
+		                                    <div class="form-group row">
+		                                        <div class="col-md-8">
+		                                        	<label class="control-label text-right">Years of Experience<span class="text_requried">*</span></label>
+		                                        
+		                                            <select  name="year[]"  class="form-control selectTwo" data-validation="required">
 
-		                            <!--row-->
-		                             <div class="row">
+													<option value=""></option>
+													@for ($i = 1; $i <= 50; $i++)
+    												<option value="{{$i}}">{{ $i }}</option>
+													@endfor
+
+													</select>
+
+		                                        </div>
+												<div class="col-md-4">
+		                                        <br>
+			                                        <div>
+			                                        <button type="button" name="add" id="add_spe" class="btn btn-success add" >+</button>
+													</div>
+		                                        </div>
+		                                    </div>
+		                                </div>
+		                                
+		                            </div>
+		                          	<!--row-->
+		                            <div class="row">
 		                                <div class="col-md-4">
 		                                    <div class="form-group row">
 		                                        <div class="col-md-12">
@@ -257,10 +283,6 @@
         </div>
     </div>
  @push('scripts')
-	
-<script>
-$.validate();
-</script>
 
 
 <script>
@@ -297,8 +319,8 @@ $.validate();
 			$(this).val(input);
 		});
 	//Dynamic add education
-
-		 // Add new element
+		
+		// Add new element
 		 $("#add").click(function(){
 		 	
 		  // Finding total number of elements added
@@ -311,31 +333,48 @@ $.validate();
 		  var max = 5;
 		  // Check total number elements
 		  if(total_element < max ){
-		   // Adding new div container after last occurance of element class
-		   //$(".element:last").after("<div class='row element' id='div_"+ nextindex +"'></div>");
-		 
-		   // Adding element to <div>
-		   //$("#div_" + nextindex).append("");
-		 
-		   //$("#div_1").clone().insertAfter("div.element:last");
-		   //$("#div_1").clone().insertAfter("div.element:last").$(this).find('.btn btn-success add').text('-');
-		   	var $clone = $("#div_1").clone();
-		  	$clone.prop('id','div_'+nextindex).find('input:text').val('');
-		   	$clone.find("#add").html('-').prop("class", "btn btn-success remove");
+		   //Clone education div and copy
+		   	var $clone = $("#edu_1").clone();
+		  	$clone.prop('id','edu_'+nextindex).find('input:text').val('');
+		   	$clone.find("#add").html('-').prop("class", "btn btn-success remove_edu");
 		   	$clone.insertAfter("div.education:last");
+		  }
 		 
+		});
+
+		 // Remove element
+		 $(document).on("click", '.remove_edu', function(){
+		 $(this).closest(".education").remove();
+ 		}); 
+
+		//Dynamic add specialization
+
+		 // Add new element
+		 $("#add_spe").click(function(){
+		 	
+		  // Finding total number of elements added
+		  var total_element = $(".specialization").length;
+		 	
+		  // last <div> with element class id
+		  var lastid = $(".specialization:last").attr("id");
+		  var split_id = lastid.split("_");
+		  var nextindex = Number(split_id[1]) + 1;
+		  var max = 5;
+		  // Check total number elements
+		  if(total_element < max ){
+		   //Clone specialization div and copy
+		   	var $clone = $("#spe_1").clone();
+		  	$clone.prop('id','spe_'+nextindex).find('input:text').val('');
+		   	$clone.find("#add_spe").html('-').prop("class", "btn btn-success remove");
+		   	$clone.insertAfter("div.specialization:last");
 		  }
 		 
 		 });
 
 		 // Remove element
 		 $(document).on("click", '.remove', function(){
-		 $(this).closest(".education").remove();
-		  // var id = this.id;
-		  // var split_id = id.split("_");
-		  // var deleteindex = split_id[1];
-		  // // Remove <div> with id
-		  // $("#div_" + deleteindex).remove();
+		 $(this).closest(".specialization").remove();
+		  
 
  		}); 
 
