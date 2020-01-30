@@ -38,7 +38,7 @@
 		                                    <div class="form-group row">
 		                                        <div class="col-md-12">
 		                                       		<label class="control-label text-right">Full Name<span class="text_requried">*</span></label><br>
-		                                       		<input type="text"  name="full_name" value="{{ old('full_name') }}" data-validation="length required" data-validation-length="min4"class="form-control" placeholder="Enter Full Name" >
+		                                       		<input type="text"  name="full_name" value="{{ old('full_name') }}"  class="form-control" placeholder="Enter Full Name" >
 		                                        </div>
 		                                    </div>
 		                                </div>
@@ -55,10 +55,10 @@
 		                                <!--/span 1-3 -->
 		                                <div class="col-md-3">
 		                                    <div class="form-group row">
-		                                        <div class="col-md-12">
+		                                        <div class="col-md-12 date_input">
 		                                        	<label class="control-label text-right">CNIC<span class="text_requried">*</span></label>
 		                                        
-		                                            <input type="text" name="cnic" id="cnic" pattern="[0-9.-]{15}" title= "13 digit Number without dash" value="{{ old('cnic') }}" class="form-control" onkeyup='addHyphen(this)' data-validation="length required" data-validation-length="15"placeholder="Enter CNIC without dash" >
+		                                            <input type="text" name="cnic" id="cnic" pattern="[0-9.-]{15}" title= "13 digit Number without dash" value="{{ old('cnic') }}" class="form-control" onkeyup='addHyphen(this)'  placeholder="Enter CNIC without dash" >
 		                                        </div>
 		                                    </div>
 		                                </div>
@@ -68,7 +68,7 @@
 		                                        <div class="col-md-12 date_input">
 		                                        	<label class="control-label text-right">Date of Birth<span class="text_requried">*</span></label>
 		                                        
-		                                            <input type="text" id="date_of_birth" name="date_of_birth" value="{{ old('date_of_birth') }}" class="form-control " data-validation="required" placeholder="Enter Date of Birth" readonly>
+		                                            <input type="text" id="date_of_birth" name="date_of_birth" value="{{ old('date_of_birth') }}" class="form-control " placeholder="Enter Date of Birth" readonly>
 													 
 		                                            <br>
 		                                           <i class="fas fa-trash-alt text_requried"></i> 
@@ -94,7 +94,7 @@
 		                                    <div class="form-group row">
 		                                        <div class="col-md-12">
 		                                        	<label class="control-label text-right">City<span class="text_requried">*</span></label>
-		                                       		<input type="text"  name="city" value="{{ old('city') }}"  data-validation="required" class="form-control">
+		                                       		<input type="text"  name="city" value="{{ old('city') }}"  class="form-control">
 		                                        </div>
 		                                    </div>
 		                                </div>
@@ -103,12 +103,58 @@
 		                                    <div class="form-group row">
 		                                        <div class="col-md-12">
 		                                        	<label class="control-label text-right">Province<span class="text_requried">*</span></label>
-		                                       		<input type="text"  data-validation="required" name="province" value="{{ old('province') }}"  class="form-control">
+		                                       		<input type="text"  name="province" value="{{ old('province') }}"  class="form-control">
 		                                        </div>
 		                                    </div>
 		                                </div>
 		                            </div>
 		                            <!--row 3-->
+		                            <div class="row" >
+		                                <div class="col-md-3">
+		                                	<!--/span 3-1 -->
+		                                    <div class="form-group row">
+		                                        <div class="col-md-12">
+		                                       		<label class="control-label text-right">Country<span class="text_requried">*</span></label><br>
+		                                       		<input type="text"  name="country" value="{{ old('country') }}"  class="form-control" >
+		                                        </div>
+		                                    </div>
+		                                </div>
+		                                <!--/span 3-2 -->
+		                                <div class="col-md-3">
+		                                    <div class="form-group row">
+		                                        <div class="col-md-12 ">
+		                                        	<label class="control-label">Mobile Number<span class="text_requried">*</span></label>
+		                                        
+		                                            <input type="text"  name="phone" value="{{ old('phone') }}"  class="form-control" placeholder="Enter Mobile Number" >
+		                                        </div>
+		                                    </div>
+		                                </div>
+		                                <!--/span 3-3 -->
+		                                <div class="col-md-3">
+		                                    <div class="form-group row">
+		                                        <div class="col-md-12">
+		                                        	<label class="control-label text-right">Email</label>
+		                                        
+		                                            <input type="email" name="email" value="{{ old('email') }}" class="form-control" placeholder="Enter Email Address " >
+		                                        </div>
+		                                    </div>
+		                                </div>
+		                                 <!--/span 3-4 -->
+		                                <div class="col-md-3">
+		                                    <div class="form-group row">
+		                                        <div class="col-md-12 date_input">
+		                                        	<label class="control-label text-right">Job Starting Date<span class="text_requried">*</span></label>
+		                                        
+		                                            <input type="text" id="job_starting_date" name="job_starting_date" value="{{ old('job_starting_date') }}" class="form-control " placeholder="Enter Date of Birth" readonly>
+													 
+		                                            <br>
+		                                           <i class="fas fa-trash-alt text_requried"></i> 
+		                                        </div>
+		                                    </div>
+		                                </div>
+		                            </div>
+
+		               <!--row 3-->
 		                            <div class="row" >
 		                                <div class="col-md-3">
 		                                	<!--/span 3-1 -->
@@ -248,8 +294,37 @@
 		                                </div>
 		                                
 		                            </div>
-		                          	<!--row-->
+		                            
+		                            <!--row -->
 		                            <div class="row">
+		                                <div class="col-md-4">
+		                                    <div class="form-group row">
+		                                        <div class="col-md-12">
+		                                       		<label class="control-label text-right">Higher Degree<span class="text_requried">*</span></label><br>
+		                                       		<input type="text"  name="higher_degree" value="{{ old('higher_degree') }}"  class="form-control" placeholder="Enter Higher Degree Name" >
+		                                        </div>
+		                                    </div>
+		                                </div>
+		                                <!--/span-->
+		                                <div class="col-md-8">
+		                                    <div class="form-group row">
+		                                        <div class="col-md-12">
+		                                        	<label class="control-label text-right">Specialization<span class="text_requried">*</span></label>
+		                                        	<br>	
+		                                        	<select class="mdb-select md-form" multiple searchable="Search here.." name="expertize[]">
+		                                        	@foreach($specializations as $specialization)
+														<option value="{{$specialization->id}}">{{$specialization->name}}</option>
+                                                    @endforeach
+													
+													</select>
+		                                        </div>
+		                                    </div>
+		                                    
+		                                </div>
+		                            </div>
+
+		                            <!--row-->
+		                             <div class="row">
 		                                <div class="col-md-4">
 		                                    <div class="form-group row">
 		                                        <div class="col-md-12">
@@ -283,6 +358,10 @@
         </div>
     </div>
  @push('scripts')
+	
+<script>
+$.validate();
+</script>
 
 
 <script>
@@ -341,14 +420,11 @@
 		  }
 		 
 		});
-
 		 // Remove element
 		 $(document).on("click", '.remove_edu', function(){
 		 $(this).closest(".education").remove();
  		}); 
-
 		//Dynamic add specialization
-
 		 // Add new element
 		 $("#add_spe").click(function(){
 		 	
@@ -365,17 +441,15 @@
 		   //Clone specialization div and copy
 		   	var $clone = $("#spe_1").clone();
 		  	$clone.prop('id','spe_'+nextindex).find('input:text').val('');
-		   	$clone.find("#add_spe").html('-').prop("class", "btn btn-success remove");
+		   	$clone.find("#add_spe").html('-').prop("class", "btn btn-success remove_spe");
 		   	$clone.insertAfter("div.specialization:last");
 		  }
 		 
 		 });
-
 		 // Remove element
-		 $(document).on("click", '.remove', function(){
+		 $(document).on("click", '.remove_spe', function(){
 		 $(this).closest(".specialization").remove();
 		  
-
  		}); 
 
 	});	
