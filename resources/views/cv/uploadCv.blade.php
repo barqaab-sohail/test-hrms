@@ -108,14 +108,16 @@
 		                                    </div>
 		                                </div>
 		                            </div>
-		                            <!--row 3-->
+		                     
+
+		               <!--row 3-->
 		                            <div class="row" >
 		                                <div class="col-md-3">
 		                                	<!--/span 3-1 -->
 		                                    <div class="form-group row">
 		                                        <div class="col-md-12">
 		                                       		<label class="control-label text-right">Country<span class="text_requried">*</span></label><br>
-		                                       		<input type="text"  name="country" value="{{ old('country') }}"  class="form-control" >
+		                                       		<input type="text"  name="country" value="{{ old('country') }}" class="form-control" >
 		                                        </div>
 		                                    </div>
 		                                </div>
@@ -125,7 +127,7 @@
 		                                        <div class="col-md-12 ">
 		                                        	<label class="control-label">Mobile Number<span class="text_requried">*</span></label>
 		                                        
-		                                            <input type="text"  name="phone" value="{{ old('phone') }}"  class="form-control" placeholder="Enter Mobile Number" >
+		                                            <input type="text"  name="phone" value="{{ old('phone') }}" class="form-control" placeholder="Enter Mobile Number" >
 		                                        </div>
 		                                    </div>
 		                                </div>
@@ -154,52 +156,6 @@
 		                                </div>
 		                            </div>
 
-		               <!--row 3-->
-		                            <div class="row" >
-		                                <div class="col-md-3">
-		                                	<!--/span 3-1 -->
-		                                    <div class="form-group row">
-		                                        <div class="col-md-12">
-		                                       		<label class="control-label text-right">Country<span class="text_requried">*</span></label><br>
-		                                       		<input type="text"  name="country" value="{{ old('country') }}"  data-validation="required" class="form-control" >
-		                                        </div>
-		                                    </div>
-		                                </div>
-		                                <!--/span 3-2 -->
-		                                <div class="col-md-3">
-		                                    <div class="form-group row">
-		                                        <div class="col-md-12 ">
-		                                        	<label class="control-label">Mobile Number<span class="text_requried">*</span></label>
-		                                        
-		                                            <input type="text"  name="phone" value="{{ old('phone') }}" data-validation="required" class="form-control" placeholder="Enter Mobile Number" >
-		                                        </div>
-		                                    </div>
-		                                </div>
-		                                <!--/span 3-3 -->
-		                                <div class="col-md-3">
-		                                    <div class="form-group row">
-		                                        <div class="col-md-12">
-		                                        	<label class="control-label text-right">Email</label>
-		                                        
-		                                            <input type="email" name="email" value="{{ old('email') }}" class="form-control" placeholder="Enter Email Address " >
-		                                        </div>
-		                                    </div>
-		                                </div>
-		                                 <!--/span 3-4 -->
-		                                <div class="col-md-3">
-		                                    <div class="form-group row">
-		                                        <div class="col-md-12 date_input">
-		                                        	<label class="control-label text-right">Job Starting Date<span class="text_requried">*</span></label>
-		                                        
-		                                            <input type="text" id="job_starting_date" name="job_starting_date" value="{{ old('job_starting_date') }}" data-validation="required" class="form-control " placeholder="Enter Date of Birth" readonly>
-													 
-		                                            <br>
-		                                           <i class="fas fa-trash-alt text_requried"></i> 
-		                                        </div>
-		                                    </div>
-		                                </div>
-		                            </div>
-
 		                             <!--row 4-->
 		                            <div class="row education" id='edu_1' >
 		                                <div class="col-md-3">
@@ -207,7 +163,14 @@
 		                                    <div class="form-group row">
 		                                        <div class="col-md-12">
 		                                       		<label class="control-label text-right">Name of Degree<span class="text_requried">*</span></label><br>
-		                                       		<input type="text"  name="degree_name[]" data-validation="required" value="{{ old('degree_name') }}"  class="form-control" >
+		                                       			<select  name="degree_name[]" id=degree_1 class="form-control selectTwo" required>
+                                                        <option value=""></option>
+                                                        @foreach($degrees as $degree)
+														<option value="{{$degree->id}}" {{(old("degree_name")==$degree->id? "selected" : "")}}>{{$degree->degree_name}}</option>
+                                                        @endforeach
+                                                      
+                                                    </select>
+
 		                                        </div>
 		                                    </div>
 		                                </div>
@@ -217,7 +180,7 @@
 		                                        <div class="col-md-12 ">
 		                                        	<label class="control-label">Name of Institute<span class="text_requried">*</span></label>
 		                                        
-		                                            <input type="text" name="institute[]" value="{{ old('institute') }}"  class="form-control" data-validation="required" placeholder="Enter Institute Name" >
+		                                            <input type="text" name="institute[]" value="{{ old('institute') }}"  class="form-control" placeholder="Enter Institute Name" >
 		                                        </div>
 		                                    </div>
 		                                </div>
@@ -254,7 +217,7 @@
 		                                    <div class="form-group row">
 		                                        <div class="col-md-12">
 		                                       		<label class="control-label text-right">Speciality<span class="text_requried">*</span></label><br>
-		                                       		<input type="text"  name="speciality_name[]" data-validation="required" value="{{ old('speciality_name') }}"  class="form-control" >
+		                                       		<input type="text"  name="speciality_name[]" value="{{ old('speciality_name') }}"  class="form-control" >
 		                                        </div>
 		                                    </div>
 		                                </div>
@@ -264,7 +227,7 @@
 		                                        <div class="col-md-12 ">
 		                                        	<label class="control-label">Field of Speciality<span class="text_requried">*</span></label>
 		                                        
-		                                            <input type="text" name="field_name[]" value="{{ old('field_name') }}"  class="form-control" data-validation="required" placeholder="Enter Institute Name" >
+		                                            <input type="text" name="field_name[]" value="{{ old('field_name') }}"  class="form-control" placeholder="Enter Institute Name" >
 		                                        </div>
 		                                    </div>
 		                                </div>
@@ -274,7 +237,7 @@
 		                                        <div class="col-md-8">
 		                                        	<label class="control-label text-right">Years of Experience<span class="text_requried">*</span></label>
 		                                        
-		                                            <select  name="year[]"  class="form-control selectTwo" data-validation="required">
+		                                            <select  name="year[]"  class="form-control selectTwo">
 
 													<option value=""></option>
 													@for ($i = 1; $i <= 50; $i++)

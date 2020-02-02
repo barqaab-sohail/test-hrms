@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\gender;
 use App\models\cv\cv_specialization;
+use App\models\cv\cv_education;
 use App\Helper\DocxConversion;
 use Spatie\PdfToText\Pdf;
 
@@ -17,9 +18,10 @@ class UploadCvController extends Controller
 
 		$genders = gender::all();
 		$specializations = cv_specialization::all();
+		$degrees = cv_education::all();
 
 		//return view ('bio-data.test',compact('genders'));
-		return view ('cv.uploadCv',compact('genders','specializations'));
+		return view ('cv.uploadCv',compact('genders','specializations','degrees'));
 	}
 
 	public function store(request $request){

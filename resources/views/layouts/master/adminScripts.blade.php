@@ -94,7 +94,7 @@
 
 
 <script>
-$.validate();
+//$.validate();
 
 // Function Prevent Explorer Back Button 
 function preventBack(){
