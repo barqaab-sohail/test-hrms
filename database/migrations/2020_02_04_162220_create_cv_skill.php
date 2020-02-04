@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateCvField extends Migration
+class CreateCvSkill extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,11 @@ class CreateCvField extends Migration
      */
     public function up()
     {
-        Schema::create('cv_fields', function (Blueprint $table) {
+        Schema::create('cv_skills', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('field_name');
-            
+            $table->string('skill_name');
+            $table->bigInteger('cv_detail_id')->unsigned();
+            $table->foreign('cv_detail_id')->references('id')->on('cv_details')->onDelete('cascade');
             $table->timestamps();
         });
     }
@@ -28,6 +29,6 @@ class CreateCvField extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('cv_fields');
+        Schema::dropIfExists('cv_skills');
     }
 }

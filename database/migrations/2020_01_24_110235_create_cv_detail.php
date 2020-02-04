@@ -15,16 +15,15 @@ class CreateCvDetail extends Migration
     {
         Schema::create('cv_details', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('name');
+            $table->string('full_name');
             $table->string('father_name')->nullable();
             $table->string('cnic')->unique();
             $table->date('date_of_birth');
             $table->date('job_starting_date');
             $table->date('cv_submission_date')->nullable();
             $table->tinyInteger('foreign_experience')->nullable();
-            $table->tinyInteger('donor_agency')->nullable();
-            $table->boolean('barqaab_employment')->nullable();
-            $table->string('skill')->nullable();
+            $table->tinyInteger('donor_experience')->nullable();
+            $table->boolean('barqaab_employment')->nullable()->default(0)->comment('0 No, 1 Yes');
             $table->string('comments')->nullable();
             $table->timestamps();
         });
