@@ -180,7 +180,7 @@
 		                                        <div class="col-md-12 ">
 		                                        	<label class="control-label">Name of Institute<span class="text_requried">*</span></label>
 		                                        
-		                                            <input type="text" name="institute[]" value="{{ old('institute') }}"  class="form-control" placeholder="Enter Institute Name" >
+		                                            <input type="text" name="institute[]" value=""  class="form-control" placeholder="Enter Institute Name" >
 		                                        </div>
 		                                    </div>
 		                                </div>
