@@ -10,6 +10,7 @@ use App\models\cv\cv_specialization;
 use App\models\cv\cv_education;
 use App\Helper\DocxConversion;
 use Spatie\PdfToText\Pdf;
+use App\Http\Requests\cv\cvStore;
 
 class UploadCvController extends Controller
 {
@@ -24,16 +25,17 @@ class UploadCvController extends Controller
 		return view ('cv.uploadCv',compact('genders','specializations','degrees'));
 	}
 
-	public function store(request $request){
-		dd($request);
+	public function store(cvStore $request){
+		//dd($request);
+
 		$extension = request()->cv->getClientOriginalExtension();
 
-		$fileName =request()->full_name.'-'. time().'.'.request()->cv->getClientOriginalExtension();
+		$fileName =request()->full_name.'-'. time().'.'.$extension;
 		$request->file('cv')->storeAs('public/cv',$fileName);
 		$file_path = storage_path('app/public/cv/'.$fileName);	
 		$input['content']='';
 		
-		$extension = request()->cv->getClientOriginalExtension();
+		//$extension = request()->cv->getClientOriginalExtension();
 		
 			if (($extension == 'doc')||($extension == 'docx')){
 				$text = new DocxConversion($file_path);
@@ -47,7 +49,7 @@ class UploadCvController extends Controller
 		$input['path']=$file_path;
 		$input['extension']=$extension;
 
-		//return back()->with('success', 'Data successfully saved.');
+		return back()->with('success', 'Data successfully saved.');
 				
 	}
 

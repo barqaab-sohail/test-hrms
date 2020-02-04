@@ -190,7 +190,7 @@
 		                                        <div class="col-md-8">
 		                                        	<label class="control-label text-right">Passing Year<span class="text_requried">*</span></label>
 		                                        
-		                                            <select  name="passing_year[]"  class="form-control selectTwo" data-validation="required">
+		                                            <select  name="passing_year"  class="form-control selectTwo" data-validation="required">
 
 													<option value=""></option>
 													@for ($i = 1958; $i <= now()->year; $i++)
@@ -217,7 +217,7 @@
 		                                    <div class="form-group row">
 		                                        <div class="col-md-12">
 		                                       		<label class="control-label text-right">Speciality<span class="text_requried">*</span></label><br>
-		                                       		<input type="text"  name="speciality_name[]" value="{{ old('speciality_name') }}"  class="form-control" >
+		                                       		<input type="text"  name="speciality_name" value="{{ old('speciality_name') }}"  class="form-control" >
 		                                        </div>
 		                                    </div>
 		                                </div>
@@ -227,7 +227,7 @@
 		                                        <div class="col-md-12 ">
 		                                        	<label class="control-label">Field of Speciality<span class="text_requried">*</span></label>
 		                                        
-		                                            <input type="text" name="field_name[]" value="{{ old('field_name') }}"  class="form-control" placeholder="Enter Institute Name" >
+		                                            <input type="text" name="field_name" value="{{ old('field_name') }}"  class="form-control" placeholder="Enter Institute Name" >
 		                                        </div>
 		                                    </div>
 		                                </div>
@@ -237,7 +237,7 @@
 		                                        <div class="col-md-8">
 		                                        	<label class="control-label text-right">Years of Experience<span class="text_requried">*</span></label>
 		                                        
-		                                            <select  name="year[]"  class="form-control selectTwo">
+		                                            <select  name="year"  class="form-control selectTwo">
 
 													<option value=""></option>
 													@for ($i = 1; $i <= 50; $i++)
@@ -274,7 +274,7 @@
 		                                        <div class="col-md-12">
 		                                        	<label class="control-label text-right">Specialization<span class="text_requried">*</span></label>
 		                                        	<br>	
-		                                        	<select class="mdb-select md-form" multiple searchable="Search here.." name="expertize[]">
+		                                        	<select class="mdb-select md-form" multiple searchable="Search here.." name="expertize">
 		                                        	@foreach($specializations as $specialization)
 														<option value="{{$specialization->id}}">{{$specialization->name}}</option>
                                                     @endforeach
