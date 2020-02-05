@@ -10,7 +10,6 @@
 @stop
 @section('content')
 
-
     <div class="row">
         <div class="col-lg-12">
 
@@ -55,7 +54,7 @@
 		                                <!--/span 1-3 -->
 		                                <div class="col-md-3">
 		                                    <div class="form-group row">
-		                                        <div class="col-md-12 date_input">
+		                                        <div class="col-md-12">
 		                                        	<label class="control-label text-right">CNIC<span class="text_requried">*</span></label>
 		                                        
 		                                            <input type="text" name="cnic" id="cnic" pattern="[0-9.-]{15}" title= "13 digit Number without dash" value="{{ old('cnic') }}" class="form-control" onkeyup='addHyphen(this)'  placeholder="Enter CNIC without dash" >
@@ -163,7 +162,7 @@
 		                                    <div class="form-group row">
 		                                        <div class="col-md-12">
 		                                       		<label class="control-label text-right">Name of Degree<span class="text_requried">*</span></label><br>
-		                                       			<select  name="degree_name[]" id=degree_1 class="form-control selectTwo" required>
+		                                       			<select  name="degree_name[]"  class="form-control xxx selectTwo">
                                                         <option value=""></option>
                                                         @foreach($degrees as $degree)
 														<option value="{{$degree->id}}" {{(old("degree_name")==$degree->id? "selected" : "")}}>{{$degree->degree_name}}</option>
@@ -179,8 +178,8 @@
 		                                    <div class="form-group row">
 		                                        <div class="col-md-12 ">
 		                                        	<label class="control-label">Name of Institute<span class="text_requried">*</span></label>
-		                                        
 		                                            <input type="text" name="institute[]" value=""  class="form-control" placeholder="Enter Institute Name" >
+
 		                                        </div>
 		                                    </div>
 		                                </div>
@@ -190,7 +189,7 @@
 		                                        <div class="col-md-8">
 		                                        	<label class="control-label text-right">Passing Year<span class="text_requried">*</span></label>
 		                                        
-		                                            <select  name="passing_year"  class="form-control selectTwo" data-validation="required">
+		                                            <select  name="passing_year[]"  class="form-control xxx selectTwo" data-validation="required">
 
 													<option value=""></option>
 													@for ($i = 1958; $i <= now()->year; $i++)
@@ -217,7 +216,20 @@
 		                                    <div class="form-group row">
 		                                        <div class="col-md-12">
 		                                       		<label class="control-label text-right">Speciality<span class="text_requried">*</span></label><br>
-		                                       		<input type="text"  name="speciality_name" value="{{ old('speciality_name') }}"  class="form-control" >
+
+		                                       		<select  name="speciality_name[]" id=speciality_name class="form-control selectTwo" >
+                                                        <option value=""></option>
+                                                        
+                                                        @foreach($specializations as $specialization)
+														
+														<option value="{{$specialization->id}}" {{(old("speciality_name")==$specialization->id? "selected" : "")}}>{{$specialization->specialization_name}}</option>
+
+                                                        @endforeach
+                                                      
+                                                    </select>
+
+		                                       		
+
 		                                        </div>
 		                                    </div>
 		                                </div>
@@ -226,8 +238,19 @@
 		                                    <div class="form-group row">
 		                                        <div class="col-md-12 ">
 		                                        	<label class="control-label">Field of Speciality<span class="text_requried">*</span></label>
+
+		                                        	<select  name="field_name[]" id=field_name class="form-control selectTwo" >
+                                                        <option value=""></option>
+                                                        
+                                                        @foreach($fields as $field)
+														
+														<option value="{{$field->id}}" {{(old("field_name")==$field->id? "selected" : "")}}>{{$field->field_name}}</option>
+
+                                                        @endforeach
+                                                      
+                                                    </select>
 		                                        
-		                                            <input type="text" name="field_name" value="{{ old('field_name') }}"  class="form-control" placeholder="Enter Institute Name" >
+		                                            
 		                                        </div>
 		                                    </div>
 		                                </div>
@@ -258,37 +281,138 @@
 		                                
 		                            </div>
 		                            
-		                            <!--row -->
-		                            <div class="row">
-		                                <div class="col-md-4">
+		                <!--row 6-->
+		                            <div class="row" >
+		                                
+		                            <!--/span 6-1 -->
+		                                <div class="col-md-3">
 		                                    <div class="form-group row">
-		                                        <div class="col-md-12">
-		                                       		<label class="control-label text-right">Higher Degree<span class="text_requried">*</span></label><br>
-		                                       		<input type="text"  name="higher_degree" value="{{ old('higher_degree') }}"  class="form-control" placeholder="Enter Higher Degree Name" >
+		                                        <div class="col-md-12 ">
+		                                        	<label class="control-label">Membership<span class="text_requried">*</span></label>
+
+		                                        	<select  name="membership_name[]" id=membership_name class="form-control selectTwo">
+                                                        <option value=""></option>
+                                                        
+                                                        @foreach($memberships as $membership)
+														
+														<option value="{{$membership->id}}" {{(old("membership_name")==$membership->id? "selected" : "")}}>{{$membership->membership_name}}</option>
+
+                                                        @endforeach
+                                                      
+                                                    </select>
+		                                        		                                            
 		                                        </div>
 		                                    </div>
 		                                </div>
-		                                <!--/span-->
-		                                <div class="col-md-8">
+		                            <!--/span 6-2 -->
+		                                <div class="col-md-3">
 		                                    <div class="form-group row">
 		                                        <div class="col-md-12">
-		                                        	<label class="control-label text-right">Specialization<span class="text_requried">*</span></label>
-		                                        	<br>	
-		                                        	<select class="mdb-select md-form" multiple searchable="Search here.." name="expertize">
-		                                        	@foreach($specializations as $specialization)
-														<option value="{{$specialization->id}}">{{$specialization->name}}</option>
-                                                    @endforeach
-													
-													</select>
+		                                        	<label class="control-label text-right">Number</label>
+		                                        
+		                                            <input type="text" name="number" value="{{ old('number') }}" class="form-control" >
 		                                        </div>
 		                                    </div>
-		                                    
+		                                </div>
+		                            <!--/span 6-3 -->
+		                                <div class="col-md-3">
+		                                    <div class="form-group row">
+		                                        <div class="col-md-12">
+		                                        	<label class="control-label text-right">Foreign Experience<span class="text_requried">*</span></label>
+		                                        
+		                                            <input type="text" id="foreign_experience" name="foreign_experience" value="{{ old('foreign_experience') }}" class="form-control " >
+													 
+		                                        </div>
+		                                    </div>
+		                                </div>
+									<!--/span 6-4 -->
+		                                <div class="col-md-3">
+		                                
+		                                    <div class="form-group row">
+		                                        <div class="col-md-12">
+		                                       		<label class="control-label text-right">Donor Experience<span class="text_requried">*</span></label><br>
+		                                       		<input type="text"  name="donor_experience" value="{{ old('donor_experience') }}" class="form-control" >
+		                                        </div>
+		                                    </div>
 		                                </div>
 		                            </div>
+ 						
+ 						<!--row 7-->
+		                            <div class="row" >
+		                                
+		                                <!--/span 7-1 -->
+		                                <div class="col-md-3">
+		                                    <div class="form-group row">
+		                                        <div class="col-md-12 ">
+		                                        	<label class="control-label">BARQAAB Employee<span class="text_requried">*</span></label>
 
-		                            <!--row-->
-		                             <div class="row">
-		                                <div class="col-md-4">
+		                                        	<select  name="barqaab_employment" class="form-control selectTwo" >
+
+                                                        <option value=""></option>
+                                                        <option value="1">Yes</option>
+                                                        <option value="0">No</option>
+                                                                                                              
+                                                    </select>
+		                                        
+		                                        </div>
+		                                    </div>
+		                                </div>
+		                                <!--/span 7-2 -->
+		                                <div class="col-md-3">
+		                                    <div class="form-group row">
+		                                        <div class="col-md-12 date_input">
+		                                        	<label class="control-label text-right">CV Submision Date</label>
+		                                        
+		                                            <input type="text" name="cv_submission_date" value="{{ old('cv_submission_date') }}" class="form-control" readonly>
+		                                             <br>
+		                                           <i class="fas fa-trash-alt text_requried"></i> 
+		                                        </div>
+		                                    </div>
+		                                </div>
+		                                 <!--/span 7-3 --> 
+		                                 <div class="col-md-6">
+		                                    <div class="form-group row">
+		                                        <div class="col-md-12">
+		                                       		<label class="control-label text-right">Comments<span class="text_requried">*</span></label><br>
+		                                       		<input type="text"  name="comments" value="{{ old('comments') }}" class="form-control" >
+		                                        </div>
+		                                    </div>
+		                                </div>
+		                                
+		                            </div>
+		                
+   								<!--row 8-->
+		                            <div class="row skill" id="skill_1" >
+		                           
+										
+										
+										<!--/span 8-1 -->
+		                                <div class="col-md-3">
+		                                    <div class="form-group row">
+		                                        <div class="col-md-12">
+		                                       		<label class="control-label text-right">Other Skills<span class="text_requried">*</span></label><br>
+		                                       		<input type="text"  name='skill[]' class="form-control" >
+		                                        </div>
+		                                    </div>
+		                                </div>
+										
+										 <!--/span 8-2 -->
+		                                <div class="col-md-3">
+											<br>
+			                                        <div>
+			                                        <button type="button" name="add" id="add_skill" class="btn btn-success add" >+</button>
+													</div>
+
+		                                </div>
+									
+		                               
+		                            </div>
+
+		                            <!--row 9-->
+		                            <div class="row" >
+		                           
+										<!--/span 9-1 -->
+		                                <div class="col-md-3">
 		                                    <div class="form-group row">
 		                                        <div class="col-md-12">
 		                                       		<label class="control-label text-right">Attached CV<span class="text_requried">*</span></label><br>
@@ -296,7 +420,12 @@
 		                                        </div>
 		                                    </div>
 		                                </div>
+		                               
 		                            </div>
+
+
+
+		              <!-- row-10 -->
 		                         <hr>
 		                        <div class="form-actions">
 		                            <div class="row">
@@ -330,11 +459,11 @@ $.validate();
 <script>
 	$(document).ready(function(){
 	
-		$('select').select2({
-	    minimumResultsForSearch: 20, // at least 20 results must be displayed
-	    width: "100%",
-	    theme: "classic"
-		});
+		// $('select').select2({
+	 //    minimumResultsForSearch: 20, // at least 20 results must be displayed
+	 //    width: "100%",
+	 //    theme: "classic"
+		// });
 	 //Make sure that the event fires on input change
 		$("#cnic").on('input', function(ev){
 			
@@ -376,10 +505,16 @@ $.validate();
 		  // Check total number elements
 		  if(total_element < max ){
 		   //Clone education div and copy
-		   	var $clone = $("#edu_1").clone();
-		  	$clone.prop('id','edu_'+nextindex).find('input:text').val('');
-		   	$clone.find("#add").html('-').prop("class", "btn btn-success remove_edu");
-		   	$clone.insertAfter("div.education:last");
+		   //$('.education:last').select2('destroy');
+		   	var clone = $(".education:last").clone();
+		  	clone.prop('id','edu_'+nextindex).find('input:text').val('');
+		   	clone.find("#add").html('-').prop("class", "btn btn-success remove_edu");
+		   	clone.insertAfter("div.education:last");
+
+
+
+		   	
+
 		  }
 		 
 		});
@@ -387,6 +522,7 @@ $.validate();
 		 $(document).on("click", '.remove_edu', function(){
 		 $(this).closest(".education").remove();
  		}); 
+
 		//Dynamic add specialization
 		 // Add new element
 		 $("#add_spe").click(function(){
@@ -414,6 +550,36 @@ $.validate();
 		 $(this).closest(".specialization").remove();
 		  
  		}); 
+
+
+		 //Dynamic add Skill
+		 // Add new element
+		 $("#add_skill").click(function(){
+		 	
+		  // Finding total number of elements added
+		  var total_element = $(".skill").length;
+		 	
+		  // last <div> with element class id
+		  var lastid = $(".skill:last").attr("id");
+		  var split_id = lastid.split("_");
+		  var nextindex = Number(split_id[1]) + 1;
+		  var max = 5;
+		  // Check total number elements
+		  if(total_element < max ){
+		   //Clone specialization div and copy
+		   	var $clone = $("#skill_1").clone();
+		  	$clone.prop('id','skill_'+nextindex).find('input:text').val('');
+		   	$clone.find("#add_skill").html('-').prop("class", "btn btn-success remove_skill");
+		   	$clone.insertAfter("div.skill:last");
+		  }
+		 
+		 });
+		 // Remove element
+		 $(document).on("click", '.remove_skill', function(){
+		 $(this).closest(".skill").remove();
+		  
+ 		}); 
+
 
 	});	
 

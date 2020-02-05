@@ -12,4 +12,9 @@ class cv_education extends Model implements Auditable
     protected $fillable = [
         'degree_name', 'level',
     ];
+
+    public function cv_detail()
+    {
+        return $this->belongsToMany('App\models\cv\cv_detail');
+    }
 }

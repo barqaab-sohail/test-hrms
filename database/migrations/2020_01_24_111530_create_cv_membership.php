@@ -15,7 +15,7 @@ class CreateCvMembership extends Migration
     {
         Schema::create('cv_memberships', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('name');
+            $table->string('membership_name');
             $table->timestamps();
         });
     }

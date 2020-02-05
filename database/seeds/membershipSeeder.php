@@ -11,6 +11,6 @@ class membershipSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('cv_memberships')->insert(['name' => 'Pakistan Engineering Council']);
+        DB::table('cv_memberships')->insert(['membership_name' => 'Pakistan Engineering Council']);
     }
 }

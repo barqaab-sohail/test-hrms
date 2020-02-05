@@ -16,7 +16,6 @@ class cvSeeder extends Seeder
         fieldSpecializationSeeder::class,
         specializationSeeder::class,
         membershipSeeder::class,
-
-    ]);
+        ]);
     }
 }

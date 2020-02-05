@@ -10,6 +10,6 @@ class cv_specialization extends Model implements Auditable
     use \OwenIt\Auditing\Auditable;
     
     protected $fillable = [
-        'name', 
+        'specialization_name', 
     ];
 }

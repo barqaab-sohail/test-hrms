@@ -15,7 +15,7 @@ class CreateCvSpecialization extends Migration
     {
         Schema::create('cv_specializations', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('name');
+            $table->string('specialization_name');
             $table->timestamps();
         });
     }

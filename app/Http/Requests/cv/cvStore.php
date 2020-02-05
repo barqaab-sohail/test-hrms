@@ -24,7 +24,7 @@ class cvStore extends FormRequest
     public function rules()
     {
         return [
-            'institute' => 'required',
+            
             'full_name' => 'required'
 
         ];

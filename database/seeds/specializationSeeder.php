@@ -11,12 +11,12 @@ class specializationSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('cv_specializations')->insert(['name' => 'Dams & Hydropower']);
-        DB::table('cv_specializations')->insert(['name' => 'Grid Station']);
-        DB::table('cv_specializations')->insert(['name' => 'Transmission Lines']);
-        DB::table('cv_specializations')->insert(['name' => 'Power Distribution System']);
-        DB::table('cv_specializations')->insert(['name' => 'Irrigation']);
-        DB::table('cv_specializations')->insert(['name' => 'Infrastructure (Roads & Buildings)
+        DB::table('cv_specializations')->insert(['specialization_name' => 'Dams & Hydropower']);
+        DB::table('cv_specializations')->insert(['specialization_name' => 'Grid Station']);
+        DB::table('cv_specializations')->insert(['specialization_name' => 'Transmission Lines']);
+        DB::table('cv_specializations')->insert(['specialization_name' => 'Power Distribution System']);
+        DB::table('cv_specializations')->insert(['specialization_name' => 'Irrigation']);
+        DB::table('cv_specializations')->insert(['specialization_name' => 'Infrastructure (Roads & Buildings)
 ']);
     }
 }

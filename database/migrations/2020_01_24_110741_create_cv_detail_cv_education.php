@@ -20,8 +20,8 @@ class CreateCvDetailCvEducation extends Migration
             $table->bigInteger('cv_education_id')->unsigned()->index();
             $table->foreign('cv_education_id')->references('id')->on('cv_educations')->onDelete('cascade');
 
-            $table->string('institute');
-            $table->year('passing_year');
+            $table->string('institute')->nullable();
+            $table->year('passing_year')->nullable();
 
             $table->timestamps();
         });
