@@ -12,4 +12,9 @@ class cv_field extends Model implements Auditable
     protected $fillable = [
         'field_name', 
     ];
+
+     public function cv_specialization()
+    {
+        return $this->belongsToMany('App\models\cv\cv_specialization');
+    }
 }

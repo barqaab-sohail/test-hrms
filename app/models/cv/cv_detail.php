@@ -19,4 +19,22 @@ class cv_detail extends Model implements Auditable
         ->withPivot('institute', 'passing_year')
     	->withTimestamps();
     }
+
+    public function cv_specialization()
+    {
+        return $this->belongsToMany('App\models\cv\cv_specialization')
+        ->withPivot('year')
+        ->withTimestamps();
+    }
+
+    public function cv_membership()
+    {
+        return $this->belongsToMany('App\models\cv\cv_membership')
+        ->withPivot('membership_number')
+        ->withTimestamps();
+    }
+
+
+
+
 }

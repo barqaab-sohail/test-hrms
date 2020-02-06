@@ -48,10 +48,11 @@ class UploadCvController extends Controller
 
         //start transaction
 		DB::transaction(function () use ($request, $input) {   
-		//dd($request);
+		
+		//add cv detail
 		$cv_id=cv_detail::create($input);
 
-		//dd($cv_id->id);
+		//add skill
 		foreach ($request->input('skill')as $skill){
 			cv_skill::create([
 				'cv_detail_id'=> $cv_id->id,
@@ -59,15 +60,39 @@ class UploadCvController extends Controller
 				]);
 		}
 		//add education
-		//dd(count($request->input('degree_name')));
 			for ($i=0;$i<count($request->input('degree_name'));$i++){
 			$educationId = $request->input("degree_name.$i");
 			$instituteId = $request->input("institute.$i");
 			$passingYear = $request->input("passing_year.$i");
-
-			//dd($educationId);
+			
 			$cv_id->cv_education()->attach($educationId, ['institute'=>$instituteId, 'passing_year'=>$passingYear]);
 			}
+
+			
+		//add specialization
+			for ($i=0;$i<count($request->input('speciality_name'));$i++){
+			$specialityId = $request->input("speciality_name.$i");
+			$fieldId = $request->input("field_name.$i");
+			$year = $request->input("year.$i");
+			$specialization_id = cv_specialization::find($specialityId);
+
+			$cv_id->cv_specialization()->attach($specialityId, ['year'=>$year]);
+			
+			$specialization_id->cv_field()->attach($fieldId, ['year'=>$year]);
+			}
+
+		//add membership
+
+			for ($i=0;$i<count($request->input('membership_name'));$i++){
+			$membershipId = $request->input("membership_name.$i");
+			$numberId = $request->input("number.$i");
+			
+			$cv_id->cv_membership()->attach($membershipId, ['membership_number'=>$numberId]);
+						
+
+			}
+		
+
 
 		
 		});  //end transaction

@@ -162,7 +162,7 @@
 		                                    <div class="form-group row">
 		                                        <div class="col-md-12">
 		                                       		<label class="control-label text-right">Name of Degree<span class="text_requried">*</span></label><br>
-		                                       			<select  name="degree_name[]"  class="form-control xxx selectTwo">
+		                                       			<select  name="degree_name[]"  class="form-control">
                                                         <option value=""></option>
                                                         @foreach($degrees as $degree)
 														<option value="{{$degree->id}}" {{(old("degree_name")==$degree->id? "selected" : "")}}>{{$degree->degree_name}}</option>
@@ -189,7 +189,7 @@
 		                                        <div class="col-md-8">
 		                                        	<label class="control-label text-right">Passing Year<span class="text_requried">*</span></label>
 		                                        
-		                                            <select  name="passing_year[]"  class="form-control xxx selectTwo" data-validation="required">
+		                                            <select  name="passing_year[]"  class="form-control" data-validation="required">
 
 													<option value=""></option>
 													@for ($i = 1958; $i <= now()->year; $i++)
@@ -217,7 +217,7 @@
 		                                        <div class="col-md-12">
 		                                       		<label class="control-label text-right">Speciality<span class="text_requried">*</span></label><br>
 
-		                                       		<select  name="speciality_name[]" id=speciality_name class="form-control selectTwo" >
+		                                       		<select  name="speciality_name[]" id=speciality_name class="form-control" >
                                                         <option value=""></option>
                                                         
                                                         @foreach($specializations as $specialization)
@@ -239,7 +239,7 @@
 		                                        <div class="col-md-12 ">
 		                                        	<label class="control-label">Field of Speciality<span class="text_requried">*</span></label>
 
-		                                        	<select  name="field_name[]" id=field_name class="form-control selectTwo" >
+		                                        	<select  name="field_name[]" id=field_name class="form-control" >
                                                         <option value=""></option>
                                                         
                                                         @foreach($fields as $field)
@@ -260,7 +260,7 @@
 		                                        <div class="col-md-8">
 		                                        	<label class="control-label text-right">Years of Experience<span class="text_requried">*</span></label>
 		                                        
-		                                            <select  name="year"  class="form-control selectTwo">
+		                                            <select  name="year[]"  class="form-control">
 
 													<option value=""></option>
 													@for ($i = 1; $i <= 50; $i++)
@@ -310,7 +310,7 @@
 		                                        <div class="col-md-12">
 		                                        	<label class="control-label text-right">Number</label>
 		                                        
-		                                            <input type="text" name="number" value="{{ old('number') }}" class="form-control" >
+		                                            <input type="text" name="number[]" value="{{ old('number') }}" class="form-control" >
 		                                        </div>
 		                                    </div>
 		                                </div>
@@ -505,15 +505,11 @@ $.validate();
 		  // Check total number elements
 		  if(total_element < max ){
 		   //Clone education div and copy
-		   //$('.education:last').select2('destroy');
+		   
 		   	var clone = $(".education:last").clone();
 		  	clone.prop('id','edu_'+nextindex).find('input:text').val('');
 		   	clone.find("#add").html('-').prop("class", "btn btn-success remove_edu");
 		   	clone.insertAfter("div.education:last");
-
-
-
-		   	
 
 		  }
 		 

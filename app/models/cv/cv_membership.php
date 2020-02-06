@@ -10,6 +10,12 @@ class cv_membership extends Model implements Auditable
     use \OwenIt\Auditing\Auditable;
     
     protected $fillable = [
-        'membership_name', 'number', 'cv_detail_id',
+        'membership_name',
     ];
+
+
+    public function cv_detail()
+    {
+        return $this->belongsToMany('App\models\cv\cv_detail');
+    }
 }

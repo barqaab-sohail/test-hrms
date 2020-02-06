@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateCvSpecializationCvField extends Migration
+class CreateCvFieldCvSpecialization extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,7 @@ class CreateCvSpecializationCvField extends Migration
      */
     public function up()
     {
-        Schema::create('cv_specialization_cv_field', function (Blueprint $table) {
-
+        Schema::create('cv_field_cv_specialization', function (Blueprint $table) {
             $table->bigInteger('cv_specialization_id')->unsigned()->index();
             $table->foreign('cv_specialization_id')->references('id')->on('cv_specializations')->onDelete('cascade');
 
@@ -33,6 +32,6 @@ class CreateCvSpecializationCvField extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('cv_specialization_cv_field');
+        Schema::dropIfExists('cv_field_cv_specialization');
     }
 }
