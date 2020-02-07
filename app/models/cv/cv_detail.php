@@ -34,6 +34,16 @@ class cv_detail extends Model implements Auditable
         ->withTimestamps();
     }
 
+    public function cv_phone()
+    {
+        return $this->hasMany('App\models\cv\cv_phone');
+    }
+
+    public function cv_contact()
+    {
+        return $this->hasOne('App\models\cv\cv_contact');
+    }
+
 
 
 

@@ -84,6 +84,7 @@
                 <li @if(request()->is('uploadCv/create')) class="active" @endif > <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i class="mdi mdi-database"></i><span class="hide-menu">CV Records</span></a>
                     <ul aria-expanded="false" class="collapse">  
                         <li><a href="{{route('uploadCv.create')}}">Add CV</a></li>
+                        <li><a href="{{route('uploadCv.index')}}">List of CVs</a></li>
                         <li><a href="{{route('addExpertize.index')}}">Add Expertize</a></li>    
                     </ul>
                 </li>

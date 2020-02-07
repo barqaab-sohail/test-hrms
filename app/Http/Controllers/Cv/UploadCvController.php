@@ -8,7 +8,9 @@ use App\Http\Controllers\Controller;
 use App\gender;
 use App\models\cv\cv_detail;
 use App\models\cv\cv_skill;
+use App\models\cv\cv_phone;
 use App\models\cv\cv_contact;
+use App\models\cv\cv_attachment;
 use App\models\cv\cv_specialization;
 use App\models\cv\cv_field;
 use App\models\cv\cv_education;
@@ -93,40 +95,71 @@ class UploadCvController extends Controller
 		//add address
 			$address = $request->only('address','city','province','country','email');
 			$address['cv_detail_id'] = $cv_id->id;
-
 			cv_contact::create($address);
 		
+		//add phone
+			$phone = $request->only('phone');
+			$phone['cv_detail_id'] = $cv_id->id;
+			cv_phone::create($phone);
+
+		//add attachment
+				$extension = request()->cv->getClientOriginalExtension();
+				$fileName =request()->full_name.'-'.request()->cnic.'-'. time().'.'.$extension;
+				$request->file('cv')->storeAs('public/cv',$fileName);
+				$file_path = storage_path('app/public/cv/'.$fileName);	
+				$attachment['content']='';
+											
+					if (($extension == 'doc')||($extension == 'docx')){
+						$text = new DocxConversion($file_path);
+						$attachment['content']=mb_strtolower($text->convertToText());
+					}else if ($extension =='pdf'){
+						$reader = new \Asika\Pdf2text;
+						$attachment['content'] = $reader->decode($file_path);
+					}
+
+				$attachment['document_name']='Original CV';
+				$attachment['file_name']=$fileName;
+				$attachment['size']=$request->file('cv')->getSize();
+				$attachment['path']=$file_path;
+				$attachment['extension']=$extension;
+				$attachment['cv_detail_id']=$cv_id->id;
+
+			cv_attachment::create($attachment);
+
+
 		});  //end transaction
-
-		dd();
-
-
-
-		//upload file
-		$extension = request()->cv->getClientOriginalExtension();
-
-		$fileName =request()->full_name.'-'. time().'.'.$extension;
-		$request->file('cv')->storeAs('public/cv',$fileName);
-		$file_path = storage_path('app/public/cv/'.$fileName);	
-		$input['content']='';
-		
-		//$extension = request()->cv->getClientOriginalExtension();
-		
-			if (($extension == 'doc')||($extension == 'docx')){
-				$text = new DocxConversion($file_path);
-				$input['content']=$text->convertToText();
-			}else if ($extension =='pdf'){
-				$reader = new \Asika\Pdf2text;
-				$input['content'] = $reader->decode($file_path);
-			}
-
-		$input['name']=$fileName;
-		$input['path']=$file_path;
-		$input['extension']=$extension;
 
 		return back()->with('success', 'Data successfully saved.');
 				
 	}
+
+	public function index (){
+       $cvs = cv_detail::with('cv_phone','cv_contact')->get();
+       
+       // foreach($cvs as $cv){
+       // 		foreach($cv->cv_education as $degree){
+       // 			dd($degree->id);
+       // 		}
+       // }
+
+       return view('cv.listOfCvs', compact('cvs'));
+
+    }
+
+    public function edit($id){
+        $genders = gender::all();
+		$specializations = cv_specialization::all();
+		$degrees = cv_education::all();
+		$fields = cv_field::all();
+		$memberships = cv_membership::all();
+		$cvId = cv_detail::find($id);
+
+
+        return view ('cv.editUploadCv',compact('genders','specializations','degrees','fields','memberships','cvId'));
+    }
+
+
+
 
 
 }

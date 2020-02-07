@@ -12,4 +12,11 @@ class cv_phone extends Model implements Auditable
     protected $fillable = [
         'phone', 'cv_detail_id',
     ];
+
+    public function cv_detail()
+    {
+        return $this->belongsTo('App\models\cv\cv_detail');
+    }
+
+
 }
