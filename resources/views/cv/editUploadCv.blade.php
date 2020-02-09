@@ -24,7 +24,8 @@
 
 		                <div class="card-body">
 
-		                    <form id="test" action="{{route('uploadCv.store')}}" method="post" class="form-horizontal form-prevent-multiple-submits" enctype="multipart/form-data">
+		                    <form id="test" action="{{route('uploadCv.update', ['id'=>$cvId->id])}}" method="post" class="form-horizontal form-prevent-multiple-submits" enctype="multipart/form-data">
+		                    @method('PATCH')
 		                        {{csrf_field()}}
 		                        <div class="form-body">
 		                            
@@ -78,8 +79,22 @@
 		                            </div>
 		                             <!--row 2-->
 		                            <div class="row">
-		                                <div class="col-md-6">
 		                                 <!--/span 2-1 -->
+		                                 <div class="col-md-3">
+		                                    <div class="form-group row">
+		                                        <div class="col-md-12 date_input">
+		                                        	<label class="control-label text-right">Job Starting Date<span class="text_requried">*</span></label>
+		                                        
+		                                            <input type="text" id="job_starting_date" name="job_starting_date" value="{{old('job_starting_date', $cvId->job_starting_date)}}" class="form-control " placeholder="Enter Date of Birth" readonly>
+													 
+		                                            <br>
+		                                           <i class="fas fa-trash-alt text_requried"></i> 
+		                                        </div>
+		                                    </div>
+		                                </div>
+
+		                                 <!--/span 2-2 -->
+		                                <div class="col-md-6">
 		                                    <div class="form-group row">
 		                                        <div class="col-md-12">
 		                                       		<label class="control-label ">Address</label><br>
@@ -88,7 +103,7 @@
 		                                    </div>
 		                                </div>
 		                               
-		                                <!--/span 2-2 -->
+		                                <!--/span 2-3 -->
 		                                <div class="col-md-3">
 		                                    <div class="form-group row">
 		                                        <div class="col-md-12">
@@ -97,7 +112,11 @@
 		                                        </div>
 		                                    </div>
 		                                </div>
-		                                 <!--/span 2-3 -->
+		                            </div>
+		               <!--row 3-->
+		                            <div class="row" >
+
+		                              <!--/span 3-1 -->
 		                                <div class="col-md-3">
 		                                    <div class="form-group row">
 		                                        <div class="col-md-12">
@@ -106,27 +125,12 @@
 		                                        </div>
 		                                    </div>
 		                                </div>
-		                            </div>
-		                     
-
-		               <!--row 3-->
-		                            <div class="row" >
 		                                <div class="col-md-3">
-		                                	<!--/span 3-1 -->
+		                                	<!--/span 3-2 -->
 		                                    <div class="form-group row">
 		                                        <div class="col-md-12">
 		                                       		<label class="control-label text-right">Country<span class="text_requried">*</span></label><br>
 		                                       		<input type="text"  name="country" value="{{old('country', $cvId->cv_contact->country)}}" class="form-control" >
-		                                        </div>
-		                                    </div>
-		                                </div>
-		                                <!--/span 3-2 -->
-		                                <div class="col-md-3">
-		                                    <div class="form-group row">
-		                                        <div class="col-md-12 ">
-		                                        	<label class="control-label">Mobile Number<span class="text_requried">*</span></label>
-		                                        
-		                                            <input type="text"  name="phone" value="{{old('phone')}}" class="form-control" placeholder="Enter Mobile Number" >
 		                                        </div>
 		                                    </div>
 		                                </div>
@@ -140,25 +144,37 @@
 		                                        </div>
 		                                    </div>
 		                                </div>
-		                                 <!--/span 3-4 -->
-		                                <div class="col-md-3">
-		                                    <div class="form-group row">
-		                                        <div class="col-md-12 date_input">
-		                                        	<label class="control-label text-right">Job Starting Date<span class="text_requried">*</span></label>
-		                                        
-		                                            <input type="text" id="job_starting_date" name="job_starting_date" value="{{old('job_starting_date', $cvId->job_starting_date)}}" class="form-control " placeholder="Enter Date of Birth" readonly>
-													 
-		                                            <br>
-		                                           <i class="fas fa-trash-alt text_requried"></i> 
+		                                <!--/span 3-4 -->
+		                                 
+		                                @foreach ($cvId->cv_phone as $key => $phone)
+		                                
+		                                <div class="col-md-3 phone" id="phone_1">
+		                                	<div class="form-group row">
+		                                        <div class="col-md-8">
+		                                        	<label class="control-label text-right">Mobile Number<span class="text_requried">*</span></label>
+		                                            <input type="text" name="phone[]['{{$phone->id}}']" value="{{old('phone', $phone->phone)}}"  class="form-control" >
+
+		                                        </div>
+												<div class="col-md-4">
+		                                        <br>
+			                                        <div class="float-right">
+			                                        @if($key==0)
+			                                        <button type="button" name="add" id="add_phone" class="btn btn-success add" >+</button>
+			                                        @else
+			                                        <button type="button" name="add" id="add_phone" class="btn btn-danger remove_phone" >X</button>
+			                                        @endif
+													</div>
 		                                        </div>
 		                                    </div>
 		                                </div>
+		                                
+		                                @endforeach
 		                            </div>
 
 		                             <!--row 4-->
-		                        @foreach($cvId as $cv)
+		                        	@foreach($cvId->cv_education as $key => $education)
 		                            <div class="row education" id='edu_1' >
-									@foreach($cvId->cv_education as $education)
+									
 		                                <div class="col-md-3">
 		                                	<!--/span 4-1 -->
 		                                    <div class="form-group row">
@@ -175,13 +191,13 @@
 		                                        </div>
 		                                    </div>
 		                                </div>
-									@endforeach
+									
 		                                <!--/span 4-2 -->
 		                                <div class="col-md-6">
 		                                    <div class="form-group row">
 		                                        <div class="col-md-12 ">
 		                                        	<label class="control-label">Name of Institute<span class="text_requried">*</span></label>
-		                                            <input type="text" name="institute[]" value=""  class="form-control" placeholder="Enter Institute Name" >
+		                                            <input type="text" name="institute[]" value="{{$education->pivot->institute}}"  class="form-control" placeholder="Enter Institute Name" >
 
 		                                        </div>
 		                                    </div>
@@ -196,24 +212,30 @@
 
 													<option value=""></option>
 													@for ($i = 1958; $i <= now()->year; $i++)
-    												<option value="{{$i}}">{{ $i }}</option>
+    												<option value="{{$i}}" @if($i == $education->pivot->passing_year) selected="selected" @endif>{{ $i }}</option>
 													@endfor
 
 													</select>
 
 		                                        </div>
-												<div class="col-md-4">
+		                                        <div class="col-md-4">
 		                                        <br>
-			                                        <div>
+			                                        <div class="float-right">
+			                                        @if($key==0)
 			                                        <button type="button" name="add" id="add" class="btn btn-success add" >+</button>
+			                                        @else
+			                                        <button type="button" name="add" id="add" class="btn btn-danger remove_edu" >X</button>
+			                                        @endif
 													</div>
 		                                        </div>
+												
 		                                    </div>
 		                                </div>
 		                                
 		                            </div>
 		                        @endforeach
 		                             <!--row 5-->
+		                        @foreach($cvId->cv_specialization as $key => $speciality)
 		                            <div class="row specialization" id='spe_1' >
 		                                <div class="col-md-3">
 		                                	<!--/span 5-1 -->
@@ -222,18 +244,14 @@
 		                                       		<label class="control-label text-right">Speciality<span class="text_requried">*</span></label><br>
 
 		                                       		<select  name="speciality_name[]" id=speciality_name class="form-control" >
-                                                        <option value=""></option>
+                                                         <option value=""></option>
                                                         
                                                         @foreach($specializations as $specialization)
 														
-														<option value="{{$specialization->id}}" {{(old("speciality_name")==$specialization->id? "selected" : "")}}>{{$specialization->specialization_name}}</option>
-
-                                                        @endforeach
-                                                      
+														<option value="{{$specialization->id}}" 
+														@if($specialization->id == $speciality->id) selected="selected" @endif>{{$specialization->specialization_name}}</option>
+                                                        @endforeach   
                                                     </select>
-
-		                                       		
-
 		                                        </div>
 		                                    </div>
 		                                </div>
@@ -248,7 +266,12 @@
                                                         
                                                         @foreach($fields as $field)
 														
-														<option value="{{$field->id}}" {{(old("field_name")==$field->id? "selected" : "")}}>{{$field->field_name}}</option>
+														<option value="{{$field->id}}"  
+
+														@foreach($speciality->cv_field as $key1 => $cv_field)
+														@if($key==$key1)
+														@if($field->id == $cv_field->id) selected="selected" @endif @endif @endforeach
+														>{{$field->field_name}}</option>
 
                                                         @endforeach
                                                       
@@ -268,77 +291,91 @@
 
 													<option value=""></option>
 													@for ($i = 1; $i <= 50; $i++)
-    												<option value="{{$i}}">{{ $i }}</option>
+    												<option value="{{$i}}" @if($i == $speciality->cv_field->first()->year) selected="selected" @endif>{{ $i }}</option>
 													@endfor
-
 													</select>
 
 		                                        </div>
-												<div class="col-md-4">
+		                                        <div class="col-md-4">
 		                                        <br>
-			                                        <div>
+			                                        <div class="float-right">
+			                                        @if($key==0)
 			                                        <button type="button" name="add" id="add_spe" class="btn btn-success add" >+</button>
+			                                        @else
+			                                        <button type="button" name="add" id="add_spe" class="btn btn-danger remove_spe" >X</button>
+			                                        @endif
 													</div>
 		                                        </div>
+												
 		                                    </div>
 		                                </div>
 		                                
 		                            </div>
+		                        @endforeach
 		                            
 		                <!--row 6-->
+		                
 		                            <div class="row" >
-		                                
-		                            <!--/span 6-1 -->
-		                                <div class="col-md-3">
-		                                    <div class="form-group row">
-		                                        <div class="col-md-12 ">
-		                                        	<label class="control-label">Membership<span class="text_requried">*</span></label>
-
-		                                        	<select  name="membership_name[]" id=membership_name class="form-control selectTwo">
-                                                        <option value=""></option>
-                                                        
-                                                        @foreach($memberships as $membership)
-														
-														<option value="{{$membership->id}}" {{(old("membership_name")==$membership->id? "selected" : "")}}>{{$membership->membership_name}}</option>
-
-                                                        @endforeach
-                                                      
-                                                    </select>
-		                                        		                                            
-		                                        </div>
-		                                    </div>
-		                                </div>
-		                            <!--/span 6-2 -->
-		                                <div class="col-md-3">
-		                                    <div class="form-group row">
-		                                        <div class="col-md-12">
-		                                        	<label class="control-label text-right">Number</label>
-		                                        
-		                                            <input type="text" name="number[]" value="{{ old('number') }}" class="form-control" >
-		                                        </div>
-		                                    </div>
-		                                </div>
-		                            <!--/span 6-3 -->
+		                             <!--/span 6-1 -->
 		                                <div class="col-md-3">
 		                                    <div class="form-group row">
 		                                        <div class="col-md-12">
 		                                        	<label class="control-label text-right">Foreign Experience<span class="text_requried">*</span></label>
 		                                        
-		                                            <input type="text" id="foreign_experience" name="foreign_experience" value="{{ old('foreign_experience') }}" class="form-control " >
+		                                            <input type="text" id="foreign_experience" name="foreign_experience" value="{{ old('foreign_experience',$cvId->foreign_experience) }}" class="form-control " >
 													 
 		                                        </div>
 		                                    </div>
 		                                </div>
-									<!--/span 6-4 -->
+									<!--/span 6-2 -->
 		                                <div class="col-md-3">
 		                                
 		                                    <div class="form-group row">
 		                                        <div class="col-md-12">
 		                                       		<label class="control-label text-right">Donor Experience<span class="text_requried">*</span></label><br>
-		                                       		<input type="text"  name="donor_experience" value="{{ old('donor_experience') }}" class="form-control" >
+		                                       		<input type="text"  name="donor_experience" value="{{ old('donor_experience', $cvId->donor_experience )}}" class="form-control" >
 		                                        </div>
 		                                    </div>
 		                                </div>
+		                 @foreach($cvId->cv_membership as $key => $member)               
+		                            <!--/span 6-3 -->
+		                             <div class="col-md-6 membership" id="membership_1">
+		                                    <div class="form-group row">
+		                                        <div class="col-md-6">
+		                                        	<label class="control-label">Membership<span class="text_requried">*</span></label>
+
+		                                        	<select  name="membership_name[]" id=membership_name class="form-control">
+                                                        <option value=""></option>
+                                                        
+                                                        @foreach($memberships as $membership)
+														
+														<option value="{{$membership->id}}" @if($membership->id == $member->id) selected="selected" @endif>{{$membership->membership_name}}</option>
+
+                                                        @endforeach
+                                                      
+                                                    </select>
+		                                        </div>
+		                                        <div class="col-md-4">
+		                                        	<label class="control-label text-right">Number</label>
+		                                            <input type="text" name="number[]" value="{{ old('membership_number', $member->pivot->membership_number) }}" class="form-control" >
+		                                             
+                                            
+		                                        </div>
+		                                        <div class="col-md-2 ">
+		                                        	<br>
+		                                        	<div class="float-right">
+		                                        	@if($key==0)
+		                                             <button type="button" name="add" id="add_mem" class="btn btn-success add" >+</button>
+		                                             @else
+		                                             <button type="button" name="add" id="add_mem" class="btn btn-danger remove_membership" >X</button>
+		                                             @endif
+                                            		</div>
+		                                        </div>
+		                                    </div>
+		                                </div>
+		                               
+		                    @endforeach
+		                           
 		                            </div>
  						
  						<!--row 7-->
@@ -353,8 +390,8 @@
 		                                        	<select  name="barqaab_employment" class="form-control selectTwo" >
 
                                                         <option value=""></option>
-                                                        <option value="1">Yes</option>
-                                                        <option value="0">No</option>
+                                                        <option value="1" @if($cvId->barqaab_employment == 1) selected="selected" @endif>Yes</option>
+                                                        <option value="0" @if($cvId->barqaab_employment == 0) selected="selected" @endif>No</option>
                                                                                                               
                                                     </select>
 		                                        
@@ -367,7 +404,7 @@
 		                                        <div class="col-md-12 date_input">
 		                                        	<label class="control-label text-right">CV Submision Date</label>
 		                                        
-		                                            <input type="text" name="cv_submission_date" value="{{ old('cv_submission_date') }}" class="form-control" readonly>
+		                                            <input type="text" name="cv_submission_date" value="{{ old('cv_submission_date', $cvId->cv_submission_date) }}" class="form-control" readonly>
 		                                             <br>
 		                                           <i class="fas fa-trash-alt text_requried"></i> 
 		                                        </div>
@@ -378,7 +415,7 @@
 		                                    <div class="form-group row">
 		                                        <div class="col-md-12">
 		                                       		<label class="control-label text-right">Comments<span class="text_requried">*</span></label><br>
-		                                       		<input type="text"  name="comments" value="{{ old('comments') }}" class="form-control" >
+		                                       		<input type="text"  name="comments" value="{{ old('comments', $cvId->comments) }}" class="form-control" >
 		                                        </div>
 		                                    </div>
 		                                </div>
@@ -386,32 +423,34 @@
 		                            </div>
 		                
    								<!--row 8-->
-		                            <div class="row skill" id="skill_1" >
+		                            <div class="row" >
 		                           
-										
-										
+									@foreach($cvId->cv_skill as $key => $skill)
 										<!--/span 8-1 -->
-		                                <div class="col-md-3">
+		                                <div class="col-md-3 skill" id="skill_1">
+
 		                                    <div class="form-group row">
-		                                        <div class="col-md-12">
-		                                       		<label class="control-label text-right">Other Skills<span class="text_requried">*</span></label><br>
-		                                       		<input type="text"  name='skill[]' class="form-control" >
+		                                        <div class="col-md-9">
+		                                        	<label class="control-label text-right">Other Skills<span class="text_requried">*</span></label><br>
+		                                       		<input type="text"  name='skill[]' value="{{old('skill', $skill->skill_name)}}" class="form-control" >
+
 		                                        </div>
+		                                        <div class="col-md-3">
+		                                        <br>
+			                                        <div class="float-right">
+			                                        @if($key==0)
+			                                        <button type="button" name="add" id="add_skill" class="btn btn-success add" >+</button>
+			                                        @else
+			                                        <button type="button" name="add" id="add_skill" class="btn btn-danger remove_skill" >X</button>
+			                                        @endif
+													</div>
+		                                        </div>
+												
 		                                    </div>
 		                                </div>
-										
-										 <!--/span 8-2 -->
-		                                <div class="col-md-3">
-											<br>
-			                                        <div>
-			                                        <button type="button" name="add" id="add_skill" class="btn btn-success add" >+</button>
-													</div>
-
-		                                </div>
-									
-		                               
+		                              @endforeach
 		                            </div>
-
+		                     
 		                            <!--row 9-->
 		                            <div class="row" >
 		                           
@@ -436,7 +475,7 @@
 		                                <div class="col-md-6">
 		                                    <div class="row"> 
 		                                       <div class="col-md-offset-3 col-md-9">
-		                                            <button type="submit" class="btn btn-success btn-prevent-multiple-submits">Upload</button>
+		                                            <button type="submit" class="btn btn-success btn-prevent-multiple-submits">Edit</button>
 		                                            
 		                                        </div>
 		                                     
@@ -493,7 +532,40 @@ $.validate();
 			//Return the new string
 			$(this).val(input);
 		});
-	//Dynamic add education
+		
+		  //Dynamic add phone
+		 // Add new element
+		 $("#add_phone").click(function(){
+		 	
+		  // Finding total number of elements added
+		  var total_element = $(".phone").length;
+		 	
+		  // last <div> with element class id
+		  var lastid = $(".phone:last").attr("id");
+		  var split_id = lastid.split("_");
+		  var nextindex = Number(split_id[1]) + 1;
+		  var max = 5;
+		  // Check total number elements
+		  if(total_element < max ){
+		   //Clone specialization div and copy
+		   	var $clone = $("#phone_1").clone();
+		  	$clone.prop('id','phone'+nextindex).find('input:text').val('');
+		   	$clone.find("#add_phone").html('X').prop("class", "btn btn-danger remove_phone");
+		   	$clone.find('.remove_phone_div').remove();
+		   	$clone.insertAfter("div.phone:last");
+		  }
+		 
+		 });
+		 // Remove element
+		 $(document).on("click", '.remove_phone', function(){
+		 $(this).closest(".phone").remove();
+		  
+ 		}); 
+
+
+
+
+		//Dynamic add education
 		
 		// Add new element
 		 $("#add").click(function(){
@@ -512,7 +584,7 @@ $.validate();
 		   
 		   	var clone = $(".education:last").clone();
 		  	clone.prop('id','edu_'+nextindex).find('input:text').val('');
-		   	clone.find("#add").html('-').prop("class", "btn btn-success remove_edu");
+		   	clone.find("#add").html('X').prop("class", "btn btn-danger remove_edu");
 		   	clone.insertAfter("div.education:last");
 
 		  }
@@ -540,7 +612,7 @@ $.validate();
 		   //Clone specialization div and copy
 		   	var $clone = $("#spe_1").clone();
 		  	$clone.prop('id','spe_'+nextindex).find('input:text').val('');
-		   	$clone.find("#add_spe").html('-').prop("class", "btn btn-success remove_spe");
+		   	$clone.find("#add_spe").html('X').prop("class", "btn btn-danger remove_spe");
 		   	$clone.insertAfter("div.specialization:last");
 		  }
 		 
@@ -569,7 +641,7 @@ $.validate();
 		   //Clone specialization div and copy
 		   	var $clone = $("#skill_1").clone();
 		  	$clone.prop('id','skill_'+nextindex).find('input:text').val('');
-		   	$clone.find("#add_skill").html('-').prop("class", "btn btn-success remove_skill");
+		   	$clone.find("#add_skill").html('X').prop("class", "btn btn-danger remove_skill");
 		   	$clone.insertAfter("div.skill:last");
 		  }
 		 
@@ -577,6 +649,35 @@ $.validate();
 		 // Remove element
 		 $(document).on("click", '.remove_skill', function(){
 		 $(this).closest(".skill").remove();
+		  
+ 		}); 
+
+		 //Dynamic add membership
+		 // Add new element
+		 $("#add_mem").click(function(){
+		 	
+		  // Finding total number of elements added
+		  var total_element = $(".membership").length;
+		 	
+		  // last <div> with element class id
+		  var lastid = $(".membership:last").attr("id");
+		  var split_id = lastid.split("_");
+		  var nextindex = Number(split_id[1]) + 1;
+		  var max = 5;
+		  // Check total number elements
+		  if(total_element < max ){
+		   //Clone specialization div and copy
+		   	var $clone = $("#membership_1").clone();
+		  	$clone.prop('id','membership_'+nextindex).find('input:text').val('');
+		   	$clone.find("#add_mem").html('X').prop("class", "btn btn-danger remove_membership");
+		   	$clone.find('.remove_div').remove();
+		   	$clone.insertAfter("div.membership:last");
+		  }
+		 
+		 });
+		 // Remove element
+		 $(document).on("click", '.remove_membership', function(){
+		 $(this).closest(".membership").remove();
 		  
  		}); 
 

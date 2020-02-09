@@ -16,6 +16,8 @@ class cv_membership extends Model implements Auditable
 
     public function cv_detail()
     {
-        return $this->belongsToMany('App\models\cv\cv_detail');
+        return $this->belongsToMany('App\models\cv\cv_detail')
+        ->withPivot('membership_number')
+        ->withTimestamps();
     }
 }

@@ -1,9 +1,9 @@
 @extends('layouts.master.master')
 @section('title', 'BARQAAB HR')
 @section('Heading')
-	<h3 class="text-themecolor">List of Employees</h3>
+	<h3 class="text-themecolor">List of Cvs</h3>
 	<ol class="breadcrumb">
-		<li class="breadcrumb-item"><a href="javascript:void(0)">List of CVs</a></li>
+		<li class="breadcrumb-item"><a href="javascript:void(0)"></a></li>
 	</ol>
 @stop
 @section('content')

@@ -27,6 +27,11 @@ class cv_detail extends Model implements Auditable
         ->withTimestamps();
     }
 
+    public function cv_field()
+    {
+        return $this->hasManyThrough('App\models\cv\cv_field', 'App\models\cv\cv_specialization');
+    }
+
     public function cv_membership()
     {
         return $this->belongsToMany('App\models\cv\cv_membership')
@@ -43,6 +48,13 @@ class cv_detail extends Model implements Auditable
     {
         return $this->hasOne('App\models\cv\cv_contact');
     }
+
+    public function cv_skill()
+    {
+        return $this->hasMany('App\models\cv\cv_skill');
+    }
+
+
 
 
 

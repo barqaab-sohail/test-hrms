@@ -88,7 +88,6 @@ class UploadCvController extends Controller
 			for ($i=0;$i<count($request->input('membership_name'));$i++){
 			$membershipId = $request->input("membership_name.$i");
 			$numberId = $request->input("number.$i");
-			
 			$cv_id->cv_membership()->attach($membershipId, ['membership_number'=>$numberId]);			
 			}
 
@@ -97,10 +96,13 @@ class UploadCvController extends Controller
 			$address['cv_detail_id'] = $cv_id->id;
 			cv_contact::create($address);
 		
-		//add phone
-			$phone = $request->only('phone');
+		//add phone	
+			for ($i=0;$i<count($request->input('phone'));$i++){
+			$phone['phone']= $request->input("phone.$i");
 			$phone['cv_detail_id'] = $cv_id->id;
-			cv_phone::create($phone);
+			cv_phone::create($phone);		
+			}
+
 
 		//add attachment
 				$extension = request()->cv->getClientOriginalExtension();
@@ -129,7 +131,7 @@ class UploadCvController extends Controller
 
 		});  //end transaction
 
-		return back()->with('success', 'Data successfully saved.');
+		return back()->with('success', 'Data successfully saved');
 				
 	}
 
@@ -137,6 +139,7 @@ class UploadCvController extends Controller
        $cvs = cv_detail::with('cv_phone','cv_contact')->get();
        
        // foreach($cvs as $cv){
+      // dd($cv->cv_phone->first()->phone);
        // 		foreach($cv->cv_education as $degree){
        // 			dd($degree->id);
        // 		}
@@ -154,8 +157,66 @@ class UploadCvController extends Controller
 		$memberships = cv_membership::all();
 		$cvId = cv_detail::find($id);
 
+		// // //dd($cvId->cv_phone->first()->phone);dd
+		// foreach($cvId->cv_specialization as $key => $speciality){
+		// 	//echo $speciality->specialization_name;
+		// 	//dd($speciality);
+		// 	foreach($speciality->cv_field as $key1 => $cv_field){
+				
+				
+		// 		if($key==$key1){
+		// 		echo $cv_field->field_name.'<br>';
+		// 		}
+		// 	}
 
+			
+		// }
+		// dd();
         return view ('cv.editUploadCv',compact('genders','specializations','degrees','fields','memberships','cvId'));
+    }
+
+    public function update(cvStore $request, $id){
+
+    	//update phone	
+    	if(count($request->input('phone'))==cv_phone::where('cv_detail_id',$id)->count())
+    	{
+	    	foreach($request->input('phone') as $num){
+	    		foreach ($num as $key =>$phone){
+	    		
+	    		$data ['phone'] = $phone;
+	    		$data ['cv_detail_id'] = $id;
+	    		$key=trim($key,"'");
+				cv_phone::findOrFail($key)->update($data);
+				dd('thiss code is not running');
+				}
+	    	}
+	    }else{
+	    	cv_phone::where('cv_detail_id',$id)->delete();
+		    	foreach($request->input('phone') as $num){
+		    		foreach ($num as $key =>$phone){
+		    		$key=trim($key,"'");
+		    		$data ['phone'] = $phone;
+		    		$data ['cv_detail_id'] = $id;
+					cv_phone::create($data);
+					}
+		    	}
+		   //  	foreach($request->input('phone') as $num){
+		   //  		foreach ($num as $key =>$phone){
+		   //  		$key=trim($key,"'");
+			  //   		if (cv_phone::find($key)->phone==$phone){
+			  //   			continue;
+			  //   		}else{
+			  //   			$data ['phone'] = $phone;
+			  //   			$data ['cv_detail_id'] = $id;
+					// 		cv_phone::create($data);
+			  //   		}
+					// }
+		   //  	}			
+		}	
+
+    	return back()->with('success', 'Data successfully updated');
+
+
     }
 
 
