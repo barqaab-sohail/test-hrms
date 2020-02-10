@@ -12,4 +12,11 @@ class cv_contact extends Model implements Auditable
     protected $fillable = [
         'address','city', 'province','country','email', 'cv_detail_id',
     ];
+
+	public function cv_detail()
+    {
+        return $this->belongsTo('App\models\cv\cv_detail');
+    }
+
+
 }

@@ -36,8 +36,7 @@ class UploadCvController extends Controller
 	}
 
 	public function store(cvStore $request){
-		//dd($request);
-
+		
 		$input = $request->only('full_name','father_name','cnic','foreign_experience','donor_experience','barqaab_employment','comments');
 		 if($request->filled('date_of_birth')){
             $input ['date_of_birth']= \Carbon\Carbon::parse($request->date_of_birth)->format('Y-m-d');
@@ -138,14 +137,7 @@ class UploadCvController extends Controller
 	public function index (){
        $cvs = cv_detail::with('cv_phone','cv_contact')->get();
        
-       // foreach($cvs as $cv){
-      // dd($cv->cv_phone->first()->phone);
-       // 		foreach($cv->cv_education as $degree){
-       // 			dd($degree->id);
-       // 		}
-       // }
-
-       return view('cv.listOfCvs', compact('cvs'));
+        return view('cv.listOfCvs', compact('cvs'));
 
     }
 
@@ -157,16 +149,16 @@ class UploadCvController extends Controller
 		$memberships = cv_membership::all();
 		$cvId = cv_detail::find($id);
 
-		// // //dd($cvId->cv_phone->first()->phone);dd
+		// // // //dd($cvId->cv_phone->first()->phone);dd
 		// foreach($cvId->cv_specialization as $key => $speciality){
-		// 	//echo $speciality->specialization_name;
-		// 	//dd($speciality);
+		// // 	//echo $speciality->specialization_name;
+		// // 	//dd($speciality);
 		// 	foreach($speciality->cv_field as $key1 => $cv_field){
 				
-				
-		// 		if($key==$key1){
-		// 		echo $cv_field->field_name.'<br>';
-		// 		}
+		// 		dd($cv_field->getOriginal('pivot_year'));
+		// 		// if($key==$key1){
+		// 		// echo $cv_field->field_name.'<br>';
+		// 		// }
 		// 	}
 
 			
@@ -177,42 +169,72 @@ class UploadCvController extends Controller
 
     public function update(cvStore $request, $id){
 
-    	//update phone	
-    	if(count($request->input('phone'))==cv_phone::where('cv_detail_id',$id)->count())
-    	{
-	    	foreach($request->input('phone') as $num){
-	    		foreach ($num as $key =>$phone){
-	    		
-	    		$data ['phone'] = $phone;
-	    		$data ['cv_detail_id'] = $id;
-	    		$key=trim($key,"'");
-				cv_phone::findOrFail($key)->update($data);
-				dd('thiss code is not running');
-				}
-	    	}
-	    }else{
-	    	cv_phone::where('cv_detail_id',$id)->delete();
+	    	$input = $request->only('full_name','father_name','cnic','foreign_experience','donor_experience','barqaab_employment','comments');
+			 if($request->filled('date_of_birth')){
+	            $input ['date_of_birth']= \Carbon\Carbon::parse($request->date_of_birth)->format('Y-m-d');
+	            }
+	         if($request->filled('job_starting_date')){
+	            $input ['job_starting_date']= \Carbon\Carbon::parse($request->job_starting_date)->format('Y-m-d');
+	            }
+	         if($request->filled('cv_submission_date')){
+	            $input ['cv_submission_date']= \Carbon\Carbon::parse($request->cv_submission_date)->format('Y-m-d');
+	            }
+	     //start transaction
+	    DB::transaction(function () use ($request, $input, $id) {  
+
+	    	//update cv Detail
+	    	cv_detail::findOrFail($id)->update($input);
+
+	    	//update address
+			$address = $request->only('address','city','province','country','email');
+			$address['cv_detail_id'] = $id;
+			$addressId = cv_contact::where('cv_detail_id',$id)->first();
+			
+			cv_contact::findOrFail($addressId->id)->update($address);
+
+
+	    	//update phone	
+	    	if(count($request->input('phone'))==cv_phone::where('cv_detail_id',$id)->count())
+	    	{
 		    	foreach($request->input('phone') as $num){
 		    		foreach ($num as $key =>$phone){
-		    		$key=trim($key,"'");
+		    		
 		    		$data ['phone'] = $phone;
 		    		$data ['cv_detail_id'] = $id;
-					cv_phone::create($data);
+		    		$key=trim($key,"'");
+					cv_phone::findOrFail($key)->update($data);
+					
 					}
 		    	}
-		   //  	foreach($request->input('phone') as $num){
-		   //  		foreach ($num as $key =>$phone){
-		   //  		$key=trim($key,"'");
-			  //   		if (cv_phone::find($key)->phone==$phone){
-			  //   			continue;
-			  //   		}else{
-			  //   			$data ['phone'] = $phone;
-			  //   			$data ['cv_detail_id'] = $id;
-					// 		cv_phone::create($data);
-			  //   		}
-					// }
-		   //  	}			
-		}	
+		    }else{
+		    	cv_phone::where('cv_detail_id',$id)->delete();
+			    	foreach($request->input('phone') as $num){
+			    		foreach ($num as $key =>$phone){
+			    		$key=trim($key,"'");
+			    		$data ['phone'] = $phone;
+			    		$data ['cv_detail_id'] = $id;
+						cv_phone::create($data);
+						}
+			    	}
+
+			}
+
+			//add membership
+			$cv_id= cv_detail::find($id);
+			for ($i=0;$i<count($request->input('membership_name'));$i++){
+			$membershipId = $request->input("membership_name.$i");
+			$numberId = $request->input("number.$i");
+			$cv_id->cv_membership()->sync($membershipId, ['membership_number'=>$numberId]);			
+			}
+			
+		 // $test = cv_detail::findOrFail($id);
+		 // dd($test->cv_membership()->wherePivot('cv_detail_id',$id)->count());
+
+
+
+
+
+		});	//end transaction
 
     	return back()->with('success', 'Data successfully updated');
 

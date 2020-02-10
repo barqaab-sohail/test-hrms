@@ -180,7 +180,7 @@
 		                                    <div class="form-group row">
 		                                        <div class="col-md-12">
 		                                       		<label class="control-label text-right">Name of Degree<span class="text_requried">*</span></label><br>
-		                                       			<select  name="degree_name[]"  class="form-control">
+		                                       			<select  name="degree_name[]"  id="degree_name" class="form-control">
                                                         <option value=""></option>
                                                         @foreach($degrees as $degree)
 														<option value="{{$degree->id}}" @if($degree->id == $education->id) selected="selected" @endif>{{$degree->degree_name}}</option>
@@ -197,7 +197,7 @@
 		                                    <div class="form-group row">
 		                                        <div class="col-md-12 ">
 		                                        	<label class="control-label">Name of Institute<span class="text_requried">*</span></label>
-		                                            <input type="text" name="institute[]" value="{{$education->pivot->institute}}"  class="form-control" placeholder="Enter Institute Name" >
+		                                            <input type="text" name="institute[]" id="institute" value="{{$education->pivot->institute}}"  class="form-control" placeholder="Enter Institute Name" >
 
 		                                        </div>
 		                                    </div>
@@ -208,7 +208,7 @@
 		                                        <div class="col-md-8">
 		                                        	<label class="control-label text-right">Passing Year<span class="text_requried">*</span></label>
 		                                        
-		                                            <select  name="passing_year[]"  class="form-control" data-validation="required">
+		                                            <select  name="passing_year[]"  id="passing_year" class="form-control" data-validation="required">
 
 													<option value=""></option>
 													@for ($i = 1958; $i <= now()->year; $i++)
@@ -243,7 +243,7 @@
 		                                        <div class="col-md-12">
 		                                       		<label class="control-label text-right">Speciality<span class="text_requried">*</span></label><br>
 
-		                                       		<select  name="speciality_name[]" id=speciality_name class="form-control" >
+		                                       		<select  name="speciality_name[]" id="speciality_name" class="form-control" >
                                                          <option value=""></option>
                                                         
                                                         @foreach($specializations as $specialization)
@@ -287,11 +287,19 @@
 		                                        <div class="col-md-8">
 		                                        	<label class="control-label text-right">Years of Experience<span class="text_requried">*</span></label>
 		                                        
-		                                            <select  name="year[]"  class="form-control">
+		                                            <select  name="year[]" id="field_year" class="form-control">
 
 													<option value=""></option>
 													@for ($i = 1; $i <= 50; $i++)
-    												<option value="{{$i}}" @if($i == $speciality->cv_field->first()->year) selected="selected" @endif>{{ $i }}</option>
+    												<option value="{{$i}}" 
+
+
+    												@foreach($speciality->cv_field as $key1 => $cv_field)
+														@if($key==$key1)
+														@if($i == $cv_field->getOriginal('pivot_year')) selected="selected" @endif @endif @endforeach
+
+
+    												>{{ $i }}</option>
 													@endfor
 													</select>
 
@@ -343,7 +351,7 @@
 		                                    <div class="form-group row">
 		                                        <div class="col-md-6">
 		                                        	<label class="control-label">Membership<span class="text_requried">*</span></label>
-
+													
 		                                        	<select  name="membership_name[]" id=membership_name class="form-control">
                                                         <option value=""></option>
                                                         
@@ -583,7 +591,7 @@ $.validate();
 		   //Clone education div and copy
 		   
 		   	var clone = $(".education:last").clone();
-		  	clone.prop('id','edu_'+nextindex).find('input:text').val('');
+		  	clone.prop('id','edu_'+nextindex).find('#degree_name, #institute, #passing_year').val('');
 		   	clone.find("#add").html('X').prop("class", "btn btn-danger remove_edu");
 		   	clone.insertAfter("div.education:last");
 
@@ -611,7 +619,7 @@ $.validate();
 		  if(total_element < max ){
 		   //Clone specialization div and copy
 		   	var $clone = $("#spe_1").clone();
-		  	$clone.prop('id','spe_'+nextindex).find('input:text').val('');
+		  	$clone.prop('id','spe_'+nextindex).find('#speciality_name, #field_name, #field_year').val('');
 		   	$clone.find("#add_spe").html('X').prop("class", "btn btn-danger remove_spe");
 		   	$clone.insertAfter("div.specialization:last");
 		  }

@@ -505,12 +505,14 @@ $.validate();
 		  var max = 5;
 		  // Check total number elements
 		  if(total_element < max ){
-		   //Clone education div and copy
+		   //Clone education div and copy 
 		   
 		   	var clone = $(".education:last").clone();
 		  	clone.prop('id','edu_'+nextindex).find('input:text').val('');
 		   	clone.find("#add").html('X').prop("class", "btn btn-danger remove_edu");
 		   	clone.insertAfter("div.education:last");
+		   
+		 
 
 		  }
 		 

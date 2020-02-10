@@ -29,7 +29,8 @@ class cv_detail extends Model implements Auditable
 
     public function cv_field()
     {
-        return $this->hasManyThrough('App\models\cv\cv_field', 'App\models\cv\cv_specialization');
+        return $this->hasManyThrough('App\models\cv\cv_field', 'App\models\cv\cv_specialization')
+        ->withPivot('year');
     }
 
     public function cv_membership()
