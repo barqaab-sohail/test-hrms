@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateCvFieldCvSpecialization extends Migration
+class CreateCvDetailCvSpecializationCvFieldTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,14 @@ class CreateCvFieldCvSpecialization extends Migration
      */
     public function up()
     {
-        Schema::create('cv_field_cv_specialization', function (Blueprint $table) {
-            $table->bigInteger('cv_specialization_id')->unsigned()->index();
-            $table->foreign('cv_specialization_id')->references('id')->on('cv_specializations')->onDelete('cascade');
+        Schema::create('cv_detail_cv_specialization_cv_field', function (Blueprint $table) {
+            
+
+            $table->bigInteger('cv_detail_cv_specialization_id','id')->unsigned()->index('cv_detail_cv_specialization_id','detail_specialization');
+            $table->foreign('cv_detail_cv_specialization_id','detail_specialization')->references('id')->on('cv_detail_cv_specialization')->onDelete('cascade');
 
             $table->bigInteger('cv_field_id')->unsigned()->index();
             $table->foreign('cv_field_id')->references('id')->on('cv_fields')->onDelete('cascade');
-            $table->tinyInteger('year');
-
             $table->timestamps();
         });
     }
@@ -32,6 +32,6 @@ class CreateCvFieldCvSpecialization extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('cv_field_cv_specialization');
+        Schema::dropIfExists('cv_detail_cv_specialization_cv_field');
     }
 }

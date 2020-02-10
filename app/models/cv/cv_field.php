@@ -13,8 +13,8 @@ class cv_field extends Model implements Auditable
         'field_name', 
     ];
 
-     public function cv_specialization()
+     public function cv_detail_cv_specialization()
     {
-        return $this->belongsToMany('App\models\cv\cv_specialization');
+        return $this->belongsToMany('App\models\cv\cv_detail_cv_specialization');
     }
 }

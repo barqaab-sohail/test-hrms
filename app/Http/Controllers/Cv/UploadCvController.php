@@ -221,14 +221,27 @@ class UploadCvController extends Controller
 
 			//add membership
 			$cv_id= cv_detail::find($id);
+			$cv_id->cv_membership()->detach( $request->input("membership_name"));	
 			for ($i=0;$i<count($request->input('membership_name'));$i++){
 			$membershipId = $request->input("membership_name.$i");
 			$numberId = $request->input("number.$i");
-			$cv_id->cv_membership()->sync($membershipId, ['membership_number'=>$numberId]);			
+			$cv_id->cv_membership()->attach($membershipId, ['membership_number'=>$numberId]);			
 			}
+
+			//edit specialization
+			// $cv_id->cv_specialization()->detach($request->input("speciality_name"));
+			// for ($i=0;$i<count($request->input('speciality_name'));$i++){
+			// $specialityId = $request->input("speciality_name.$i");
+			// $fieldId = $request->input("field_name.$i");
+			// $year = $request->input("year.$i");
+			// $specialization_id = cv_specialization::find($specialityId);
+
+			// $cv_id->cv_specialization()->attach($specialityId, ['year'=>$year]);
 			
-		 // $test = cv_detail::findOrFail($id);
-		 // dd($test->cv_membership()->wherePivot('cv_detail_id',$id)->count());
+			// $specialization_id->cv_field()->attach($fieldId, ['year'=>$year]);
+			// }
+			
+		 
 
 
 
