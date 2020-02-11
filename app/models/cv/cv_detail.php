@@ -20,18 +20,11 @@ class cv_detail extends Model implements Auditable
     	->withTimestamps();
     }
 
-    public function cv_specialization()
+    public function cv_specialization_field()
     {
-        return $this->belongsToMany('App\models\cv\cv_specialization')
-        ->withPivot('year')
-        ->withTimestamps();
+        return $this->hasMany('App\models\cv\cv_specialization_field');
     }
-
-    public function cv_field()
-    {
-        return $this->hasManyThrough('App\models\cv\cv_field', 'App\models\cv\cv_detail_cv_specialization')
-        ->withPivot('year');
-    }
+   
 
     public function cv_membership()
     {

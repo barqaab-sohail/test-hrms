@@ -235,7 +235,7 @@
 		                            </div>
 		                        @endforeach
 		                             <!--row 5-->
-		                        @foreach($cvId->cv_specialization as $key => $speciality)
+		                        @foreach($cvId->cv_specialization_field as $key => $speciality)
 		                            <div class="row specialization" id='spe_1' >
 		                                <div class="col-md-3">
 		                                	<!--/span 5-1 -->
@@ -249,7 +249,7 @@
                                                         @foreach($specializations as $specialization)
 														
 														<option value="{{$specialization->id}}" 
-														@if($specialization->id == $speciality->id) selected="selected" @endif>{{$specialization->specialization_name}}</option>
+														@if($specialization->id == $speciality->cv_specialization_id) selected="selected" @endif>{{$specialization->specialization_name}}</option>
                                                         @endforeach   
                                                     </select>
 		                                        </div>
@@ -267,10 +267,7 @@
                                                         @foreach($fields as $field)
 														
 														<option value="{{$field->id}}"  
-
-														@foreach($speciality->cv_field as $key1 => $cv_field)
-														@if($key==$key1)
-														@if($field->id == $cv_field->id) selected="selected" @endif @endif @endforeach
+														@if($field->id == $speciality->cv_field_id) selected="selected" @endif
 														>{{$field->field_name}}</option>
 
                                                         @endforeach
@@ -292,13 +289,7 @@
 													<option value=""></option>
 													@for ($i = 1; $i <= 50; $i++)
     												<option value="{{$i}}" 
-
-
-    												@foreach($speciality->cv_field as $key1 => $cv_field)
-														@if($key==$key1)
-														@if($i == $cv_field->getOriginal('pivot_year')) selected="selected" @endif @endif @endforeach
-
-
+														@if($i == $speciality->year) selected="selected" @endif
     												>{{ $i }}</option>
 													@endfor
 													</select>

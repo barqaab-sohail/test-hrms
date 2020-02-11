@@ -12,6 +12,7 @@ use App\models\cv\cv_phone;
 use App\models\cv\cv_contact;
 use App\models\cv\cv_attachment;
 use App\models\cv\cv_specialization;
+use App\models\cv\cv_specialization_field;
 use App\models\cv\cv_field;
 use App\models\cv\cv_education;
 use App\models\cv\cv_membership;
@@ -48,11 +49,13 @@ class UploadCvController extends Controller
             $input ['cv_submission_date']= \Carbon\Carbon::parse($request->cv_submission_date)->format('Y-m-d');
             }
 
+
         //start transaction
 		DB::transaction(function () use ($request, $input) {   
 		
 		//add cv detail
 		$cv_id=cv_detail::create($input);
+
 
 		//add skill
 		foreach ($request->input('skill')as $skill){
@@ -73,21 +76,18 @@ class UploadCvController extends Controller
 			
 		//add specialization
 			for ($i=0;$i<count($request->input('speciality_name'));$i++){
-			$specialityId = $request->input("speciality_name.$i");
-			$fieldId = $request->input("field_name.$i");
-			$year = $request->input("year.$i");
-			$specialization_id = cv_specialization::find($specialityId);
-
-			$cv_id->cv_specialization()->attach($specialityId, ['year'=>$year]);
-			
-			//$specialization_id->cv_field()->attach($fieldId, ['year'=>$year]);
+			$speciality['cv_specialization_id'] = $request->input("speciality_name.$i");
+			$speciality['cv_field_id'] = $request->input("field_name.$i");
+			$speciality['cv_detail_id']=$cv_id->id;
+			$speciality['year'] = $request->input("year.$i");
+			cv_specialization_field::create($speciality);
 			}
 
 		//add membership
 			for ($i=0;$i<count($request->input('membership_name'));$i++){
 			$membershipId = $request->input("membership_name.$i");
 			$numberId = $request->input("number.$i");
-			//$cv_id->cv_membership()->attach($membershipId, ['membership_number'=>$numberId]);			
+			$cv_id->cv_membership()->attach($membershipId, ['membership_number'=>$numberId]);			
 			}
 
 		//add address
@@ -115,7 +115,7 @@ class UploadCvController extends Controller
 						$attachment['content']=mb_strtolower($text->convertToText());
 					}else if ($extension =='pdf'){
 						$reader = new \Asika\Pdf2text;
-						$attachment['content'] = $reader->decode($file_path);
+						$attachment['content'] = mb_strtolower($reader->decode($file_path));
 					}
 
 				$attachment['document_name']='Original CV';
@@ -149,21 +149,6 @@ class UploadCvController extends Controller
 		$memberships = cv_membership::all();
 		$cvId = cv_detail::find($id);
 
-		// // // //dd($cvId->cv_phone->first()->phone);dd
-		// foreach($cvId->cv_specialization as $key => $speciality){
-		// // 	//echo $speciality->specialization_name;
-		// // 	//dd($speciality);
-		// 	foreach($speciality->cv_field as $key1 => $cv_field){
-				
-		// 		dd($cv_field->getOriginal('pivot_year'));
-		// 		// if($key==$key1){
-		// 		// echo $cv_field->field_name.'<br>';
-		// 		// }
-		// 	}
-
-			
-		// }
-		// dd();
         return view ('cv.editUploadCv',compact('genders','specializations','degrees','fields','memberships','cvId'));
     }
 
@@ -229,17 +214,33 @@ class UploadCvController extends Controller
 			}
 
 			//edit specialization
-			// $cv_id->cv_specialization()->detach($request->input("speciality_name"));
-			// for ($i=0;$i<count($request->input('speciality_name'));$i++){
-			// $specialityId = $request->input("speciality_name.$i");
-			// $fieldId = $request->input("field_name.$i");
-			// $year = $request->input("year.$i");
-			// $specialization_id = cv_specialization::find($specialityId);
+			if(count($request->input('speciality_name'))==cv_specialization_field::where('cv_detail_id',$id)->count())
+	    	{
+		    	for ($i=0;$i<count($request->input('speciality_name'));$i++){
+				$speciality['cv_specialization_id'] = $request->input("speciality_name.$i");
+				$speciality['cv_field_id'] = $request->input("field_name.$i");
+				$speciality['cv_detail_id']=$id;
+				$speciality['year'] = $request->input("year.$i");
+				$specialityId = cv_specialization_field::where('cv_detail_id',$id)->get();
+					foreach($specialityId as $key => $s){
+						
+						if($i == $key){
+							cv_specialization_field::findOrFail($s->id)->update($speciality);
+						}
+					}
+				}	
+		    }else{
+		    	cv_specialization_field::where('cv_detail_id',$id)->delete();
+			    	for ($i=0;$i<count($request->input('speciality_name'));$i++){
+					$speciality['cv_specialization_id'] = $request->input("speciality_name.$i");
+					$speciality['cv_field_id'] = $request->input("field_name.$i");
+					$speciality['cv_detail_id']=$id;
+					$speciality['year'] = $request->input("year.$i");
+					cv_specialization_field::create($speciality);
+					}
 
-			// $cv_id->cv_specialization()->attach($specialityId, ['year'=>$year]);
+			}
 			
-			// $specialization_id->cv_field()->attach($fieldId, ['year'=>$year]);
-			// }
 			
 		 
 
