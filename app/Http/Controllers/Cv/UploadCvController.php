@@ -80,14 +80,14 @@ class UploadCvController extends Controller
 
 			$cv_id->cv_specialization()->attach($specialityId, ['year'=>$year]);
 			
-			$specialization_id->cv_field()->attach($fieldId, ['year'=>$year]);
+			//$specialization_id->cv_field()->attach($fieldId, ['year'=>$year]);
 			}
 
 		//add membership
 			for ($i=0;$i<count($request->input('membership_name'));$i++){
 			$membershipId = $request->input("membership_name.$i");
 			$numberId = $request->input("number.$i");
-			$cv_id->cv_membership()->attach($membershipId, ['membership_number'=>$numberId]);			
+			//$cv_id->cv_membership()->attach($membershipId, ['membership_number'=>$numberId]);			
 			}
 
 		//add address
