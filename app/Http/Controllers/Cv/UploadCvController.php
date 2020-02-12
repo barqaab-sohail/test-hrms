@@ -90,10 +90,10 @@ class UploadCvController extends Controller
 			$cv_id->cv_membership()->attach($membershipId, ['membership_number'=>$numberId]);			
 			}
 
-		//add address
-			$address = $request->only('address','city','province','country','email');
-			$address['cv_detail_id'] = $cv_id->id;
-			cv_contact::create($address);
+		//add contact
+			$contact = $request->only('address','city','province','country','email');
+			$contact['cv_detail_id'] = $cv_id->id;
+			cv_contact::create($contact);
 		
 		//add phone	
 			for ($i=0;$i<count($request->input('phone'));$i++){
@@ -170,12 +170,12 @@ class UploadCvController extends Controller
 	    	//update cv Detail
 	    	cv_detail::findOrFail($id)->update($input);
 
-	    	//update address
-			$address = $request->only('address','city','province','country','email');
-			$address['cv_detail_id'] = $id;
-			$addressId = cv_contact::where('cv_detail_id',$id)->first();
+	    	//update Contact
+			$contact = $request->only('address','city','province','country','email');
+			$contact['cv_detail_id'] = $id;
+			$contactId = cv_contact::where('cv_detail_id',$id)->first();
 			
-			cv_contact::findOrFail($addressId->id)->update($address);
+			cv_contact::findOrFail($contactId->id)->update($contact);
 
 
 	    	//update phone	
@@ -204,16 +204,16 @@ class UploadCvController extends Controller
 
 			}
 
-			//add membership
+			//Update membership
 			$cv_id= cv_detail::find($id);
-			$cv_id->cv_membership()->detach( $request->input("membership_name"));	
+			$cv_id->cv_membership()->detach();	
 			for ($i=0;$i<count($request->input('membership_name'));$i++){
 			$membershipId = $request->input("membership_name.$i");
 			$numberId = $request->input("number.$i");
 			$cv_id->cv_membership()->attach($membershipId, ['membership_number'=>$numberId]);			
 			}
 
-			//edit specialization
+			//Update specialization
 			if(count($request->input('speciality_name'))==cv_specialization_field::where('cv_detail_id',$id)->count())
 	    	{
 		    	for ($i=0;$i<count($request->input('speciality_name'));$i++){
@@ -240,11 +240,66 @@ class UploadCvController extends Controller
 					}
 
 			}
-			
-			
-		 
 
+			//update education
+			$cv_id->cv_education()->detach();
+			
+			for ($i=0;$i<count($request->input('degree_name'));$i++){
+			$educationId = $request->input("degree_name.$i");
+			$instituteId = $request->input("institute.$i");
+			$passingYear = $request->input("passing_year.$i");
+			
+			$cv_id->cv_education()->attach($educationId, ['institute'=>$instituteId, 'passing_year'=>$passingYear]);
+			}
+			
+			//update skill	
+	    	if(count($request->input('skill_name'))==cv_skill::where('cv_detail_id',$id)->count())
+	    	{
+		    	foreach($request->input('skill_name') as $num){
+		    		foreach ($num as $key =>$skill){
+		    		$data ['skill_name'] = $skill;
+		    		$data ['cv_detail_id'] = $id;
+		    		$key=trim($key,"'");
+					cv_skill::findOrFail($key)->update($data);
+					
+					}
+		    	}
+		    }else{
+		    	cv_skill::where('cv_detail_id',$id)->delete();
+			    	foreach($request->input('skill_name') as $num){
+			    		foreach ($num as $key =>$skill){
+			    		$data ['skill_name'] = $skill;
+			    		$data ['cv_detail_id'] = $id;
+						cv_skill::create($data);
+						}
+			    	}
+			}
 
+			//add attachment
+			if ($request->hasFile('cv')){
+				$extension = request()->cv->getClientOriginalExtension();
+				$fileName =request()->full_name.'-'.request()->cnic.'-'. time().'.'.$extension;
+				$request->file('cv')->storeAs('public/cv',$fileName);
+				$file_path = storage_path('app/public/cv/'.$fileName);	
+				$attachment['content']='';
+											
+					if (($extension == 'doc')||($extension == 'docx')){
+						$text = new DocxConversion($file_path);
+						$attachment['content']=mb_strtolower($text->convertToText());
+					}else if ($extension =='pdf'){
+						$reader = new \Asika\Pdf2text;
+						$attachment['content'] = mb_strtolower($reader->decode($file_path));
+					}
+
+				$attachment['document_name']='Original CV';
+				$attachment['file_name']=$fileName;
+				$attachment['size']=$request->file('cv')->getSize();
+				$attachment['path']=$file_path;
+				$attachment['extension']=$extension;
+				$attachment['cv_detail_id']=$cv_id->id;
+
+			cv_attachment::findOrFail($cv_id->id)->update($attachment);
+		}
 
 
 

@@ -431,7 +431,7 @@
 		                                    <div class="form-group row">
 		                                        <div class="col-md-9">
 		                                        	<label class="control-label text-right">Other Skills<span class="text_requried">*</span></label><br>
-		                                       		<input type="text"  name='skill[]' value="{{old('skill', $skill->skill_name)}}" class="form-control" >
+		                                       		<input type="text"  name="skill_name[]['{{$skill->id}}']" value="{{old('skill_name', $skill->skill_name)}}" class="form-control" >
 
 		                                        </div>
 		                                        <div class="col-md-3">
