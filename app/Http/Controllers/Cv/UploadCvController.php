@@ -33,7 +33,7 @@ class UploadCvController extends Controller
 		$memberships = cv_membership::all();
 
 		//return view ('bio-data.test',compact('genders'));
-		return view ('cv.uploadCv',compact('genders','specializations','degrees','fields','memberships'));
+		return view ('cv.upload',compact('genders','specializations','degrees','fields','memberships'));
 	}
 
 	public function store(cvStore $request){
@@ -301,13 +301,18 @@ class UploadCvController extends Controller
 			cv_attachment::findOrFail($cv_id->id)->update($attachment);
 		}
 
-
-
 		});	//end transaction
 
     	return back()->with('success', 'Data successfully updated');
 
+    }
 
+     public function destroy($id)
+    {
+    
+    cv_detail::findOrFail($id)->delete(); 
+    return back()->with('success', 'Data successfully deleted');
+   
     }
 
 

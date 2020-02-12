@@ -169,7 +169,7 @@
 		                                    <div class="form-group row">
 		                                        <div class="col-md-12">
 		                                       		<label class="control-label text-right">Name of Degree<span class="text_requried">*</span></label><br>
-		                                       			<select  name="degree_name[]"  class="form-control">
+		                                       			<select  name="degree_name[]"  class="form-control selectTwo">
                                                         <option value=""></option>
                                                         @foreach($degrees as $degree)
 														<option value="{{$degree->id}}" {{(old("degree_name")==$degree->id? "selected" : "")}}>{{$degree->degree_name}}</option>
@@ -196,7 +196,7 @@
 		                                        <div class="col-md-8">
 		                                        	<label class="control-label text-right">Passing Year<span class="text_requried">*</span></label>
 		                                        
-		                                            <select  name="passing_year[]"  class="form-control" data-validation="required">
+		                                            <select  name="passing_year[]"  class="form-control selectTwo" data-validation="required">
 
 													<option value=""></option>
 													@for ($i = 1958; $i <= now()->year; $i++)
@@ -424,7 +424,19 @@
 		                               
 		                            </div>
 
-
+		                   		<div id="test">
+    <div id="tooltest0" class="tooltest0">
+        <label>Tool Name :</label>
+        <select class="toollist" name="FSR_tool_id[]" id="FSR_tool_id0" style="width: 350px" />
+        <option></option>
+        <option value="1">bla 1</option>
+        </select>
+    </div>
+    <div id="tool-placeholder"></div>
+    <div>
+        <input type="button" value="Add another" />
+    </div>
+</div>
 
 		              <!-- row-10 -->
 		                         <hr>
@@ -460,6 +472,33 @@ $.validate();
 <script>
 	$(document).ready(function(){
 	
+	$('.toollist').select2({ //apply select2 to my element
+    placeholder: "Search your Tool",
+    allowClear: true
+});
+
+
+$('input[type=button]').click(function () {
+
+    $('.toollist').select2("destroy");
+    var noOfDivs = $('.tooltest0').length;
+    var clonedDiv = $('.tooltest0').first().clone(true);
+    clonedDiv.insertBefore("#tool-placeholder");
+    clonedDiv.attr('id', 'tooltest' + noOfDivs);
+    
+
+    $('.toollist').select2({ //apply select2 to my element
+        placeholder: "Search your Tool",
+        allowClear: true
+    });
+
+
+
+});
+
+
+
+
 		// $('select').select2({
 	 //    minimumResultsForSearch: 20, // at least 20 results must be displayed
 	 //    width: "100%",
@@ -506,12 +545,12 @@ $.validate();
 		  // Check total number elements
 		  if(total_element < max ){
 		   //Clone education div and copy 
-		   
+		   //$('.education').find('select').select2('destroy');
 		   	var clone = $(".education:last").clone();
 		  	clone.prop('id','edu_'+nextindex).find('input:text').val('');
 		   	clone.find("#add").html('X').prop("class", "btn btn-danger remove_edu");
 		   	clone.insertAfter("div.education:last");
-		   
+		   //$('#edu_'+nextindex).find(".select2-container").select2('destroy');
 		 
 
 		  }
