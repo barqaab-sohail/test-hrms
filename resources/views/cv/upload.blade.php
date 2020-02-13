@@ -20,12 +20,7 @@
 <script>
 	$(document).ready(function(){
 	
-	alert('test');
-	$('.toollist').select2({ //apply select2 to my element
-    placeholder: "Search your Tool",
-    allowClear: true
-});
-
+	
 
 $('input[type=button]').click(function () {
 

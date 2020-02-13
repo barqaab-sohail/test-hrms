@@ -33,7 +33,7 @@ class UploadCvController extends Controller
 		$memberships = cv_membership::all();
 
 		//return view ('bio-data.test',compact('genders'));
-		return view ('cv.upload',compact('genders','specializations','degrees','fields','memberships'));
+		return view ('cv.uploadCv',compact('genders','specializations','degrees','fields','memberships'));
 	}
 
 	public function store(cvStore $request){
