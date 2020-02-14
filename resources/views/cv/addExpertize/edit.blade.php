@@ -31,14 +31,14 @@
 		                        {{csrf_field()}}
 		                        <div class="form-body">
 		                            
-		                            <h3 class="box-title">Edit Expertize</h3>
+		                            <h3 class="box-title">Edit Specialization</h3>
 		                            <hr class="m-t-0 m-b-40">
 		                            <div class="row">
 		                                <div class="col-md-9">
 		                                    <div class="form-group row">
-		                                        <label class="control-label text-right col-md-3">Expertize Name</label>
+		                                        <label class="control-label text-right col-md-3">Specialization Name</label>
 		                                        <div class="col-md-9">
-		                                            <input type="text"  name="name" value="{!! old('name', optional($data)->name) !!}"  class="form-control" placeholder="Enter Expertize Name" required>
+		                                            <input type="text"  name="specialization_name" value="{!! old('specialization_name', optional($data)->specialization_name) !!}"  class="form-control" placeholder="Enter Name of Speciality" required>
 		                                        </div>
 		                                    </div>
 		                                </div>

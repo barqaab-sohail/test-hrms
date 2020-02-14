@@ -85,7 +85,7 @@
                     <ul aria-expanded="false" class="collapse">  
                         <li><a href="{{route('uploadCv.create')}}">Add CV</a></li>
                         <li><a href="{{route('uploadCv.index')}}">List of CVs</a></li>
-                        <li><a href="{{route('addExpertize.index')}}">Add Expertize</a></li>    
+                        <li><a href="{{route('services.index')}}">Services</a></li>    
                     </ul>
                 </li>
                 @endrole

@@ -424,20 +424,6 @@
 		                               
 		                            </div>
 
-		                   		<div id="test">
-    <div id="tooltest0" class="tooltest0">
-        <label>Tool Name :</label>
-        <select class="toollist" name="FSR_tool_id[]" id="FSR_tool_id0" style="width: 350px" />
-        <option></option>
-        <option value="1">bla 1</option>
-        </select>
-    </div>
-    <div id="tool-placeholder"></div>
-    <div>
-        <input type="button" value="Add another" />
-    </div>
-</div>
-
 		              <!-- row-10 -->
 		                         <hr>
 		                        <div class="form-actions">
@@ -473,36 +459,31 @@ $.validate();
 	$(document).ready(function(){
 	
 	
-		$('select').select2({
-	 // at least 20 results must be displayed
-	    width: "100%",
-	   
-		});
-	 // //Make sure that the event fires on input change
-		// $("#cnic").on('input', function(ev){
+	 //Make sure that the event fires on input change
+		$("#cnic").on('input', function(ev){
 			
-		// 	//Prevent default
-		// 	ev.preventDefault();
+			//Prevent default
+			ev.preventDefault();
 			
-		// 	//Remove hyphens
-		// 	let input = ev.target.value.split("-").join("");
+			//Remove hyphens
+			let input = ev.target.value.split("-").join("");
 			
-		// 	//Make a new string with the hyphens
-		// 	// Note that we make it into an array, and then join it at the end
-		// 	// This is so that we can use .map() 
-		// 	input = input.split('').map(function(cur, index){
+			//Make a new string with the hyphens
+			// Note that we make it into an array, and then join it at the end
+			// This is so that we can use .map() 
+			input = input.split('').map(function(cur, index){
 				
-		// 		//If the size of input is 6 or 8, insert dash before it
-		// 		//else, just insert input
-		// 		if(index == 5 || index == 12)
-		// 			return "-" + cur;
-		// 		else
-		// 			return cur;
-		// 	}).join('');
+				//If the size of input is 6 or 8, insert dash before it
+				//else, just insert input
+				if(index == 5 || index == 12)
+					return "-" + cur;
+				else
+					return cur;
+			}).join('');
 			
-		// 	//Return the new string
-		// 	$(this).val(input);
-		// });
+			//Return the new string
+			$(this).val(input);
+		});
 	//Dynamic add education
 		
 		// Add new element
@@ -519,12 +500,12 @@ $.validate();
 		  // Check total number elements
 		  if(total_element < max ){
 		   //Clone education div and copy 
-		   //$('.education').find('select').select2('destroy');
+		  
 		   	var clone = $("#edu_1").clone();
 		  	clone.prop('id','edu_'+nextindex).find('input:text').val('');
 		   	clone.find("#add").html('X').prop("class", "btn btn-danger remove_edu");
 		   	clone.insertAfter("div.education:last");
-		   	$('#edu_'+nextindex).find('select').select2('destroy');
+		   
 		   	
 
 		  }
@@ -535,120 +516,120 @@ $.validate();
 		 $(this).closest(".education").remove();
  		}); 
 
-		// //Dynamic add specialization
-		//  // Add new element
-		//  $("#add_spe").click(function(){
+		//Dynamic add specialization
+		 // Add new element
+		 $("#add_spe").click(function(){
 		 	
-		//   // Finding total number of elements added
-		//   var total_element = $(".specialization").length;
+		  // Finding total number of elements added
+		  var total_element = $(".specialization").length;
 		 	
-		//   // last <div> with element class id
-		//   var lastid = $(".specialization:last").attr("id");
-		//   var split_id = lastid.split("_");
-		//   var nextindex = Number(split_id[1]) + 1;
-		//   var max = 5;
-		//   // Check total number elements
-		//   if(total_element < max ){
-		//    //Clone specialization div and copy
-		//    	var $clone = $("#spe_1").clone();
-		//   	$clone.prop('id','spe_'+nextindex).find('input:text').val('');
-		//    	$clone.find("#add_spe").html('X').prop("class", "btn btn-danger remove_spe");
-		//    	$clone.insertAfter("div.specialization:last");
-		//   }
+		  // last <div> with element class id
+		  var lastid = $(".specialization:last").attr("id");
+		  var split_id = lastid.split("_");
+		  var nextindex = Number(split_id[1]) + 1;
+		  var max = 5;
+		  // Check total number elements
+		  if(total_element < max ){
+		   //Clone specialization div and copy
+		   	var $clone = $("#spe_1").clone();
+		  	$clone.prop('id','spe_'+nextindex).find('input:text').val('');
+		   	$clone.find("#add_spe").html('X').prop("class", "btn btn-danger remove_spe");
+		   	$clone.insertAfter("div.specialization:last");
+		  }
 		 
-		//  });
-		//  // Remove element
-		//  $(document).on("click", '.remove_spe', function(){
-		//  $(this).closest(".specialization").remove();
+		 });
+		 // Remove element
+		 $(document).on("click", '.remove_spe', function(){
+		 $(this).closest(".specialization").remove();
 		  
- 	// 	}); 
+ 		}); 
 
 
-		//  //Dynamic add Skill
-		//  // Add new element
-		//  $("#add_skill").click(function(){
+		 //Dynamic add Skill
+		 // Add new element
+		 $("#add_skill").click(function(){
 		 	
-		//   // Finding total number of elements added
-		//   var total_element = $(".skill").length;
+		  // Finding total number of elements added
+		  var total_element = $(".skill").length;
 		 	
-		//   // last <div> with element class id
-		//   var lastid = $(".skill:last").attr("id");
-		//   var split_id = lastid.split("_");
-		//   var nextindex = Number(split_id[1]) + 1;
-		//   var max = 5;
-		//   // Check total number elements
-		//   if(total_element < max ){
-		//    //Clone specialization div and copy
-		//    	var $clone = $("#skill_1").clone();
-		//   	$clone.prop('id','skill_'+nextindex).find('input:text').val('');
-		//    	$clone.find("#add_skill").html('X').prop("class", "btn btn-danger remove_skill");
-		//    	$clone.insertAfter("div.skill:last");
-		//   }
+		  // last <div> with element class id
+		  var lastid = $(".skill:last").attr("id");
+		  var split_id = lastid.split("_");
+		  var nextindex = Number(split_id[1]) + 1;
+		  var max = 5;
+		  // Check total number elements
+		  if(total_element < max ){
+		   //Clone specialization div and copy
+		   	var $clone = $("#skill_1").clone();
+		  	$clone.prop('id','skill_'+nextindex).find('input:text').val('');
+		   	$clone.find("#add_skill").html('X').prop("class", "btn btn-danger remove_skill");
+		   	$clone.insertAfter("div.skill:last");
+		  }
 		 
-		//  });
-		//  // Remove element
-		//  $(document).on("click", '.remove_skill', function(){
-		//  $(this).closest(".skill").remove();
+		 });
+		 // Remove element
+		 $(document).on("click", '.remove_skill', function(){
+		 $(this).closest(".skill").remove();
 		  
- 	// 	}); 
+ 		}); 
 
-		//  //Dynamic add membership
-		//  // Add new element
-		//  $("#add_mem").click(function(){
+		 //Dynamic add membership
+		 // Add new element
+		 $("#add_mem").click(function(){
 		 	
-		//   // Finding total number of elements added
-		//   var total_element = $(".membership").length;
+		  // Finding total number of elements added
+		  var total_element = $(".membership").length;
 		 	
-		//   // last <div> with element class id
-		//   var lastid = $(".membership:last").attr("id");
-		//   var split_id = lastid.split("_");
-		//   var nextindex = Number(split_id[1]) + 1;
-		//   var max = 5;
-		//   // Check total number elements
-		//   if(total_element < max ){
-		//    //Clone specialization div and copy
-		//    	var $clone = $("#membership_1").clone();
-		//   	$clone.prop('id','membership_'+nextindex).find('input:text').val('');
-		//    	$clone.find("#add_mem").html('X').prop("class", "btn btn-danger remove_membership");
-		//    	$clone.find('.remove_div').remove();
-		//    	$clone.insertAfter("div.membership:last");
-		//   }
+		  // last <div> with element class id
+		  var lastid = $(".membership:last").attr("id");
+		  var split_id = lastid.split("_");
+		  var nextindex = Number(split_id[1]) + 1;
+		  var max = 5;
+		  // Check total number elements
+		  if(total_element < max ){
+		   //Clone specialization div and copy
+		   	var $clone = $("#membership_1").clone();
+		  	$clone.prop('id','membership_'+nextindex).find('input:text').val('');
+		   	$clone.find("#add_mem").html('X').prop("class", "btn btn-danger remove_membership");
+		   	$clone.find('.remove_div').remove();
+		   	$clone.insertAfter("div.membership:last");
+		  }
 		 
-		//  });
-		//  // Remove element
-		//  $(document).on("click", '.remove_membership', function(){
-		//  $(this).closest(".membership").remove();
+		 });
+		 // Remove element
+		 $(document).on("click", '.remove_membership', function(){
+		 $(this).closest(".membership").remove();
 		  
- 	// 	}); 
+ 		}); 
 
-		//   //Dynamic add phone
-		//  // Add new element
-		//  $("#add_phone").click(function(){
+		  //Dynamic add phone
+		 // Add new element
+		 $("#add_phone").click(function(){
 		 	
-		//   // Finding total number of elements added
-		//   var total_element = $(".phone").length;
+		  // Finding total number of elements added
+		  var total_element = $(".phone").length;
 		 	
-		//   // last <div> with element class id
-		//   var lastid = $(".phone:last").attr("id");
-		//   var split_id = lastid.split("_");
-		//   var nextindex = Number(split_id[1]) + 1;
-		//   var max = 5;
-		//   // Check total number elements
-		//   if(total_element < max ){
-		//    //Clone specialization div and copy
-		//    	var $clone = $("#phone_1").clone();
-		//   	$clone.prop('id','phone'+nextindex).find('input:text').val('');
-		//    	$clone.find("#add_phone").html('X').prop("class", "btn btn-danger remove_phone");
-		//    	$clone.find('.remove_phone_div').remove();
-		//    	$clone.insertAfter("div.phone:last");
-		//   }
+		  // last <div> with element class id
+		  var lastid = $(".phone:last").attr("id");
+		  var split_id = lastid.split("_");
+		  var nextindex = Number(split_id[1]) + 1;
+		  var max = 5;
+		  // Check total number elements
+		  if(total_element < max ){
+		   //Clone specialization div and copy
+		   	var $clone = $("#phone_1").clone();
+		  	$clone.prop('id','phone'+nextindex).find('input:text').val('');
+		   	$clone.find("#add_phone").html('X').prop("class", "btn btn-danger remove_phone");
+		   	$clone.find('.remove_phone_div').remove();
+		   	$clone.insertAfter("div.phone:last");
+		  }
 		 
-		//  });
-		//  // Remove element
-		//  $(document).on("click", '.remove_phone', function(){
-		//  $(this).closest(".phone").remove();
+		 });
+		 // Remove element
+		 $(document).on("click", '.remove_phone', function(){
+		 $(this).closest(".phone").remove();
 		  
- 	// 	}); 
+ 		}); 
 
 
 	});	

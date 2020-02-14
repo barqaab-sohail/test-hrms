@@ -24,7 +24,7 @@
 					<tbody>
 						@foreach($expertizes as $expertize)
 							<tr>
-								<td>{{$expertize->name}}</td>
+								<td>{{$expertize->specialization_name}}</td>
 							
 								<td>
 								 <a class="btn btn-info btn-sm" href="{{route('addExpertize.edit',['id'=>$expertize->id])}}" data-toggle="tooltip" data-original-title="Edit"> <i class="fas fa-pencil-alt text-white "></i></a>

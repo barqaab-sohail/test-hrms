@@ -284,4 +284,5 @@ Route::resource('adminInfo/permissionRole','Admin\PermissionRoleController');
 Route::post('adminInfo/deletePermission/{role_id?}/{permission_id?}','Admin\PermissionRoleController@delete')->name('permissionRole.delete');
 
 Route::resource('/CV/uploadCv','Cv\UploadCvController');
+Route::resource('/CV/services','Cv\ServicesController');
 Route::resource('/CV/addExpertize','Cv\addExpertizeController');

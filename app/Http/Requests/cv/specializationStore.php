@@ -24,7 +24,7 @@ class specializationStore extends FormRequest
     public function rules()
     {
         return [
-        'name' => 'required|unique:cv_specializations,name,'
+        'specialization_name' => 'required|unique:cv_specializations,specialization_name,'
         ];
     }
 
@@ -32,7 +32,7 @@ class specializationStore extends FormRequest
     {
         
         return [
-            'name.unique' => 'This Specialization is already exist'
+            'specialization_name.unique' => 'This Specialization is already exist'
             
         ];
     }
