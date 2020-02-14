@@ -14,7 +14,7 @@ class addExpertizeController extends Controller
 
     	$expertizes = cv_specialization::all();
     	//dd($expertizes);
-    	return view('cv.addExpertize.index',compact('expertizes'));
+    	return view('cv.services.addSpecialization.index',compact('expertizes'));
     }
 
     public function store (specializationStore $request){
@@ -29,7 +29,7 @@ class addExpertizeController extends Controller
         
        $expertizes = cv_specialization:: all();
         $data = cv_specialization::find($id);
-        return view ('cv.addExpertize.edit',compact('data','expertizes'));
+        return view ('cv.services.addSpecialization.edit',compact('data','expertizes'));
     }
     
     public function update(specializationStore $request, $id)

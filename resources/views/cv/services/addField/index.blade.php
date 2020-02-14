@@ -22,7 +22,7 @@
 		        	<div class="col-lg-10">
 						
 		                <div style="margin-top:10px; margin-right: 10px;">
-		                    		                    
+		                    <button type="button" onclick="window.location.href='{{route('services.index')}}'" class="btn btn-info float-right">Back to List</button>
 		                </div>
 		                <div class="card-body">
 
@@ -66,7 +66,7 @@
 
 @if($expertizes->count()!=0)
 
-@include('cv.addExpertize.list')
+@include('cv.services.addSpecialization.list')
 	
 @endif
 

@@ -286,3 +286,4 @@ Route::post('adminInfo/deletePermission/{role_id?}/{permission_id?}','Admin\Perm
 Route::resource('/CV/uploadCv','Cv\UploadCvController');
 Route::resource('/CV/services','Cv\ServicesController');
 Route::resource('/CV/addExpertize','Cv\addExpertizeController');
+Route::resource('/CV/addField','Cv\addFieldController');

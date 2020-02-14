@@ -17,37 +17,6 @@
 <script src="{{asset('Massets/js/js/js.min.js')}}"></script>
 <script src="{{asset('Massets/select2/select2.full.min.js')}}"></script>
 
-<script>
-	$(document).ready(function(){
-	
-	
-
-$('input[type=button]').click(function () {
-
-    $('.toollist').select2("destroy");
-    var noOfDivs = $('.tooltest0').length;
-    var clonedDiv = $('.tooltest0').first().clone(true);
-    clonedDiv.insertBefore("#tool-placeholder");
-    clonedDiv.attr('id', 'tooltest' + noOfDivs);
-    
-
-    $('.toollist').select2({ //apply select2 to my element
-        placeholder: "Search your Tool",
-        allowClear: true
-    });
-
-
-
-});
-
-
-
-
-
-	});	
-
-	
-</script>
 
         
 
