@@ -49,7 +49,7 @@
 		                                        <label class="control-label text-right col-md-6">Designation Level</label>
 		                                        <div class="col-md-6">
 		                                            <select  name="level"  class="form-control selectTwo" >
-                                                       <option value=""></option>
+                                                    <option value=""></option>
 													@for ($i = 1; $i < 15; $i++)
     												<option value="{{$i}}"
 													@if($i == $data->level) selected="selected" @endif

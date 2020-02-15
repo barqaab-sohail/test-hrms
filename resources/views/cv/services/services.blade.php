@@ -31,12 +31,12 @@
 							<td><a href="{{route('addExpertize.index')}}">Add Specialization</a></td>
 						</tr>
 						<tr>
-							<td><a href="">Add Field of Specialization</a></td>
+							<td><a href="{{route('addField.index')}}">Add Field of Specialization</a></td>
 						</tr>
 						<tr>
-							<td><a href="">Add Name of Degree</a></td>
+							<td><a href="{{route('addDegree.index')}}">Add Name of Degree</a></td>
 						</tr><tr>
-							<td><a href="">Add Membership</a></td>
+							<td><a href="{{route('addMembership.index')}}">Add Membership</a></td>
 						</tr>
 						@role('Super Admin')
 						<tr>

@@ -13,7 +13,7 @@
 					<thead>
 					
 					<tr>
-						<th>Field Name</th>
+						<th>Membership Organization Name</th>
 						
 						<th>Edit</th>
 						<th>Delete</th> 
@@ -22,18 +22,18 @@
 					</tr>
 					</thead>
 					<tbody>
-						@foreach($fields as $field)
+						@foreach($memberships as $membership)
 							<tr>
-								<td>{{$field->field_name}}</td>
+								<td>{{$membership->membership_name}}</td>
 							
 								<td>
-								 <a class="btn btn-info btn-sm" href="{{route('addField.edit',['id'=>$field->id])}}" data-toggle="tooltip" data-original-title="Edit"> <i class="fas fa-pencil-alt text-white "></i></a>
+								 <a class="btn btn-info btn-sm" href="{{route('addMembership.edit',['id'=>$membership->id])}}" data-toggle="tooltip" data-original-title="Edit"> <i class="fas fa-pencil-alt text-white "></i></a>
 								 </td>
 								  
  
 
 								 <td>
-								 <form action="{{route('addField.destroy',['id'=>$field->id])}}" method="POST">
+								 <form action="{{route('addMembership.destroy',['id'=>$membership->id])}}" method="POST">
 								 @method('DELETE')
 								 @csrf
 								 <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Are you Sure to Delete')" href= data-toggle="tooltip" data-original-title="Delete"> <i class="fas fa-trash-alt"></i></button>

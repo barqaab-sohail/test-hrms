@@ -26,18 +26,18 @@
 		                </div>
 		                <div class="card-body">
 
-		                    <form action="{{route('addExpertize.store')}}" method="post" class="form-horizontal form-prevent-multiple-submits" enctype="multipart/form-data">
+		                    <form action="{{route('addMembership.store')}}" method="post" class="form-horizontal form-prevent-multiple-submits" enctype="multipart/form-data">
 		                        {{csrf_field()}}
 		                        <div class="form-body">
 		                            
-		                            <h3 class="box-title">Add Specialization</h3>
+		                            <h3 class="box-title">Add Membership</h3>
 		                            <hr class="m-t-0 m-b-40">
 		                            <div class="row">
 		                                <div class="col-md-9">
 		                                    <div class="form-group row">
 		                                        <label class="control-label text-right col-md-3">Name</label>
 		                                        <div class="col-md-9">
-		                                            <input type="text"  name="specialization_name" value="" class="form-control" placeholder="Enter Name of Speciality" required>
+		                                            <input type="text"  name="membership_name" value="{{old('membership_name')}}" class="form-control" placeholder="Enter Name of Membership Organization" required>
 		                                        </div>
 		                                    </div>
 		                                </div>
@@ -64,9 +64,9 @@
 		                       
 		                    </form>
 
-@if($expertizes->count()!=0)
+@if($memberships->count()!=0)
 
-@include('cv.services.addSpecialization.list')
+@include('cv.services.addMembership.list')
 	
 @endif
 
