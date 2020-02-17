@@ -14,6 +14,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta name="user_id" content="{{Auth::check() ? Auth::user()->id :''}}">
 
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/chosen/1.8.7/chosen.min.css" rel="stylesheet" />
     
     <!-- Bootstrap Core CSS -->
     <link href="{{asset('Massets/js/js-ui/jquery-ui.min.css') }}" rel="stylesheet">

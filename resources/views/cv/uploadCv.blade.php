@@ -169,7 +169,7 @@
 		                                    <div class="form-group row">
 		                                        <div class="col-md-12">
 		                                       		<label class="control-label text-right">Name of Degree<span class="text_requried">*</span></label><br>
-		                                       			<select  name="degree_name[]"  class="form-control xxx select2">
+		                                       			<select  name="degree_name[]"  class="form-control">
                                                         <option value=""></option>
                                                         @foreach($degrees as $degree)
 														<option value="{{$degree->id}}" {{(old("degree_name")==$degree->id? "selected" : "")}}>{{$degree->degree_name}}</option>
@@ -196,7 +196,7 @@
 		                                        <div class="col-md-8">
 		                                        	<label class="control-label text-right">Passing Year<span class="text_requried">*</span></label>
 		                                        
-		                                            <select  name="passing_year[]"  class="form-control xxx select2" data-validation="required">
+		                                            <select  name="passing_year[]"  class="form-control" data-validation="required">
 
 													<option value=""></option>
 													@for ($i = 1958; $i <= now()->year; $i++)
@@ -352,7 +352,7 @@
 		                                        <div class="col-md-12 ">
 		                                        	<label class="control-label">BARQAAB Employee<span class="text_requried">*</span></label>
 
-		                                        	<select  name="barqaab_employment" class="form-control selectTwo" >
+		                                        	<select  name="barqaab_employment" class="form-control" >
 
                                                         <option value=""></option>
                                                         <option value="1">Yes</option>
@@ -458,7 +458,7 @@ $.validate();
 <script>
 	$(document).ready(function(){
 	
-	
+	$('select').chosen();
 	 //Make sure that the event fires on input change
 		$("#cnic").on('input', function(ev){
 			
@@ -500,11 +500,12 @@ $.validate();
 		  // Check total number elements
 		  if(total_element < max ){
 		   //Clone education div and copy 
-		  
+		  	$('select').chosen("destroy");
 		   	var clone = $("#edu_1").clone();
 		  	clone.prop('id','edu_'+nextindex).find('input:text').val('');
 		   	clone.find("#add").html('X').prop("class", "btn btn-danger remove_edu");
 		   	clone.insertAfter("div.education:last");
+		   	$('select').chosen();
 		   
 		   	
 
@@ -531,10 +532,12 @@ $.validate();
 		  // Check total number elements
 		  if(total_element < max ){
 		   //Clone specialization div and copy
+		   $('select').chosen("destroy");
 		   	var $clone = $("#spe_1").clone();
 		  	$clone.prop('id','spe_'+nextindex).find('input:text').val('');
 		   	$clone.find("#add_spe").html('X').prop("class", "btn btn-danger remove_spe");
 		   	$clone.insertAfter("div.specialization:last");
+		   	$('select').chosen("destroy");
 		  }
 		 
 		 });

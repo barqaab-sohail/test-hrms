@@ -77,7 +77,8 @@
  <!-- Duplicate rows Merge -->
 <script src="{{asset('Massets/js/rowsmerge/jquery.rowspanizer.min.js') }}"></script>
  
- <!-- Floating Placeholder -->
+ <!-- chosen plugin -->
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/chosen/1.8.7/chosen.jquery.js"></script>
 
 
 
