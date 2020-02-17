@@ -150,7 +150,7 @@
 		                                	<div class="form-group row">
 		                                        <div class="col-md-8	">
 		                                        	<label class="control-label text-right">Mobile Number<span class="text_requried">*</span></label>
-		                                            <input type="text" name="phone[]" data-validation="required" class="form-control" >
+		                                            <input type="text" name="phone[]" value="{{old('phone.0')}}" data-validation="required" class="form-control" >
 
 		                                        </div>
 												<div class="col-md-4">
@@ -174,7 +174,7 @@
 		                                       			<select  name="degree_name[]"  class="form-control">
                                                        <option></option>
                                                         @foreach($degrees as $degree)
-														<option value="{{$degree->id}}" {{(old("degree_name")==$degree->id? "selected" : "")}}>{{$degree->degree_name}}</option>
+														<option value="{{$degree->id}}" {{(old("degree_name.0")==$degree->id? "selected" : "")}}>{{$degree->degree_name}}</option>
                                                         @endforeach
                                                       
                                                     </select>
@@ -187,7 +187,7 @@
 		                                    <div class="form-group row">
 		                                        <div class="col-md-12 ">
 		                                        	<label class="control-label">Name of Institute<span class="text_requried">*</span></label>
-		                                            <input type="text" name="institute[]" data-validation="required" class="form-control" placeholder="Enter Institute Name" >
+		                                            <input type="text" name="institute[]" value="{{old('.0')}}" data-validation="required" class="form-control" placeholder="Enter Institute Name" >
 
 		                                        </div>
 		                                    </div>
@@ -198,11 +198,11 @@
 		                                        <div class="col-md-8">
 		                                        	<label class="control-label text-right">Passing Year<span class="text_requried">*</span></label>
 		                                        
-		                                            <select  name="passing_year[]"  class="form-control">
+		                                            <select  name="passing_year"  class="form-control">
 
 													<option value=""></option>
 													@for ($i = 1958; $i <= now()->year; $i++)
-    												<option value="{{$i}}">{{ $i }}</option>
+    												<option value="{{$i}}" {{(old("passing_year.0")==$i? "selected" : "")}}>{{ $i }}</option>
 													@endfor
 
 													</select>
@@ -231,7 +231,7 @@
                                                         
                                                         @foreach($specializations as $specialization)
 														
-														<option value="{{$specialization->id}}" {{(old("speciality_name")==$specialization->id? "selected" : "")}}>{{$specialization->specialization_name}}</option>
+														<option value="{{$specialization->id}}" {{(old("speciality_name.0")==$specialization->id? "selected" : "")}}>{{$specialization->specialization_name}}</option>
 
                                                         @endforeach
                                                       
@@ -253,7 +253,7 @@
                                                         
                                                         @foreach($fields as $field)
 														
-														<option value="{{$field->id}}" {{(old("field_name")==$field->id? "selected" : "")}}>{{$field->field_name}}</option>
+														<option value="{{$field->id}}" {{(old("field_name.0")==$field->id? "selected" : "")}}>{{$field->field_name}}</option>
 
                                                         @endforeach
                                                       
@@ -269,11 +269,11 @@
 		                                        <div class="col-md-8">
 		                                        	<label class="control-label text-right">Years of Experience<span class="text_requried">*</span></label>
 		                                        
-		                                            <select  name="year[]"  class="form-control">
+		                                            <select  name="year"  class="form-control">
 
 													<option value=""></option>
 													@for ($i = 1; $i <= 50; $i++)
-    												<option value="{{$i}}">{{ $i }}</option>
+    												<option value="{{$i}}" {{(old("year.0")==$i? "selected" : "")}}>{{ $i }}</option>
 													@endfor
 
 													</select>
@@ -322,7 +322,7 @@
                                                         
                                                         @foreach($memberships as $membership)
 														
-														<option value="{{$membership->id}}" {{(old("membership_name")==$membership->id? "selected" : "")}}>{{$membership->membership_name}}</option>
+														<option value="{{$membership->id}}" {{(old("membership_name.0")==$membership->id? "selected" : "")}}>{{$membership->membership_name}}</option>
 
                                                         @endforeach
                                                       
@@ -330,7 +330,7 @@
 		                                        </div>
 		                                        <div class="col-md-4">
 		                                        	<label class="control-label text-right">Number</label>
-		                                            <input type="text" name="number[]" value="{{ old('number') }}" class="form-control" >
+		                                            <input type="text" name="number[]" value="{{ old('number.0') }}" class="form-control" >
 		                                             
                                             
 		                                        </div>
@@ -396,7 +396,7 @@
 		                                    <div class="form-group row">
 		                                        <div class="col-md-9">
 		                                        	<label class="control-label text-right">Other Skills<span class="text_requried">*</span></label><br>
-		                                       		<input type="text"  name='skill[]' class="form-control" >
+		                                       		<input type="text"  name='skill[]' value="{{old('skill.0')}}" class="form-control" >
 
 		                                        </div>
 		                                        <div class="col-md-3">
