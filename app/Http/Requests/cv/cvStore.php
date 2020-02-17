@@ -25,7 +25,26 @@ class cvStore extends FormRequest
     {
         return [
             
-            'full_name' => 'required'
+            'full_name' => 'required',
+            'cnic' => 'required',
+            'date_of_birth' => 'required',
+            'job_starting_date' => 'required',
+            'address' => 'required',
+            'city' => 'required',
+            'province' => 'required',
+            'country' => 'required',
+            'phone' => 'required',
+            'degree_name' => 'required',
+            'institute' => 'required',
+            'passing_year' => 'required',
+            'job_starting_date' => 'required',
+            'speciality_name' => 'required',
+            'field_name' => 'required',
+            'year' => 'required',
+            'barqaab_employement' => 'required',
+            'cv' => 'file|max:1000|mimes:doc,docx,pdf',
+
+
 
         ];
     }

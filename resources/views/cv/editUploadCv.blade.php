@@ -38,7 +38,7 @@
 		                                    <div class="form-group row">
 		                                        <div class="col-md-12">
 		                                       		<label class="control-label text-right">Full Name<span class="text_requried">*</span></label><br>
-		                                       		<input type="text"  name="full_name" value="{{old('full_name', $cvId->full_name)}}"  class="form-control" placeholder="Enter Full Name" >
+		                                       		<input type="text"  name="full_name" data-validation="required" value="{{old('full_name', $cvId->full_name)}}"  class="form-control" placeholder="Enter Full Name" >
 		                                        </div>
 		                                    </div>
 		                                </div>
@@ -58,7 +58,7 @@
 		                                        <div class="col-md-12">
 		                                        	<label class="control-label text-right">CNIC<span class="text_requried">*</span></label>
 		                                        
-		                                            <input type="text" name="cnic" id="cnic" pattern="[0-9.-]{15}" title= "13 digit Number without dash" value="{{old('cnic', $cvId->cnic)}}"  class="form-control" onkeyup='addHyphen(this)'  placeholder="Enter CNIC without dash" >
+		                                            <input type="text" name="cnic" id="cnic" pattern="[0-9.-]{15}" title= "13 digit Number without dash" value="{{old('cnic', $cvId->cnic)}}"  data-validation="required" class="form-control" onkeyup='addHyphen(this)'  placeholder="Enter CNIC without dash" >
 		                                        </div>
 		                                    </div>
 		                                </div>
@@ -68,7 +68,7 @@
 		                                        <div class="col-md-12 date_input">
 		                                        	<label class="control-label text-right">Date of Birth<span class="text_requried">*</span></label>
 		                                        
-		                                            <input type="text" id="date_of_birth" name="date_of_birth" value="{{old('date_of_birth', $cvId->date_of_birth)}}"  class="form-control " readonly>
+		                                            <input type="text" id="date_of_birth" name="date_of_birth" data-validation="required" value="{{old('date_of_birth', $cvId->date_of_birth)}}"  class="form-control " readonly>
 													 
 		                                            <br>
 		                                           <i class="fas fa-trash-alt text_requried"></i> 
@@ -85,7 +85,7 @@
 		                                        <div class="col-md-12 date_input">
 		                                        	<label class="control-label text-right">Job Starting Date<span class="text_requried">*</span></label>
 		                                        
-		                                            <input type="text" id="job_starting_date" name="job_starting_date" value="{{old('job_starting_date', $cvId->job_starting_date)}}" class="form-control " placeholder="Enter Date of Birth" readonly>
+		                                            <input type="text" id="job_starting_date" name="job_starting_date" value="{{old('job_starting_date', $cvId->job_starting_date)}}" data-validation="required" class="form-control " placeholder="Enter Date of Birth" readonly>
 													 
 		                                            <br>
 		                                           <i class="fas fa-trash-alt text_requried"></i> 
@@ -98,7 +98,7 @@
 		                                    <div class="form-group row">
 		                                        <div class="col-md-12">
 		                                       		<label class="control-label ">Address</label><br>
-		                                       		<input type="text"  name="address" value="{{old('address', $cvId->cv_contact->address)}}"   class="form-control" placeholder="Enter Address" >
+		                                       		<input type="text"  name="address" data-validation="required" value="{{old('address', $cvId->cv_contact->address)}}"   class="form-control" placeholder="Enter Address" >
 		                                        </div>
 		                                    </div>
 		                                </div>
@@ -108,7 +108,7 @@
 		                                    <div class="form-group row">
 		                                        <div class="col-md-12">
 		                                        	<label class="control-label text-right">City<span class="text_requried">*</span></label>
-		                                       		<input type="text"  name="city" value="{{old('city', $cvId->cv_contact->city)}}"  class="form-control">
+		                                       		<input type="text"  name="city" data-validation="required" value="{{old('city', $cvId->cv_contact->city)}}"  class="form-control">
 		                                        </div>
 		                                    </div>
 		                                </div>
@@ -121,7 +121,7 @@
 		                                    <div class="form-group row">
 		                                        <div class="col-md-12">
 		                                        	<label class="control-label text-right">Province<span class="text_requried">*</span></label>
-		                                       		<input type="text"  name="province" value="{{old('province', $cvId->cv_contact->province)}}"  class="form-control">
+		                                       		<input type="text"  name="province" data-validation="required" value="{{old('province', $cvId->cv_contact->province)}}"  class="form-control">
 		                                        </div>
 		                                    </div>
 		                                </div>
@@ -130,7 +130,7 @@
 		                                    <div class="form-group row">
 		                                        <div class="col-md-12">
 		                                       		<label class="control-label text-right">Country<span class="text_requried">*</span></label><br>
-		                                       		<input type="text"  name="country" value="{{old('country', $cvId->cv_contact->country)}}" class="form-control" >
+		                                       		<input type="text"  name="country" data-validation="required" value="{{old('country', $cvId->cv_contact->country)}}" class="form-control" >
 		                                        </div>
 		                                    </div>
 		                                </div>
@@ -180,7 +180,7 @@
 		                                    <div class="form-group row">
 		                                        <div class="col-md-12">
 		                                       		<label class="control-label text-right">Name of Degree<span class="text_requried">*</span></label><br>
-		                                       			<select  name="degree_name[]"  id="degree_name" class="form-control">
+		                                       			<select  name="degree_name[]" id="degree_name" class="form-control">
                                                         <option value=""></option>
                                                         @foreach($degrees as $degree)
 														<option value="{{$degree->id}}" @if($degree->id == $education->id) selected="selected" @endif>{{$degree->degree_name}}</option>
@@ -197,7 +197,7 @@
 		                                    <div class="form-group row">
 		                                        <div class="col-md-12 ">
 		                                        	<label class="control-label">Name of Institute<span class="text_requried">*</span></label>
-		                                            <input type="text" name="institute[]" id="institute" value="{{$education->pivot->institute}}"  class="form-control" placeholder="Enter Institute Name" >
+		                                            <input type="text" name="institute[]" data-validation="required" id="institute" value="{{$education->pivot->institute}}"  class="form-control" placeholder="Enter Institute Name" >
 
 		                                        </div>
 		                                    </div>
@@ -208,7 +208,7 @@
 		                                        <div class="col-md-8">
 		                                        	<label class="control-label text-right">Passing Year<span class="text_requried">*</span></label>
 		                                        
-		                                            <select  name="passing_year[]"  id="passing_year" class="form-control" data-validation="required">
+		                                            <select  name="passing_year[]" id="passing_year" class="form-control" data-validation="required">
 
 													<option value=""></option>
 													@for ($i = 1958; $i <= now()->year; $i++)
@@ -261,7 +261,7 @@
 		                                        <div class="col-md-12 ">
 		                                        	<label class="control-label">Field of Speciality<span class="text_requried">*</span></label>
 
-		                                        	<select  name="field_name[]" id=field_name class="form-control" >
+		                                        	<select  name="field_name[]" data-validation="required" id=field_name class="form-control" >
                                                         <option value=""></option>
                                                         
                                                         @foreach($fields as $field)
@@ -386,7 +386,7 @@
 		                                        <div class="col-md-12 ">
 		                                        	<label class="control-label">BARQAAB Employee<span class="text_requried">*</span></label>
 
-		                                        	<select  name="barqaab_employment" class="form-control selectTwo" >
+		                                        	<select  name="barqaab_employment" class="form-control" >
 
                                                         <option value=""></option>
                                                         <option value="1" @if($cvId->barqaab_employment == 1) selected="selected" @endif>Yes</option>
@@ -458,14 +458,12 @@
 		                                    <div class="form-group row">
 		                                        <div class="col-md-12">
 		                                       		<label class="control-label text-right">Attached CV<span class="text_requried">*</span></label><br>
-		                                       		<input type="file"  name="cv" value="{{ old('cv') }}"  class="form-control" >
+		                                       		<input type="file"  name="cv" value="{{ old('cv') }}"  data-validation="size" data-validation-max-size="1M" class="form-control" >
 		                                        </div>
 		                                    </div>
 		                                </div>
 		                               
 		                            </div>
-
-
 
 		              <!-- row-10 -->
 		                         <hr>
@@ -501,11 +499,9 @@ $.validate();
 <script>
 	$(document).ready(function(){
 	
-		// $('select').select2({
-	 //    minimumResultsForSearch: 20, // at least 20 results must be displayed
-	 //    width: "100%",
-	 //    theme: "classic"
-		// });
+	$('select').chosen();
+
+
 	 //Make sure that the event fires on input change
 		$("#cnic").on('input', function(ev){
 			
@@ -580,11 +576,12 @@ $.validate();
 		  // Check total number elements
 		  if(total_element < max ){
 		   //Clone education div and copy
-		   
+		   $('.education').find('select').chosen('destroy');
 		   	var clone = $(".education:last").clone();
 		  	clone.prop('id','edu_'+nextindex).find('#degree_name, #institute, #passing_year').val('');
 		   	clone.find("#add").html('X').prop("class", "btn btn-danger remove_edu");
 		   	clone.insertAfter("div.education:last");
+		   	$('.education').find('select').chosen();
 
 		  }
 		 
@@ -609,10 +606,12 @@ $.validate();
 		  // Check total number elements
 		  if(total_element < max ){
 		   //Clone specialization div and copy
+		   $('.specialization').find('select').chosen('destroy');
 		   	var $clone = $("#spe_1").clone();
 		  	$clone.prop('id','spe_'+nextindex).find('#speciality_name, #field_name, #field_year').val('');
 		   	$clone.find("#add_spe").html('X').prop("class", "btn btn-danger remove_spe");
 		   	$clone.insertAfter("div.specialization:last");
+		   	$('.specialization').find('select').chosen();
 		  }
 		 
 		 });
@@ -666,11 +665,13 @@ $.validate();
 		  // Check total number elements
 		  if(total_element < max ){
 		   //Clone specialization div and copy
+		   $('.membership').find('select').chosen('destroy');
 		   	var $clone = $("#membership_1").clone();
 		  	$clone.prop('id','membership_'+nextindex).find('input:text').val('');
 		   	$clone.find("#add_mem").html('X').prop("class", "btn btn-danger remove_membership");
 		   	$clone.find('.remove_div').remove();
 		   	$clone.insertAfter("div.membership:last");
+		   	$('.membership').find('select').chosen();
 		  }
 		 
 		 });

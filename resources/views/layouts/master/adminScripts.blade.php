@@ -77,12 +77,10 @@
  <!-- Duplicate rows Merge -->
 <script src="{{asset('Massets/js/rowsmerge/jquery.rowspanizer.min.js') }}"></script>
  
+
  <!-- chosen plugin -->
  <script src="https://cdnjs.cloudflare.com/ajax/libs/chosen/1.8.7/chosen.jquery.js"></script>
 
-
-
- 
 
 
 
@@ -97,20 +95,27 @@
 <script>
 //$.validate();
 
-// Function Prevent Explorer Back Button 
-function preventBack(){
-    window.history.forward();
-}
-setTimeout("preventBack()",0);
+// // Function Prevent Explorer Back Button 
+// function preventBack(){
+//     window.history.forward();
+// }
+// setTimeout("preventBack()",0);
 
-window.onunload = function(){null};
-//end function
+// window.onunload = function(){null};
+// //end function
 
+//function to prevent double click on submit button
 (function(){
     $('.form-prevent-multiple-submits').on('submit', function(){
 
         $('.btn-prevent-multiple-submits').attr('disabled','ture');
         $('.spinner').show();
+
+        //submit enalbe after 5 second
+        setTimeout(function(){
+            $('.btn-prevent-multiple-submits').removeAttr('disabled');
+            }, 5000);
+
     })
 
 })();
@@ -203,13 +208,12 @@ window.onunload = function(){null};
 
                 // DatePicker
                  
- 
-
                     $(".date_input input").datepicker({
                     dateFormat: 'DD, d-MM-yy',
                     yearRange: '1940:'+ (new Date().getFullYear()+15),
                     changeMonth: true,
-                    changeYear: true
+                    changeYear: true,
+
                     });
                 
                  
