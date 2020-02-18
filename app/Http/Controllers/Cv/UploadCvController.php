@@ -86,7 +86,7 @@ class UploadCvController extends Controller
 		//add membership
 			for ($i=0;$i<count($request->input('membership_name'));$i++){
 			$membershipId = $request->input("membership_name.$i");
-			$numberId = $request->input("number.$i");
+			$numberId = $request->input("membership_number.$i");
 			$cv_id->cv_membership()->attach($membershipId, ['membership_number'=>$numberId]);			
 			}
 
@@ -209,7 +209,7 @@ class UploadCvController extends Controller
 			$cv_id->cv_membership()->detach();	
 			for ($i=0;$i<count($request->input('membership_name'));$i++){
 			$membershipId = $request->input("membership_name.$i");
-			$numberId = $request->input("number.$i");
+			$numberId = $request->input("membership_number.$i");
 			$cv_id->cv_membership()->attach($membershipId, ['membership_number'=>$numberId]);			
 			}
 

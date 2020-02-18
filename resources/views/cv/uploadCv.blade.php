@@ -297,7 +297,7 @@
 		                                <div class="col-md-3">
 		                                    <div class="form-group row">
 		                                        <div class="col-md-12 remove_div">
-		                                        	<label class="control-label text-right">Foreign Experience<span class="text_requried">*</span></label>
+		                                        	<label class="control-label text-right">Foreign Experience</label>
 		                                            <input type="text" id="foreign_experience" name="foreign_experience"  value="{{ old('foreign_experience') }}" class="form-control " >	 
 		                                        </div>
 		                                    </div>
@@ -306,7 +306,7 @@
 		                                <div class="col-md-3">
 		                                    <div class="form-group row">
 		                                        <div class="col-md-12 remove_div">
-		                                       		<label class="control-label text-right">Donor Experience<span class="text_requried">*</span></label><br>
+		                                       		<label class="control-label text-right">Donor Experience</label><br>
 		                                       		<input type="text"  name="donor_experience" value="{{ old('donor_experience') }}" class="form-control" >
 		                                        </div>
 		                                    </div>
@@ -315,7 +315,7 @@
 		                                <div class="col-md-6 membership" id="membership_1">
 		                                    <div class="form-group row">
 		                                        <div class="col-md-6">
-		                                        	<label class="control-label">Membership<span class="text_requried">*</span></label>
+		                                        	<label class="control-label">Membership</label>
 
 		                                        	<select  name="membership_name[]" id=membership_name class="form-control">
                                                         <option value=""></option>
@@ -330,7 +330,7 @@
 		                                        </div>
 		                                        <div class="col-md-4">
 		                                        	<label class="control-label text-right">Number</label>
-		                                            <input type="text" name="number[]" value="{{ old('number.0') }}" class="form-control" >
+		                                            <input type="text" name="membership_number[]" value="{{ old('membership_number.0') }}" class="form-control" >
 		                                             
                                             
 		                                        </div>
@@ -381,7 +381,7 @@
 		                                 <div class="col-md-6">
 		                                    <div class="form-group row">
 		                                        <div class="col-md-12">
-		                                       		<label class="control-label text-right">Comments<span class="text_requried">*</span></label><br>
+		                                       		<label class="control-label text-right">Comments</label><br>
 		                                       		<input type="text"  name="comments" value="{{ old('comments') }}" class="form-control" >
 		                                        </div>
 		                                    </div>
@@ -395,7 +395,7 @@
 										<div class="col-md-3 skill" id="skill_1">
 		                                    <div class="form-group row">
 		                                        <div class="col-md-9">
-		                                        	<label class="control-label text-right">Other Skills<span class="text_requried">*</span></label><br>
+		                                        	<label class="control-label text-right">Other Skills</label><br>
 		                                       		<input type="text"  name='skill[]' value="{{old('skill.0')}}" class="form-control" >
 
 		                                        </div>
