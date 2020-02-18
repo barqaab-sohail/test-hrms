@@ -187,7 +187,7 @@
 		                                    <div class="form-group row">
 		                                        <div class="col-md-12 ">
 		                                        	<label class="control-label">Name of Institute<span class="text_requried">*</span></label>
-		                                            <input type="text" name="institute[]" value="{{old('.0')}}" data-validation="required" class="form-control" placeholder="Enter Institute Name" >
+		                                            <input type="text" name="institute[]" value="{{old('institute.0')}}" data-validation="required" class="form-control" placeholder="Enter Institute Name" >
 
 		                                        </div>
 		                                    </div>
@@ -198,7 +198,7 @@
 		                                        <div class="col-md-8">
 		                                        	<label class="control-label text-right">Passing Year<span class="text_requried">*</span></label>
 		                                        
-		                                            <select  name="passing_year"  class="form-control">
+		                                            <select  name="passing_year[]"  class="form-control">
 
 													<option value=""></option>
 													@for ($i = 1958; $i <= now()->year; $i++)
@@ -269,7 +269,7 @@
 		                                        <div class="col-md-8">
 		                                        	<label class="control-label text-right">Years of Experience<span class="text_requried">*</span></label>
 		                                        
-		                                            <select  name="year"  class="form-control">
+		                                            <select  name="year[]"  class="form-control">
 
 													<option value=""></option>
 													@for ($i = 1; $i <= 50; $i++)
@@ -357,8 +357,8 @@
 		                                        	<select  name="barqaab_employment" data-validation="required" class="form-control" >
 
                                                         <option value=""></option>
-                                                        <option value="1">Yes</option>
-                                                        <option value="0">No</option>
+                                                        <option value="1" {{(old("barqaab_employment")==1? "selected":"")}}>Yes</option>
+                                                        <option value="0" {{(old("barqaab_employment")==0? "selected":"")}}>No</option>
                                                                                                               
                                                     </select>
 		                                        
@@ -471,8 +471,7 @@
 	// 	});
 	// });
 	
-	
-	
+		
 	
 		
 	 //Make sure that the event fires on input change
@@ -523,7 +522,6 @@
 		   	clone.insertAfter("div.education:last");
 			$('.education').find('select').chosen();
 		   
-		   	
 		  }
 		 
 		});
