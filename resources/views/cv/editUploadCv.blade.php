@@ -16,9 +16,11 @@
             <div class="card card-outline-info">
 			
 				<div class="row">
-				
+					<div class="col-lg-2">
+					@include('layouts.cv.cvVerticalButton')
+					</div>
       	
-		        	<div class="col-lg-12">
+		        	<div class="col-lg-10">
 						 
 
 
@@ -56,9 +58,9 @@
 		                                <div class="col-md-3">
 		                                    <div class="form-group row">
 		                                        <div class="col-md-12">
-		                                        	<label class="control-label text-right">CNIC<span class="text_requried">*</span></label>
+		                                        	<label class="control-label text-right">CNIC</label>
 		                                        
-		                                            <input type="text" name="cnic" id="cnic" pattern="[0-9.-]{15}" title= "13 digit Number without dash" value="{{old('cnic', $cvId->cnic)}}"  data-validation="required" class="form-control" onkeyup='addHyphen(this)'  placeholder="Enter CNIC without dash" >
+		                                            <input type="text" name="cnic" id="cnic" pattern="[0-9.-]{15}" title= "13 digit Number without dash" value="{{old('cnic', $cvId->cnic)}}" class="form-control" onkeyup='addHyphen(this)'  placeholder="Enter CNIC without dash" >
 		                                        </div>
 		                                    </div>
 		                                </div>
@@ -66,9 +68,9 @@
 		                                <div class="col-md-3">
 		                                    <div class="form-group row">
 		                                        <div class="col-md-12 date_input">
-		                                        	<label class="control-label text-right">Date of Birth<span class="text_requried">*</span></label>
+		                                        	<label class="control-label text-right">Date of Birth</label>
 		                                        
-		                                            <input type="text" id="date_of_birth" name="date_of_birth" data-validation="required" value="{{old('date_of_birth', $cvId->date_of_birth)}}"  class="form-control " readonly>
+		                                            <input type="text" id="date_of_birth" name="date_of_birth" value="{{old('date_of_birth', $cvId->date_of_birth)}}"  class="form-control " readonly>
 													 
 		                                            <br>
 		                                           <i class="fas fa-trash-alt text_requried"></i> 
@@ -98,7 +100,7 @@
 		                                    <div class="form-group row">
 		                                        <div class="col-md-12">
 		                                       		<label class="control-label ">Address</label><br>
-		                                       		<input type="text"  name="address" data-validation="required" value="{{old('address', $cvId->cv_contact->address)}}"   class="form-control" placeholder="Enter Address" >
+		                                       		<input type="text"  name="address" value="{{old('address', $cvId->cv_contact->address)}}"   class="form-control" placeholder="Enter Address" >
 		                                        </div>
 		                                    </div>
 		                                </div>
@@ -107,8 +109,8 @@
 		                                <div class="col-md-3">
 		                                    <div class="form-group row">
 		                                        <div class="col-md-12">
-		                                        	<label class="control-label text-right">City<span class="text_requried">*</span></label>
-		                                       		<input type="text"  name="city" data-validation="required" value="{{old('city', $cvId->cv_contact->city)}}"  class="form-control">
+		                                        	<label class="control-label text-right">City</label>
+		                                       		<input type="text"  name="city"  value="{{old('city', $cvId->cv_contact->city)}}"  class="form-control">
 		                                        </div>
 		                                    </div>
 		                                </div>
@@ -120,8 +122,8 @@
 		                                <div class="col-md-3">
 		                                    <div class="form-group row">
 		                                        <div class="col-md-12">
-		                                        	<label class="control-label text-right">Province<span class="text_requried">*</span></label>
-		                                       		<input type="text"  name="province" data-validation="required" value="{{old('province', $cvId->cv_contact->province)}}"  class="form-control">
+		                                        	<label class="control-label text-right">Province</label>
+		                                       		<input type="text"  name="province" value="{{old('province', $cvId->cv_contact->province)}}"  class="form-control">
 		                                        </div>
 		                                    </div>
 		                                </div>
@@ -152,7 +154,7 @@
 		                                	<div class="form-group row">
 		                                        <div class="col-md-8">
 		                                        	<label class="control-label text-right">Mobile Number<span class="text_requried">*</span></label>
-		                                            <input type="text" name="phone[]['{{$phone->id}}']" value="{{old('phone', $phone->phone)}}"  class="form-control" >
+		                                            <input type="text" name="phone[]['{{$phone->id}}']" data-validation="required" value="{{$phone->phone}}"  class="form-control" >
 
 		                                        </div>
 												<div class="col-md-4">
@@ -196,8 +198,8 @@
 		                                <div class="col-md-6">
 		                                    <div class="form-group row">
 		                                        <div class="col-md-12 ">
-		                                        	<label class="control-label">Name of Institute<span class="text_requried">*</span></label>
-		                                            <input type="text" name="institute[]" data-validation="required" id="institute" value="{{$education->pivot->institute}}"  class="form-control" placeholder="Enter Institute Name" >
+		                                        	<label class="control-label">Name of Institut</label>
+		                                            <input type="text" name="institute[]" id="institute" value="{{$education->pivot->institute}}"  class="form-control" placeholder="Enter Institute Name" >
 
 		                                        </div>
 		                                    </div>
@@ -206,7 +208,7 @@
 		                                <div class="col-md-3">
 		                                    <div class="form-group row">
 		                                        <div class="col-md-8">
-		                                        	<label class="control-label text-right">Passing Year<span class="text_requried">*</span></label>
+		                                        	<label class="control-label text-right">Passing Year</label>
 		                                        
 		                                            <select  name="passing_year[]" id="passing_year" class="form-control" data-validation="required">
 
@@ -282,7 +284,7 @@
 		                                <div class="col-md-3">
 		                                    <div class="form-group row">
 		                                        <div class="col-md-8">
-		                                        	<label class="control-label text-right">Years of Experience<span class="text_requried">*</span></label>
+		                                        	<label class="control-label text-right">Experience<span class="text_requried">*</span></label>
 		                                        
 		                                            <select  name="year[]" id="field_year" class="form-control">
 
@@ -319,7 +321,7 @@
 		                                <div class="col-md-3">
 		                                    <div class="form-group row">
 		                                        <div class="col-md-12">
-		                                        	<label class="control-label text-right">Foreign Experience<span class="text_requried">*</span></label>
+		                                        	<label class="control-label text-right">Foreign Experienc</span></label>
 		                                        
 		                                            <input type="text" id="foreign_experience" name="foreign_experience" value="{{ old('foreign_experience',$cvId->foreign_experience) }}" class="form-control " >
 													 
@@ -331,7 +333,7 @@
 		                                
 		                                    <div class="form-group row">
 		                                        <div class="col-md-12">
-		                                       		<label class="control-label text-right">Donor Experience<span class="text_requried">*</span></label><br>
+		                                       		<label class="control-label text-right">Donor Experience</label><br>
 		                                       		<input type="text"  name="donor_experience" value="{{ old('donor_experience', $cvId->donor_experience )}}" class="form-control" >
 		                                        </div>
 		                                    </div>
@@ -341,7 +343,7 @@
 		                             <div class="col-md-6 membership" id="membership_1">
 		                                    <div class="form-group row">
 		                                        <div class="col-md-6">
-		                                        	<label class="control-label">Membership<span class="text_requried">*</span></label>
+		                                        	<label class="control-label">Membership</label>
 													
 		                                        	<select  name="membership_name[]" id=membership_name class="form-control">
                                                         <option value=""></option>
@@ -356,7 +358,7 @@
 		                                        </div>
 		                                        <div class="col-md-4">
 		                                        	<label class="control-label text-right">Number</label>
-		                                            <input type="text" name="number[]" value="{{ old('membership_number', $member->pivot->membership_number) }}" class="form-control" >
+		                                            <input type="text" name="membership_number[]" value="{{ old('membership_number.0', $member->pivot->membership_number) }}" class="form-control" >
 		                                             
                                             
 		                                        </div>
@@ -413,7 +415,7 @@
 		                                 <div class="col-md-6">
 		                                    <div class="form-group row">
 		                                        <div class="col-md-12">
-		                                       		<label class="control-label text-right">Comments<span class="text_requried">*</span></label><br>
+		                                       		<label class="control-label text-right">Comments</label><br>
 		                                       		<input type="text"  name="comments" value="{{ old('comments', $cvId->comments) }}" class="form-control" >
 		                                        </div>
 		                                    </div>
@@ -430,8 +432,8 @@
 
 		                                    <div class="form-group row">
 		                                        <div class="col-md-9">
-		                                        	<label class="control-label text-right">Other Skills<span class="text_requried">*</span></label><br>
-		                                       		<input type="text"  name="skill_name[]['{{$skill->id}}']" value="{{old('skill_name', $skill->skill_name)}}" class="form-control" >
+		                                        	<label class="control-label text-right">Other Skills</label><br>
+		                                       		<input type="text"  name="skill_name[]['{{$skill->id}}']" value="{{$skill->skill_name}}" class="form-control" >
 
 		                                        </div>
 		                                        <div class="col-md-3">
@@ -457,8 +459,8 @@
 		                                <div class="col-md-3">
 		                                    <div class="form-group row">
 		                                        <div class="col-md-12">
-		                                       		<label class="control-label text-right">Attached CV<span class="text_requried">*</span></label><br>
-		                                       		<input type="file"  name="cv" value="{{ old('cv') }}"  data-validation="size" data-validation-max-size="1M" class="form-control" >
+		                                       		<label class="control-label text-right">Attached CV</label><br>
+		                                       		<input type="file"  name="cv"  class="form-control" >
 		                                        </div>
 		                                    </div>
 		                                </div>

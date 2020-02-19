@@ -80,7 +80,7 @@
                  
                 
  
-                @role('Super Admin')
+                
                 <li @if(request()->is('uploadCv/create')) class="active" @endif > <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i class="mdi mdi-database"></i><span class="hide-menu">CV Records</span></a>
                     <ul aria-expanded="false" class="collapse">  
                         <li><a href="{{route('uploadCv.create')}}">Add CV</a></li>
@@ -90,7 +90,7 @@
                         @endrole
                     </ul>
                 </li>
-                @endrole
+               
                 
                 <li @if(request()->is('adminInfo*')) class="active" @endif > <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i class="mdi mdi-server-network"></i><span class="hide-menu">Admin Info</span></a>
                     <ul aria-expanded="false" class="collapse">
@@ -104,6 +104,7 @@
                     </ul>
                 </li>
 
+                @role('Super Admin')
                 <li @if(request()->is('project*')) class="active" @endif > <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i class="mdi mdi-briefcase"></i><span class="hide-menu">Projects</span></a>
                     <ul aria-expanded="false" class="collapse">
                         <li><a href="{{route('projectList')}}">List of Projects</a></li>
@@ -111,7 +112,7 @@
                     </ul>
                 </li>
 
-                @role('Super Admin')
+                
                 <li @if(request()->is('*phone*')) class="active" @endif > <a id="notInclude" class="has-arrow waves-effect waves-dark" href="{{route('contactNumber.index')}}" aria-expanded="false"><i class="fas fa-phone"></i><span class="hide-menu">Contact Numbers</span></a>
                 @endrole
                     
@@ -178,9 +179,10 @@
                     </ul>
                 </li>
                 
-                -->
+              
                 <li  class="" > <a class="waves-effect waves-dark" href="#" aria-expanded="false"><i class="mdi mdi-help-circle"></i><span class="hide-menu">Help</span></a>
                 </li>
+                  -->
                 @endcan
                 {{--///////// Second End--}}
             </ul>

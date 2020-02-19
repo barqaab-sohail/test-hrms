@@ -84,7 +84,7 @@
 		                                <div class="col-md-3">
 		                                    <div class="form-group row">
 		                                        <div class="col-md-12 date_input">
-		                                        	<label class="control-label text-right">Job Starting Date</label>
+		                                        	<label class="control-label text-right">Job Starting Date<span class="text_requried">*</span></label>
 		                                        
 		                                            <input type="text" id="job_starting_date" data-validation="required" name="job_starting_date"  value="{{ old('job_starting_date') }}" class="form-control " placeholder="Enter Date of Birth" readonly>
 													 

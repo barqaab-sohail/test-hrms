@@ -20,12 +20,13 @@ use App\Helper\DocxConversion;
 use Spatie\PdfToText\Pdf;
 use App\Http\Requests\cv\cvStore;
 use DB;
+use App\sessions;
 
 class UploadCvController extends Controller
 {
     
 	public function create(){
-
+		session()->put('cv_id', '');
 		$genders = gender::all();
 		$specializations = cv_specialization::all();
 		$degrees = cv_education::all();
@@ -142,6 +143,7 @@ class UploadCvController extends Controller
     }
 
     public function edit($id){
+        session()->put('cv_id', $id);
         $genders = gender::all();
 		$specializations = cv_specialization::all();
 		$degrees = cv_education::all();

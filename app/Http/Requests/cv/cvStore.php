@@ -25,7 +25,7 @@ class cvStore extends FormRequest
      */
     public function rules(Request $request)
     {
-         $expStart = \Carbon\Carbon::today();
+         $expStart = \Carbon\Carbon::today()->subYear(18);
          $after = \Carbon\Carbon::today();
         if($request->filled('date_of_birth')){
              $dateOfBirth = \Carbon\Carbon::parse($request->date_of_birth);
