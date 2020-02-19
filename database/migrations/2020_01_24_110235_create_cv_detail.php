@@ -17,8 +17,8 @@ class CreateCvDetail extends Migration
             $table->bigIncrements('id');
             $table->string('full_name');
             $table->string('father_name')->nullable();
-            $table->string('cnic')->unique();
-            $table->date('date_of_birth');
+            $table->string('cnic')->unique()->nullable();
+            $table->date('date_of_birth')->nullable();
             $table->date('job_starting_date');
             $table->date('cv_submission_date')->nullable();
             $table->tinyInteger('foreign_experience')->nullable();
