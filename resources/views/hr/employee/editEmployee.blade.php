@@ -84,9 +84,9 @@
 		                                            <input type="text" id="date_of_birth" name="date_of_birth" value="{{ old('date_of_birth', $employee->date_of_birth) }}" class="form-control " placeholder="Enter Date of Birth"  required>
 		                                             
  
-		                                            @can('edit record')
+		                                            @can('hr_edit_record')
 		                                            <br>
-		                                            @can('edit record')<i class="fas fa-trash-alt text_requried"></i>@endcan
+		                                            @can('hr_edit_record')<i class="fas fa-trash-alt text_requried"></i>@endcan
 		                                            @endcan
 		                                             
  
@@ -135,9 +135,9 @@
 		                                            <input type="text" id="cnic_expiry" name="cnic_expiry"  value="{{ old('cnic_expiry',$employee->cnic_expiry) }}" placeholder="Enter CNIC Expiry Date" class="form-control " readonly required>
 													 
  
-		                                            @can('edit record')
+		                                            @can('hr_edit_record')
 		                                            <br>
-		                                            @can('edit record')<i class="fas fa-trash-alt text_requried"></i>@endcan
+		                                            @can('hr_edit_record')<i class="fas fa-trash-alt text_requried"></i>@endcan
 		                                            @endcan
 		                                             
  
@@ -269,7 +269,7 @@
 		                                <div class="col-md-6">
 		                                    <div class="row">
 		                                        <div class="col-md-offset-3 col-md-9">
-		                                        	@can('edit record')
+		                                        	@can('hr_edit_record')
 		                                            <button type="submit" class="btn btn-success btn-prevent-multiple-submits">Edit Employee</button>
 		                                            @endcan
 		                                            

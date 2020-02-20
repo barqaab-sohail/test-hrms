@@ -283,9 +283,11 @@ Route::resource('adminInfo/permission','Admin\PermissionController');
 Route::resource('adminInfo/permissionRole','Admin\PermissionRoleController');
 Route::post('adminInfo/deletePermission/{role_id?}/{permission_id?}','Admin\PermissionRoleController@delete')->name('permissionRole.delete');
 
+
 Route::resource('/CV/uploadCv','Cv\UploadCvController');
 Route::resource('/CV/cvServices','Cv\ServicesController');
 Route::resource('/CV/addExpertize','Cv\addExpertizeController');
 Route::resource('/CV/addField','Cv\addFieldController');
 Route::resource('/CV/addMembership','Cv\addMembershipController');
 Route::resource('/CV/addDegree','Cv\addDegreeController');
+Route::resource('/CV/cvDocument','Cv\CVDocumentController');

@@ -32,22 +32,7 @@
 		                            <h3 class="box-title">Give Permission to Role</h3>
 		                            <hr class="m-t-0 m-b-40">
 		                            <div class="row">
-		                                <div class="col-md-5">
-		                                    <div class="form-group row">
-		                                        <label class="control-label text-right col-md-3">Permission</label>
-		                                        <div class="col-md-9">
-		                                        
-		                                            <select  name="permission"  class="form-control selectTwo" required>
-                                                        <option></option>
-                                                        @foreach($permissions as $permission)
-														<option value="{{$permission->name}}" {{(old("permission")==$permission->id? "selected" : "")}}>{{$permission->name}}</option>
-                                                        @endforeach
-                                                        
-                                                    </select>
-		                                        
-		                                        </div>
-		                                    </div>
-		                                </div>
+		                                
 		                                <div class="col-md-5">
 		                                    <div class="form-group row">
 		                                        <label class="control-label text-right col-md-3">Role</label>
@@ -57,6 +42,22 @@
                                                         <option></option>
                                                         @foreach($roles as $role)
 														<option value="{{$role->name}}" {{(old("role")==$role->id? "selected" : "")}}>{{$role->name}}</option>
+                                                        @endforeach
+                                                        
+                                                    </select>
+		                                        
+		                                        </div>
+		                                    </div>
+		                                </div>
+		                                <div class="col-md-5">
+		                                    <div class="form-group row">
+		                                        <label class="control-label text-right col-md-3">Permission</label>
+		                                        <div class="col-md-9">
+		                                        
+		                                            <select  name="permission"  class="form-control selectTwo" required>
+                                                        <option></option>
+                                                        @foreach($permissions as $permission)
+														<option value="{{$permission->name}}" {{(old("permission")==$permission->id? "selected" : "")}}>{{$permission->name}}</option>
                                                         @endforeach
                                                         
                                                     </select>

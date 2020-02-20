@@ -40,7 +40,7 @@
 								 <a class="btn btn-info btn-sm" href="{{route('training.edit',['id'=>$trainingId->id])}}" data-toggle="tooltip" data-original-title="Edit"> <i class="fas fa-pencil-alt text-white "></i></a>
 								 </td>
 								 <td>
-								 @can('edit record')
+								 @can('hr_edit_record')
 								 <form action="{{route('training.destroy',['id'=>$trainingId->id])}}" method="POST">
 								 @method('DELETE')
 								 @csrf

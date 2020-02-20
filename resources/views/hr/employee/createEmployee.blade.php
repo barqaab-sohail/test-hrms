@@ -95,7 +95,7 @@
  
 
 		                                            <br>
-		                                            @can('edit record')<i class="fas fa-trash-alt text_requried"></i>@endcan 
+		                                            @can('hr_edit_record')<i class="fas fa-trash-alt text_requried"></i>@endcan 
 		                                             
  
 
@@ -142,7 +142,7 @@
  
 
 		                                            <br>
-		                                            @can('edit record')<i class="fas fa-trash-alt text_requried"></i>@endcan
+		                                            @can('hr_edit_record')<i class="fas fa-trash-alt text_requried"></i>@endcan
 		                                             
  
 

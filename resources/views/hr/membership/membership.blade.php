@@ -19,7 +19,7 @@
 		        	<div class="col-lg-10">
 						 
  
-		        		@can('edit record')
+		        		@can('hr_edit_record')
 		                <div style="margin-top:10px; margin-right: 10px;">
 		                  <button type="button"  id ="hideButton"  class="btn btn-info float-right">Add Membership</button>  
 		                </div>
@@ -73,7 +73,7 @@
 		                                            <input type="text"  id="expiry_date"  name="expiry_date"  value="{{ old('expiry_date') }}" class="form-control" readonly >
 													 
  
-		                                            @can('edit record')
+		                                            @can('hr_edit_record')
 		                                            <br>
 		                                            <i  class="fas fa-trash-alt text_requried"></i>
 		                                            @endcan
@@ -98,7 +98,7 @@
  
 
 		                                        <div class="col-md-offset-3 col-md-9">
-		                                        @can('edit record')
+		                                        @can('hr_edit_record')
 		                                            <button type="submit" class="btn btn-success btn-prevent-multiple-submits">Save</button>
 		                                        @endcan
 		                                            

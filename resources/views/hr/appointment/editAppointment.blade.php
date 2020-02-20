@@ -58,7 +58,7 @@
 		                                            <input type="text" id="appointment_date" name="appointment_date" value="{!! old('appointment_date',isset($employee->appointment->appointment_date)?$employee->appointment->appointment_date:'')!!}" class="form-control" placeholder="Enter Appointment Letter Date " readonly required>
 													 
  
-		                                            @can('edit record')
+		                                            @can('hr_edit_record')
 		                                            <br>
 		                                            <i  class="fas fa-trash-alt text_requried"></i>
 		                                            @endcan
@@ -185,7 +185,7 @@
 		                                </div>
 		                                <!--/span-->
 		                             </div>
-								@can('edit record')
+								@can('hr_edit_record')
 								<hr>
 		                        <div class="form-actions">
 		                            <div class="row">
@@ -337,7 +337,7 @@
 		                                    <div class="row">
 		                                    	 
  
-		                                    	@can('edit record')
+		                                    	@can('hr_edit_record')
 		                                        <div class="col-md-offset-3 col-md-9">
 		                                            <button type="submit" class="btn btn-success btn-prevent-multiple-submits">Save</button>
 		                                            

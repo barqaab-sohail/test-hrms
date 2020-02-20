@@ -41,7 +41,7 @@
                 </div>
                   
  
-                @can('edit record')
+                @can('hr_edit_record')
                 <div id="preview-img" class="btn btn-dark">
 
                     <input type="file" class="file-upload" id="file-upload" 

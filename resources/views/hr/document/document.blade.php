@@ -17,7 +17,7 @@
 		        	<div class="col-lg-10">
 						 
  
-		        		@can('edit record')
+		        		@can('hr_edit_record')
 		                <div style="margin-top:10px; margin-right: 10px;">
 		                    <button type="button"  id ="hideButton"  class="btn btn-info float-right">Add Document</button>
 		                </div>
@@ -79,7 +79,7 @@
  
 
 		                                            <br>
-		                                            @can('edit record')<i class="fas fa-trash-alt text_requried"></i>@endcan
+		                                            @can('hr_edit_record')<i class="fas fa-trash-alt text_requried"></i>@endcan
 		                                             
  
 
@@ -93,7 +93,7 @@
 		                                <div class="col-md-3">
 		                                	 
  		
-		                                	@can('edit record')
+		                                	@can('hr_edit_record')
 		                                    <div class="form-group row">
 		                                        <center >
 		                                		<img src="{{asset('Massets/images/document.png')}}" class="img-round picture-container picture-src"  id="wizardPicturePreview"  title="" width="150" >
@@ -131,7 +131,7 @@
  
 
 		                                        <div class="col-md-offset-3 col-md-9">
-		                                        @can('edit record')
+		                                        @can('hr_edit_record')
 		                                            <button type="submit" class="btn btn-success btn-prevent-multiple-submits">Save</button>
 		                                        @endcan
 

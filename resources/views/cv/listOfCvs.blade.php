@@ -69,7 +69,7 @@
 									<a class="btn btn-info btn-sm" href="{{route('uploadCv.edit',['id'=>$cv->id])}}"  title="Edit"><i class="fas fa-pencil-alt text-white "></i></a>
 								</td>
 								<td>
-								 @can('edit record')
+								 @can('edit_hr_record')
 								 <form action="{{route('uploadCv.destroy',['id'=>$cv->id])}}" method="POST">
 								 @method('DELETE')
 								 @csrf

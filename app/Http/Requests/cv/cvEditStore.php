@@ -5,8 +5,9 @@ namespace App\Http\Requests\cv;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
 use Illuminate\Foundation\Http\FormRequest;
+use App\models\cv\cv_detail;
 
-class cvStore extends FormRequest
+class cvEditStore extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -35,6 +36,10 @@ class cvStore extends FormRequest
         
         $today = \Carbon\Carbon::today();
         $age = $today->subYear(18);
+
+        $cv = cv_detail::find(session('cv_id'));
+        $email = $cv->cv_contact->id;
+           
        
          //'cnic_expiry' => 'required|date|after:'.$dt,
         //dd(Request::input('membership_name'));
@@ -42,14 +47,15 @@ class cvStore extends FormRequest
         return [
             
             'full_name' => 'required',
-            'cnic' => 'nullable|min:15|max:15|unique:cv_details,cnic',
+            'cnic' => 'nullable|min:15|max:15|unique:cv_details,cnic,'.session('cv_id'),
+           
             'date_of_birth' => 'nullable|date|before:'.$age.'|after:'.$after,
             'job_starting_date' => 'required|date|after:'.$expStart,
             'address' => 'nullable|max:191',
             'city' => 'nullable|max:191',
             'province' => 'nullable|max:191',
             'country' => 'required|max:191',
-            'email'=>'nullable|email|unique:cv_contacts,email',
+            'email'=>'nullable|email|unique:cv_contacts,email,'.$email,
             'phone.*' => 'required|distinct',
             'degree_name.*' => 'required|distinct',
             'institute.*' => 'nullable|MAX:191',
@@ -62,7 +68,7 @@ class cvStore extends FormRequest
             //'membership_number.*'=>'required_if:membership_name.*,1',
             'barqaab_employment' => 'required',
             'cv_submission_date'=>'nullable|date|before_or_equal:'.$today,
-            'cv' => 'required|file|mimes:doc,docx,pdf',
+            'cv' => 'nullable|file|mimes:doc,docx,pdf',
 
 
 

@@ -209,7 +209,7 @@
 		                                    <div class="row">
 
 		                                        <div class="col-md-offset-3 col-md-9">
-		                                        	@can('edit record')
+		                                        	@can('hr_edit_record')
 		                                            <button type="submit" class="btn btn-success btn-prevent-multiple-submits">Edit Education</button>
 		                                            @endcan
 		                                            

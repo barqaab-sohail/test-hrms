@@ -64,7 +64,7 @@
  
 
 		                                            <br>
-		                                            @can('edit record')<i class="fas fa-trash-alt text_requried"></i>@endcan
+		                                            @can('hr_edit_record')<i class="fas fa-trash-alt text_requried"></i>@endcan
 		                                             
  
 
@@ -101,7 +101,7 @@
  
 
 		                                            <br>
-		                                            @can('edit record')<i class="fas fa-trash-alt text_requried"></i>@endcan
+		                                            @can('hr_edit_record')<i class="fas fa-trash-alt text_requried"></i>@endcan
 		                                             
  
 
@@ -153,7 +153,7 @@
  
 
 		                                        <div class="col-md-offset-3 col-md-9">
-		                                        @can('edit record')
+		                                        @can('hr_edit_record')
 		                                            <button type="submit" class="btn btn-success btn-prevent-multiple-submits">Edit Posting</button>
 		                                        @endcan
 		                                        </div>

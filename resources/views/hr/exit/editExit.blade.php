@@ -65,7 +65,7 @@
 		                                        	<input type="text" id="effective_date" name="effective_date" value="{!! old('effective_date', optional($data)->effective_date) !!}" 
 		                                        	 class="form-control " placeholder="Enter Effective Date" required readonly>
  		                                            <br>
-		                                            @can('edit record')<i class="fas fa-trash-alt text_requried"></i>@endcan
+		                                            @can('hr_edit_record')<i class="fas fa-trash-alt text_requried"></i>@endcan
 		          									 
 		                                        </div>
 

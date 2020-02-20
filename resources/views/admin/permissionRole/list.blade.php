@@ -13,8 +13,9 @@
 					<thead>
 					
 					<tr>
-						<th>Permission Name</th>
+						
 						<th>Role Name</th>
+						<th>Permission Name</th>
 						<th>Delete</th> 
  
 
@@ -27,16 +28,17 @@
 						@endphp
 							@foreach($allPermissions as $allPermission)
 							<tr>
-								<td width="20%">{{$allPermission->name}}</td>
-								<td >{{$role->name}}</td>
+								<td width="20%">{{$role->name}}</td>
+								<td width="100%">{{$allPermission->name}}</td>
 							
 								<td>
-								 @can('edit record')
-								 <form action="{{route('permissionRole.delete',['role_id'=>$role->id, 'permission_id'=>$permission->id])}}" method="POST">
+								 
+								@role('Super Admin')
+								 <form action="{{route('permissionRole.delete',['role_id'=>$role->id, 'permission_id'=>$allPermission->id])}}" method="POST">
 								 @csrf
 								 <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Are you Sure to revoke permission to role')" href= data-toggle="tooltip" data-original-title="Delete"> <i class="fas fa-trash-alt"></i></button>
 								 </form>
-								 @endcan
+								 @endrole
 								</td>
  			  								
 							</tr>

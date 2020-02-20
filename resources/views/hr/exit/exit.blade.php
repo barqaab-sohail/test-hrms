@@ -19,7 +19,7 @@
 		        	<div class="col-lg-10">
 						 
  
-		        		@can('edit record')
+		        		@can('hr_edit_record')
 		                <div style="margin-top:10px; margin-right: 10px;">
 		                    <button type="button"  id ="hideButton"  class="btn btn-info float-right">Add Exit</button>
 		                </div>
@@ -61,7 +61,7 @@
 
 		                                        	<input type="text" id="effective_date" name="effective_date" value="{{ old('effective_date') }}" class="form-control " placeholder="Enter Effective Date" required readonly>
  		                                            <br>
-		                                            @can('edit record')<i class="fas fa-trash-alt text_requried"></i>@endcan
+		                                            @can('hr_edit_record')<i class="fas fa-trash-alt text_requried"></i>@endcan
 		          									 
 		                                        </div>
 

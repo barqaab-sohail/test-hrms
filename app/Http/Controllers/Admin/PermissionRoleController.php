@@ -30,6 +30,7 @@ class PermissionRoleController extends Controller
 
     public function delete(Request $request, $role_id, $permission_id)
     {
+       
         $role = role::where('id',$role_id)->first();
         $permission = role::where('id',$permission_id)->first();
         $role->revokePermissionTo($permission);

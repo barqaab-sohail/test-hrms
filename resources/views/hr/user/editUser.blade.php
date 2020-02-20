@@ -49,7 +49,7 @@
 		                                    <div class="form-group row">
 		                                   
  
-		                                    	@can('edit record')
+		                                    	@can('hr_edit_record')
 		                                        <div class="col-md-8">
 		                                        	<label class="control-label text-right ">Role</label>
 		                                        
@@ -84,7 +84,7 @@
 		                            </div>
 
 		                        </div>
-		                        @can('edit record')
+		                        @can('hr_edit_record')
 		                        <div>
 		                        @if($permissions!=null)
 			                        <h3>{{$employee->first_name. " ".$employee->middle_name." ".$employee->last_name}} has following permission</h3>
@@ -102,7 +102,7 @@
 		                                    <div class="row">
 		                                    	 
  
-		                                    	@can('edit record')
+		                                    	@can('hr_edit_record')
 		                                        <div class="col-md-offset-3 col-md-9">
 		                                            <button type="submit" class="btn btn-success btn-prevent-multiple-submits">Save</button>
 		                                            

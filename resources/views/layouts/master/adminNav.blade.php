@@ -50,7 +50,7 @@
                     <ul aria-expanded="false" class="collapse">
                        
                         <li><a href="{{route('employee.show', ['id'=>Auth::user()->employee_id])}}">User Detail</a></li>
-                    @can('edit record')
+                    @can('hr_edit_record','hr_insert_record')
                         <li><a href="{{route('employee.create')}}">Add Employee</a></li>
                         <li><a href="{{route('employee.index')}}">List of Employees</a></li>
                         <li><a href="{{route('designation.create')}}">Add Designation</a></li>
@@ -58,7 +58,7 @@
                       
                     </ul>
                 </li>
-                @can('edit record')
+                @can('hr_edit_record','hr_insert_record')
                  <li @if(request()->is('reports*')) class="active" @endif > <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i class="fas fa-chart-pie"></i><span class="hide-menu">Reports & Charts</span></a>
                     <ul aria-expanded="false" class="collapse">
                         <li><a href="{{route('hr.reports')}}">Reports</a></li>
@@ -77,7 +77,7 @@
                         
                     </ul>
                 </li>
-                 
+                
                 
  
                 
@@ -90,7 +90,9 @@
                         @endrole
                     </ul>
                 </li>
-               
+                @endcan
+
+                @role('Super Admin')
                 
                 <li @if(request()->is('adminInfo*')) class="active" @endif > <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i class="mdi mdi-server-network"></i><span class="hide-menu">Admin Info</span></a>
                     <ul aria-expanded="false" class="collapse">
@@ -104,7 +106,7 @@
                     </ul>
                 </li>
 
-                @role('Super Admin')
+                
                 <li @if(request()->is('project*')) class="active" @endif > <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i class="mdi mdi-briefcase"></i><span class="hide-menu">Projects</span></a>
                     <ul aria-expanded="false" class="collapse">
                         <li><a href="{{route('projectList')}}">List of Projects</a></li>
@@ -183,7 +185,7 @@
                 <li  class="" > <a class="waves-effect waves-dark" href="#" aria-expanded="false"><i class="mdi mdi-help-circle"></i><span class="hide-menu">Help</span></a>
                 </li>
                   -->
-                @endcan
+               
                 {{--///////// Second End--}}
             </ul>
         </nav>

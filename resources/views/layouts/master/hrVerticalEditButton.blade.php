@@ -26,7 +26,7 @@
             <a type="submit" role="button"  href="{{route('dependent.create')}}" class="btn btn-info @if(request()->is('*dependent*')) active @endif">Dependent</a>
             <a type="submit" role="button"  href="{{route('document.create')}}" class="btn btn-info @if(request()->is('*document*')) active @endif">Document</a>
             <a type="submit" role="button"  href="{{route('otherInformation.edit', session('employee_id'))}}" class="btn btn-info @if(request()->is('*otherInformation*')) active @endif">Other Information</a>
-            @can('edit record')
+            @can('edit_hr_record')
             <a type="submit" role="button"  href="{{route('exit.create')}}" class="btn btn-info @if(request()->is('*exit*')) active @endif">Exit</a>
             @endcan
             

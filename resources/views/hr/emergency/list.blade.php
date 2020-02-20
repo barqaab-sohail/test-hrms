@@ -40,7 +40,7 @@
 								 <a class="btn btn-info btn-sm" href="{{route('emergency.edit',['id'=>$emergencyId->id])}}" data-toggle="tooltip" data-original-title="Edit"> <i class="fas fa-pencil-alt text-white "></i></a>
 								 </td>
 								 <td>
-								 @can('edit record')
+								 @can('hr_edit_record')
 								 <form action="{{route('emergency.destroy',['id'=>$emergencyId->id])}}" method="POST">
 								 @method('DELETE')
 								 @csrf

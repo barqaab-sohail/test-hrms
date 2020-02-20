@@ -170,7 +170,7 @@
  
 
 		                                        <div class="col-md-offset-3 col-md-9">
-		                                        @can('edit record')
+		                                        @can('hr_edit_record')
 		                                            <button type="submit" class="btn btn-success btn-prevent-multiple-submits">Save Permanent Address</button>
 		                                        @endcan
 		                                        </div>
@@ -327,7 +327,7 @@
  
 
 		                                        <div class="col-md-offset-3 col-md-9">
-		                                        @can('edit record')
+		                                        @can('hr_edit_record')
 		                                            <button type="submit" class="btn btn-success btn-prevent-multiple-submits">Save Current Address</button>
 		                                        @endcan
 		                                        </div>

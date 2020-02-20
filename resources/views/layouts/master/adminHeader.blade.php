@@ -106,7 +106,7 @@
                             <li><a href="{{route('notificationList')}}"  class="link" data-toggle="tooltip" title="Notification List"><i class="fa fa-tv"></i> View Notifications</a></li>
                              
  
-                            @can('edit record')
+                            @can('edit_hr_record')
                             <li><a href="{{route('createNotification')}}"  class="link" data-toggle="tooltip" title="Create Notification"><i class="fa fa-bell"></i> Create Notification</a></li>
                             @endcan
  

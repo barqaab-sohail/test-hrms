@@ -19,6 +19,7 @@ use App\models\cv\cv_membership;
 use App\Helper\DocxConversion;
 use Spatie\PdfToText\Pdf;
 use App\Http\Requests\cv\cvStore;
+use App\Http\Requests\cv\cvEditStore;
 use DB;
 use App\sessions;
 
@@ -107,8 +108,10 @@ class UploadCvController extends Controller
 		//add attachment
 				$extension = request()->cv->getClientOriginalExtension();
 				$fileName =request()->full_name.'-'.request()->cnic.'-'. time().'.'.$extension;
-				$request->file('cv')->storeAs('public/cv',$fileName);
-				$file_path = storage_path('app/public/cv/'.$fileName);	
+				$folderName = "cv/".$cv_id->id.'-'.request()->full_name."/";
+				$request->file('cv')->storeAs('public/'.$folderName,$fileName);
+		
+				$file_path = storage_path('app/public/'.$folderName.'/'.$fileName);	
 				$attachment['content']='';
 											
 					if (($extension == 'doc')||($extension == 'docx')){
@@ -154,7 +157,7 @@ class UploadCvController extends Controller
         return view ('cv.editUploadCv',compact('genders','specializations','degrees','fields','memberships','cvId'));
     }
 
-    public function update(cvStore $request, $id){
+    public function update(cvEditStore $request, $id){
 
 	    	$input = $request->only('full_name','father_name','cnic','foreign_experience','donor_experience','barqaab_employment','comments');
 			 if($request->filled('date_of_birth')){
