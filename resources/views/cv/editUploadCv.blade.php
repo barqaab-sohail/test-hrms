@@ -212,7 +212,7 @@
 		                                        
 		                                            <select  name="passing_year[]" id="passing_year" class="form-control" data-validation="required">
 
-													<option value=""></option>
+													<option value="">'</option>
 													@for ($i = 1958; $i <= now()->year; $i++)
     												<option value="{{$i}}" @if($i == $education->pivot->passing_year) selected="selected" @endif>{{ $i }}</option>
 													@endfor
@@ -338,15 +338,16 @@
 		                                        </div>
 		                                    </div>
 		                                </div>
-		                 @foreach($cvId->cv_membership as $key => $member)               
-		                            <!--/span 6-3 -->
-		                             <div class="col-md-6 membership" id="membership_1">
+						               
+		                                @forelse($cvId->cv_membership as $key => $member)      
+		                            	<!--/span 6-3 -->
+		                             	<div class="col-md-6 membership" id="membership_1">
 		                                    <div class="form-group row">
 		                                        <div class="col-md-6">
 		                                        	<label class="control-label">Membership</label>
 													
 		                                        	<select  name="membership_name[]" id=membership_name class="form-control">
-                                                        <option value=""></option>
+                                                        <option value="">'</option>
                                                         
                                                         @foreach($memberships as $membership)
 														
@@ -375,7 +376,41 @@
 		                                    </div>
 		                                </div>
 		                               
-		                    @endforeach
+						               @empty
+						                 <!--/span 6-3 -->
+		                                <div class="col-md-6 membership" id="membership_1">
+		                                    <div class="form-group row">
+		                                        <div class="col-md-6">
+		                                        	<label class="control-label">Membership</label>
+
+		                                        	<select  name="membership_name[]" id=membership_name class="form-control">
+                                                       
+                                                        
+                                                        @foreach($memberships as $membership)
+														 <option value=""></option>
+														<option value="{{$membership->id}}" {{(old("membership_name.0")==$membership->id? "selected" : "")}}>{{$membership->membership_name}}</option>
+
+                                                        @endforeach
+                                                      
+                                                    </select>
+		                                        </div>
+		                                        <div class="col-md-4">
+		                                        	<label class="control-label text-right">Number</label>
+		                                            <input type="text" name="membership_number[]" value="{{ old('membership_number.0') }}" class="form-control" >
+		                                             
+                                            
+		                                        </div>
+		                                        <div class="col-md-2 "> 
+		                                        	<br>
+		                                        	<div class="float-right">
+		                                             <button type="button" name="add" id="add_mem" class="btn btn-success add" >+</button>
+                                            		</div>
+		                                        </div>
+		                                    </div>
+		                                </div>
+						                @endforelse
+
+		                 
 		                           
 		                            </div>
  						
@@ -390,7 +425,7 @@
 
 		                                        	<select  name="barqaab_employment" class="form-control" >
 
-                                                        <option value=""></option>
+                                                        <option value="">'</option>
                                                         <option value="1" @if($cvId->barqaab_employment == 1) selected="selected" @endif>Yes</option>
                                                         <option value="0" @if($cvId->barqaab_employment == 0) selected="selected" @endif>No</option>
                                                                                                               

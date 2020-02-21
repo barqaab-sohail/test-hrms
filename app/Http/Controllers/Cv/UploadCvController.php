@@ -107,7 +107,7 @@ class UploadCvController extends Controller
 
 		//add attachment
 				$extension = request()->cv->getClientOriginalExtension();
-				$fileName =request()->full_name.'-'.request()->cnic.'-'. time().'.'.$extension;
+				$fileName =request()->full_name.'-'. time().'.'.$extension;
 				$folderName = "cv/".$cv_id->id.'-'.request()->full_name."/";
 				$request->file('cv')->storeAs('public/'.$folderName,$fileName);
 		
@@ -212,10 +212,12 @@ class UploadCvController extends Controller
 			//Update membership
 			$cv_id= cv_detail::find($id);
 			$cv_id->cv_membership()->detach();	
-			for ($i=0;$i<count($request->input('membership_name'));$i++){
-			$membershipId = $request->input("membership_name.$i");
-			$numberId = $request->input("membership_number.$i");
-			$cv_id->cv_membership()->attach($membershipId, ['membership_number'=>$numberId]);			
+			if ($request->filled('membership_name')){
+				for ($i=0;$i<count($request->input('membership_name'));$i++){
+				$membershipId = $request->input("membership_name.$i");
+				$numberId = $request->input("membership_number.$i");
+				$cv_id->cv_membership()->attach($membershipId, ['membership_number'=>$numberId]);			
+				}
 			}
 
 			//Update specialization
@@ -282,10 +284,16 @@ class UploadCvController extends Controller
 
 			//add attachment
 			if ($request->hasFile('cv')){
+				
 				$extension = request()->cv->getClientOriginalExtension();
-				$fileName =request()->full_name.'-'.request()->cnic.'-'. time().'.'.$extension;
-				$request->file('cv')->storeAs('public/cv',$fileName);
-				$file_path = storage_path('app/public/cv/'.$fileName);	
+				$fileName =request()->full_name.'-'. time().'.'.$extension;
+				$folderName = "cv/".$cv_id->id.'-'.request()->full_name."/";
+				$request->file('cv')->storeAs('public/'.$folderName,$fileName);
+		
+				$file_path = storage_path('app/public/'.$folderName.'/'.$fileName);	
+
+
+
 				$attachment['content']='';
 											
 					if (($extension == 'doc')||($extension == 'docx')){

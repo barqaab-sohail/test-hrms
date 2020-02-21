@@ -356,7 +356,7 @@
 
 		                                        	<select  name="barqaab_employment" data-validation="required" class="form-control" >
 
-                                                        <option value=""></option>
+                                                        <option value="">'</option>
                                                         <option value="1" {{(old("barqaab_employment")==1? "selected":"")}}>Yes</option>
                                                         <option value="0" {{(old("barqaab_employment")==0? "selected":"")}}>No</option>
                                                                                                               
