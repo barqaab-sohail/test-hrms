@@ -48,6 +48,11 @@ class cv_detail extends Model implements Auditable
         return $this->hasMany('App\models\cv\cv_skill');
     }
 
+     public function cv_attachment()
+    {
+        return $this->hasMany('App\models\cv\cv_attachment');
+    }
+
 
 
 
