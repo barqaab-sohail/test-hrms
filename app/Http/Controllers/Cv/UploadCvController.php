@@ -109,23 +109,25 @@ class UploadCvController extends Controller
 				$extension = request()->cv->getClientOriginalExtension();
 				$fileName =request()->full_name.'-'. time().'.'.$extension;
 				$folderName = "cv/".$cv_id->id.'-'.request()->full_name."/";
-				$full_path= $request->file('cv')->storeAs('public/'.$folderName,$fileName);
-				$path = storage_path('app/public/'.$folderName);
+				//store file
+				$request->file('cv')->storeAs('public/'.$folderName,$fileName);
+				
+				$file_path = storage_path('app/public/'.$folderName.$fileName);
 			
 				$attachment['content']='';
 											
 					if (($extension == 'doc')||($extension == 'docx')){
-						$text = new DocxConversion($full_path);
+						$text = new DocxConversion($file_path);
 						$attachment['content']=mb_strtolower($text->convertToText());
 					}else if ($extension =='pdf'){
 						$reader = new \Asika\Pdf2text;
-						$attachment['content'] = mb_strtolower($reader->decode($full_path));
+						$attachment['content'] = mb_strtolower($reader->decode($file_path));
 					}
 
 				$attachment['document_name']='Original CV';
 				$attachment['file_name']=$fileName;
 				$attachment['size']=$request->file('cv')->getSize();
-				$attachment['path']=$path;
+				$attachment['path']=$folderName;
 				$attachment['extension']=$extension;
 				$attachment['cv_detail_id']=$cv_id->id;
 
@@ -289,17 +291,12 @@ class UploadCvController extends Controller
 				$extension = request()->cv->getClientOriginalExtension();
 				$fileName =request()->full_name.'-'. time().'.'.$extension;
 				
-				$delim = 'public/';
-				$full_path= cv_attachment::where('document_name','Original CV')->where('cv_detail_id',$cv_id->id)->first();
-				$path_parts = explode($delim,$full_path->path);
+				$path= $cv_id->cv_attachment->first()->path;
 				
-
-				//$folderName = "cv/".$cv_id->id.'-'.request()->full_name."/";
+				//store file
+				$request->file('cv')->storeAs('public/'.$path,$fileName);
 				
-
-
-				$file_path = $request->file('cv')->storeAs('public/'.$path_parts[1],$fileName);
-				//$file_path = storage_path('app/public/'.$folderName);	
+				$file_path = storage_path('app/public/'.$path.$fileName);
 
 
 
@@ -308,9 +305,11 @@ class UploadCvController extends Controller
 					if (($extension == 'doc')||($extension == 'docx')){
 						$text = new DocxConversion($file_path);
 						$attachment['content']=mb_strtolower($text->convertToText());
+						
 					}else if ($extension =='pdf'){
 						$reader = new \Asika\Pdf2text;
 						$attachment['content'] = mb_strtolower($reader->decode($file_path));
+
 					}
 
 				$attachment['document_name']='Original CV';
@@ -320,11 +319,13 @@ class UploadCvController extends Controller
 				$attachment['extension']=$extension;
 				$attachment['cv_detail_id']=$cv_id->id;
 
-				//unlink(public_path('storage/'.$data->file_path.$data->file_name));
-
-				$attachment_id = cv_attachment::where('cv_detail_id',$cv_id->id)->first();
-
-				cv_attachment::findOrFail($attachment_id->id)->update($attachment);
+				
+				$oldFileName= $cv_id->cv_attachment->first()->file_name;
+				
+				$attachment_id = $cv_id->cv_attachment->first()->id;
+				
+				cv_attachment::findOrFail($attachment_id)->update($attachment);
+				unlink(storage_path('app/public/'.$path.$oldFileName));
 		}
 
 		});	//end transaction

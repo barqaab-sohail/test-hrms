@@ -13,8 +13,8 @@ class fieldSpecializationSeeder extends Seeder
     {
         DB::table('cv_fields')->insert(['field_name' => 'Planning']);
         DB::table('cv_fields')->insert(['field_name' => 'Design']);
-        DB::table('cv_fields')->insert(['field_name' => 'Construction Supervision']);
-        DB::table('cv_fields')->insert(['field_name' => 'Project Management']);
+        DB::table('cv_fields')->insert(['field_name' => 'Construction']);
+        DB::table('cv_fields')->insert(['field_name' => 'O & M']);
 
     }
 }

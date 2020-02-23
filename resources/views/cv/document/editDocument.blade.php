@@ -2,7 +2,7 @@
 @extends('layouts.master.master')
 @section('title', 'BARQAAB HR')
 @section('Heading')
-	@include('hr.hrHeading')
+	
 @stop
 @section('content')
    
@@ -11,7 +11,7 @@
             <div class="card card-outline-info">
 				<div class="row">
 					<div class="col-lg-2">
-					@include('layouts.master.hrVerticalEditButton')
+					@include('layouts.cv.cvVerticalButton')
 					</div>
 
 		        	<div class="col-lg-10">
@@ -27,7 +27,7 @@
 
 		                <div class="card-body">
 
-		                    <form action="{!!route('document.update', ['id'=>optional($data)->id])!!}"  id="document" method="post" class="form-horizontal form-prevent-multiple-submits" enctype="multipart/form-data">
+		                    <form action="{!!route('cvDocument.update', ['id'=>optional($data)->id])!!}"  id="document" method="post" class="form-horizontal form-prevent-multiple-submits" enctype="multipart/form-data">
 		                    @method('PATCh')
 		                        {{csrf_field()}}
 		                        <div class="form-body">
@@ -39,56 +39,23 @@
 		                                    <div class="form-group row">
 		                                        <div class="col-md-12">
 		                                        <label class="control-label text-right ">Document Name<span class="text_requried">*</span></label>
-		                                        
-		                                             <select  name="document_name" id="document_name"    class="form-control selectTwo" required>
+		                                        <input type="text" name="document_name" 
+		                                        value="{!! old('document_name',optional($data)->document_name) !!}" class="form-control"> 
 
-                                                       
-                                                        <option value="{{$data->document_name}}">{{$data->document_name}}</option>
-                                                        <option value="CNIC Front" @if($data->document_name =="CNIC Front") selected="selected"@endif>CNIC Front </option>
-                                                        <option value="CNIC Back"  @if($data->document_name =="CNIC Back") selected="selected"@endif>CNIC Back</option>
-                                                        <option value="Appointment Letter"  @if($data->document_name =="Appointment Letter") selected="selected"@endif>Appointment Letter</option>
-                                                        <option value="HR Form"  @if($data->document_name =="HR Form") selected="selected"@endif>HR Form</option>
-                                                        <option value="Joining Report"  @if($data->document_name =="Joining Report") selected="selected"@endif>Joining Report</option>
-                                                        <option value="Other"  {{ old('name') == "Other" ? 'selected' : '' }}>Other</option>
-                                                        
-                                                    </select>
-
+                                                                                                              
 
 		                                        </div>
 		                                    </div>
 		                                </div>
 		                                
-		                                <!--/span-->
-		                                <div class="col-md-5">
-		                                    <div class="form-group row">
-		                                        <div class="col-md-12">
-		                                        <label class="control-label text-right">Reference No.</label>
-		                                        
-		                                            <input type="text" name="reference_no" value="{!! old('reference_no', optional($data)->reference_no) !!}" class="form-control " placeholder="Enter Reference No" >
-		                                        </div>
-		                                    </div>
-		                                </div>
+		                               
 		                            </div>
 		                                
 		                            <!--/row-->
 		                             <div class="row">
 		                                <div class="col-md-7">
 		                                    <div class="form-group row">
-		                                        <div class="col-md-6 date_input">
-		                                        <label class="control-label text-right">Date</label>
-		                                        
-		                                            <input ype="text"  id="date" name="date" value="{!! old('date', optional($data)->date) !!}" class="form-control" readonly >
-													 
- 
-
-		                                            <br>
-		                                            @can('hr_edit_record')<i class="fas fa-trash-alt text_requried"></i>@endcan
-		                                             
- 
-
-		                                        </div>
-		                                       
-		                                       
+   
 		                                    </div>
 		                                </div>
 		        						<div class="col-md-2">
@@ -99,8 +66,8 @@
 		                                	@can('hr_edit_record')
 		                                    <div class="form-group row">
 		                                        <center >
-		                                        @if($data->type!='application/pdf')
-		                                		<img  src="{{asset(isset($data->file_name)? 'storage/'.$data->file_path.$data->file_name: 'Massets/images/document.png') }}" class="img-round picture-container picture-src"  id="wizardPicturePreview" title="" width="150" />
+		                                        @if($data->extension!='pdf')
+		                                		<img  src="{{asset(isset($data->file_name)? 'storage/'.$data->path.$data->file_name: 'Massets/images/document.png') }}" class="img-round picture-container picture-src"  id="wizardPicturePreview" title="" width="150" />
 		                                		@else
 		                                		<img  src="{{asset('Massets/images/document.png')}}" class="img-round picture-container picture-src"  id="wizardPicturePreview"  title="" width="150" >
 		                                		@endif
@@ -112,7 +79,7 @@
 		                                
 					                            </center>
 		                                       
-		                                       <input type="number" name="employee_id" value="{{session('employee_id')}}"   class="form-control " hidden>
+		                                       <input type="number" name="cv_detail_id" value="{{session('cv_id')}}"   class="form-control " hidden>
 		                                    </div>
 		                                    @endcan
  
@@ -122,8 +89,8 @@
 		                            </div>
 									 <div class="row">
 		                                <div class="col-md-12" id="pdf">
-		                                	@if($data->type=='application/pdf')
-		                            		<embed id="pdf" src="{{asset('storage/'.$data->file_path.$data->file_name)}}#toolbar=0&navpanes=0&scrollbar=0"  type="application/pdf" height="300" width="100%" />
+		                                	@if($data->extension=='pdf')
+		                            		<embed id="pdf" src="{{asset('storage/'.$data->path .$data->file_name)}}#toolbar=0&navpanes=0&scrollbar=0"  type="application/pdf" height="300" width="100%" />
 		                            		@endif
 		                            		
 		                            	</div>
@@ -153,7 +120,7 @@
 		                    </form>
 	@if($documentIds->count()!=0)		                    
 
-	@include('hr.document.list')
+	@include('cv.document.list')
 		
 	@endif
 			                    

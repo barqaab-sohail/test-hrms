@@ -64,12 +64,13 @@
 
 								</td>
 
-								
+								@can('cv_edit')
 								<td>
 									<a class="btn btn-info btn-sm" href="{{route('uploadCv.edit',['id'=>$cv->id])}}"  title="Edit"><i class="fas fa-pencil-alt text-white "></i></a>
 								</td>
-								<td>
-								 @can('edit_hr_record')
+								@endcan
+								@can('cv_delete')
+								<td> 
 								 <form action="{{route('uploadCv.destroy',['id'=>$cv->id])}}" method="POST">
 								 @method('DELETE')
 								 @csrf

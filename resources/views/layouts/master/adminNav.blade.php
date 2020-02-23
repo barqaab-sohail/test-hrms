@@ -80,7 +80,8 @@
                 
                 
  
-                
+                @endcan
+                @can('cv_edit')
                 <li @if(request()->is('uploadCv/create')) class="active" @endif > <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i class="mdi mdi-database"></i><span class="hide-menu">CV Records</span></a>
                     <ul aria-expanded="false" class="collapse">  
                         <li><a href="{{route('uploadCv.create')}}">Add CV</a></li>

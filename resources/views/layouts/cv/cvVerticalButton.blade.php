@@ -5,7 +5,7 @@
           
 
             <a type="submit" role="button" href="{{route('uploadCv.edit',session('cv_id'))}}" class="btn btn-info @if(request()->is('*uploadCv*')) active @endif" >CV Detail</a>
-            <a type="submit" role="button"  href="{{route('cvDocument.create')}}" class="btn btn-info @if(request()->is('*cvDocument*')) active @endif">Attachments</a>
+            <a type="submit" role="button"  href="{{route('cvDocument.create')}}" class="btn btn-info @if(request()->is('*cvDocument*')) active @endif">Documents</a>
            
             
             

@@ -182,7 +182,7 @@
 		                                    <div class="form-group row">
 		                                        <div class="col-md-12">
 		                                       		<label class="control-label text-right">Name of Degree<span class="text_requried">*</span></label><br>
-		                                       			<select  name="degree_name[]" id="degree_name" class="form-control">
+		                                       			<select  name="degree_name[]" id="degree_name" class="form-control required">
                                                         <option value=""></option>
                                                         @foreach($degrees as $degree)
 														<option value="{{$degree->id}}" @if($degree->id == $education->id) selected="selected" @endif>{{$degree->degree_name}}</option>
@@ -210,9 +210,9 @@
 		                                        <div class="col-md-8">
 		                                        	<label class="control-label text-right">Passing Year</label>
 		                                        
-		                                            <select  name="passing_year[]" id="passing_year" class="form-control" data-validation="required">
+		                                            <select  name="passing_year[]" id="passing_year" class="form-control" >
 
-													<option value="">'</option>
+													<option value=""></option>
 													@for ($i = 1958; $i <= now()->year; $i++)
     												<option value="{{$i}}" @if($i == $education->pivot->passing_year) selected="selected" @endif>{{ $i }}</option>
 													@endfor
@@ -245,7 +245,7 @@
 		                                        <div class="col-md-12">
 		                                       		<label class="control-label text-right">Speciality<span class="text_requried">*</span></label><br>
 
-		                                       		<select  name="speciality_name[]" id="speciality_name" class="form-control" >
+		                                       		<select  name="speciality_name[]" id="speciality_name" class="form-control required" >
                                                          <option value=""></option>
                                                         
                                                         @foreach($specializations as $specialization)
@@ -263,7 +263,7 @@
 		                                        <div class="col-md-12 ">
 		                                        	<label class="control-label">Field of Speciality<span class="text_requried">*</span></label>
 
-		                                        	<select  name="field_name[]" data-validation="required" id=field_name class="form-control" >
+		                                        	<select  name="field_name[]" data-validation="required" id=field_name class="form-control required" >
                                                         <option value=""></option>
                                                         
                                                         @foreach($fields as $field)
@@ -286,7 +286,7 @@
 		                                        <div class="col-md-8">
 		                                        	<label class="control-label text-right">Experience<span class="text_requried">*</span></label>
 		                                        
-		                                            <select  name="year[]" id="field_year" class="form-control">
+		                                            <select  name="year[]" id="field_year" class="form-control required">
 
 													<option value=""></option>
 													@for ($i = 1; $i <= 50; $i++)
@@ -423,7 +423,7 @@
 		                                        <div class="col-md-12 ">
 		                                        	<label class="control-label">BARQAAB Employee<span class="text_requried">*</span></label>
 
-		                                        	<select  name="barqaab_employment" class="form-control" >
+		                                        	<select  name="barqaab_employment" class="form-control required" >
 
                                                         <option value="">'</option>
                                                         <option value="1" @if($cvId->barqaab_employment == 1) selected="selected" @endif>Yes</option>
@@ -495,7 +495,7 @@
 		                                    <div class="form-group row">
 		                                        <div class="col-md-12">
 		                                       		<label class="control-label text-right">Attached CV</label><br>
-		                                       		<input type="file"  name="cv"  class="form-control" >
+		                                       		<input type="file"  id="cv" name="cv"  class="form-control" ><span class="text_requried">doc, docx and pdf only</span>
 		                                        </div>
 		                                    </div>
 		                                </div>
@@ -528,17 +528,44 @@
     </div>
  @push('scripts')
 	
-<script>
-$.validate();
-</script>
 
 
 <script>
 	$(document).ready(function(){
 	
 	$('select').chosen();
+	$.validate();
+	$('form').on('submit',function(e){
+		$(".required").each(function(){
+			if($(this).val()==''){
+				alert($(this).closest('div').find('label').text()+' value is missing');
+				$(this).closest('div').find('label').append("<br><span style='color:red;'>This Field is required</span>");
 
+				e.preventDefault();
+			}else
+			{
+				return true;
+			}
+		});
+	 });
+	
+	 $("#cv").change(function(){
+	 	var fileType = this.files[0].type;
+	 	var fileSize = this.files[0].size;
 
+	 	if (fileSize> 2048000){
+		        	alert('File Size is bigger than 2MB');
+		        	$(this).val('');
+		}else{
+
+		    if((fileType!='application/vnd.openxmlformats-officedocument.wordprocessingml.document')&&(fileType!='application/msword')&&(fileType!='application/pdf')){
+
+	 		alert('Only pdf, doc and docx attachment allowed');
+	 		$(this).val('');
+	 		}
+	 	}
+	});
+		
 	 //Make sure that the event fires on input change
 		$("#cnic").on('input', function(ev){
 			

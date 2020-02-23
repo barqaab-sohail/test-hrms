@@ -27,7 +27,7 @@
 
 		                <div class="card-body" id="hideDiv">
 
-		                    <form action="{{route('document.store')}}" method="post" class="form-horizontal form-prevent-multiple-submits" id="document" enctype="multipart/form-data">
+		                    <form action="{{route('cvDocument.store')}}" method="post" class="form-horizontal form-prevent-multiple-submits" id="document" enctype="multipart/form-data">
 		                        {{csrf_field()}}
 		                        <div class="form-body">
 		                            
@@ -72,7 +72,7 @@
 		                                
 					                            </center>
 		                                       
-		                                       <input type="number" name="cv_id" value="{{session('cv_id')}}"   class="form-control " hidden>
+		                                       <input type="number" name="cv_detail_id" value="{{session('cv_id')}}"   class="form-control " hidden>
 		                                    </div>
 		                                    @endcan
  
@@ -113,7 +113,11 @@
 		                    </form>
 		                </div>
 	
-			                    
+@if($documentIds->count()!=0)
+
+@include('cv.document.list')		                    
+		
+@endif			                    
 		        	</div>
 		        </div>
             </div>

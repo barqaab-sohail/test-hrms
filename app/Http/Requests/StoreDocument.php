@@ -25,8 +25,8 @@ class StoreDocument extends FormRequest
     {
         return [
             
-            'document_name'=>'required',
-            'document'=>'file|max:2000'
+            'document_name'=>'required|max:191',
+            'document'=>'file|max:2000|mimes:doc,docx,pdf,jpg,jpeg,tif,png'
         ];
     }
 }
