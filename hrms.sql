@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 23, 2019 at 01:44 PM
+-- Generation Time: Mar 04, 2020 at 12:25 PM
 -- Server version: 10.1.29-MariaDB
 -- PHP Version: 7.3.10
 
@@ -21,55 +21,6 @@ SET time_zone = "+00:00";
 --
 -- Database: `hrms`
 --
--- Dumping data for table `divisions`
---
-
-INSERT INTO `divisions` (`id`, `name`, `created_at`, `updated_at`) VALUES
-(1, 'Power', NULL, NULL),
-(2, 'Water', NULL, NULL),
-(3, 'Finance', NULL, NULL);
-
---
--- Dumping data for table `employees`
---
-
-INSERT INTO `employees` (`id`, `division_id`, `first_name`, `middle_name`, `last_name`, `father_name`, `date_of_birth`, `gender_id`, `cnic`, `cnic_expiry`, `employee_no`, `marital_status_id`, `religon`, `employee_status_id`, `created_at`, `updated_at`) VALUES
-(1, 1, 'Sohail', NULL, 'Afzal', 'Muhammad Afzal', '1976-06-08', 1, '35202-4689730-3', '2026-03-22', NULL, '2', 'Islam', 1, NULL, '2019-09-02 07:16:27'),
-(2, 2, 'Athar', 'Hussain', 'Jaffry', 'Nazar Hussain Jafry', '1974-08-12', 1, '35402-2013572-3', '2024-11-19', '111', '2', 'Islam', 1, '2019-07-31 10:15:04', '2019-09-02 07:16:58'),
-(3, 2, 'Muhammad', 'Tahir', 'Khan', 'Muhammad Nadir Khan', '1975-10-16', 1, '35202-4633596-1', '2021-08-31', NULL, '2', 'Islam', 1, '2019-08-02 15:23:46', '2019-09-02 07:20:53'),
-(4, 2, 'Ahmad', 'Khan', 'Bhatti', 'Mian Sher Alam Bhatti', '1942-05-13', 1, '35201-1577905-3', '2020-08-31', NULL, '2', 'Islam', 1, '2019-08-07 12:52:13', '2019-09-02 07:16:43'),
-(5, 3, 'Saqib', NULL, 'Javiad', 'Muhammad Ashraf Javaid', '1975-04-20', 1, '35202-8702700-3', '2026-03-12', NULL, '2', 'Islam', 1, '2019-08-16 13:13:56', '2019-09-02 07:18:44'),
-(6, 1, 'Muhammad', NULL, 'Zafar', 'Fazal Muhammad', '1956-12-15', 1, '35201-1489050-7', '2024-01-07', NULL, '2', 'Islam', 1, '2019-08-19 18:31:55', '2019-09-02 07:19:07'),
-(7, 2, 'Mumtaz', NULL, 'Akhtar', 'Talib Hussain Asghar', '1943-09-16', 1, '35201-4930750-7', '2034-08-01', NULL, '2', 'Islam', 1, '2019-08-21 09:46:35', '2019-09-02 07:19:57'),
-(8, 2, 'Naveed', 'Akhtar', 'Nawaz', 'Muhammad Nawaz', '1980-11-11', 1, '34601-0861441-1', '2019-12-26', NULL, '2', 'Islam', 1, '2019-08-22 08:48:15', '2019-09-02 07:20:16'),
-(9, 2, 'Rana', 'Haider', 'Faruq', 'Rana Muhammad Siddique', '1984-11-23', 1, '33202-0442124-3', '2025-02-27', NULL, '2', 'Islam', 1, '2019-08-22 06:37:31', '2019-09-02 07:20:34'),
-(10, 2, 'Fakhar-e-Alam', NULL, 'Bhatti', 'Ahmad Khan Bhatti', '1972-03-15', 1, '35201-1585116-9', '2022-08-06', NULL, '2', 'Islam', 1, '2019-08-27 01:47:20', '2019-09-02 07:17:12'),
-(11, 2, 'Muhammad', NULL, 'Rasheed', 'Ali Muhammad', '1978-12-28', 1, '35201-5236988-5', '2027-09-22', NULL, '2', 'Islam', 1, '2019-08-27 03:52:14', '2019-09-02 07:17:39'),
-(12, 2, 'Taseef', NULL, 'Ahmad', 'Sanaullah', '1988-07-17', 1, '34301-3299757-3', '2018-11-30', NULL, '2', 'Islam', 1, '2019-08-27 04:16:31', '2019-09-02 07:21:32'),
-(13, 2, 'Muhammad', NULL, 'Taufeeq', 'Abdul Majeed', '1982-02-19', 1, '13302-0470337-1', '2027-03-01', NULL, '2', 'Islam', 1, '2019-08-27 05:54:08', '2019-08-27 08:21:33'),
-(14, 2, 'Kabir', NULL, 'Ahmad', 'Naseer Ahmad', '1973-04-20', 1, '35202-6628320-3', '2024-07-04', '03014237600', '2', 'Islam', 1, '2019-08-28 23:45:28', '2019-09-02 07:15:47'),
-(15, 1, 'Nazir', NULL, 'Ahmad', 'Muhammad Sidduqe', '1946-08-10', 1, '35404-1588110-1', '2026-10-16', '03444111318', '2', 'Islam', 1, '2019-08-29 00:25:48', '2019-09-02 07:15:22'),
-(16, 2, 'Ali', NULL, 'Arslan', 'Shaokat Ali', '1985-10-01', 1, '33100-3385773-1', '2015-05-05', NULL, '2', 'Islam', 1, '2019-09-01 22:49:33', '2019-09-02 07:14:22'),
-(17, 2, 'Naveed', NULL, 'Anwar', 'Muhammad Anwar', '1972-09-09', 1, '35202-2308674-5', '2020-02-28', NULL, '2', 'Islam', 1, '2019-09-01 23:06:57', '2019-09-02 07:11:41'),
-(18, 2, 'Muhammad', 'Rafiq', 'Khan', 'Gul Hazrat', '1982-09-15', 1, '35202-1571812-7', '2023-01-31', NULL, '2', 'Islam', 1, '2019-09-05 00:18:00', '2019-09-05 00:18:00'),
-(19, 2, 'Noman', NULL, 'Ahmad', 'Farooq Ahmad', '1983-12-06', 1, '34502-4662986-3', '2014-07-22', NULL, '2', 'Islam', 1, '2019-09-12 02:09:27', '2019-09-12 02:09:27'),
-(20, 2, 'Muhammad', NULL, 'Ashraf', 'Rahmat Ali', '1966-05-14', 1, '35202-3982076-9', '2015-12-31', NULL, '2', 'Islam', 1, '2019-09-12 02:34:37', '2019-09-12 02:34:37'),
-(21, 2, 'Zamir', NULL, 'Abbas', 'Naseer Ahmad', '1983-03-02', 1, '35202-2769718-9', '2023-09-30', NULL, '2', 'Islam', 1, '2019-09-19 05:21:48', '2019-09-19 05:21:48'),
-(22, 2, 'Muhammad', NULL, 'Asif', 'Muhammad Idrees', '1978-09-18', 1, '34502-7697993-7', '2021-02-25', NULL, '2', 'Islam', 1, '2019-09-19 05:44:26', '2019-09-19 05:44:26'),
-(23, 3, 'Muhammad', 'Javed', 'Sultan', 'Sultan Hussain Eman', '1957-12-20', 1, '35202-2580696-3', '2020-04-28', NULL, '2', 'Islam', 1, '2019-09-25 06:26:27', '2019-10-02 03:49:17'),
-(24, 3, 'Muhammad', NULL, 'Waqas', 'Muhammad Salim Warsi', '1973-06-12', 1, '35202-6346130-7', '2021-06-12', NULL, '2', 'Islam', 1, '2019-09-26 04:18:54', '2019-09-26 04:18:54'),
-(25, 3, 'Muhammad', 'Imran', 'Javed', 'Javed Iqbal', '1980-09-06', 1, '31104-1752823-1', '2028-05-20', NULL, '2', 'Islam', 1, '2019-09-30 04:36:05', '2019-10-02 04:04:25'),
-(26, 3, 'Waqar', NULL, 'Ahmad', 'Muhammad Ramzan', '1992-02-02', 1, '35201-3332311-1', '2025-11-27', NULL, '2', 'Islam', 1, '2019-09-30 05:10:18', '2019-09-30 05:10:18'),
-(27, 3, 'Malik', 'Zulfiqar', 'Ali', 'Malik Mushtaq Ahmed', '1970-07-09', 1, '35202-8204197-3', '2027-07-11', NULL, '2', 'Islam', 1, '2019-10-02 06:05:38', '2019-10-02 06:05:38'),
-(28, 3, 'Abdul Majid', NULL, 'Rafi', 'Muhammad Rafi Ch.', '1981-08-20', 1, '35202-2481939-7', '2016-10-19', NULL, '2', 'Islam', 1, '2019-10-03 05:14:41', '2019-10-03 05:14:41'),
-(29, 3, 'Ch.', 'Muhammad', 'Khalil', 'Barkat Ali', '1950-12-31', 1, '35201-1642163-1', '2028-07-11', NULL, '2', 'Islam', 1, '2019-10-08 04:38:54', '2019-10-08 04:38:54'),
-(30, 3, 'Muhammad', 'Hafeez', 'Minhas', 'Muhammad Hanif Khan', '1983-12-12', 1, '82101-6175493-3', '2021-09-23', NULL, '2', 'Islam', 1, '2019-10-08 05:36:58', '2019-10-08 05:36:58'),
-(31, 3, 'Farhan', 'Ali', 'Saffi', 'Hakeem Safdar Ali Saffi', '1982-10-28', 1, '35202-8633331-5', '2023-06-20', NULL, '1', 'Islam', 1, '2019-10-11 05:46:19', '2019-10-11 05:46:19'),
-(32, 2, 'Muhammad', 'Tanvir', 'Abbas', 'Hafiz Abdur Rahim', '1980-04-13', 1, '35202-8591489-9', '2020-12-31', NULL, '2', 'Islam', 1, '2019-10-11 06:06:19', '2019-10-11 06:06:19'),
-(33, 1, 'Muhammad', NULL, 'Khaliq', 'Raham Dad', '1965-03-14', 1, '81102-0259819-7', '2015-09-30', NULL, '2', 'Islam', 1, '2019-10-16 04:15:12', '2019-10-16 04:15:12'),
-(34, 1, 'Iftikhar', 'Ahmad', 'Khan', 'Inayat Ullah Khan', '1974-09-29', 1, '35201-1299818-9', '2015-08-31', NULL, '2', 'Islam', 1, '2019-10-16 04:51:00', '2019-10-16 04:51:00'),
-(35, 1, 'Jamshaid', NULL, 'Siddiqui', 'Hafiz Muhammad Rafi Siddiqui', '1981-12-28', 1, '35202-2702207-5', '2022-10-30', NULL, '2', 'Islam', 1, '2019-10-23 05:03:29', '2019-10-23 05:03:29'),
-(36, 1, 'Syed', 'Azhar', 'Ali Shah', 'Syed Safdar Hussain Shah', '1979-06-16', 1, '35101-4549497-3', '2020-04-20', NULL, '2', 'Islam', 1, '2019-10-23 05:23:00', '2019-10-23 05:23:00');
 
 --
 -- Dumping data for table `all_languages`
@@ -185,7 +136,31 @@ INSERT INTO `appointments` (`id`, `employee_id`, `reference_no`, `appointment_da
 (29, 32, 'BQB/W-01/524/MA/164', '2002-04-01', 16, NULL, 'C', NULL, '2 Pages', '2019-10-11 06:12:34', '2019-10-11 06:12:34'),
 (30, 33, 'BQB/293', '2008-03-06', 17, NULL, 'C', NULL, '1 Page', '2019-10-16 04:29:55', '2019-10-16 04:29:55'),
 (31, 34, 'BQB/P-23-1/460', '2010-05-14', 17, NULL, 'C', NULL, '2 Pages', '2019-10-16 04:53:23', '2019-10-16 04:53:23'),
-(32, 36, 'BQB/P-23-1/2471', '2008-12-15', 28, NULL, 'C', NULL, '1 Page', '2019-10-23 05:25:31', '2019-10-23 05:25:31');
+(32, 36, 'BQB/P-23-1/2471', '2008-12-15', 28, NULL, 'C', NULL, '1 Page', '2019-10-23 05:25:31', '2019-10-23 05:25:31'),
+(33, 37, 'BQB/Muhammad Shahbaz/MA/871', '2009-08-13', 35, NULL, 'C', NULL, '1 Page', '2019-10-24 04:26:37', '2019-10-24 04:26:37'),
+(34, 38, 'BQB/W/01/67/MA/362', '2009-03-16', 35, NULL, 'C', NULL, '1 Page', '2019-10-24 04:43:27', '2019-10-24 04:43:27'),
+(35, 39, 'BQB/W/01/640/MA/615', '2006-05-30', 28, NULL, 'C', '12', '1 Page', '2019-10-25 04:13:03', '2019-10-25 04:13:03'),
+(36, 40, 'BQB/W/01539/MA/1197', '2006-09-17', 29, NULL, 'C', NULL, '2 Pages', '2019-10-25 04:29:21', '2019-10-25 04:29:21'),
+(37, 41, 'BQB-W/01/508/540', '2002-10-05', 29, NULL, 'C', NULL, '2 Pages', '2019-10-28 04:51:04', '2019-10-28 04:51:04'),
+(38, 43, 'BQB/A/03/MA/22/602', '2001-10-17', 32, NULL, 'C', NULL, '2 Pages', '2019-10-29 04:55:23', '2019-10-29 04:55:23'),
+(39, 44, 'BQB/A/03/53/MA/1501', '2006-12-18', 33, NULL, 'C', NULL, '1 Page', '2019-10-30 04:20:25', '2019-10-30 04:20:25'),
+(40, 45, 'BQB/W/01/535/MA/278', '2011-04-15', 35, NULL, 'C', NULL, '1 Page', '2019-10-30 04:38:22', '2019-10-30 04:38:22'),
+(41, 46, 'BQB/W/G&P/09/01', '2009-08-17', 35, NULL, 'C', NULL, '1 Page', '2019-10-31 04:19:56', '2019-10-31 04:19:56'),
+(42, 47, 'BQB/W/01/639/MA/631', '2006-05-29', 35, NULL, 'C', NULL, '1 Page', '2019-10-31 04:49:19', '2019-10-31 04:49:19'),
+(43, 48, 'BQB/PF/DH/071', '2001-08-31', 35, NULL, 'C', NULL, '2 Pages', '2019-10-31 05:12:17', '2019-10-31 05:12:17'),
+(44, 49, 'BQB/P-36-A-1/450', '2012-08-08', 16, NULL, 'C', NULL, '1 Page', '2019-11-04 04:26:59', '2019-11-04 04:26:59'),
+(45, 50, 'BQB/P/R.Elect/RAB/478', '2004-08-25', 3, NULL, 'C', NULL, '2 Pages', '2019-11-04 04:46:22', '2019-11-04 04:46:22'),
+(46, 51, 'BQB/P/R.Elect./RAB/479', '2004-08-25', 16, NULL, 'C', NULL, '2 Pages', '2019-11-05 04:19:58', '2019-11-05 04:19:58'),
+(47, 52, 'BQB/P-3-A-III/1050', '2006-08-24', 13, NULL, 'C', NULL, '2 Pages', '2019-11-05 04:33:07', '2019-11-05 04:33:07'),
+(48, 53, 'BQB/P-20-1/1255', '2010-12-13', 17, NULL, 'C', NULL, '1 Page', '2019-11-06 05:00:39', '2019-11-06 05:00:39'),
+(49, 54, 'BQB/P-3-A-III/299', '2007-03-14', 18, NULL, 'C', NULL, '2 Pages', '2019-11-07 04:49:52', '2019-11-07 04:49:52'),
+(50, 55, 'BQB/P-3-A/415', '2006-04-12', 17, NULL, 'C', NULL, '2 Pages', '2019-11-07 05:12:37', '2019-11-07 05:12:37'),
+(51, 56, 'BQB/P-25-1/2263', '2008-11-04', 9, NULL, 'C', NULL, '2 Pages', '2019-11-08 05:09:28', '2019-11-08 05:09:28'),
+(52, 57, 'BQB/P-36-1/1035', '2010-09-22', 4, NULL, 'C', NULL, '2 Pages', '2019-11-08 05:49:41', '2019-11-08 05:49:41'),
+(53, 58, 'BQB/A/03/MA/25/240', '2003-05-13', 13, NULL, 'C', NULL, '2 Pages', '2019-11-11 04:19:30', '2019-11-11 04:19:30'),
+(54, 59, 'GM (Dev)/Admin/Gen/559-61', '2001-11-10', 4, NULL, 'C', NULL, '1 Page', '2019-11-11 04:42:14', '2019-11-11 04:42:14'),
+(55, 60, 'BQB/P-3-A-II/486', '2006-04-27', 35, NULL, 'C', NULL, '1 Page', '2019-11-14 04:17:20', '2019-11-14 04:17:20'),
+(56, 61, 'BQB/W/037/71/MA/656', '2009-06-07', 41, NULL, 'C', NULL, '2 Pages', '2019-11-18 05:53:40', '2019-11-18 05:55:40');
 
 --
 -- Dumping data for table `blood_group`
@@ -235,7 +210,32 @@ INSERT INTO `contacts` (`id`, `employee_id`, `type`, `house`, `street`, `town`, 
 (27, 33, 0, 'House No. E-767, Jorha Town, Lahore', NULL, 'Johar Town', NULL, 'Lahore', 'Punjab', NULL, '0300-5213529', 1, '2019-10-16 04:43:05', '2019-10-16 04:43:05'),
 (28, 34, 0, 'House No. 364, Q-Block, Phsase-2, DHA, Lahore', NULL, 'DHA Lahore', 'Cantt', 'Lahore', 'Punjab', NULL, '0333-5600177', 1, '2019-10-16 05:04:20', '2019-10-16 05:04:20'),
 (29, 35, 0, 'House No. 16, Street No. 170 Zahid Colony, Chah Jammu Wala New Samanabad Lhr.', NULL, 'Samanabad', NULL, 'Lahore', 'Punjab', NULL, '0322-48377624', 1, '2019-10-23 05:16:29', '2019-10-23 05:16:29'),
-(30, 36, 0, 'Chak No. 18, Tehsil Chunian District Kasur', NULL, 'Chunian', NULL, 'Kasur', 'Punjab', NULL, '0300-8094520', 1, '2019-10-23 05:34:54', '2019-10-23 05:34:54');
+(30, 36, 0, 'Chak No. 18, Tehsil Chunian District Kasur', NULL, 'Chunian', NULL, 'Kasur', 'Punjab', NULL, '0300-8094520', 1, '2019-10-23 05:34:54', '2019-10-23 05:34:54'),
+(31, 37, 0, 'Flat No. E-433/28, Street No. 3 Peer Colony, Waltan Road Cantt. Lahore', NULL, 'Waltan', NULL, 'Lahore', 'Punjab', NULL, '03444384560', 1, '2019-10-24 04:37:54', '2019-10-24 04:37:54'),
+(32, 38, 0, 'House No. 83, Street No. 3, Jillani Colony, Narowa', NULL, 'Jillani', NULL, 'Narowal', 'Punjab', NULL, '0303-4162995', 1, '2019-10-24 04:46:52', '2019-10-24 04:46:52'),
+(33, 39, 0, 'H. No. 02, Street No. 55, Islam Pura Factory Shahdara, Lahore', NULL, 'Shahdara', NULL, 'Lahore', 'Punjab', NULL, '03009407653', 1, '2019-10-25 04:20:40', '2019-10-25 04:20:40'),
+(34, 40, 0, 'House No. 31, Iqbal Street No. 11, Kot Khawaja Saeed, Lahore', NULL, 'Kot Khawaja Saeed', 'Shalama', 'Lahore', 'Punjab', NULL, '03218099995', 1, '2019-10-25 04:35:37', '2019-10-25 04:35:37'),
+(35, 41, 0, 'E-180/3, St. No. 01, New Iqbal Park, Waltan Road,  Lahore', NULL, 'Waltan', NULL, 'Lahore', 'Punjab', '04236625794', '03068848445', 1, '2019-10-28 05:02:14', '2019-10-28 05:02:14'),
+(36, 42, 0, 'H. No. 9/394, St. M. Shafi Bhatti', NULL, 'Jamia Masjid', NULL, 'Lahore', 'Punjab', NULL, '03454075403', 1, '2019-10-29 04:39:51', '2019-10-29 04:39:51'),
+(37, 43, 0, 'H. No. C-47, WAPDA Colony, Chashma, District, Mianwali', NULL, 'Chashma', NULL, 'Mianwali', 'Punjab', NULL, '0321-4704878', 1, '2019-10-29 04:58:14', '2019-10-29 04:58:14'),
+(38, 44, 0, 'Village Gumtala Tehsil Shakargarh District Narowal', NULL, 'Gumtala', NULL, 'Narowal', 'Punjab', NULL, '03234178469', 4, '2019-10-30 04:29:31', '2019-10-30 04:29:31'),
+(39, 45, 0, 'H. No. 7, St. /Mohallah 2, Zubair Road, Ferdos Park, Rajgarh Lahore', NULL, 'Rajgarh', NULL, 'Lahore', 'Punjab', NULL, '03124525633', 1, '2019-10-30 04:42:47', '2019-10-30 04:42:47'),
+(40, 46, 0, 'H. No. E-265, St. No. 02, Mian Mir Colony, Dharum Pura Lahore', NULL, 'Dharum Pura', 'Cantt', 'Lahore', 'Punjab', NULL, '03244350289', 1, '2019-10-31 04:25:25', '2019-10-31 04:31:26'),
+(41, 47, 0, 'Rasul Pur, P.O. Box Gumtala, Tehsil Shakargarh, District Narowal', NULL, 'Shakargarh', NULL, 'Narowal', 'Punjab', NULL, '03124443198', 1, '2019-10-31 04:55:09', '2019-10-31 04:55:09'),
+(42, 48, 0, 'Kothyala Verkahan, P.O. Box, Kothyala Verkan, District, Sheikupura', NULL, 'Koyhyala Verkan', NULL, 'Sheikhupura', 'Punjab', NULL, '03134934744', 1, '2019-10-31 05:14:12', '2019-10-31 05:14:12'),
+(43, 49, 0, 'St. No. 03, Ittefaq Colony, Lajpat Road, Shahdara, Lahore', NULL, 'Shahdara', NULL, 'Lahore', 'Punjab', NULL, '03334699364', 1, '2019-11-04 04:39:10', '2019-11-04 04:39:10'),
+(44, 50, 0, 'H. No. 332-Satlug Block, Allama Iqbal Town, Lahore', NULL, 'Allama Iqbal Town', NULL, 'Lahore', 'Punjab', NULL, '03219461872', 1, '2019-11-04 05:00:39', '2019-11-04 05:00:39'),
+(45, 51, 0, 'H. No. 84-A, Model Town, Lahore', NULL, 'Model Town', NULL, 'Lahore', 'Punjab', NULL, '03005042139', 1, '2019-11-05 04:27:40', '2019-11-05 04:27:40'),
+(46, 52, 0, 'Village Gopi Pur Bhattian P.O. Box Adam Draz, Tehsil Daska, District, Sialkot', NULL, 'Gopi Pur', NULL, 'Sialkot', 'Punjab', NULL, '0300-7160875', 1, '2019-11-05 04:41:04', '2019-11-05 04:41:04'),
+(47, 53, 0, 'H. No. 389-CC, St. No. 7, Phase-IV, DHA Lahore', NULL, 'DHA', 'Cantt', 'Lahore', 'Punjab', NULL, '03334557377', 1, '2019-11-06 05:08:37', '2019-11-06 05:08:37'),
+(48, 54, 0, 'H. No. 12, SAT Gure St. Shamnagar Choburji, Lahore', NULL, 'Chouburji', NULL, 'Lahore', 'Punjab', NULL, '03217094554', 1, '2019-11-07 05:02:54', '2019-11-07 05:02:54'),
+(49, 55, 0, 'H. No. 1123/2-C, Dari Muhallah, Larkana', NULL, 'Larkana', NULL, 'Larkana', 'Sindh', NULL, '03337544389', 1, '2019-11-07 05:22:00', '2019-11-07 05:22:00'),
+(50, 56, 0, 'H. No. 172-B, Iqbal Avenue Housing Society, WAPDA Town, Lahore.', NULL, 'WAPDA Town', NULL, 'Lahore', 'Punjab', NULL, '03361407863', 1, '2019-11-08 05:44:25', '2019-11-08 05:44:25'),
+(51, 57, 0, 'H. No. 568-3CI, Town Ship', NULL, 'Town Ship', NULL, 'Lahore', 'Punjab', NULL, '0300-4463834', 1, '2019-11-08 05:55:20', '2019-11-08 05:55:20'),
+(52, 58, 0, 'H. No. 79, Block-S, Model Town, Lahore', NULL, 'Model Town', NULL, 'Lahore', 'Punjab', NULL, '03009493106', 1, '2019-11-11 04:29:16', '2019-11-11 04:29:16'),
+(53, 59, 0, 'H. No. 23, Bait-ul-Saeed, Opposite Cold Drink Shop, Ghosia St. Daroghawala, Lahore', NULL, 'Daroghawala', NULL, 'Lahore', 'Punjab', NULL, '03074173367', 1, '2019-11-11 04:45:48', '2019-11-11 04:45:48'),
+(54, 60, 0, 'H. No. 8, St. No. 6, Kucha Muhammandi, Sultanpura, Lahore', NULL, 'Sultan Pura', NULL, 'Lahore', 'Punjab', NULL, '03144060281', 1, '2019-11-14 04:27:19', '2019-11-14 04:27:19'),
+(55, 61, 0, 'H. No. 241-Ahmad Block, Near Garden Town, Lahore', NULL, 'Garden Town', NULL, 'Lahore', 'Punjab', NULL, '0300300300', 1, '2019-11-18 06:05:18', '2019-11-18 06:05:18');
 
 --
 -- Dumping data for table `contact_numbers`
@@ -327,7 +327,7 @@ INSERT INTO `contact_numbers` (`id`, `name`, `designation`, `mobile_1`, `mobile_
 (83, 'Sohail Iqbal', 'Inspector (Elect.)', '0300-3115997', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2019-09-13 05:11:20', '2019-09-13 05:11:20'),
 (84, 'Muhamamd Tahir Butt', 'Inspector (Civil)', '0334-9947686', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2019-09-13 05:11:20', '2019-09-13 05:11:20'),
 (85, 'Muhammad Ibrahim', 'Construction Manager', NULL, NULL, NULL, NULL, NULL, '042-35427085', NULL, NULL, NULL, '2019-09-13 05:11:20', '2019-09-13 05:11:20'),
-(86, 'Abdul Majeed', 'Senior Engineer (Civil)', '0300-4162264', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2019-09-13 05:11:20', '2019-09-13 05:11:20'),
+(86, 'Abdul Majeed', 'Senior Engineer (Civil)', '0301-8113144', '0300-4162264', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2019-09-13 05:11:20', '2020-02-14 05:04:48'),
 (87, 'Muhammad Ajaz Anwar', 'Junior Engineer (Elect.)', '0333-6615297', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2019-09-13 05:11:20', '2019-09-13 05:11:20'),
 (88, 'Balqias Khan', 'Inspector (Civil)', '0345-9764260', '0300-5481116', '0346-8500016', NULL, NULL, '0928-503532', NULL, NULL, NULL, '2019-09-13 05:11:20', '2019-09-13 05:11:20'),
 (89, 'Muhammad Anwar Jan', 'Construction Manager', '0306-3875768', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2019-09-13 05:11:20', '2019-09-13 05:11:20'),
@@ -359,7 +359,7 @@ INSERT INTO `contact_numbers` (`id`, `name`, `designation`, `mobile_1`, `mobile_
 (115, 'Imran Yousaf', 'Accountant', '0323-4579060', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2019-09-13 05:11:21', '2019-09-13 05:11:21'),
 (116, 'Imtiaz Hussain Qureshi', 'Constrction Supervision Expert Electrical', '0300-6336226', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2019-09-13 05:11:21', '2019-09-13 05:11:21'),
 (117, 'Muhammad Irfan', 'Accounts Officer ', '0300-6802476', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2019-09-13 05:11:21', '2019-09-13 05:11:21'),
-(118, 'Muhammad Iqbal Jan', 'RPM GEPCO', '0333-4201001', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2019-09-13 05:11:21', '2019-09-13 05:11:21'),
+(118, 'Muhammad Iqbal Jan', 'RPM GEPCO', '0333-4201001', '0305-4963389', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2019-09-13 05:11:21', '2019-11-04 13:29:55'),
 (119, 'Yaqoob Khalid', 'Accounts Officer ', '0322-4819430', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2019-09-13 05:11:21', '2019-09-13 05:11:21'),
 (120, 'NESPAK House', NULL, NULL, NULL, NULL, '990900000', NULL, NULL, NULL, NULL, 'ext. 415', '2019-09-13 05:11:21', '2019-09-13 05:11:21'),
 (121, 'Muhammad Ishfaq', 'Lineman', '0300-5068437', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2019-09-13 05:11:21', '2019-09-13 05:11:21'),
@@ -403,7 +403,7 @@ INSERT INTO `contact_numbers` (`id`, `name`, `designation`, `mobile_1`, `mobile_
 (159, 'Shehyar', 'SDO CDA', '0333-5526017', NULL, NULL, NULL, NULL, NULL, 'engr.sheri_93@yahoo.com', NULL, NULL, '2019-09-13 05:11:22', '2019-09-13 05:11:22'),
 (160, 'Muhammad Salim', 'DRPM Lesco', '0333-4422571', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2019-09-13 05:11:22', '2019-09-13 05:11:22'),
 (161, 'Qasim bin Nasir', 'Junior Engineer (Electrical)', '0321-4040896', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2019-09-13 05:11:22', '2019-09-13 05:11:22'),
-(162, 'Muhammad Ilyas', 'Civil Expert', '0320-3467891', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2019-09-13 05:11:22', '2019-09-13 05:11:22'),
+(162, 'Muhammad Ilyas', 'Civil Expert', '0320-3467891', '0346-6227065', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2019-09-13 05:11:22', '2019-10-28 07:49:58'),
 (163, 'Zohaib Hassan Mehar', 'Junior Engineer (Civil)', '0332-2946886', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2019-09-13 05:11:22', '2019-09-13 05:11:22'),
 (164, 'Mr. Nadeem ', 'Harbin Chaina', '0333-5317888', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2019-09-13 05:11:22', '2019-09-13 05:11:22'),
 (165, 'Waheed Murad', 'Airline Booking', '0333-4227453', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2019-09-13 05:11:22', '2019-09-13 05:11:22'),
@@ -456,7 +456,18 @@ INSERT INTO `contact_numbers` (`id`, `name`, `designation`, `mobile_1`, `mobile_
 (215, 'Faisal', 'NESPAK STG Department', '03008478188', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2019-10-04 09:45:41', '2019-10-04 09:45:41'),
 (216, 'Nadeem Baig', 'Utility Person', '0324-4350289', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2019-10-04 10:31:31', '2019-10-04 10:32:13'),
 (220, 'Haseeb', 'Assistant Manager MP&M', '0335-7401370', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2019-10-07 06:02:01', '2019-10-07 06:02:01'),
-(221, 'Shahroze Ali', 'Junior Expert (Electrical)', '0334-2816448', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2019-10-10 07:29:53', '2019-10-10 07:29:53');
+(221, 'Shahroze Ali', 'Junior Expert (Electrical)', '0334-2816448', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2019-10-10 07:29:53', '2019-10-10 07:29:53'),
+(222, 'Col. Mumtaz', NULL, '0333-4319936', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2019-10-28 06:35:45', '2019-10-28 06:35:45'),
+(223, 'Sultan Ahmad Sheikh', 'Ex Senior Accounts Officer BARQAAB', '0305-5776601', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2019-11-01 05:24:57', '2019-11-01 05:24:57'),
+(224, 'Abu Adil', 'Senior General Manager OMS', '0302-8293158', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2019-11-11 03:52:57', '2019-11-11 03:52:57'),
+(225, 'Yousif Aftab', 'Manager, Proposal & BD OMS', '0345-8486-015', '042-357-48650 Ext: 115', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2019-11-15 04:47:32', '2019-11-15 04:47:32'),
+(226, 'Naveed Anwar', 'Project Manager STS Sub-Soil', '0321-2603132', '021-34381117-8', NULL, NULL, NULL, NULL, 'anwer.n@sts.com.pk', NULL, NULL, '2019-11-15 05:28:20', '2019-11-15 05:28:54'),
+(227, 'Rashid Khan', 'TCS Delivery', '0333-4367305', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2019-11-18 07:15:08', '2019-11-18 07:15:08'),
+(228, 'Hafiz Arslan Khan', 'J.E Electrical', '0334-4067968', NULL, NULL, NULL, NULL, NULL, 'arslan033440@gmail.com', NULL, NULL, '2020-02-17 04:49:37', '2020-02-17 05:00:24'),
+(229, 'Hamid Masih', 'Pension LESCO', '0323-4138188', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2020-02-18 07:28:27', '2020-02-18 07:28:27'),
+(230, 'Hafiz Sarmad', 'Mechnical Engineer', '0306-4228690', '0323-0427874', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2020-02-27 08:34:21', '2020-02-27 08:34:21'),
+(231, 'Nazir Ahmad', 'PTCL', '0300-4121703', '042-36629495', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2020-03-02 05:27:16', '2020-03-02 05:27:16'),
+(232, 'Ammad Hussain Hashmi', 'IGI General Insurance Ltd', '0344-8401328', NULL, NULL, NULL, NULL, NULL, 'ammad.mkt@igi.com.pk', NULL, NULL, '2020-03-02 11:39:11', '2020-03-02 11:39:11');
 
 --
 -- Dumping data for table `countries`
@@ -761,10 +772,19 @@ INSERT INTO `designations` (`id`, `name`, `level`, `created_at`, `updated_at`) V
 (37, 'Accountant', 11, '2019-09-25 06:33:52', '2019-09-25 06:33:52'),
 (38, 'Assistant Manager Finance', 5, '2019-10-02 03:34:42', '2019-10-02 03:34:42'),
 (39, 'Assistant Secretary', 11, '2019-10-03 04:36:51', '2019-10-03 04:36:51'),
-(40, 'Coordinating Officer', 10, '2019-10-08 04:45:12', '2019-10-08 04:45:12');
+(40, 'Coordinating Officer', 10, '2019-10-08 04:45:12', '2019-10-08 04:45:12'),
+(41, 'Senior (HRD) & Business Development Officer', 8, '2019-11-18 05:53:21', '2019-11-18 05:53:21');
 
 --
+-- Dumping data for table `divisions`
+--
 
+INSERT INTO `divisions` (`id`, `name`, `created_at`, `updated_at`) VALUES
+(1, 'Power', NULL, NULL),
+(2, 'Water', NULL, NULL),
+(3, 'Finance', NULL, NULL);
+
+--
 -- Dumping data for table `documents`
 --
 
@@ -847,7 +867,6 @@ INSERT INTO `documents` (`id`, `employee_id`, `document_name`, `file_name`, `fil
 (88, 16, 'Degrees', '1567571900-16-Degrees.pdf', 'documents/16_Ali__Arslan/', 'application/pdf', NULL, NULL, '2019-09-03 23:38:20', '2019-09-03 23:38:20'),
 (89, 16, 'Cat-A Order', '1567571996-16-Cat-A Order.pdf', 'documents/16_Ali__Arslan/', 'application/pdf', NULL, NULL, '2019-09-03 23:39:56', '2019-09-03 23:39:56'),
 (90, 16, 'Educational Certificates', '1567572370-16-Educational Certificates.pdf', 'documents/16_Ali__Arslan/', 'application/pdf', NULL, NULL, '2019-09-03 23:46:10', '2019-09-03 23:46:10'),
-(91, 13, 'Appointment Letter', '1567573158-13-Appointment Letter.pdf', 'documents/13_Muhammad__Taufeeq/', 'application/pdf', NULL, NULL, '2019-09-03 23:59:18', '2019-09-03 23:59:18'),
 (92, 14, 'Appointment Letter', '1567573512-14-Appointment Letter.pdf', 'documents/14_Kabir__Ahmad/', 'application/pdf', NULL, NULL, '2019-09-04 00:05:12', '2019-09-04 00:05:12'),
 (93, 14, 'HR Form', '1567573599-14-HR Form.pdf', 'documents/14_Kabir__Ahmad/', 'application/pdf', NULL, NULL, '2019-09-04 00:06:39', '2019-09-04 00:06:39'),
 (94, 14, 'Confirmation of Services', '1567573724-14-Confirmation of Services.pdf', 'documents/14_Kabir__Ahmad/', 'application/pdf', NULL, NULL, '2019-09-04 00:08:44', '2019-09-04 00:08:44'),
@@ -898,7 +917,6 @@ INSERT INTO `documents` (`id`, `employee_id`, `document_name`, `file_name`, `fil
 (147, 24, 'CNIC Back', '1569910445-24-CNIC Back.JPG', 'documents/24_Muhammad__Waqas/', 'image/jpeg', NULL, NULL, '2019-10-01 06:14:05', '2019-10-01 06:14:05'),
 (149, 24, 'HR Form', '1569912998-24-HR Form.pdf', 'documents/24_Muhammad__Waqas/', 'application/pdf', NULL, NULL, '2019-10-01 06:56:39', '2019-10-01 06:56:39'),
 (152, 24, 'HR Form', '1569913147-24-HR Form.pdf', 'documents/24_Muhammad__Waqas/', 'application/pdf', NULL, NULL, '2019-10-01 06:59:08', '2019-10-01 06:59:08'),
-(153, 24, 'Promotion Order', '1569913176-24-Promotion Order.pdf', 'documents/24_Muhammad__Waqas/', 'application/pdf', NULL, NULL, '2019-10-01 06:59:36', '2019-10-01 06:59:36'),
 (154, 26, 'CNIC Front', '1569913849-26-CNIC Front.JPG', 'documents/26_Waqar__Ahmad/', 'image/jpeg', NULL, NULL, '2019-10-01 07:10:49', '2019-10-01 07:10:49'),
 (155, 26, 'CNIC Back', '1569913872-26-CNIC Back.JPG', 'documents/26_Waqar__Ahmad/', 'image/jpeg', NULL, NULL, '2019-10-01 07:11:12', '2019-10-01 07:11:12'),
 (156, 26, 'Appointment Letter', '1569913967-26-Appointment Letter.pdf', 'documents/26_Waqar__Ahmad/', 'application/pdf', NULL, NULL, '2019-10-01 07:12:48', '2019-10-01 07:12:48'),
@@ -914,7 +932,125 @@ INSERT INTO `documents` (`id`, `employee_id`, `document_name`, `file_name`, `fil
 (167, 27, 'CNIC Front', '1570511209-27-CNIC Front.JPG', 'documents/27_Malik_Zulfiqar_Ali/', 'image/jpeg', NULL, NULL, '2019-10-08 05:06:49', '2019-10-08 05:06:49'),
 (168, 27, 'CNIC Back', '1570511225-27-CNIC Back.JPG', 'documents/27_Malik_Zulfiqar_Ali/', 'image/jpeg', NULL, NULL, '2019-10-08 05:07:05', '2019-10-08 05:07:05'),
 (169, 27, 'Appointment Letter', '1570511250-27-Appointment Letter.pdf', 'documents/27_Malik_Zulfiqar_Ali/', 'application/pdf', NULL, NULL, '2019-10-08 05:07:30', '2019-10-08 05:07:30'),
-(170, 27, 'HR Form', '1570511286-27-HR Form.pdf', 'documents/27_Malik_Zulfiqar_Ali/', 'application/pdf', NULL, NULL, '2019-10-08 05:08:06', '2019-10-08 05:08:06');
+(170, 27, 'HR Form', '1570511286-27-HR Form.pdf', 'documents/27_Malik_Zulfiqar_Ali/', 'application/pdf', NULL, NULL, '2019-10-08 05:08:06', '2019-10-08 05:08:06'),
+(171, 29, 'CNIC Front', '1571998160-29-CNIC Front.JPG', 'documents/29_Ch._Muhammad_Khalil/', 'image/jpeg', NULL, NULL, '2019-10-25 10:09:22', '2019-10-25 10:09:22'),
+(172, 29, 'CNIC Back', '1571998188-29-CNIC Back.JPG', 'documents/29_Ch._Muhammad_Khalil/', 'image/jpeg', NULL, NULL, '2019-10-25 10:09:48', '2019-10-25 10:09:48'),
+(173, 29, 'HR Form', '1571998335-29-HR Form.pdf', 'documents/29_Ch._Muhammad_Khalil/', 'application/pdf', NULL, NULL, '2019-10-25 10:12:15', '2019-10-25 10:12:15'),
+(174, 29, 'Appointment Letter', '1571998356-29-Appointment Letter.pdf', 'documents/29_Ch._Muhammad_Khalil/', 'application/pdf', NULL, NULL, '2019-10-25 10:12:37', '2019-10-25 10:12:37'),
+(175, 29, 'Promotion in Grade-10', '1571998479-29-Promotion in Grade-10.pdf', 'documents/29_Ch._Muhammad_Khalil/', 'application/pdf', NULL, NULL, '2019-10-25 10:14:39', '2019-10-25 10:14:39'),
+(176, 39, 'CNIC Front', '1571998638-39-CNIC Front.JPG', 'documents/39_Hafiz_Hashim_Khan/', 'image/jpeg', NULL, NULL, '2019-10-25 10:17:18', '2019-10-25 10:17:18'),
+(177, 39, 'CNIC Back', '1571998657-39-CNIC Back.JPG', 'documents/39_Hafiz_Hashim_Khan/', 'image/jpeg', NULL, NULL, '2019-10-25 10:17:37', '2019-10-25 10:17:37'),
+(178, 39, 'HR Form', '1571998685-39-HR Form.pdf', 'documents/39_Hafiz_Hashim_Khan/', 'application/pdf', NULL, NULL, '2019-10-25 10:18:05', '2019-10-25 10:18:05'),
+(179, 39, 'Transfer Order', '1571998869-39-Transfer Order.jpg', 'documents/39_Hafiz_Hashim_Khan/', 'image/jpeg', NULL, NULL, '2019-10-25 10:21:09', '2019-10-25 10:21:09'),
+(180, 39, 'Promotion Request', '1571999080-39-Promotion Request.pdf', 'documents/39_Hafiz_Hashim_Khan/', 'application/pdf', NULL, NULL, '2019-10-25 10:24:40', '2019-10-25 10:24:40'),
+(181, 34, 'CNIC Front', '1571999476-34-CNIC Front.JPG', 'documents/34_Iftikhar_Ahmad_Khan/', 'image/jpeg', NULL, NULL, '2019-10-25 10:31:16', '2019-10-25 10:31:16'),
+(182, 34, 'CNIC Back', '1571999517-34-CNIC Back.JPG', 'documents/34_Iftikhar_Ahmad_Khan/', 'image/jpeg', NULL, NULL, '2019-10-25 10:31:57', '2019-10-25 10:31:57'),
+(183, 34, 'HR Form', '1571999572-34-HR Form.pdf', 'documents/34_Iftikhar_Ahmad_Khan/', 'application/pdf', NULL, NULL, '2019-10-25 10:32:52', '2019-10-25 10:32:52'),
+(184, 34, 'Appointment Letter', '1571999625-34-Appointment Letter.pdf', 'documents/34_Iftikhar_Ahmad_Khan/', 'application/pdf', NULL, NULL, '2019-10-25 10:33:45', '2019-10-25 10:33:45'),
+(185, 40, 'CNIC Front', '1572002642-40-CNIC Front.JPG', 'documents/40_Imtiaz__Khan/', 'image/jpeg', NULL, NULL, '2019-10-25 11:24:03', '2019-10-25 11:24:03'),
+(186, 40, 'CNIC Back', '1572002672-40-CNIC Back.JPG', 'documents/40_Imtiaz__Khan/', 'image/jpeg', NULL, NULL, '2019-10-25 11:24:32', '2019-10-25 11:24:32'),
+(187, 40, 'Appointment Letter', '1572002699-40-Appointment Letter.pdf', 'documents/40_Imtiaz__Khan/', 'application/pdf', NULL, NULL, '2019-10-25 11:24:59', '2019-10-25 11:24:59'),
+(188, 40, 'HR Form', '1572002810-40-HR Form.pdf', 'documents/40_Imtiaz__Khan/', 'application/pdf', NULL, NULL, '2019-10-25 11:26:50', '2019-10-25 11:26:50'),
+(189, 40, 'Transfer Order', '1572002958-40-Transfer Order.pdf', 'documents/40_Imtiaz__Khan/', 'application/pdf', NULL, NULL, '2019-10-25 11:29:18', '2019-10-25 11:29:18'),
+(190, 40, 'Joining Report', '1572002990-40-Joining Report.pdf', 'documents/40_Imtiaz__Khan/', 'application/pdf', NULL, NULL, '2019-10-25 11:29:50', '2019-10-25 11:29:50'),
+(191, 40, 'Promotion Case', '1572003068-40-Promotion Case.pdf', 'documents/40_Imtiaz__Khan/', 'application/pdf', NULL, NULL, '2019-10-25 11:31:08', '2019-10-25 11:31:08'),
+(192, 40, 'Appreciation Letter', '1572003372-40-Appreciation Letter.pdf', 'documents/40_Imtiaz__Khan/', 'application/pdf', NULL, NULL, '2019-10-25 11:36:12', '2019-10-25 11:36:12'),
+(193, 35, 'CNIC Front', '1572004312-35-CNIC Front.JPG', 'documents/35_Jamshaid__Siddiqui/', 'image/jpeg', NULL, NULL, '2019-10-25 11:51:52', '2019-10-25 11:51:52'),
+(194, 35, 'HR Form', '1572004358-35-HR Form.pdf', 'documents/35_Jamshaid__Siddiqui/', 'application/pdf', NULL, NULL, '2019-10-25 11:52:38', '2019-10-25 11:52:38'),
+(195, 35, 'Promotion Order', '1572004404-35-Promotion Order.pdf', 'documents/35_Jamshaid__Siddiqui/', 'application/pdf', NULL, NULL, '2019-10-25 11:53:24', '2019-10-25 11:53:24'),
+(196, 35, 'Arrival in Head Office', '1572004452-35-Arrival in Head Office.pdf', 'documents/35_Jamshaid__Siddiqui/', 'application/pdf', NULL, NULL, '2019-10-25 11:54:12', '2019-10-25 11:54:12'),
+(197, 35, 'Transfer Order', '1572004497-35-Transfer Order.pdf', 'documents/35_Jamshaid__Siddiqui/', 'application/pdf', NULL, NULL, '2019-10-25 11:54:57', '2019-10-25 11:54:57'),
+(198, 39, 'Appointment Letter', '1572238575-39-Appointment Letter.pdf', 'documents/39_Hafiz_Hashim_Khan/', 'application/pdf', NULL, NULL, '2019-10-28 04:56:15', '2019-10-28 04:56:15'),
+(199, 20, 'Joining Report', '1572240032-20-Joining Report.pdf', 'documents/20_Muhammad__Ashraf/', 'application/pdf', NULL, NULL, '2019-10-28 05:20:32', '2019-10-28 05:20:32'),
+(200, 38, 'CNIC Front', '1572241156-38-CNIC Front.JPG', 'documents/38_Shafiqur__Rehman/', 'image/jpeg', NULL, NULL, '2019-10-28 05:39:17', '2019-10-28 05:39:17'),
+(201, 38, 'CNIC Back', '1572241219-38-CNIC Back.JPG', 'documents/38_Shafiqur__Rehman/', 'image/jpeg', NULL, NULL, '2019-10-28 05:40:19', '2019-10-28 05:40:19'),
+(202, 38, 'Appointment Letter', '1572241239-38-Appointment Letter.pdf', 'documents/38_Shafiqur__Rehman/', 'application/pdf', NULL, NULL, '2019-10-28 05:40:39', '2019-10-28 05:40:39'),
+(203, 38, 'HR Form', '1572241260-38-HR Form.pdf', 'documents/38_Shafiqur__Rehman/', 'application/pdf', NULL, NULL, '2019-10-28 05:41:00', '2019-10-28 05:41:00'),
+(204, 38, 'Promotion Order', '1572241312-38-Promotion Order.pdf', 'documents/38_Shafiqur__Rehman/', 'application/pdf', NULL, NULL, '2019-10-28 05:41:52', '2019-10-28 05:41:52'),
+(205, 36, 'CNIC Front', '1572241801-36-CNIC Front.JPG', 'documents/36_Syed_Azhar_Ali Shah/', 'image/jpeg', NULL, NULL, '2019-10-28 05:50:01', '2019-10-28 05:50:01'),
+(206, 36, 'CNIC Back', '1572241814-36-CNIC Back.JPG', 'documents/36_Syed_Azhar_Ali Shah/', 'image/jpeg', NULL, NULL, '2019-10-28 05:50:14', '2019-10-28 05:50:14'),
+(207, 36, 'Appointment Letter', '1572241848-36-Appointment Letter.pdf', 'documents/36_Syed_Azhar_Ali Shah/', 'application/pdf', NULL, NULL, '2019-10-28 05:50:49', '2019-10-28 05:50:49'),
+(208, 36, 'HR Form', '1572241886-36-HR Form.pdf', 'documents/36_Syed_Azhar_Ali Shah/', 'application/pdf', NULL, NULL, '2019-10-28 05:51:26', '2019-10-28 05:51:26'),
+(209, 36, 'Transfer Order', '1572241949-36-Transfer Order.pdf', 'documents/36_Syed_Azhar_Ali Shah/', 'application/pdf', NULL, NULL, '2019-10-28 05:52:29', '2019-10-28 05:52:29'),
+(210, 36, 'Promotion', '1572241997-36-Promotion.pdf', 'documents/36_Syed_Azhar_Ali Shah/', 'application/pdf', NULL, NULL, '2019-10-28 05:53:17', '2019-10-28 05:53:17'),
+(211, 37, 'CNIC Front', '1572248706-37-CNIC Front.JPG', 'documents/37_Shahbaz__Sindhu/', 'image/jpeg', NULL, NULL, '2019-10-28 07:45:07', '2019-10-28 07:45:07'),
+(212, 37, 'CNIC Back', '1572248723-37-CNIC Back.JPG', 'documents/37_Shahbaz__Sindhu/', 'image/jpeg', NULL, NULL, '2019-10-28 07:45:23', '2019-10-28 07:45:23'),
+(213, 37, 'Appointment Letter', '1572248749-37-Appointment Letter.pdf', 'documents/37_Shahbaz__Sindhu/', 'application/pdf', NULL, NULL, '2019-10-28 07:45:49', '2019-10-28 07:45:49'),
+(214, 37, 'HR Form', '1572248801-37-HR Form.pdf', 'documents/37_Shahbaz__Sindhu/', 'application/pdf', NULL, NULL, '2019-10-28 07:46:41', '2019-10-28 07:46:41'),
+(216, 37, 'Promotion Request', '1572248892-37-Promotion Request.pdf', 'documents/37_Shahbaz__Sindhu/', 'application/pdf', NULL, NULL, '2019-10-28 07:48:12', '2019-10-28 07:48:12'),
+(218, 37, 'Driving Licence', '1572249028-37-Driving Licence.pdf', 'documents/37_Shahbaz__Sindhu/', 'application/pdf', NULL, NULL, '2019-10-28 07:50:28', '2019-10-28 07:50:28'),
+(219, 24, 'Grade-6', '1572255059-24-Grade-6.pdf', 'documents/24_Muhammad__Waqas/', 'application/pdf', NULL, NULL, '2019-10-28 09:31:00', '2019-10-28 09:31:00'),
+(220, 24, 'Grade-7', '1572255087-24-Grade-7.pdf', 'documents/24_Muhammad__Waqas/', 'application/pdf', NULL, NULL, '2019-10-28 09:31:27', '2019-10-28 09:31:27'),
+(221, 24, 'Grade-8', '1572255122-24-Grade-8.pdf', 'documents/24_Muhammad__Waqas/', 'application/pdf', NULL, NULL, '2019-10-28 09:32:02', '2019-10-28 09:32:02'),
+(222, 33, 'CNIC Front', '1572255652-33-CNIC Front.JPG', 'documents/33_Muhammad__Khaliq/', 'image/jpeg', NULL, NULL, '2019-10-28 09:40:52', '2019-10-28 09:40:52'),
+(223, 33, 'CNIC Back', '1572255668-33-CNIC Back.JPG', 'documents/33_Muhammad__Khaliq/', 'image/jpeg', NULL, NULL, '2019-10-28 09:41:08', '2019-10-28 09:41:08'),
+(224, 33, 'Appointment Letter', '1572255702-33-Appointment Letter.pdf', 'documents/33_Muhammad__Khaliq/', 'application/pdf', NULL, NULL, '2019-10-28 09:41:42', '2019-10-28 09:41:42'),
+(225, 33, 'HR Form', '1572255791-33-HR Form.pdf', 'documents/33_Muhammad__Khaliq/', 'application/pdf', NULL, NULL, '2019-10-28 09:43:11', '2019-10-28 09:43:11'),
+(226, 33, 'Joining Report', '1572255821-33-Joining Report.pdf', 'documents/33_Muhammad__Khaliq/', 'application/pdf', NULL, NULL, '2019-10-28 09:43:41', '2019-10-28 09:43:41'),
+(227, 33, 'Reg. Cat-A', '1572255856-33-Reg. Cat-A.pdf', 'documents/33_Muhammad__Khaliq/', 'application/pdf', NULL, NULL, '2019-10-28 09:44:16', '2019-10-28 09:44:16'),
+(228, 33, 'CV', '1572256081-33-CV.pdf', 'documents/33_Muhammad__Khaliq/', 'application/pdf', NULL, NULL, '2019-10-28 09:48:01', '2019-10-28 09:48:01'),
+(229, 18, 'Complaint', '1572258871-18-Complaint.pdf', 'documents/18_Muhammad_Rafiq_Khan/', 'application/pdf', NULL, NULL, '2019-10-28 10:34:32', '2019-10-28 10:34:32'),
+(230, 18, 'Explanation Reply', '1572258910-18-Explanation Reply.pdf', 'documents/18_Muhammad_Rafiq_Khan/', 'application/pdf', NULL, NULL, '2019-10-28 10:35:10', '2019-10-28 10:35:10'),
+(231, 13, 'Appointment Letter', '1572259676-13-Appointment Letter.pdf', 'documents/13_Muhammad__Taufeeq/', 'application/pdf', NULL, NULL, '2019-10-28 10:47:56', '2019-10-28 10:47:56'),
+(232, 13, 'HR Form', '1572259700-13-HR Form.pdf', 'documents/13_Muhammad__Taufeeq/', 'application/pdf', NULL, NULL, '2019-10-28 10:48:20', '2019-10-28 10:48:20'),
+(233, 13, 'Joining Report', '1572259742-13-Joining Report.pdf', 'documents/13_Muhammad__Taufeeq/', 'application/pdf', NULL, NULL, '2019-10-28 10:49:02', '2019-10-28 10:49:02'),
+(234, 13, 'Arrival After Leave', '1572259801-13-Arrival After Leave.pdf', 'documents/13_Muhammad__Taufeeq/', 'application/pdf', NULL, NULL, '2019-10-28 10:50:01', '2019-10-28 10:50:01'),
+(235, 13, 'Promotion & Leave Orders', '1572259843-13-Promotion & Leave Orders.pdf', 'documents/13_Muhammad__Taufeeq/', 'application/pdf', NULL, NULL, '2019-10-28 10:50:43', '2019-10-28 10:50:43'),
+(236, 41, 'CNIC Front', '1572584190-41-CNIC Front.JPG', 'documents/41_Inayat__Ullah/', 'image/jpeg', NULL, NULL, '2019-11-01 04:56:30', '2019-11-01 04:56:30'),
+(237, 41, 'CNIC Back', '1572584221-41-CNIC Back.JPG', 'documents/41_Inayat__Ullah/', 'image/jpeg', NULL, NULL, '2019-11-01 04:57:01', '2019-11-01 04:57:01'),
+(238, 41, 'Appointment Letter', '1572584283-41-Appointment Letter.pdf', 'documents/41_Inayat__Ullah/', 'application/pdf', NULL, NULL, '2019-11-01 04:58:03', '2019-11-01 04:58:03'),
+(239, 41, 'HR Form', '1572585127-41-HR Form.pdf', 'documents/41_Inayat__Ullah/', 'application/pdf', NULL, NULL, '2019-11-01 05:12:07', '2019-11-01 05:12:07'),
+(240, 41, 'Joining Report', '1572585830-41-Joining Report.pdf', 'documents/41_Inayat__Ullah/', 'application/pdf', NULL, NULL, '2019-11-01 05:23:50', '2019-11-01 05:23:50'),
+(241, 48, 'CNIC Front', '1572587959-48-CNIC Front.JPG', 'documents/48_Dubeer__Hussain/', 'image/jpeg', NULL, NULL, '2019-11-01 05:59:19', '2019-11-01 05:59:19'),
+(242, 48, 'CNIC Back', '1572587973-48-CNIC Back.JPG', 'documents/48_Dubeer__Hussain/', 'image/jpeg', NULL, NULL, '2019-11-01 05:59:33', '2019-11-01 05:59:33'),
+(243, 48, 'HR Form', '1572587998-48-HR Form.pdf', 'documents/48_Dubeer__Hussain/', 'application/pdf', NULL, NULL, '2019-11-01 05:59:58', '2019-11-01 05:59:58'),
+(244, 48, 'Complaint', '1572588062-48-Complaint.pdf', 'documents/48_Dubeer__Hussain/', 'application/pdf', NULL, NULL, '2019-11-01 06:01:02', '2019-11-01 06:01:02'),
+(245, 43, 'Appointment Letter', '1572588897-43-Appointment Letter.pdf', 'documents/43_Mehmood__Iqbal/', 'application/pdf', NULL, NULL, '2019-11-01 06:14:57', '2019-11-01 06:14:57'),
+(246, 43, 'HR Form', '1572588915-43-HR Form.pdf', 'documents/43_Mehmood__Iqbal/', 'application/pdf', NULL, NULL, '2019-11-01 06:15:15', '2019-11-01 06:15:15'),
+(247, 43, 'Arrival after medical leave', '1572588962-43-Arrival after medical leave.pdf', 'documents/43_Mehmood__Iqbal/', 'application/pdf', NULL, NULL, '2019-11-01 06:16:02', '2019-11-01 06:16:02'),
+(248, 43, 'leave-1', '1572589140-43-leave-1.pdf', 'documents/43_Mehmood__Iqbal/', 'application/pdf', NULL, NULL, '2019-11-01 06:19:00', '2019-11-01 06:19:00'),
+(249, 43, 'leave-2', '1572589166-43-leave-2.pdf', 'documents/43_Mehmood__Iqbal/', 'application/pdf', NULL, NULL, '2019-11-01 06:19:26', '2019-11-01 06:19:26'),
+(250, 43, 'leave-3', '1572589195-43-leave-3.pdf', 'documents/43_Mehmood__Iqbal/', 'application/pdf', NULL, NULL, '2019-11-01 06:19:56', '2019-11-01 06:19:56'),
+(251, 43, 'leave-4', '1572589221-43-leave-4.pdf', 'documents/43_Mehmood__Iqbal/', 'application/pdf', NULL, NULL, '2019-11-01 06:20:21', '2019-11-01 06:20:21'),
+(252, 43, 'Promotion', '1572589246-43-Promotion.pdf', 'documents/43_Mehmood__Iqbal/', 'application/pdf', NULL, NULL, '2019-11-01 06:20:47', '2019-11-01 06:20:47'),
+(253, 43, 'CNIC Front', '1572589327-43-CNIC Front.JPG', 'documents/43_Mehmood__Iqbal/', 'image/jpeg', NULL, NULL, '2019-11-01 06:22:07', '2019-11-01 06:22:07'),
+(254, 43, 'CNIC Back', '1572589358-43-CNIC Back.JPG', 'documents/43_Mehmood__Iqbal/', 'image/jpeg', NULL, NULL, '2019-11-01 06:22:38', '2019-11-01 06:22:38'),
+(255, 30, 'CNIC Front', '1572601796-30-CNIC Front.JPG', 'documents/30_Muhammad_Hafeez_Minhas/', 'image/jpeg', NULL, NULL, '2019-11-01 09:49:57', '2019-11-01 09:49:57'),
+(256, 30, 'CNIC Back', '1572601827-30-CNIC Back.JPG', 'documents/30_Muhammad_Hafeez_Minhas/', 'image/jpeg', NULL, NULL, '2019-11-01 09:50:27', '2019-11-01 09:50:27'),
+(257, 30, 'HR Form', '1572601915-30-HR Form.pdf', 'documents/30_Muhammad_Hafeez_Minhas/', 'application/pdf', NULL, NULL, '2019-11-01 09:51:55', '2019-11-01 09:51:55'),
+(258, 30, 'Appointment Letter', '1572601942-30-Appointment Letter.pdf', 'documents/30_Muhammad_Hafeez_Minhas/', 'application/pdf', NULL, NULL, '2019-11-01 09:52:22', '2019-11-01 09:52:22'),
+(259, 30, 'Appointment Letter-2', '1572601977-30-Appointment Letter-2.pdf', 'documents/30_Muhammad_Hafeez_Minhas/', 'application/pdf', NULL, NULL, '2019-11-01 09:52:57', '2019-11-01 09:52:57'),
+(260, 46, 'Appointment Letter', '1572602432-46-Appointment Letter.pdf', 'documents/46_Mirza_Nadeem_Baig/', 'application/pdf', NULL, NULL, '2019-11-01 10:00:32', '2019-11-01 10:00:32'),
+(261, 46, 'HR Form', '1572602557-46-HR Form.pdf', 'documents/46_Mirza_Nadeem_Baig/', 'application/pdf', NULL, NULL, '2019-11-01 10:02:37', '2019-11-01 10:02:37'),
+(262, 46, 'Transfer Orders', '1572602606-46-Transfer Orders.pdf', 'documents/46_Mirza_Nadeem_Baig/', 'application/pdf', NULL, NULL, '2019-11-01 10:03:26', '2019-11-01 10:03:26'),
+(263, 46, 'CNIC Front', '1572603120-46-CNIC Front.JPG', 'documents/46_Mirza_Nadeem_Baig/', 'image/jpeg', NULL, NULL, '2019-11-01 10:12:00', '2019-11-01 10:12:00'),
+(264, 46, 'CNIC Back', '1572603137-46-CNIC Back.JPG', 'documents/46_Mirza_Nadeem_Baig/', 'image/jpeg', NULL, NULL, '2019-11-01 10:12:17', '2019-11-01 10:12:17'),
+(265, 47, 'CNIC Front', '1572603492-47-CNIC Front.JPG', 'documents/47_Muhammad__Jamil/', 'image/jpeg', NULL, NULL, '2019-11-01 10:18:12', '2019-11-01 10:18:12'),
+(266, 42, 'CNIC Front', '1572842683-42-CNIC Front.JPG', 'documents/42_Altaf_Hussain_Bhatti/', 'image/jpeg', NULL, NULL, '2019-11-04 04:44:43', '2019-11-04 04:44:43'),
+(267, 42, 'CNIC Back', '1572842698-42-CNIC Back.JPG', 'documents/42_Altaf_Hussain_Bhatti/', 'image/jpeg', NULL, NULL, '2019-11-04 04:44:58', '2019-11-04 04:44:58'),
+(268, 42, 'Appointment Letter', '1572842739-42-Appointment Letter.pdf', 'documents/42_Altaf_Hussain_Bhatti/', 'application/pdf', NULL, NULL, '2019-11-04 04:45:39', '2019-11-04 04:45:39'),
+(269, 42, 'HR Form', '1572842766-42-HR Form.pdf', 'documents/42_Altaf_Hussain_Bhatti/', 'application/pdf', NULL, NULL, '2019-11-04 04:46:06', '2019-11-04 04:46:06'),
+(270, 42, 'Joining Report', '1572842795-42-Joining Report.pdf', 'documents/42_Altaf_Hussain_Bhatti/', 'application/pdf', NULL, NULL, '2019-11-04 04:46:35', '2019-11-04 04:46:35'),
+(271, 59, 'CNIC Front', '1573623355-59-CNIC Front.JPG', 'documents/59_Muhammad__Nawaz/', 'image/jpeg', NULL, NULL, '2019-11-13 05:35:56', '2019-11-13 05:35:56'),
+(272, 59, 'CNIC Back', '1573623427-59-CNIC Back.JPG', 'documents/59_Muhammad__Nawaz/', 'image/jpeg', NULL, NULL, '2019-11-13 05:37:07', '2019-11-13 05:37:07'),
+(273, 59, 'HR Form', '1573623533-59-HR Form.pdf', 'documents/59_Muhammad__Nawaz/', 'application/pdf', NULL, NULL, '2019-11-13 05:38:54', '2019-11-13 05:38:54'),
+(274, 59, 'Appointment Letter', '1573623694-59-Appointment Letter.pdf', 'documents/59_Muhammad__Nawaz/', 'application/pdf', NULL, NULL, '2019-11-13 05:41:34', '2019-11-13 05:41:34'),
+(275, 59, 'Cat-a approval-1', '1573623741-59-Cat-a approval-1.pdf', 'documents/59_Muhammad__Nawaz/', 'application/pdf', NULL, NULL, '2019-11-13 05:42:21', '2019-11-13 05:42:21'),
+(276, 59, 'Cat-A Approval-2', '1573623783-59-Cat-A Approval-2.pdf', 'documents/59_Muhammad__Nawaz/', 'application/pdf', NULL, NULL, '2019-11-13 05:43:03', '2019-11-13 05:43:03'),
+(277, 50, 'CNIC Front', '1573705156-50-CNIC Front.JPG', 'documents/50_Zamir_Hussain_Shad/', 'image/jpeg', NULL, NULL, '2019-11-14 04:19:17', '2019-11-14 04:19:17'),
+(278, 50, 'CNIC Back', '1573705170-50-CNIC Back.JPG', 'documents/50_Zamir_Hussain_Shad/', 'image/jpeg', NULL, NULL, '2019-11-14 04:19:30', '2019-11-14 04:19:30'),
+(279, 50, 'HR Form', '1573705190-50-HR Form.pdf', 'documents/50_Zamir_Hussain_Shad/', 'application/pdf', NULL, NULL, '2019-11-14 04:19:50', '2019-11-14 04:19:50'),
+(280, 50, 'Promotion G-03', '1573705256-50-Promotion G-03.pdf', 'documents/50_Zamir_Hussain_Shad/', 'application/pdf', NULL, NULL, '2019-11-14 04:20:56', '2019-11-14 04:20:56'),
+(281, 49, 'CNIC Front', '1573706002-49-CNIC Front.JPG', 'documents/49_Fayyaz_Mehmood_Karimi/', 'image/jpeg', NULL, NULL, '2019-11-14 04:33:22', '2019-11-14 04:33:22'),
+(282, 49, 'CNIC Back', '1573706016-49-CNIC Back.JPG', 'documents/49_Fayyaz_Mehmood_Karimi/', 'image/jpeg', NULL, NULL, '2019-11-14 04:33:36', '2019-11-14 04:33:36'),
+(283, 49, 'HR Form', '1573706036-49-HR Form.pdf', 'documents/49_Fayyaz_Mehmood_Karimi/', 'application/pdf', NULL, NULL, '2019-11-14 04:33:56', '2019-11-14 04:33:56'),
+(284, 49, 'Promoation Cat-A', '1573706089-49-Promoation Cat-A.pdf', 'documents/49_Fayyaz_Mehmood_Karimi/', 'application/pdf', NULL, NULL, '2019-11-14 04:34:49', '2019-11-14 04:34:49'),
+(286, 17, 'Transfer Order-1', '1573706761-17-Transfer Order-1.pdf', 'documents/17_Naveed__Anwar/', 'application/pdf', NULL, NULL, '2019-11-14 04:46:02', '2019-11-14 04:46:02'),
+(287, 17, 'Transfer Order-2', '1573706799-17-Transfer Order-2.pdf', 'documents/17_Naveed__Anwar/', 'application/pdf', NULL, NULL, '2019-11-14 04:46:39', '2019-11-14 04:46:39'),
+(288, 52, 'CNIC Front', '1573707757-52-CNIC Front.JPG', 'documents/52_Muhammad_Ashraf_Bhatti/', 'image/jpeg', NULL, NULL, '2019-11-14 05:02:37', '2019-11-14 05:02:37'),
+(289, 52, 'CNIC Back', '1573707773-52-CNIC Back.JPG', 'documents/52_Muhammad_Ashraf_Bhatti/', 'image/jpeg', NULL, NULL, '2019-11-14 05:02:53', '2019-11-14 05:02:53'),
+(290, 52, 'HR Form', '1573707789-52-HR Form.pdf', 'documents/52_Muhammad_Ashraf_Bhatti/', 'application/pdf', NULL, NULL, '2019-11-14 05:03:09', '2019-11-14 05:03:09'),
+(291, 52, 'Appointment Letter', '1573707813-52-Appointment Letter.pdf', 'documents/52_Muhammad_Ashraf_Bhatti/', 'application/pdf', NULL, NULL, '2019-11-14 05:03:33', '2019-11-14 05:03:33');
 
 --
 -- Dumping data for table `document_names`
@@ -963,7 +1099,28 @@ INSERT INTO `educations` (`id`, `employee_id`, `degree_name`, `institute`, `leve
 (29, 33, 'B.Sc. (Electrical)', 'UET Mirpur', '14', NULL, NULL, NULL, '1993', NULL, NULL, NULL, 1, '2019-10-16 04:35:06', '2019-10-16 04:35:06'),
 (30, 34, 'M.Sc. Engineering (Telecom)', 'McGill University CANADA', '16', NULL, NULL, NULL, '2002', NULL, NULL, NULL, 3, '2019-10-16 04:57:15', '2019-10-16 04:57:15'),
 (31, 35, 'MBA (M.Phil)', 'Hailley College', '16', NULL, NULL, NULL, '2014', NULL, NULL, NULL, 1, '2019-10-23 05:11:14', '2019-10-23 05:11:14'),
-(32, 36, 'B.Sc. Computer Science', 'Virtual University of Pakistan', '14', NULL, NULL, NULL, '2018', NULL, NULL, NULL, 1, '2019-10-23 05:31:24', '2019-10-23 05:31:24');
+(32, 36, 'B.Sc. Computer Science', 'Virtual University of Pakistan', '14', NULL, NULL, NULL, '2018', NULL, NULL, NULL, 1, '2019-10-23 05:31:24', '2019-10-23 05:31:24'),
+(33, 39, 'F.A.', 'Govt. Commercial College', '12', NULL, NULL, NULL, '1997', NULL, NULL, NULL, 1, '2019-10-25 04:16:57', '2019-10-25 04:16:57'),
+(34, 40, 'Matric', 'Govt. Comprehinsive High School', '10', NULL, NULL, NULL, '2001', NULL, NULL, NULL, 1, '2019-10-25 04:31:38', '2019-10-25 04:31:38'),
+(35, 41, 'Matric', 'Govt. High School Lahore', '10', NULL, NULL, NULL, '1980', NULL, NULL, NULL, 1, '2019-10-28 04:54:26', '2019-10-28 04:54:26'),
+(36, 42, 'M.Sc.', 'UET Lahore', '16', NULL, NULL, NULL, '1979', NULL, NULL, NULL, 1, '2019-10-29 04:34:55', '2019-10-29 04:34:55'),
+(37, 43, 'Matric', 'Govt. High School Chashma', '10', NULL, NULL, NULL, '2002', NULL, NULL, NULL, 1, '2019-10-29 04:49:18', '2019-10-29 04:49:18'),
+(38, 44, 'FSc.', 'Govt. College Shakargarh', '12', NULL, NULL, NULL, '1981', NULL, NULL, NULL, 4, '2019-10-30 04:23:08', '2019-10-30 04:23:08'),
+(39, 44, 'F.Sc.', 'Govt. College Shakargarh', '12', NULL, NULL, NULL, '1981', NULL, NULL, NULL, 4, '2019-10-30 04:24:29', '2019-10-30 04:24:29'),
+(40, 45, 'Matric', 'Govt. M.I. Happy High School', '10', NULL, NULL, NULL, '1994', NULL, NULL, NULL, 1, '2019-10-30 04:40:32', '2019-10-30 04:40:32'),
+(41, 46, 'Middle', 'Govt. High School Dharum Pura Lahore', '8', NULL, NULL, NULL, '1989', NULL, NULL, NULL, 1, '2019-10-31 04:23:49', '2019-10-31 04:23:49'),
+(42, 49, 'B.Sc.', 'UET Lahore', '14', NULL, NULL, NULL, '2010', NULL, NULL, NULL, 1, '2019-11-04 04:31:18', '2019-11-04 04:31:18'),
+(43, 50, 'B.Sc. Electrical', 'UET Dhaka', '14', NULL, NULL, NULL, '1969', NULL, NULL, NULL, 21, '2019-11-04 04:57:12', '2019-11-04 04:57:12'),
+(44, 51, 'B.E. Civil', 'UET Khuzdar', '14', NULL, NULL, NULL, '1995', NULL, NULL, NULL, 1, '2019-11-05 04:23:03', '2019-11-05 04:23:03'),
+(45, 52, 'B.Sc. Civil', 'UET Lahore', '14', NULL, NULL, NULL, '1993', NULL, NULL, NULL, 1, '2019-11-05 04:36:57', '2019-11-05 04:36:57'),
+(46, 53, 'M.S./M.Phil', 'Punjab University', '16', NULL, NULL, NULL, '2014', NULL, NULL, NULL, 1, '2019-11-06 05:04:06', '2019-11-06 05:04:06'),
+(47, 54, 'B.Sc.', 'UET Lahore', '14', NULL, NULL, NULL, '2007', NULL, NULL, NULL, 1, '2019-11-07 04:59:17', '2019-11-07 04:59:17'),
+(48, 55, 'B.E. (Electrical)', 'Mehran UET Jamshoro', '14', NULL, NULL, NULL, '1996', NULL, NULL, NULL, 1, '2019-11-07 05:15:21', '2019-11-07 05:15:21'),
+(49, 56, 'B.Sc. (Electrical)', 'Engineering College Peshawar', '14', NULL, NULL, NULL, '1976', NULL, NULL, NULL, 1, '2019-11-08 05:28:54', '2019-11-08 05:28:54'),
+(50, 57, 'B.Sc. (Electrical)', 'UET Lahore', '14', NULL, NULL, NULL, '1975', NULL, NULL, NULL, 1, '2019-11-08 05:51:54', '2019-11-08 05:51:54'),
+(51, 58, 'B.Sc. (Applied Geology)', 'UET Lahore', '14', NULL, NULL, NULL, '1989', NULL, NULL, NULL, 1, '2019-11-11 04:21:24', '2019-11-11 04:21:24'),
+(52, 59, 'M.Phil', 'UET Lahore', '18', NULL, NULL, NULL, '2006', NULL, NULL, NULL, 1, '2019-11-11 04:35:22', '2019-11-11 04:35:22'),
+(53, 61, 'MSc. (HRM)', 'University of Regina', '16', NULL, NULL, NULL, '2008', NULL, NULL, NULL, 1, '2019-11-18 05:57:53', '2019-11-18 05:57:53');
 
 --
 -- Dumping data for table `emergency_contacts`
@@ -979,9 +1136,108 @@ INSERT INTO `emergency_contacts` (`id`, `employee_id`, `name`, `relation`, `mobi
 (7, 33, 'Sakina Akram', 'Wife', '0344-5262909', NULL, '2019-10-16 04:44:14', '2019-10-16 04:44:14'),
 (8, 34, 'Smina Khan', 'Wife', '0333-4812378', NULL, '2019-10-16 05:04:57', '2019-10-16 05:04:57'),
 (9, 35, 'Javed Siddiqui', 'Brother', '0321-4363920', NULL, '2019-10-23 05:17:24', '2019-10-23 05:17:24'),
-(10, 36, 'Syed Mazhar Ali Shah', 'Brother', '0332-4677055', NULL, '2019-10-23 05:35:35', '2019-10-23 05:35:35');
+(10, 36, 'Syed Mazhar Ali Shah', 'Brother', '0332-4677055', NULL, '2019-10-23 05:35:35', '2019-10-23 05:35:35'),
+(11, 37, 'Sonia Niala', 'Wife', '0300-4170863', NULL, '2019-10-24 04:38:38', '2019-10-24 04:38:38'),
+(12, 38, 'Uzma Shafiq', 'Wife', '0308-4627863', NULL, '2019-10-24 04:47:26', '2019-10-24 04:47:26'),
+(13, 39, 'Shahid Khan', 'Brother', '03009407653', NULL, '2019-10-25 04:25:08', '2019-10-25 04:25:08'),
+(14, 40, 'Muhammad Ali Raza', 'Brother', '03334056002', NULL, '2019-10-25 04:36:14', '2019-10-25 04:36:14'),
+(15, 41, 'Wife', 'Wife', '04236625794', NULL, '2019-10-28 05:02:58', '2019-10-28 05:02:58'),
+(16, 42, 'Farida Altaf', 'Wife', '03454075403', NULL, '2019-10-29 04:40:27', '2019-10-29 04:40:27'),
+(17, 43, 'Mother', 'Mother', '03334331023', NULL, '2019-10-29 04:58:52', '2019-10-29 04:58:52'),
+(18, 45, 'Nadeem Ahmad But', 'Brother', '03217844848', NULL, '2019-10-30 04:43:57', '2019-10-30 04:43:57'),
+(19, 47, 'Noman Ahmad', 'Cousin', '03135663235', NULL, '2019-10-31 04:55:40', '2019-10-31 04:55:40'),
+(20, 48, 'Wife', 'Wife', '03134237619', NULL, '2019-10-31 05:14:41', '2019-10-31 05:14:41'),
+(21, 49, 'Muhammad Ashfaq Ahmad', 'Brother', '03217372854', NULL, '2019-11-04 04:39:53', '2019-11-04 04:39:53'),
+(22, 50, 'Ayesha Zamir', 'Daughter', '033314394450', NULL, '2019-11-04 05:06:37', '2019-11-04 05:06:37'),
+(23, 52, 'Farah Ashraf', 'Wife', '03067864040', NULL, '2019-11-05 04:41:41', '2019-11-05 04:41:41'),
+(24, 53, 'Afshan Munir', 'Mother', '03344156122', NULL, '2019-11-06 05:09:12', '2019-11-06 05:09:12'),
+(25, 54, 'Sajjad Haider Toor', 'Father', '03444566177', NULL, '2019-11-07 05:03:26', '2019-11-07 05:03:26'),
+(26, 55, 'Mrs. Haresh Kumar', 'Wife', '0744046593', NULL, '2019-11-07 05:22:43', '2019-11-07 05:22:43'),
+(27, 56, 'Yasmin', 'Wife', '03339638445', NULL, '2019-11-08 05:44:54', '2019-11-08 05:44:54'),
+(28, 57, 'Aliya Bushra', 'Wife', '03004323285', NULL, '2019-11-08 05:56:32', '2019-11-08 05:56:32'),
+(29, 58, 'Nighat Perveen', 'Wife', '03364422339', NULL, '2019-11-11 04:29:55', '2019-11-11 04:29:55'),
+(30, 59, 'Rabia Nawaz', 'Wife', '042-36544906', NULL, '2019-11-11 04:46:24', '2019-11-11 04:46:24'),
+(31, 60, 'Shahida Kashif', 'Wife', '03144060281', NULL, '2019-11-14 04:28:01', '2019-11-14 04:28:01'),
+(32, 61, 'Ch. Atiq Ahmad Humayun', 'Brother', '0300300300', NULL, '2019-11-18 06:06:08', '2019-11-18 06:06:08');
 
 --
+-- Dumping data for table `employees`
+--
+
+INSERT INTO `employees` (`id`, `division_id`, `first_name`, `middle_name`, `last_name`, `father_name`, `date_of_birth`, `gender_id`, `cnic`, `cnic_expiry`, `employee_no`, `marital_status_id`, `religon`, `employee_status_id`, `created_at`, `updated_at`) VALUES
+(1, 1, 'Sohail', NULL, 'Afzal', 'Muhammad Afzal', '1976-06-08', 1, '35202-4689730-3', '2026-03-22', NULL, '2', 'Islam', 1, NULL, '2019-09-02 07:16:27'),
+(2, 2, 'Athar', 'Hussain', 'Jaffry', 'Nazar Hussain Jafry', '1974-08-12', 1, '35402-2013572-3', '2024-11-19', '111', '2', 'Islam', 1, '2019-07-31 10:15:04', '2019-09-02 07:16:58'),
+(3, 2, 'Muhammad', 'Tahir', 'Khan', 'Muhammad Nadir Khan', '1975-10-16', 1, '35202-4633596-1', '2021-08-31', NULL, '2', 'Islam', 1, '2019-08-02 15:23:46', '2019-09-02 07:20:53'),
+(4, 2, 'Ahmad', 'Khan', 'Bhatti', 'Mian Sher Alam Bhatti', '1942-05-13', 1, '35201-1577905-3', '2020-08-31', NULL, '2', 'Islam', 1, '2019-08-07 12:52:13', '2019-09-02 07:16:43'),
+(5, 3, 'Saqib', NULL, 'Javiad', 'Muhammad Ashraf Javaid', '1975-04-20', 1, '35202-8702700-3', '2026-03-12', NULL, '2', 'Islam', 1, '2019-08-16 13:13:56', '2019-09-02 07:18:44'),
+(6, 1, 'Muhammad', NULL, 'Zafar', 'Fazal Muhammad', '1956-12-15', 1, '35201-1489050-7', '2024-01-07', NULL, '2', 'Islam', 1, '2019-08-19 18:31:55', '2019-09-02 07:19:07'),
+(7, 2, 'Mumtaz', NULL, 'Akhtar', 'Talib Hussain Asghar', '1943-09-16', 1, '35201-4930750-7', '2034-08-01', NULL, '2', 'Islam', 1, '2019-08-21 09:46:35', '2019-09-02 07:19:57'),
+(8, 2, 'Naveed', 'Akhtar', 'Nawaz', 'Muhammad Nawaz', '1980-11-11', 1, '34601-0861441-1', '2019-12-26', NULL, '2', 'Islam', 1, '2019-08-22 08:48:15', '2019-09-02 07:20:16'),
+(9, 2, 'Rana', 'Haider', 'Faruq', 'Rana Muhammad Siddique', '1984-11-23', 1, '33202-0442124-3', '2025-02-27', NULL, '2', 'Islam', 1, '2019-08-22 06:37:31', '2019-09-02 07:20:34'),
+(10, 2, 'Fakhar-e-Alam', NULL, 'Bhatti', 'Ahmad Khan Bhatti', '1972-03-15', 1, '35201-1585116-9', '2022-08-06', NULL, '2', 'Islam', 1, '2019-08-27 01:47:20', '2019-09-02 07:17:12'),
+(11, 2, 'Muhammad', NULL, 'Rasheed', 'Ali Muhammad', '1978-12-28', 1, '35201-5236988-5', '2027-09-22', NULL, '2', 'Islam', 1, '2019-08-27 03:52:14', '2019-09-02 07:17:39'),
+(12, 2, 'Taseef', NULL, 'Ahmad', 'Sanaullah', '1988-07-17', 1, '34301-3299757-3', '2018-11-30', NULL, '2', 'Islam', 1, '2019-08-27 04:16:31', '2019-09-02 07:21:32'),
+(13, 2, 'Muhammad', NULL, 'Taufeeq', 'Abdul Majeed', '1982-02-19', 1, '13302-0470337-1', '2027-03-01', NULL, '2', 'Islam', 1, '2019-08-27 05:54:08', '2019-08-27 08:21:33'),
+(14, 2, 'Kabir', NULL, 'Ahmad', 'Naseer Ahmad', '1973-04-20', 1, '35202-6628320-3', '2024-07-04', '03014237600', '2', 'Islam', 1, '2019-08-28 23:45:28', '2019-09-02 07:15:47'),
+(15, 1, 'Nazir', NULL, 'Ahmad', 'Muhammad Sidduqe', '1946-08-10', 1, '35404-1588110-1', '2026-10-16', '03444111318', '2', 'Islam', 1, '2019-08-29 00:25:48', '2019-09-02 07:15:22'),
+(16, 2, 'Ali', NULL, 'Arslan', 'Shaokat Ali', '1985-10-01', 1, '33100-3385773-1', '2015-05-05', NULL, '2', 'Islam', 1, '2019-09-01 22:49:33', '2019-09-02 07:14:22'),
+(17, 2, 'Naveed', NULL, 'Anwar', 'Muhammad Anwar', '1972-09-09', 1, '35202-2308674-5', '2020-02-28', NULL, '2', 'Islam', 1, '2019-09-01 23:06:57', '2019-09-02 07:11:41'),
+(18, 2, 'Muhammad', 'Rafiq', 'Khan', 'Gul Hazrat', '1982-09-15', 1, '35202-1571812-7', '2023-01-31', NULL, '2', 'Islam', 1, '2019-09-05 00:18:00', '2019-09-05 00:18:00'),
+(19, 2, 'Noman', NULL, 'Ahmad', 'Farooq Ahmad', '1983-12-06', 1, '34502-4662986-3', '2014-07-22', NULL, '2', 'Islam', 1, '2019-09-12 02:09:27', '2019-09-12 02:09:27'),
+(20, 2, 'Muhammad', NULL, 'Ashraf', 'Rahmat Ali', '1966-05-14', 1, '35202-3982076-9', '2015-12-31', NULL, '2', 'Islam', 1, '2019-09-12 02:34:37', '2019-09-12 02:34:37'),
+(21, 2, 'Zamir', NULL, 'Abbas', 'Naseer Ahmad', '1983-03-02', 1, '35202-2769718-9', '2023-09-30', NULL, '2', 'Islam', 1, '2019-09-19 05:21:48', '2019-09-19 05:21:48'),
+(22, 2, 'Muhammad', NULL, 'Asif', 'Muhammad Idrees', '1978-09-18', 1, '34502-7697993-7', '2021-02-25', NULL, '2', 'Islam', 1, '2019-09-19 05:44:26', '2019-09-19 05:44:26'),
+(23, 3, 'Muhammad', 'Javed', 'Sultan', 'Sultan Hussain Eman', '1957-12-20', 1, '35202-2580696-3', '2020-04-28', NULL, '2', 'Islam', 1, '2019-09-25 06:26:27', '2019-10-02 03:49:17'),
+(24, 3, 'Muhammad', NULL, 'Waqas', 'Muhammad Salim Warsi', '1973-06-12', 1, '35202-6346130-7', '2021-06-12', NULL, '2', 'Islam', 1, '2019-09-26 04:18:54', '2019-09-26 04:18:54'),
+(25, 3, 'Muhammad', 'Imran', 'Javed', 'Javed Iqbal', '1980-09-06', 1, '31104-1752823-1', '2028-05-20', NULL, '2', 'Islam', 1, '2019-09-30 04:36:05', '2019-10-02 04:04:25'),
+(26, 3, 'Waqar', NULL, 'Ahmad', 'Muhammad Ramzan', '1992-02-02', 1, '35201-3332311-1', '2025-11-27', NULL, '2', 'Islam', 1, '2019-09-30 05:10:18', '2019-09-30 05:10:18'),
+(27, 3, 'Malik', 'Zulfiqar', 'Ali', 'Malik Mushtaq Ahmed', '1970-07-09', 1, '35202-8204197-3', '2027-07-11', NULL, '2', 'Islam', 1, '2019-10-02 06:05:38', '2019-10-02 06:05:38'),
+(28, 3, 'Abdul Majid', NULL, 'Rafi', 'Muhammad Rafi Ch.', '1981-08-20', 1, '35202-2481939-7', '2016-10-19', NULL, '2', 'Islam', 1, '2019-10-03 05:14:41', '2019-10-03 05:14:41'),
+(29, 3, 'Ch.', 'Muhammad', 'Khalil', 'Barkat Ali', '1950-12-31', 1, '35201-1642163-1', '2028-07-11', NULL, '2', 'Islam', 1, '2019-10-08 04:38:54', '2019-10-08 04:38:54'),
+(30, 3, 'Muhammad', 'Hafeez', 'Minhas', 'Muhammad Hanif Khan', '1983-12-12', 1, '82101-6175493-3', '2021-09-23', NULL, '2', 'Islam', 1, '2019-10-08 05:36:58', '2019-10-08 05:36:58'),
+(31, 3, 'Farhan', 'Ali', 'Saffi', 'Hakeem Safdar Ali Saffi', '1982-10-28', 1, '35202-8633331-5', '2023-06-20', NULL, '1', 'Islam', 1, '2019-10-11 05:46:19', '2019-10-11 05:46:19'),
+(32, 2, 'Muhammad', 'Tanvir', 'Abbas', 'Hafiz Abdur Rahim', '1980-04-13', 1, '35202-8591489-9', '2020-12-31', NULL, '2', 'Islam', 1, '2019-10-11 06:06:19', '2019-10-11 06:06:19'),
+(33, 1, 'Muhammad', NULL, 'Khaliq', 'Raham Dad', '1965-03-14', 1, '81102-0259819-7', '2015-09-30', NULL, '2', 'Islam', 1, '2019-10-16 04:15:12', '2019-10-16 04:15:12'),
+(34, 1, 'Iftikhar', 'Ahmad', 'Khan', 'Inayat Ullah Khan', '1974-09-29', 1, '35201-1299818-9', '2015-08-31', NULL, '2', 'Islam', 1, '2019-10-16 04:51:00', '2019-10-16 04:51:00'),
+(35, 1, 'Jamshaid', NULL, 'Siddiqui', 'Hafiz Muhammad Rafi Siddiqui', '1981-12-28', 1, '35202-2702207-5', '2022-10-30', NULL, '2', 'Islam', 1, '2019-10-23 05:03:29', '2019-10-23 05:03:29'),
+(36, 1, 'Syed', 'Azhar', 'Ali Shah', 'Syed Safdar Hussain Shah', '1979-06-16', 1, '35101-4549497-3', '2020-04-20', NULL, '2', 'Islam', 1, '2019-10-23 05:23:00', '2019-10-23 05:23:00'),
+(37, 3, 'Shahbaz', NULL, 'Sindhu', 'Muhammad Ashraf Ali', '1990-07-03', 1, '35201-6794897-5', '2020-08-31', NULL, '2', 'Islam', 1, '2019-10-24 04:14:08', '2019-10-24 04:14:08'),
+(38, 2, 'Shafiqur', NULL, 'Rehman', 'Muhammad Yousaf Jameel', '1982-08-15', 1, '35401-2040393-7', '2013-03-31', NULL, '2', 'Islam', 1, '2019-10-24 04:41:19', '2019-10-24 04:41:19'),
+(39, 1, 'Hafiz', 'Hashim', 'Khan', 'Muhammad Qasim Khan', '1974-11-15', 1, '35202-2669122-5', '2027-11-06', NULL, '2', 'Islam', 1, '2019-10-25 04:10:17', '2019-10-25 04:10:17'),
+(40, 2, 'Imtiaz', 'Ahmad', 'Khan', 'Abdul Aziz Khan', '1982-08-03', 1, '35202-2857852-3', '2022-09-17', NULL, '2', 'Islam', 1, '2019-10-25 04:27:34', '2019-10-28 04:10:52'),
+(41, 1, 'Inayat', NULL, 'Ullah', 'Ali Muhammad', '1961-04-25', 1, '35201-1510289-5', '2022-02-23', NULL, '2', 'Islam', 1, '2019-10-28 04:48:24', '2019-10-28 04:48:24'),
+(42, 2, 'Altaf', 'Hussain', 'Bhatti', 'Muhammad Shafi Bhatti', '1958-01-28', 1, '34202-3092410-1', '2018-01-28', NULL, '2', 'Islam', 1, '2019-10-29 04:27:07', '2019-10-29 04:27:07'),
+(43, 2, 'Mehmood', NULL, 'Iqbal', 'Mubarik Ali', '1982-04-06', 1, '38303-4446684-3', '2022-10-09', NULL, '2', 'Islam', 1, '2019-10-29 04:44:00', '2019-10-29 04:44:00'),
+(44, 2, 'Muhammad', 'Asif', 'Sultan', 'Muhammad Khalid', '1972-05-11', 1, '34502-1577488-9', '2018-05-21', NULL, '2', 'Islam', 1, '2019-10-30 04:12:48', '2019-10-30 04:12:48'),
+(45, 2, 'Khalid', NULL, 'Siraj', 'Haji Siraj Din', '1976-06-01', 1, '35202-2848172-7', '2016-12-02', NULL, '2', 'Islam', 1, '2019-10-30 04:32:01', '2019-10-30 04:32:01'),
+(46, 2, 'Mirza', 'Nadeem', 'Baig', 'Ajmal Baig', '1970-05-05', 1, '35201-7836865-5', '2020-04-30', NULL, '2', 'Islam', 1, '2019-10-31 04:12:10', '2019-10-31 04:12:10'),
+(47, 1, 'Muhammad', NULL, 'Jamil', 'Rasheed Ahmad', '1977-04-21', 1, '34502-5398993-3', '2018-01-31', NULL, '2', 'Islam', 1, '2019-10-31 04:34:44', '2019-10-31 04:34:44'),
+(48, 2, 'Dubeer', NULL, 'Hussain', 'Munir Hussain Shad', '1980-04-13', 1, '35201-9777905-1', '2020-04-13', NULL, '2', 'Islam', 1, '2019-10-31 05:01:01', '2019-10-31 05:01:01'),
+(49, 1, 'Fayyaz', 'Mehmood', 'Karimi', 'Muhammad Ashfaq Ahmad', '1990-02-28', 1, '35202-2158307-1', '2020-06-30', NULL, '2', 'Islam', 1, '2019-11-04 04:24:13', '2019-11-04 04:24:13'),
+(50, 1, 'Zamir', 'Hussain', 'Shad', 'Muhammad Yaqub Bhatti', '1944-03-01', 1, '35202-2675335-1', '2029-08-20', NULL, '2', 'Islam', 1, '2019-11-04 04:43:18', '2019-11-04 04:43:18'),
+(51, 1, 'Muhammad', NULL, 'Farhan', 'Muhammad Zahid', '1973-08-31', 1, '44104-0716077-5', '2017-08-30', NULL, '2', 'Islam', 1, '2019-11-05 04:17:34', '2019-11-05 04:17:34'),
+(52, 1, 'Muhammad', 'Ashraf', 'Bhatti', 'Khuda Bakhash Bhatti', '1962-04-14', 1, '34601-2911761-9', '2012-10-31', NULL, '2', 'Islam', 1, '2019-11-05 04:31:06', '2019-11-05 04:31:06'),
+(53, 1, 'Rafae', NULL, 'Munir', 'Munir Ahmad', '1988-06-15', 1, '35201-5468211-3', '2024-06-16', NULL, '2', 'Islam', 1, '2019-11-06 04:58:10', '2019-11-06 04:58:10'),
+(54, 1, 'Kamal', 'Haider', 'Toor', 'Sajjad Haider Toor', '1986-05-07', 1, '35202-8822209-1', '2016-09-30', NULL, '2', 'Islam', 1, '2019-11-07 04:47:40', '2019-11-07 04:47:40'),
+(55, 1, 'Haresh', NULL, 'Kumar', 'Ladha Ram', '1972-02-16', 1, '43203-8297373-3', '2022-01-25', NULL, '2', 'Islam', 1, '2019-11-07 05:10:38', '2019-11-07 05:10:38'),
+(56, 1, 'Saif', 'ur', 'Rehman', 'Fazal-ur-Rehman', '1954-01-01', 1, '35202-3014900-7', '2010-03-10', NULL, '2', 'Islam', 1, '2019-11-08 05:07:54', '2019-11-08 05:07:54'),
+(57, 1, 'Malik', 'Iqtadar', 'Hussain', 'Malik Nazar Hussain', '1950-08-10', 1, '35202-3955582-5', '2011-06-27', NULL, '2', 'Islam', 1, '2019-11-08 05:47:07', '2019-11-08 05:47:07'),
+(58, 2, 'Muhammad', NULL, 'Afzal', 'Muhammad Abdullah', '1967-01-01', 1, '35200-1542442-5', '2025-08-18', NULL, '2', 'Islam', 1, '2019-11-11 04:15:44', '2019-11-11 04:15:44'),
+(59, 2, 'Muhammad', NULL, 'Nawaz', 'Muhammad Saeed', '1953-10-10', 1, '35201-1545452-3', '2032-08-17', NULL, '2', 'Islam', 1, '2019-11-11 04:32:08', '2019-11-11 04:32:08'),
+(60, 1, 'Kashif', 'Suleman', 'Afzal', 'Muhammad Suleman Afzal', '1978-01-17', 1, '35202-2452814-7', '2021-07-12', NULL, '2', 'Islam', 1, '2019-11-14 04:06:01', '2019-11-14 04:06:01'),
+(61, 2, 'Ch.', 'Atiq', 'Ahmad', 'Ijaz Ahmad Humayun', '1976-02-09', 1, '35202-2925131-1', '2027-05-27', NULL, '2', 'Islam', 1, '2019-11-18 05:47:32', '2019-11-18 05:47:32');
+
+--
+-- Dumping data for table `employee_statuses`
+--
+
+INSERT INTO `employee_statuses` (`id`, `name`, `created_at`, `updated_at`) VALUES
+(1, 'On Board', NULL, NULL),
+(2, 'Resigned', NULL, NULL),
+(3, 'Terminated', NULL, NULL),
+(4, 'Long Leave', NULL, NULL),
+(5, 'Manmonth Ended', NULL, NULL);
+
 --
 -- Dumping data for table `experiences`
 --
@@ -1008,7 +1264,29 @@ INSERT INTO `experiences` (`id`, `employee_id`, `employer`, `position`, `from`, 
 (22, 33, 'Muhammad Khaliq', 'Junior Engineer (Electrical)', '1997-05-13', '2019-10-15', 1, NULL, '2019-10-16 04:37:27', '2019-10-16 04:37:27'),
 (23, 34, 'Iftikhar Ahmad Khan', 'Junior Engineer (Electrical)', '1995-06-13', '2019-10-16', 1, NULL, '2019-10-16 04:58:29', '2019-10-16 04:58:29'),
 (24, 35, 'Jamshaid Siddiqui', 'Auto Cad/Computer Operator', '2008-03-05', '2019-10-22', 1, NULL, '2019-10-23 05:12:41', '2019-10-23 05:12:41'),
-(25, 36, 'Syed Azhar Ali Shah', 'Computer Operator', '2002-06-18', '2019-10-22', 1, NULL, '2019-10-23 05:32:19', '2019-10-23 05:32:19');
+(25, 36, 'Syed Azhar Ali Shah', 'Computer Operator', '2002-06-18', '2019-10-22', 1, NULL, '2019-10-23 05:32:19', '2019-10-23 05:32:19'),
+(26, 37, 'Muhammad Shahbaz Sindhu', 'Utility Person', '2009-08-13', '2019-10-24', 1, NULL, '2019-10-24 04:30:30', '2019-10-24 04:30:30'),
+(27, 39, 'Hafiz Hashim Khan', 'Computer Operator', '2006-05-31', '2019-10-25', 1, NULL, '2019-10-25 04:17:39', '2019-10-25 04:17:39'),
+(28, 40, 'Imtiaz Ahmad', 'Auto CAD Operato', '2002-03-11', '2019-10-25', 1, NULL, '2019-10-25 04:32:33', '2019-10-25 04:32:33'),
+(29, 41, 'Inayatullah', 'Auto CAD Operato', '1986-06-16', '2019-10-28', 1, NULL, '2019-10-28 04:55:34', '2019-10-28 04:55:34'),
+(30, 42, 'Muhammad Altaf Hussain Bhatti', 'Chief Contract Engineer', '1982-06-16', '2019-10-29', 1, NULL, '2019-10-29 04:35:58', '2019-10-29 04:35:58'),
+(31, 43, 'Mehmmod Iqbal', 'Junior Clerk', '2001-10-17', '2019-10-29', 1, NULL, '2019-10-29 04:50:09', '2019-10-29 04:50:09'),
+(32, 44, 'Muhammad Asif', 'Caretaker', '1988-06-16', '2019-10-30', 4, NULL, '2019-10-30 04:26:59', '2019-10-30 04:26:59'),
+(33, 46, 'Mirza Nadeem Baig', 'Utility Person', '1984-04-16', '2019-10-31', 1, NULL, '2019-10-31 04:22:49', '2019-10-31 04:22:49'),
+(34, 47, 'Muhammad Jamil', 'Utility Person', '2006-05-29', '2019-10-30', 1, NULL, '2019-10-31 04:52:17', '2019-10-31 04:52:17'),
+(35, 49, 'Fayyaz Mehmood Karimi', 'Junior Engineer', '2013-08-20', '2019-11-04', 1, NULL, '2019-11-04 04:35:04', '2019-11-04 04:35:04'),
+(36, 50, 'Zamir Hussain Shad', 'Chief Engineer', '1970-04-22', '2019-11-04', 1, NULL, '2019-11-04 04:58:04', '2019-11-04 04:58:04'),
+(37, 51, 'Muhammad Farhan', 'Junior Engineer', '1999-10-13', '2019-11-05', 1, NULL, '2019-11-05 04:24:19', '2019-11-05 04:24:19'),
+(38, 52, 'Muhammad Ashraf Bhatti', 'Senior Engineer', '1994-06-21', '2019-11-05', 1, NULL, '2019-11-05 04:38:02', '2019-11-05 04:38:02'),
+(39, 53, 'Rafae Munir', 'Junior Engineer (Electrical)', '2010-12-14', '2019-11-06', 1, NULL, '2019-11-06 05:05:40', '2019-11-06 05:05:40'),
+(40, 54, 'Kamal Haider Toor', 'Junior Engineer (Civil)', '2007-03-15', '2019-11-07', 1, NULL, '2019-11-07 05:00:15', '2019-11-07 05:00:15'),
+(41, 55, 'Haresh Kumar', 'Junior Engineer (Electrical)', '2007-04-12', '2019-11-07', 1, NULL, '2019-11-07 05:16:24', '2019-11-07 05:16:24'),
+(42, 56, 'Saif Ur Rehman', 'Principal Engineer (Electrical)', '1977-07-14', '2019-11-08', 1, NULL, '2019-11-08 05:33:53', '2019-11-08 05:33:53'),
+(43, 57, 'Malik Iqtadar Hussain', 'Chief Engineer', '1977-08-16', '2019-11-08', 1, NULL, '2019-11-08 05:52:52', '2019-11-08 05:52:52'),
+(44, 58, 'Muhammad Afzal', 'Senior Engineer', '1989-06-14', '2019-11-11', 1, NULL, '2019-11-11 04:22:24', '2019-11-11 04:22:24'),
+(45, 59, 'Muhammad Nawaz', 'Chief Contract Engineer', '1975-05-13', '2019-11-11', 1, NULL, '2019-11-11 04:36:12', '2019-11-11 04:36:12'),
+(46, 60, 'Kashif Suleman Afzal', 'Utility Person', '2006-05-28', '2019-11-14', 1, NULL, '2019-11-14 04:25:39', '2019-11-14 04:25:39'),
+(47, 61, 'CH. Atiq Ahmad Humayun', 'Senior (HRD) & Business Development Office', '2008-06-10', '2019-11-18', 1, NULL, '2019-11-18 05:59:10', '2019-11-18 05:59:10');
 
 --
 -- Dumping data for table `genders`
@@ -1035,8 +1313,6 @@ INSERT INTO `languages` (`id`, `employee_id`, `all_language_id`, `writing`, `spe
 (14, 1, 1, 'Excellent', 'Excellent', 'Excellent', '2019-09-18 07:02:11', '2019-09-18 07:02:11');
 
 --
-
---
 -- Dumping data for table `marital_status`
 --
 
@@ -1054,6 +1330,16 @@ INSERT INTO `memberships` (`id`, `employee_id`, `name`, `membership_no`, `expiry
 (1, 4, 'PEC', 'CIVIL/00927', '2019-12-31', '2019-08-07 13:24:59', '2019-08-07 13:24:59'),
 (2, 6, 'PEC', 'Elect/3994', '2020-12-31', '2019-08-20 10:20:09', '2019-08-20 10:20:09'),
 (3, 8, 'PEC', 'Civil/23078', '2019-12-31', '2019-08-22 09:24:04', '2019-08-22 09:24:04');
+
+--
+-- Dumping data for table `model_has_roles`
+--
+
+INSERT INTO `model_has_roles` (`role_id`, `model_type`, `model_id`) VALUES
+(3, 'App\\User', 13),
+(3, 'App\\User', 15),
+(4, 'App\\User', 14),
+(5, 'App\\User', 1);
 
 --
 -- Dumping data for table `nationalities`
@@ -1095,7 +1381,32 @@ INSERT INTO `nationalities` (`id`, `employee_id`, `country_id`, `created_at`, `u
 (33, 33, 1, '2019-10-16 04:15:12', '2019-10-16 04:15:12'),
 (34, 34, 1, '2019-10-16 04:51:00', '2019-10-16 04:51:00'),
 (35, 35, 1, '2019-10-23 05:03:29', '2019-10-23 05:03:29'),
-(36, 36, 1, '2019-10-23 05:23:00', '2019-10-23 05:23:00');
+(36, 36, 1, '2019-10-23 05:23:00', '2019-10-23 05:23:00'),
+(37, 37, 1, '2019-10-24 04:14:09', '2019-10-24 04:14:09'),
+(38, 38, 1, '2019-10-24 04:41:19', '2019-10-24 04:41:19'),
+(39, 39, 1, '2019-10-25 04:10:17', '2019-10-25 04:10:17'),
+(40, 40, 1, '2019-10-25 04:27:34', '2019-10-25 04:27:34'),
+(41, 41, 1, '2019-10-28 04:48:24', '2019-10-28 04:48:24'),
+(42, 42, 1, '2019-10-29 04:27:07', '2019-10-29 04:27:07'),
+(43, 43, 1, '2019-10-29 04:44:00', '2019-10-29 04:44:00'),
+(44, 44, 1, '2019-10-30 04:12:48', '2019-10-30 04:12:48'),
+(45, 45, 1, '2019-10-30 04:32:01', '2019-10-30 04:32:01'),
+(46, 46, 1, '2019-10-31 04:12:10', '2019-10-31 04:12:10'),
+(47, 47, 1, '2019-10-31 04:34:44', '2019-10-31 04:34:44'),
+(48, 48, 1, '2019-10-31 05:01:01', '2019-10-31 05:01:01'),
+(49, 49, 1, '2019-11-04 04:24:13', '2019-11-04 04:24:13'),
+(50, 50, 1, '2019-11-04 04:43:18', '2019-11-04 04:43:18'),
+(51, 51, 1, '2019-11-05 04:17:34', '2019-11-05 04:17:34'),
+(52, 52, 1, '2019-11-05 04:31:06', '2019-11-05 04:31:06'),
+(53, 53, 1, '2019-11-06 04:58:10', '2019-11-06 04:58:10'),
+(54, 54, 1, '2019-11-07 04:47:41', '2019-11-07 04:47:41'),
+(55, 55, 1, '2019-11-07 05:10:39', '2019-11-07 05:10:39'),
+(56, 56, 1, '2019-11-08 05:07:54', '2019-11-08 05:07:54'),
+(57, 57, 1, '2019-11-08 05:47:07', '2019-11-08 05:47:07'),
+(58, 58, 1, '2019-11-11 04:15:44', '2019-11-11 04:15:44'),
+(59, 59, 1, '2019-11-11 04:32:08', '2019-11-11 04:32:08'),
+(60, 60, 1, '2019-11-14 04:06:01', '2019-11-14 04:06:01'),
+(61, 61, 1, '2019-11-18 05:47:32', '2019-11-18 05:47:32');
 
 --
 -- Dumping data for table `other_informations`
@@ -1106,6 +1417,20 @@ INSERT INTO `other_informations` (`id`, `employee_id`, `blood_group`, `driving_l
 (2, 11, '1', '2007/7962', '2022-05-06', NULL, NULL, NULL, 'Tanzeel Jahangir', 'Wife', 'Same as Permanent Address', '0302-4587929', '2019-09-19 05:48:43', '2019-09-19 05:48:43'),
 (3, 21, '2', '2006/952', '2020-10-27', NULL, NULL, NULL, 'Asma', 'Wife', 'H. No. 6, Johar Street, Jeewan Hana, Lahore', '0336-7095751', '2019-09-23 05:10:31', '2019-09-23 05:10:31'),
 (4, 22, '2', 'LE-14-76584', '2019-11-23', NULL, NULL, NULL, 'Muhammad Idrees', 'Father', 'Etihad part, House No. 8, Block-B, Muhallah Stop Bank, Chongi Amersidhu, Lahore', '0300-8188386', '2019-09-23 05:14:59', '2019-09-23 05:14:59');
+
+--
+-- Dumping data for table `permissions`
+--
+
+INSERT INTO `permissions` (`id`, `name`, `guard_name`, `created_at`, `updated_at`) VALUES
+(2, 'hr_edit_record', 'web', '2019-11-18 09:43:11', '2020-02-20 05:23:51'),
+(3, 'cv_view', 'web', '2020-02-20 03:18:32', '2020-02-20 05:24:03'),
+(4, 'cv_edit', 'web', '2020-02-20 03:18:45', '2020-02-20 05:24:14'),
+(5, 'cv_delete', 'web', '2020-02-20 03:18:56', '2020-02-20 05:24:37'),
+(6, 'hr_view_record', 'web', '2020-02-20 03:23:36', '2020-02-20 05:24:57'),
+(7, 'hr_insert_record', 'web', '2020-02-20 03:24:08', '2020-02-20 05:25:57'),
+(8, 'cv_insert', 'web', '2020-02-20 03:24:25', '2020-02-20 05:25:16'),
+(9, 'hr_delete', 'web', '2020-02-20 05:27:23', '2020-02-20 05:27:23');
 
 --
 -- Dumping data for table `pictures`
@@ -1143,40 +1468,82 @@ INSERT INTO `pictures` (`id`, `employee_id`, `name`, `type`, `size`, `width`, `h
 (29, 32, '32-Muhammad Tanvir Abbas.png', 'image/png', '133179', '100', '100', '2019-10-11 06:08:04', '2019-10-11 06:08:04'),
 (30, 33, '33-Muhammad  Khaliq.png', 'image/png', '116645', '100', '100', '2019-10-16 04:21:44', '2019-10-16 04:21:44'),
 (31, 34, '34-Iftikhar Ahmad Khan.png', 'image/png', '108931', '100', '100', '2019-10-16 04:52:10', '2019-10-16 04:52:10'),
-(32, 36, '36-Syed Azhar Ali Shah.png', 'image/png', '143095', '100', '100', '2019-10-23 05:24:03', '2019-10-23 05:24:03');
+(32, 36, '36-Syed Azhar Ali Shah.png', 'image/png', '143095', '100', '100', '2019-10-23 05:24:03', '2019-10-23 05:24:03'),
+(33, 37, '37-Shahbaz  Sindhu.png', 'image/png', '115284', '100', '100', '2019-10-24 04:44:05', '2019-10-24 04:44:05'),
+(34, 38, '38-Shafiqur  Rehman.png', 'image/png', '150645', '100', '100', '2019-10-24 04:48:00', '2019-10-24 04:48:00'),
+(35, 39, '39-Hafiz Hashim Khan.png', 'image/png', '186844', '100', '100', '2019-10-25 04:11:29', '2019-10-25 04:11:29'),
+(36, 41, '41-Inayat  Ullah.png', 'image/png', '192807', '100', '100', '2019-10-28 04:49:24', '2019-10-28 04:49:24'),
+(37, 43, '43-Mehmood  Iqbal.png', 'image/png', '106411', '100', '100', '2019-10-29 04:44:33', '2019-10-29 04:44:33'),
+(38, 44, '44-Muhammad Asif Sultan.png', 'image/png', '163974', '100', '100', '2019-10-30 04:14:11', '2019-10-30 04:14:11'),
+(39, 45, '45-Khalid  Siraj.png', 'image/png', '153700', '100', '100', '2019-10-30 04:32:41', '2019-10-30 04:32:41'),
+(40, 48, '48-Dubeer  Hussain.png', 'image/png', '171728', '100', '100', '2019-10-31 05:11:09', '2019-10-31 05:11:09'),
+(41, 47, '47-Muhammad  Jamil.png', 'image/png', '131529', '100', '100', '2019-10-31 08:47:36', '2019-10-31 08:47:36'),
+(42, 46, '46-Mirza Nadeem Baig.png', 'image/png', '135159', '100', '100', '2019-10-31 08:48:55', '2019-10-31 08:48:55'),
+(43, 49, '49-Fayyaz Mehmood Karimi.png', 'image/png', '112559', '100', '100', '2019-11-04 04:25:08', '2019-11-04 04:25:08'),
+(44, 50, '50-Zamir Hussain Shad.png', 'image/png', '91247', '100', '100', '2019-11-04 04:44:26', '2019-11-04 04:44:26'),
+(45, 51, '51-Muhammad  Farhan.png', 'image/png', '136080', '100', '100', '2019-11-05 04:18:40', '2019-11-05 04:18:40'),
+(46, 52, '52-Muhammad Ashraf Bhatti.png', 'image/png', '118130', '100', '100', '2019-11-05 04:32:11', '2019-11-05 04:32:11'),
+(47, 53, '53-Rafae  Munir.png', 'image/png', '140135', '100', '100', '2019-11-06 04:59:20', '2019-11-06 04:59:20'),
+(48, 54, '54-Kamal Haider Toor.png', 'image/png', '132941', '100', '100', '2019-11-07 04:48:49', '2019-11-07 04:48:49'),
+(49, 55, '55-Haresh  Kumar.png', 'image/png', '86795', '100', '100', '2019-11-07 05:11:29', '2019-11-07 05:11:29'),
+(50, 56, '56-Saif ur Rehman.png', 'image/png', '133369', '100', '100', '2019-11-08 05:08:28', '2019-11-08 05:08:28'),
+(51, 57, '57-Malik Iqtadar Hussain.png', 'image/png', '185470', '100', '100', '2019-11-08 05:47:41', '2019-11-08 05:47:41'),
+(52, 59, '59-Muhammad  Nawaz.png', 'image/png', '179615', '100', '100', '2019-11-11 04:32:42', '2019-11-11 04:32:42'),
+(53, 61, '61-Ch. Atiq Ahmad.png', 'image/png', '103119', '100', '100', '2019-11-18 05:49:24', '2019-11-18 05:49:24');
 
 --
 -- Dumping data for table `postings`
 --
 
-INSERT INTO `postings` (`id`, `employee_id`, `designation_id`, `posting_date`, `project`, `joining_date`, `location`, `manager_id`, `created_at`, `updated_at`) VALUES
-(1, 4, 1, '2013-10-14', 'Overhead of the Company', '2013-10-14', 'Lahore', 4, '2019-08-07 13:01:52', '2019-08-07 13:01:52'),
-(2, 5, 7, '2018-09-03', 'Overhead of the Company', '2018-09-03', 'Lahore', 4, '2019-08-16 13:20:23', '2019-08-16 13:20:23'),
-(3, 6, 3, '2017-05-02', 'Overhead of the Company', '2017-05-09', 'Lahore', 4, '2019-08-19 18:54:44', '2019-08-19 18:54:44'),
-(4, 7, 2, '2000-08-12', 'Overhead of the Company', '2000-08-12', 'Lahore', 4, '2019-08-21 13:49:26', '2019-08-21 13:49:26'),
-(5, 8, 18, '2005-05-12', 'Overhead of the Company', '2005-05-12', 'Lahore', 7, '2019-08-22 09:21:35', '2019-08-22 01:38:48'),
-(7, 12, 34, '2013-10-14', 'Overhead of the Company', '2013-10-14', 'Lahore', 4, '2019-08-27 04:22:30', '2019-08-27 04:22:30'),
-(8, 13, 29, '2007-01-01', 'Overhead of the Company', '2007-01-01', 'LAHORE', 7, '2019-08-27 06:17:56', '2019-08-27 06:17:56'),
-(9, 14, 25, '2001-12-07', 'Overhead of the Company', '2001-12-07', 'Lahore', 7, '2019-08-28 23:57:48', '2019-08-28 23:57:48'),
-(10, 16, 16, '2009-08-10', 'Overhead of the Company', '2009-08-11', 'Lahore', 2, '2019-09-02 23:26:41', '2019-10-01 12:40:39'),
-(11, 17, 29, '2006-11-07', 'Overhead of the Company', '2006-11-07', 'Lahore', 7, '2019-09-03 02:43:21', '2019-09-03 02:43:21'),
-(12, 3, 24, '2000-08-09', 'Overhead of the Company', '2019-08-09', NULL, 7, '2019-09-04 00:00:52', '2019-09-04 00:00:52'),
-(13, 18, 35, '2005-12-31', 'Overhead of the Company', '2005-12-31', NULL, 7, '2019-09-05 00:56:39', '2019-09-05 00:56:39'),
-(14, 19, 28, '2009-08-19', 'Overhead of the Company', '2009-08-19', NULL, 7, '2019-09-12 02:17:36', '2019-09-12 02:17:36'),
-(15, 11, 35, '2000-08-09', 'Overhead of the Company', '2000-08-09', NULL, 7, '2019-09-19 05:33:45', '2019-09-19 05:33:45'),
-(16, 22, 34, '2000-08-08', 'Overhead of the Company', '1998-08-08', NULL, 7, '2019-09-19 05:47:11', '2019-09-19 05:47:11'),
-(18, 23, 37, '2004-09-06', 'Overhead of the Company', '2004-09-06', NULL, 7, '2019-09-25 09:46:28', '2019-10-02 03:00:53'),
-(19, 24, 20, '2001-11-07', 'Overhead of the Company', '2001-11-07', NULL, 5, '2019-09-26 04:26:23', '2019-09-26 04:26:23'),
-(22, 25, 30, '2007-02-01', 'Overhead of the Company', '2007-02-01', NULL, 5, '2019-09-30 04:51:07', '2019-09-30 04:51:07'),
-(23, 26, 20, '2018-04-05', 'Overhead of the Company', '2018-04-10', NULL, 5, '2019-09-30 05:14:09', '2019-09-30 05:14:09'),
-(25, 1, 28, '2001-09-01', 'Overhead of the Company', '2001-09-01', 'Lahore', 3, '2019-10-03 03:03:45', '2019-10-03 03:03:45'),
-(26, 27, 39, '2009-06-12', 'Overhead of the Company', '2009-06-12', NULL, 7, '2019-10-03 04:51:44', '2019-10-03 04:51:44'),
-(27, 28, 30, '2009-04-03', 'Overhead of the Company', '2009-04-03', NULL, 7, '2019-10-03 05:22:35', '2019-10-03 05:22:35'),
-(28, 29, 40, '2012-01-13', 'Overhead of the Company', '2012-01-13', 'Lahore', 7, '2019-10-08 04:56:47', '2019-10-08 04:56:47'),
-(29, 31, 35, '2005-11-29', 'Overhead of the Company', '2005-11-29', NULL, 7, '2019-10-11 05:52:14', '2019-10-11 05:52:14'),
-(30, 33, 17, '2008-03-06', '220KV Transmission Line From New 220kv Rohri Grid Station To 220kv Shikarpur Grid Station Project', '2008-03-10', NULL, 3, '2019-10-16 04:33:58', '2019-10-16 04:33:58'),
-(31, 34, 17, '2010-05-14', '220kV Chishtian – Vehari Transmission Line (Part of GS Contract)', '2010-05-14', NULL, 3, '2019-10-16 04:55:38', '2019-10-16 04:55:38'),
-(32, 36, 28, '2008-12-16', '220kV Chishtian – Vehari Transmission Line (Part of GS Contract)', '2008-10-16', NULL, 3, '2019-10-23 05:29:12', '2019-10-23 05:29:12');
+INSERT INTO `postings` (`id`, `employee_id`, `designation_id`, `posting_date`, `project_id`, `joining_date`, `location`, `manager_id`, `created_at`, `updated_at`) VALUES
+(1, 4, '1', '2013-10-14', 1, '2013-10-14', 'Lahore', 4, '2019-08-07 13:01:52', '2019-08-07 13:01:52'),
+(2, 5, '7', '2018-09-03', 1, '2018-09-03', 'Lahore', 4, '2019-08-16 13:20:23', '2019-08-16 13:20:23'),
+(3, 6, '3', '2017-05-02', 1, '2017-05-09', 'Lahore', 4, '2019-08-19 18:54:44', '2019-08-19 18:54:44'),
+(4, 7, '2', '2000-08-12', 1, '2000-08-12', 'Lahore', 4, '2019-08-21 13:49:26', '2019-08-21 13:49:26'),
+(5, 8, '18', '2005-05-12', 1, '2005-05-12', 'Lahore', 7, '2019-08-22 09:21:35', '2019-08-22 01:38:48'),
+(7, 12, '34', '2013-10-14', 1, '2013-10-14', 'Lahore', 4, '2019-08-27 04:22:30', '2019-08-27 04:22:30'),
+(8, 13, '29', '2007-01-01', 1, '2007-01-01', 'LAHORE', 7, '2019-08-27 06:17:56', '2019-08-27 06:17:56'),
+(9, 14, '25', '2001-12-07', 1, '2001-12-07', 'Lahore', 7, '2019-08-28 23:57:48', '2019-08-28 23:57:48'),
+(10, 16, '16', '2009-08-10', 1, '2009-08-11', 'Lahore', 2, '2019-09-02 23:26:41', '2019-10-01 12:40:39'),
+(11, 17, '29', '2006-11-07', 1, '2006-11-07', 'Lahore', 7, '2019-09-03 02:43:21', '2019-09-03 02:43:21'),
+(12, 3, '24', '2000-08-09', 1, '2019-08-09', NULL, 7, '2019-09-04 00:00:52', '2019-09-04 00:00:52'),
+(13, 18, '35', '2005-12-31', 1, '2005-12-31', NULL, 7, '2019-09-05 00:56:39', '2019-09-05 00:56:39'),
+(14, 19, '28', '2009-08-19', 1, '2009-08-19', NULL, 7, '2019-09-12 02:17:36', '2019-09-12 02:17:36'),
+(15, 11, '35', '2000-08-09', 1, '2000-08-09', NULL, 7, '2019-09-19 05:33:45', '2019-09-19 05:33:45'),
+(16, 22, '34', '2000-08-08', 1, '1998-08-08', NULL, 7, '2019-09-19 05:47:11', '2019-09-19 05:47:11'),
+(18, 23, '37', '2004-09-06', 1, '2004-09-06', NULL, 7, '2019-09-25 09:46:28', '2019-10-02 03:00:53'),
+(19, 24, '20', '2001-11-07', 1, '2001-11-07', NULL, 5, '2019-09-26 04:26:23', '2019-09-26 04:26:23'),
+(22, 25, '30', '2007-02-01', 1, '2007-02-01', NULL, 5, '2019-09-30 04:51:07', '2019-09-30 04:51:07'),
+(23, 26, '20', '2018-04-05', 1, '2018-04-10', NULL, 5, '2019-09-30 05:14:09', '2019-09-30 05:14:09'),
+(25, 1, '28', '2001-09-01', 1, '2001-09-01', 'Lahore', 3, '2019-10-03 03:03:45', '2019-10-03 03:03:45'),
+(26, 27, '39', '2009-06-12', 1, '2009-06-12', NULL, 7, '2019-10-03 04:51:44', '2019-10-03 04:51:44'),
+(27, 28, '30', '2009-04-03', 1, '2009-04-03', NULL, 7, '2019-10-03 05:22:35', '2019-10-03 05:22:35'),
+(28, 29, '40', '2012-01-13', 1, '2012-01-13', 'Lahore', 7, '2019-10-08 04:56:47', '2019-10-08 04:56:47'),
+(29, 31, '35', '2005-11-29', 1, '2005-11-29', NULL, 7, '2019-10-11 05:52:14', '2019-10-11 05:52:14'),
+(30, 33, '17', '2008-03-06', 14, '2008-03-10', NULL, 3, '2019-10-16 04:33:58', '2019-10-16 04:33:58'),
+(31, 34, '17', '2010-05-14', 9, '2010-05-14', NULL, 3, '2019-10-16 04:55:38', '2019-10-16 04:55:38'),
+(32, 36, '28', '2008-12-16', 9, '2008-10-16', NULL, 3, '2019-10-23 05:29:12', '2019-10-23 05:29:12'),
+(33, 37, '35', '2009-08-13', 1, '2009-08-13', NULL, 7, '2019-10-24 04:28:40', '2019-10-24 04:28:40'),
+(34, 38, '35', '2009-03-16', 1, '2009-03-16', NULL, 2, '2019-10-24 04:44:53', '2019-10-24 04:44:53'),
+(35, 39, '28', '2006-05-31', 305, '2006-05-31', NULL, 2, '2019-10-25 04:15:52', '2019-10-25 04:15:52'),
+(36, 40, '29', '2006-09-17', 306, '2006-09-27', NULL, 2, '2019-10-25 04:30:39', '2019-10-25 04:30:39'),
+(37, 41, '29', '2002-10-07', 284, '2002-10-05', NULL, 2, '2019-10-28 04:53:07', '2019-10-28 04:53:07'),
+(38, 42, '5', '2018-02-13', 1, '2018-02-13', NULL, 2, '2019-10-29 04:33:33', '2019-10-29 04:33:33'),
+(39, 43, '32', '2001-10-17', 1, '2001-10-17', NULL, 2, '2019-10-29 04:47:21', '2019-10-29 04:47:21'),
+(40, 45, '35', '2011-04-15', 1, '2011-04-15', NULL, 2, '2019-10-30 04:39:20', '2019-10-30 04:39:20'),
+(41, 46, '35', '2009-08-17', 1, '2009-08-17', NULL, 2, '2019-10-31 04:21:29', '2019-10-31 04:21:29'),
+(42, 47, '35', '2006-05-29', 306, '2006-05-29', NULL, 3, '2019-10-31 04:51:16', '2019-10-31 04:51:16'),
+(43, 48, '35', '2001-08-31', 1, '2001-08-31', NULL, 2, '2019-10-31 05:03:37', '2019-10-31 05:03:37'),
+(44, 49, '16', '2012-08-08', 7, '2012-08-08', NULL, 3, '2019-11-04 04:30:26', '2019-11-04 04:30:26'),
+(45, 50, '4', '2004-08-25', 6, '2004-08-25', NULL, 3, '2019-11-04 04:55:32', '2019-11-04 04:55:32'),
+(46, 51, '16', '2004-08-25', 6, '2004-08-25', NULL, 3, '2019-11-05 04:21:08', '2019-11-05 04:21:08'),
+(47, 52, '13', '2006-08-24', 2, '2006-08-24', NULL, 3, '2019-11-05 04:36:04', '2019-11-05 04:36:04'),
+(48, 53, '17', '2010-12-13', 49, '2010-12-14', NULL, 3, '2019-11-06 05:02:58', '2019-11-06 05:02:58'),
+(49, 54, '18', '2007-03-15', 5, '2007-03-15', NULL, 3, '2019-11-07 04:58:19', '2019-11-07 04:58:19'),
+(50, 55, '17', '2006-04-12', 7, '2006-04-12', NULL, 3, '2019-11-07 05:14:21', '2019-11-07 05:14:21'),
+(51, 56, '9', '2008-11-08', 73, '2008-11-08', NULL, 3, '2019-11-08 05:10:54', '2019-11-08 05:10:54'),
+(52, 57, '4', '2010-08-20', 73, '2010-08-20', NULL, 3, '2019-11-08 05:51:05', '2019-11-08 05:51:05'),
+(53, 59, '5', '2001-09-11', 292, '2001-09-11', NULL, 2, '2019-11-11 04:34:35', '2019-11-11 04:34:35');
 
 --
 -- Dumping data for table `projects`
@@ -1323,36 +1690,84 @@ INSERT INTO `projects` (`id`, `name`, `type`, `client`, `commencement`, `contrac
 -- Dumping data for table `promotions`
 --
 
-INSERT INTO `promotions` (`id`, `employee_id`, `designation_id`, `effective_date`, `promotion_remarks`, `created_at`, `updated_at`) VALUES
-(1, 6, 3, '2018-03-01', 'Promoted as same position and Grade-02 in Cat-A with all facilities', '2019-08-19 18:47:51', '2019-08-19 18:48:16'),
-(2, 6, 3, '2018-09-27', 'Promoted in Grade 1 with two increments on same Designation', '2019-08-19 18:53:10', '2019-08-19 18:53:10'),
-(3, 7, 2, '2001-09-01', 'Promoted from Grade-2 to Grade-1', '2019-08-22 05:56:28', '2019-08-22 05:56:28'),
-(4, 16, 18, '2016-06-09', 'From Grade-9 to Grade-8 vide Office Order No. BQB/Admin/MA/445 dated June 09, 2016', '2019-09-01 23:03:17', '2019-09-02 02:49:18'),
-(5, 16, 16, '2014-12-31', 'Regular Category-A Grade-9 with two increments vide Office Order No. BQB/MA/09-19/115 dated March 09, 2015', '2019-09-02 02:48:09', '2019-09-02 23:12:02'),
-(6, 3, 24, '2005-05-17', 'Upgrading from Grade-11 to Grade-10 vide Office Order No. BQB/A/03/05/MA/374 dated May 17, 2005', '2019-09-04 00:15:38', '2019-09-04 23:54:51'),
-(7, 19, 28, '2015-03-09', NULL, '2019-09-12 02:22:04', '2019-09-12 02:22:04'),
-(8, 20, 35, '2001-06-23', NULL, '2019-09-12 02:39:26', '2019-09-12 02:39:26'),
-(9, 21, 34, '2009-11-12', NULL, '2019-09-19 05:36:29', '2019-09-19 05:36:29'),
-(11, 11, 34, '2010-01-01', 'Promote from Utility Person to Driver with Grade-12', '2019-09-19 05:40:52', '2019-09-19 05:40:52'),
-(12, 22, 34, '2001-08-31', NULL, '2019-09-19 05:50:25', '2019-09-19 05:50:25'),
-(13, 23, 37, '2005-04-01', NULL, '2019-09-25 09:59:32', '2019-09-25 09:59:32'),
-(14, 24, 20, '2004-03-03', NULL, '2019-09-26 10:00:14', '2019-09-26 10:00:14'),
-(15, 24, 20, '2007-06-16', NULL, '2019-09-26 10:01:05', '2019-09-26 10:01:05'),
-(16, 24, 38, '2010-02-03', NULL, '2019-09-26 10:05:12', '2019-09-26 10:05:12'),
-(17, 24, 38, '2016-06-09', NULL, '2019-09-26 10:05:49', '2019-09-26 10:05:49'),
-(18, 25, 20, '2010-07-01', NULL, '2019-09-30 04:56:08', '2019-09-30 04:56:08'),
-(19, 25, 20, '2014-02-27', NULL, '2019-09-30 04:59:23', '2019-09-30 04:59:23'),
-(20, 27, 26, '2010-07-01', NULL, '2019-10-03 04:58:23', '2019-10-03 04:58:23'),
-(21, 27, 26, '2014-02-27', NULL, '2019-10-03 04:59:27', '2019-10-03 04:59:27'),
-(22, 28, 30, '2015-03-15', NULL, '2019-10-03 05:33:04', '2019-10-03 05:33:04'),
-(23, 31, 32, '2009-04-19', NULL, '2019-10-11 05:58:26', '2019-10-11 05:58:26'),
-(24, 32, 15, '2006-12-27', NULL, '2019-10-11 06:26:12', '2019-10-11 06:26:12'),
-(25, 32, 13, '2014-03-12', NULL, '2019-10-11 06:27:35', '2019-10-11 06:27:35'),
-(26, 32, 8, '2016-06-29', NULL, '2019-10-11 06:28:59', '2019-10-11 06:28:59'),
-(27, 33, 17, '2009-07-09', NULL, '2019-10-16 04:41:33', '2019-10-16 04:41:33'),
-(28, 36, 28, '2018-05-28', NULL, '2019-10-23 05:33:31', '2019-10-23 05:33:31');
+INSERT INTO `promotions` (`id`, `employee_id`, `designation_id`, `effective_date`, `category`, `grade`, `promotion_remarks`, `created_at`, `updated_at`) VALUES
+(1, 6, 3, '2018-03-01', NULL, NULL, 'Promoted as same position and Grade-02 in Cat-A with all facilities', '2019-08-19 18:47:51', '2019-08-19 18:48:16'),
+(2, 6, 3, '2018-09-27', NULL, NULL, 'Promoted in Grade 1 with two increments on same Designation', '2019-08-19 18:53:10', '2019-08-19 18:53:10'),
+(3, 7, 2, '2001-09-01', NULL, NULL, 'Promoted from Grade-2 to Grade-1', '2019-08-22 05:56:28', '2019-08-22 05:56:28'),
+(4, 16, 18, '2016-06-09', NULL, NULL, 'From Grade-9 to Grade-8 vide Office Order No. BQB/Admin/MA/445 dated June 09, 2016', '2019-09-01 23:03:17', '2019-09-02 02:49:18'),
+(5, 16, 16, '2014-12-31', NULL, NULL, 'Regular Category-A Grade-9 with two increments vide Office Order No. BQB/MA/09-19/115 dated March 09, 2015', '2019-09-02 02:48:09', '2019-09-02 23:12:02'),
+(6, 3, 24, '2005-05-17', NULL, NULL, 'Upgrading from Grade-11 to Grade-10 vide Office Order No. BQB/A/03/05/MA/374 dated May 17, 2005', '2019-09-04 00:15:38', '2019-09-04 23:54:51'),
+(7, 19, 28, '2015-03-09', NULL, NULL, NULL, '2019-09-12 02:22:04', '2019-09-12 02:22:04'),
+(8, 20, 35, '2001-06-23', NULL, NULL, NULL, '2019-09-12 02:39:26', '2019-09-12 02:39:26'),
+(9, 21, 34, '2009-11-12', NULL, NULL, NULL, '2019-09-19 05:36:29', '2019-09-19 05:36:29'),
+(11, 11, 34, '2010-01-01', NULL, NULL, 'Promote from Utility Person to Driver with Grade-12', '2019-09-19 05:40:52', '2019-09-19 05:40:52'),
+(12, 22, 34, '2001-08-31', NULL, NULL, NULL, '2019-09-19 05:50:25', '2019-09-19 05:50:25'),
+(13, 23, 37, '2005-04-01', NULL, NULL, NULL, '2019-09-25 09:59:32', '2019-09-25 09:59:32'),
+(14, 24, 20, '2004-03-03', NULL, NULL, NULL, '2019-09-26 10:00:14', '2019-09-26 10:00:14'),
+(15, 24, 20, '2007-06-16', NULL, NULL, NULL, '2019-09-26 10:01:05', '2019-09-26 10:01:05'),
+(16, 24, 38, '2010-02-03', NULL, NULL, NULL, '2019-09-26 10:05:12', '2019-09-26 10:05:12'),
+(17, 24, 38, '2016-06-09', NULL, NULL, NULL, '2019-09-26 10:05:49', '2019-09-26 10:05:49'),
+(18, 25, 20, '2010-07-01', NULL, NULL, NULL, '2019-09-30 04:56:08', '2019-09-30 04:56:08'),
+(19, 25, 20, '2014-02-27', NULL, NULL, NULL, '2019-09-30 04:59:23', '2019-09-30 04:59:23'),
+(20, 27, 26, '2010-07-01', NULL, NULL, NULL, '2019-10-03 04:58:23', '2019-10-03 04:58:23'),
+(21, 27, 26, '2014-02-27', NULL, NULL, NULL, '2019-10-03 04:59:27', '2019-10-03 04:59:27'),
+(22, 28, 30, '2015-03-15', NULL, NULL, NULL, '2019-10-03 05:33:04', '2019-10-03 05:33:04'),
+(23, 31, 32, '2009-04-19', NULL, NULL, NULL, '2019-10-11 05:58:26', '2019-10-11 05:58:26'),
+(24, 32, 15, '2006-12-27', NULL, NULL, NULL, '2019-10-11 06:26:12', '2019-10-11 06:26:12'),
+(25, 32, 13, '2014-03-12', NULL, NULL, NULL, '2019-10-11 06:27:35', '2019-10-11 06:27:35'),
+(26, 32, 8, '2016-06-29', NULL, NULL, NULL, '2019-10-11 06:28:59', '2019-10-11 06:28:59'),
+(27, 33, 17, '2009-07-09', NULL, NULL, NULL, '2019-10-16 04:41:33', '2019-10-16 04:41:33'),
+(28, 36, 28, '2018-05-28', NULL, NULL, NULL, '2019-10-23 05:33:31', '2019-10-23 05:33:31'),
+(29, 37, 35, '2012-07-06', NULL, NULL, NULL, '2019-10-24 04:35:09', '2019-10-24 04:35:09'),
+(30, 37, 34, '2016-06-09', NULL, NULL, NULL, '2019-10-24 04:36:22', '2019-10-24 04:36:22'),
+(31, 39, 28, '2016-11-01', NULL, NULL, NULL, '2019-10-25 04:18:48', '2019-10-25 04:18:48'),
+(32, 40, 29, '2015-03-09', NULL, NULL, NULL, '2019-10-25 04:34:02', '2019-10-25 04:34:02'),
+(33, 43, 32, '2010-01-01', NULL, NULL, NULL, '2019-10-29 04:56:33', '2019-10-29 04:56:33'),
+(34, 45, 35, '2019-10-17', NULL, NULL, NULL, '2019-10-30 04:41:26', '2019-10-30 04:41:26'),
+(35, 49, 16, '2016-04-27', NULL, NULL, NULL, '2019-11-04 04:37:15', '2019-11-04 04:37:15'),
+(36, 50, 4, '2009-01-14', NULL, NULL, NULL, '2019-11-04 04:59:18', '2019-11-04 04:59:18'),
+(37, 53, 17, '2015-04-01', NULL, NULL, NULL, '2019-11-06 05:07:21', '2019-11-06 05:07:21'),
+(38, 54, 18, '2015-03-09', NULL, NULL, NULL, '2019-11-07 05:01:10', '2019-11-07 05:01:10'),
+(39, 55, 17, '2006-06-09', NULL, NULL, NULL, '2019-11-07 05:18:31', '2019-11-07 05:18:31'),
+(40, 56, 9, '2012-09-14', NULL, NULL, NULL, '2019-11-08 05:42:00', '2019-11-08 05:42:00'),
+(41, 57, 4, '2016-04-27', NULL, NULL, NULL, '2019-11-08 05:54:21', '2019-11-08 05:54:21'),
+(42, 58, 13, '2012-09-14', NULL, NULL, NULL, '2019-11-11 04:24:39', '2019-11-11 04:24:39'),
+(43, 59, 4, '2011-06-07', NULL, NULL, NULL, '2019-11-11 04:43:28', '2019-11-11 04:43:28'),
+(44, 60, 35, '2008-02-20', NULL, NULL, NULL, '2019-11-14 04:26:12', '2019-11-14 04:26:12'),
+(45, 61, 41, '2015-03-09', NULL, NULL, NULL, '2019-11-18 06:01:46', '2019-11-18 06:01:46'),
+(46, 61, 41, '2016-06-09', NULL, NULL, NULL, '2019-11-18 06:03:56', '2019-11-18 06:03:56');
 
 --
+-- Dumping data for table `roles`
+--
+
+INSERT INTO `roles` (`id`, `name`, `guard_name`, `created_at`, `updated_at`) VALUES
+(1, 'User', 'web', '2019-11-18 09:43:10', '2019-11-18 09:43:10'),
+(2, 'Manager', 'web', '2019-11-18 09:43:11', '2019-11-18 09:43:11'),
+(3, 'HR Assistant', 'web', '2019-11-18 09:43:11', '2019-11-18 09:43:11'),
+(4, 'HR Manager', 'web', '2019-11-18 09:43:11', '2019-11-18 09:43:11'),
+(5, 'Super Admin', 'web', '2019-11-18 09:43:11', '2019-11-18 09:43:11');
+
+--
+-- Dumping data for table `role_has_permissions`
+--
+
+INSERT INTO `role_has_permissions` (`permission_id`, `role_id`) VALUES
+(2, 3),
+(2, 4),
+(2, 5),
+(4, 3),
+(4, 4),
+(4, 5),
+(5, 5),
+(7, 3),
+(7, 4),
+(7, 5),
+(8, 3),
+(8, 4),
+(8, 5),
+(9, 5);
+
 --
 -- Dumping data for table `salaries`
 --
@@ -1412,25 +1827,58 @@ INSERT INTO `salaries` (`id`, `employee_id`, `basic_pay`, `house_rent`, `dearnes
 (52, 33, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 53233, 27, NULL, '2019-10-16 04:41:33', '2019-10-16 04:41:33'),
 (53, 34, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 58872, NULL, NULL, '2019-10-16 04:53:48', '2019-10-16 04:53:48'),
 (54, 36, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 15000, NULL, NULL, '2019-10-23 05:25:46', '2019-10-23 05:25:46'),
-(55, 36, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 38455, 28, NULL, '2019-10-23 05:33:31', '2019-10-23 05:33:31');
+(55, 36, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 38455, 28, NULL, '2019-10-23 05:33:31', '2019-10-23 05:33:31'),
+(56, 37, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 7000, NULL, NULL, '2019-10-24 04:27:14', '2019-10-24 04:27:14'),
+(57, 37, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 17500, 29, NULL, '2019-10-24 04:35:09', '2019-10-24 04:35:09'),
+(58, 37, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 32229, 30, NULL, '2019-10-24 04:36:22', '2019-10-24 04:36:22'),
+(59, 38, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 10000, NULL, NULL, '2019-10-24 04:43:38', '2019-10-24 04:43:38'),
+(60, 39, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 8000, NULL, NULL, '2019-10-25 04:13:15', '2019-10-25 04:13:15'),
+(61, 39, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 32229, 31, NULL, '2019-10-25 04:18:48', '2019-10-25 04:18:48'),
+(62, 40, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 27000, NULL, NULL, '2019-10-25 04:29:33', '2019-10-25 04:29:33'),
+(63, 40, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 53145, 32, NULL, '2019-10-25 04:34:02', '2019-10-25 04:34:02'),
+(64, 41, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 15500, NULL, NULL, '2019-10-28 04:51:30', '2019-10-28 04:51:30'),
+(65, 42, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 176651, NULL, NULL, '2019-10-29 04:32:05', '2019-10-29 04:32:05'),
+(66, 43, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 6000, NULL, NULL, '2019-10-29 04:46:19', '2019-10-29 04:46:19'),
+(67, 43, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 23653, 33, NULL, '2019-10-29 04:56:33', '2019-10-29 04:56:33'),
+(68, 44, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 7000, NULL, NULL, '2019-10-30 04:19:07', '2019-10-30 04:19:07'),
+(69, 45, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 7000, NULL, NULL, '2019-10-30 04:38:34', '2019-10-30 04:38:34'),
+(70, 45, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 21528, 34, NULL, '2019-10-30 04:41:26', '2019-10-30 04:41:26'),
+(71, 46, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 7000, NULL, NULL, '2019-10-31 04:15:15', '2019-10-31 04:15:15'),
+(72, 47, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 6000, NULL, NULL, '2019-10-31 04:49:28', '2019-10-31 04:49:28'),
+(73, 48, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 4866, NULL, NULL, '2019-10-31 05:02:51', '2019-10-31 05:02:51'),
+(74, 49, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 45585, NULL, NULL, '2019-11-04 04:27:17', '2019-11-04 04:27:17'),
+(75, 49, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 69674, 35, NULL, '2019-11-04 04:37:15', '2019-11-04 04:37:15'),
+(76, 50, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 63800, NULL, NULL, '2019-11-04 04:46:32', '2019-11-04 04:46:32'),
+(77, 50, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 118182, 36, NULL, '2019-11-04 04:59:18', '2019-11-04 04:59:18'),
+(78, 51, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 22400, NULL, NULL, '2019-11-05 04:20:09', '2019-11-05 04:20:09'),
+(79, 52, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 61880, NULL, NULL, '2019-11-05 04:33:18', '2019-11-05 04:33:18'),
+(80, 53, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 30000, NULL, NULL, '2019-11-06 05:00:51', '2019-11-06 05:00:51'),
+(81, 53, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 71705, 37, NULL, '2019-11-06 05:07:21', '2019-11-06 05:07:21'),
+(82, 54, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 25616, NULL, NULL, '2019-11-07 04:50:05', '2019-11-07 04:50:05'),
+(83, 54, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 71616, 38, NULL, '2019-11-07 05:01:10', '2019-11-07 05:01:10'),
+(84, 55, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 23800, NULL, NULL, '2019-11-07 05:12:54', '2019-11-07 05:12:54'),
+(85, 55, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 45630, 39, NULL, '2019-11-07 05:18:32', '2019-11-07 05:18:32'),
+(86, 56, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 98860, NULL, NULL, '2019-11-08 05:09:43', '2019-11-08 05:09:43'),
+(87, 56, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 149049, 40, NULL, '2019-11-08 05:42:00', '2019-11-08 05:42:00'),
+(88, 57, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 88304, NULL, NULL, '2019-11-08 05:49:53', '2019-11-08 05:49:53'),
+(89, 57, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 95303, 41, NULL, '2019-11-08 05:54:22', '2019-11-08 05:54:22'),
+(90, 58, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 53462, NULL, NULL, '2019-11-11 04:19:54', '2019-11-11 04:19:54'),
+(91, 58, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 123568, 42, NULL, '2019-11-11 04:24:39', '2019-11-11 04:24:39'),
+(92, 59, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 72183, NULL, NULL, '2019-11-11 04:42:28', '2019-11-11 04:42:28'),
+(93, 59, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 161543, 43, NULL, '2019-11-11 04:43:28', '2019-11-11 04:43:28'),
+(94, 60, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 5000, NULL, NULL, '2019-11-14 04:17:29', '2019-11-14 04:17:29'),
+(95, 60, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 7000, 44, NULL, '2019-11-14 04:26:12', '2019-11-14 04:26:12'),
+(96, 61, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 68682, NULL, NULL, '2019-11-18 05:54:00', '2019-11-18 05:54:39'),
+(97, 61, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 106978, 45, NULL, '2019-11-18 06:01:46', '2019-11-18 06:01:46'),
+(98, 61, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 120912, 46, NULL, '2019-11-18 06:03:56', '2019-11-18 06:03:56');
 
 --
 -- Dumping data for table `sessions`
 --
 
 INSERT INTO `sessions` (`id`, `user_id`, `ip_address`, `user_agent`, `payload`, `last_activity`) VALUES
-('6500m5eMbwXmVVnFsvLWvaLMKeaDd15hvAYAw1Dv', NULL, '::1', 'Mozilla/5.0 (Windows NT 10.0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/77.0.3865.120 Safari/537.36', 'YTo0OntzOjY6Il90b2tlbiI7czo0MDoia1ZXb0hJenlkTkxvME5wSzFkT29yZHgyODFKdFJoTE9sRGJ1RTZuTSI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MzQ6Imh0dHA6Ly9sb2NhbGhvc3QvaHJtcy9wdWJsaWMvbG9naW4iO31zOjY6Il9mbGFzaCI7YToyOntzOjM6Im9sZCI7YTowOnt9czozOiJuZXciO2E6MDp7fX1zOjM6InVybCI7YToxOntzOjg6ImludGVuZGVkIjtzOjM4OiJodHRwOi8vbG9jYWxob3N0L2hybXMvcHVibGljL2Rhc2hib2FyZCI7fX0=', 1571803765),
-('9a5mRKWsPKdkibqI3Efc4rRToLKcJblNJdKV1Gq2', 15, '192.168.1.12', 'Mozilla/5.0 (Windows NT 6.2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/77.0.3865.120 Safari/537.36', 'YTo2OntzOjY6Il90b2tlbiI7czo0MDoiYlBjd2ZFOEFwU0xWcEpLcmphbXdYS1ZKWEY1MjdDSWZHWlpQcmxrNyI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6NTM6Imh0dHA6Ly8xOTIuMTY4LjEuMTAvaHJtcy9wdWJsaWMvaHJtcy9lbWVyZ2VuY3kvY3JlYXRlIjt9czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319czozOiJ1cmwiO2E6MDp7fXM6NTA6ImxvZ2luX3dlYl81OWJhMzZhZGRjMmIyZjk0MDE1ODBmMDE0YzdmNThlYTRlMzA5ODlkIjtpOjE1O3M6MTE6ImVtcGxveWVlX2lkIjtpOjM2O30=', 1571808935),
-('lMRA8pcFXaZuQ5k8DBV7kBv0laNwk0bjG6xndxo8', 13, '192.168.1.25', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/77.0.3865.120 Safari/537.36', 'YTo1OntzOjY6Il90b2tlbiI7czo0MDoielgxQXJOa0JvYXZEbFNReXpUUk1BVXN4cWE5MTBwSkhHRHRLV0hwOSI7czo1MDoibG9naW5fd2ViXzU5YmEzNmFkZGMyYjJmOTQwMTU4MGYwMTRjN2Y1OGVhNGUzMDk4OWQiO2k6MTM7czoxMToiZW1wbG95ZWVfaWQiO2k6Mjk7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6NDE6Imh0dHA6Ly8xOTIuMTY4LjEuMTAvaHJtcy9wdWJsaWMvZGFzaGJvYXJkIjt9czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319fQ==', 1571829452);
-
---
--- Dumping data for table `tasks`
---
-
-INSERT INTO `tasks` (`id`, `employee_id`, `task_detail`, `completion_date`, `status`, `remarks`, `created_at`, `updated_at`) VALUES
-(19, 1, 'K-Electric 500kV T/L Survey Project', '2019-10-18', 0, NULL, '2019-10-11 05:08:02', '2019-10-15 11:13:39'),
-(45, 1, 'NTDC 500kV T/L Survey Project', '2019-10-21', 0, NULL, '2019-10-11 05:41:39', '2019-10-16 03:43:29'),
-(46, 1, 'Interconnection of K-2/K-3 Nuclear Power Plants with 500kV S/C Port Qasim to Matiari Transmission Line', '2019-11-04', 0, NULL, '2019-10-11 05:46:15', '2019-10-16 03:44:23');
+('FEa2PRshuYYfKW61uOIQFBODhkqQAgB3wYDWCOfL', NULL, '::1', 'Mozilla/5.0 (Windows NT 10.0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.122 Safari/537.36', 'YTozOntzOjY6Il90b2tlbiI7czo0MDoiTWRMaUhpdlQxeUtBeUhpV0tCNDNNRWhjNnYwcm1PZ0hEOURJb2tTViI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6Mjg6Imh0dHA6Ly9sb2NhbGhvc3QvaHJtcy9wdWJsaWMiO31zOjY6Il9mbGFzaCI7YToyOntzOjM6Im9sZCI7YTowOnt9czozOiJuZXciO2E6MDp7fX19', 1583290010),
+('WqnI7og34XGNUSphIuZKGKjGHiPMjpXAKECr4GjD', 1, '::1', 'Mozilla/5.0 (Windows NT 10.0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.122 Safari/537.36', 'YTo1OntzOjY6Il90b2tlbiI7czo0MDoidVRrdkxlRDFFWUplZFgyQTB4QTJKS0kxVHp3bUVETGszbVJTWVpyUyI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6NDg6Imh0dHA6Ly9sb2NhbGhvc3QvaHJtcy9wdWJsaWMvcGhvbmUvY29udGFjdE51bWJlciI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fXM6MzoidXJsIjthOjA6e31zOjUwOiJsb2dpbl93ZWJfNTliYTM2YWRkYzJiMmY5NDAxNTgwZjAxNGM3ZjU4ZWE0ZTMwOTg5ZCI7aToxO30=', 1583292868);
 
 --
 -- Dumping data for table `trainings`
@@ -1452,21 +1900,26 @@ INSERT INTO `trainings` (`id`, `employee_id`, `title`, `venue`, `institute`, `co
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `email`, `email_verified_at`, `password`, `user_status`, `employee_id`, `session_id`, `remember_token`, `created_at`, `updated_at`) VALUES
-(1, 'sohail.afzal@barqaab.com', NULL, '$2y$10$LIBKm174tSn4tCsXWqGJEu.tmvi2s/HwNfG0bxYCjlq/SnTbDKCJK', 1, 1, '6500m5eMbwXmVVnFsvLWvaLMKeaDd15hvAYAw1Dv', 'F18xfmMs4MS32sMu3pPSL1MNJjHy5gLbCDzLgIz09gtN594gbXyzkVU5jMqv', NULL, '2019-10-23 04:03:29'),
-(3, 'massive.consultants@yahoo.com', NULL, '$2y$10$ATn.aat/M5qtlVm4lnJYYOGmToZbhChMIEhscnVbWpIGNYsyT58yO', 2, 3, '', NULL, '2019-08-02 15:24:34', '2019-08-30 00:07:22'),
-(13, 'taufeeq240808@gmail.com', NULL, '$2y$10$JrHufTeSrkgGuqQ6wmdoK.HjMAdRY8K4pLa6wSVV0oHN0NG6wBKhy', 1, 13, 'xArJUgdoDxG9OVK4W90Z340Fg5yyq7ZaCD0Kz81o', 'SF9tuoGneu5k55vJ9PqQGI0hFHKJAQsleC2MvSqvNiJDu3y652YyS3MpuukX', '2019-08-30 04:37:26', '2019-10-23 08:03:51'),
-(14, 'sohail@barqaab.com', NULL, '$2y$10$FgAe7mDna2TjtJRRCbNtd.CSQPQnEiV8J725KvfJHDjTrZKTxn4Uy', 1, 14, 'bcawjO5vJTKtmat1ryJS7W18SU0GtPq8tFiKhfgK', NULL, '2019-09-03 06:03:08', '2019-10-17 02:35:51'),
-(15, 'athar.hussain@barqaab.com', NULL, '$2y$10$9yC1ythyh3iqrONTZjpSqe/Yd1h8mga2ZGJMJArgpykOU06H9dJr.', 1, 2, '9a5mRKWsPKdkibqI3Efc4rRToLKcJblNJdKV1Gq2', NULL, '2019-09-13 09:36:26', '2019-10-23 05:01:20'),
-(16, 'javedsultan92@yahoo.com', NULL, '$2y$10$IyjCTJhv0t4BLfbmh5l9XOHmQJAsPlvgwFT4n7jPB98jlWPYD7Thi', 0, 23, NULL, NULL, '2019-09-25 06:27:14', '2019-09-25 06:27:14'),
-(17, 'barqaabaccount@yahoo.com', NULL, '$2y$10$IyjCTJhv0t4BLfbmh5l9XOHmQJAsPlvgwFT4n7jPB98jlWPYD7Thi', 0, 24, NULL, NULL, '2019-09-26 04:21:04', '2019-09-26 04:21:04'),
-(18, 'imran@barqaab.com', NULL, '$2y$10$IyjCTJhv0t4BLfbmh5l9XOHmQJAsPlvgwFT4n7jPB98jlWPYD7Thi', 0, 25, NULL, NULL, '2019-09-30 04:36:43', '2019-09-30 04:36:43'),
-(19, 'w.Ahmad@barqaab.com', NULL, '$2y$10$IyjCTJhv0t4BLfbmh5l9XOHmQJAsPlvgwFT4n7jPB98jlWPYD7Thi', 0, 26, NULL, NULL, '2019-09-30 05:10:54', '2019-09-30 05:10:54'),
-(20, 'zulfimalik@yahoo.com', NULL, '$2y$10$IyjCTJhv0t4BLfbmh5l9XOHmQJAsPlvgwFT4n7jPB98jlWPYD7Thi', 0, 27, NULL, NULL, '2019-10-02 06:06:31', '2019-10-02 06:06:31'),
-(21, 'majidrafi@barqaab.com', NULL, '$2y$10$IyjCTJhv0t4BLfbmh5l9XOHmQJAsPlvgwFT4n7jPB98jlWPYD7Thi', 0, 28, NULL, NULL, '2019-10-03 05:15:12', '2019-10-03 05:15:12'),
-(22, 'tanvirabbas@hotmail.com', NULL, '$2y$10$IyjCTJhv0t4BLfbmh5l9XOHmQJAsPlvgwFT4n7jPB98jlWPYD7Thi', 0, 32, NULL, NULL, '2019-10-11 06:07:31', '2019-10-11 06:07:31'),
-(23, 'iftikhar.khan@barqaab.com', NULL, '$2y$10$IyjCTJhv0t4BLfbmh5l9XOHmQJAsPlvgwFT4n7jPB98jlWPYD7Thi', 0, 34, NULL, NULL, '2019-10-16 04:51:32', '2019-10-16 04:51:32'),
-(24, 'jamshaid.siddiqui@barqaab.com', NULL, '$2y$10$IyjCTJhv0t4BLfbmh5l9XOHmQJAsPlvgwFT4n7jPB98jlWPYD7Thi', 0, 35, NULL, NULL, '2019-10-23 05:04:09', '2019-10-23 05:04:09');
+INSERT INTO `users` (`id`, `email`, `code`, `email_verified_at`, `password`, `user_status`, `employee_id`, `session_id`, `remember_token`, `created_at`, `updated_at`) VALUES
+(1, 'sohail.afzal@barqaab.com', NULL, NULL, '$2y$10$LIBKm174tSn4tCsXWqGJEu.tmvi2s/HwNfG0bxYCjlq/SnTbDKCJK', 1, 1, 'WqnI7og34XGNUSphIuZKGKjGHiPMjpXAKECr4GjD', 'z2SI5rJkzzs74lNKxBFPI3CSb6axfacY6DuqYz4bgqpxlRLlPph27ziztb4F', NULL, '2020-03-04 02:51:27'),
+(3, 'massive.consultants@yahoo.com', NULL, NULL, '$2y$10$ATn.aat/M5qtlVm4lnJYYOGmToZbhChMIEhscnVbWpIGNYsyT58yO', 2, 3, '', NULL, '2019-08-02 15:24:34', '2019-08-30 00:07:22'),
+(13, 'taufeeq240808@gmail.com', NULL, NULL, '$2y$10$JrHufTeSrkgGuqQ6wmdoK.HjMAdRY8K4pLa6wSVV0oHN0NG6wBKhy', 1, 13, '8jAC3WSHHHAP3x8bUizkas4IUwE3ceG9TWZtrpuO', 'SF9tuoGneu5k55vJ9PqQGI0hFHKJAQsleC2MvSqvNiJDu3y652YyS3MpuukX', '2019-08-30 04:37:26', '2019-11-14 04:02:14'),
+(14, 'sohail@barqaab.com', NULL, NULL, '$2y$10$FgAe7mDna2TjtJRRCbNtd.CSQPQnEiV8J725KvfJHDjTrZKTxn4Uy', 1, 14, '8PjCGK4yCYAvDT2k0EaDLITftafTzIbs6Xm5JIQx', NULL, '2019-09-03 06:03:08', '2020-02-20 05:04:56'),
+(15, 'athar.hussain@barqaab.com', NULL, NULL, '$2y$10$9yC1ythyh3iqrONTZjpSqe/Yd1h8mga2ZGJMJArgpykOU06H9dJr.', 1, 2, 'mg8rCosI2EOU1KErhUaSSfF3fuJ4EkBvHlD0gR5H', NULL, '2019-09-13 09:36:26', '2019-11-18 05:45:28'),
+(16, 'javedsultan92@yahoo.com', NULL, NULL, '$2y$10$IyjCTJhv0t4BLfbmh5l9XOHmQJAsPlvgwFT4n7jPB98jlWPYD7Thi', 0, 23, NULL, NULL, '2019-09-25 06:27:14', '2019-09-25 06:27:14'),
+(17, 'barqaabaccount@yahoo.com', NULL, NULL, '$2y$10$IyjCTJhv0t4BLfbmh5l9XOHmQJAsPlvgwFT4n7jPB98jlWPYD7Thi', 0, 24, NULL, NULL, '2019-09-26 04:21:04', '2019-09-26 04:21:04'),
+(18, 'imran@barqaab.com', NULL, NULL, '$2y$10$IyjCTJhv0t4BLfbmh5l9XOHmQJAsPlvgwFT4n7jPB98jlWPYD7Thi', 0, 25, NULL, NULL, '2019-09-30 04:36:43', '2019-09-30 04:36:43'),
+(19, 'w.Ahmad@barqaab.com', NULL, NULL, '$2y$10$IyjCTJhv0t4BLfbmh5l9XOHmQJAsPlvgwFT4n7jPB98jlWPYD7Thi', 0, 26, NULL, NULL, '2019-09-30 05:10:54', '2019-09-30 05:10:54'),
+(20, 'zulfimalik@yahoo.com', NULL, NULL, '$2y$10$IyjCTJhv0t4BLfbmh5l9XOHmQJAsPlvgwFT4n7jPB98jlWPYD7Thi', 0, 27, NULL, NULL, '2019-10-02 06:06:31', '2019-10-02 06:06:31'),
+(21, 'majidrafi@barqaab.com', NULL, NULL, '$2y$10$IyjCTJhv0t4BLfbmh5l9XOHmQJAsPlvgwFT4n7jPB98jlWPYD7Thi', 0, 28, NULL, NULL, '2019-10-03 05:15:12', '2019-10-03 05:15:12'),
+(22, 'tanvirabbas@hotmail.com', NULL, NULL, '$2y$10$IyjCTJhv0t4BLfbmh5l9XOHmQJAsPlvgwFT4n7jPB98jlWPYD7Thi', 0, 32, NULL, NULL, '2019-10-11 06:07:31', '2019-10-11 06:07:31'),
+(23, 'iftikhar.khan@barqaab.com', NULL, NULL, '$2y$10$IyjCTJhv0t4BLfbmh5l9XOHmQJAsPlvgwFT4n7jPB98jlWPYD7Thi', 0, 34, NULL, NULL, '2019-10-16 04:51:32', '2019-10-16 04:51:32'),
+(24, 'jamshaid.siddiqui@barqaab.com', NULL, NULL, '$2y$10$IyjCTJhv0t4BLfbmh5l9XOHmQJAsPlvgwFT4n7jPB98jlWPYD7Thi', 0, 35, NULL, NULL, '2019-10-23 05:04:09', '2019-10-23 05:04:09'),
+(25, 'imtiaz82@barqaab.com', NULL, NULL, '$2y$10$IyjCTJhv0t4BLfbmh5l9XOHmQJAsPlvgwFT4n7jPB98jlWPYD7Thi', 0, 40, NULL, NULL, '2019-10-25 04:28:11', '2019-10-25 04:28:11'),
+(26, 'Zamir.hussain786@yahoo.com', NULL, NULL, '$2y$10$IyjCTJhv0t4BLfbmh5l9XOHmQJAsPlvgwFT4n7jPB98jlWPYD7Thi', 0, 50, NULL, NULL, '2019-11-04 04:43:56', '2019-11-04 04:43:56'),
+(27, 'ENGINDDR.ASHRAF.BHATTI@GMAIL.COM', NULL, NULL, '$2y$10$IyjCTJhv0t4BLfbmh5l9XOHmQJAsPlvgwFT4n7jPB98jlWPYD7Thi', 0, 52, NULL, NULL, '2019-11-05 04:31:41', '2019-11-05 04:31:41'),
+(28, 'rafaemunir@barqaab.com', NULL, NULL, '$2y$10$IyjCTJhv0t4BLfbmh5l9XOHmQJAsPlvgwFT4n7jPB98jlWPYD7Thi', 0, 53, NULL, NULL, '2019-11-06 04:58:42', '2019-11-06 04:58:42'),
+(29, 'atiqch@yahoo.com', NULL, NULL, '$2y$10$IyjCTJhv0t4BLfbmh5l9XOHmQJAsPlvgwFT4n7jPB98jlWPYD7Thi', 0, 61, NULL, NULL, '2019-11-18 05:48:04', '2019-11-18 05:48:04');
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
