@@ -21,7 +21,82 @@ SET time_zone = "+00:00";
 --
 -- Database: `hrms`
 --
+-- Dumping data for table `divisions`
+--
 
+INSERT INTO `divisions` (`id`, `name`, `created_at`, `updated_at`) VALUES
+(1, 'Power', NULL, NULL),
+(2, 'Water', NULL, NULL),
+(3, 'Finance', NULL, NULL);
+
+--
+-- Dumping data for table `employees`
+--
+
+INSERT INTO `employees` (`id`, `division_id`, `first_name`, `middle_name`, `last_name`, `father_name`, `date_of_birth`, `gender_id`, `cnic`, `cnic_expiry`, `employee_no`, `marital_status_id`, `religon`, `employee_status_id`, `created_at`, `updated_at`) VALUES
+(1, 1, 'Sohail', NULL, 'Afzal', 'Muhammad Afzal', '1976-06-08', 1, '35202-4689730-3', '2026-03-22', NULL, '2', 'Islam', 1, NULL, '2019-09-02 07:16:27'),
+(2, 2, 'Athar', 'Hussain', 'Jaffry', 'Nazar Hussain Jafry', '1974-08-12', 1, '35402-2013572-3', '2024-11-19', '111', '2', 'Islam', 1, '2019-07-31 10:15:04', '2019-09-02 07:16:58'),
+(3, 2, 'Muhammad', 'Tahir', 'Khan', 'Muhammad Nadir Khan', '1975-10-16', 1, '35202-4633596-1', '2021-08-31', NULL, '2', 'Islam', 1, '2019-08-02 15:23:46', '2019-09-02 07:20:53'),
+(4, 2, 'Ahmad', 'Khan', 'Bhatti', 'Mian Sher Alam Bhatti', '1942-05-13', 1, '35201-1577905-3', '2020-08-31', NULL, '2', 'Islam', 1, '2019-08-07 12:52:13', '2019-09-02 07:16:43'),
+(5, 3, 'Saqib', NULL, 'Javiad', 'Muhammad Ashraf Javaid', '1975-04-20', 1, '35202-8702700-3', '2026-03-12', NULL, '2', 'Islam', 1, '2019-08-16 13:13:56', '2019-09-02 07:18:44'),
+(6, 1, 'Muhammad', NULL, 'Zafar', 'Fazal Muhammad', '1956-12-15', 1, '35201-1489050-7', '2024-01-07', NULL, '2', 'Islam', 1, '2019-08-19 18:31:55', '2019-09-02 07:19:07'),
+(7, 2, 'Mumtaz', NULL, 'Akhtar', 'Talib Hussain Asghar', '1943-09-16', 1, '35201-4930750-7', '2034-08-01', NULL, '2', 'Islam', 1, '2019-08-21 09:46:35', '2019-09-02 07:19:57'),
+(8, 2, 'Naveed', 'Akhtar', 'Nawaz', 'Muhammad Nawaz', '1980-11-11', 1, '34601-0861441-1', '2019-12-26', NULL, '2', 'Islam', 1, '2019-08-22 08:48:15', '2019-09-02 07:20:16'),
+(9, 2, 'Rana', 'Haider', 'Faruq', 'Rana Muhammad Siddique', '1984-11-23', 1, '33202-0442124-3', '2025-02-27', NULL, '2', 'Islam', 1, '2019-08-22 06:37:31', '2019-09-02 07:20:34'),
+(10, 2, 'Fakhar-e-Alam', NULL, 'Bhatti', 'Ahmad Khan Bhatti', '1972-03-15', 1, '35201-1585116-9', '2022-08-06', NULL, '2', 'Islam', 1, '2019-08-27 01:47:20', '2019-09-02 07:17:12'),
+(11, 2, 'Muhammad', NULL, 'Rasheed', 'Ali Muhammad', '1978-12-28', 1, '35201-5236988-5', '2027-09-22', NULL, '2', 'Islam', 1, '2019-08-27 03:52:14', '2019-09-02 07:17:39'),
+(12, 2, 'Taseef', NULL, 'Ahmad', 'Sanaullah', '1988-07-17', 1, '34301-3299757-3', '2018-11-30', NULL, '2', 'Islam', 1, '2019-08-27 04:16:31', '2019-09-02 07:21:32'),
+(13, 2, 'Muhammad', NULL, 'Taufeeq', 'Abdul Majeed', '1982-02-19', 1, '13302-0470337-1', '2027-03-01', NULL, '2', 'Islam', 1, '2019-08-27 05:54:08', '2019-08-27 08:21:33'),
+(14, 2, 'Kabir', NULL, 'Ahmad', 'Naseer Ahmad', '1973-04-20', 1, '35202-6628320-3', '2024-07-04', '03014237600', '2', 'Islam', 1, '2019-08-28 23:45:28', '2019-09-02 07:15:47'),
+(15, 1, 'Nazir', NULL, 'Ahmad', 'Muhammad Sidduqe', '1946-08-10', 1, '35404-1588110-1', '2026-10-16', '03444111318', '2', 'Islam', 1, '2019-08-29 00:25:48', '2019-09-02 07:15:22'),
+(16, 2, 'Ali', NULL, 'Arslan', 'Shaokat Ali', '1985-10-01', 1, '33100-3385773-1', '2015-05-05', NULL, '2', 'Islam', 1, '2019-09-01 22:49:33', '2019-09-02 07:14:22'),
+(17, 2, 'Naveed', NULL, 'Anwar', 'Muhammad Anwar', '1972-09-09', 1, '35202-2308674-5', '2020-02-28', NULL, '2', 'Islam', 1, '2019-09-01 23:06:57', '2019-09-02 07:11:41'),
+(18, 2, 'Muhammad', 'Rafiq', 'Khan', 'Gul Hazrat', '1982-09-15', 1, '35202-1571812-7', '2023-01-31', NULL, '2', 'Islam', 1, '2019-09-05 00:18:00', '2019-09-05 00:18:00'),
+(19, 2, 'Noman', NULL, 'Ahmad', 'Farooq Ahmad', '1983-12-06', 1, '34502-4662986-3', '2014-07-22', NULL, '2', 'Islam', 1, '2019-09-12 02:09:27', '2019-09-12 02:09:27'),
+(20, 2, 'Muhammad', NULL, 'Ashraf', 'Rahmat Ali', '1966-05-14', 1, '35202-3982076-9', '2015-12-31', NULL, '2', 'Islam', 1, '2019-09-12 02:34:37', '2019-09-12 02:34:37'),
+(21, 2, 'Zamir', NULL, 'Abbas', 'Naseer Ahmad', '1983-03-02', 1, '35202-2769718-9', '2023-09-30', NULL, '2', 'Islam', 1, '2019-09-19 05:21:48', '2019-09-19 05:21:48'),
+(22, 2, 'Muhammad', NULL, 'Asif', 'Muhammad Idrees', '1978-09-18', 1, '34502-7697993-7', '2021-02-25', NULL, '2', 'Islam', 1, '2019-09-19 05:44:26', '2019-09-19 05:44:26'),
+(23, 3, 'Muhammad', 'Javed', 'Sultan', 'Sultan Hussain Eman', '1957-12-20', 1, '35202-2580696-3', '2020-04-28', NULL, '2', 'Islam', 1, '2019-09-25 06:26:27', '2019-10-02 03:49:17'),
+(24, 3, 'Muhammad', NULL, 'Waqas', 'Muhammad Salim Warsi', '1973-06-12', 1, '35202-6346130-7', '2021-06-12', NULL, '2', 'Islam', 1, '2019-09-26 04:18:54', '2019-09-26 04:18:54'),
+(25, 3, 'Muhammad', 'Imran', 'Javed', 'Javed Iqbal', '1980-09-06', 1, '31104-1752823-1', '2028-05-20', NULL, '2', 'Islam', 1, '2019-09-30 04:36:05', '2019-10-02 04:04:25'),
+(26, 3, 'Waqar', NULL, 'Ahmad', 'Muhammad Ramzan', '1992-02-02', 1, '35201-3332311-1', '2025-11-27', NULL, '2', 'Islam', 1, '2019-09-30 05:10:18', '2019-09-30 05:10:18'),
+(27, 3, 'Malik', 'Zulfiqar', 'Ali', 'Malik Mushtaq Ahmed', '1970-07-09', 1, '35202-8204197-3', '2027-07-11', NULL, '2', 'Islam', 1, '2019-10-02 06:05:38', '2019-10-02 06:05:38'),
+(28, 3, 'Abdul Majid', NULL, 'Rafi', 'Muhammad Rafi Ch.', '1981-08-20', 1, '35202-2481939-7', '2016-10-19', NULL, '2', 'Islam', 1, '2019-10-03 05:14:41', '2019-10-03 05:14:41'),
+(29, 3, 'Ch.', 'Muhammad', 'Khalil', 'Barkat Ali', '1950-12-31', 1, '35201-1642163-1', '2028-07-11', NULL, '2', 'Islam', 1, '2019-10-08 04:38:54', '2019-10-08 04:38:54'),
+(30, 3, 'Muhammad', 'Hafeez', 'Minhas', 'Muhammad Hanif Khan', '1983-12-12', 1, '82101-6175493-3', '2021-09-23', NULL, '2', 'Islam', 1, '2019-10-08 05:36:58', '2019-10-08 05:36:58'),
+(31, 3, 'Farhan', 'Ali', 'Saffi', 'Hakeem Safdar Ali Saffi', '1982-10-28', 1, '35202-8633331-5', '2023-06-20', NULL, '1', 'Islam', 1, '2019-10-11 05:46:19', '2019-10-11 05:46:19'),
+(32, 2, 'Muhammad', 'Tanvir', 'Abbas', 'Hafiz Abdur Rahim', '1980-04-13', 1, '35202-8591489-9', '2020-12-31', NULL, '2', 'Islam', 1, '2019-10-11 06:06:19', '2019-10-11 06:06:19'),
+(33, 1, 'Muhammad', NULL, 'Khaliq', 'Raham Dad', '1965-03-14', 1, '81102-0259819-7', '2015-09-30', NULL, '2', 'Islam', 1, '2019-10-16 04:15:12', '2019-10-16 04:15:12'),
+(34, 1, 'Iftikhar', 'Ahmad', 'Khan', 'Inayat Ullah Khan', '1974-09-29', 1, '35201-1299818-9', '2015-08-31', NULL, '2', 'Islam', 1, '2019-10-16 04:51:00', '2019-10-16 04:51:00'),
+(35, 1, 'Jamshaid', NULL, 'Siddiqui', 'Hafiz Muhammad Rafi Siddiqui', '1981-12-28', 1, '35202-2702207-5', '2022-10-30', NULL, '2', 'Islam', 1, '2019-10-23 05:03:29', '2019-10-23 05:03:29'),
+(36, 1, 'Syed', 'Azhar', 'Ali Shah', 'Syed Safdar Hussain Shah', '1979-06-16', 1, '35101-4549497-3', '2020-04-20', NULL, '2', 'Islam', 1, '2019-10-23 05:23:00', '2019-10-23 05:23:00'),
+(37, 3, 'Shahbaz', NULL, 'Sindhu', 'Muhammad Ashraf Ali', '1990-07-03', 1, '35201-6794897-5', '2020-08-31', NULL, '2', 'Islam', 1, '2019-10-24 04:14:08', '2019-10-24 04:14:08'),
+(38, 2, 'Shafiqur', NULL, 'Rehman', 'Muhammad Yousaf Jameel', '1982-08-15', 1, '35401-2040393-7', '2013-03-31', NULL, '2', 'Islam', 1, '2019-10-24 04:41:19', '2019-10-24 04:41:19'),
+(39, 1, 'Hafiz', 'Hashim', 'Khan', 'Muhammad Qasim Khan', '1974-11-15', 1, '35202-2669122-5', '2027-11-06', NULL, '2', 'Islam', 1, '2019-10-25 04:10:17', '2019-10-25 04:10:17'),
+(40, 2, 'Imtiaz', 'Ahmad', 'Khan', 'Abdul Aziz Khan', '1982-08-03', 1, '35202-2857852-3', '2022-09-17', NULL, '2', 'Islam', 1, '2019-10-25 04:27:34', '2019-10-28 04:10:52'),
+(41, 1, 'Inayat', NULL, 'Ullah', 'Ali Muhammad', '1961-04-25', 1, '35201-1510289-5', '2022-02-23', NULL, '2', 'Islam', 1, '2019-10-28 04:48:24', '2019-10-28 04:48:24'),
+(42, 2, 'Altaf', 'Hussain', 'Bhatti', 'Muhammad Shafi Bhatti', '1958-01-28', 1, '34202-3092410-1', '2018-01-28', NULL, '2', 'Islam', 1, '2019-10-29 04:27:07', '2019-10-29 04:27:07'),
+(43, 2, 'Mehmood', NULL, 'Iqbal', 'Mubarik Ali', '1982-04-06', 1, '38303-4446684-3', '2022-10-09', NULL, '2', 'Islam', 1, '2019-10-29 04:44:00', '2019-10-29 04:44:00'),
+(44, 2, 'Muhammad', 'Asif', 'Sultan', 'Muhammad Khalid', '1972-05-11', 1, '34502-1577488-9', '2018-05-21', NULL, '2', 'Islam', 1, '2019-10-30 04:12:48', '2019-10-30 04:12:48'),
+(45, 2, 'Khalid', NULL, 'Siraj', 'Haji Siraj Din', '1976-06-01', 1, '35202-2848172-7', '2016-12-02', NULL, '2', 'Islam', 1, '2019-10-30 04:32:01', '2019-10-30 04:32:01'),
+(46, 2, 'Mirza', 'Nadeem', 'Baig', 'Ajmal Baig', '1970-05-05', 1, '35201-7836865-5', '2020-04-30', NULL, '2', 'Islam', 1, '2019-10-31 04:12:10', '2019-10-31 04:12:10'),
+(47, 1, 'Muhammad', NULL, 'Jamil', 'Rasheed Ahmad', '1977-04-21', 1, '34502-5398993-3', '2018-01-31', NULL, '2', 'Islam', 1, '2019-10-31 04:34:44', '2019-10-31 04:34:44'),
+(48, 2, 'Dubeer', NULL, 'Hussain', 'Munir Hussain Shad', '1980-04-13', 1, '35201-9777905-1', '2020-04-13', NULL, '2', 'Islam', 1, '2019-10-31 05:01:01', '2019-10-31 05:01:01'),
+(49, 1, 'Fayyaz', 'Mehmood', 'Karimi', 'Muhammad Ashfaq Ahmad', '1990-02-28', 1, '35202-2158307-1', '2020-06-30', NULL, '2', 'Islam', 1, '2019-11-04 04:24:13', '2019-11-04 04:24:13'),
+(50, 1, 'Zamir', 'Hussain', 'Shad', 'Muhammad Yaqub Bhatti', '1944-03-01', 1, '35202-2675335-1', '2029-08-20', NULL, '2', 'Islam', 1, '2019-11-04 04:43:18', '2019-11-04 04:43:18'),
+(51, 1, 'Muhammad', NULL, 'Farhan', 'Muhammad Zahid', '1973-08-31', 1, '44104-0716077-5', '2017-08-30', NULL, '2', 'Islam', 1, '2019-11-05 04:17:34', '2019-11-05 04:17:34'),
+(52, 1, 'Muhammad', 'Ashraf', 'Bhatti', 'Khuda Bakhash Bhatti', '1962-04-14', 1, '34601-2911761-9', '2012-10-31', NULL, '2', 'Islam', 1, '2019-11-05 04:31:06', '2019-11-05 04:31:06'),
+(53, 1, 'Rafae', NULL, 'Munir', 'Munir Ahmad', '1988-06-15', 1, '35201-5468211-3', '2024-06-16', NULL, '2', 'Islam', 1, '2019-11-06 04:58:10', '2019-11-06 04:58:10'),
+(54, 1, 'Kamal', 'Haider', 'Toor', 'Sajjad Haider Toor', '1986-05-07', 1, '35202-8822209-1', '2016-09-30', NULL, '2', 'Islam', 1, '2019-11-07 04:47:40', '2019-11-07 04:47:40'),
+(55, 1, 'Haresh', NULL, 'Kumar', 'Ladha Ram', '1972-02-16', 1, '43203-8297373-3', '2022-01-25', NULL, '2', 'Islam', 1, '2019-11-07 05:10:38', '2019-11-07 05:10:38'),
+(56, 1, 'Saif', 'ur', 'Rehman', 'Fazal-ur-Rehman', '1954-01-01', 1, '35202-3014900-7', '2010-03-10', NULL, '2', 'Islam', 1, '2019-11-08 05:07:54', '2019-11-08 05:07:54'),
+(57, 1, 'Malik', 'Iqtadar', 'Hussain', 'Malik Nazar Hussain', '1950-08-10', 1, '35202-3955582-5', '2011-06-27', NULL, '2', 'Islam', 1, '2019-11-08 05:47:07', '2019-11-08 05:47:07'),
+(58, 2, 'Muhammad', NULL, 'Afzal', 'Muhammad Abdullah', '1967-01-01', 1, '35200-1542442-5', '2025-08-18', NULL, '2', 'Islam', 1, '2019-11-11 04:15:44', '2019-11-11 04:15:44'),
+(59, 2, 'Muhammad', NULL, 'Nawaz', 'Muhammad Saeed', '1953-10-10', 1, '35201-1545452-3', '2032-08-17', NULL, '2', 'Islam', 1, '2019-11-11 04:32:08', '2019-11-11 04:32:08'),
+(60, 1, 'Kashif', 'Suleman', 'Afzal', 'Muhammad Suleman Afzal', '1978-01-17', 1, '35202-2452814-7', '2021-07-12', NULL, '2', 'Islam', 1, '2019-11-14 04:06:01', '2019-11-14 04:06:01'),
+(61, 2, 'Ch.', 'Atiq', 'Ahmad', 'Ijaz Ahmad Humayun', '1976-02-09', 1, '35202-2925131-1', '2027-05-27', NULL, '2', 'Islam', 1, '2019-11-18 05:47:32', '2019-11-18 05:47:32');
+
+--
 --
 -- Dumping data for table `all_languages`
 --
@@ -776,15 +851,7 @@ INSERT INTO `designations` (`id`, `name`, `level`, `created_at`, `updated_at`) V
 (41, 'Senior (HRD) & Business Development Officer', 8, '2019-11-18 05:53:21', '2019-11-18 05:53:21');
 
 --
--- Dumping data for table `divisions`
---
 
-INSERT INTO `divisions` (`id`, `name`, `created_at`, `updated_at`) VALUES
-(1, 'Power', NULL, NULL),
-(2, 'Water', NULL, NULL),
-(3, 'Finance', NULL, NULL);
-
---
 -- Dumping data for table `documents`
 --
 
@@ -1161,73 +1228,7 @@ INSERT INTO `emergency_contacts` (`id`, `employee_id`, `name`, `relation`, `mobi
 (32, 61, 'Ch. Atiq Ahmad Humayun', 'Brother', '0300300300', NULL, '2019-11-18 06:06:08', '2019-11-18 06:06:08');
 
 --
--- Dumping data for table `employees`
---
 
-INSERT INTO `employees` (`id`, `division_id`, `first_name`, `middle_name`, `last_name`, `father_name`, `date_of_birth`, `gender_id`, `cnic`, `cnic_expiry`, `employee_no`, `marital_status_id`, `religon`, `employee_status_id`, `created_at`, `updated_at`) VALUES
-(1, 1, 'Sohail', NULL, 'Afzal', 'Muhammad Afzal', '1976-06-08', 1, '35202-4689730-3', '2026-03-22', NULL, '2', 'Islam', 1, NULL, '2019-09-02 07:16:27'),
-(2, 2, 'Athar', 'Hussain', 'Jaffry', 'Nazar Hussain Jafry', '1974-08-12', 1, '35402-2013572-3', '2024-11-19', '111', '2', 'Islam', 1, '2019-07-31 10:15:04', '2019-09-02 07:16:58'),
-(3, 2, 'Muhammad', 'Tahir', 'Khan', 'Muhammad Nadir Khan', '1975-10-16', 1, '35202-4633596-1', '2021-08-31', NULL, '2', 'Islam', 1, '2019-08-02 15:23:46', '2019-09-02 07:20:53'),
-(4, 2, 'Ahmad', 'Khan', 'Bhatti', 'Mian Sher Alam Bhatti', '1942-05-13', 1, '35201-1577905-3', '2020-08-31', NULL, '2', 'Islam', 1, '2019-08-07 12:52:13', '2019-09-02 07:16:43'),
-(5, 3, 'Saqib', NULL, 'Javiad', 'Muhammad Ashraf Javaid', '1975-04-20', 1, '35202-8702700-3', '2026-03-12', NULL, '2', 'Islam', 1, '2019-08-16 13:13:56', '2019-09-02 07:18:44'),
-(6, 1, 'Muhammad', NULL, 'Zafar', 'Fazal Muhammad', '1956-12-15', 1, '35201-1489050-7', '2024-01-07', NULL, '2', 'Islam', 1, '2019-08-19 18:31:55', '2019-09-02 07:19:07'),
-(7, 2, 'Mumtaz', NULL, 'Akhtar', 'Talib Hussain Asghar', '1943-09-16', 1, '35201-4930750-7', '2034-08-01', NULL, '2', 'Islam', 1, '2019-08-21 09:46:35', '2019-09-02 07:19:57'),
-(8, 2, 'Naveed', 'Akhtar', 'Nawaz', 'Muhammad Nawaz', '1980-11-11', 1, '34601-0861441-1', '2019-12-26', NULL, '2', 'Islam', 1, '2019-08-22 08:48:15', '2019-09-02 07:20:16'),
-(9, 2, 'Rana', 'Haider', 'Faruq', 'Rana Muhammad Siddique', '1984-11-23', 1, '33202-0442124-3', '2025-02-27', NULL, '2', 'Islam', 1, '2019-08-22 06:37:31', '2019-09-02 07:20:34'),
-(10, 2, 'Fakhar-e-Alam', NULL, 'Bhatti', 'Ahmad Khan Bhatti', '1972-03-15', 1, '35201-1585116-9', '2022-08-06', NULL, '2', 'Islam', 1, '2019-08-27 01:47:20', '2019-09-02 07:17:12'),
-(11, 2, 'Muhammad', NULL, 'Rasheed', 'Ali Muhammad', '1978-12-28', 1, '35201-5236988-5', '2027-09-22', NULL, '2', 'Islam', 1, '2019-08-27 03:52:14', '2019-09-02 07:17:39'),
-(12, 2, 'Taseef', NULL, 'Ahmad', 'Sanaullah', '1988-07-17', 1, '34301-3299757-3', '2018-11-30', NULL, '2', 'Islam', 1, '2019-08-27 04:16:31', '2019-09-02 07:21:32'),
-(13, 2, 'Muhammad', NULL, 'Taufeeq', 'Abdul Majeed', '1982-02-19', 1, '13302-0470337-1', '2027-03-01', NULL, '2', 'Islam', 1, '2019-08-27 05:54:08', '2019-08-27 08:21:33'),
-(14, 2, 'Kabir', NULL, 'Ahmad', 'Naseer Ahmad', '1973-04-20', 1, '35202-6628320-3', '2024-07-04', '03014237600', '2', 'Islam', 1, '2019-08-28 23:45:28', '2019-09-02 07:15:47'),
-(15, 1, 'Nazir', NULL, 'Ahmad', 'Muhammad Sidduqe', '1946-08-10', 1, '35404-1588110-1', '2026-10-16', '03444111318', '2', 'Islam', 1, '2019-08-29 00:25:48', '2019-09-02 07:15:22'),
-(16, 2, 'Ali', NULL, 'Arslan', 'Shaokat Ali', '1985-10-01', 1, '33100-3385773-1', '2015-05-05', NULL, '2', 'Islam', 1, '2019-09-01 22:49:33', '2019-09-02 07:14:22'),
-(17, 2, 'Naveed', NULL, 'Anwar', 'Muhammad Anwar', '1972-09-09', 1, '35202-2308674-5', '2020-02-28', NULL, '2', 'Islam', 1, '2019-09-01 23:06:57', '2019-09-02 07:11:41'),
-(18, 2, 'Muhammad', 'Rafiq', 'Khan', 'Gul Hazrat', '1982-09-15', 1, '35202-1571812-7', '2023-01-31', NULL, '2', 'Islam', 1, '2019-09-05 00:18:00', '2019-09-05 00:18:00'),
-(19, 2, 'Noman', NULL, 'Ahmad', 'Farooq Ahmad', '1983-12-06', 1, '34502-4662986-3', '2014-07-22', NULL, '2', 'Islam', 1, '2019-09-12 02:09:27', '2019-09-12 02:09:27'),
-(20, 2, 'Muhammad', NULL, 'Ashraf', 'Rahmat Ali', '1966-05-14', 1, '35202-3982076-9', '2015-12-31', NULL, '2', 'Islam', 1, '2019-09-12 02:34:37', '2019-09-12 02:34:37'),
-(21, 2, 'Zamir', NULL, 'Abbas', 'Naseer Ahmad', '1983-03-02', 1, '35202-2769718-9', '2023-09-30', NULL, '2', 'Islam', 1, '2019-09-19 05:21:48', '2019-09-19 05:21:48'),
-(22, 2, 'Muhammad', NULL, 'Asif', 'Muhammad Idrees', '1978-09-18', 1, '34502-7697993-7', '2021-02-25', NULL, '2', 'Islam', 1, '2019-09-19 05:44:26', '2019-09-19 05:44:26'),
-(23, 3, 'Muhammad', 'Javed', 'Sultan', 'Sultan Hussain Eman', '1957-12-20', 1, '35202-2580696-3', '2020-04-28', NULL, '2', 'Islam', 1, '2019-09-25 06:26:27', '2019-10-02 03:49:17'),
-(24, 3, 'Muhammad', NULL, 'Waqas', 'Muhammad Salim Warsi', '1973-06-12', 1, '35202-6346130-7', '2021-06-12', NULL, '2', 'Islam', 1, '2019-09-26 04:18:54', '2019-09-26 04:18:54'),
-(25, 3, 'Muhammad', 'Imran', 'Javed', 'Javed Iqbal', '1980-09-06', 1, '31104-1752823-1', '2028-05-20', NULL, '2', 'Islam', 1, '2019-09-30 04:36:05', '2019-10-02 04:04:25'),
-(26, 3, 'Waqar', NULL, 'Ahmad', 'Muhammad Ramzan', '1992-02-02', 1, '35201-3332311-1', '2025-11-27', NULL, '2', 'Islam', 1, '2019-09-30 05:10:18', '2019-09-30 05:10:18'),
-(27, 3, 'Malik', 'Zulfiqar', 'Ali', 'Malik Mushtaq Ahmed', '1970-07-09', 1, '35202-8204197-3', '2027-07-11', NULL, '2', 'Islam', 1, '2019-10-02 06:05:38', '2019-10-02 06:05:38'),
-(28, 3, 'Abdul Majid', NULL, 'Rafi', 'Muhammad Rafi Ch.', '1981-08-20', 1, '35202-2481939-7', '2016-10-19', NULL, '2', 'Islam', 1, '2019-10-03 05:14:41', '2019-10-03 05:14:41'),
-(29, 3, 'Ch.', 'Muhammad', 'Khalil', 'Barkat Ali', '1950-12-31', 1, '35201-1642163-1', '2028-07-11', NULL, '2', 'Islam', 1, '2019-10-08 04:38:54', '2019-10-08 04:38:54'),
-(30, 3, 'Muhammad', 'Hafeez', 'Minhas', 'Muhammad Hanif Khan', '1983-12-12', 1, '82101-6175493-3', '2021-09-23', NULL, '2', 'Islam', 1, '2019-10-08 05:36:58', '2019-10-08 05:36:58'),
-(31, 3, 'Farhan', 'Ali', 'Saffi', 'Hakeem Safdar Ali Saffi', '1982-10-28', 1, '35202-8633331-5', '2023-06-20', NULL, '1', 'Islam', 1, '2019-10-11 05:46:19', '2019-10-11 05:46:19'),
-(32, 2, 'Muhammad', 'Tanvir', 'Abbas', 'Hafiz Abdur Rahim', '1980-04-13', 1, '35202-8591489-9', '2020-12-31', NULL, '2', 'Islam', 1, '2019-10-11 06:06:19', '2019-10-11 06:06:19'),
-(33, 1, 'Muhammad', NULL, 'Khaliq', 'Raham Dad', '1965-03-14', 1, '81102-0259819-7', '2015-09-30', NULL, '2', 'Islam', 1, '2019-10-16 04:15:12', '2019-10-16 04:15:12'),
-(34, 1, 'Iftikhar', 'Ahmad', 'Khan', 'Inayat Ullah Khan', '1974-09-29', 1, '35201-1299818-9', '2015-08-31', NULL, '2', 'Islam', 1, '2019-10-16 04:51:00', '2019-10-16 04:51:00'),
-(35, 1, 'Jamshaid', NULL, 'Siddiqui', 'Hafiz Muhammad Rafi Siddiqui', '1981-12-28', 1, '35202-2702207-5', '2022-10-30', NULL, '2', 'Islam', 1, '2019-10-23 05:03:29', '2019-10-23 05:03:29'),
-(36, 1, 'Syed', 'Azhar', 'Ali Shah', 'Syed Safdar Hussain Shah', '1979-06-16', 1, '35101-4549497-3', '2020-04-20', NULL, '2', 'Islam', 1, '2019-10-23 05:23:00', '2019-10-23 05:23:00'),
-(37, 3, 'Shahbaz', NULL, 'Sindhu', 'Muhammad Ashraf Ali', '1990-07-03', 1, '35201-6794897-5', '2020-08-31', NULL, '2', 'Islam', 1, '2019-10-24 04:14:08', '2019-10-24 04:14:08'),
-(38, 2, 'Shafiqur', NULL, 'Rehman', 'Muhammad Yousaf Jameel', '1982-08-15', 1, '35401-2040393-7', '2013-03-31', NULL, '2', 'Islam', 1, '2019-10-24 04:41:19', '2019-10-24 04:41:19'),
-(39, 1, 'Hafiz', 'Hashim', 'Khan', 'Muhammad Qasim Khan', '1974-11-15', 1, '35202-2669122-5', '2027-11-06', NULL, '2', 'Islam', 1, '2019-10-25 04:10:17', '2019-10-25 04:10:17'),
-(40, 2, 'Imtiaz', 'Ahmad', 'Khan', 'Abdul Aziz Khan', '1982-08-03', 1, '35202-2857852-3', '2022-09-17', NULL, '2', 'Islam', 1, '2019-10-25 04:27:34', '2019-10-28 04:10:52'),
-(41, 1, 'Inayat', NULL, 'Ullah', 'Ali Muhammad', '1961-04-25', 1, '35201-1510289-5', '2022-02-23', NULL, '2', 'Islam', 1, '2019-10-28 04:48:24', '2019-10-28 04:48:24'),
-(42, 2, 'Altaf', 'Hussain', 'Bhatti', 'Muhammad Shafi Bhatti', '1958-01-28', 1, '34202-3092410-1', '2018-01-28', NULL, '2', 'Islam', 1, '2019-10-29 04:27:07', '2019-10-29 04:27:07'),
-(43, 2, 'Mehmood', NULL, 'Iqbal', 'Mubarik Ali', '1982-04-06', 1, '38303-4446684-3', '2022-10-09', NULL, '2', 'Islam', 1, '2019-10-29 04:44:00', '2019-10-29 04:44:00'),
-(44, 2, 'Muhammad', 'Asif', 'Sultan', 'Muhammad Khalid', '1972-05-11', 1, '34502-1577488-9', '2018-05-21', NULL, '2', 'Islam', 1, '2019-10-30 04:12:48', '2019-10-30 04:12:48'),
-(45, 2, 'Khalid', NULL, 'Siraj', 'Haji Siraj Din', '1976-06-01', 1, '35202-2848172-7', '2016-12-02', NULL, '2', 'Islam', 1, '2019-10-30 04:32:01', '2019-10-30 04:32:01'),
-(46, 2, 'Mirza', 'Nadeem', 'Baig', 'Ajmal Baig', '1970-05-05', 1, '35201-7836865-5', '2020-04-30', NULL, '2', 'Islam', 1, '2019-10-31 04:12:10', '2019-10-31 04:12:10'),
-(47, 1, 'Muhammad', NULL, 'Jamil', 'Rasheed Ahmad', '1977-04-21', 1, '34502-5398993-3', '2018-01-31', NULL, '2', 'Islam', 1, '2019-10-31 04:34:44', '2019-10-31 04:34:44'),
-(48, 2, 'Dubeer', NULL, 'Hussain', 'Munir Hussain Shad', '1980-04-13', 1, '35201-9777905-1', '2020-04-13', NULL, '2', 'Islam', 1, '2019-10-31 05:01:01', '2019-10-31 05:01:01'),
-(49, 1, 'Fayyaz', 'Mehmood', 'Karimi', 'Muhammad Ashfaq Ahmad', '1990-02-28', 1, '35202-2158307-1', '2020-06-30', NULL, '2', 'Islam', 1, '2019-11-04 04:24:13', '2019-11-04 04:24:13'),
-(50, 1, 'Zamir', 'Hussain', 'Shad', 'Muhammad Yaqub Bhatti', '1944-03-01', 1, '35202-2675335-1', '2029-08-20', NULL, '2', 'Islam', 1, '2019-11-04 04:43:18', '2019-11-04 04:43:18'),
-(51, 1, 'Muhammad', NULL, 'Farhan', 'Muhammad Zahid', '1973-08-31', 1, '44104-0716077-5', '2017-08-30', NULL, '2', 'Islam', 1, '2019-11-05 04:17:34', '2019-11-05 04:17:34'),
-(52, 1, 'Muhammad', 'Ashraf', 'Bhatti', 'Khuda Bakhash Bhatti', '1962-04-14', 1, '34601-2911761-9', '2012-10-31', NULL, '2', 'Islam', 1, '2019-11-05 04:31:06', '2019-11-05 04:31:06'),
-(53, 1, 'Rafae', NULL, 'Munir', 'Munir Ahmad', '1988-06-15', 1, '35201-5468211-3', '2024-06-16', NULL, '2', 'Islam', 1, '2019-11-06 04:58:10', '2019-11-06 04:58:10'),
-(54, 1, 'Kamal', 'Haider', 'Toor', 'Sajjad Haider Toor', '1986-05-07', 1, '35202-8822209-1', '2016-09-30', NULL, '2', 'Islam', 1, '2019-11-07 04:47:40', '2019-11-07 04:47:40'),
-(55, 1, 'Haresh', NULL, 'Kumar', 'Ladha Ram', '1972-02-16', 1, '43203-8297373-3', '2022-01-25', NULL, '2', 'Islam', 1, '2019-11-07 05:10:38', '2019-11-07 05:10:38'),
-(56, 1, 'Saif', 'ur', 'Rehman', 'Fazal-ur-Rehman', '1954-01-01', 1, '35202-3014900-7', '2010-03-10', NULL, '2', 'Islam', 1, '2019-11-08 05:07:54', '2019-11-08 05:07:54'),
-(57, 1, 'Malik', 'Iqtadar', 'Hussain', 'Malik Nazar Hussain', '1950-08-10', 1, '35202-3955582-5', '2011-06-27', NULL, '2', 'Islam', 1, '2019-11-08 05:47:07', '2019-11-08 05:47:07'),
-(58, 2, 'Muhammad', NULL, 'Afzal', 'Muhammad Abdullah', '1967-01-01', 1, '35200-1542442-5', '2025-08-18', NULL, '2', 'Islam', 1, '2019-11-11 04:15:44', '2019-11-11 04:15:44'),
-(59, 2, 'Muhammad', NULL, 'Nawaz', 'Muhammad Saeed', '1953-10-10', 1, '35201-1545452-3', '2032-08-17', NULL, '2', 'Islam', 1, '2019-11-11 04:32:08', '2019-11-11 04:32:08'),
-(60, 1, 'Kashif', 'Suleman', 'Afzal', 'Muhammad Suleman Afzal', '1978-01-17', 1, '35202-2452814-7', '2021-07-12', NULL, '2', 'Islam', 1, '2019-11-14 04:06:01', '2019-11-14 04:06:01'),
-(61, 2, 'Ch.', 'Atiq', 'Ahmad', 'Ijaz Ahmad Humayun', '1976-02-09', 1, '35202-2925131-1', '2027-05-27', NULL, '2', 'Islam', 1, '2019-11-18 05:47:32', '2019-11-18 05:47:32');
-
---
 -- Dumping data for table `employee_statuses`
 --
 
@@ -1332,14 +1333,7 @@ INSERT INTO `memberships` (`id`, `employee_id`, `name`, `membership_no`, `expiry
 (3, 8, 'PEC', 'Civil/23078', '2019-12-31', '2019-08-22 09:24:04', '2019-08-22 09:24:04');
 
 --
--- Dumping data for table `model_has_roles`
---
 
-INSERT INTO `model_has_roles` (`role_id`, `model_type`, `model_id`) VALUES
-(3, 'App\\User', 13),
-(3, 'App\\User', 15),
-(4, 'App\\User', 14),
-(5, 'App\\User', 1);
 
 --
 -- Dumping data for table `nationalities`
@@ -1417,20 +1411,6 @@ INSERT INTO `other_informations` (`id`, `employee_id`, `blood_group`, `driving_l
 (2, 11, '1', '2007/7962', '2022-05-06', NULL, NULL, NULL, 'Tanzeel Jahangir', 'Wife', 'Same as Permanent Address', '0302-4587929', '2019-09-19 05:48:43', '2019-09-19 05:48:43'),
 (3, 21, '2', '2006/952', '2020-10-27', NULL, NULL, NULL, 'Asma', 'Wife', 'H. No. 6, Johar Street, Jeewan Hana, Lahore', '0336-7095751', '2019-09-23 05:10:31', '2019-09-23 05:10:31'),
 (4, 22, '2', 'LE-14-76584', '2019-11-23', NULL, NULL, NULL, 'Muhammad Idrees', 'Father', 'Etihad part, House No. 8, Block-B, Muhallah Stop Bank, Chongi Amersidhu, Lahore', '0300-8188386', '2019-09-23 05:14:59', '2019-09-23 05:14:59');
-
---
--- Dumping data for table `permissions`
---
-
-INSERT INTO `permissions` (`id`, `name`, `guard_name`, `created_at`, `updated_at`) VALUES
-(2, 'hr_edit_record', 'web', '2019-11-18 09:43:11', '2020-02-20 05:23:51'),
-(3, 'cv_view', 'web', '2020-02-20 03:18:32', '2020-02-20 05:24:03'),
-(4, 'cv_edit', 'web', '2020-02-20 03:18:45', '2020-02-20 05:24:14'),
-(5, 'cv_delete', 'web', '2020-02-20 03:18:56', '2020-02-20 05:24:37'),
-(6, 'hr_view_record', 'web', '2020-02-20 03:23:36', '2020-02-20 05:24:57'),
-(7, 'hr_insert_record', 'web', '2020-02-20 03:24:08', '2020-02-20 05:25:57'),
-(8, 'cv_insert', 'web', '2020-02-20 03:24:25', '2020-02-20 05:25:16'),
-(9, 'hr_delete', 'web', '2020-02-20 05:27:23', '2020-02-20 05:27:23');
 
 --
 -- Dumping data for table `pictures`
@@ -1749,26 +1729,7 @@ INSERT INTO `roles` (`id`, `name`, `guard_name`, `created_at`, `updated_at`) VAL
 (5, 'Super Admin', 'web', '2019-11-18 09:43:11', '2019-11-18 09:43:11');
 
 --
--- Dumping data for table `role_has_permissions`
---
 
-INSERT INTO `role_has_permissions` (`permission_id`, `role_id`) VALUES
-(2, 3),
-(2, 4),
-(2, 5),
-(4, 3),
-(4, 4),
-(4, 5),
-(5, 5),
-(7, 3),
-(7, 4),
-(7, 5),
-(8, 3),
-(8, 4),
-(8, 5),
-(9, 5);
-
---
 -- Dumping data for table `salaries`
 --
 
@@ -1920,6 +1881,53 @@ INSERT INTO `users` (`id`, `email`, `code`, `email_verified_at`, `password`, `us
 (27, 'ENGINDDR.ASHRAF.BHATTI@GMAIL.COM', NULL, NULL, '$2y$10$IyjCTJhv0t4BLfbmh5l9XOHmQJAsPlvgwFT4n7jPB98jlWPYD7Thi', 0, 52, NULL, NULL, '2019-11-05 04:31:41', '2019-11-05 04:31:41'),
 (28, 'rafaemunir@barqaab.com', NULL, NULL, '$2y$10$IyjCTJhv0t4BLfbmh5l9XOHmQJAsPlvgwFT4n7jPB98jlWPYD7Thi', 0, 53, NULL, NULL, '2019-11-06 04:58:42', '2019-11-06 04:58:42'),
 (29, 'atiqch@yahoo.com', NULL, NULL, '$2y$10$IyjCTJhv0t4BLfbmh5l9XOHmQJAsPlvgwFT4n7jPB98jlWPYD7Thi', 0, 61, NULL, NULL, '2019-11-18 05:48:04', '2019-11-18 05:48:04');
+
+
+
+-- Dumping data for table `permissions`
+--
+
+INSERT INTO `permissions` (`id`, `name`, `guard_name`, `created_at`, `updated_at`) VALUES
+(2, 'hr_edit_record', 'web', '2019-11-18 09:43:11', '2020-02-20 05:23:51'),
+(3, 'cv_view', 'web', '2020-02-20 03:18:32', '2020-02-20 05:24:03'),
+(4, 'cv_edit', 'web', '2020-02-20 03:18:45', '2020-02-20 05:24:14'),
+(5, 'cv_delete', 'web', '2020-02-20 03:18:56', '2020-02-20 05:24:37'),
+(6, 'hr_view_record', 'web', '2020-02-20 03:23:36', '2020-02-20 05:24:57'),
+(7, 'hr_insert_record', 'web', '2020-02-20 03:24:08', '2020-02-20 05:25:57'),
+(8, 'cv_insert', 'web', '2020-02-20 03:24:25', '2020-02-20 05:25:16'),
+(9, 'hr_delete', 'web', '2020-02-20 05:27:23', '2020-02-20 05:27:23');
+
+--
+-- Dumping data for table `role_has_permissions`
+--
+
+INSERT INTO `role_has_permissions` (`permission_id`, `role_id`) VALUES
+(2, 3),
+(2, 4),
+(2, 5),
+(4, 3),
+(4, 4),
+(4, 5),
+(5, 5),
+(7, 3),
+(7, 4),
+(7, 5),
+(8, 3),
+(8, 4),
+(8, 5),
+(9, 5);
+
+--
+-- Dumping data for table `model_has_roles`
+--
+
+INSERT INTO `model_has_roles` (`role_id`, `model_type`, `model_id`) VALUES
+(3, 'App\\User', 13),
+(3, 'App\\User', 15),
+(4, 'App\\User', 14),
+(5, 'App\\User', 1);
+
+
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

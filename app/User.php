@@ -8,11 +8,12 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use OwenIt\Auditing\Contracts\Auditable;
 use Spatie\Permission\Traits\HasRoles;
 use Spatie\Permission\Models\Role;
+use Thomasjohnkane\Snooze\Traits\SnoozeNotifiable;
 
 
 class User extends Authenticatable implements Auditable
 {
-    use Notifiable, HasRoles;
+    use Notifiable, HasRoles, SnoozeNotifiable;
     use \OwenIt\Auditing\Auditable;
 
  

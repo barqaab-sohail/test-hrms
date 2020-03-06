@@ -30,29 +30,33 @@
 		</div>
 	</div>
 	
+
+	<!--TASK -->
 		<div class="card">
 			<div class="card-body">
-				<div class="container">
+			
 	        
-	          	<!-- Button trigger modal -->
-	          	<button type="button" class="btn btn-info" data-toggle="modal" data-target="#taskModal"> 
-	            Add New Task
-	          	</button>
-	          
-	          	<!-- Modeal Include-->
-	          	@include('hr.task.modal')
-	          	@include('hr.task.editModal')
+		          	<!-- Button trigger modal -->
+
+		          	<button type="button" class="btn btn-info float-right"  data-toggle="modal" data-target="#taskModal"> 
+		            Add New Task
+		          	</button>
+		          
+		          	<!-- Modeal Include-->
+		          	@include('hr.task.modal')
+		          	@include('hr.task.editModal')
 	  
 	      		</div>
 			
-			<div id="append_data" class="table-responsive m-t-40">
+				<div id="append_data" class="table-responsive m-t-40">
 
-			</div>
-			
-			
-
-
+	
+			</div>	
+	
 		</div>
+	<!--End TASK -->
+
+	
 
 
 @stop
