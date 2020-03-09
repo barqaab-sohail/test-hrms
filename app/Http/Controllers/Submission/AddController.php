@@ -13,10 +13,10 @@ class AddController extends Controller
     public function create(){
 		session()->put('submission_id', '');
 		$types = sub_type::all();
-		$contractType = sub_contract_type::all();
+		$contractTypes = sub_contract_type::all();
 		
 
-		return view ('submission.submission',compact('types','contractType'));
+		return view ('submission.submission',compact('types','contractTypes'));
 	}
 
 

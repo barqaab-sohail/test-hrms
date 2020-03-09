@@ -119,8 +119,12 @@
     })
 
 })();
+
+
    
     $(document).ready(function() {
+
+
        var role = "{{Auth::User()->getRoleNames()->first()}}";
 
        if(role == 'User'){
@@ -202,9 +206,10 @@
                 });
 
                 //If Chane date input than show date clear icon
-                $(".date_input input").change(function (){
-                       $(this).siblings('i').show();
-                });
+                        // $(".date_input input").change(function (){
+                            
+                        //        $(this).siblings('i').show();
+                        // });
 
                 // DatePicker
                  
@@ -214,6 +219,8 @@
                     changeMonth: true,
                     changeYear: true,
 
+                    }).on('change',function(){
+                         $(this).siblings('i').show();
                     });
                 
                  
@@ -233,30 +240,30 @@
 
             // Time Picker
 
-                //  $(".time_input").each(function(){
-                //     if ($(this).find('input').val()==''){
-                //     var Date1 = new Date(0,0,0,15,0,0);
-                //     alert(Date1);
-                //     $(this).find('input').val(Date1);
-                //     }else{
-                //         $(this).find('i').hide();
-                //     }
+                //Hide trach icon if value is empty
+                 $(".time_input").each(function(){
+                    if ($(this).find('input').val()==''){
+                    $(this).find('i').hide();
+                    }else{
+                        $(this).find('i').show();
+                        
+                    }
 
-                // });
+                });
                  
-                // //If Click icon than clear date
-                // $(".time_input i").click(function (){
-                //     if(confirm("Are you sure to clear Time")){
-                //     $(this).siblings('input').val("");
-                //     $(this).hide();
-                //     }
-                // });
+                //If Click icon than clear date
+                $(".time_input i").click(function (){
+                    if(confirm("Are you sure to clear Time")){
+                    $(this).siblings('input').val("");
+                    $(this).hide();
+                    }
+                });
 
-                // //If Chane date input than show date clear icon
-                // $(".time_input input").change(function (){
-                //        $(this).siblings('i').show();
-                // });
+           
 
+            function showTrash(){
+               $("#trash").show();
+            }
 
 
             $('.time_input input').timepicker({
@@ -264,12 +271,14 @@
                 interval: 30,
                 minTime: '8',
                 maxTime: '6:00pm',
-                //defaultTime: '11',
+                //defaultTime: false,
                 startTime: '8:00',
                 dynamic: false,
                 dropdown: true,
-                scrollbar: true
+                scrollbar: true,
+                change:showTrash
             });
+
 
 
 

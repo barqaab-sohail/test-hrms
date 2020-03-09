@@ -7,13 +7,12 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use OwenIt\Auditing\Contracts\Auditable;
 use Spatie\Permission\Traits\HasRoles;
-use Spatie\Permission\Models\Role;
-use Thomasjohnkane\Snooze\Traits\SnoozeNotifiable;
+use Spatie\Permission\Models\Role;      
 
 
 class User extends Authenticatable implements Auditable
 {
-    use Notifiable, HasRoles, SnoozeNotifiable;
+    use Notifiable, HasRoles;
     use \OwenIt\Auditing\Auditable;
 
  
