@@ -1,0 +1,503 @@
+@extends('layouts.master.master')
+@section('title', 'Submission')
+@section('Heading')
+	<h3 class="text-themecolor">Submission Detail</h3>
+	<ol class="breadcrumb">
+		<li class="breadcrumb-item"><a href="javascript:void(0)"></a></li>
+		
+		
+	</ol>
+	
+@stop
+@section('content')
+
+    <div class="row">
+        <div class="col-lg-12">
+
+            <div class="card card-outline-info">
+			
+				<div class="row">
+				
+  	
+
+		        	<div class="col-lg-12">
+						 
+
+
+		                <div class="card-body">
+
+		                    <form id="test" action="{{route('addSubmission.store')}}" method="post" class="form-horizontal form-prevent-multiple-submits" enctype="multipart/form-data">
+		                        {{csrf_field()}}
+		                        <div class="form-body">
+		                            
+		                            <h3 class="box-title">Submission Detail</h3>
+		                            <hr class="m-t-0 m-b-40">
+		                            <!--row 1 -->
+		                            <div class="row">
+		                                <div class="col-md-6">
+		                                 <!--/span 1-1 -->
+		                                    <div class="form-group row">
+		                                        <div class="col-md-12">
+		                                       		<label class="control-label text-right">Name of Project<span class="text_requried">*</span></label><br>
+		                                       		<input type="text"  name="project_name" data-validation="required" value="{{ old('project_name') }}"  class="form-control"  >
+		                                        </div>
+		                                    </div>
+		                                </div>
+		                                <!--/span 1-2 -->
+		                                <div class="col-md-3">
+		                                    <div class="form-group row">
+		                                        <div class="col-md-12 date_input">
+		                                        	<label class="control-label">Submission Date<span class="text_requried">*</span></label>
+		                                        
+		                                            <input type="text"  name="submission_date" value="{{ old('submission_date') }}"  class="form-control" readonly>
+		                                             <br>
+		                                           <i class="fas fa-trash-alt text_requried"></i> 
+		                                        </div>
+		                                    </div>
+		                                </div>
+		                                <!--/span 1-3 -->
+		                                <div class="col-md-3">
+		                                    <div class="form-group row">
+		                                        <div class="col-md-12 time_input">
+		                                        	<label class="control-label text-right">Submission Time</label>
+		                                        
+		                                            <input type="text" name="submission_time" id="time" value="{{ old('submission_time') }}" class="form-control" readonly >
+		                                            
+		                                        </div>
+		                                    </div>
+		                                </div>
+		                               
+	                               
+		                            </div>
+		                             <!--row 2-->
+		                            <div class="row">
+		                                <!--/span 2-1 -->
+		                                <div class="col-md-6">
+		                                    <div class="form-group row">
+		                                        <div class="col-md-12">
+		                                        	<label class="control-label text-right">Submission Address<span class="text_requried">*</span></label>
+		                                        
+		                                            <input type="text" id="job_starting_date" data-validation="required" name="submission_address"  value="{{ old('submission_address') }}" class="form-control ">
+													 
+		                                        </div>
+		                                    </div>
+		                                </div>
+		                                
+		                                <!--/span 2-2 -->
+		                                <div class="col-md-3">
+		                                    <div class="form-group row">
+		                                        <div class="col-md-12">
+		                                        	<label class="control-label text-right">Submission Type</label>
+		                                       		<input type="text"  name="city" data-validation="required" value="{{ old('city') }}"  class="form-control">
+		                                        </div>
+		                                    </div>
+		                                </div>
+		                                <!--/span 2-3 -->
+		                                <div class="col-md-3">
+		                                    <div class="form-group row">
+		                                        <div class="col-md-12">
+		                                        	<label class="control-label text-right">Contract Type</label>
+		                                       		<input type="text"  name="city" data-validation="required" value="{{ old('city') }}"  class="form-control">
+		                                        </div>
+		                                    </div>
+		                                </div>
+		                                
+		                            </div>
+		                              <!--row 3-->
+		                            <div class="row">
+		                                <!--/span 3-1 -->
+		                                <div class="col-md-3">
+		                                    <div class="form-group row">
+		                                        <div class="col-md-12">
+		                                        	<label class="control-label text-right">Client Name<span class="text_requried">*</span></label>
+		                                        
+		                                            <input type="text" id="job_starting_date" data-validation="required" name="client_name"  value="{{ old('client_name') }}" class="form-control ">
+													 
+		                                        </div>
+		                                    </div>
+		                                </div>
+		                                
+		                                <!--/span 3-2 -->
+		                                <div class="col-md-3">
+		                                    <div class="form-group row">
+		                                        <div class="col-md-12">
+		                                        	<label class="control-label text-right">Authorize Person</label>
+		                                       		<input type="text"  name="authorize_person" data-validation="required" value="{{ old('authorize_person') }}"  class="form-control">
+		                                        </div>
+		                                    </div>
+		                                </div>
+		                                <!--/span 3-3 -->
+		                                <div class="col-md-3">
+		                                    <div class="form-group row">
+		                                        <div class="col-md-12">
+		                                        	<label class="control-label text-right">Designation</label>
+		                                       		<input type="text"  name="designation" data-validation="required" value="{{ old('designation') }}"  class="form-control">
+		                                        </div>
+		                                    </div>
+		                                </div>
+		                                 <!--/span 3-4 -->
+		                                <div class="col-md-3">
+		                                    <div class="form-group row">
+		                                        <div class="col-md-12">
+		                                        	<label class="control-label text-right">Client Email</label>
+		                                       		<input type="email"  name="email" data-validation="required" value="{{ old('email') }}"  class="form-control">
+		                                        </div>
+		                                    </div>
+		                                </div>
+		                                
+		                            </div>
+
+		                              <!--row 4-->
+		                            <div class="row">
+		                                <!--/span 4-1 -->
+		                                <div class="col-md-6">
+		                                    <div class="form-group row">
+		                                        <div class="col-md-12">
+		                                        	<label class="control-label text-right">Client Address<span class="text_requried">*</span></label>
+		                                        
+		                                            <input type="text" data-validation="required" name="address"  value="{{ old('address') }}" class="form-control ">
+													 
+		                                        </div>
+		                                    </div>
+		                                </div>
+		                                
+		                                <!--/span 4-2 -->
+		                                <div class="col-md-2">
+		                                    <div class="form-group row">
+		                                        <div class="col-md-12">
+		                                        	<label class="control-label text-right">Client Phone</label>
+		                                       		<input type="text"  name="phone" data-validation="required" value="{{ old('phone') }}"  class="form-control">
+		                                        </div>
+		                                    </div>
+		                                </div>
+		                                <!--/span 4-3 -->
+		                                <div class="col-md-2">
+		                                    <div class="form-group row">
+		                                        <div class="col-md-12">
+		                                        	<label class="control-label text-right">Client Fax</label>
+		                                       		<input type="text"  name="fax" data-validation="required" value="{{ old('fax') }}"  class="form-control">
+		                                        </div>
+		                                    </div>
+		                                </div>
+		                                 <!--/span 4-4 -->
+		                                <div class="col-md-2">
+		                                    <div class="form-group row">
+		                                        <div class="col-md-12">
+		                                        	<label class="control-label text-right">Mobile</label>
+		                                       		<input type="text"  name="mobile" data-validation="required" value="{{ old('mobile') }}"  class="form-control">
+		                                        </div>
+		                                    </div>
+		                                </div>
+		                                
+		                                
+		                            </div>
+		                     
+
+		               
+		                            
+		                <!--row 5-->
+		                            <div class="row" >
+		                                
+		                            <!--/span 6-1 -->
+		                                <div class="col-md-6">
+		                                    <div class="form-group row">
+		                                        <div class="col-md-12 remove_div">
+		                                        	<label class="control-label text-right">Scope of Services</label>
+		                                            <textarea type="text" rows=3 cols=20 name="scope_of_services" class="form-control" placeholder="Enter Description" >{{ old('scope_of_services') }}</textarea> 
+		                                        </div>
+		                                    </div>
+		                                </div>
+
+		                                <!--/span 6-2 -->
+		                                <div class="col-md-6">
+		                                    <div class="form-group row">
+		                                        <div class="col-md-12 remove_div">
+		                                        	<label class="control-label text-right">Scope of Work</label>
+		                                            <textarea type="text" rows=3 cols=20 name="scope_of_work" class="form-control" placeholder="Enter Description" >{{ old('scope_of_work') }}</textarea> 
+		                                        </div>
+		                                    </div>
+		                                </div>
+									   
+		                            </div>
+
+		                <!--row 6-->
+		                            <div class="row" >
+		                                
+		                            <!--/span 6-1 -->
+		                                <div class="col-md-12">
+		                                    <div class="form-group row">
+		                                        <div class="col-md-12 remove_div">
+		                                        	<label class="control-label text-right">Comments</label>
+		                                        	<input type="text" name="comments"  value="{{ old('comments') }}" class="form-control ">
+		                                           
+		                                        </div>
+		                                    </div>
+		                                </div>
+									   
+		                            </div>
+ 						
+ 						
+		                            <!--row 7-->
+		                            <div class="row" >
+		                           
+										<!--/span 7-1 -->
+		                                <div class="col-md-3">
+		                                    <div class="form-group row">
+		                                        <div class="col-md-12">
+		                                       		<label class="control-label text-right">Attached Document<span class="text_requried">*</span></label><br>
+		                                       		<input type="file"  id="cv" name="cv" data-validation="required mime size" data-validation-max-size="1M" data-validation-allowing="doc, docx, pdf" value="{{ old('cv') }}"  class="form-control" ><span class="text_requried">doc, docx and pdf only</span>
+		                                        </div>
+		                                    </div>
+		                                </div>
+		                               
+		                            </div>
+
+		              <!-- row-10 -->
+		                         <hr>
+		                        <div class="form-actions">
+		                            <div class="row">
+		                                <div class="col-md-6">
+		                                    <div class="row"> 
+		                                       <div class="col-md-offset-3 col-md-9">
+		                                            <button type="submit" class="btn btn-success btn-prevent-multiple-submits">Upload</button>
+		                                            
+		                                        </div>
+		                                     
+ 
+
+		                                    </div>
+		                                </div>
+		                            </div>
+		                        </div>
+		                    </form>
+		        		</div>       
+		        	</div>
+		        </div>
+            </div>
+        </div>
+    </div>
+ @push('scripts')
+	
+
+<script>
+	$(document).ready(function(){
+	
+
+
+
+
+	$('select').chosen();
+	$.validate();
+	$('form').on('submit',function(e){
+		$(".required").each(function(){
+			if($(this).val()==''){
+				alert($(this).closest('div').find('label').text()+' value is missing');
+				$(this).closest('div').find('label').append("<br><span style='color:red;'>This Field is required</span>");
+
+				e.preventDefault();
+			}else
+			{
+				return true;
+			}
+		});
+	 });
+	
+	 $("#cv").change(function(){
+	 	var fileType = this.files[0].type;
+	 	var fileSize = this.files[0].size;
+
+	 	if (fileSize> 2048000){
+		        	alert('File Size is bigger than 2MB');
+		        	$(this).val('');
+		}else{
+
+		    if((fileType!='application/vnd.openxmlformats-officedocument.wordprocessingml.document')&&(fileType!='application/msword')&&(fileType!='application/pdf')){
+
+	 		alert('Only pdf, doc and docx attachment allowed');
+	 		$(this).val('');
+	 		}
+	 	}
+
+	 	
+	 });
+		
+	
+		
+	 //Make sure that the event fires on input change
+		$("#cnic").on('input', function(ev){
+			
+			//Prevent default
+			ev.preventDefault();
+			
+			//Remove hyphens
+			let input = ev.target.value.split("-").join("");
+			
+			//Make a new string with the hyphens
+			// Note that we make it into an array, and then join it at the end
+			// This is so that we can use .map() 
+			input = input.split('').map(function(cur, index){
+				
+				//If the size of input is 6 or 8, insert dash before it
+				//else, just insert input
+				if(index == 5 || index == 12)
+					return "-" + cur;
+				else
+					return cur;
+			}).join('');
+			
+			//Return the new string
+			$(this).val(input);
+		});
+	//Dynamic add education
+		
+		// Add new element
+		 $("#add").click(function(){
+		 	
+		  // Finding total number of elements added
+		  var total_element = $(".education").length;
+		 	
+		  // last <div> with element class id
+		  var lastid = $(".education:last").attr("id");
+		  var split_id = lastid.split("_");
+		  var nextindex = Number(split_id[1]) + 1;
+		  var max = 5;
+		  // Check total number elements
+		  if(total_element < max ){
+		   //Clone education div and copy 
+			$('.education').find('select').chosen('destroy');
+		   	var clone = $("#edu_1").clone();
+		  	clone.prop('id','edu_'+nextindex).find('input:text').val('');
+		   	clone.find("#add").html('X').prop("class", "btn btn-danger remove_edu");
+		   	clone.insertAfter("div.education:last");
+			$('.education').find('select').chosen();
+		   
+		  }
+		 
+		});
+		 // Remove element
+		 $(document).on("click", '.remove_edu', function(){
+		 $(this).closest(".education").remove();
+ 		}); 
+		//Dynamic add specialization
+		 // Add new element
+		 $("#add_spe").click(function(){
+		 	
+		  // Finding total number of elements added
+		  var total_element = $(".specialization").length;
+		 	
+		  // last <div> with element class id
+		  var lastid = $(".specialization:last").attr("id");
+		  var split_id = lastid.split("_");
+		  var nextindex = Number(split_id[1]) + 1;
+		  var max = 5;
+		  // Check total number elements
+		  if(total_element < max ){
+		   //Clone specialization div and copy
+			$('.specialization').find('select').chosen('destroy');
+		   	var $clone = $("#spe_1").clone();
+		  	$clone.prop('id','spe_'+nextindex).find('input:text').val('');
+		   	$clone.find("#add_spe").html('X').prop("class", "btn btn-danger remove_spe");
+		   	$clone.insertAfter("div.specialization:last");
+		   	$('.specialization').find('select').chosen();
+		  }
+		 
+		 });
+		 // Remove element
+		 $(document).on("click", '.remove_spe', function(){
+		 $(this).closest(".specialization").remove();
+		  
+ 		}); 
+		 //Dynamic add Skill
+		 // Add new element
+		 $("#add_skill").click(function(){
+		 	
+		  // Finding total number of elements added
+		  var total_element = $(".skill").length;
+		 	
+		  // last <div> with element class id
+		  var lastid = $(".skill:last").attr("id");
+		  var split_id = lastid.split("_");
+		  var nextindex = Number(split_id[1]) + 1;
+		  var max = 5;
+		  // Check total number elements
+		  if(total_element < max ){
+		   //Clone specialization div and copy
+		   	var $clone = $("#skill_1").clone();
+		  	$clone.prop('id','skill_'+nextindex).find('input:text').val('');
+		   	$clone.find("#add_skill").html('X').prop("class", "btn btn-danger remove_skill");
+		   	$clone.insertAfter("div.skill:last");
+		  }
+		 
+		 });
+		 // Remove element
+		 $(document).on("click", '.remove_skill', function(){
+		 $(this).closest(".skill").remove();
+		  
+ 		}); 
+		 //Dynamic add membership
+		 // Add new element
+		 $("#add_mem").click(function(){
+		 	
+		  // Finding total number of elements added
+		  var total_element = $(".membership").length;
+		 	
+		  // last <div> with element class id
+		  var lastid = $(".membership:last").attr("id");
+		  var split_id = lastid.split("_");
+		  var nextindex = Number(split_id[1]) + 1;
+		  var max = 5;
+		  // Check total number elements
+		  if(total_element < max ){
+		   //Clone specialization div and copy
+		   $('.membership').find('select').chosen('destroy');
+		   	var $clone = $("#membership_1").clone();
+		  	$clone.prop('id','membership_'+nextindex).find('input:text').val('');
+		   	$clone.find("#add_mem").html('X').prop("class", "btn btn-danger remove_membership");
+		   	$clone.find('.remove_div').remove();
+		   	$clone.insertAfter("div.membership:last");
+		   	$('.membership').find('select').chosen();
+		  }
+		 
+		 });
+		 // Remove element
+		 $(document).on("click", '.remove_membership', function(){
+		 $(this).closest(".membership").remove();
+		  
+ 		}); 
+		  //Dynamic add phone
+		 // Add new element
+		 $("#add_phone").click(function(){
+		 	
+		  // Finding total number of elements added
+		  var total_element = $(".phone").length;
+		 	
+		  // last <div> with element class id
+		  var lastid = $(".phone:last").attr("id");
+		  var split_id = lastid.split("_");
+		  var nextindex = Number(split_id[1]) + 1;
+		  var max = 5;
+		  // Check total number elements
+		  if(total_element < max ){
+		   //Clone specialization div and copy
+		   	var $clone = $("#phone_1").clone();
+		  	$clone.prop('id','phone'+nextindex).find('input:text').val('');
+		   	$clone.find("#add_phone").html('X').prop("class", "btn btn-danger remove_phone");
+		   	$clone.find('.remove_phone_div').remove();
+		   	$clone.insertAfter("div.phone:last");
+		  }
+		 
+		 });
+		 // Remove element
+		 $(document).on("click", '.remove_phone', function(){
+		 $(this).closest(".phone").remove();
+		  
+ 		}); 
+	});	
+	
+</script>
+
+        
+
+    @endpush
+
+@stop

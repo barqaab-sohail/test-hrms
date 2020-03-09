@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateSubContractTypeTable extends Migration
+class CreateSubTypeTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,9 @@ class CreateSubContractTypeTable extends Migration
      */
     public function up()
     {
-        Schema::create('sub_contract_types', function (Blueprint $table) {
+        Schema::create('sub_types', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('name');
+            $table->string('type_name');
             $table->timestamps();
         });
     }
@@ -27,6 +27,6 @@ class CreateSubContractTypeTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('sub_contract_types');
+        Schema::dropIfExists('sub_types');
     }
 }

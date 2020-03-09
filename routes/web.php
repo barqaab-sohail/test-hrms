@@ -291,3 +291,7 @@ Route::resource('/CV/addField','Cv\addFieldController');
 Route::resource('/CV/addMembership','Cv\addMembershipController');
 Route::resource('/CV/addDegree','Cv\addDegreeController');
 Route::resource('/CV/cvDocument','Cv\CVDocumentController');
+
+
+
+Route::resource('/submission/addSubmission','Submission\AddController');

@@ -15,7 +15,7 @@ class CreateSubClientTable extends Migration
     {
         Schema::create('sub_clients', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('name');
+            $table->string('client_name');
             $table->string('authorize_person')->nullable();
             $table->string('designation')->nullable();
             $table->bigInteger('submission_id')->unsigned();

@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateSubTypeTable extends Migration
+class CreateSubParticipantTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,11 @@ class CreateSubTypeTable extends Migration
      */
     public function up()
     {
-        Schema::create('sub_types', function (Blueprint $table) {
+        Schema::create('sub_participants', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('name');
+            $table->string('participant_name');
+            $table->bigInteger('submission_id')->unsigned();
+            $table->foreign('submission_id')->references('id')->on('submissions')->onDelete('cascade');
             $table->timestamps();
         });
     }
@@ -27,6 +29,6 @@ class CreateSubTypeTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('sub_types');
+        Schema::dropIfExists('sub_participants');
     }
 }

@@ -58,7 +58,7 @@
     <script src="https://cdn.datatables.net/buttons/1.2.2/js/buttons.html5.min.js"></script>
    
     <!-- end - This is for export functionality only -->
-    
+    <script src="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.js"></script>
 
 
 
@@ -217,8 +217,6 @@
                     });
                 
                  
- 
-
 
 
             $('#myTableStored').DataTable({
@@ -232,6 +230,50 @@
                 dom: 'flrtip',
 
             });
+
+            // Time Picker
+
+                //  $(".time_input").each(function(){
+                //     if ($(this).find('input').val()==''){
+                //     var Date1 = new Date(0,0,0,15,0,0);
+                //     alert(Date1);
+                //     $(this).find('input').val(Date1);
+                //     }else{
+                //         $(this).find('i').hide();
+                //     }
+
+                // });
+                 
+                // //If Click icon than clear date
+                // $(".time_input i").click(function (){
+                //     if(confirm("Are you sure to clear Time")){
+                //     $(this).siblings('input').val("");
+                //     $(this).hide();
+                //     }
+                // });
+
+                // //If Chane date input than show date clear icon
+                // $(".time_input input").change(function (){
+                //        $(this).siblings('i').show();
+                // });
+
+
+
+            $('.time_input input').timepicker({
+                timeFormat: 'h:mm p',
+                interval: 30,
+                minTime: '8',
+                maxTime: '6:00pm',
+                //defaultTime: '11',
+                startTime: '8:00',
+                dynamic: false,
+                dropdown: true,
+                scrollbar: true
+            });
+
+
+
+
 
     });
   //Email validation

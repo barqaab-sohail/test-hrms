@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateSubParticipantTable extends Migration
+class CreateSubContractTypeTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,9 @@ class CreateSubParticipantTable extends Migration
      */
     public function up()
     {
-        Schema::create('sub_participants', function (Blueprint $table) {
+        Schema::create('sub_contract_types', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('name');
-            $table->bigInteger('submission_id')->unsigned();
-            $table->foreign('submission_id')->references('id')->on('submissions')->onDelete('cascade');
+            $table->string('contract_type_name');
             $table->timestamps();
         });
     }
@@ -29,6 +27,6 @@ class CreateSubParticipantTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('sub_participants');
+        Schema::dropIfExists('sub_contract_types');
     }
 }

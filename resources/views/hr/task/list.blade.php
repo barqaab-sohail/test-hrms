@@ -10,7 +10,7 @@
 				
 				<table id="myDataTable" class="table table-bordered table-striped" width="100%" cellspacing="0">
 					<thead>
-					
+	
 					<tr>
 						<th>Task Detail</th>
 						<th>Completion Date</th>
