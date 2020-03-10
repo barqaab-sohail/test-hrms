@@ -26,6 +26,7 @@
         "pusher/pusher-php-server": "~4.0",
         "spatie/laravel-backup": "^5.12",
         "spatie/laravel-permission": "^3.0",
+        "spatie/pdf-to-text": "^1.2",
         "thomasjohnkane/snooze": "^1.0"
     },
 

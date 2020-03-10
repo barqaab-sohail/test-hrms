@@ -11,7 +11,7 @@ class sub_contract_type extends Seeder
      */
     public function run()
     {
-        DB::table('sub_contract_types')->insert(['contract_type_name' => 'MM']);
+        DB::table('sub_contract_types')->insert(['contract_type_name' => 'Man Months']);
         DB::table('sub_contract_types')->insert(['contract_type_name' => 'Lumpsum']);
 
     }

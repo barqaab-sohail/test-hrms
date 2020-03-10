@@ -1,7 +1,7 @@
 @extends('layouts.master.master')
 @section('title', 'Submission')
 @section('Heading')
-	<h3 class="text-themecolor">Submission Detail</h3>
+	<h3 class="text-themecolor">Edit Submission Detail</h3>
 	<ol class="breadcrumb">
 		<li class="breadcrumb-item"><a href="javascript:void(0)"></a></li>
 		
@@ -26,11 +26,12 @@
 
 		                <div class="card-body">
 
-		                    <form id="test" action="{{route('addSubmission.store')}}" method="post" class="form-horizontal form-prevent-multiple-submits" enctype="multipart/form-data">
+		                    <form id="test" action="{{route('addSubmission.update',['id'=>$data->id])}}" method="post" class="form-horizontal form-prevent-multiple-submits" enctype="multipart/form-data">
+		                    @method('PATCH')
 		                        {{csrf_field()}}
 		                        <div class="form-body">
 		                            
-		                            <h3 class="box-title">Submission Detail</h3>
+		                            <h3 class="box-title">Edit Submission Detail</h3>
 		                            <hr class="m-t-0 m-b-40">
 		                            <!--row 1 -->
 		                            <div class="row">
@@ -39,7 +40,7 @@
 		                                    <div class="form-group row">
 		                                        <div class="col-md-12">
 		                                       		<label class="control-label text-right">Name of Project<span class="text_requried">*</span></label><br>
-		                                       		<input type="text"  name="project_name" data-validation="required" value="{{ old('project_name') }}"  class="form-control"  >
+		                                       		<input type="text"  name="project_name" data-validation="required" value="{{ old('project_name', $data->project_name) }}"  class="form-control"  >
 		                                        </div>
 		                                    </div>
 		                                </div>
@@ -49,7 +50,7 @@
 		                                        <div class="col-md-12 date_input">
 		                                        	<label class="control-label">Submission Date<span class="text_requried">*</span></label>
 		                                        
-		                                            <input type="text"  name="submission_date" value="{{ old('submission_date') }}"  class="form-control" readonly>
+		                                            <input type="text"  name="submission_date" value="{{ old('submission_date', $data->submission_date) }}"  class="form-control" readonly>
 		                                             <br>
 		                                           <i class="fas fa-trash-alt text_requried"></i> 
 		                                        </div>
@@ -61,7 +62,7 @@
 		                                        <div class="col-md-12 time_input">
 		                                        	<label class="control-label text-right">Submission Time<span class="text_requried">*</span></label>
 		                                        
-		                                            <input type="text" name="submission_time" id="time" value="{{ old('submission_time') }}" class="form-control" >
+		                                            <input type="text" name="submission_time" id="time" value="{{ old('submission_time', $data->submission_time) }}" class="form-control" >
 		                                            <br>
 		                                           <i id="trash" class="fas fa-trash-alt text_requried"></i> 
 		                                            
@@ -79,7 +80,7 @@
 		                                        <div class="col-md-12">
 		                                        	<label class="control-label text-right">Submission Address<span class="text_requried">*</span></label>
 		                                        
-		                                            <input type="text"  data-validation="required" name="submission_address"  value="{{ old('submission_address') }}" class="form-control ">
+		                                            <input type="text" data-validation="required" name="submission_address"  value="{{ old('submission_address', $data->submission_address) }}" class="form-control ">
 													 
 		                                        </div>
 		                                    </div>
@@ -93,7 +94,7 @@
 		                                        	<select  name="sub_type_id"  class="form-control required selectTwo">
                                                        <option></option>
                                                         @foreach($types as $type)
-														<option value="{{$type->id}}" {{(old("sub_type_id")==$type->id? "selected" : "")}}>{{$type->type_name}}</option>
+														<option value="{{$type->id}}" {{(old("sub_type_id",$data->sub_type_id)==$type->id? "selected" : "")}}>{{$type->type_name}}</option>
                                                         @endforeach
                                                       
                                                     </select>
@@ -109,7 +110,7 @@
 		                                       		<select  name="sub_contract_type_id"  class="form-control required selectTwo">
                                                        <option></option>
                                                         @foreach($contractTypes as $contractType)
-														<option value="{{$contractType->id}}" {{(old("sub_contract_type_id")==$contractType->id? "selected" : "")}}>{{$contractType->contract_type_name}}</option>
+														<option value="{{$contractType->id}}" {{(old("sub_contract_type_id", $data->sub_contract_type_id)==$contractType->id? "selected" : "")}}>{{$contractType->contract_type_name}}</option>
                                                         @endforeach
                                                       
                                                     </select>
@@ -126,7 +127,7 @@
 		                                        <div class="col-md-12">
 		                                        	<label class="control-label text-right">Client Name<span class="text_requried">*</span></label>
 		                                        
-		                                            <input type="text" data-validation="required" name="client_name"  value="{{ old('client_name') }}" class="form-control ">
+		                                            <input type="text" data-validation="required" name="client_name"  value="{{ old('client_name',$data->sub_client->client_name) }}" class="form-control ">
 													 
 		                                        </div>
 		                                    </div>
@@ -137,7 +138,7 @@
 		                                    <div class="form-group row">
 		                                        <div class="col-md-12">
 		                                        	<label class="control-label text-right">Authorize Person</label>
-		                                       		<input type="text"  name="authorize_person" value="{{ old('authorize_person') }}"  class="form-control">
+		                                       		<input type="text"  name="authorize_person" value="{{ old('authorize_person', $data->sub_client->authorize_person) }}"  class="form-control">
 		                                        </div>
 		                                    </div>
 		                                </div>
@@ -146,7 +147,7 @@
 		                                    <div class="form-group row">
 		                                        <div class="col-md-12">
 		                                        	<label class="control-label text-right">Designation</label>
-		                                       		<input type="text"  name="designation" value="{{ old('designation') }}"  class="form-control">
+		                                       		<input type="text"  name="designation" value="{{ old('designation',$data->sub_client->designation) }}"  class="form-control">
 		                                        </div>
 		                                    </div>
 		                                </div>
@@ -155,7 +156,7 @@
 		                                    <div class="form-group row">
 		                                        <div class="col-md-12">
 		                                        	<label class="control-label text-right">Client Email</label>
-		                                       		<input type="email"  name="email" value="{{ old('email') }}"  class="form-control">
+		                                       		<input type="email"  name="email" value="{{ old('email',$data->sub_client_address->email) }}"  class="form-control">
 		                                        </div>
 		                                    </div>
 		                                </div>
@@ -170,7 +171,7 @@
 		                                        <div class="col-md-12">
 		                                        	<label class="control-label text-right">Client Address<span class="text_requried">*</span></label>
 		                                        
-		                                            <input type="text"  name="address"  value="{{ old('address') }}" class="form-control ">
+		                                            <input type="text"  name="address"  value="{{ old('address',$data->sub_client_address->address) }}" class="form-control ">
 													 
 		                                        </div>
 		                                    </div>
@@ -181,7 +182,7 @@
 		                                    <div class="form-group row">
 		                                        <div class="col-md-12">
 		                                        	<label class="control-label text-right">Client Phone</label>
-		                                       		<input type="text"  name="phone" value="{{ old('phone') }}"  class="form-control">
+		                                       		<input type="text"  name="phone" value="{{ old('phone',$data->sub_client_address->phone) }}"  class="form-control">
 		                                        </div>
 		                                    </div>
 		                                </div>
@@ -190,7 +191,7 @@
 		                                    <div class="form-group row">
 		                                        <div class="col-md-12">
 		                                        	<label class="control-label text-right">Client Fax</label>
-		                                       		<input type="text"  name="fax"  value="{{ old('fax') }}"  class="form-control">
+		                                       		<input type="text"  name="fax"  value="{{ old('fax',$data->sub_client_address->fax) }}"  class="form-control">
 		                                        </div>
 		                                    </div>
 		                                </div>
@@ -199,7 +200,7 @@
 		                                    <div class="form-group row">
 		                                        <div class="col-md-12">
 		                                        	<label class="control-label text-right">Mobile</label>
-		                                       		<input type="text"  name="mobile" value="{{ old('mobile') }}"  class="form-control">
+		                                       		<input type="text"  name="mobile" value="{{ old('mobile',$data->sub_client_address->mobile) }}"  class="form-control">
 		                                        </div>
 		                                    </div>
 		                                </div>
@@ -218,7 +219,7 @@
 		                                    <div class="form-group row">
 		                                        <div class="col-md-12 remove_div">
 		                                        	<label class="control-label text-right">Scope of Services</label>
-		                                            <textarea type="text" rows=3 cols=20 name="scope_of_services" class="form-control" placeholder="Enter Scope of Services required from the Consultant" >{{ old('scope_of_services') }}</textarea> 
+		                                            <textarea type="text" rows=3 cols=20 name="scope_of_services" class="form-control" placeholder="Enter Scope of Services required from the Consultant" >{{ old('scope_of_services',$data->scope_of_services) }}</textarea> 
 		                                        </div>
 		                                    </div>
 		                                </div>
@@ -228,7 +229,7 @@
 		                                    <div class="form-group row">
 		                                        <div class="col-md-12 remove_div">
 		                                        	<label class="control-label text-right">Scope of Work</label>
-		                                            <textarea type="text" rows=3 cols=20 name="scope_of_work" class="form-control" placeholder="Enter Scope of Work of the Project" >{{ old('scope_of_work') }}</textarea> 
+		                                            <textarea type="text" rows=3 cols=20 name="scope_of_work" class="form-control" placeholder="Enter Scope of Work of the Project" >{{ old('scope_of_work', $data->scope_of_work) }}</textarea> 
 		                                        </div>
 		                                    </div>
 		                                </div>
@@ -243,7 +244,7 @@
 		                                    <div class="form-group row">
 		                                        <div class="col-md-12 remove_div">
 		                                        	<label class="control-label text-right">Comments</label>
-		                                        	<input type="text" name="comments"  value="{{ old('comments') }}" class="form-control ">
+		                                        	<input type="text" name="comments"  value="{{ old('comments',$data->comments) }}" class="form-control ">
 		                                           
 		                                        </div>
 		                                    </div>

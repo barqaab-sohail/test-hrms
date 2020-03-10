@@ -9,5 +9,8 @@ class sub_type extends Model implements Auditable
 {
     use \OwenIt\Auditing\Auditable;
 
-    
+    public function submission()
+    {
+        return $this->belongsToMany('App\models\cv\submission');
+    }
 }

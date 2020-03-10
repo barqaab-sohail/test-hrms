@@ -9,4 +9,7 @@ class sub_client extends Model implements Auditable
 {
     use \OwenIt\Auditing\Auditable;
     
+    protected $fillable = [
+        'client_name','authorize_person','designation','submission_id',
+    ];
 }

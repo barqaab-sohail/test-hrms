@@ -82,7 +82,7 @@
  
                 @endcan
                 @can('cv_edit')
-                <li @if(request()->is('uploadCv/create')) class="active" @endif > <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i class="mdi mdi-database"></i><span class="hide-menu">CV Records</span></a>
+                <li @if(request()->is('*CV*')) class="active" @endif > <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i class="mdi mdi-database"></i><span class="hide-menu">CV Records</span></a>
                     <ul aria-expanded="false" class="collapse">  
                         <li><a href="{{route('uploadCv.create')}}">Add CV</a></li>
                         <li><a href="{{route('uploadCv.index')}}">List of CVs</a></li>
@@ -93,10 +93,10 @@
                 </li>
                 @endcan
                 @role('Super Admin')
-                <li @if(request()->is('submission/create')) class="active" @endif > <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i class="mdi mdi-cube"></i><span class="hide-menu">Submissions</span></a>
+                <li @if(request()->is('*submission*')) class="active" @endif > <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i class="mdi mdi-cube"></i><span class="hide-menu">Submissions</span></a>
                     <ul aria-expanded="false" class="collapse">  
                         <li><a href="{{route('addSubmission.create')}}">Add Submission</a></li>
-                        <li><a href="{{route('uploadCv.index')}}">List of Submissions</a></li>
+                        <li><a href="{{route('addSubmission.index')}}">List of Submissions</a></li>
                         @role('Super Admin')
                         <li><a href="{{route('cvServices.index')}}">Services</a></li>  
                         @endrole

@@ -8,5 +8,10 @@ use OwenIt\Auditing\Contracts\Auditable;
 class sub_contract_type extends Model implements Auditable
 {
     use \OwenIt\Auditing\Auditable;
+
+    public function submission()
+    {
+        return $this->belongsToMany('App\models\cv\submission');
+    }
     
 }

@@ -9,5 +9,9 @@ class sub_client_address extends Model implements Auditable
 {
     use \OwenIt\Auditing\Auditable;
 
+    protected $fillable = [
+        'address','phone','fax','mobile','email','sub_client_id',
+    ];
+
     
 }

@@ -11,8 +11,8 @@ class sub_type extends Seeder
      */
     public function run()
     {
-        DB::table('sub_types')->insert(['type_name' => 'RFP']);
-        DB::table('sub_types')->insert(['type_name' => 'PQD']);
-        DB::table('sub_types')->insert(['type_name' => 'EOI']);
+        DB::table('sub_types')->insert(['type_name' => 'Request for Proposal (RFP)']);
+        DB::table('sub_types')->insert(['type_name' => 'Prequalification Documents (PQD)']);
+        DB::table('sub_types')->insert(['type_name' => 'Expression of Interest (EOI)']);
     }
 }
