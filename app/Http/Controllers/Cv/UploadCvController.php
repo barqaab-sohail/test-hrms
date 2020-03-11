@@ -325,8 +325,13 @@ class UploadCvController extends Controller
 				$attachment_id = $cv_id->cv_attachment->first()->id;
 				
 				cv_attachment::findOrFail($attachment_id)->update($attachment);
+
+				if(Storage::exists('public/'.$path.$oldFileName)){
 				unlink(storage_path('app/public/'.$path.$oldFileName));
-		}
+				}
+			}
+
+
 
 		});	//end transaction
 

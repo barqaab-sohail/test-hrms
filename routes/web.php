@@ -295,3 +295,5 @@ Route::resource('/CV/cvDocument','Cv\CVDocumentController');
 
 
 Route::resource('/submission/addSubmission','Submission\AddController');
+Route::resource ('/submission/participant','Submission\ParticipantController');
+Route::resource ('/submission/attachment','Submission\AttachmentController');

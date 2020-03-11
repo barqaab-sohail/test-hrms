@@ -18,9 +18,10 @@
 			
 				<div class="row">
 				
-  	
-
-		        	<div class="col-lg-12">
+  					<div class="col-lg-2">
+					@include('layouts.submission.submissionVerticalButton')
+					</div>
+		        	<div class="col-lg-10">
 						 
 
 
@@ -261,7 +262,7 @@
 		                                    <div class="form-group row">
 		                                        <div class="col-md-12">
 		                                       		<label class="control-label text-right">Attached Document<span class="text_requried">*</span></label><br>
-		                                       		<input type="file" name="attachment" data-validation="required mime size" data-validation-max-size="1M" data-validation-allowing="doc, docx, pdf" value="{{ old('attachment') }}"  class="form-control" ><span class="text_requried">Attach RFP or EOI Document (doc, docx and pdf only)</span>
+		                                       		<input type="file" name="attachment" data-validation="mime size" data-validation-max-size="1M" data-validation-allowing="doc, docx, pdf" value="{{ old('attachment') }}"  class="form-control" ><span class="text_requried">Attach RFP or EOI Document (doc, docx and pdf only)</span>
 		                                        </div>
 		                                    </div>
 		                                </div>
@@ -298,11 +299,6 @@
 <script>
 	$(document).ready(function(){
 	
-
-
-
-
-	//$('select').select2();
 	$.validate();
 	$('form').on('submit',function(e){
 		$(".required").each(function(){

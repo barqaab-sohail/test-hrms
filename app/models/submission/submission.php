@@ -31,10 +31,15 @@ class submission extends Model implements Auditable
         return $this->belongsTo('App\models\submission\sub_contract_type');
     }
 
-    // first model is final model and send modal is through search
+    // first model is final model and second modal is through search
     public function sub_client_address()
     {
         return $this->hasOneThrough('App\models\submission\sub_client_address', 'App\models\submission\sub_client');
+    }
+
+     public function sub_attachment()
+    {
+        return $this->hasMany('App\models\submission\sub_attachment');
     }
     
 }
