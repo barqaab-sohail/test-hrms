@@ -21,6 +21,8 @@ class CreateSubmissionsTable extends Migration
             $table->string('submission_address');
             $table->text('scope_of_services')->nullable();
             $table->text('scope_of_work')->nullable();
+            $table->string('total_marks')->nullable();
+            $table->string('evaluation_ratio')->nullable();
             $table->string('comments')->nullable();
 
 

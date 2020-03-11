@@ -11,6 +11,6 @@ class ParticipantController extends Controller
     public function create(){
 		
 
-		return view ('submission.participant.index',compact('types','contractTypes'));
+		return view ('submission.participant.index');
 	}
 }

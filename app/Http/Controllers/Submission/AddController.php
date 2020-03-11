@@ -31,7 +31,7 @@ class AddController extends Controller
 
 	public function store(Request $request){
 
-		$input = $request->only('project_name','submission_time','submission_address','scope_of_services','scope_of_work','comments','sub_type_id','sub_contract_type_id');
+		$input = $request->only('project_name','submission_time','submission_address','scope_of_services','scope_of_work','comments','total_marks','evaluation_ratio','sub_type_id','sub_contract_type_id');
 		 if($request->filled('submission_date')){
             $input ['submission_date']= \Carbon\Carbon::parse($request->submission_date)->format('Y-m-d');
             }
@@ -107,7 +107,7 @@ class AddController extends Controller
 
     public function update(Request $request, $id){
 
-    	$input = $request->only('project_name','submission_time','submission_address','scope_of_services','scope_of_work','comments','sub_type_id','sub_contract_type_id');
+    	$input = $request->only('project_name','submission_time','submission_address','scope_of_services','scope_of_work','comments','total_marks','evaluation_ratio','sub_type_id','sub_contract_type_id');
 		 if($request->filled('submission_date')){
             $input ['submission_date']= \Carbon\Carbon::parse($request->submission_date)->format('Y-m-d');
             }

@@ -241,7 +241,39 @@
 		                            <div class="row" >
 		                                
 		                            <!--/span 6-1 -->
-		                                <div class="col-md-12">
+
+		                            	<div class="col-md-2">
+		                                    <div class="form-group row">
+		                                        <div class="col-md-12 remove_div">
+		                                        	<label class="control-label text-right">Total Marks</label>
+		                                        	<select  name="total_marks"  class="form-control selectTwo">
+		                                           	<option value=""></option>
+		                                           	<option value="100" {{(old("evaluation_ratio",$data->total_marks)=="100"? "selected" : "")}}>100</option>
+		                                           	<option value="1000" {{(old("evaluation_ratio",$data->total_marks)=="1000"? "selected" : "")}}>1000</option>
+		                                       
+		                                           	</select>
+		                                        	
+		                                           
+		                                        </div>
+		                                    </div>
+		                                </div>
+		                                 <div class="col-md-2">
+		                                    <div class="form-group row">
+		                                        <div class="col-md-12 remove_div">
+		                                        	<label class="control-label text-right">Evaulation Ratio</label>
+		                                        	<select  name="evaluation_ratio"  class="form-control selectTwo">
+		                                           	<option value=""></option>
+		                                           	<option value="80:20" {{(old("evaluation_ratio",$data->evaluation_ratio)=="80:20"? "selected" : "")}}>80:20</option>
+		                                           	<option value="90:10" {{(old("evaluation_ratio",$data->evaluation_ratio)=="90:10"? "selected" : "")}}>90:10</option>
+		                                           	<option value="70:30" {{(old("evaluation_ratio",$data->evaluation_ratio)=="70:30"? "selected" : "")}}>70:30</option>
+		                                           	<option value="Least Cost" {{(old("evaluation_ratio",$data->evaluation_ratio	)=="Least Cost"? "selected" : "")}}>Least Cost</option>
+		                                           	</select>
+		                                        	
+		                                           
+		                                        </div>
+		                                    </div>
+		                                </div>
+		                                <div class="col-md-8">
 		                                    <div class="form-group row">
 		                                        <div class="col-md-12 remove_div">
 		                                        	<label class="control-label text-right">Comments</label>

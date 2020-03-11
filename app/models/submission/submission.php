@@ -10,7 +10,7 @@ class submission extends Model implements Auditable
     use \OwenIt\Auditing\Auditable;
 
     protected $fillable = [
-        'project_name','submission_date','submission_time','submission_address','scope_of_services','scope_of_work','comments','sub_type_id','sub_contract_type_id'
+        'project_name','submission_date','submission_time','submission_address','scope_of_services','scope_of_work','comments','total_marks','evaluation_ratio', 'sub_type_id','sub_contract_type_id'
     ];
 
 
