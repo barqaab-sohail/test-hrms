@@ -31,47 +31,32 @@
 		                    @method('PATCH')
 		                        {{csrf_field()}}
 		                        <div class="form-body">
-		                            
-		                            <h3 class="box-title">Submission Participant</h3>
-		                            <hr class="m-t-0 m-b-40">
-		                            <!--row 1 -->
 		                            <div class="row">
 		                                <div class="col-md-6">
+		                            	<h3 class="box-title">Submission Participant</h3>
+		                            	</div>
+		                            	<div class="col-md-3">
+		                            	<h4>Total Marks: {{$submission->total_marks}}</h4>
+		                            	</div>
+		                            	<div class="col-md-3">
+		                            	<h4>Evaluation Ratio: {{$submission->evaluation_ratio}}</h4>
+		                            	</div>
+		                            </div>
+		                           
+		                            <hr class="m-t-0 m-b-40">
+		                            
+		                            <!--row 1 -->
+		                            <div class="row">
+		                                <div class="col-md-12">
 		                                 <!--/span 1-1 -->
 		                                    <div class="form-group row">
 		                                        <div class="col-md-12">
-		                                       		<label class="control-label text-right">Name of Project<span class="text_requried">*</span></label><br>
+		                                       		<label class="control-label text-right">Name of Participant<span class="text_requried">*</span></label><br>
 		                                       		<input type="text"  name="project_name" data-validation="required" value="{{ old('project_name') }}"  class="form-control"  >
 		                                        </div>
 		                                    </div>
 		                                </div>
-		                                <!--/span 1-2 -->
-		                                <div class="col-md-3">
-		                                    <div class="form-group row">
-		                                        <div class="col-md-12 date_input">
-		                                        	<label class="control-label">Submission Date<span class="text_requried">*</span></label>
-		                                        
-		                                            <input type="text"  name="submission_date" value="{{ old('submission_date') }}"  class="form-control" readonly>
-		                                             <br>
-		                                           <i class="fas fa-trash-alt text_requried"></i> 
-		                                        </div>
-		                                    </div>
-		                                </div>
-		                                <!--/span 1-3 -->
-		                                <div class="col-md-3">
-		                                    <div class="form-group row">
-		                                        <div class="col-md-12 time_input">
-		                                        	<label class="control-label text-right">Submission Time<span class="text_requried">*</span></label>
-		                                        
-		                                            <input type="text" name="submission_time" id="time" value="{{ old('submission_time') }}" class="form-control" >
-		                                            <br>
-		                                           <i id="trash" class="fas fa-trash-alt text_requried"></i> 
-		                                            
-		                                        </div>
-		                                    </div>
-		                                </div>
-		                               
-	                               
+		                                  
 		                            </div>
 		                            
 		                              <!--row 3-->
@@ -80,7 +65,7 @@
 		                                <div class="col-md-3">
 		                                    <div class="form-group row">
 		                                        <div class="col-md-12">
-		                                        	<label class="control-label text-right">Client Name<span class="text_requried">*</span></label>
+		                                        	<label class="control-label text-right">Technical Score<span class="text_requried">*</span></label>
 		                                        
 		                                            <input type="text" data-validation="required" name="client_name"  value="{{ old('client_name') }}" class="form-control ">
 													 
@@ -92,7 +77,7 @@
 		                                <div class="col-md-3">
 		                                    <div class="form-group row">
 		                                        <div class="col-md-12">
-		                                        	<label class="control-label text-right">Authorize Person</label>
+		                                        	<label class="control-label text-right">Financial Cost</label>
 		                                       		<input type="text"  name="authorize_person" value="{{ old('authorize_person') }}"  class="form-control">
 		                                        </div>
 		                                    </div>
@@ -101,7 +86,7 @@
 		                                <div class="col-md-3">
 		                                    <div class="form-group row">
 		                                        <div class="col-md-12">
-		                                        	<label class="control-label text-right">Designation</label>
+		                                        	<label class="control-label text-right">Overall Score</label>
 		                                       		<input type="text"  name="designation" value="{{ old('designation') }}"  class="form-control">
 		                                        </div>
 		                                    </div>
@@ -110,7 +95,7 @@
 		                                <div class="col-md-3">
 		                                    <div class="form-group row">
 		                                        <div class="col-md-12">
-		                                        	<label class="control-label text-right">Client Email</label>
+		                                        	<label class="control-label text-right">Ranking</label>
 		                                       		<input type="email"  name="email" value="{{ old('email') }}"  class="form-control">
 		                                        </div>
 		                                    </div>
