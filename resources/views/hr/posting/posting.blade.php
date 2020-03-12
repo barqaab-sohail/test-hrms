@@ -22,7 +22,7 @@
 		        		@can('hr_edit_record')
 		                <div style="margin-top:10px; margin-right: 10px;">
 		                    
-		                    <button type="button"  id ="hideButton"  class="btn btn-info float-right">Add Posting</button>
+		                    <button type="button"  id ="hideButton"  class="btn btn-info float-right">Add Transfer/Posting</button>
 		                    
 		                </div>
 		                @endcan
@@ -35,7 +35,7 @@
 		                        {{csrf_field()}}
 		                        <div class="form-body">
 		                            
-		                            <h3 class="box-title">Posting</h3>
+		                            <h3 class="box-title">Transfer/Posting</h3>
 		                            <hr class="m-t-0 m-b-40">
 		                            <div class="row">
 		                                <div class="col-md-7">

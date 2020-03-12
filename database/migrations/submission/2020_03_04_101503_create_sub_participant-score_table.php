@@ -17,7 +17,8 @@ class CreateSubParticipantScoreTable extends Migration
             $table->bigIncrements('id');
             $table->float('technical_scoore')->nullable();
             $table->float('financial_score')->nullable();
-            $table->float('overall')->nullable();
+            $table->double('financial_cost')->nullable();
+            $table->float('overall_score')->nullable();
             $table->string('ranking')->nullable();
             $table->bigInteger('sub_participant_id')->unsigned();
             $table->foreign('sub_participant_id')->references('id')->on('sub_participants')->onDelete('cascade');

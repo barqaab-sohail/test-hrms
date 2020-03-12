@@ -12,7 +12,7 @@
             <a type="submit" role="button"  href="{{route('user.edit', session('employee_id'))}}" class="btn btn-info @if(request()->is('*user/edit*')) active @endif">User</a>
             <a type="submit" role="button"  href="{{route('picture.edit', session('employee_id'))}}" class="btn btn-info @if(request()->is('*icture*')) active @endif">Picture</a>
             <a type="submit" role="button"  href="{{route('appointment.edit', session('employee_id'))}}" class="btn btn-info @if(request()->is('*appointment*')) active @endif">Appointment  Detail</a>
-            <a type="submit" role="button"  href="{{route('posting.create')}}" class="btn btn-info @if(request()->is('*posting*')) active @endif">Posting</a>
+            <a type="submit" role="button"  href="{{route('posting.create')}}" class="btn btn-info @if(request()->is('*posting*')) active @endif">Transfer/Posting</a>
             <a type="submit" role="button"  href="{{route('education.create')}}" class="btn btn-info @if(request()->is('*education*')) active @endif">Education</a>
             <a type="submit" role="button"  href="{{route('training.create')}}" class="btn btn-info @if(request()->is('*training*')) active @endif">Training/Courses</a>
             <a type="submit" role="button"  href="{{route('publication.create')}}" class="btn btn-info @if(request()->is('*publication*')) active @endif">Publication</a>
@@ -26,9 +26,9 @@
             <a type="submit" role="button"  href="{{route('dependent.create')}}" class="btn btn-info @if(request()->is('*dependent*')) active @endif">Dependent</a>
             <a type="submit" role="button"  href="{{route('document.create')}}" class="btn btn-info @if(request()->is('*document*')) active @endif">Document</a>
             <a type="submit" role="button"  href="{{route('otherInformation.edit', session('employee_id'))}}" class="btn btn-info @if(request()->is('*otherInformation*')) active @endif">Other Information</a>
-            @can('edit_hr_record')
+            
             <a type="submit" role="button"  href="{{route('exit.create')}}" class="btn btn-info @if(request()->is('*exit*')) active @endif">Exit</a>
-            @endcan
+            
             
             <br>
             
