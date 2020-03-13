@@ -146,19 +146,25 @@
 		                                    </div>
 		                                </div>
 		                                <!--/span 3-4 -->
-		                                <div class="col-md-3 phone" id="phone_1">
+
+		                                <div class="col-md-3 phone" id="phone_1" >
+		                                
 		                                	<div class="form-group row">
-		                                        <div class="col-md-8	">
+		                                		
+		                                        <div class="col-md-8" >
 		                                        	<label class="control-label text-right">Mobile Number<span class="text_requried">*</span></label>
 		                                            <input type="text" name="phone[]" value="{{old('phone.0')}}" data-validation="required" class="form-control" >
 
 		                                        </div>
 												<div class="col-md-4">
 		                                        <br>
+		                                        	
 			                                        <div class="float-right">
 			                                        <button type="button" name="add" id="add_phone" class="btn btn-success add" >+</button>
 													</div>
+													
 		                                        </div>
+		                                        
 		                                    </div>
 		                                </div>
 		                             

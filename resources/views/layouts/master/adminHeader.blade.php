@@ -106,9 +106,9 @@
                             <li><a href="{{route('notificationList')}}"  class="link" data-toggle="tooltip" title="Notification List"><i class="fa fa-tv"></i> View Notifications</a></li>
                              
  
-                            @can('edit_hr_record')
+                            @hasanyrole('Super Admin|HR Manager')
                             <li><a href="{{route('createNotification')}}"  class="link" data-toggle="tooltip" title="Create Notification"><i class="fa fa-bell"></i> Create Notification</a></li>
-                            @endcan
+                            @endhasanyrole
  
                             @hasanyrole('User|Manager')
                             <li><a href="{{route('createUserNotification')}}"  class="link" data-toggle="tooltip" title="Send Notification to HR"><i class="fas fa-arrow-right"></i> Send Message to HR</a></li>

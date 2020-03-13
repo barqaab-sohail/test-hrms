@@ -80,7 +80,7 @@
 		                                <div class="col-md-7">
 		                                    <div class="form-group row">
 		                                        <div class="col-md-12">
-		                                        	<label class="control-label text-right">Manager Name<span class="text_requried">*</span></label>
+		                                        	<label class="control-label text-right">HOD<span class="text_requried">*</span></label>
 		                                        
 		                                           <select  name="manager_id"  class="form-control selectTwo" required>
                                                         <option value=""></option>

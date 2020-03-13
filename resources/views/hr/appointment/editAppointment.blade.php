@@ -48,9 +48,8 @@
 		                                        </div>
 		                                    </div>
 		                                </div>
-		                                
-		                                <!--/span-->
-		                                <div class="col-md-6">
+		                                   <!--/span-->
+		                                <div class="col-md-3">
 		                                    <div class="form-group row">
 		                                       	<div class="col-md-12 date_input">
 		                                        	<label class="control-label text-right">Letter Date<span class="text_requried">*</span></label>
@@ -63,13 +62,31 @@
 		                                            <i  class="fas fa-trash-alt text_requried"></i>
 		                                            @endcan
 		                                             
- 
-
-		                                        </div>
+ 		                                        </div>
 		                                    </div>
 		                                    
-		                                    </div>
 		                                </div>
+
+		                                <div class="col-md-3">
+		                                    <div class="form-group row">
+		                                       	<div class="col-md-12 date_input">
+		                                        	<label class="control-label text-right">Joining Date<span class="text_requried">*</span></label>
+		                                       
+		                                            <input type="text" id="appointment_date" name="appointment_date" value="{!! old('appointment_date',isset($employee->appointment->appointment_date)?$employee->appointment->appointment_date:'')!!}" class="form-control" placeholder="Enter Appointment Letter Date " readonly required>
+													 
+ 
+		                                            @can('hr_edit_record')
+		                                            <br>
+		                                            <i  class="fas fa-trash-alt text_requried"></i>
+		                                            @endcan
+		                                             
+ 		                                        </div>
+		                                    </div>
+		                                    
+		                                </div>
+		                                
+		                             
+		                              
 		                            </div>
 									             <div class="row">
 		                                <div class="col-md-6">

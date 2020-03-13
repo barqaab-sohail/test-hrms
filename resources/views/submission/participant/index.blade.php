@@ -31,11 +31,31 @@
 		                    @method('PATCH')
 		                        {{csrf_field()}}
 		                        <div class="form-body">
+
 		                            <div class="row">
+
 		                                <div class="col-md-6">
 		                            	<h3 class="box-title">Submission Participant</h3>
 		                            	</div>
-		                            	<div class="col-md-3">
+		                            	
+		                            </div>
+		                           
+		                            <hr class="m-t-0 m-b-40">
+
+		                            <div class="row">
+		                            	<div class="col-md-4">
+		                            	<h4>Name of Project: <input type="text"  name="project_name" data-validation="required" value="{{ old('project_name', $submission->project_name) }}"  class="form-control"  >
+		                            	</h4>
+		                            	
+		                            	</div>
+		                            	<div class="col-md-3 date_input">
+		                            	<h4>Financial Opening Date: <input type="text"  name="submission_date" value="{{ old('submission_date') }}"  class="form-control" readonly>
+		                                             <br>
+		                                           <i class="fas fa-trash-alt text_requried"></i> 
+		                            	</h4>
+		                            	
+		                            	</div>
+		                            	<div class="col-md-2">
 		                            	<h4>Total Marks: <select  name="total_marks"  class="form-control selectTwo">
 		                                           	<option value=""></option>
 		                                           	<option value="100" {{(old("evaluation_ratio",$submission->total_marks)=="100"? "selected" : "")}}>100</option>
@@ -53,9 +73,9 @@
 		                                           	</select></h4>
 		                            	</div>
 		                            </div>
-		                           
+		                            <br>
 		                            <hr class="m-t-0 m-b-40">
-		                            
+
 		                            <div class="clone" id="clone_1">
 		                            <!--row 1 -->
 		                            <div class="row">
@@ -186,7 +206,8 @@
 	$.validate();
 
 	//Dynamic add education
-		
+
+
 		// Add new element
 		 $("#add_participant").click(function(){
 		 	
@@ -202,11 +223,12 @@
 		  // Check total number elements
 		  if(total_element < max ){
 		   //Clone education div and copy 
-			
+		
 		   	var clone = $("#clone_1").clone();
 		  	clone.prop('id','clone_'+nextindex).find('input:text').val('');
 		   	clone.find("#add_participant").html('Remove').prop("class", "btn btn-danger remove_clone");
 		   	clone.insertAfter("div.clone:last");
+		  
 		   
 		  }
 		 
@@ -222,7 +244,23 @@
 		//Calculate Score
 
 		 $("#calculate").click(function(){
-		 	$(":input[type=text][readonly='readonly']").val("");
+
+		 	//Check Calculation Required Inputs are Avaiable the Calulation is worked 
+		 	$(".clone").each(function(){
+		 		var check_name = $(this).find(".participant_name").val();
+		 		var check_technical = $(this).find(".technical_point").val()
+		 		var check_financial = $(this).find(".financial_cost").val()
+
+		 		if ((check_name=='')||(check_technical=='') || (check_financial=='')){
+
+		 				$(this).find ('.participant_name, .technical_point, .financial_cost').each(function(){
+		 					$(this).addClass("error");
+		 				});
+  						
+  						$(":input[type=text][readonly='readonly']").val("");
+				}else{
+
+					$(":input[type=text][readonly='readonly']").val("");
 
 		 			//calculate Lowest Financial Cost
 				 	var financial_array =[];
@@ -232,69 +270,68 @@
 					});
 					var lowest = Math.min.apply(Math,financial_array);
 			
-			//get last two digit of evaluation_ratio
-			var financial_ratio = parseInt($('#ratio').val().slice(-2));
+					//get last two digit of evaluation_ratio
+					var financial_ratio = parseInt($('#ratio').val().slice(-2));
 
-			//get last two digit of evaluation_ratio
-			var technical_ratio = parseInt($('#ratio').val().substring(0, 2));
+					//get last two digit of evaluation_ratio
+					var technical_ratio = parseInt($('#ratio').val().substring(0, 2));
 
 			
+					//Technical and Financial Score Calculate
+					var overall_array =[];
+				 	$(".clone").each(function(){
+				 		var technical_point = parseInt($(this).find(".technical_point").val());
 
-			var overall_array =[];
-		 	$(".clone").each(function(){
-		 		var technical_point = parseInt($(this).find(".technical_point").val());
+				 		var financial_cost = parseInt($(this).find(".financial_cost").val());
+				 		
+				 		// testing if Evaluation Ratio is not "Least Base" than place Technical and Financial Score
+				 		if($.isNumeric(financial_ratio)){
+				 			var financial_score = parseFloat((lowest/financial_cost*financial_ratio).toFixed(3));	
+				 			$(this).find(".financial_score").val(financial_score);
+				 		
+				 			var technical_score = parseFloat((technical_point*technical_ratio/100).toFixed(3));	
+				 			$(this).find(".technical_score").val(technical_score);
+				 		}
+				 	
+				 		
+				 		//Overall Score - testing if Evaluation Ratio is not "Least Base" than place Overall Score
+				 		if($.isNumeric(financial_ratio)){
+				 		var overall_cost = $(this).find(".overall_score").val(financial_score+technical_score);
+				 		}
+				 		
+				 		//Create array for further use of Ranking
+				 		var name= $(this).find(".participant_name").val();
+				 		var overall = financial_score+technical_score;
+				 	
+				 		overall_array.push({
+				 			overall: overall,
+				 			financil:financial_cost,
+				 			name: name
+				 		});
+				 	});
 
-		 		var financial_cost = parseInt($(this).find(".financial_cost").val());
-		 		
-		 		
-		 		if($.isNumeric(financial_ratio)){
-		 			var financial_score = parseFloat((lowest/financial_cost*financial_ratio).toFixed(3));	
-		 			$(this).find(".financial_score").val(financial_score);
-		 		
-		 			var technical_score = parseFloat((technical_point*technical_ratio/100).toFixed(3));	
-		 			$(this).find(".technical_score").val(technical_score);
-		 		}
-		 	
-		 		
-		 		//Overall Score
-		 		if($.isNumeric(financial_ratio)){
-		 		var overall_cost = $(this).find(".overall_score").val(financial_score+technical_score);
-		 		}
-		 		
-
-		 		var name= $(this).find(".participant_name").val();
-		 		var overall = financial_score+technical_score;
-		 	
-		 		overall_array.push({
-		 			overall: overall,
-		 			financil:financial_cost,
-		 			name: name
-		 		});
-		 	});
-
-		 	if($.isNumeric(financial_ratio)){
-		 	overall_array.sort(function(a,b) {return (a.overall < b.overall) ? 1 : ((b.overall < a.overall) ? -1 : 0);} );
-		 	}else{
-		 		overall_array.sort(function(a,b) {return (a.financil > b.financil) ? 1 : ((b.financil > a.financil) ? -1 : 0);} );
-		 	}
+				 	//Sorting Arrary if Evaluation Ratio is Not "Least Cost" than sorting descending otherwise ascending 
+				 	if($.isNumeric(financial_ratio)){
+				 	overall_array.sort(function(a,b) {return (a.overall < b.overall) ? 1 : ((b.overall < a.overall) ? -1 : 0);} );
+				 	}else{
+				 		overall_array.sort(function(a,b) {return (a.financil > b.financil) ? 1 : ((b.financil > a.financil) ? -1 : 0);} );
+				 	}
 		 
-		 	$.each(overall_array, function (index, value){
-		 		$(".clone").each(function(){
-		 			if ( $(this).find(".participant_name").val() == value['name'] ){
-		 				$(this).find(".ranking").val('Rank-'+(index+1));
-		 			}
-		 		//alert(value['name']+": Rank" +value['overall']+":"+index);
-		 		});
-		 	})
-		 	
-		 
-			
+				 	$.each(overall_array, function (index, value){
+				 		$(".clone").each(function(){
+				 			if ( $(this).find(".participant_name").val() == value['name'] ){
+				 				$(this).find(".ranking").val('Rank-'+(index+1));
+				 			}
+				 		//alert(value['name']+": Rank" +value['overall']+":"+index);
+				 		});
+				 	});
 
-		 });
+				} // end else
+
+		 	}); //End Function Check Calculation Required Inputs are Avaiable for Calulation is worked 
+		 
+		}); // End Click Function
 		
-	
-		
-	
 	
 	});	
 	
