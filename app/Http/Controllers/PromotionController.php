@@ -54,15 +54,17 @@ class PromotionController extends Controller
 
 
      public function edit($id){
+         $data = DB::table('salaries')
+                    ->join('promotions','promotions.id','=','salaries.promotion_id')
+                    ->where('promotions.id',$id)
+                    ->first();
+        session()->put('employee_id', $data->employee_id);
         $employee = employee::find(session('employee_id'));
         $designations = designation::all();
        
         $promotionIds = promotion::all()->where('employee_id',session('employee_id'))->sortByDesc('effective_date');
         
-        $data = DB::table('salaries')
-                    ->join('promotions','promotions.id','=','salaries.promotion_id')
-                    ->where('promotions.id',$id)
-                    ->first();
+       
         
         return view ('hr.promotion.editPromotion',compact('data','employee','promotionIds','designations'));
     }

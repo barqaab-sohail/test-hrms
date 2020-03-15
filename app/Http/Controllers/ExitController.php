@@ -51,6 +51,7 @@ class ExitController extends Controller
   }
 
   public function edit($id){
+        session()->put('employee_id', $id);
        $employee = employee::find($id);
        $status = employee_status::all();
        $data = employee_exit::find($id);

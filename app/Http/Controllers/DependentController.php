@@ -48,9 +48,11 @@ class DependentController extends Controller
     }
 
     public function edit($id){
+        $data = dependent::find($id);
+        session()->put('employee_id', $data->employee_id);
         $employee = employee::find(session('employee_id'));
         $dependentIds = dependent::all()->where('employee_id', session('employee_id'));
-        $data = dependent::find($id);
+        
         $genders = gender::all();
         return view ('hr.dependent.editDependent',compact('data','employee','dependentIds','genders'));
     }

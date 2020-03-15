@@ -61,8 +61,8 @@ class PostingController extends Controller
     }
 
     public function edit($id){
-        
-
+        $data = posting::find($id);
+        session()->put('employee_id', $data->employee_id);
         $managers = DB::table('employees')
                     ->select('employees.id','employees.first_name','employees.middle_name','employees.last_name','designations.name AS promotion_designation','ap_designation.name as appointment_designation','promotions.id AS pr_id')
                     ->leftJoin('promotions','employees.id','=','promotions.employee_id')
@@ -80,7 +80,7 @@ class PostingController extends Controller
         //Requried for Stored Posting
          $postingIds = posting::all()->where('employee_id', session('employee_id'))->sortByDesc('posting_date');
         $projects = project::all();
-        $data = posting::find($id);
+        
         $positions = designation::all();
         return view ('hr.posting.editPosting',compact('data','employee','managers','postingIds','projects','positions'));
     }

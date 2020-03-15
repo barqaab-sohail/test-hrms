@@ -38,9 +38,11 @@ class BankController extends Controller
     }
 
     public function edit($id){
+        $data = bank::find($id);
+       session()->put('employee_id', $data->employee_id);
         $employee = employee::find(session('employee_id'));
         $bankIds = bank::all()->where('employee_id', session('employee_id'));
-        $data = bank::find($id);
+       
         return view ('hr.bank.editBank',compact('data','employee','bankIds'));
     }
     

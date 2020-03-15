@@ -38,9 +38,11 @@ class EmergencyController extends Controller
     }
 
     public function edit($id){
+        $data = emergency_contact::find($id);
+        session()->put('employee_id', $data->employee_id);
         $employee = employee::find(session('employee_id'));
         $emergencyIds = emergency_contact::all()->where('employee_id', session('employee_id'));
-        $data = emergency_contact::find($id);
+        
         return view ('hr.emergency.editEmergency',compact('data','employee','emergencyIds'));
     }
     

@@ -1,7 +1,7 @@
 @extends('layouts.master.master')
 @section('title', 'Submission')
 @section('Heading')
-	<h3 class="text-themecolor">Submission Participant</h3>
+	<h3 class="text-themecolor">Submission Participants</h3>
 	<ol class="breadcrumb">
 		<li class="breadcrumb-item"><a href="javascript:void(0)"></a></li>
 		
@@ -35,7 +35,7 @@
 		                            <div class="row">
 
 		                                <div class="col-md-6">
-		                            	<h3 class="box-title">Submission Participant</h3>
+		                            	<h3 class="box-title">Submission Participants</h3>
 		                            	</div>
 		                            	
 		                            </div>
@@ -49,22 +49,22 @@
 		                            	
 		                            	</div>
 		                            	<div class="col-md-3 date_input">
-		                            	<h4>Financial Opening Date: <input type="text"  name="submission_date" value="{{ old('submission_date') }}"  class="form-control" readonly>
+		                            	<h4>Financial Opening Date: <input type="text"  name="financial_opening_date" value="{{ old('financial_opening_date') }}"  class="form-control" readonly>
 		                                             <br>
 		                                           <i class="fas fa-trash-alt text_requried"></i> 
 		                            	</h4>
 		                            	
 		                            	</div>
-		                            	<div class="col-md-2">
-		                            	<h4>Total Marks: <select  name="total_marks"  class="form-control selectTwo">
+		                            	<div class="col-md-2" id="marks">
+		                            	<h4>Total Marks: <select  id="total_marks" name="total_marks"  data-validation="required"  class="form-control selectTwo">
 		                                           	<option value=""></option>
 		                                           	<option value="100" {{(old("evaluation_ratio",$submission->total_marks)=="100"? "selected" : "")}}>100</option>
 		                                           	<option value="1000" {{(old("evaluation_ratio",$submission->total_marks)=="1000"? "selected" : "")}}>1000</option>
 		                                       
 		                                           	</select></h4>
 		                            	</div>
-		                            	<div class="col-md-3">
-		                            	<h4>Evaluation Ratio: <select id="ratio" name="evaluation_ratio"  class="form-control selectTwo">
+		                            	<div class="col-md-3" id="ratio" >
+		                            	<h4>Evaluation Ratio: <select name="evaluation_ratio" id="evaluation_ratio" style="border: 5px solid red;" class="form-control selectTwo">
 		                                           	<option value=""></option>
 		                                           	<option value="80:20" {{(old("evaluation_ratio",$submission->evaluation_ratio)=="80:20"? "selected" : "")}}>80:20</option>
 		                                           	<option value="90:10" {{(old("evaluation_ratio",$submission->evaluation_ratio)=="90:10"? "selected" : "")}}>90:10</option>
@@ -84,7 +84,7 @@
 		                                    <div class="form-group row">
 		                                        <div class="col-md-12">
 		                                       		<label class="control-label text-right">Name of Participant</label><br>
-		                                       		<input type="text" name="participant_name" data-validation="required" value="{{ old('participant_name.0') }}"  class="form-control participant_name"  >
+		                                       		<input type="text" name="participant_name[]" data-validation="required" value="{{ old('participant_name.0') }}"  class="form-control participant_name"  >
 		                                        </div>
 		                                    </div>
 		                                </div>
@@ -175,7 +175,7 @@
 		                                <div class="col-md-12">
 		                                    <div class="row"> 
 		                                       <div class="col-md-3">
-		                                            <button type="submit" class="btn btn-success btn-prevent-multiple-submits">Upload</button>
+		                                            <button type="submit" class="btn btn-success btn-prevent-multiple-submits">Save</button>
 		                                            
 		                                        </div>
 
@@ -205,9 +205,8 @@
 	
 	$.validate();
 
+
 	//Dynamic add education
-
-
 		// Add new element
 		 $("#add_participant").click(function(){
 		 	
@@ -225,6 +224,7 @@
 		   //Clone education div and copy 
 		
 		   	var clone = $("#clone_1").clone();
+		   	clone.find(".error, .valid, .has-success").removeClass('error valid has-success');
 		  	clone.prop('id','clone_'+nextindex).find('input:text').val('');
 		   	clone.find("#add_participant").html('Remove').prop("class", "btn btn-danger remove_clone");
 		   	clone.insertAfter("div.clone:last");
@@ -238,23 +238,30 @@
 		 $(this).closest(".clone").remove();
  		}); 
 	
-
-
 	
 		//Calculate Score
-
 		 $("#calculate").click(function(){
 
 		 	//Check Calculation Required Inputs are Avaiable the Calulation is worked 
+		 	var total_marks = $("#total_marks").val();
+		 	var evaluation_ratio = $("#evaluation_ratio").val();
+
 		 	$(".clone").each(function(){
 		 		var check_name = $(this).find(".participant_name").val();
 		 		var check_technical = $(this).find(".technical_point").val()
 		 		var check_financial = $(this).find(".financial_cost").val()
 
-		 		if ((check_name=='')||(check_technical=='') || (check_financial=='')){
+		 		if ((check_name=='')||(check_technical=='') || (check_financial=='')||(total_marks=='')){
 
-		 				$(this).find ('.participant_name, .technical_point, .financial_cost').each(function(){
+		 				$(this).find ('.participant_name, .technical_point, .financial_cost, #total_marks').each(function(){
 		 					$(this).addClass("error");
+		 					$('#ratio, #marks').each(function() {
+		 						if($(this).find('select').val()==''){
+								$(this).find('.select2-container').css('border', '1px solid red');
+								}else{
+									$(this).find('.select2-container').css('border', '');
+								}
+							});
 		 				});
   						
   						$(":input[type=text][readonly='readonly']").val("");
@@ -336,8 +343,6 @@
 	});	
 	
 </script>
-
-        
 
     @endpush
 

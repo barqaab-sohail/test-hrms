@@ -39,9 +39,11 @@ class MembershipController extends Controller
     }
 
     public function edit($id){
+        $data = membership::find($id);
+        session()->put('employee_id', $data->employee_id);
         $employee = employee::find(session('employee_id'));
         $membershipIds = membership::all()->where('employee_id', session('employee_id'));
-        $data = membership::find($id);
+        
         return view ('hr.membership.editMembership',compact('data','employee','membershipIds'));
     }
     

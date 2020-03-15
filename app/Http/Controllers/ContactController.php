@@ -17,6 +17,7 @@ class ContactController extends Controller
     }
     
 	public function editAddress($id){
+      session()->put('employee_id', $id);
       $countries = country::all();
        $employee = employee::find($id);
        //dd($employee->contact->first()->employee_id);

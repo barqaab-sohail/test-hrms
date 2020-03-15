@@ -89,6 +89,7 @@ class AddController extends Controller
 	}
 
 	public function index (){
+
        $submissions = submission::with('sub_client','sub_type')->get();
        
         return view('submission.listOfSubmissions', compact('submissions'));
@@ -96,13 +97,13 @@ class AddController extends Controller
     }
 
 
-    public function edit ($id){
+    public function edit ($id){	
     	session()->put('submission_id', $id);
     	$types = sub_type::all();
 		$contractTypes = sub_contract_type::all();
-		$data = submission::find($id);
+		$submission = submission::find($id);
 		
-		return view ('submission.editSubmission',compact('types','contractTypes','data'));
+		return view ('submission.editSubmission',compact('types','contractTypes','submission'));
     }
 
     public function update(Request $request, $id){

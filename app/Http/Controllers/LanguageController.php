@@ -34,12 +34,13 @@ class LanguageController extends Controller
     }
 
     public function edit($id){
-        
+        $data = language::find($id);
+        session()->put('employee_id', $data->employee_id);
         $allLanguages = all_language::all();
         $employee = employee::find(session('employee_id'));
         $languageIds = language::all()->where('employee_id', session('employee_id'));
 
-        $data = language::find($id);
+       
         return view ('hr.language.editLanguage',compact('data','employee','languageIds','allLanguages'));
     }
     

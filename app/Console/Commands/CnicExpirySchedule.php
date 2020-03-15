@@ -19,7 +19,7 @@ class CnicExpirySchedule extends Command
      *
      * @var string
      */
-    protected $signature = 'CnicExpirySchedule:check';
+    protected $signature = 'cnic:check';
 
     /**
      * The console command description.
@@ -45,7 +45,7 @@ class CnicExpirySchedule extends Command
      */
     public function handle()
     {
-        $expiryDays = \Carbon\Carbon::now()->addDays(300);
+        $expiryDays = \Carbon\Carbon::now()->addDays(100);
         $employeeIds = employee::whereDate('cnic_expiry', '<',$expiryDays)->pluck('id')->toArray(); 
         $users = User::all()->whereIn('employee_id',$employeeIds);
 

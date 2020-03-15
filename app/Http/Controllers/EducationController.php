@@ -34,10 +34,12 @@ class EducationController extends Controller
     }
 
     public function edit($id){
+        $data = education::find($id);
+        session()->put('employee_id', $data->employee_id);
         $countries = country::all();
         $employee = employee::find(session('employee_id'));
         $educationIds = education::all()->where('employee_id', session('employee_id'));
-        $data = education::find($id);
+       
         return view ('hr.education.editEducation',compact('data','employee','educationIds','countries'));
     }
     

@@ -19,7 +19,7 @@ class OtherController extends Controller
     
 
     public function edit($id){
-
+        session()->put('employee_id', $id);
        $employee = employee::find($id);
        $blood_groups= blood_group::all();
             

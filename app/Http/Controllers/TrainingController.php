@@ -44,10 +44,12 @@ class TrainingController extends Controller
     }
 
     public function edit($id){
+         $data = training::find($id);
+        session()->put('employee_id', $data->employee_id);
         $countries = country::all();
         $employee = employee::find(session('employee_id'));
         $trainingIds = training::all()->where('employee_id', session('employee_id'));
-        $data = training::find($id);
+       
         return view ('hr.training.editTraining',compact('data','employee','trainingIds','countries'));
     }
     

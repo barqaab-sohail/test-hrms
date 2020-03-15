@@ -174,7 +174,16 @@
 
        $('.selectTwo').select2({
             width: "100%",
-            theme: "classic"
+            theme: "classic",
+            errorPlacement: function (error, element) {
+                if (element.parent('.input-group').length) { 
+                    error.insertAfter(element.parent());      // radio/checkbox?
+                } else if (element.hasClass('select2')) {     
+                    error.insertAfter(element.next('span'));  // select2
+                } else {                                      
+                    error.insertAfter(element);               // default
+                }
+            }
 
         });
 

@@ -38,9 +38,12 @@ class PublicationController extends Controller
     }
 
     public function edit($id){
+       $data = publication::find($id);
+       session()->put('employee_id', $data->employee_id);
+
         $employee = employee::find(session('employee_id'));
         $publicationIds = publication::all()->where('employee_id', session('employee_id'));
-        $data = publication::find($id);
+       
         return view ('hr.publication.editPublication',compact('data','employee','publicationIds'));
     }
     

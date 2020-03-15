@@ -23,6 +23,7 @@ class PictureController extends Controller
     public function showJqueryImageUpload($id) 
     {
         //return view('demos.jqueryimageupload');
+    	session()->put('employee_id', $id);
         $employee = employee::find($id);
         $picture = picture::where ('employee_id',$id)->first();
         return view ('hr.employee.editPicture', compact('employee','picture'));

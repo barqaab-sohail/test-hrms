@@ -21,7 +21,7 @@ class AppointmentController extends Controller
     }
 
     public function edit($id){
-
+      session()->put('employee_id', $id);
        $employee = employee::find($id);
        $projects = project::all();
        $designations = designation::all();

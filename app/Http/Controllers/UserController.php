@@ -18,7 +18,7 @@ class UserController extends Controller
     }
     
 	public function edit($id){
-
+        session()->put('employee_id', $id);
         $employee = employee::find($id);
       
          $user = User::where ('employee_id',$id)->first();
