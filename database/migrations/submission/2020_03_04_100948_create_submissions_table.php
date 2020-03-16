@@ -21,11 +21,10 @@ class CreateSubmissionsTable extends Migration
             $table->string('submission_address');
             $table->text('scope_of_services')->nullable();
             $table->text('scope_of_work')->nullable();
-            $table->integer('total_marks')->nullable();
-            $table->string('evaluation_ratio')->nullable();
             $table->string('comments')->nullable();
 
-
+            $table->bigInteger('sub_cv_format_id')->unsigned();
+            $table->foreign('sub_cv_format_id')->references('id')->on('sub_cv_formats')->onDelete('cascade');
             $table->bigInteger('sub_type_id')->unsigned();
             $table->foreign('sub_type_id')->references('id')->on('sub_types')->onDelete('cascade');
             $table->bigInteger('sub_contract_type_id')->unsigned();
