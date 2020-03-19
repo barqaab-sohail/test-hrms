@@ -20,7 +20,7 @@ class employee extends Model implements Auditable
     public function picture()
     {
         return $this->hasOne('App\picture');
-    }
+    }       
 
     public function appointment()
     {

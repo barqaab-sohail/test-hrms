@@ -59,7 +59,7 @@
 		                                        <div class="col-md-12">
 		                                        	<label class="control-label text-right">CNIC</label>
 		                                        
-		                                            <input type="text" name="cnic" data-validation="required" id="cnic" pattern="[0-9.-]{15}" title= "13 digit Number without dash" value="{{ old('cnic') }}" class="form-control" onkeyup='addHyphen(this)'  placeholder="Enter CNIC without dash" >
+		                                            <input type="text" name="cnic" id="cnic" pattern="[0-9.-]{15}" title= "13 digit Number without dash" value="{{ old('cnic') }}" class="form-control" onkeyup='addHyphen(this)'  placeholder="Enter CNIC without dash" >
 		                                        </div>
 		                                    </div>
 		                                </div>
@@ -69,7 +69,7 @@
 		                                        <div class="col-md-12 date_input">
 		                                        	<label class="control-label text-right">Date of Birth</label>
 		                                        
-		                                            <input type="text" id="date_of_birth"  name="date_of_birth" data-validation="required" value="{{ old('date_of_birth') }}" class="form-control " placeholder="Enter Date of Birth" readonly>
+		                                            <input type="text" id="date_of_birth"  name="date_of_birth" value="{{ old('date_of_birth') }}" class="form-control " placeholder="Enter Date of Birth" readonly>
 													 
 		                                            <br>
 		                                           <i class="fas fa-trash-alt text_requried"></i> 
@@ -86,7 +86,7 @@
 		                                        <div class="col-md-12 date_input">
 		                                        	<label class="control-label text-right">Job Starting Date<span class="text_requried">*</span></label>
 		                                        
-		                                            <input type="text" id="job_starting_date" data-validation="required" name="job_starting_date"  value="{{ old('job_starting_date') }}" class="form-control " placeholder="Enter Date of Birth" readonly>
+		                                            <input type="text" id="job_starting_date" name="job_starting_date"  value="{{ old('job_starting_date') }}" class="form-control " placeholder="Enter Date of Birth" readonly>
 													 
 		                                            <br>
 		                                           <i class="fas fa-trash-alt text_requried"></i> 
@@ -98,7 +98,7 @@
 		                                    <div class="form-group row">
 		                                        <div class="col-md-12">
 		                                       		<label class="control-label ">Address</label><br>
-		                                       		<input type="text"  name="address" data-validation="required" value="{{ old('address') }}"  class="form-control" placeholder="Enter Address" >
+		                                       		<input type="text"  name="address" value="{{ old('address') }}"  class="form-control" placeholder="Enter Address" >
 		                                        </div>
 		                                    </div>
 		                                </div>
@@ -108,7 +108,7 @@
 		                                    <div class="form-group row">
 		                                        <div class="col-md-12">
 		                                        	<label class="control-label text-right">City</label>
-		                                       		<input type="text"  name="city" data-validation="required" value="{{ old('city') }}"  class="form-control">
+		                                       		<input type="text"  name="city"value="{{ old('city') }}"  class="form-control">
 		                                        </div>
 		                                    </div>
 		                                </div>
@@ -123,7 +123,7 @@
 		                                    <div class="form-group row">
 		                                        <div class="col-md-12 remove_phone_div">
 		                                        	<label class="control-label text-right">Province</label>
-		                                       		<input type="text"  name="province" data-validation="required" value="{{ old('province') }}"  class="form-control">
+		                                       		<input type="text"  name="province" value="{{ old('province') }}"  class="form-control">
 		                                        </div>
 		                                    </div>
 		                                </div>
@@ -132,7 +132,7 @@
 		                                    <div class="form-group row">
 		                                        <div class="col-md-12 remove_phone_div">
 		                                       		<label class="control-label text-right">Country<span class="text_requried">*</span></label><br>
-		                                       		<input type="text"  name="country" data-validation="required" value="{{ old('country') }}" class="form-control" >
+		                                       		<input type="text"  name="country"  value="{{ old('country') }}" class="form-control" >
 		                                        </div>
 		                                    </div>
 		                                </div>
@@ -175,9 +175,9 @@
 		                                <div class="col-md-3">
 		                                	<!--/span 4-1 -->
 		                                    <div class="form-group row">
-		                                        <div class="col-md-12">
+		                                        <div class="col-md-12 required">
 		                                       		<label class="control-label text-right">Name of Degree<span class="text_requried">*</span></label><br>
-		                                       			<select  name="degree_name[]"  class="form-control required">
+		                                       			<select  name="degree_name[]"  class="form-control">
                                                        <option></option>
                                                         @foreach($degrees as $degree)
 														<option value="{{$degree->id}}" {{(old("degree_name.0")==$degree->id? "selected" : "")}}>{{$degree->degree_name}}</option>
@@ -229,10 +229,10 @@
 		                                <div class="col-md-3">
 		                                	<!--/span 5-1 -->
 		                                    <div class="form-group row">
-		                                        <div class="col-md-12">
+		                                        <div class="col-md-12 required">
 		                                       		<label class="control-label text-right">Speciality<span class="text_requried">*</span></label><br>
 
-		                                       		<select  name="speciality_name[]"  id=speciality_name class="form-control required" >
+		                                       		<select  name="speciality_name[]"  id=speciality_name class="form-control" >
                                                         <option value=""></option>
                                                         
                                                         @foreach($specializations as $specialization)
@@ -251,15 +251,15 @@
 		                                <!--/span 5-2 -->
 		                                <div class="col-md-3">
 		                                    <div class="form-group row">
-		                                        <div class="col-md-12 ">
+		                                        <div class="col-md-12 required">
 		                                        	<label class="control-label">Discipline<span class="text_requried">*</span></label>
 
-		                                        	<select  name="discipline[]"  id=discipline class="form-control required" >
+		                                        	<select  name="discipline[]"  id=discipline class="form-control" >
                                                         <option value=""></option>
                                                         
                                                         @foreach($disciplines as $discipline)
 														
-														<option value="{{$discipline->id}}" {{(old("discipline.0")==$discipline->id? "selected" : "")}}>{{$discipline->discipline}}</option>
+														<option value="{{$discipline->id}}" {{(old("discipline.0")==$discipline->id? "selected" : "")}}>{{$discipline->discipline_name}}</option>
 
                                                         @endforeach
                                                       
@@ -272,10 +272,10 @@
 		                                  <!--/span 5-2 -->
 		                                <div class="col-md-3">
 		                                    <div class="form-group row">
-		                                        <div class="col-md-12 ">
+		                                        <div class="col-md-12 required">
 		                                        	<label class="control-label">Stage<span class="text_requried">*</span></label>
 
-		                                        	<select  name="stage_name[]"  id=stage_name class="form-control required" >
+		                                        	<select  name="stage_name[]"  id=stage_name class="form-control" >
                                                         <option value=""></option>
                                                         
                                                         @foreach($stages as $stage)
@@ -293,10 +293,10 @@
 		                                <!--/span 5-3 -->
 		                                <div class="col-md-3">
 		                                    <div class="form-group row">
-		                                        <div class="col-md-8">
+		                                        <div class="col-md-8 required">
 		                                        	<label class="control-label text-right">Years of Experience<span class="text_requried">*</span></label>
 		                                        
-		                                            <select  name="year[]"  class="form-control required">
+		                                            <select  name="year[]"  class="form-control">
 
 													<option value=""></option>
 													@for ($i = 1; $i <= 50; $i++)
@@ -378,10 +378,10 @@
 		                                <!--/span 7-1 -->
 		                                <div class="col-md-3">
 		                                    <div class="form-group row">
-		                                        <div class="col-md-12 ">
+		                                        <div class="col-md-12 required">
 		                                        	<label for="barqaab_employment" class="control-label">BARQAAB Employee<span class="text_requried">*</span></label>
 
-		                                        	<select  name="barqaab_employment" class="form-control required" >
+		                                        	<select  name="barqaab_employment" class="form-control " >
 
                                                         <option value="">'</option>
                                                         <option value="1" {{(old("barqaab_employment")==1? "selected":"")}}>Yes</option>
@@ -484,20 +484,22 @@
 	$(document).ready(function(){
 	
 	$('select').chosen();
-	$.validate();
-	$('form').on('submit',function(e){
+	//$.validate();
+	$('#test').on('submit',function(e){
 		$(".required").each(function(){
+			
 			if($(this).val()==''){
-				alert($(this).closest('div').find('label').text()+' value is missing');
-				$(this).closest('div').find('label').append("<br><span style='color:red;'>This Field is required</span>");
-
+				$(this).find('.chosen-container').css('border', '1px solid red');
+				//alert($(this).closest('div').find('label').text()+' value is missing');
+				//$(this).closest('div').find('label').append("<br><span style='color:red;'>This Field is required</span>");
 				e.preventDefault();
 			}else
 			{
 				return true;
 			}
+
 		});
-	 });
+	});
 	
 	 $("#cv").change(function(){
 	 	var fileType = this.files[0].type;

@@ -25,7 +25,6 @@ class AddController extends Controller
 		$types = sub_type::all();
 		$contractTypes = sub_contract_type::all();
 		
-
 		return view ('submission.submission',compact('types','contractTypes'));
 	}
 

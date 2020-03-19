@@ -12,6 +12,7 @@ class cv_discipline extends Seeder
     public function run()
     {
         DB::table('cv_disciplines')->insert(['discipline_name' => 'Dam']);
+        
         DB::table('cv_disciplines')->insert(['discipline_name' => 'Hydropower & Dam']);
          DB::table('cv_disciplines')->insert(['discipline_name' => 'Irrigation & Drainage']);
           DB::table('cv_disciplines')->insert(['discipline_name' => 'Canal']);
