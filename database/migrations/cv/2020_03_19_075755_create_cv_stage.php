@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateCvField extends Migration
+class CreateCvStage extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,9 @@ class CreateCvField extends Migration
      */
     public function up()
     {
-        Schema::create('cv_fields', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->string('field_name');
-            
+        Schema::create('cv_stages', function (Blueprint $table) {
+           $table->bigIncrements('id');
+            $table->string('stage_name');
             $table->timestamps();
         });
     }
@@ -28,6 +27,6 @@ class CreateCvField extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('cv_fields');
+        Schema::dropIfExists('cv_stages');
     }
 }

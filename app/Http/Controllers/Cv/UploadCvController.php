@@ -12,9 +12,10 @@ use App\models\cv\cv_phone;
 use App\models\cv\cv_contact;
 use App\models\cv\cv_attachment;
 use App\models\cv\cv_specialization;
-use App\models\cv\cv_specialization_field;
-use App\models\cv\cv_field;
-use App\models\cv\cv_education;
+use App\models\cv\cv_experience;
+use App\models\cv\cv_discipline;
+use App\models\cv\cv_stage;
+use App\models\common\hr_education;
 use App\models\cv\cv_membership;
 use App\Helper\DocxConversion;
 use Spatie\PdfToText\Pdf;
@@ -30,12 +31,13 @@ class UploadCvController extends Controller
 		session()->put('cv_id', '');
 		$genders = gender::all();
 		$specializations = cv_specialization::all();
-		$degrees = cv_education::all();
-		$fields = cv_field::all();
+		$degrees = hr_education::all();
+		$disciplines = cv_discipline::all();
+		$stages = cv_stage::all();
 		$memberships = cv_membership::all();
 
 		//return view ('bio-data.test',compact('genders'));
-		return view ('cv.uploadCv',compact('genders','specializations','degrees','fields','memberships'));
+		return view ('cv.uploadCv',compact('genders','specializations','degrees','disciplines','stages','memberships'));
 	}
 
 	public function store(cvStore $request){
@@ -82,7 +84,7 @@ class UploadCvController extends Controller
 			$speciality['cv_field_id'] = $request->input("field_name.$i");
 			$speciality['cv_detail_id']=$cv_id->id;
 			$speciality['year'] = $request->input("year.$i");
-			cv_specialization_field::create($speciality);
+			cv_experience::create($speciality);
 			}
 
 		//add membership
@@ -152,11 +154,12 @@ class UploadCvController extends Controller
         $genders = gender::all();
 		$specializations = cv_specialization::all();
 		$degrees = cv_education::all();
-		$fields = cv_field::all();
+		$cv_disciplines = cv_discipline::all();
+		$cv_stages = cv_stage::all();
 		$memberships = cv_membership::all();
 		$cvId = cv_detail::find($id);
 
-        return view ('cv.editUploadCv',compact('genders','specializations','degrees','fields','memberships','cvId'));
+        return view ('cv.editUploadCv',compact('genders','specializations','degrees','cv_disciplines','stages','memberships','cvId'));
     }
 
     public function update(cvEditStore $request, $id){
@@ -223,29 +226,29 @@ class UploadCvController extends Controller
 			}
 
 			//Update specialization
-			if(count($request->input('speciality_name'))==cv_specialization_field::where('cv_detail_id',$id)->count())
+			if(count($request->input('speciality_name'))==cv_experience::where('cv_detail_id',$id)->count())
 	    	{
 		    	for ($i=0;$i<count($request->input('speciality_name'));$i++){
 				$speciality['cv_specialization_id'] = $request->input("speciality_name.$i");
 				$speciality['cv_field_id'] = $request->input("field_name.$i");
 				$speciality['cv_detail_id']=$id;
 				$speciality['year'] = $request->input("year.$i");
-				$specialityId = cv_specialization_field::where('cv_detail_id',$id)->get();
+				$specialityId = cv_experience::where('cv_detail_id',$id)->get();
 					foreach($specialityId as $key => $s){
 						
 						if($i == $key){
-							cv_specialization_field::findOrFail($s->id)->update($speciality);
+							cv_experience::findOrFail($s->id)->update($speciality);
 						}
 					}
 				}	
 		    }else{
-		    	cv_specialization_field::where('cv_detail_id',$id)->delete();
+		    	cv_experience::where('cv_detail_id',$id)->delete();
 			    	for ($i=0;$i<count($request->input('speciality_name'));$i++){
 					$speciality['cv_specialization_id'] = $request->input("speciality_name.$i");
 					$speciality['cv_field_id'] = $request->input("field_name.$i");
 					$speciality['cv_detail_id']=$id;
 					$speciality['year'] = $request->input("year.$i");
-					cv_specialization_field::create($speciality);
+					cv_experience::create($speciality);
 					}
 
 			}

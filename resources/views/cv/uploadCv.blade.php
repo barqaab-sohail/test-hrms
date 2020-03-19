@@ -249,17 +249,38 @@
 		                                    </div>
 		                                </div>
 		                                <!--/span 5-2 -->
-		                                <div class="col-md-6">
+		                                <div class="col-md-3">
 		                                    <div class="form-group row">
 		                                        <div class="col-md-12 ">
-		                                        	<label class="control-label">Field of Speciality<span class="text_requried">*</span></label>
+		                                        	<label class="control-label">Discipline<span class="text_requried">*</span></label>
 
-		                                        	<select  name="field_name[]"  id=field_name class="form-control required" >
+		                                        	<select  name="discipline[]"  id=discipline class="form-control required" >
                                                         <option value=""></option>
                                                         
-                                                        @foreach($fields as $field)
+                                                        @foreach($disciplines as $discipline)
 														
-														<option value="{{$field->id}}" {{(old("field_name.0")==$field->id? "selected" : "")}}>{{$field->field_name}}</option>
+														<option value="{{$discipline->id}}" {{(old("discipline.0")==$discipline->id? "selected" : "")}}>{{$discipline->discipline}}</option>
+
+                                                        @endforeach
+                                                      
+                                                    </select>
+		                                        
+		                                            
+		                                        </div>
+		                                    </div>
+		                                </div>
+		                                  <!--/span 5-2 -->
+		                                <div class="col-md-3">
+		                                    <div class="form-group row">
+		                                        <div class="col-md-12 ">
+		                                        	<label class="control-label">Stage<span class="text_requried">*</span></label>
+
+		                                        	<select  name="stage_name[]"  id=stage_name class="form-control required" >
+                                                        <option value=""></option>
+                                                        
+                                                        @foreach($stages as $stage)
+														
+														<option value="{{$stage->id}}" {{(old("stage_name.0")==$stage->id? "selected" : "")}}>{{$stage->stage_name}}</option>
 
                                                         @endforeach
                                                       

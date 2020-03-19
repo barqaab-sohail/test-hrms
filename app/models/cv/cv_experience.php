@@ -5,16 +5,15 @@ namespace App\models\cv;
 use Illuminate\Database\Eloquent\Model;
 use OwenIt\Auditing\Contracts\Auditable;
 
-class cv_education extends Model implements Auditable
+class cv_experience extends Model implements Auditable
 {
     use \OwenIt\Auditing\Auditable;
     
     protected $fillable = [
-        'degree_name', 'level',
+        'cv_detail_id','cv_specialization_id', 'cv_discipline_id','cv_stage_id','year'
     ];
 
-    public function cv_detail()
-    {
-        return $this->belongsToMany('App\models\cv\cv_detail');
-    }
+
+
+
 }

@@ -13,8 +13,9 @@ class cvSeeder extends Seeder
     {
         $this->call([
         educationSeeder::class,
-        fieldSpecializationSeeder::class,
-        specializationSeeder::class,
+        cv_discipline::class,
+        cv_stage::class,
+        cv_specialization::class,
         membershipSeeder::class,
         ]);
     }

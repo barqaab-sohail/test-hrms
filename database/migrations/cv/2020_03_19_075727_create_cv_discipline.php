@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateCvEducation extends Migration
+class CreateCvDiscipline extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,9 @@ class CreateCvEducation extends Migration
      */
     public function up()
     {
-        Schema::create('cv_educations', function (Blueprint $table) {
+        Schema::create('cv_disciplines', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('degree_name');
-            $table->tinyInteger('level');
+            $table->string('discipline_name');
             $table->timestamps();
         });
     }
@@ -28,6 +27,6 @@ class CreateCvEducation extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('cv_educations');
+        Schema::dropIfExists('cv_disciplines');
     }
 }

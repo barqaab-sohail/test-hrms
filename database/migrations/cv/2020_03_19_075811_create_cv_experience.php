@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateCvSpecializationFieldTable extends Migration
+class CreateCvExperience extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateCvSpecializationFieldTable extends Migration
      */
     public function up()
     {
-        Schema::create('cv_specialization_fields', function (Blueprint $table) {
+        Schema::create('cv_experiences', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->bigInteger('cv_detail_id')->unsigned()->index();
             $table->foreign('cv_detail_id')->references('id')->on('cv_details')->onDelete('cascade');
@@ -22,8 +22,13 @@ class CreateCvSpecializationFieldTable extends Migration
             $table->foreign('cv_specialization_id')->references('id')->on('cv_specializations')->onDelete('cascade');
 
 
-            $table->bigInteger('cv_field_id')->unsigned()->index();
-            $table->foreign('cv_field_id')->references('id')->on('cv_fields')->onDelete('cascade');
+            $table->bigInteger('cv_stage_id')->unsigned()->index();
+            $table->foreign('cv_stage_id')->references('id')->on('cv_stages')->onDelete('cascade');
+
+            $table->bigInteger('cv_discipline_id')->unsigned()->index();
+            $table->foreign('cv_discipline_id')->references('id')->on('cv_disciplines')->onDelete('cascade');
+
+
             $table->tinyInteger('year');
             $table->timestamps();
         });
@@ -36,6 +41,6 @@ class CreateCvSpecializationFieldTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('cv_specialization_fields');
+        Schema::dropIfExists('cv_experiences');
     }
 }

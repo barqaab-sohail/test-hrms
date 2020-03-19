@@ -11,7 +11,7 @@ class educationSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('cv_educations')->delete();
+        DB::table('hr_educations')->delete();
 
        $educations = array(
 			array('degree_name' => 'B.Sc Civil Engineering', 'level' => 16),
@@ -21,6 +21,6 @@ class educationSeeder extends Seeder
 			
 		);
 
-       DB::table('cv_educations')->insert($educations);
+       DB::table('hr_educations')->insert($educations);
     }
 }

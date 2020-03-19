@@ -81,7 +81,7 @@
                 
  
                 @endcan
-                @can('cv_edit')
+                @role('Super Admin')
                 <li @if(request()->is('*CV*')) class="active" @endif > <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i class="mdi mdi-database"></i><span class="hide-menu">CV Records</span></a>
                     <ul aria-expanded="false" class="collapse">  
                         <li><a href="{{route('uploadCv.create')}}">Add CV</a></li>
@@ -91,8 +91,8 @@
                         @endrole
                     </ul>
                 </li>
-                @endcan
-                @role('Super Admin')
+             
+               
                 <li @if(request()->is('*submission*')) class="active" @endif > <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i class="mdi mdi-cube"></i><span class="hide-menu">Submissions</span></a>
                     <ul aria-expanded="false" class="collapse">  
                         <li><a href="{{route('addSubmission.create')}}">Add Submission</a></li>

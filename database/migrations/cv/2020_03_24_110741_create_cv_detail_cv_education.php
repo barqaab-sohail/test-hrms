@@ -13,12 +13,12 @@ class CreateCvDetailCvEducation extends Migration
      */
     public function up()
     {
-        Schema::create('cv_detail_cv_education', function (Blueprint $table) {
+        Schema::create('cv_detail_hr_education', function (Blueprint $table) {
             $table->bigInteger('cv_detail_id')->unsigned()->index();
             $table->foreign('cv_detail_id')->references('id')->on('cv_details')->onDelete('cascade');
 
-            $table->bigInteger('cv_education_id')->unsigned()->index();
-            $table->foreign('cv_education_id')->references('id')->on('cv_educations')->onDelete('cascade');
+            $table->bigInteger('hr_education_id')->unsigned()->index();
+            $table->foreign('hr_education_id')->references('id')->on('hr_educations')->onDelete('cascade');
 
             $table->string('institute')->nullable();
             $table->year('passing_year')->nullable();

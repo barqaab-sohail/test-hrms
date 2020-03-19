@@ -13,16 +13,16 @@ class cv_detail extends Model implements Auditable
         'full_name','father_name','cnic','date_of_birth','job_starting_date','cv_submission_date','foreign_experience','donor_experience','barqaab_employment','comments',
     ];
 
-    public function cv_education()
+    public function hr_education()
     {
-        return $this->belongsToMany('App\models\cv\cv_education')
+        return $this->belongsToMany('App\models\common\hr_education')
         ->withPivot('institute', 'passing_year')
     	->withTimestamps();
     }
 
-    public function cv_specialization_field()
+    public function cv_experience()
     {
-        return $this->hasMany('App\models\cv\cv_specialization_field');
+        return $this->hasMany('App\models\cv\cv_experience');
     }
    
 
@@ -52,10 +52,6 @@ class cv_detail extends Model implements Auditable
     {
         return $this->hasMany('App\models\cv\cv_attachment');
     }
-
-
-
-
 
 
 }
