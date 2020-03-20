@@ -11,6 +11,7 @@ class cv_specialization extends Seeder
      */
     public function run()
     {
+        DB::table('cv_specializations')->delete();
         DB::table('cv_specializations')->insert(['specialization_name' => 'RE']);
         DB::table('cv_specializations')->insert(['specialization_name' => 'CRE']);
         

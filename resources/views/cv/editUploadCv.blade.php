@@ -174,7 +174,7 @@
 		                            </div>
 
 		                             <!--row 4-->
-		                        	@foreach($cvId->cv_education as $key => $education)
+		                        	@foreach($cvId->hr_education as $key => $education)
 		                            <div class="row education" id='edu_1' >
 									
 		                                <div class="col-md-3">
@@ -237,7 +237,7 @@
 		                            </div>
 		                        @endforeach
 		                             <!--row 5-->
-		                        @foreach($cvId->cv_specialization_field as $key => $speciality)
+		                        @foreach($cvId->cv_experience as $key => $speciality)
 		                            <div class="row specialization" id='spe_1' >
 		                                <div class="col-md-3">
 		                                	<!--/span 5-1 -->
@@ -258,19 +258,42 @@
 		                                    </div>
 		                                </div>
 		                                <!--/span 5-2 -->
-		                                <div class="col-md-6">
+		                                <div class="col-md-3">
 		                                    <div class="form-group row">
 		                                        <div class="col-md-12 ">
-		                                        	<label class="control-label">Field of Speciality<span class="text_requried">*</span></label>
+		                                        	<label class="control-label">Discipline<span class="text_requried">*</span></label>
 
-		                                        	<select  name="field_name[]" data-validation="required" id=field_name class="form-control required" >
+		                                        	<select  name="discipline_name[]" data-validation="required" id=discipline_name class="form-control required" >
                                                         <option value=""></option>
                                                         
-                                                        @foreach($fields as $field)
-														
-														<option value="{{$field->id}}"  
-														@if($field->id == $speciality->cv_field_id) selected="selected" @endif
-														>{{$field->field_name}}</option>
+                                                        @foreach($disciplines as $discipline)
+
+														<option value="{{$discipline->id}}"  
+														@if($discipline->id == $speciality->cv_discipline_id) selected="selected" @endif
+														>{{$discipline->discipline_name}}</option>
+
+                                                        @endforeach
+                                                      
+                                                    </select>
+		                                        
+		                                            
+		                                        </div>
+		                                    </div>
+		                                </div>
+		                                <!--/span 5-2 -->
+		                                <div class="col-md-3">
+		                                    <div class="form-group row">
+		                                        <div class="col-md-12 ">
+		                                        	<label class="control-label">Stage of Work<span class="text_requried">*</span></label>
+
+		                                        	<select  name="stage_name[]" data-validation="required" id=stage_name class="form-control required" >
+                                                        <option value=""></option>
+                                                        
+                                                        @foreach($stages as $stage)
+
+														<option value="{{$stage->id}}"  
+														@if($stage->id == $speciality->cv_stage_id) selected="selected" @endif
+														>{{$stage->stage_name}}</option>
 
                                                         @endforeach
                                                       

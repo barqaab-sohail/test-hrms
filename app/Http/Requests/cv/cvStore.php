@@ -55,7 +55,8 @@ class cvStore extends FormRequest
             'institute.*' => 'nullable|MAX:191',
             'passing_year.*' => 'nullable|distinct',
             'speciality_name.*' => 'required',
-            'field_name.*' => 'required',
+            'discipline_name.*' => 'required',
+            'stage_name.*' => 'required',
             'year.*' => 'required',
             'membership_name.*'=>'nullable|distinct',
             //'number.*' => Rule::requiredIf($request->membership==1),
@@ -79,7 +80,8 @@ class cvStore extends FormRequest
             'degree_name.*.distinct' => 'Two Degree Names must be different',
             'passing_year.*.distinct' => 'Two Degrees on same year is not allowed',
             'membership_number.*.required_if' => 'Pakistan Engineering Council Number is required',
-            'cv_submission_date.before_or_equal'=>'The cv submission date must be a date before or equal today'
+            'cv_submission_date.before_or_equal'=>'The cv submission date must be a date before or equal today',
+            'cv.required'=>"CV Attachment is Required",
 
             
         ];

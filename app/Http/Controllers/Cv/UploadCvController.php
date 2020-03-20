@@ -15,6 +15,7 @@ use App\models\cv\cv_specialization;
 use App\models\cv\cv_experience;
 use App\models\cv\cv_discipline;
 use App\models\cv\cv_stage;
+use App\country;
 use App\models\common\hr_education;
 use App\models\cv\cv_membership;
 use App\Helper\DocxConversion;
@@ -32,12 +33,13 @@ class UploadCvController extends Controller
 		$genders = gender::all();
 		$specializations = cv_specialization::all();
 		$degrees = hr_education::all();
+		$countries = country::all();
 		$disciplines = cv_discipline::all();
 		$stages = cv_stage::all();
 		$memberships = cv_membership::all();
 
 		//return view ('bio-data.test',compact('genders'));
-		return view ('cv.uploadCv',compact('genders','specializations','degrees','disciplines','stages','memberships'));
+		return view ('cv.uploadCv',compact('genders','specializations','degrees','disciplines','stages','memberships','countries'));
 	}
 
 	public function store(cvStore $request){
@@ -74,14 +76,15 @@ class UploadCvController extends Controller
 			$instituteId = $request->input("institute.$i");
 			$passingYear = $request->input("passing_year.$i");
 			
-			$cv_id->cv_education()->attach($educationId, ['institute'=>$instituteId, 'passing_year'=>$passingYear]);
+			$cv_id->hr_education()->attach($educationId, ['institute'=>$instituteId, 'passing_year'=>$passingYear]);
 			}
 
 			
 		//add specialization
 			for ($i=0;$i<count($request->input('speciality_name'));$i++){
 			$speciality['cv_specialization_id'] = $request->input("speciality_name.$i");
-			$speciality['cv_field_id'] = $request->input("field_name.$i");
+			$speciality['cv_discipline_id'] = $request->input("discipline_name.$i");
+			$speciality['cv_stage_id'] = $request->input("stage_name.$i");
 			$speciality['cv_detail_id']=$cv_id->id;
 			$speciality['year'] = $request->input("year.$i");
 			cv_experience::create($speciality);
@@ -153,13 +156,13 @@ class UploadCvController extends Controller
         session()->put('cv_id', $id);
         $genders = gender::all();
 		$specializations = cv_specialization::all();
-		$degrees = cv_education::all();
-		$cv_disciplines = cv_discipline::all();
-		$cv_stages = cv_stage::all();
+		$degrees = hr_education::all();
+		$disciplines = cv_discipline::all();
+		$stages = cv_stage::all();
 		$memberships = cv_membership::all();
 		$cvId = cv_detail::find($id);
 
-        return view ('cv.editUploadCv',compact('genders','specializations','degrees','cv_disciplines','stages','memberships','cvId'));
+        return view ('cv.editUploadCv',compact('genders','specializations','degrees','disciplines','stages','memberships','cvId'));
     }
 
     public function update(cvEditStore $request, $id){
@@ -230,13 +233,15 @@ class UploadCvController extends Controller
 	    	{
 		    	for ($i=0;$i<count($request->input('speciality_name'));$i++){
 				$speciality['cv_specialization_id'] = $request->input("speciality_name.$i");
-				$speciality['cv_field_id'] = $request->input("field_name.$i");
+				$speciality['cv_discipline_id'] = $request->input("discipline_name.$i");
+				$speciality['cv_stage_id'] = $request->input("stage_name.$i");
 				$speciality['cv_detail_id']=$id;
 				$speciality['year'] = $request->input("year.$i");
 				$specialityId = cv_experience::where('cv_detail_id',$id)->get();
 					foreach($specialityId as $key => $s){
 						
 						if($i == $key){
+							
 							cv_experience::findOrFail($s->id)->update($speciality);
 						}
 					}
@@ -245,7 +250,8 @@ class UploadCvController extends Controller
 		    	cv_experience::where('cv_detail_id',$id)->delete();
 			    	for ($i=0;$i<count($request->input('speciality_name'));$i++){
 					$speciality['cv_specialization_id'] = $request->input("speciality_name.$i");
-					$speciality['cv_field_id'] = $request->input("field_name.$i");
+					$speciality['cv_discipline_id'] = $request->input("discipline_name.$i");
+					$speciality['cv_stage_id'] = $request->input("stage_name.$i");
 					$speciality['cv_detail_id']=$id;
 					$speciality['year'] = $request->input("year.$i");
 					cv_experience::create($speciality);
@@ -254,14 +260,14 @@ class UploadCvController extends Controller
 			}
 
 			//update education
-			$cv_id->cv_education()->detach();
+			$cv_id->hr_education()->detach();
 			
 			for ($i=0;$i<count($request->input('degree_name'));$i++){
 			$educationId = $request->input("degree_name.$i");
 			$instituteId = $request->input("institute.$i");
 			$passingYear = $request->input("passing_year.$i");
 			
-			$cv_id->cv_education()->attach($educationId, ['institute'=>$instituteId, 'passing_year'=>$passingYear]);
+			$cv_id->hr_education()->attach($educationId, ['institute'=>$instituteId, 'passing_year'=>$passingYear]);
 			}
 			
 			//update skill	

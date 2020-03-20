@@ -45,10 +45,11 @@
 		          	<!-- Modeal Include-->
 		          	@include('hr.task.modal')
 		          	@include('hr.task.editModal')
-	  
+	  			
+	  				<div id="append_data" class="table-responsive m-t-40">
 	      		</div>
-			
-				<div id="append_data" class="table-responsive m-t-40">
+				
+				
 
 	
 			</div>	

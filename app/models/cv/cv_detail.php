@@ -24,6 +24,14 @@ class cv_detail extends Model implements Auditable
     {
         return $this->hasMany('App\models\cv\cv_experience');
     }
+     public function cv_discipline()
+    {
+        return $this->hasMany('App\models\cv\cv_discipline');
+    }
+    public function cv_stage()
+    {
+        return $this->hasMany('App\models\cv\cv_stage');
+    }
    
 
     public function cv_membership()

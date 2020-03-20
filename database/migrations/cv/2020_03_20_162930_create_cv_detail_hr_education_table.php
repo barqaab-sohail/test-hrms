@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateCvDetailCvEducation extends Migration
+class CreateCvDetailHrEducationTable extends Migration
 {
     /**
      * Run the migrations.
@@ -34,6 +34,6 @@ class CreateCvDetailCvEducation extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('cv_detail_cv_education');
+        Schema::dropIfExists('cv_detail_hr_education');
     }
 }

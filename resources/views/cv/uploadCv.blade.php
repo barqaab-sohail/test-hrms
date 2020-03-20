@@ -132,7 +132,13 @@
 		                                    <div class="form-group row">
 		                                        <div class="col-md-12 remove_phone_div">
 		                                       		<label class="control-label text-right">Country<span class="text_requried">*</span></label><br>
-		                                       		<input type="text"  name="country"  value="{{ old('country') }}" class="form-control" >
+		                                       		<select  name="country_id"  class="form-control" required>
+			                                           	<option value=""></option>
+			                                        @foreach($countries as $country)
+														<option value="{{$country->id}}" {{(old("country_id")==$country->id? "selected" : "")}}>{{$country->name}}</option>
+                                                    @endforeach 	
+                                                    </select> 
+		                                       		
 		                                        </div>
 		                                    </div>
 		                                </div>
@@ -254,7 +260,7 @@
 		                                        <div class="col-md-12 required">
 		                                        	<label class="control-label">Discipline<span class="text_requried">*</span></label>
 
-		                                        	<select  name="discipline[]"  id=discipline class="form-control" >
+		                                        	<select  name="discipline_name[]"  id=discipline class="form-control" >
                                                         <option value=""></option>
                                                         
                                                         @foreach($disciplines as $discipline)
@@ -384,8 +390,8 @@
 		                                        	<select  name="barqaab_employment" class="form-control " >
 
                                                         <option value="">'</option>
-                                                        <option value="1" {{(old("barqaab_employment")==1? "selected":"")}}>Yes</option>
-                                                        <option value="0" {{(old("barqaab_employment")==0? "selected":"")}}>No</option>
+                                                        <option value="1" {{(old("barqaab_employment")=="1"? "selected":"")}}>Yes</option>
+                                                        <option value="0" {{(old("barqaab_employment")=="0"? "selected":"")}}>No</option>
                                                                                                               
                                                     </select>
 		                                        
@@ -485,21 +491,21 @@
 	
 	$('select').chosen();
 	//$.validate();
-	$('#test').on('submit',function(e){
-		$(".required").each(function(){
-			
-			if($(this).val()==''){
-				$(this).find('.chosen-container').css('border', '1px solid red');
-				//alert($(this).closest('div').find('label').text()+' value is missing');
-				//$(this).closest('div').find('label').append("<br><span style='color:red;'>This Field is required</span>");
-				e.preventDefault();
-			}else
-			{
-				return true;
-			}
+	// $('#test').on('submit',function(e){
+	// 	$(".required").each(function(){
+	// 		if($(this).find('select').children("option:selected").val() ==''){
+	// 			$(this).find('.chosen-container').css('border', '1px solid red');
+	// 			//alert($(this).closest('div').find('label').text()+' value is missing');
+	// 			//$(this).closest('div').find('label').append("<br><span style='color:red;'>This Field is required</span>");
+	// 			e.preventDefault();
+	// 		}else if ($(this).find('select').children("option:selected").val() !=''){
+	// 			$(this).find('.chosen-container').css('border', '');
+	// 		}else{
+	// 			return true;
+	// 		}
 
-		});
-	});
+	// 	});
+	// });
 	
 	 $("#cv").change(function(){
 	 	var fileType = this.files[0].type;
