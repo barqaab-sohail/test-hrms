@@ -18,7 +18,7 @@ class CreateCvDetailCvMembership extends Migration
             $table->foreign('cv_detail_id')->references('id')->on('cv_details')->onDelete('cascade');
 
             $table->bigInteger('cv_membership_id')->unsigned()->index();
-            $table->foreign('cv_membership_id')->references('id')->on('cv_memberships')->onDelete('cascade');
+            $table->foreign('cv_membership_id')->references('id')->on('cv_memberships');
             $table->string('membership_number')->nullable();
             $table->timestamps();
         });

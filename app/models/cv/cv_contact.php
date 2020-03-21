@@ -10,7 +10,7 @@ class cv_contact extends Model implements Auditable
     use \OwenIt\Auditing\Auditable;
     
     protected $fillable = [
-        'address','city', 'province','country','email', 'cv_detail_id',
+        'address','city_id', 'state_id','country_id','email', 'cv_detail_id',
     ];
 
 	public function cv_detail()

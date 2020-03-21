@@ -10,7 +10,7 @@ class cv_phone extends Model implements Auditable
     use \OwenIt\Auditing\Auditable;
     
     protected $fillable = [
-        'phone', 'cv_detail_id',
+        'phone', 'cv_contact_id',
     ];
 
     public function cv_detail()

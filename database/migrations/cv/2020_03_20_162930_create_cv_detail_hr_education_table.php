@@ -18,7 +18,7 @@ class CreateCvDetailHrEducationTable extends Migration
             $table->foreign('cv_detail_id')->references('id')->on('cv_details')->onDelete('cascade');
 
             $table->bigInteger('hr_education_id')->unsigned()->index();
-            $table->foreign('hr_education_id')->references('id')->on('hr_educations')->onDelete('cascade');
+            $table->foreign('hr_education_id')->references('id')->on('hr_educations');
 
             $table->string('institute')->nullable();
             $table->year('passing_year')->nullable();

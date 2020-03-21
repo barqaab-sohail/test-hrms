@@ -48,7 +48,7 @@ class cvStore extends FormRequest
             'address' => 'nullable|max:191',
             'city' => 'nullable|max:191',
             'province' => 'nullable|max:191',
-            'country' => 'required|max:191',
+            'country_id' => 'required|max:191',
             'email'=>'nullable|email|unique:cv_contacts,email',
             'phone.*' => 'required|distinct',
             'degree_name.*' => 'required|distinct',

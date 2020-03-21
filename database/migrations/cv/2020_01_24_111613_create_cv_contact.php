@@ -17,10 +17,18 @@ class CreateCvContact extends Migration
             $table->bigIncrements('id');
             $table->string('address')->nullable();
             $table->string('email')->nullable();
+           
             $table->bigInteger('cv_detail_id')->unsigned();
             $table->foreign('cv_detail_id')->references('id')->on('cv_details')->onDelete('cascade');
+           
             $table->bigInteger('country_id')->unsigned();
-            $table->foreign('country_id')->references('id')->on('countries')->onDelete('cascade');
+            $table->foreign('country_id')->references('id')->on('countries');
+            
+            $table->bigInteger('state_id')->unsigned();
+            $table->foreign('state_id')->references('id')->on('states');
+           
+            $table->bigInteger('city_id')->unsigned();
+            $table->foreign('city_id')->references('id')->on('cities');
             
             $table->timestamps();
         });

@@ -19,14 +19,14 @@ class CreateCvExperience extends Migration
             $table->foreign('cv_detail_id')->references('id')->on('cv_details')->onDelete('cascade');
 
             $table->bigInteger('cv_specialization_id')->unsigned()->index();
-            $table->foreign('cv_specialization_id')->references('id')->on('cv_specializations')->onDelete('cascade');
+            $table->foreign('cv_specialization_id')->references('id')->on('cv_specializations');
 
 
             $table->bigInteger('cv_stage_id')->unsigned()->index();
-            $table->foreign('cv_stage_id')->references('id')->on('cv_stages')->onDelete('cascade');
+            $table->foreign('cv_stage_id')->references('id')->on('cv_stages');
 
             $table->bigInteger('cv_discipline_id')->unsigned()->index();
-            $table->foreign('cv_discipline_id')->references('id')->on('cv_disciplines')->onDelete('cascade');
+            $table->foreign('cv_discipline_id')->references('id')->on('cv_disciplines');
 
 
             $table->tinyInteger('year');

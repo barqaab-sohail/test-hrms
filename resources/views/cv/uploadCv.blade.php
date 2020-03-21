@@ -40,6 +40,7 @@
 		                                        <div class="col-md-12">
 		                                       		<label class="control-label text-right">Full Name<span class="text_requried">*</span></label><br>
 		                                       		<input type="text"  name="full_name" data-validation="required" value="{{ old('full_name') }}"  class="form-control" placeholder="Enter Full Name" >
+		                                       		<span class="help-block full_name-error"></span>
 		                                        </div>
 		                                    </div>
 		                                </div>
@@ -108,7 +109,10 @@
 		                                    <div class="form-group row">
 		                                        <div class="col-md-12">
 		                                        	<label class="control-label text-right">City</label>
-		                                       		<input type="text"  name="city"value="{{ old('city') }}"  class="form-control">
+		                                       		 <select class="form-control" name="city_id" id="city">
+      												  </select>
+
+		                                       		<!-- <input type="text"  name="city"value="{{ old('city') }}"  class="form-control"> -->
 		                                        </div>
 		                                    </div>
 		                                </div>
@@ -123,7 +127,10 @@
 		                                    <div class="form-group row">
 		                                        <div class="col-md-12 remove_phone_div">
 		                                        	<label class="control-label text-right">Province</label>
-		                                       		<input type="text"  name="province" value="{{ old('province') }}"  class="form-control">
+		                                       		<select class="form-control" name="state_id" id="state">
+       												</select>
+
+		                                       		<!-- <input type="text"  name="province" value="{{ old('province') }}"  class="form-control"> -->
 		                                        </div>
 		                                    </div>
 		                                </div>
@@ -132,7 +139,7 @@
 		                                    <div class="form-group row">
 		                                        <div class="col-md-12 remove_phone_div">
 		                                       		<label class="control-label text-right">Country<span class="text_requried">*</span></label><br>
-		                                       		<select  name="country_id"  class="form-control" required>
+		                                       		<select  name="country_id" id="country" class="form-control" required>
 			                                           	<option value=""></option>
 			                                        @foreach($countries as $country)
 														<option value="{{$country->id}}" {{(old("country_id")==$country->id? "selected" : "")}}>{{$country->name}}</option>
@@ -466,7 +473,7 @@
 		                                <div class="col-md-6">
 		                                    <div class="row"> 
 		                                       <div class="col-md-offset-3 col-md-9">
-		                                            <button type="submit" class="btn btn-success btn-prevent-multiple-submits">Upload</button>
+		                                            <button type="submit" id="submit" class="btn btn-success btn-prevent-multiple-submits">Upload</button>
 		                                            
 		                                        </div>
 		                                     
@@ -487,7 +494,60 @@
 	
 
 <script>
+//https://stackoverflow.com/questions/50660303/how-to-save-multiple-input-and-files-using-ajax-and-laravel-5-6
 	$(document).ready(function(){
+		jQuery('#submit').click(function(e){
+               e.preventDefault();
+                
+ 				//formData.append('FormInputs', FormInputs);
+               //console.log($('#test').serialize());
+                let FormInputs = $("#test").serializeArray();
+                // formData.append('FormInputs', FormInputs);
+                let formData = new FormData();
+ 				let logo = $("#cv")[0].files[0];
+ 				 //console.log(logo);
+ 				
+				 jQuery.each(FormInputs, function (i, field) {
+				        formData.append(field.name, field.value);
+				 });
+				 formData.append('cv', logo);
+               
+
+               jQuery.ajaxSetup({
+                  headers: {
+                      'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
+                  }
+              });
+              	jQuery.ajax({
+                  url: "{{route('uploadCv.store')}}",
+                  method: 'post',
+                  datatype: 'JSON',
+                  processData: false,
+        			contentType: false,
+                  data: formData,
+
+                  	success: function(data){
+
+                	},
+                	error: function (request, status, error) {
+                		var test = request.responseJSON // this object have two further objects errors and message.
+                		var errorMassage = '';
+
+                		//now saperate only errors value from test object and store in variable errorMassage;
+                		$.each(test.errors, function (key, value){
+              		      errorMassage += value + '<br>';
+              			});
+              			 // $('#response').show().html(errors); //this is my div with messages
+              			  $('#json_message').html('<div id="json_message" class="alert alert-danger" align="left"><a href="#" class="close" data-dismiss="alert">&times;</a><strong>'+errorMassage+'</strong></div>');
+              			
+                			
+            		}//end error
+                	
+                    
+                 });
+        });
+
+
 	
 	$('select').chosen();
 	//$.validate();
@@ -507,6 +567,61 @@
 	// 	});
 	// });
 	
+	$('#country').change(function(){
+        var cid = $(this).val();
+        if(cid){
+        $.ajax({
+           type:"get",
+           url: "{{route('uploadCv.getStates')}}"+"/"+cid,
+
+           //url:" url('CV/uploadCv/getStates') /"+cid, **//Please see the note at the end of the post**
+           success:function(res)
+           {       
+               
+                if(res)
+                {
+                    $("#state").empty();
+                   $("#city").empty();
+                    $("#state").append('<option>Select State</option>');
+                    $.each(res,function(key,value){
+                        $("#state").append('<option value="'+key+'">'+value+'</option>');
+                        
+                    });
+                     $('#state').chosen('destroy');
+                     $('#state').chosen();
+
+                }
+           }
+
+        });
+        }
+    });
+
+    $('#state').change(function(){
+        var sid = $(this).val();
+        if(sid){
+        $.ajax({
+           type:"get",
+            url: "{{route('uploadCv.getCities')}}"+"/"+sid,
+           success:function(res)
+           {       
+                if(res)
+                {
+                    $("#city").empty();
+                    $("#city").append('<option>Select City</option>');
+                    $.each(res,function(key,value){
+                        $("#city").append('<option value="'+key+'">'+value+'</option>');
+                    });
+                    $('#city').chosen('destroy');
+                    $('#city').chosen();
+                }
+           }
+
+        });
+        }
+    }); 	
+
+
 	 $("#cv").change(function(){
 	 	var fileType = this.files[0].type;
 	 	var fileSize = this.files[0].size;

@@ -283,7 +283,8 @@ Route::resource('adminInfo/permission','Admin\PermissionController');
 Route::resource('adminInfo/permissionRole','Admin\PermissionRoleController');
 Route::post('adminInfo/deletePermission/{role_id?}/{permission_id?}','Admin\PermissionRoleController@delete')->name('permissionRole.delete');
 
-
+Route::get('/CV/uploadCv/getCities/{id?}','Cv\UploadCvController@getCities')->name('uploadCv.getCities');
+Route::get('/CV/uploadCv/getStates/{id?}','Cv\UploadCvController@getStates')->name('uploadCv.getStates');
 Route::resource('/CV/uploadCv','Cv\UploadCvController');
 Route::resource('/CV/cvServices','Cv\ServicesController');
 Route::resource('/CV/addExpertize','Cv\addExpertizeController');
@@ -296,4 +297,4 @@ Route::resource('/CV/cvDocument','Cv\CVDocumentController');
 
 Route::resource('/submission/addSubmission','Submission\AddController');
 Route::resource ('/submission/participant','Submission\ParticipantController');
-Route::resource ('/submission/attachment','Submission\AttachmentController');
+//Route::resource ('/submission/attachment','Submission\AttachmentController');

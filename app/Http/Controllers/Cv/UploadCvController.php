@@ -41,6 +41,26 @@ class UploadCvController extends Controller
 		//return view ('bio-data.test',compact('genders'));
 		return view ('cv.uploadCv',compact('genders','specializations','degrees','disciplines','stages','memberships','countries'));
 	}
+	public function getStates($id)
+	{
+    
+    $states = DB::table("states")
+                ->where("country_id",$id)
+                ->pluck("name","id");
+    
+    return response()->json($states);
+	}
+
+	public function getCities($id)
+	{
+    
+    $cities = DB::table("cities")
+                ->where("state_id",$id)
+                ->pluck("name","id");
+    
+    return response()->json($cities);
+	}
+
 
 	public function store(cvStore $request){
 		
@@ -98,14 +118,14 @@ class UploadCvController extends Controller
 			}
 
 		//add contact
-			$contact = $request->only('address','city','province','country','email');
+			$contact = $request->only('address','city_id','state_id','country_id','email');
 			$contact['cv_detail_id'] = $cv_id->id;
-			cv_contact::create($contact);
+			$contact = cv_contact::create($contact);
 		
 		//add phone	
 			for ($i=0;$i<count($request->input('phone'));$i++){
 			$phone['phone']= $request->input("phone.$i");
-			$phone['cv_detail_id'] = $cv_id->id;
+			$phone['cv_contact_id'] = $contact->id;
 			cv_phone::create($phone);		
 			}
 
@@ -141,7 +161,9 @@ class UploadCvController extends Controller
 
 		});  //end transaction
 
-		return back()->with('success', 'Data successfully saved');
+		return 'OK';
+
+		//back()->with('success', 'Data successfully saved');
 				
 	}
 
