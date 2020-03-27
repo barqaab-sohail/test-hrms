@@ -43,7 +43,7 @@ class cv_detail extends Model implements Auditable
 
     public function cv_phone()
     {
-        return $this->hasMany('App\models\cv\cv_phone');
+        return $this->hasManyThrough('App\models\cv\cv_phone', 'App\models\cv\cv_contact');
     }
 
     public function cv_contact()

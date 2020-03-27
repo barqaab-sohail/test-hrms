@@ -53,16 +53,7 @@
 	
 								</td>
 								
-								<td>
-								@php
-									foreach ($cvs as $cv){
-	       								$totalAge = \Carbon\Carbon::createFromDate($cv->date_of_birth)->diff(\Carbon\Carbon::now())->format('%y years, %m months');
-	       	
-	       								echo $totalAge;
-	        					    }
-								@endphp
-
-								</td>
+					
 
 								@can('cv_edit')
 								<td>

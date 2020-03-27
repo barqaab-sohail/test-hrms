@@ -285,6 +285,7 @@ Route::post('adminInfo/deletePermission/{role_id?}/{permission_id?}','Admin\Perm
 
 Route::get('/CV/uploadCv/getCities/{id?}','Cv\UploadCvController@getCities')->name('uploadCv.getCities');
 Route::get('/CV/uploadCv/getStates/{id?}','Cv\UploadCvController@getStates')->name('uploadCv.getStates');
+//Route::POST('/CV/uploadCv/{uploadCv}','Cv\UploadCvController@updateCV')->name('uploadCv');
 Route::resource('/CV/uploadCv','Cv\UploadCvController');
 Route::resource('/CV/cvServices','Cv\ServicesController');
 Route::resource('/CV/addExpertize','Cv\addExpertizeController');

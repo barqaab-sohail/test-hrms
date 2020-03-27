@@ -26,7 +26,7 @@
 
 		                <div class="card-body">
 
-		                    <form id="test" action="{{route('uploadCv.update', ['id'=>$cvId->id])}}" method="post" class="form-horizontal form-prevent-multiple-submits" enctype="multipart/form-data">
+		                    <form id="test" method="post" class="form-horizontal form-prevent-multiple-submits" enctype="multipart/form-data">
 		                    @method('PATCH')
 		                        {{csrf_field()}}
 		                        <div class="form-body">
@@ -110,7 +110,13 @@
 		                                    <div class="form-group row">
 		                                        <div class="col-md-12">
 		                                        	<label class="control-label text-right">City</label>
-		                                       		<input type="text"  name="city"  value="{{old('city', $cvId->cv_contact->city)}}"  class="form-control">
+		                                        	<select class="form-control" name="city_id" id="city">
+														@foreach($cities as $city)
+														<option value="{{$city->id}}" {{(old("city_id",$cvId->cv_contact->city_id)==$city->id? "selected" : "")}}>{{$city->name}}</option>
+                                                    @endforeach 	
+                                                    	
+                                                    </select>	
+		
 		                                        </div>
 		                                    </div>
 		                                </div>
@@ -123,7 +129,14 @@
 		                                    <div class="form-group row">
 		                                        <div class="col-md-12">
 		                                        	<label class="control-label text-right">Province</label>
-		                                       		<input type="text"  name="province" value="{{old('province', $cvId->cv_contact->province)}}"  class="form-control">
+		                                       		
+		                                        	<select class="form-control" name="state_id" id="state">
+       												@foreach($states as $state)
+														<option value="{{$state->id}}" {{(old("state_id",$cvId->cv_contact->state_id)==$state->id? "selected" : "")}}>{{$state->name}}</option>
+                                                    @endforeach 	
+       												
+                                                    </select>	
+		                                       		
 		                                        </div>
 		                                    </div>
 		                                </div>
@@ -132,7 +145,15 @@
 		                                    <div class="form-group row">
 		                                        <div class="col-md-12">
 		                                       		<label class="control-label text-right">Country<span class="text_requried">*</span></label><br>
-		                                       		<input type="text"  name="country" data-validation="required" value="{{old('country', $cvId->cv_contact->country)}}" class="form-control" >
+		                                       		
+		                                       		<select  name="country_id" id="country" data-validation="required" class="form-control">
+			                                           	<option value=""></option>
+			                                        @foreach($countries as $country)
+														<option value="{{$country->id}}" {{(old("country_id",$cvId->cv_contact->country_id)==$country->id? "selected" : "")}}>{{$country->name}}</option>
+                                                    @endforeach 	
+                                                    </select> 
+
+		                                       	
 		                                        </div>
 		                                    </div>
 		                                </div>
@@ -466,6 +487,7 @@
 		                                            <input type="text" name="cv_submission_date" value="{{ old('cv_submission_date', $cvId->cv_submission_date) }}" class="form-control" readonly>
 		                                             <br>
 		                                           <i class="fas fa-trash-alt text_requried"></i> 
+		                                           
 		                                        </div>
 		                                    </div>
 		                                </div>
@@ -532,7 +554,7 @@
 		                                <div class="col-md-6">
 		                                    <div class="row"> 
 		                                       <div class="col-md-offset-3 col-md-9">
-		                                            <button type="submit" class="btn btn-success btn-prevent-multiple-submits">Edit</button>
+		                                            <button type="submit" id="submit"  class="btn btn-success btn-prevent-multiple-submits"><i class="fa fa-spinner fa-spin" style="font-size:18px"></i>Edit</button>
 		                                            
 		                                        </div>
 		                                     
@@ -554,23 +576,156 @@
 
 
 <script>
-	$(document).ready(function(){
-	
-	$('select').chosen();
-	$.validate();
-	$('form').on('submit',function(e){
-		$(".required").each(function(){
-			if($(this).val()==''){
-				alert($(this).closest('div').find('label').text()+' value is missing');
-				$(this).closest('div').find('label').append("<br><span style='color:red;'>This Field is required</span>");
+$(document).ready(function(){
+$('.fa-spinner').hide();
+$('#test').on('submit', function(event){
+  event.preventDefault();
+   $('.fa-spinner').show();
+		  $.ajax({
+		   url:"{{ route('uploadCv.update',['uploadCv'=>$cvId->id]) }}",
+		   method:"POST",
+		   data:new FormData(this),
+		   //dataType:'JSON',
+		   contentType: false,
+		   cache: false,
+		   processData: false,
+		   success:function(data)
+			   {
+			    $('#json_message').html('<div id="json_message" class="alert alert-success" align="left"><a href="#" class="close" data-dismiss="alert">&times;</a><strong>Data Successfully Entered</strong></div>');
+                $('html,body').scrollTop(0);
+                $('.fa-spinner').hide();
+                //console.log(data);
+               
+			   },
+			error: function (request, status, error) {
+                        var test = request.responseJSON // this object have two more objects one is errors and other is message.
+                        
+                        var errorMassage = '';
 
-				e.preventDefault();
-			}else
-			{
-				return true;
-			}
-		});
-	 });
+                        //now saperate only errors object values from test object and store in variable errorMassage;
+                        $.each(test.errors, function (key, value){
+                          errorMassage += value + '<br>';
+                        });
+                         
+                        $('#json_message').html('<div id="json_message" class="alert alert-danger" align="left"><a href="#" class="close" data-dismiss="alert">&times;</a><strong>'+errorMassage+'</strong></div>');
+                        $('html,body').scrollTop(0);
+                        $('.fa-spinner').hide();
+                        
+                            
+                    }//end error
+		  })
+ 	});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	$('select').chosen();
+	// $.validate();
+	// $('form').on('submit',function(e){
+	// 	$(".required").each(function(){
+	// 		if($(this).val()==''){
+	// 			alert($(this).closest('div').find('label').text()+' value is missing');
+	// 			$(this).closest('div').find('label').append("<br><span style='color:red;'>This Field is required</span>");
+
+	// 			e.preventDefault();
+	// 		}else
+	// 		{
+	// 			return true;
+	// 		}
+	// 	});
+	//  });
+
+		$('#country').change(function(){
+        var cid = $(this).val();
+        if(cid){
+        $.ajax({
+           type:"get",
+           url: "{{route('uploadCv.getStates')}}"+"/"+cid,
+
+           //url:" url('CV/uploadCv/getStates') /"+cid, **//Please see the note at the end of the post**
+           success:function(res)
+           {       
+               
+                if(res)
+                {
+                   $("#state").empty();
+                    $("#state").append('<option>Select State</option>');
+                    $.each(res,function(key,value){
+                        $("#state").append('<option value="'+key+'">'+value+'</option>');
+                        
+                    });
+                     $('#state').chosen('destroy');
+                     $('#state').chosen();
+
+                    $("#city").empty();
+                    $("#city").append('<option>Select City</option>');
+                    $('#city').chosen('destroy');
+                    $('#city').chosen();
+
+                }
+           }
+
+        });
+        }
+    });
+
+    $('#state').change(function(){
+        var sid = $(this).val();
+        if(sid){
+        $.ajax({
+           type:"get",
+            url: "{{route('uploadCv.getCities')}}"+"/"+sid,
+           success:function(res)
+           {       
+                if(res)
+                {
+                    $("#city").empty();
+                    $("#city").append('<option>Select City</option>');
+                    $.each(res,function(key,value){
+                        $("#city").append('<option value="'+key+'">'+value+'</option>');
+                    });
+                    $('#city').chosen('destroy');
+                    $('#city').chosen();
+                }
+           }
+
+        });
+        }
+    }); 	
+
+
+    
+
+
+
+
 	
 	 $("#cv").change(function(){
 	 	var fileType = this.files[0].type;

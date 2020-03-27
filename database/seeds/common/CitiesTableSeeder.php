@@ -48394,6 +48394,9 @@ array('name' => "Lewisburg",'state_id' => 3976),
 array('name' => "Ravenswood",'state_id' => 3976),
 array('name' => "Summersville",'state_id' => 3976),
 		);
-        DB::table('cities')->insert($cities8);
+        DB::table('cities')->insert($cities);
+        DB::table('cities')->where('id', '>=', 31329)->increment('state_id');
+
     }
+    
 }

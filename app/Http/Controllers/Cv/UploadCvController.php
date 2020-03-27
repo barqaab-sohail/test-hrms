@@ -17,12 +17,15 @@ use App\models\cv\cv_discipline;
 use App\models\cv\cv_stage;
 use App\country;
 use App\models\common\hr_education;
+use App\models\common\state;
+use App\models\common\city;
 use App\models\cv\cv_membership;
 use App\Helper\DocxConversion;
 use Spatie\PdfToText\Pdf;
 use App\Http\Requests\cv\cvStore;
 use App\Http\Requests\cv\cvEditStore;
 use DB;
+use Storage;
 use App\sessions;
 
 class UploadCvController extends Controller
@@ -37,9 +40,10 @@ class UploadCvController extends Controller
 		$disciplines = cv_discipline::all();
 		$stages = cv_stage::all();
 		$memberships = cv_membership::all();
+		$today = \Carbon\Carbon::today();
 
 		//return view ('bio-data.test',compact('genders'));
-		return view ('cv.uploadCv',compact('genders','specializations','degrees','disciplines','stages','memberships','countries'));
+		return view ('cv.uploadCv',compact('genders','specializations','degrees','disciplines','stages','memberships','countries','today'));
 	}
 	public function getStates($id)
 	{
@@ -168,7 +172,7 @@ class UploadCvController extends Controller
 	}
 
 	public function index (){
-       $cvs = cv_detail::with('cv_phone','cv_contact')->get();
+       $cvs = cv_detail::with('cv_contact')->get();
        
         return view('cv.listOfCvs', compact('cvs'));
 
@@ -182,9 +186,14 @@ class UploadCvController extends Controller
 		$disciplines = cv_discipline::all();
 		$stages = cv_stage::all();
 		$memberships = cv_membership::all();
-		$cvId = cv_detail::find($id);
 
-        return view ('cv.editUploadCv',compact('genders','specializations','degrees','disciplines','stages','memberships','cvId'));
+		$countries = country::all();
+		$today = \Carbon\Carbon::today();
+		$cvId = cv_detail::find($id);
+		$states = state::where('country_id', $cvId->cv_contact->country_id)->get();
+		$cities = city::where('state_id', $cvId->cv_contact->state_id)->get();
+
+        return view ('cv.editUploadCv',compact('genders','specializations','degrees','disciplines','stages','memberships','countries','states','cities','today','cvId'));
     }
 
     public function update(cvEditStore $request, $id){
@@ -214,25 +223,27 @@ class UploadCvController extends Controller
 
 
 	    	//update phone	
-	    	if(count($request->input('phone'))==cv_phone::where('cv_detail_id',$id)->count())
+	    	if(count($request->input('phone'))==cv_phone::where('cv_contact_id',$id)->count())
 	    	{
 		    	foreach($request->input('phone') as $num){
+		    		
 		    		foreach ($num as $key =>$phone){
 		    		
 		    		$data ['phone'] = $phone;
-		    		$data ['cv_detail_id'] = $id;
+		    		$data['cv_contact_id'] = $contactId->id;
 		    		$key=trim($key,"'");
+
 					cv_phone::findOrFail($key)->update($data);
 					
 					}
 		    	}
 		    }else{
-		    	cv_phone::where('cv_detail_id',$id)->delete();
+		    	cv_phone::where('cv_contact_id',$id)->delete();
 			    	foreach($request->input('phone') as $num){
 			    		foreach ($num as $key =>$phone){
 			    		$key=trim($key,"'");
 			    		$data ['phone'] = $phone;
-			    		$data ['cv_detail_id'] = $id;
+			    		$data['cv_contact_id'] = $contactId->id;
 						cv_phone::create($data);
 						}
 			    	}
@@ -365,8 +376,9 @@ class UploadCvController extends Controller
 
 
 		});	//end transaction
-
-    	return back()->with('success', 'Data successfully updated');
+		$ccc = count($request->input('phone'));
+    	return 'OK';
+    	//back()->with('success', 'Data successfully updated');
 
     }
 

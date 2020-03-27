@@ -26,7 +26,7 @@
 
 		                <div class="card-body">
 
-		                    <form id="test" action="{{route('uploadCv.store')}}" method="post" class="form-horizontal form-prevent-multiple-submits" enctype="multipart/form-data">
+		                    <form id="test" method="post" class="form-horizontal form-prevent-multiple-submits" enctype="multipart/form-data">
 		                        {{csrf_field()}}
 		                        <div class="form-body">
 		                            
@@ -107,8 +107,8 @@
 		                                <!--/span 2-2 -->
 		                                <div class="col-md-3">
 		                                    <div class="form-group row">
-		                                        <div class="col-md-12">
-		                                        	<label class="control-label text-right">City</label>
+		                                        <div class="col-md-12 required">
+		                                        	<label class="control-label text-right">City<span class="text_requried">*</span></label>
 		                                       		 <select class="form-control" name="city_id" id="city">
       												  </select>
 
@@ -125,21 +125,21 @@
 		                            <!--/span 3-1 -->
 		                           		<div class="col-md-3">
 		                                    <div class="form-group row">
-		                                        <div class="col-md-12 remove_phone_div">
-		                                        	<label class="control-label text-right">Province</label>
+		                                        <div class="col-md-12 required">
+		                                        	<label class="control-label text-right">Province<span class="text_requried">*</span></label>
 		                                       		<select class="form-control" name="state_id" id="state">
        												</select>
 
-		                                       		<!-- <input type="text"  name="province" value="{{ old('province') }}"  class="form-control"> -->
+		                             
 		                                        </div>
 		                                    </div>
 		                                </div>
 		                                <!--/span 3-2 -->
 		                                <div class="col-md-3">   	
 		                                    <div class="form-group row">
-		                                        <div class="col-md-12 remove_phone_div">
+		                                        <div class="col-md-12">
 		                                       		<label class="control-label text-right">Country<span class="text_requried">*</span></label><br>
-		                                       		<select  name="country_id" id="country" class="form-control" required>
+		                                       		<select  name="country_id" id="country" data-validation="required" class="form-control">
 			                                           	<option value=""></option>
 			                                        @foreach($countries as $country)
 														<option value="{{$country->id}}" {{(old("country_id")==$country->id? "selected" : "")}}>{{$country->name}}</option>
@@ -394,7 +394,7 @@
 		                                        <div class="col-md-12 required">
 		                                        	<label for="barqaab_employment" class="control-label">BARQAAB Employee<span class="text_requried">*</span></label>
 
-		                                        	<select  name="barqaab_employment" class="form-control " >
+		                                        	<select  id="bqb" name="barqaab_employment" class="form-control " >
 
                                                         <option value="">'</option>
                                                         <option value="1" {{(old("barqaab_employment")=="1"? "selected":"")}}>Yes</option>
@@ -473,7 +473,7 @@
 		                                <div class="col-md-6">
 		                                    <div class="row"> 
 		                                       <div class="col-md-offset-3 col-md-9">
-		                                            <button type="submit" id="submit" class="btn btn-success btn-prevent-multiple-submits">Upload</button>
+		                                            <button type="submit" id="submit" disabled class="btn btn-success btn-prevent-multiple-submits"><i class="fa fa-spinner fa-spin" style="font-size:18px"></i>Upload</button>
 		                                            
 		                                        </div>
 		                                     
@@ -494,79 +494,103 @@
 	
 
 <script>
-//https://stackoverflow.com/questions/50660303/how-to-save-multiple-input-and-files-using-ajax-and-laravel-5-6
-	$(document).ready(function(){
-		jQuery('#submit').click(function(e){
-               e.preventDefault();
-                
- 				//formData.append('FormInputs', FormInputs);
-               //console.log($('#test').serialize());
-                let FormInputs = $("#test").serializeArray();
-                // formData.append('FormInputs', FormInputs);
-                let formData = new FormData();
- 				let logo = $("#cv")[0].files[0];
- 				 //console.log(logo);
- 				
-				 jQuery.each(FormInputs, function (i, field) {
-				        formData.append(field.name, field.value);
-				 });
-				 formData.append('cv', logo);
-               
 
-               jQuery.ajaxSetup({
-                  headers: {
-                      'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
-                  }
-              });
-              	jQuery.ajax({
-                  url: "{{route('uploadCv.store')}}",
-                  method: 'post',
-                  datatype: 'JSON',
-                  processData: false,
-        			contentType: false,
-                  data: formData,
+$(document).ready(function(){
+//$.validate();
+$('.fa-spinner').hide();
+ $('#submit').on('click', function(event){
+//   event.preventDefault();
+//    $('.fa-spinner').show();
+  $.validate({
+    form : '#test',
+    modules : 'security',
+    // onError : function($form) {
+    //   alert('Validation of form '+$form.attr('id')+' failed!');
+    // },
+    onSuccess : function($form) {		
 
-                  	success: function(data){
 
-                	},
-                	error: function (request, status, error) {
-                		var test = request.responseJSON // this object have two further objects errors and message.
-                		var errorMassage = '';
 
-                		//now saperate only errors value from test object and store in variable errorMassage;
-                		$.each(test.errors, function (key, value){
-              		      errorMassage += value + '<br>';
-              			});
-              			 // $('#response').show().html(errors); //this is my div with messages
-              			  $('#json_message').html('<div id="json_message" class="alert alert-danger" align="left"><a href="#" class="close" data-dismiss="alert">&times;</a><strong>'+errorMassage+'</strong></div>');
-              			
-                			
-            		}//end error
-                	
-                    
-                 });
-        });
+    		$.ajaxSetup({
+                    headers: {
+                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    }
+            });
+		  $.ajax({
+		   url:"{{ route('uploadCv.store') }}",
+		   method:"POST",
+		   data:new FormData(this),
+		   //dataType:'JSON',
+		   contentType: false,
+		   cache: false,
+		   processData: false,
+		   success:function(data)
+			   {
+			    $('#json_message').html('<div id="json_message" class="alert alert-success" align="left"><a href="#" class="close" data-dismiss="alert">&times;</a><strong>Data Successfully Entered</strong></div>');
+                $('html,body').scrollTop(0);
+                $('.fa-spinner').hide();
+                resetForm();
+			   },
+			error: function (request, status, error) {
+                        var test = request.responseJSON // this object have two more objects one is errors and other is message.
+                        
+                        var errorMassage = '';
 
+                        //now saperate only errors object values from test object and store in variable errorMassage;
+                        $.each(test.errors, function (key, value){
+                          errorMassage += value + '<br>';
+                        });
+                         
+                        $('#json_message').html('<div id="json_message" class="alert alert-danger" align="left"><a href="#" class="close" data-dismiss="alert">&times;</a><strong>'+errorMassage+'</strong></div>');
+                        $('html,body').scrollTop(0);
+                        $('.fa-spinner').hide();
+                        
+                            
+                    }//end error
+		  })
+		}
+ 	});
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// var today = "{{$today}}";
+	//  function backToDate(date,Num=0){
+ //        var months = {January: 1, February: 2, March:3, April:4, May:5, June:6, July:7, August:8, September:9, October:10, November:11, December:12};
+
+ //        var split_dt = dateT.split("-");
+ //        var year = split_dt[2];
+ //        var month = split_dt[1];
+ //        month = months[month];
+ //        var day = split_dt[0].split(',');
+ //        day = day[1].trim();
+ //        var date2 = new Date(Number(year)+Num, month-1, day);
+ //        return date2;
+ //    }
+	// console.log(today);
+	// var dateT = 'Wednesday, 22-March-2003';
+	// console.log(backToDate(dateT, 10));
 
 	
+
+	
+	
+
 	$('select').chosen();
-	//$.validate();
-	// $('#test').on('submit',function(e){
-	// 	$(".required").each(function(){
-	// 		if($(this).find('select').children("option:selected").val() ==''){
-	// 			$(this).find('.chosen-container').css('border', '1px solid red');
-	// 			//alert($(this).closest('div').find('label').text()+' value is missing');
-	// 			//$(this).closest('div').find('label').append("<br><span style='color:red;'>This Field is required</span>");
-	// 			e.preventDefault();
-	// 		}else if ($(this).find('select').children("option:selected").val() !=''){
-	// 			$(this).find('.chosen-container').css('border', '');
-	// 		}else{
-	// 			return true;
-	// 		}
 
-	// 	});
-	// });
-	
 	$('#country').change(function(){
         var cid = $(this).val();
         if(cid){
@@ -621,6 +645,31 @@
         }
     }); 	
 
+	
+	
+	// $('#test').on('submit',function(e){
+	// 	$(".required").each(function(){
+	// 		if($(this).find('select').children("option:selected").val() ==''){
+	// 			$(this).find('.chosen-container').css('border', '1px solid red');
+	// 			e.preventDefault();
+	// 		}else if ($(this).find('select').children("option:selected").val() !=''){
+	// 			$(this).find('.chosen-container').css('border', '');
+	// 		}else{
+
+	// 			return true;
+	// 		}
+
+	// 	});
+	// });
+	
+	
+
+	
+
+	
+	
+	
+	
 
 	 $("#cv").change(function(){
 	 	var fileType = this.files[0].type;
@@ -687,7 +736,7 @@
 			$('.education').find('select').chosen('destroy');
 		   	var clone = $("#edu_1").clone();
 		  	clone.prop('id','edu_'+nextindex).find('input:text').val('');
-		   	clone.find("#add").html('X').prop("class", "btn btn-danger remove_edu");
+		   	clone.find("#add").html('X').prop("class", "btn btn-danger remove remove_edu");
 		   	clone.insertAfter("div.education:last");
 			$('.education').find('select').chosen();
 		   
@@ -716,7 +765,7 @@
 			$('.specialization').find('select').chosen('destroy');
 		   	var $clone = $("#spe_1").clone();
 		  	$clone.prop('id','spe_'+nextindex).find('input:text').val('');
-		   	$clone.find("#add_spe").html('X').prop("class", "btn btn-danger remove_spe");
+		   	$clone.find("#add_spe").html('X').prop("class", "btn btn-danger remove remove_spe");
 		   	$clone.insertAfter("div.specialization:last");
 		   	$('.specialization').find('select').chosen();
 		  }
@@ -744,7 +793,7 @@
 		   //Clone specialization div and copy
 		   	var $clone = $("#skill_1").clone();
 		  	$clone.prop('id','skill_'+nextindex).find('input:text').val('');
-		   	$clone.find("#add_skill").html('X').prop("class", "btn btn-danger remove_skill");
+		   	$clone.find("#add_skill").html('X').prop("class", "btn btn-danger remove remove_skill");
 		   	$clone.insertAfter("div.skill:last");
 		  }
 		 
@@ -772,7 +821,7 @@
 		   $('.membership').find('select').chosen('destroy');
 		   	var $clone = $("#membership_1").clone();
 		  	$clone.prop('id','membership_'+nextindex).find('input:text').val('');
-		   	$clone.find("#add_mem").html('X').prop("class", "btn btn-danger remove_membership");
+		   	$clone.find("#add_mem").html('X').prop("class", "btn btn-danger remove remove_membership");
 		   	$clone.find('.remove_div').remove();
 		   	$clone.insertAfter("div.membership:last");
 		   	$('.membership').find('select').chosen();
@@ -801,7 +850,7 @@
 		   //Clone specialization div and copy
 		   	var $clone = $("#phone_1").clone();
 		  	$clone.prop('id','phone'+nextindex).find('input:text').val('');
-		   	$clone.find("#add_phone").html('X').prop("class", "btn btn-danger remove_phone");
+		   	$clone.find("#add_phone").html('X').prop("class", "btn btn-danger remove remove_phone");
 		   	$clone.find('.remove_phone_div').remove();
 		   	$clone.insertAfter("div.phone:last");
 		  }

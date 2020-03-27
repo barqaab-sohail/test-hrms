@@ -120,10 +120,25 @@
 
 })();
 
+function resetForm(){
+    $(':input','form')
+                     .not(':button, :submit, :reset, :hidden')
+                     .val('')
+                     .removeAttr('checked')
+                     .removeAttr('selected');
+    
+     $('select').val('').trigger('chosen:updated');
+    $('.remove').click();
+    $('input').removeClass('valid');
+    $('input').removeClass('error');
+    $("input[style='border-color: rgb(185, 74, 72);']").css('border-color','').siblings("span").attr('class','help-block').remove();
+
+}
+
 
    
     $(document).ready(function() {
-
+        
 
        var role = "{{Auth::User()->getRoleNames()->first()}}";
 
@@ -169,6 +184,7 @@
         }
         });*/
       
+   
 
       
 
