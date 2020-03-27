@@ -61,6 +61,11 @@
     <!-- end - This is for datatabe Fixed Columns only -->
    
 </head>
+<style>
+thead th {
+  font-weight: bold;
+}
+</style>
 
 <body class="fix-header fix-sidebar card-no-border">
 <!-- ============================================================== -->

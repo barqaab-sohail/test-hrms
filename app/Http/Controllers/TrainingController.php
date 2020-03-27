@@ -8,6 +8,8 @@ use App\User;
 use App\employee;
 use App\country;
 use App\training;
+use App\publication;
+use App\education;
 use DB;
 
 
@@ -40,7 +42,8 @@ class TrainingController extends Controller
         }
 
         training::create($data);
-        return redirect()->route('training.create')->with('success', 'Data is saved succesfully');
+
+        return back()->with('success', 'Data successfully saved');
     }
 
     public function edit($id){
@@ -49,8 +52,12 @@ class TrainingController extends Controller
         $countries = country::all();
         $employee = employee::find(session('employee_id'));
         $trainingIds = training::all()->where('employee_id', session('employee_id'));
+        $educationIds = education::all()->where('employee_id', session('employee_id'));
+        $publicationIds = publication::all()->where('employee_id', session('employee_id'));
+
+        return view ('hr.education.education',compact('data','employee','educationIds','countries','trainingIds','publicationIds'));
        
-        return view ('hr.training.editTraining',compact('data','employee','trainingIds','countries'));
+        //return view ('hr.training.editTraining',compact('data','employee','trainingIds','countries'));
     }
     
     public function update(StoreTraining $request, $id)
@@ -65,12 +72,11 @@ class TrainingController extends Controller
         }
     
     training::findOrFail($id)->update($data);
-     return redirect()->route('training.edit',['id'=>$id])->with('success', 'training is updated succesfully');
-    }
+     return back()->with('success', 'Data successfully updated');    }
 
     public function destroy(Request $request, $id)
     {
     training::findOrFail($id)->delete(); 
-    return redirect()->route('training.create')->with('success', 'Training is deleted succesfully');
+   return back()->with('success', 'Data successfully deleted');
     }
 }

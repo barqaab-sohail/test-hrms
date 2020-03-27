@@ -473,7 +473,7 @@
 		                                <div class="col-md-6">
 		                                    <div class="row"> 
 		                                       <div class="col-md-offset-3 col-md-9">
-		                                            <button type="submit" id="submit" disabled class="btn btn-success btn-prevent-multiple-submits"><i class="fa fa-spinner fa-spin" style="font-size:18px"></i>Upload</button>
+		                                            <button type="submit" id="submit" class="btn btn-success btn-prevent-multiple-submits"><i class="fa fa-spinner fa-spin" style="font-size:18px"></i>Upload</button>
 		                                            
 		                                        </div>
 		                                     
@@ -498,24 +498,10 @@
 $(document).ready(function(){
 //$.validate();
 $('.fa-spinner').hide();
- $('#submit').on('click', function(event){
-//   event.preventDefault();
-//    $('.fa-spinner').show();
-  $.validate({
-    form : '#test',
-    modules : 'security',
-    // onError : function($form) {
-    //   alert('Validation of form '+$form.attr('id')+' failed!');
-    // },
-    onSuccess : function($form) {		
-
-
-
-    		$.ajaxSetup({
-                    headers: {
-                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                    }
-            });
+ 	$('#test').on('submit', function(event){
+   	event.preventDefault();
+    $('.fa-spinner').show();
+ 
 		  $.ajax({
 		   url:"{{ route('uploadCv.store') }}",
 		   method:"POST",
@@ -547,10 +533,10 @@ $('.fa-spinner').hide();
                         
                             
                     }//end error
-		  })
-		}
- 	});
-});
+		}); //end ajax
+	
+ 	}); //end submit
+
 
 
 

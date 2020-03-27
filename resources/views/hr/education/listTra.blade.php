@@ -1,6 +1,4 @@
-	                    <br>
-			                    <hr>
-			                    <br>
+       
 		<div class="card">
 		<div class="card-body">
 			<!--<div class="float-right">
@@ -8,21 +6,17 @@
 			</div>-->
 			<h2 class="card-title">Training Detail</h2>
 			
-			<div class="table-responsive m-t-40">
+			<div class="table-responsive">
 				
-				<table id="myTable" class="table table-bordered table-striped" width="100%" cellspacing="0">
+				<table id="myTable" class="table-danger table-bordered table-striped" width="100%" cellspacing="0">
 					<thead>
 					
 					<tr>
 						<th>Title</th>
 						<th>Country</th>
 						<th>From</th>
-						<th>To</th>
-						  
- 
-<th colspan="2" style="text-align: center;"> Actions </th> 
- 
-
+						<th>To</th>  
+ 						<th colspan="2" class="text-center"style="width:10%">Actions</th> 
 					</tr>
 					</thead>
 					<tbody>
@@ -32,14 +26,12 @@
 								<td>{{$trainingId->country->name}}</td>
 								<td>{{$trainingId->from}}</td>
 								<td>{{$trainingId->to}}</td>
-								<td>
-								 
  
 
-								<td>
+								<td class="text-center">
 								 <a class="btn btn-info btn-sm" href="{{route('training.edit',['id'=>$trainingId->id])}}" data-toggle="tooltip" data-original-title="Edit"> <i class="fas fa-pencil-alt text-white "></i></a>
 								 </td>
-								 <td>
+								 <td class="text-center">
 								 @can('hr_edit_record')
 								 <form action="{{route('training.destroy',['id'=>$trainingId->id])}}" method="POST">
 								 @method('DELETE')
@@ -62,3 +54,4 @@
 			</div>
 		</div>
 	</div>
+	<hr>

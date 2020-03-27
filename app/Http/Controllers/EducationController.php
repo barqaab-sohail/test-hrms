@@ -6,6 +6,8 @@ use App\Http\Requests\StoreEducation;
 use App\User;
 use App\employee;
 use App\education;
+use App\training;
+use App\publication;
 use App\country;
 
 use DB;
@@ -22,15 +24,17 @@ class EducationController extends Controller
         $employee = employee::find(session('employee_id'));
         $countries = country::all();
         $educationIds = education::all()->where('employee_id', session('employee_id'));
+        $trainingIds = training::all()->where('employee_id', session('employee_id'));
+        $publicationIds = publication::all()->where('employee_id', session('employee_id'));
         $employees = employee::all();
-        return view ('hr.education.education',compact('employee','employees','educationIds','countries'));
+        return view ('hr.education.education',compact('employee','employees','educationIds','countries','trainingIds','publicationIds'));
     }
 
 	public function store(StoreEducation $request){
         
         $data = $request->all();
         Education::create($data);
-        return redirect()->route('education.create')->with('success', 'Data is saved succesfully');
+        return back()->with('success', 'Data successfully saved');
     }
 
     public function edit($id){
@@ -39,8 +43,10 @@ class EducationController extends Controller
         $countries = country::all();
         $employee = employee::find(session('employee_id'));
         $educationIds = education::all()->where('employee_id', session('employee_id'));
+        $trainingIds = training::all()->where('employee_id', session('employee_id'));
+        $publicationIds = publication::all()->where('employee_id', session('employee_id'));
        
-        return view ('hr.education.editEducation',compact('data','employee','educationIds','countries'));
+        return view ('hr.education.education',compact('data','employee','educationIds','countries','trainingIds','publicationIds'));
     }
     
     public function update(StoreEducation $request, $id)
@@ -49,13 +55,13 @@ class EducationController extends Controller
         //$data ['from']= \Carbon\Carbon::parse($request->from)->format('Y-m-d');
        
      Education::findOrFail($id)->update($data);
-     return redirect()->route('education.edit',['id'=>$id])->with('success', 'Education is updated succesfully');
+     return back()->with('success', 'Data successfully Updated');
     }
 
     public function destroy(Request $request, $id)
     {
     Education::findOrFail($id)->delete(); 
-    return redirect()->route('education.create')->with('success', 'Education is deleted succesfully');
+    return back()->with('success', 'Data successfully deleted');
     
     }
 

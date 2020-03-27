@@ -171,8 +171,21 @@ function resetForm(){
 
 
         $('[id^=hideDiv]').hide();
-                $('#hideButton').click(function(){
-                    $('[id^=hideDiv]').toggle();
+
+         $('#hideButton').click (function (){
+
+            $('#hideDiv').toggle();
+        });
+        
+        $('#EduButton, #TraButton, #PubButton').each(function(){
+
+                $(this).on("click", function(){
+                    var id = '#hideDiv' +$(this).prop('id');
+                     $(id).toggle();
+                     $('.editDiv').hide();
+                    $('.hide').not(id).hide();
+                   
+                });
 
         });
         

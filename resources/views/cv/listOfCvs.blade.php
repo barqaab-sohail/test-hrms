@@ -25,7 +25,6 @@
 						<th>Contact No.</th>
 						<th>CNIC</th>
 						<th>Total Experience</th>
-						<th>Age</th>
 						<th> Actions </th>
 						<th></th>
 					</tr>

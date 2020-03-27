@@ -1,6 +1,5 @@
-	                    <br>
-			                    <hr>
-			                    <br>
+
+<hr>         
 		<div class="card">
 		<div class="card-body">
 			<!--<div class="float-right">
@@ -9,19 +8,19 @@
 		
 			<h2 class="card-title">Education Detail</h2>
 			
-			<div class="table-responsive m-t-40">
+			<div class="table-responsive">
 				
-				<table id="myTable" class="table table-bordered table-striped" width="100%" cellspacing="0">
+				<table id="myTable" class="table-primary table-bordered table-striped" width="100%" cellspacing="0">
 					<thead>
 					
-					<tr>
+					<tr >
 						<th>Degree Name</th>
 						<th>Institute</th>
 						<th>Completion Year</th>
 						<th>Grade</th>
 						 
  
-<th colspan="2"> Actions </th> 
+						<th colspan="2" class="text-center"style="width:10%"> Actions </th> 
  
 
 					</tr>
@@ -37,10 +36,10 @@
 								 
  
 
-								 <td>
+								 <td class="text-center">
 								 <a class="btn btn-info btn-sm" href="{{route('education.edit',['id'=>$educationId->id])}}" data-toggle="tooltip" data-original-title="Edit"> <i class="fas fa-pencil-alt text-white "></i></a>
 								 </td>
-								 <td>
+								 <td class="text-center">
 								 @can('hr_edit_record')
 								 <form action="{{route('education.destroy',['id'=>$educationId->id])}}" method="POST">
 								 @method('DELETE')
@@ -63,3 +62,4 @@
 			</div>
 		</div>
 	</div>
+	<hr>  
