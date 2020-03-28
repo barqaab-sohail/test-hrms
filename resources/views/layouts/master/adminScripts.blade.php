@@ -135,6 +135,41 @@ function resetForm(){
 
 }
 
+function submitFormAjax(form, url,reset=0){
+      $.ajax({
+           url:url,
+           method:"POST",
+           data:new FormData(form),
+           //dataType:'JSON',
+           contentType: false,
+           cache: false,
+           processData: false,
+           success:function(data)
+               {
+                $('#json_message').html('<div id="json_message" class="alert alert-success" align="left"><a href="#" class="close" data-dismiss="alert">&times;</a><strong>Data Successfully Entered</strong></div>');
+                $('html,body').scrollTop(0);
+                $('.fa-spinner').hide();
+                    if(reset===0){resetForm();}
+               },
+            error: function (request, status, error) {
+                        var test = request.responseJSON // this object have two more objects one is errors and other is message.
+                        
+                        var errorMassage = '';
+
+                        //now saperate only errors object values from test object and store in variable errorMassage;
+                        $.each(test.errors, function (key, value){
+                          errorMassage += value + '<br>';
+                        });
+                         
+                        $('#json_message').html('<div id="json_message" class="alert alert-danger" align="left"><a href="#" class="close" data-dismiss="alert">&times;</a><strong>'+errorMassage+'</strong></div>');
+                        $('html,body').scrollTop(0);
+                        $('.fa-spinner').hide();
+                        
+                            
+                    }//end error
+        }); //end ajax
+}
+
 
    
     $(document).ready(function() {

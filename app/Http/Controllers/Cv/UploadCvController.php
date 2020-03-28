@@ -215,7 +215,7 @@ class UploadCvController extends Controller
 	    	cv_detail::findOrFail($id)->update($input);
 
 	    	//update Contact
-			$contact = $request->only('address','city','province','country','email');
+			$contact = $request->only('address','city_id','state_id','country_id','email');
 			$contact['cv_detail_id'] = $id;
 			$contactId = cv_contact::where('cv_detail_id',$id)->first();
 			

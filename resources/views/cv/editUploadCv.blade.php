@@ -578,43 +578,17 @@
 <script>
 $(document).ready(function(){
 $('.fa-spinner').hide();
-$('#test').on('submit', function(event){
-  event.preventDefault();
-   $('.fa-spinner').show();
-		  $.ajax({
-		   url:"{{ route('uploadCv.update',['uploadCv'=>$cvId->id]) }}",
-		   method:"POST",
-		   data:new FormData(this),
-		   //dataType:'JSON',
-		   contentType: false,
-		   cache: false,
-		   processData: false,
-		   success:function(data)
-			   {
-			    $('#json_message').html('<div id="json_message" class="alert alert-success" align="left"><a href="#" class="close" data-dismiss="alert">&times;</a><strong>Data Successfully Entered</strong></div>');
-                $('html,body').scrollTop(0);
-                $('.fa-spinner').hide();
-                //console.log(data);
-               
-			   },
-			error: function (request, status, error) {
-                        var test = request.responseJSON // this object have two more objects one is errors and other is message.
-                        
-                        var errorMassage = '';
 
-                        //now saperate only errors object values from test object and store in variable errorMassage;
-                        $.each(test.errors, function (key, value){
-                          errorMassage += value + '<br>';
-                        });
-                         
-                        $('#json_message').html('<div id="json_message" class="alert alert-danger" align="left"><a href="#" class="close" data-dismiss="alert">&times;</a><strong>'+errorMassage+'</strong></div>');
-                        $('html,body').scrollTop(0);
-                        $('.fa-spinner').hide();
-                        
-                            
-                    }//end error
-		  })
- 	});
+
+
+$('#test').on('submit', function(event){
+ 	event.preventDefault();
+	url="{{route('uploadCv.update',['uploadCv'=>$cvId->id])}}";
+	$('.fa-spinner').show();
+	
+   	submitFormAjax(this, url,1);
+		 
+});
 
 
 
