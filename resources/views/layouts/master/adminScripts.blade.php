@@ -149,6 +149,7 @@ function submitFormAjax(form, url,reset=0){
                 $('#json_message').html('<div id="json_message" class="alert alert-success" align="left"><a href="#" class="close" data-dismiss="alert">&times;</a><strong>Data Successfully Entered</strong></div>');
                 $('html,body').scrollTop(0);
                 $('.fa-spinner').hide();
+                console.log(data);
                     if(reset===0){resetForm();}
                },
             error: function (request, status, error) {

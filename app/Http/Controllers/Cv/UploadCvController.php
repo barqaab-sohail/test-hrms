@@ -223,7 +223,7 @@ class UploadCvController extends Controller
 
 
 	    	//update phone	
-	    	if(count($request->input('phone'))==cv_phone::where('cv_contact_id',$id)->count())
+	    	if(count($request->input('phone'))==cv_phone::where('cv_contact_id',$contactId->id)->count())
 	    	{
 		    	foreach($request->input('phone') as $num){
 		    		
@@ -238,7 +238,7 @@ class UploadCvController extends Controller
 					}
 		    	}
 		    }else{
-		    	cv_phone::where('cv_contact_id',$id)->delete();
+		    	cv_phone::where('cv_contact_id',$contactId->id)->delete();
 			    	foreach($request->input('phone') as $num){
 			    		foreach ($num as $key =>$phone){
 			    		$key=trim($key,"'");

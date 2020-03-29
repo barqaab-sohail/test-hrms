@@ -110,7 +110,8 @@
 		                                    <div class="form-group row">
 		                                        <div class="col-md-12">
 		                                        	<label class="control-label text-right">City</label>
-		                                        	<select class="form-control" name="city_id" id="city">
+		                                        	<select class="form-control" name="city_id" data-placeholder="First Select Province" id="city">
+		                                        	<option value=""></option>
 														@foreach($cities as $city)
 														<option value="{{$city->id}}" {{(old("city_id",$cvId->cv_contact->city_id)==$city->id? "selected" : "")}}>{{$city->name}}</option>
                                                     @endforeach 	
@@ -130,7 +131,8 @@
 		                                        <div class="col-md-12">
 		                                        	<label class="control-label text-right">Province</label>
 		                                       		
-		                                        	<select class="form-control" name="state_id" id="state">
+		                                        	<select class="form-control" name="state_id" data-placeholder="First Select Country" id="state">
+		                                        	<option value="">'</option>
        												@foreach($states as $state)
 														<option value="{{$state->id}}" {{(old("state_id",$cvId->cv_contact->state_id)==$state->id? "selected" : "")}}>{{$state->name}}</option>
                                                     @endforeach 	
@@ -650,7 +652,7 @@ $('#test').on('submit', function(event){
                 if(res)
                 {
                    $("#state").empty();
-                    $("#state").append('<option>Select State</option>');
+                    $("#state").append('<option value="">Select State</option>');
                     $.each(res,function(key,value){
                         $("#state").append('<option value="'+key+'">'+value+'</option>');
                         
@@ -681,7 +683,7 @@ $('#test').on('submit', function(event){
                 if(res)
                 {
                     $("#city").empty();
-                    $("#city").append('<option>Select City</option>');
+                    $("#city").append('<option value="">Select City</option>');
                     $.each(res,function(key,value){
                         $("#city").append('<option value="'+key+'">'+value+'</option>');
                     });

@@ -108,8 +108,8 @@
 		                                <div class="col-md-3">
 		                                    <div class="form-group row">
 		                                        <div class="col-md-12 required">
-		                                        	<label class="control-label text-right">City<span class="text_requried">*</span></label>
-		                                       		 <select class="form-control" name="city_id" id="city">
+		                                        	<label class="control-label text-right">City</label>
+		                                       		 <select class="form-control" name="city_id" data-placeholder="First Select Province" id="city">
       												  </select>
 
 		                                       		<!-- <input type="text"  name="city"value="{{ old('city') }}"  class="form-control"> -->
@@ -126,8 +126,8 @@
 		                           		<div class="col-md-3">
 		                                    <div class="form-group row">
 		                                        <div class="col-md-12 required">
-		                                        	<label class="control-label text-right">Province<span class="text_requried">*</span></label>
-		                                       		<select class="form-control" name="state_id" id="state">
+		                                        	<label class="control-label text-right">Province</label>
+		                                       		<select class="form-control" name="state_id" data-placeholder="First Select Country" id="state">
        												</select>
 
 		                             
@@ -166,7 +166,7 @@
 		                                		
 		                                        <div class="col-md-8" >
 		                                        	<label class="control-label text-right">Mobile Number<span class="text_requried">*</span></label>
-		                                            <input type="text" name="phone[]" value="{{old('phone.0')}}" data-validation="required" class="form-control" >
+		                                            <input type="text" name="phone[]" value="{{old('phone.0')}}" class="form-control" >
 
 		                                        </div>
 												<div class="col-md-4">
@@ -459,7 +459,7 @@
 		                                    <div class="form-group row">
 		                                        <div class="col-md-12">
 		                                       		<label class="control-label text-right">Attached CV<span class="text_requried">*</span></label><br>
-		                                       		<input type="file"  id="cv" name="cv" data-validation="required mime size" data-validation-max-size="1M" data-validation-allowing="doc, docx, pdf" value="{{ old('cv') }}"  class="form-control" ><span class="text_requried">doc, docx and pdf only</span>
+		                                       		<input type="file"  id="cv" name="cv" value="{{ old('cv') }}"  class="form-control" ><span class="text_requried">doc, docx and pdf only</span>
 		                                        </div>
 		                                    </div>
 		                                </div>
@@ -496,16 +496,35 @@
 <script>
 
 $(document).ready(function(){
-//$.validate();
 
+$("form").submit(function (e) {
+      e.preventDefault();
+});
+
+$.validate({
+	validateHiddenInputs: true,
+});
+
+// 	$(".required").each(function(){
+	// 		if($(this).find('select').children("option:selected").val() ==''){
+	// 			$(this).find('.chosen-container').css('border', '1px solid red');
+	// 			e.preventDefault();
+	// 		}else if ($(this).find('select').children("option:selected").val() !=''){
+	// 			$(this).find('.chosen-container').css('border', '');
+	// 		}else{
+
+	// 			return true;
+	// 		}
+
+	// 	});
 
 $('.fa-spinner').hide();
+
+
 $('#test').on('submit', function(event){
-  // event.validate();
     $('.fa-spinner').show();
  	var url = "{{ route('uploadCv.store')}}"
 
- 	//$.validate();
  		event.preventDefault();
 		submitFormAjax(this, url);
 	
@@ -566,7 +585,7 @@ $('#test').on('submit', function(event){
                 {
                     $("#state").empty();
                    $("#city").empty();
-                    $("#state").append('<option>Select State</option>');
+                    $("#state").append('<option value="">Select State</option>');
                     $.each(res,function(key,value){
                         $("#state").append('<option value="'+key+'">'+value+'</option>');
                         
@@ -592,7 +611,7 @@ $('#test').on('submit', function(event){
                 if(res)
                 {
                     $("#city").empty();
-                    $("#city").append('<option>Select City</option>');
+                    $("#city").append('<option value="">Select City</option>');
                     $.each(res,function(key,value){
                         $("#city").append('<option value="'+key+'">'+value+'</option>');
                     });

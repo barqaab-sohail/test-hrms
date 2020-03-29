@@ -35,9 +35,9 @@
 								<td>{{$cv->full_name}}</td>
 								<td>{{$cv->father_name}}</td>
 								
-								@foreach ($cv->cv_phone as $phone)
-								<td>{{$phone->phone}}</td>
-								@endforeach
+								
+								<td>{{$cv->cv_phone->first()->phone}}</td>
+								
 
 								<td>{{isset($cv->cnic)?$cv->cnic:'No CNIC'}}</td>
 

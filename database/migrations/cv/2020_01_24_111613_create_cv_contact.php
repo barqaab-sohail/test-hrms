@@ -24,10 +24,10 @@ class CreateCvContact extends Migration
             $table->bigInteger('country_id')->unsigned();
             $table->foreign('country_id')->references('id')->on('countries');
             
-            $table->bigInteger('state_id')->unsigned();
+            $table->bigInteger('state_id')->nullable()->unsigned();
             $table->foreign('state_id')->references('id')->on('states');
            
-            $table->bigInteger('city_id')->unsigned();
+            $table->bigInteger('city_id')->nullable()->unsigned();
             $table->foreign('city_id')->references('id')->on('cities');
             
             $table->timestamps();
