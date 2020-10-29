@@ -254,7 +254,8 @@ function submitFormAjax(form, url,reset=0){
 
                 //get Date from Database and set as "Saturday, 24-August-2019"
                 var weekday = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
-                var months = ["January","February","March","April","May","June","July","August","September","October","November","December"];
+                //var months = ["January","February","March","April","May","June","July","August","September","October","November","December"];
+                 var months = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
                 
                 //if Date not empty than enter date with format 'Wednesday, 10-August-2010'
 

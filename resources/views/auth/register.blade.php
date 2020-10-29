@@ -11,7 +11,7 @@
                     @if(Session::has('erro_login'))
                         <div class="alert alert-danger">
                         <a href="#" class="close" data-dismiss="alert"></a>
-                        <strong></strong> {{Session::get('erro_login')}}
+                        <strong>{{Session::get('erro_login')}}</strong> 
                         </div>
                     @endif
 

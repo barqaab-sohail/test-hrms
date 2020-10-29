@@ -13,17 +13,16 @@
                    
                     @if(Session::has('success'))
                         <div class="alert alert-success">
-                        <a href="#" class="close" data-dismiss="alert"></a>
-                        <strong></strong> {{Session::get('success')}}
+                        <a href="#" class="close" data-dismiss="alert">x</a>
+                        <strong>{{Session::get('success')}}</strong> 
                         </div>
                     @endif
                     @if ($errors->any())
-                        <div class="alert alert-danger">
-                         <ul>
+                       <div class="alert alert-success">
+                        <a href="#" class="close" data-dismiss="alert">x</a>
                             @foreach ($errors->all() as $error)
-                                <li>{{ $error }}</li>
+                                <strong> {{ $error }}</strong><br>
                             @endforeach
-                      </ul>
                       </div>
                     @endif
                     <form method="POST" action="{{ route('login') }}" class="form-prevent-multiple-submits">

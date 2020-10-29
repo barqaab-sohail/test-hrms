@@ -13,7 +13,7 @@
 	<div class="card">
 	  <div style="margin-top:10px; margin-right: 10px;">
 		                    <button type="button"  id ="hideButton"  class="btn btn-info float-right">Add Contact</button>
-		                </div>
+		</div>
 		<div class="card-body" >
 			<!--<div class="float-right">
 				<input id="month" class="form-control" value="" type="month">
