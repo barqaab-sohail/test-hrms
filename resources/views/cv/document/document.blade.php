@@ -5,7 +5,6 @@
 
 @stop
 @section('content')
-   
     <div class="row">
         <div class="col-lg-12">
             <div class="card card-outline-info">
@@ -13,17 +12,10 @@
 					<div class="col-lg-2">
 					@include('layouts.cv.cvVerticalButton')
 					</div>
-
 		        	<div class="col-lg-10">
-						 
- 
-		        		
 		                <div style="margin-top:10px; margin-right: 10px;">
 		                    <button type="button"  id ="hideButton"  class="btn btn-info float-right">Add Document</button>
 		                </div>
-		                
-		                 
- 
 
 		                <div class="card-body" id="hideDiv">
 
